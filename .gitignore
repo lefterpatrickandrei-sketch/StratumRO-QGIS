@@ -1,0 +1,25 @@
+.aider*# Aider
+.aider*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+
+# VS Code
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+temp/
+tmp/
+
+# AutoCAD
+*.dwl
+*.dwl2
