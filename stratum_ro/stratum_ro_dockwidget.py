@@ -321,7 +321,12 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         QtCore.QTimer.singleShot(4000, lambda: self.lblStatus_2.setText(
             "Status: [Task: processing - 45%]\nDescărcare date LAKI finalizată. Filtrare în curs..."
         ))
+        
+        # Încercăm calea relativă, iar dacă e rulat din profilul QGIS, folosim calea absolută din workspace
         mock_raster = os.path.join(os.path.dirname(os.path.dirname(__file__)), "datasets", "orthophotos", "test_gdal_byte.tif")
+        if not os.path.exists(mock_raster):
+            mock_raster = "c:/Users/lefpa/Downloads/QGIS-AI/datasets/orthophotos/test_gdal_byte.tif"
+            
         QtCore.QTimer.singleShot(6000, lambda: self.load_results_into_qgis(raster_path=mock_raster))
 
     def load_results_into_qgis(self, raster_path=None, vector_path=None):
