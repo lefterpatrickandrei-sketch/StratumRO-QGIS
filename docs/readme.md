@@ -466,6 +466,16 @@ POST http://localhost:8000/api/v1/segmentation/process
 
 ---
 
+## ⚠️ Notă Importantă privind Rularea Modului Mock (De reținut la Testare)
+
+La testarea funcționalității în mod **Mock / Fallback**:
+*   **Locație fișier de test:** Se încarcă rasterul `test_gdal_byte.tif` din folderul `datasets/orthophotos/`.
+*   **Georeferențiere (De ce face Zoom în California?):** Deoarece acest fișier este un eșantion standard furnizat de biblioteca GDAL, el are sistemul de proiecție definit nativ în **UTM Zone 11 North (NAD27)**, localizat în sudul Californiei (regiunea Corona/Chino Hills).
+*   **Comportament în QGIS:** Când folosiți opțiunea *Zoom to Layer* pe stratul rezultat, camera QGIS se va muta automat în California. Acesta este comportamentul corect și demonstrează citirea fișierului fizic local de pe disc.
+*   **Rularea Reală (Producție):** În rularea normală cu serverul FastAPI pornit, datele rezultate din modelul AI pentru regiunea Oradea (sau alte regiuni selectate) vor fi decupate și returnate direct în sistemul geodezic național **Stereo 70 (EPSG:31700)**.
+
+---
+
 ## 📈 Strategia de Viabilitate a Produsului & Inovații Cadastrale
 
 Pentru a transforma erorile geometrice inerente ale datelor open-source (LiDAR/Ortofoto) într-un produs comercial extrem de rentabil pentru firmele de topografie și autoritățile publice locale, platforma integrează următoarele principii de bază:
