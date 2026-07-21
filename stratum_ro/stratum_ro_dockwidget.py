@@ -172,6 +172,81 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         
         return True, ""
 
+    def resolve_administrative_data(self):
+        """
+        Găsește dinamic UAT-ul, județul și codul SIRUTA prin intersecție spațială
+        cu straturile vectoriale active în QGIS (de tip limite administrative / UAT).
+        """
+        fallback_data = {
+            "siruta_code": 26573,
+            "level": "uat",
+            "name": "Oradea",
+            "county": "Bihor"
+        }
+        
+        if not self.current_aoi_geometry:
+            return fallback_data
+
+        try:
+            from qgis.core import QgsPointXY, QgsGeometry, QgsFeatureRequest
+            
+            # 1. Construim geometria AOI
+            poly_points = [QgsPointXY(pt[0], pt[1]) for pt in self.current_aoi_geometry]
+            aoi_geom = QgsGeometry.fromPolygonXY([poly_points])
+            centroid = aoi_geom.centroid().asPoint()
+            
+            # 2. Căutăm stratul UAT printre straturile active
+            uat_layer = None
+            for layer in QgsProject.instance().mapLayers().values():
+                if isinstance(layer, QgsVectorLayer):
+                    name_l = layer.name().lower()
+                    if "uat" in name_l or "limite" in name_l or "siruta" in name_l or "localit" in name_l:
+                        uat_layer = layer
+                        break
+            
+            if not uat_layer:
+                print("[StratumRO] Nu s-a găsit niciun strat activ de limite administrative (UAT/siruta). Se folosesc datele mock din Oradea.")
+                return fallback_data
+
+            # 3. Intersecție spațială pentru a găsi poligonul UAT care conține centroidul
+            request = QgsFeatureRequest().setFilterRect(aoi_geom.boundingBox())
+            for feature in uat_layer.getFeatures(request):
+                if feature.geometry().contains(QgsGeometry.fromPointXY(centroid)) or feature.geometry().intersects(aoi_geom):
+                    siruta = 26573
+                    uat_name = "Oradea"
+                    county = "Bihor"
+                    
+                    for field in uat_layer.fields():
+                        f_name = field.name().lower()
+                        if "siruta" in f_name or "cod" in f_name:
+                            val = feature[field.name()]
+                            if val is not None:
+                                try:
+                                    siruta = int(val)
+                                except ValueError:
+                                    pass
+                        elif "name" in f_name or "uat" in f_name or "localit" in f_name or "denumire" in f_name:
+                            val = feature[field.name()]
+                            if val is not None:
+                                uat_name = str(val)
+                        elif "county" in f_name or "judet" in f_name or "județ" in f_name:
+                            val = feature[field.name()]
+                            if val is not None:
+                                county = str(val)
+                                
+                    print(f"[StratumRO] UAT detectat dinamic: {uat_name} (SIRUTA: {siruta}), Județul: {county}")
+                    return {
+                        "siruta_code": siruta,
+                        "level": "uat",
+                        "name": uat_name,
+                        "county": county
+                    }
+                    
+        except Exception as e:
+            print(f"[StratumRO] Eroare la detectarea administrativă dinamică: {str(e)}")
+            
+        return fallback_data
+
     def run_segmentation_pipeline(self):
         """Execută validările locale și lansează thread-ul de fundal către API-ul FastAPI."""
         
@@ -183,6 +258,9 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
 
         self.lblStatus_2.setText("Status: Se pregătește cererea...")
 
+        # Determinarea dinamică a datelor administrative (SIRUTA / UAT)
+        admin_data = self.resolve_administrative_data()
+
         # Construirea payload-ului
         payload = {
             "project_name": "Segmentare_Nationala_StratumRO",
@@ -192,12 +270,7 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
                 "type": "Polygon",
                 "coordinates": [self.current_aoi_geometry]
             },
-            "administrative": {
-                "siruta_code": 26573,  # TODO: De dinamizat într-o fază ulterioară (Faza D/E)
-                "level": "uat",
-                "name": "Oradea",
-                "county": "Bihor"
-            },
+            "administrative": admin_data,
             "parameters": {
                 "model_version": "v1.0-default",
                 "confidence_threshold": 0.5
