@@ -430,12 +430,15 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             "Status: [Task: processing - 45%]\nDescărcare date LAKI finalizată. Filtrare în curs..."
         ))
         
-        # Încercăm calea relativă, iar dacă e rulat din profilul QGIS, folosim calea absolută din workspace
+        # Calea relativă calculată din locația plugin-ului
         mock_raster = os.path.join(os.path.dirname(os.path.dirname(__file__)), "datasets", "orthophotos", "test_gdal_byte.tif")
+        
         if not os.path.exists(mock_raster):
-            mock_raster = "c:/Users/lefpa/Downloads/QGIS-AI/datasets/orthophotos/test_gdal_byte.tif"
-            
-        QtCore.QTimer.singleShot(6000, lambda: self.load_results_into_qgis(raster_path=mock_raster))
+            QtCore.QTimer.singleShot(6000, lambda: self.lblStatus_2.setText(
+                "Status: Fișier mock lipsă — plasează test_gdal_byte.tif în datasets/orthophotos/ relativ la workspace."
+            ))
+        else:
+            QtCore.QTimer.singleShot(6000, lambda: self.load_results_into_qgis(raster_path=mock_raster))
 
     def load_results_into_qgis(self, raster_path=None, vector_path=None):
         """Etapa 36: Încarcă automat straturile (Raster și/sau Vector) rezultate direct în panoul de Layers din QGIS."""

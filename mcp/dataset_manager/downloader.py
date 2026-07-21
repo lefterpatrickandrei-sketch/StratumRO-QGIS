@@ -16,7 +16,9 @@ def download_dataset(request: DownloadRequest) -> Path:
     else:
         raise ValueError(f"Tip de strat necunoscut: {request.layer_type}")
 
-    destination_path = target_dir / request.filename
+    # Extragerea exclusivă a numelui de fișier pentru prevenirea atacurilor de tip Path Injection
+    safe_filename = Path(request.filename).name
+    destination_path = target_dir / safe_filename
 
     # Am eliminat diacriticele din print-uri pentru a preveni crash-ul pe Windows stdout
     print(f"[Dataset Manager] Se initiaza descarcarea: {request.url}")

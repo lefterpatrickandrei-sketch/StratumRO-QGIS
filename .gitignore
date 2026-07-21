@@ -23,3 +23,8 @@ tmp/
 # AutoCAD
 *.dwl
 *.dwl2
+
+# Obsidian
+Obsidian workflow/
+.agents/
+skills-lock.json
