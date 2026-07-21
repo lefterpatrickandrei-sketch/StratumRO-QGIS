@@ -36,6 +36,41 @@ Todo el procesamiento se ejecuta en hardware local — ningún dato sale de la m
 
 ---
 
+## 🛠️ Ghid de Instalare & Descărcare Resurse (Setup Guide)
+
+Pentru a dezvolta și rula proiectul, este necesară configurarea mediului de lucru conform instrucțiunilor de mai jos:
+
+### 1. Descărcări Necesare (Downloads)
+*   **Pentru toți membrii (Core):**
+    *   **Python 3.10+** (Recomandat 3.10 sau 3.11): [Python Oficial](https://www.python.org/downloads/)
+    *   **QGIS Desktop (3.28 LTR sau mai nou):** [QGIS Oficial](https://qgis.org/en/site/forusers/download.html)
+    *   **Git LFS** (gestionare fișiere mari LiDAR/TIFF): [Git LFS](https://git-lfs.com/)
+*   **Pentru Membru 2 (Backend & Database):**
+    *   **PostgreSQL 15+ & extensia PostGIS:** [PostgreSQL Oficial](https://www.postgresql.org/download/)
+    *   **OSGeo4W Network Installer** (biblioteci C++ GDAL/PDAL pe Windows): [OSGeo4W](https://trac.osgeo.org/osgeo4w/)
+*   **Pentru Membru 3 (AI/ML Engineer):**
+    *   **Ollama CLI (rulat local):** [Ollama Descărcare](https://ollama.com/download)
+    *   **CUDA Toolkit 11.8 / 12.1** (accelerare GPU PyTorch/SAM 2): [NVIDIA CUDA](https://developer.nvidia.com/cuda-downloads)
+    *   **Meta SAM 2 Checkpoints (Greutăți):** Descărcați modelul `sam2_hiera_tiny.pt` sau `sam2_hiera_small.pt` de pe: [Meta SAM 2 GitHub](https://github.com/facebookresearch/segment-anything-2)
+
+### 2. Procedura de Configurare Rapidă
+1.  **Instalare dependințe Python:**
+    *   Deschideți un terminal în **VS Code / Antigravity** și rulați:
+        ```bash
+        python -m venv venv
+        .\venv\Scripts\activate
+        pip install -r requirements.txt
+        ```
+2.  **Configurare LLM local (Ollama - Membru 3):**
+    *   Porniți aplicația Ollama și rulați în terminal:
+        ```bash
+        ollama pull nemotron
+        ```
+3.  **Configurare QGIS Plugin (Membru 1):**
+    *   Rulați scriptul [install_plugin.bat](file:///c:/Users/lefpa/Downloads/QGIS-AI/install_plugin.bat) pentru a compila resursele Qt și a deploya plugin-ul în folderul QGIS active profile.
+
+---
+
 ## 📂 Compoziția și Structura Workspace-ului
 
 Workspace-ul proiectului este structurat conform standardelor profesionale PyQGIS, decuplând resursele de lucru de logica activă de execuție:
@@ -227,6 +262,20 @@ Planul de implementare este structurat pe 10 faze tehnice, definind cu precizie 
 - **Membru 1 (Andrei — Lead Developer):** QGIS Client, PyQGIS, interfață, comunicare locală, documentație și testare integrată.
 - **Membru 2 (Backend & Database Engineer):** FastAPI backend, PostGIS SQL, procesare GIS locală (GDAL, PDAL, Docker).
 - **Membru 3 (AI/ML Engineer):** Model local NVIDIA Nemotron-3 pe Ollama, încărcare model Meta SAM 2, optimizare nuclee CUDA, generare măști.
+
+### 📍 Ghid de Lucru pe Etape: Unde se execută fiecare fază?
+
+Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru membrii echipei:
+*   **Faza A & B (Etapele 1-36):**
+    *   *Unde se lucrează:* **Qt Designer** (design interfață `.ui`), **VS Code / Antigravity** (scripting Python) și **QGIS Desktop** (vizualizare canvas și testare instrument AOI).
+*   **Faza C (Etapele 37-40):**
+    *   *Unde se lucrează:* **VS Code / Antigravity** (implementare `QThread` asincron în Python) și **QGIS Desktop** (validare comportament/reîncărcare).
+*   **Faza D & E (Etapele 41-60):**
+    *   *Unde se lucrează:* **VS Code Terminal** (instalare `requirements.txt` și rulare server FastAPI) și **PostgreSQL/PostGIS CLI** (configurare baze de date spațiale).
+*   **Faza F & G (Etapele 61-70):**
+    *   *Unde se lucrează:* **Ollama CLI / CMD** (pentru descărcare și rulare model Nemotron-3) și **VS Code Terminal / Python** (pentru rularea encoderului/decoderului PyTorch SAM 2 pe GPU).
+*   **Faza H (Etapele 71-75):**
+    *   *Unde se lucrează:* **VS Code** (scriere algoritmi Shapely de topologie) și **QGIS Desktop** (verificare vizuală finală a fișierelor GeoPackage).
 
 ### 🟩 Faza A: Structură & UI Client (Etapele 1 – 33) — STATUS: FINALIZAT 100%
 
