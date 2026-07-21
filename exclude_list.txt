@@ -1,0 +1,12 @@
+.git\
+.agents\
+venv\
+docs\
+test\
+__pycache__\
+*.pyc
+*.ui
+*.qrc
+pb_tool.cfg
+install_plugin.bat
+exclude_list.txt

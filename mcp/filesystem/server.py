@@ -6,7 +6,7 @@ mcp = FastMCP("Filesystem")
 # Rădăcina permisă pentru operații — SIGURANȚĂ:
 # nu lăsăm LLM-ul să umble prin tot sistemul de fișiere,
 # doar în interiorul proiectului
-BASE_DIR = Path(r"C:\Users\lefpa\Downloads\QGIS-AI\workspace")
+BASE_DIR = Path(__file__).resolve().parent.parent.parent / "workspace"
 BASE_DIR.mkdir(exist_ok=True)
 
 @mcp.tool()

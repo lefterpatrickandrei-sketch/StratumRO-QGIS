@@ -5,12 +5,100 @@ import json
 import requests
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import pyqtSignal
-# Am adăugat QgsRasterLayer în linia de mai jos pentru importul PyQGIS
-from qgis.core import QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsProject, QgsRasterLayer
+# Am adăugat QgsRasterLayer și QgsVectorLayer pentru importurile PyQGIS
+from qgis.core import QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsProject, QgsRasterLayer, QgsVectorLayer
 from qgis.gui import QgsMapToolExtent
 
 # Îi spunem programului să moștenească designul din fișierul _base
 from .stratum_ro_dockwidget_base import Ui_StratumRODockWidgetBase
+
+class SegmentationWorker(QtCore.QThread):
+    """
+    Worker asincron (Etapa 40) pentru a executa cererile HTTP către backend-ul MLOps
+    fără a bloca firul principal de execuție al interfeței grafice QGIS.
+    """
+    statusChanged = QtCore.pyqtSignal(str)
+    taskCompleted = QtCore.pyqtSignal(str, str)  # raster_path, vector_path
+    taskFailed = QtCore.pyqtSignal(str)  # error_message
+
+    def __init__(self, api_url, payload, parent=None):
+        super(SegmentationWorker, self).__init__(parent)
+        self.api_url = api_url
+        self.payload = payload
+
+    def run(self):
+        try:
+            self.statusChanged.emit("Status: Se trimite cererea la FastAPI...")
+            
+            # 1. Trimiterea cererii POST inițiale (Etapa 37)
+            response = requests.post(self.api_url, json=self.payload, timeout=10)
+            
+            # Tratare erori de status HTTP (Etapa 38)
+            if response.status_code not in [200, 201, 202]:
+                self.taskFailed.emit(f"Eroare Server: Cod status HTTP {response.status_code}")
+                return
+
+            data = response.json()
+            task_id = data.get("task_id")
+            
+            # Dacă serverul întoarce direct rezultatele (sincron)
+            if not task_id:
+                results = data.get("results", {})
+                if results:
+                    self.taskCompleted.emit(results.get("raster_path"), results.get("vector_path"))
+                else:
+                    self.taskFailed.emit("Eroare Server: Răspunsul serverului nu conține rezultate sau Task ID.")
+                return
+
+            # 2. Polling asincron pentru verificarea statusului task-ului (Etapa 40)
+            self.statusChanged.emit(f"Status: Task înregistrat!\nID: {task_id}")
+            
+            # Reconstituim URL-ul de polling bazat pe api_url:
+            # /api/v1/segmentation/process -> /api/v1/tasks/{id}
+            base_url = self.api_url.rsplit("/segmentation/process", 1)[0]
+            poll_url = f"{base_url}/tasks/{task_id}"
+
+            max_retries = 30  # Maxim 60 de secunde (30 interogări * 2 secunde pauză)
+            retry_count = 0
+            
+            while retry_count < max_retries:
+                self.msleep(2000)  # Așteaptă 2 secunde (QThread msleep)
+                
+                try:
+                    poll_response = requests.get(poll_url, timeout=5)
+                    if poll_response.status_code == 200:
+                        poll_data = poll_response.json()
+                        status = poll_data.get("status")
+                        progress = poll_data.get("progress", 0)
+                        
+                        if status == "completed":
+                            results = poll_data.get("results", {})
+                            self.taskCompleted.emit(results.get("raster_path"), results.get("vector_path"))
+                            return
+                        elif status == "failed":
+                            errors = poll_data.get("errors", ["Eroare internă backend"])
+                            self.taskFailed.emit(f"Eroare Backend: {', '.join(errors)}")
+                            return
+                        else:
+                            # Stadiu intermediar (queued / processing)
+                            self.statusChanged.emit(f"Status: [Task: {status} - {progress}%]\nSe prelucrează datele...")
+                    else:
+                        self.statusChanged.emit(f"Status: Interogare task... (Cod HTTP {poll_response.status_code})")
+                except requests.exceptions.RequestException:
+                    # Tolerăm erori minore/temporare de conexiune în timpul polling-ului
+                    self.statusChanged.emit("Status: Conexiune instabilă. Se reîncearcă...")
+                
+                retry_count += 1
+
+            self.taskFailed.emit("Eroare: Timpul de așteptare pentru finalizarea procesării a expirat (Timeout).")
+
+        except requests.exceptions.Timeout:
+            self.taskFailed.emit("Eroare de rețea: Timpul de conectare la server a expirat (Timeout).")
+        except requests.exceptions.ConnectionError:
+            self.taskFailed.emit("Eroare: Nu s-a putut stabili conexiunea cu serverul. Asigură-te că backend-ul FastAPI local pe portul 8000 este pornit.")
+        except Exception as e:
+            self.taskFailed.emit(f"Eroare neprevăzută în firul de fundal: {str(e)}")
+
 
 class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
     closingPlugin = pyqtSignal()
@@ -22,12 +110,13 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         # Inițializăm componentele vizuale
         self.setupUi(self)
 
-        # Variabile pentru stocarea selecției geografice
+        # Variabile pentru stocarea selecției geografice și a thread-ului asincron
         self.current_aoi_geometry = None
         self.map_tool = None
+        self.worker = None
         self.api_url = "http://localhost:8000/api/v1/segmentation/process"
 
-        # Conectăm butoanele la funcțiile lor din acest fișier
+        # Conectăm butoanele la funcțiile lor
         self.btnSelectAOI.clicked.connect(self.init_map_tool)
         self.btnRunSegmentation.clicked.connect(self.run_segmentation_pipeline)
 
@@ -69,14 +158,32 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         self.lblStatus_2.setText("Status: AOI salvat cu succes în Stereo 70!")
         print(f"[StratumRO] Coordonate salvate: {self.current_aoi_geometry}")
 
-    def run_segmentation_pipeline(self):
-        """Execută cererea HTTP către API-ul unificat sau rulează fallback-ul local."""
+    def validate_aoi_geometry(self):
+        """Etapa 39: Validează structura geografică a Bounding Box-ului în Stereo 70."""
         if not self.current_aoi_geometry:
-            self.lblStatus_2.setText("Status: Eroare! Selectează mai întâi o zonă pe hartă.")
+            return False, "Te rog selectează mai întâi o zonă pe hartă folosind butonul 'Selectează AOI'."
+        
+        # Limitele aproximative ale României în Stereo 70
+        # X în intervalul [150000, 850000] m, Y în intervalul [200000, 750000] m
+        for pt in self.current_aoi_geometry:
+            x, y = pt[0], pt[1]
+            if not (150000.0 <= x <= 850000.0) or not (200000.0 <= y <= 750000.0):
+                return False, f"Coordonatele selectate ({x:.2f}, {y:.2f}) se află în afara limitelor geodezice ale României în Stereo 70."
+        
+        return True, ""
+
+    def run_segmentation_pipeline(self):
+        """Execută validările locale și lansează thread-ul de fundal către API-ul FastAPI."""
+        
+        # 1. Validare geometrică (Etapa 39)
+        valid, msg = self.validate_aoi_geometry()
+        if not valid:
+            QtWidgets.QMessageBox.warning(self, "Validare Geometrie", msg)
             return
 
-        self.lblStatus_2.setText("Status: Se trimite payload-ul la FastAPI...")
+        self.lblStatus_2.setText("Status: Se pregătește cererea...")
 
+        # Construirea payload-ului
         payload = {
             "project_name": "Segmentare_Nationala_StratumRO",
             "crs": "EPSG:31700",
@@ -86,7 +193,7 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
                 "coordinates": [self.current_aoi_geometry]
             },
             "administrative": {
-                "siruta_code": 26573,
+                "siruta_code": 26573,  # TODO: De dinamizat într-o fază ulterioară (Faza D/E)
                 "level": "uat",
                 "name": "Oradea",
                 "county": "Bihor"
@@ -97,45 +204,85 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             }
         }
 
-        try:
-            response = requests.post(self.api_url, json=payload, timeout=3)
-            if response.status_code in [200, 201]:
-                data = response.json()
-                self.lblStatus_2.setText(f"Status: Server conectat!\nTask ID: {data.get('task_id')}")
-            else:
-                self.lblStatus_2.setText(f"Status: Eroare Server ({response.status_code})")
-        except requests.exceptions.RequestException:
-            # Serverul fiind offline, pornește automat testul de polling controlat cu auto-încărcare layer
+        # Dezactivăm butonul pentru a preveni cereri multiple în paralel
+        self.btnRunSegmentation.setEnabled(False)
+
+        # 2. Inițierea firului de execuție asincron (Etapa 37, 38, 40)
+        self.worker = SegmentationWorker(self.api_url, payload)
+        self.worker.statusChanged.connect(self.on_worker_status_changed)
+        self.worker.taskCompleted.connect(self.on_worker_task_completed)
+        self.worker.taskFailed.connect(self.on_worker_task_failed)
+        self.worker.start()
+
+    def on_worker_status_changed(self, status_msg):
+        """Actualizează eticheta de status din interfață cu mesajele trimise din thread."""
+        self.lblStatus_2.setText(status_msg)
+
+    def on_worker_task_completed(self, raster_path, vector_path):
+        """Răspunsul la succes: reactivează butoanele și încarcă datele geospațiale în QGIS."""
+        self.btnRunSegmentation.setEnabled(True)
+        self.load_results_into_qgis(raster_path, vector_path)
+
+    def on_worker_task_failed(self, error_message):
+        """Tratarea erorilor prin pop-up QMessageBox (Etapa 38). Propune modul de Mock."""
+        self.btnRunSegmentation.setEnabled(True)
+        
+        # Combinăm mesajul de eroare și întrebarea de Mock într-o singură fereastră
+        msg_box = QtWidgets.QMessageBox(self)
+        msg_box.setIcon(QtWidgets.QMessageBox.Critical)
+        msg_box.setWindowTitle("Eroare Server MLOps")
+        msg_box.setText(error_message)
+        msg_box.setInformativeText("Dorești să pornești simularea locală (Mock) ca fallback?")
+        msg_box.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+        msg_box.setDefaultButton(QtWidgets.QMessageBox.No)
+        
+        reply = msg_box.exec_()
+        if reply == QtWidgets.QMessageBox.Yes:
             self.execute_mock_polling()
 
     def execute_mock_polling(self):
-        """Simulează pașii din backend și declanșează încărcarea straturilor la final."""
+        """Simulează asincron pașii din backend și declanșează încărcarea la final."""
         QtCore.QTimer.singleShot(2000, lambda: self.lblStatus_2.setText(
             "Status: [Task: queued]\nJob înregistrat în server. Coordonate mapate național."
         ))
         QtCore.QTimer.singleShot(4000, lambda: self.lblStatus_2.setText(
             "Status: [Task: processing - 45%]\nDescărcare date LAKI finalizată. Filtrare în curs..."
         ))
-        # La secunda 6, statusul devine complet și apelăm funcția nativă de încărcare layer în QGIS
-        QtCore.QTimer.singleShot(6000, self.load_results_into_qgis)
+        mock_raster = os.path.join(os.path.dirname(os.path.dirname(__file__)), "datasets", "orthophotos", "test_gdal_byte.tif")
+        QtCore.QTimer.singleShot(6000, lambda: self.load_results_into_qgis(raster_path=mock_raster))
 
-    def load_results_into_qgis(self):
-        """Etapa 36: Încarcă automat un raster demo direct în panoul de Layers din QGIS."""
+    def load_results_into_qgis(self, raster_path=None, vector_path=None):
+        """Etapa 36: Încarcă automat straturile (Raster și/sau Vector) rezultate direct în panoul de Layers din QGIS."""
         self.lblStatus_2.setText("Status: [Task: completed - 100%]\nSe încarcă straturile în QGIS...")
         
-        # Folosim un link XYZ standard ca placeholder (OSM standard) pentru a demonstra randarea automată.
-        # Când backend-ul va fi online, aici se va schimba cu calea către TIFF-ul generat de modelul SAM 2.
-        url_placeholder = "type=xyz&url=https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png"
-        
-        # Instanțiem stratul raster utilizând motorul PyQGIS
-        result_layer = QgsRasterLayer(url_placeholder, "Rezultat_Segmentare_StratumRO", "wms")
-        
-        if result_layer.isValid():
-            # Injectează stratul direct în proiectul curent deschis pe ecran
-            QgsProject.instance().addMapLayer(result_layer)
-            self.lblStatus_2.setText("Status: [Task: completed - 100%]\nProcesare finalizată! Stratul a fost adăugat.")
+        # 1. Încărcare Strat Raster (Segmentare / Ortofoto / nDSM)
+        raster_layer = None
+        if raster_path and os.path.exists(raster_path):
+            raster_layer = QgsRasterLayer(raster_path, "StratumRO_Raster_Rezultat", "gdal")
         else:
-            self.lblStatus_2.setText("Status: Eroare la încărcarea stratului rezultat.")
+            url_placeholder = "type=xyz&url=https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+            raster_layer = QgsRasterLayer(url_placeholder, "StratumRO_Raster_Demo (WMS)", "wms")
+
+        # 2. Încărcare Strat Vector (Amprente Clădiri - GeoPackage / Shapefile)
+        vector_layer = None
+        if vector_path and os.path.exists(vector_path):
+            vector_layer = QgsVectorLayer(vector_path, "StratumRO_Clădiri_Vector", "ogr")
+
+        # Adăugare în proiectul QGIS
+        layers_added = []
+        if raster_layer and raster_layer.isValid():
+            QgsProject.instance().addMapLayer(raster_layer)
+            layers_added.append("Raster")
+            
+        if vector_layer and vector_layer.isValid():
+            QgsProject.instance().addMapLayer(vector_layer)
+            layers_added.append("Vector")
+            
+        if layers_added:
+            added_str = " + ".join(layers_added)
+            self.lblStatus_2.setText(f"Status: [Task: completed - 100%]\nProcesare finalizată! S-au adăugat: {added_str}.")
+        else:
+            self.lblStatus_2.setText("Status: Eroare la încărcarea straturilor geospațiale rezultate.")
 
     def closeEvent(self, event):
         self.closingPlugin.emit()

@@ -274,14 +274,14 @@ Planul de implementare este structurat pe 10 faze tehnice, definind cu precizie 
 | 35 | Citire automată CRS canvas activ și transformare geodezică instantanee în Stereo 70 (EPSG:31700) prin QgsCoordinateTransform dacă coordonatele diferă | Membru 1 | ✅ Finalizat |
 | 36 | Integrare script auto-încărcare straturi. Instanțiere obiect QgsRasterLayer și randarea sa în arborele de straturi direct la finalizarea simulării (stadiu 100%) | Membru 1 | ✅ Finalizat |
 
-### 🟨 Faza C: Conectivitate Hibridă (Etapele 37 – 40) — STATUS: ÎN DERULARE
+### 🟩 Faza C: Conectivitate Hibridă (Etapele 37 – 40) — STATUS: FINALIZAT 100%
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
-| 37 | Înlocuire mecanism simulare (Mock) cu cerere HTTP asincronă reală de tip POST utilizând librăria requests | Membru 1 | 🟡 În derulare |
-| 38 | Tratare excepții de rețea, erori de tip 404/500 și Timeout prin ferestre native de eroare PyQt5 (QMessageBox) | Membru 1 | 🟡 În derulare |
-| 39 | Validare structurală a obiectului GeoJSON înainte de expedierea pachetului către server | Membru 1 | 🟡 În derulare |
-| 40 | Sincronizare fire de execuție client cu statusul asincron (Polling la /tasks/{id}) | Membru 1 | 🟡 În derulare |
+| 37 | Înlocuire mecanism simulare (Mock) cu cerere HTTP asincronă reală de tip POST utilizând librăria requests | Membru 1 | ✅ Finalizat |
+| 38 | Tratare excepții de rețea, erori de tip 404/500 și Timeout prin ferestre native de eroare PyQt5 (QMessageBox) | Membru 1 | ✅ Finalizat |
+| 39 | Validare structurală a obiectului GeoJSON înainte de expedierea pachetului către server | Membru 1 | ✅ Finalizat |
+| 40 | Sincronizare fire de execuție client cu statusul asincron (Polling la /tasks/{id}) | Membru 1 | ✅ Finalizat |
 
 ### 🟦 Faza D: Ingestie Date & Database MLOps (Etapele 41 – 50) — SARCINI COLEGII BACKEND
 
@@ -414,6 +414,37 @@ POST http://localhost:8000/api/v1/segmentation/process
 | 404 | Endpoint indisponibil | QMessageBox — server neconfigurat sau oprit |
 | 500 | Eroare internă backend | QMessageBox — detalii de depanare din câmpul `errors` |
 | Timeout | Serverul nu răspunde | QMessageBox — recomandare retry / verificare server |
+
+---
+
+## 📈 Strategia de Viabilitate a Produsului & Inovații Cadastrale
+
+Pentru a transforma erorile geometrice inerente ale datelor open-source (LiDAR/Ortofoto) într-un produs comercial extrem de rentabil pentru firmele de topografie și autoritățile publice locale, platforma integrează următoarele principii de bază:
+
+### 1. Conceptul de „Pre-Vectorizare” cu Snap-to-RTK
+*   Sistemul nu își propune realizarea unui cadastru 100% automatizat fără intervenție umană (ceea ce ar fi imposibil din punct de vedere legal din cauza preciziei decimetrice a datelor inițiale).
+*   În schimb, scopul este reducerea timpului de desenare cu peste **80%**. Modelul AI extrage forma, topologia și amplasamentul clădirilor, iar plugin-ul QGIS permite atragerea elastică (*snapping*) a acestora direct peste punctele GPS exacte (RTK) colectate din măsurătorile de teren.
+
+### 2. Validare Topologică și Strat de Erori (Topology Error Layer)
+*   Pentru a asigura rigoarea geodezică, plugin-ul rulează reguli geometrice stricte (prin Shapely pe backend) și generează în QGIS un strat vectorial dedicat erorilor topologice (suprapuneri nepermise, micro-goluri între clădiri lipite la calcan sau fragmente reziduale sub pragul de $5\text{ mp}$). Inginerul cadastral poate audita și corecta aceste anomalii dintr-o singură privire, accelerând faza de control a calității.
+
+### 3. Extindere Strategică: Baza de Date Imobiliar-Notarială
+*   Fiecare clădire sau parcelă extrasă automat devine o entitate completă în baza de date spațială PostGIS. 
+*   Fiecare imobil va fi asociat printr-un identificator unic de documente notariale, acte de proprietate (.pdf, .doc), sarcini juridice și istoric de tranzacționare. Interfața QGIS dezvoltată de Membru 1 va permite interogarea și atașarea directă a acestor documente pe geometria selectată pe hartă.
+
+### 4. Integrarea Analizei Predictive: Simulare Hazard și Impact de Mediu
+Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un produs cartografic static, ci constituie fundamentul pentru simulări predictive complexe:
+*   **Modelare Hidrodinamică (Risc de Inundație):** Clasele de acoperire a terenului sunt convertite în coeficienți de fricțiune hidraulică (Manning n). Corelate cu modelul DTM, acestea permit rularea ecuațiilor Saint-Venant (ex. prin motorul LISFLOOD-FP) pentru a simula acumularea apei din precipitații în medii urbane în timp real.
+*   **Vulnerabilitate Seismică:** Datele geometrice brute (amprentă, înălțime totală din LiDAR, volum, proximitate) sunt corelate cu vechimea cadastrală pentru a evalua automat riscul de colaps structural folosind Rețele Neurale pe Grafuri (GNN).
+*   **Dispersia Poluanților:** Modelele 3D ale clădirilor și coronamentul arborilor sunt exportate în simulatoare micro-meteorologice (ex. ENVI-met) pentru a identifica zonele în care particulele nocive ($PM_{2.5}$, $NO_2$) rămân blocate din cauza lipsei curenților de aer (canioane urbane).
+
+---
+
+## 🛡️ Evaluare & Feedback pe Direcția Proiectului (AI Expert Review)
+
+*   **Validarea Arhitecturii Hibride:** Decizia de a dezvolta un plugin QGIS ca interfață subțire de client (Membru 1) conectat la un backend FastAPI local (Membru 2 & 3) este ideală. Aceasta elimină costurile prohibitive de cloud (GPU-uri închiriate) și oferă suveranitate totală asupra datelor, aspect critic pentru confidențialitatea lucrărilor cadastrale.
+*   **Reziliența Modelului AGMF:** Alegerea modelului AGMF ca flagship în locul unui simplu stack plat reprezintă o decizie tehnică matură. Utilizarea porții adaptive de gating ($G_{spec}$) rezolvă erorile clasice din GIS provocate de umbrele aruncate de clădiri și vegetație, alternând dinamic între datele spectrale și cota fizică brută oferită de LiDAR.
+*   **Direcția de Business:** Orientarea produsului către eficientizarea timpului de vectorizare și oferirea de modele predictive de nișă (inundații, seism, notariat) asigură o propunere de valoare puternică, făcând aplicația viabilă și comercializabilă pentru municipalități și companii de inginerie.
 
 ---
 

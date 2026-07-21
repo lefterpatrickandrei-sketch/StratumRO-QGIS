@@ -21,7 +21,7 @@ def download_dataset(request: DownloadRequest) -> Path:
     # Am eliminat diacriticele din print-uri pentru a preveni crash-ul pe Windows stdout
     print(f"[Dataset Manager] Se initiaza descarcarea: {request.url}")
     
-    with urllib.request.urlopen(request.url) as response, open(destination_path, "wb") as out_file:
+    with urllib.request.urlopen(request.url, timeout=30) as response, open(destination_path, "wb") as out_file:
         block_size = 1024 * 1024  # 1 MB
         while True:
             chunk = response.read(block_size)
