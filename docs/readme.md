@@ -413,11 +413,11 @@ POST http://localhost:8000/api/v1/segmentation/process
     "type": "Polygon",
     "coordinates": [
       [
-        [xmin, ymin],
-        [xmax, ymin],
-        [xmax, ymax],
-        [xmin, ymax],
-        [xmin, ymin]
+        ["xmin", "ymin"],
+        ["xmax", "ymin"],
+        ["xmax", "ymax"],
+        ["xmin", "ymax"],
+        ["xmin", "ymin"]
       ]
     ]
   },
