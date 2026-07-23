@@ -78,18 +78,20 @@ Workspace-ul proiectului este structurat conform standardelor profesionale PyQGI
 ```
 QGIS-AI/ (Workspace Principal)
 ├── docs/
-│   ├── architecture.md                 # Specificațiile tehnice și contractul API original
-│   └── README.md                       # Acest ghid tehnic unificat (Manualul Proiectului)
+│   ├── architecture.md                 # Specificațiile tehnice și contractul API unificat
+│   └── readme.md                       # Acest ghid tehnic unificat (Manualul Proiectului)
+├── mcp/                                # Servicii FastMCP & Management Dataset-uri
+│   ├── filesystem/
+│   │   └── server.py                   # FastMCP Sandbox Server (Path Traversal Guard _safe_resolve)
+│   └── dataset_manager/
+│       └── downloader.py               # Downloader geospațial securizat (SSRF Guard urlparse)
 ├── stratum_ro/                         # Pachetul principal al plugin-ului QGIS
-│   ├── __pycache__/
 │   ├── scripts/                        # Scripturi auxiliare de procesare
 │   ├── test/                           # Suite de teste unitare și utilitare geodezice
 │   ├── __init__.py                     # Inițializarea pachetului Python
 │   ├── icon.png                        # Pictograma plugin-ului vizibilă în QGIS
 │   ├── metadata.txt                    # Informațiile de versiune și categorii pentru managerul QGIS
 │   ├── pb_tool.cfg                     # Configurația de compilare a resurselor Qt
-│   ├── README.html                     # Versiunea HTML a documentației locale
-│   ├── README.txt                      # Versiunea text simplu a documentației locale
 │   ├── stratum_ro.py                   # Clasa principală care înregistrează plugin-ul în interfața QGIS
 │   ├── stratum_ro_dockwidget_base.ui   # Interfața grafică XML proiectată în Qt Designer
 │   ├── stratum_ro_dockwidget_base.py   # Codul Python compilat automat din fișierul .ui
