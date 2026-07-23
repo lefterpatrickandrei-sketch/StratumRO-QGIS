@@ -1,6 +1,7 @@
 import os
 import urllib.request
 from pathlib import Path
+from urllib.parse import urlparse
 from config import ORTHOPHOTO_DIR, LIDAR_DIR
 from models import DownloadRequest
 
@@ -19,6 +20,11 @@ def download_dataset(request: DownloadRequest) -> Path:
     # Extragerea exclusivă a numelui de fișier pentru prevenirea atacurilor de tip Path Injection
     safe_filename = Path(request.filename).name
     destination_path = target_dir / safe_filename
+
+    # Validare schemă URL — prevenim SSRF (file://, ftp://, localhost, metadata endpoints)
+    parsed = urlparse(request.url)
+    if parsed.scheme not in ("http", "https"):
+        raise ValueError(f"Schema URL nepermisa: '{parsed.scheme}'. Doar http/https sunt acceptate.")
 
     # Am eliminat diacriticele din print-uri pentru a preveni crash-ul pe Windows stdout
     print(f"[Dataset Manager] Se initiaza descarcarea: {request.url}")

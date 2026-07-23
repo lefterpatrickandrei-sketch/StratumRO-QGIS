@@ -12,8 +12,8 @@ email=lefterpatrickandrei@gmail.com
 
 about=Agentic GIS connects QGIS to a local, privacy-preserving AI backend (FastAPI + Ollama LLM + Meta SAM2) to automate building footprint extraction from orthophotos and LiDAR point clouds. The plugin lets you select an area of interest directly on the map canvas, sends it to the backend for AI-driven segmentation and classification, and returns validated building polygons as a ready-to-use QGIS vector layer (GeoPackage). Under the hood, an LLM agent orchestrates the workflow via the Model Context Protocol (MCP), coordinating segmentation, geometric cleanup, and topology validation before results reach the map. All processing runs on local hardware — no orthophoto or point cloud data leaves the machine. Requires a running local backend service and a GPU with at least 8GB VRAM for AI inference. This is an active applied-research project in geomatics and geospatial AI, developed by a small engineering team; outputs are intended to speed up manual vectorization and should be reviewed before use in official cadastral submissions. --- Agentic GIS conectează QGIS la un backend AI local, care păstrează confidențialitatea datelor (FastAPI + Ollama LLM + Meta SAM2), pentru extragerea automată a amprentelor clădirilor din ortofotoplanuri și nori de puncte LiDAR. Pluginul permite selectarea unei zone de interes direct pe hartă, trimiterea ei către backend pentru segmentare și clasificare AI, iar rezultatul revine ca strat vectorial QGIS gata de utilizare (GeoPackage). În spate, un agent LLM orchestrează fluxul de lucru prin Model Context Protocol (MCP), coordonând segmentarea, curățarea geometrică și validarea topologică înainte ca rezultatele să ajungă pe hartă. Toată procesarea rulează pe hardware local — datele nu părăsesc mașina. Necesită un serviciu backend local activ și un GPU cu minim 8GB VRAM pentru inferență AI. Este un proiect activ de cercetare aplicată în geomatică și AI geospațial, dezvoltat de o echipă mică de ingineri; rezultatele sunt gândite să accelereze vectorizarea manuală și trebuie verificate înainte de utilizare în depuneri cadastrale oficiale. --- Agentic GIS conecta QGIS con un backend de IA local que preserva la privacidad (FastAPI + Ollama LLM + Meta SAM2) para automatizar la extracción de huellas de edificios a partir de ortofotos y nubes de puntos LiDAR. El plugin permite seleccionar un área de interés directamente sobre el lienzo del mapa, la envía al backend para segmentación y clasificación mediante IA, y devuelve los polígonos de edificios validados como una capa vectorial de QGIS lista para usar (GeoPackage). Internamente, un agente LLM orquesta el flujo de trabajo mediante el Model Context Protocol (MCP), coordinando la segmentación, la limpieza geométrica y la validación topológica antes de que los resultados lleguen al mapa. Todo el procesamiento se ejecuta en hardware local — ningún dato sale de la máquina. Requiere un servicio backend local en ejecución y una GPU con al menos 8GB de VRAM para la inferencia de IA. Es un proyecto activo de investigación aplicada en geomática e IA geoespacial, desarrollado por un equipo pequeño de ingenieros; los resultados están pensados para acelerar la vectorización manual y deben revisarse antes de usarse en presentaciones catastrales oficiales.
 
-tracker=https://github.com/placeholder/stratumro/issues
-repository=https://github.com/placeholder/stratumro
+tracker=https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/issues
+repository=https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS
 # End of mandatory metadata
 
 # Recommended items:
@@ -39,7 +39,7 @@ deprecated=False
 # Check the documentation for more information.
 # plugin_dependencies=
 
-Category of the plugin: Raster, Vector, Database or Web
+# Category of the plugin: Raster, Vector, Database or Web
 # category=
 
 # If the plugin can run on QGIS Server.

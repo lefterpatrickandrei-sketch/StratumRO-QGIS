@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import os
-import json
 import requests
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import pyqtSignal
@@ -163,11 +162,16 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         if not self.current_aoi_geometry:
             return False, "Te rog selectează mai întâi o zonă pe hartă folosind butonul 'Selectează AOI'."
         
-        # Limitele aproximative ale României în Stereo 70
-        # X în intervalul [150000, 850000] m, Y în intervalul [200000, 750000] m
+        # Limitele geodezice extinse ale României în Stereo 70 (EPSG:31700)
+        # Acoperă inclusiv zonele de graniță: Jimbolia (vest), Sulina (est),
+        # Vama Borșa (nord), Mangalia (sud-est)
+        # X: ~128.000 – 875.000 m, Y: ~250.000 – 765.000 m
+        RO_X_MIN, RO_X_MAX = 125000.0, 880000.0
+        RO_Y_MIN, RO_Y_MAX = 245000.0, 770000.0
+        
         for pt in self.current_aoi_geometry:
             x, y = pt[0], pt[1]
-            if not (150000.0 <= x <= 850000.0) or not (200000.0 <= y <= 750000.0):
+            if not (RO_X_MIN <= x <= RO_X_MAX) or not (RO_Y_MIN <= y <= RO_Y_MAX):
                 return False, f"Coordonatele selectate ({x:.2f}, {y:.2f}) se află în afara limitelor geodezice ale României în Stereo 70."
         
         return True, ""
