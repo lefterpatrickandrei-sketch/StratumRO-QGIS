@@ -36,6 +36,7 @@ Sistem MLOps integrat pentru descărcarea, filtrarea și procesarea automată a 
   * [11.5 Clasificare Riguroasă a Surselor de Date: Producție vs. Ipoteze de Cercetare](#115-clasificare-riguroasă-a-surselor-de-date-producție-vs-ipoteze-de-cercetare)
 * [12. 🛡️ Evaluare & Feedback pe Direcția Proiectului](#12--evaluare--feedback-pe-direcția-proiectului)
 * [13. 📄 Licență & 👥 Contribuții](#13--licență--contribuții)
+* [14. 📚 Surse de Date & Atribuiri](#14--surse-de-date--atribuiri)
 
 ---
 
@@ -1076,3 +1077,16 @@ Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un
 Proiect privat dezvoltat în regim intern de inginerie. Toate drepturile rezervate autorilor (Proprietary / Private code).
 
 Proiect dezvoltat de o echipă mică de ingineri; contribuțiile sunt acceptate exclusiv prin Pull Request pe branch-urile de dezvoltare dedicate. Deschideți un Issue înainte de orice propunere de modificare majoră adusă arhitecturii existente.
+
+---
+
+## 14. 📚 Surse de Date & Atribuiri
+
+* **ANCPI:** Ortofotoplanuri naționale 2D, LiDAR 3D (LAKI II/III), limite UAT și coduri SIRUTA.
+* **Copernicus / ESA:** Sateliți Sentinel-2 (NDVI) și Sentinel-5P (calitatea aerului).
+* **OpenStreetMap:** Grafuri rutiere deschise (licență ODbL).
+* **PVGIS (Comisia Europeană):** Iradianță solară și potențial fotovoltaic.
+* **Apele Române (ANAR):** Hărți digitale de risc la inundații (HQA).
+* **INS:** Griduri demografice de populație (1 km²).
+* **Meta AI / NVIDIA:** Modelele Meta SAM 2 (segmentare 2D) și NVIDIA Nemotron-3 (LLM local).
+* **Autorat:** Lefter Patrick Andrei & GeoMateLINE.
