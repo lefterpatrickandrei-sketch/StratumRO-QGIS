@@ -488,13 +488,18 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
 
 ---
 
-## 📊 Status Detaliat: Planul în 75 de Etape al Proiectului
+## 📊 Status Detaliat: Planul în 100 de Etape al Proiectului
 
-Planul de implementare este structurat pe 10 faze tehnice, definind cu precizie ce membru al echipei este responsabil pentru fiecare pas:
+Planul de implementare este structurat pe **13 faze tehnice (Fazele A – K)**, definind cu precizie ce membru al echipei este responsabil pentru fiecare pas:
 
-- **Membru 1 (Andrei — Lead Developer):** QGIS Client, PyQGIS, interfață, comunicare locală, documentație și testare integrată.
-- **Membru 2 (Backend & Database Engineer):** FastAPI backend, PostGIS SQL, procesare GIS locală (GDAL, PDAL, Docker).
-- **Membru 3 (AI/ML Engineer):** Model local NVIDIA Nemotron-3 pe Ollama, încărcare model Meta SAM 2, optimizare nuclee CUDA, generare măști.
+- **Membru 1 (Andrei — Lead Developer):** QGIS Client, PyQGIS, interfață, comunicare locală, export CAD ANCPI, rapoarte PDF, urgențe ISU, Chat GUI, documentație și testare integrată.
+- **Membru 2 (Backend & Database Engineer):** FastAPI backend, PostGIS SQL, procesare GIS locală (GDAL, PDAL, Docker), pipeline-uri Open Data (Sentinel, OSM, PVGIS, WMS ANAR) și modele 3D LOD1/LOD2.
+- **Membru 3 (AI/ML Engineer):** Model local NVIDIA Nemotron-3 pe Ollama, încărcare model Meta SAM 2, optimizare nuclee CUDA, generare măști multi-clasă și modele experimentale 3D/seism.
+
+**Legendă Status:**
+* `✅ Finalizat` — Etapă complet implementată și verificată pe cod / teste.
+* `⬜ Neînceput` — Etapă de producție planificată în pipeline.
+* `🧪 Cercetare / Experimental` — Modul experimental de cercetare (ex: estimare altimetrică monoculară / nDSM sintetic din depth estimation AI); vezi [Secțiunea 5 pentru clasificarea riguroasă a surselor de date](#5-clasificare-riguroasă-a-surselor-de-date-producție-vs-ipoteze-de-cercetare).
 
 ### 📍 Ghid de Lucru pe Etape: Unde se execută fiecare fază?
 
@@ -509,6 +514,12 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
     *   *Unde se lucrează:* **Ollama CLI / CMD** (pentru descărcare și rulare model Nemotron-3) și **VS Code Terminal / Python** (pentru rularea encoderului/decoderului PyTorch SAM 2 pe GPU).
 *   **Faza H (Etapele 71-75):**
     *   *Unde se lucrează:* **VS Code** (scriere algoritmi Shapely de topologie) și **QGIS Desktop** (verificare vizuală finală a fișierelor GeoPackage).
+*   **Faza I (Etapele 76-83 — Connectori Open Data & Mediu):**
+    *   *Unde se lucrează:* **VS Code / Backend `.env`** (configurare chei API / endpoints Copernicus Sentinel-2/5P, OpenStreetMap Overpass, PVGIS API Comisia Europeană, ANAR WMS Risc Inundații).
+*   **Faza J (Etapele 84-91 — Segmentare Multi-Clasă 3D & LOD1/LOD2):**
+    *   *Unde se lucrează:* **VS Code Terminal / PyTorch / PDAL** (clasificare LiDAR `.laz` pentru garduri/drumuri/vegetație; reconstrucție 3D extruzată din cota reală LiDAR vs nDSM sintetic experimental).
+*   **Faza K (Etapele 92-100 — Export CAD ANCPI, Rapoarte PDF, ISU, DITL & Chat Agentic UI):**
+    *   *Unde se lucrează:* **VS Code** (bibliotecile Python `ezdxf` pentru `.dxf` ANCPI și `reportlab`/`FPDF` pentru fișă imobil PDF) și **Qt Designer / PyQGIS** (panou de chat agentic în UI QGIS).
 
 ### 🟩 Faza A: Structură & UI Client (Etapele 1 – 33) — STATUS: FINALIZAT 100%
 
@@ -624,6 +635,46 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 73 | Filtrare poligoane pe baza ariei minime utile și a pragului de încredere probabilistic (confidence threshold) | Membru 2 | ⬜ Neînceput |
 | 74 | Execuție validare topologică cadastrală (eliminare suprapuneri clădiri, corectare granițe UAT) | Membru 2 | ⬜ Neînceput |
 | 75 | Salvare fișiere finale în formate standardizate: Raster GeoTIFF (.tif) și Vector GeoPackage (.gpkg), generare ID unic de task și returnare răspuns JSON de succes ce va declanșa Etapa 36 în QGIS | Membru 2 | ⬜ Neînceput |
+
+### 🟨 Faza I: Ingestie Surse Deschise Naționale & Mediu (Etapele 76 – 83) — SARCINI BACKEND
+
+| Etapă | Descriere | Responsabil | Status |
+|---|---|---|---|
+| 76 | Connector ESA Copernicus Sentinel-2 API (descărcare gratuită benzi spectrale B4, B8 la 10m) | Membru 2 | ⬜ Neînceput |
+| 77 | Calcul indici de vegetație (NDVI) și impermeabilitate sol (NDBI) din imagini Sentinel-2 | Membru 2 | ⬜ Neînceput |
+| 78 | Integration Sentinel-5P API (date poluare calitatea aerului $NO_2$, $PM_{2.5}$) | Membru 2 | ⬜ Neînceput |
+| 79 | Client Overpass API (extragere gratuită graf rutier, hidranți și POI-uri din OpenStreetMap) | Membru 2 | ⬜ Neînceput |
+| 80 | Connector PVGIS API (Comisia Europeană — calcul gratuit potențial solar $kWh/\text{an}$ per acoperiș) | Membru 2 | ⬜ Neînceput |
+| 81 | Client WMS Risc Inundații Apele Române (ANAR — benzi de inundaabilitate HQA) | Membru 2 | ⬜ Neînceput |
+| 82 | Ingestie Date Demografice INS Grid $1\text{ km}^2$ (densitate populație per UAT) | Membru 2 | ⬜ Neînceput |
+| 83 | Salvare date mediu în PostGIS ca straturi vectoriale/raster de context regional | Membru 2 | ⬜ Neînceput |
+
+### 🟨 Faza J: Segmentare Multi-Clasă 3D & Reconstrucție LOD1/LOD2 (Etapele 84 – 91) — SARCINI AI & BACKEND
+
+| Etapă | Descriere | Responsabil | Status |
+|---|---|---|---|
+| 84 | Clasificare AI nor LiDAR / nDSM pentru garduri și împrejmuiri ($0.5\text{m} \dots 2.5\text{m}$) | Membru 3 | ⬜ Neînceput |
+| 85 | Segmentare AI căi de acces și suprafețe carosabile (drumuri, trotuare, parcări) | Membru 3 | ⬜ Neînceput |
+| 86 | Extragere cadru cadastru verde (identificare coronament arbori și suprafață spații verzi) | Membru 3 | ⬜ Neînceput |
+| 87 | Reconstrucție volumetrice 3D LOD1 (clădiri formate ca prisme drepte cu înălțime din LiDAR real) | Membru 2 | ⬜ Neînceput |
+| 88 | Estimare altimetrică monoculară (nDSM sintetic din Depth Anything V2) *(Modul experimental)* | Membru 3 | 🧪 Cercetare / Experimental |
+| 89 | Extragere cota streașină și cota coamă din norul de puncte LiDAR real (`.laz`/`.las` / MNT LAKI) | Membru 2 | ⬜ Neînceput |
+| 90 | Reconstrucție geometrie 3D acoperiș LOD2 (clasificare acoperiș în două ape, terasă, mansardă) | Membru 3 | ⬜ Neînceput |
+| 91 | Export modele 3D în format CityGML / GeoPackage 3D pentru vizualizare spatială | Membru 2 | ⬜ Neînceput |
+
+### 🟨 Faza K: Export CAD, Rapoarte, Audit Fiscal & Interfață Agentică (Etapele 92 – 100) — SARCINI CLIENT & BACKEND
+
+| Etapă | Descriere | Responsabil | Status |
+|---|---|---|---|
+| 92 | Motor Export CAD `.dxf` / `.dwg` structurat pe straturile ANCPI (`CONSTRUCTII`, `PARCELE`, `GARDURI`) via `ezdxf` | Membru 1 | ⬜ Neînceput |
+| 93 | Calcul Matrice Suprafață ($S_c$ construită, $S_d$ desfășurată, Regim de înălțime $P+nE$) | Membru 1 | ⬜ Neînceput |
+| 94 | Generare automată Raport PDF / Fișă Imobil cu plan de amplasament via `reportlab` | Membru 1 | ⬜ Neînceput |
+| 95 | Modul audit fiscal DITL (verificare discrepanțe între amprenta AI și suprafața impozitată) | Membru 2 | ⬜ Neînceput |
+| 96 | Modul urgențe ISU (verificare gabarit drum de acces vs scări de intervenție pompieri) | Membru 1 | ⬜ Neînceput |
+| 97 | Simulare hidrodinamică risc inundații urbane pe baza DTM și coeficienți Manning | Membru 2 | ⬜ Neînceput |
+| 98 | Modelare vulnerabilitate seismică (Rețele Neurale pe Grafuri — GNN bazat pe volum și vechime) | Membru 3 | 🧪 Cercetare / Experimental |
+| 99 | Interfață Panou Chat Agentic în QGIS UI (asistent conversațional local pentru interogare spațială) | Membru 1 | ⬜ Neînceput |
+| 100 | Testare integrată end-to-end pe 5 UAT-uri reprezentative din România (Oradea, București, Timișoara, Cluj, Tulcea) | Membru 1, 2 & 3 | ⬜ Neînceput |
 
 ---
 
