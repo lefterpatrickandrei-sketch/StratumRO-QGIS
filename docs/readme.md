@@ -36,6 +36,7 @@ Sistem MLOps integrat pentru descărcarea, filtrarea și procesarea automată a 
   * [11.5 Clasificare Riguroasă a Surselor de Date: Producție vs. Ipoteze de Cercetare](#115-clasificare-riguroasă-a-surselor-de-date-producție-vs-ipoteze-de-cercetare)
 * [12. 🛡️ Evaluare & Feedback pe Direcția Proiectului](#12--evaluare--feedback-pe-direcția-proiectului)
 * [13. 📄 Licență & 👥 Contribuții](#13--licență--contribuții)
+* [14. 📚 Citări, Atribuiri & Surse de Date](#14--citări-atribuiri--surse-de-date-citations--data-sources)
 
 ---
 
@@ -1076,3 +1077,29 @@ Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un
 Proiect privat dezvoltat în regim intern de inginerie. Toate drepturile rezervate autorilor (Proprietary / Private code).
 
 Proiect dezvoltat de o echipă mică de ingineri; contribuțiile sunt acceptate exclusiv prin Pull Request pe branch-urile de dezvoltare dedicate. Deschideți un Issue înainte de orice propunere de modificare majoră adusă arhitecturii existente.
+
+---
+
+## 14. 📚 Citări, Atribuiri & Surse de Date (Citations & Data Sources)
+
+### 14.1 Surse de Date Geospațiale Naționale & Internaționale
+Platforma **StratumRO** utilizează și integrează date geospațiale furnizate de următoarele instituții și furnizori oficiali de date:
+* **ANCPI (Agenția Națională de Cadastru și Publicitate Imobiliară):** Ortofotoplanuri naționale 2D, nori de puncte LiDAR 3D (proiectele LAKI II și LAKI III), limite administrative UAT și nomenclatorul codurilor SIRUTA.
+* **Copernicus Land Monitoring Service & ESA (European Space Agency):** Date satelitare multispectrale Sentinel-2 (benzi spectrale B4, B8 la rezoluție de 10m pentru calculul NDVI) și Sentinel-5P (date privind poluarea și calitatea aerului $NO_2$, $PM_{2.5}$).
+* **OpenStreetMap (OSM) Contributors:** Grafuri rutiere, căi de acces și repere teritoriale deschise (licență Open Data Commons Open Database License — ODbL).
+* **PVGIS (Comisia Europeană — Joint Research Centre JRC):** Serviciul de date privind iradianța solară regională și evaluarea potențialului fotovoltaic anual.
+* **ANAR (Administrația Națională „Apele Române”):** Hărți digitale oficiale ale zonelor inundabile și benzi de inundaabilitate HQA.
+* **INS (Institutul Național de Statistică):** Griduri demografice pe rastere de $1\text{ km}^2$ pentru densitatea populației.
+
+### 14.2 Modele AI, Framework-uri & Biblioteci Open-Source
+Proiectul integrează și extinde următoarele modele de cercetare și biblioteci software:
+* **Meta AI Research — Segment Anything Model 2 (SAM 2):** Ravi, N. et al. (2024). *SAM 2: Segment Anything in Images and Videos*. Meta FAIR Research.
+* **NVIDIA Research — Nemotron-3:** Model de limbaj de nivel industrial utilizat ca agent orchestrator local (rulat via Ollama).
+* **Anthropic / FastMCP:** Protocolul deschis *Model Context Protocol (MCP)* pentru legarea agentului LLM la instrumentele geospațiale locale.
+* **QGIS Development Team & OSGeo:** Platforma GIS open-source QGIS (API PyQGIS).
+* **Biblioteci C++/Python Core:** GDAL/OGR (Geospatial Data Abstraction Library), PDAL (Point Data Abstraction Library), Shapely, GeoPandas, PyTorch, PyQt5, FastAPI, ezdxf, reportlab, pyproj.
+
+### 14.3 Autorat, Proprietate Intelectuală & Mulțumiri
+* **Autori Principali:** Lefter Patrick Andrei & echipa GeoMateLINE.
+* **Citație Recomandată pentru Lucrări Științifice / Tehnice:**
+  > Lefter, P. A., GeoMateLINE (2026). *StratumRO: Pipeline MLOps integrat pentru segmentare cadastrală hibridă 2D/3D în QGIS în sistemul Stereo 70*. Repozitoriu GitHub: `https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS`.
