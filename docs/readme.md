@@ -533,7 +533,7 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
 ### 5.1 Ecuațiile Proiecției Stereografice 1970 (Stereo 70 / EPSG:31700)
 Conversia riguroasă de pe elipsoidul Krasovsky 1940 în planul de proiecție național Stereo 70:
 
-$$\chi = \arctan \left( \sinh \left( \operatorname{arsinh}(\tan \varphi) - e \cdot \operatorname{artanh}(e \cdot \sin \varphi) \right) \right)$$
+$$\chi = \arctan \left( \sinh \left( \mathrm{arsinh}(\tan \varphi) - e \cdot \mathrm{artanh}(e \cdot \sin \varphi) \right) \right)$$
 
 $$X = X_0 + k_0 \cdot R \cdot \cos \chi \cdot \sin(\lambda - \lambda_0)$$
 
