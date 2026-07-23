@@ -16,15 +16,27 @@ venv/
 logs/
 *.log
 
-# Temporary files
+# Temporary & GIS raster auxiliary files
 temp/
 tmp/
+*.aux.xml
+*.xml.aux
+*.ovr
+*.tfw
 
 # AutoCAD
 *.dwl
 *.dwl2
 
-# Obsidian
+# OS & IDE sidecars
+Thumbs.db
+.DS_Store
+desktop.ini
+.idea/
+.pytest_cache/
+.mypy_cache/
+
+# Obsidian & Agents
 Obsidian workflow/
 .agents/
 skills-lock.json
