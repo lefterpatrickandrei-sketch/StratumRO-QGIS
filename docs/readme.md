@@ -730,6 +730,20 @@ Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un
 *   **Vulnerabilitate Seismică:** Datele geometrice brute (amprentă, înălțime totală din LiDAR, volum, proximitate) sunt corelate cu vechimea cadastrală pentru a evalua automat riscul de colaps structural folosind Rețele Neurale pe Grafuri (GNN).
 *   **Dispersia Poluanților:** Modelele 3D ale clădirilor și coronamentul arborilor sunt exportate în simulatoare micro-meteorologice (ex. ENVI-met) pentru a identifica zonele în care particulele nocive ($PM_{2.5}$, $NO_2$) rămân blocate din cauza lipsei curenților de aer (canioane urbane).
 
+### 5. Clasificare Riguroasă a Surselor de Date: Producție vs. Ipoteze de Cercetare
+
+> [!IMPORTANT]
+> Pentru menținerea rigorii tehnice și geodezice în documentația oficială a proiectului, capabilitățile platformei sunt structurate strict în două categorii delimitate:
+
+#### ✅ Gata de Producție (Garanție de Rigoare Cadastrală)
+*   **Vectorizare 2D Amprente Clădiri:** Segmentare AI din Ortofotoplanuri aeriene (ANCPI LAKI) ghidată de date vectoriale 2D de referință (**OpenStreetMap**, **Microsoft Building Footprints**).
+*   **Cota Terenului (DTM) și Cota Clădirii (MDS/nDSM):** Calculul altimetric al cotes de streașină/coamă și al regimului de înălțime ($P+nE$) se bazează **EXCLUSIV pe date fizice altimetrice reale** (Nori de puncte LiDAR `.laz`/`.las` sau MNT/MDS grilă oficiale din proiectele LAKI II / LAKI III).
+*   **Validare Topologică & Snap-to-RTK:** Corecție geometrică Shapely pe reguli stricte și potrivire elastică peste măsurători GPS de teren.
+
+#### 🧪 Ipoteză de Cercetare & Experimental (NU folosiți pentru depuneri cadastrale oficiale)
+*   **Estimare Altimetrică Monoculară (nDSM Sintetic / Depth Anything V2 / MiDaS):** Generarea unei hărți sintetice de adâncime din imagini aeriene 2D produce valori de adâncime relative (affine-invariant), necalibrate metric pe imagini nadir (top-down 90°). Prezintă erori absolute ($> 1.5\text{m} \dots 5\text{m}$) incompatibile cu toleranța cadastrală legală. Este marcată ca modul experimental de cercetare și este interzisă utilizarea sa pentru generarea memoriilor tehnice oficiale.
+*   **Seturi de date de acoperire globală fără acoperire pe România (Google Open Buildings):** Dataset-ul Google Open Buildings acoperă exclusiv Africa, Asia de Sud și America Latină; pentru România se utilizează ca fallback public exclusiv Microsoft Building Footprints și OSM.
+
 ---
 
 ## 🛡️ Evaluare & Feedback pe Direcția Proiectului (AI Expert Review)
