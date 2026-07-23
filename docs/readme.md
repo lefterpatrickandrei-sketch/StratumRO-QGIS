@@ -2,9 +2,46 @@
 
 Sistem MLOps integrat pentru descărcarea, filtrarea și procesarea automată a datelor geospațiale (LiDAR și Raster) la nivel național, cu suport nativ pentru selecție geometrică pe canvas și coduri administrative SIRUTA.
 
-## 📝 Descriere Generală / Description / Descripción
+---
 
-### 🇷🇴 Română
+## 📌 Cuprins Interactiv (Table of Contents)
+
+* [1. 📝 Descriere Generală / Description / Descripción](#1--descriere-generală--description--descripción)
+  * [1.1 🇷🇴 Română](#11--română)
+  * [1.2 🇬🇧 English](#12--english)
+  * [1.3 🇪🇸 Español](#13--español)
+* [2. 🛠️ Ghid de Instalare & Descărcare Resurse](#2--ghid-de-instalare--descărcare-resurse)
+* [3. 📂 Compoziția și Structura Workspace-ului](#3--compoziția-și-structura-workspace-ului)
+* [4. 💻 Codul Sursă de Referință (`stratum_ro_dockwidget.py`)](#4--codul-sursă-de-referință-stratum_ro_dockwidgetpy)
+* [5. 🧮 Ecuațiile Matematice & Geodezice Fundamentale](#5--ecuațiile-matematice--geodezice-fundamentale)
+  * [5.1 Ecuațiile Proiecției Stereografice 1970 (Stereo 70 / EPSG:31700)](#51-ecuațiile-proiecției-stereografice-1970-stereo-70--epsg31700)
+  * [5.2 Izolarea Altimetrică 3D (nDSM) și Regimul de Înălțime (P+nE)](#52-izolarea-altimetrică-3d-ndsm-și-regimul-de-înălțime-pne)
+  * [5.3 Algoritmul de Ortogonalizare la 90° a Poligoanelor Cadastrale](#53-algoritmul-de-ortogonalizare-la-90-a-poligoanelor-cadastrale)
+  * [5.4 Indicele de Vegetație (NDVI) și Potențialul Solar Anual (PVGIS)](#54-indicele-de-vegetație-ndvi-și-potențialul-solar-anual-pvgis)
+* [6. 🎨 Arhitectura Vizuală & Diagrame de Sistem](#6--arhitectura-vizuală--diagrame-de-sistem)
+  * [6.1 🏗️ Diagrama de Arhitectură Hibridă a Sistemului](#61-️-diagrama-de-arhitectură-hibridă-a-sistemului)
+  * [6.2 🔄 Diagrama de Flux Vizual a Utilizatorului & Bucla de Polling](#62--diagrama-de-flux-vizual-a-utilizatorului--bucla-de-polling)
+  * [6.3 📦 Diagrama Fuziunii Multimodale AI + LiDAR (Layout Vertical)](#63--diagrama-fuziunii-multimodale-ai--lidar-layout-vertical)
+* [7. 📊 Status Detaliat: Planul în 100 de Etape al Proiectului](#7--status-detaliat-planul-în-100-de-etape-al-proiectului)
+  * [7.1 📍 Ghid de Lucru pe Etape: Unde se execută fiecare fază?](#71--ghid-de-lucru-pe-etape-unde-se-execută-fiecare-fază)
+  * [7.2 Faze de Implementare (A – K)](#72-faze-de-implementare-a--k)
+* [8. 📋 Suita Celor 9 Deliverabile Spațiale Realizabile](#8--suita-celor-9-deliverabile-spațiale-realizabile)
+* [9. 🔌 Contract de Date API Unificat](#9--contract-de-date-api-unificat)
+* [10. ⚠️ Notă Importantă privind Rularea Modului Mock](#10--notă-importantă-privind-rularea-modului-mock)
+* [11. 📈 Strategia de Viabilitate a Produsului & Inovații Cadastrale](#11--strategia-de-viabilitate-a-produsului--inovații-cadastrale)
+  * [11.1 Conceptul de „Pre-Vectorizare” cu Snap-to-RTK](#111-conceptul-de-pre-vectorizare-cu-snap-to-rtk)
+  * [11.2 Validare Topologică și Strat de Erori](#112-validare-topologică-și-strat-de-erori)
+  * [11.3 Extindere Strategică: Baza de Date Imobiliar-Notarială](#113-extindere-strategică-baza-de-date-imobiliar-notarială)
+  * [11.4 Integrarea Analizei Predictive: Simulare Hazard și Mediu](#114-integrarea-analizei-predictive-simulare-hazard-și-mediu)
+  * [11.5 Clasificare Riguroasă a Surselor de Date: Producție vs. Ipoteze de Cercetare](#115-clasificare-riguroasă-a-surselor-de-date-producție-vs-ipoteze-de-cercetare)
+* [12. 🛡️ Evaluare & Feedback pe Direcția Proiectului](#12--evaluare--feedback-pe-direcția-proiectului)
+* [13. 📄 Licență & 👥 Contribuții](#13--licență--contribuții)
+
+---
+
+## 1. 📝 Descriere Generală / Description / Descripción
+
+### 1.1 🇷🇴 Română
 
 Agentic GIS conectează QGIS la un backend AI local (FastAPI + Ollama LLM + Meta SAM2) pentru extragerea automată a amprentelor clădirilor din ortofotoplanuri și nori de puncte LiDAR. Plugin-ul permite selectarea unei zone de interes (AOI) direct pe hartă, trimiterea ei către backend pentru segmentare și clasificare AI, iar rezultatul revine ca strat vectorial QGIS gata de utilizare (GeoPackage).
 
@@ -14,7 +51,7 @@ Toată procesarea rulează pe hardware local — datele nu părăsesc mașina. N
 
 > Este un proiect activ de cercetare aplicată în geomatică și AI geospațial, dezvoltat de o echipă mică de ingineri; rezultatele sunt gândite să accelereze vectorizarea manuală și trebuie verificate înainte de utilizare în depuneri cadastrale oficiale.
 
-### 🇬🇧 English
+### 1.2 🇬🇧 English
 
 Agentic GIS connects QGIS to a local, privacy-preserving AI backend (FastAPI + Ollama LLM + Meta SAM2) to automate building footprint extraction from orthophotos and LiDAR point clouds. The plugin lets you select an area of interest directly on the map canvas, sends it to the backend for AI-driven segmentation and classification, and returns validated building polygons as a ready-to-use QGIS vector layer (GeoPackage).
 
@@ -24,7 +61,7 @@ All processing runs on local hardware — no orthophoto or point cloud data leav
 
 > This is an active applied-research project in geomatics and geospatial AI, developed by a small engineering team; outputs are intended to speed up manual vectorization and should be reviewed before use in official cadastral submissions.
 
-### 🇪🇸 Español
+### 1.3 🇪🇸 Español
 
 Agentic GIS conecta QGIS con un backend de IA local que preserva la privacidad (FastAPI + Ollama LLM + Meta SAM2) para automatizar la extracción de huellas de edificios a partir de ortofotos y nubes de puntos LiDAR. El plugin permite seleccionar un área de interés directamente sobre el lienzo del mapa, la envía al backend para segmentación y clasificación mediante IA, y devuelve los polígonos de edificios validados como una capa vectorial de QGIS lista para usar (GeoPackage).
 
@@ -36,11 +73,11 @@ Todo el procesamiento se ejecuta en hardware local — ningún dato sale de la m
 
 ---
 
-## 🛠️ Ghid de Instalare & Descărcare Resurse (Setup Guide)
+## 2. 🛠️ Ghid de Instalare & Descărcare Resurse
 
 Pentru a dezvolta și rula proiectul, este necesară configurarea mediului de lucru conform instrucțiunilor de mai jos:
 
-### 1. Descărcări Necesare (Downloads)
+### Descărcări Necesare (Downloads)
 *   **Pentru toți membrii (Core):**
     *   **Python 3.10+** (Recomandat 3.10 sau 3.11): [Python Oficial](https://www.python.org/downloads/)
     *   **QGIS Desktop (3.28 LTR sau mai nou):** [QGIS Oficial](https://qgis.org/en/site/forusers/download.html)
@@ -53,25 +90,23 @@ Pentru a dezvolta și rula proiectul, este necesară configurarea mediului de lu
     *   **CUDA Toolkit 11.8 / 12.1** (accelerare GPU PyTorch/SAM 2): [NVIDIA CUDA](https://developer.nvidia.com/cuda-downloads)
     *   **Meta SAM 2 Checkpoints (Greutăți):** Descărcați modelul `sam2_hiera_tiny.pt` sau `sam2_hiera_small.pt` de pe: [Meta SAM 2 GitHub](https://github.com/facebookresearch/segment-anything-2)
 
-### 2. Procedura de Configurare Rapidă
+### Procedura de Configurare Rapidă
 1.  **Instalare dependințe Python:**
-    *   Deschideți un terminal în **VS Code / Antigravity** și rulați:
-        ```bash
-        python -m venv venv
-        .\venv\Scripts\activate
-        pip install -r requirements.txt
-        ```
+    ```bash
+    python -m venv venv
+    .\venv\Scripts\activate
+    pip install -r requirements.txt
+    ```
 2.  **Configurare LLM local (Ollama - Membru 3):**
-    *   Porniți aplicația Ollama și rulați în terminal:
-        ```bash
-        ollama pull nemotron
-        ```
+    ```bash
+    ollama pull nemotron
+    ```
 3.  **Configurare QGIS Plugin (Membru 1):**
     *   Rulați scriptul `install_plugin.bat` (din rădăcina proiectului) pentru a compila resursele Qt și a deploya plugin-ul în folderul QGIS active profile.
 
 ---
 
-## 📂 Compoziția și Structura Workspace-ului
+## 3. 📂 Compoziția și Structura Workspace-ului
 
 Workspace-ul proiectului este structurat conform standardelor profesionale PyQGIS, decuplând resursele de lucru de logica activă de execuție:
 
@@ -103,7 +138,7 @@ QGIS-AI/ (Workspace Principal)
 
 ---
 
-## 💻 Codul Sursă de Referință (`stratum_ro_dockwidget.py`)
+## 4. 💻 Codul Sursă de Referință (`stratum_ro_dockwidget.py`)
 
 Mai jos este prezentat codul sursă complet al nucleului plugin-ului. Acest script reprezintă implementarea tehnică a Etapelor 34, 35 și 36, asigurând interfața asincronă și auto-încărcarea datelor în QGIS:
 
@@ -493,7 +528,236 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
 
 ---
 
-## 📊 Status Detaliat: Planul în 100 de Etape al Proiectului
+## 5. 🧮 Ecuațiile Matematice & Geodezice Fundamentale
+
+### 5.1 Ecuațiile Proiecției Stereografice 1970 (Stereo 70 / EPSG:31700)
+Conversia riguroasă de pe elipsoidul Krasovsky 1940 în planul de proiecție național Stereo 70:
+
+$$\chi = \arctan \left( \sinh \left( \operatorname{arsinh}(\tan \varphi) - e \cdot \operatorname{artanh}(e \cdot \sin \varphi) \right) \right)$$
+
+$$X = X_0 + k_0 \cdot R \cdot \cos \chi \cdot \sin(\lambda - \lambda_0)$$
+
+$$Y = Y_0 + k_0 \cdot R \cdot \left[ \cos \chi_0 \sin \chi - \sin \chi_0 \cos \chi \cos(\lambda - \lambda_0) \right]$$
+
+* **Parametri Naționali Oficiali:** $X_0 = 500.000\text{ m}$, $Y_0 = 500.000\text{ m}$, $\varphi_0 = 46^\circ\text{ N}$, $\lambda_0 = 25^\circ\text{ E}$, $k_0 = 0,99975$.
+* **Domeniul Național Validat în Cod:** $RO\_X \in [125.000, 880.000]\text{ m}$, $RO\_Y \in [230.000, 770.000]\text{ m}$.
+
+---
+
+### 5.2 Izolarea Altimetrică 3D (nDSM) și Regimul de Înălțime (P+nE)
+Calculul altimetric din norul de puncte LiDAR real (`.laz`/`.las` / MNT LAKI):
+
+$$\text{nDSM}(x, y) = \text{DSM}(x, y) - \text{DTM}(x, y)$$
+
+$$\text{Regim Înălțime } (P+nE) = \left\lfloor \frac{H_{\text{streașină}} - H_{\text{teren}}}{h_{\text{etaj}}} \right\rfloor + 1 \quad \text{unde } h_{\text{etaj}} \approx 3,0\text{ m}$$
+
+---
+
+### 5.3 Algoritmul de Ortogonalizare la 90° a Poligoanelor Cadastrale
+Optimizarea unghiurilor pentru forțarea colțurilor drepte ale clădirilor:
+
+$$\min_{\theta} \sum_{i=1}^{N} \min_{k \in \{0, 1, 2, 3\}} \left| \alpha_i - \left( \theta + k \frac{\pi}{2} \right) \right|^2$$
+
+---
+
+### 5.4 Indicele de Vegetație (NDVI) și Potențialul Solar Anual (PVGIS)
+Formulele folosite în Fazele I & J pentru cadastrul verde și potențialul fotovoltaic:
+
+$$\text{NDVI} = \frac{\text{NIR} - \text{RED}}{\text{NIR} + \text{RED}} = \frac{B_8 - B_4}{B_8 + B_4} \quad (\text{Sentinel-2 ESA})$$
+
+$$E_{\text{anual}} = \int_{0}^{365} P_{\text{peak}} \cdot \eta_{\text{sistem}} \cdot I(\theta, \alpha, t) \, dt \quad (\text{PVGIS API — Comisia Europeană})$$
+
+---
+
+## 6. 🎨 Arhitectura Vizuală & Diagrame de Sistem
+
+### 6.1 🏗️ Diagrama de Arhitectură Hibridă a Sistemului
+
+```mermaid
+flowchart TB
+    classDef clientStyle fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef mcpStyle fill:#312e81,stroke:#818cf8,stroke-width:2px,color:#fff;
+    classDef backendStyle fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#fff;
+    classDef aiStyle fill:#701a75,stroke:#f0abfc,stroke-width:2px,color:#fff;
+    classDef dbStyle fill:#78350f,stroke:#fbbf24,stroke-width:2px,color:#fff;
+
+    subgraph CLIENT ["🖥️ Client Desktop QGIS (Membru 1)"]
+        UI["Qt Designer UI<br/>(stratum_ro_dockwidget_base.ui)"]
+        MapTool["QgsMapToolExtent<br/>(Selecție AOI pe hartă)"]
+        GeoCheck{"Validare Geodezică<br/>Stereo 70 (EPSG:31700)<br/>RO_Y_MIN: 230.000m"}
+        Worker["SegmentationWorker<br/>(PyQt QThread Asincron)"]
+        
+        UI --> MapTool
+        MapTool --> GeoCheck
+        GeoCheck -->|Stereo 70 Validated| Worker
+    end
+
+    subgraph SECURITY ["🛡️ Sandbox & Securitate MLOps"]
+        SafeResolve["FastMCP _safe_resolve()<br/>(Path Traversal Sandbox workspace/)"]
+        SSRFGuard["urlparse Guard<br/>(SSRF Protection - Doar http/https)"]
+    end
+
+    subgraph BACKEND ["⚙️ MLOps Backend Server (FastAPI :8000 — Membru 2)"]
+        API["FastAPI App<br/>(main.py)"]
+        Clipping["Raster & LiDAR Clipper<br/>(GDAL / PDAL Pipeline)"]
+        nDSMCalc["Calcul nDSM Altimetric<br/>(nDSM = DSM - DTM)"]
+        
+        API --> Clipping
+        Clipping --> nDSMCalc
+    end
+
+    subgraph AIENGINE ["🧠 Engine AI & Inferență CUDA (Membru 3)"]
+        Ollama["Ollama LLM Agent<br/>(NVIDIA Nemotron-3 via MCP)"]
+        SAM2["Meta SAM 2 Encoder/Decoder<br/>(PyTorch CUDA GPU 8GB+)"]
+        Orthogonalizer["Ortogonalizare 90° & Topologie<br/>(Shapely + GDAL Polygonize)"]
+        
+        Ollama -->|Spatial Prompts| SAM2
+        SAM2 --> Orthogonalizer
+    end
+
+    subgraph DATASTORES ["🌐 Surse de Date & Output-uri Spațiale"]
+        OpenData[("Open Data APIs<br/>Sentinel-2 / OSM / PVGIS")]
+        LAKI[("ANCPI Ortofoto & LiDAR<br/>.laz / .las / WMS")]
+        Outputs[("Suita de 9 Produse Finale<br/>GeoPackage / CAD .dxf / PDF")]
+    end
+
+    Worker -->|1. POST /api/v1/segmentation/process| API
+    Worker -->|2. Polling GET /api/v1/tasks/id| API
+    API --> SafeResolve
+    API --> SSRFGuard
+    API --> Ollama
+    nDSMCalc -->|LiDAR Bounding Box Prompts| SAM2
+    Orthogonalizer --> Outputs
+    Outputs -->|Auto-Load Layers| UI
+    OpenData --> Clipping
+    LAKI --> Clipping
+
+    class UI,MapTool,GeoCheck,Worker clientStyle;
+    class SafeResolve,SSRFGuard mcpStyle;
+    class API,Clipping,nDSMCalc backendStyle;
+    class Ollama,SAM2,Orthogonalizer aiStyle;
+    class OpenData,LAKI,Outputs dbStyle;
+```
+
+---
+
+### 6.2 🔄 Diagrama de Flux Vizual a Utilizatorului & Bucla de Polling
+
+```mermaid
+flowchart TD
+    classDef stepStart fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef stepAction fill:#312e81,stroke:#818cf8,stroke-width:2px,color:#fff;
+    classDef stepLoop fill:#4c1d95,stroke:#c084fc,stroke-width:2px,color:#fff;
+    classDef stepDone fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#fff;
+    classDef stepErr fill:#881337,stroke:#f43f5e,stroke-width:2px,color:#fff;
+
+    P1["Pasul 1: Selectare AOI pe Hartă<br/>(Click 'Selectează AOI' + tragere dreptunghi)"]
+    P2["Pasul 2: Conversie & Validare Geodezică<br/>(Forțare Stereo 70 EPSG:31700 & RO Bounds)"]
+    P3["Pasul 3: Apăsare Buton 'Rulează Segmentare'<br/>(Butonul se dezactivează + pornește Thread asincron)"]
+    P4["Pasul 4: Trimitere Cerere POST<br/>(POST http://localhost:8000/api/v1/segmentation/process)"]
+    
+    P5{"Backend-ul a returnat<br/>task_id?"}
+    
+    P6["Buclă Asincronă de Polling<br/>(Interogare GET /tasks/id la fiecare 2 secunde)"]
+    
+    P7{"Status Task?"}
+    
+    P8["Status: [processing - X%]<br/>Actualizare etichetă UI în timp real"]
+    P9["Status: [completed - 100%]<br/>Auto-încărcare straturi Raster/Vector în QGIS"]
+    P10["Status: [failed / Error]<br/>Afișare Pop-up QMessageBox + Opțiune Fallback Mock"]
+
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> P5
+    
+    P5 -->|DA| P6
+    P5 -->|NU / Eroare Server| P10
+    
+    P6 --> P7
+    P7 -->|processing| P8
+    P8 -->|msleep 2000ms| P6
+    P7 -->|completed| P9
+    P7 -->|failed / Timeout| P10
+
+    class P1,P2 stepStart;
+    class P3,P4 stepAction;
+    class P5,P6,P7,P8 stepLoop;
+    class P9 stepDone;
+    class P10 stepErr;
+```
+
+---
+
+### 6.3 📦 Diagrama Fuziunii Multimodale AI + LiDAR (Layout Vertical)
+
+```mermaid
+flowchart TD
+    classDef inputStyle fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef engineStyle fill:#312e81,stroke:#818cf8,stroke-width:2px,color:#fff;
+    classDef cadStyle fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#fff;
+    classDef threeDStyle fill:#701a75,stroke:#f0abfc,stroke-width:2px,color:#fff;
+    classDef envStyle fill:#075985,stroke:#38bdf8,stroke-width:2px,color:#fff;
+    classDef riskStyle fill:#78350f,stroke:#fbbf24,stroke-width:2px,color:#fff;
+
+    %% 1. INGESTIE DATE
+    IN_RGB["1. Ortofotoplan Aerian 2D (ANCPI LAKI WMS)"]
+    IN_LAS["2. Nor de Puncte LiDAR 3D (.laz / .las)"]
+    IN_APIS["3. Open Data APIs (OSM / Sentinel / PVGIS)"]
+
+    %% 2. CORE ENGINE
+    E_SAM2["Meta SAM 2 GPU Inference (Segmentare 2D)"]
+    E_nDSM["Calcul nDSM Altimetric (nDSM = DSM - DTM)"]
+    E_Topo["Ortogonalizare 90° & Topologie Shapely"]
+
+    IN_RGB --> E_SAM2
+    IN_LAS --> E_nDSM
+    IN_APIS --> E_SAM2
+    E_nDSM -->|Bounding Box Prompts| E_SAM2
+    E_SAM2 --> E_Topo
+
+    %% 3. MODULE DE OUTPUT (STRUCTURATE VERTICAL)
+    
+    %% M1: Cadastru
+    E_Topo --> OUT_CAD
+    subgraph OUT_CAD ["A. Produse Cadastrale & Inginerie (Membru 1 & 2)"]
+        P1["1. Strat Vectorial 2D GeoPackage (.gpkg) — Amprente clădiri, parcele, garduri"]
+        P2["2. Fișier CAD ANCPI (.dxf / .dwg) — Straturi CONSTRUCTII, PARCELE, GARDURI"]
+        P3["3. Fișă Imobil & Raport PDF — Plan de amplasament + Matrice suprafață Sc, Sd, P+nE"]
+    end
+
+    %% M2: 3D Urbanism
+    E_Topo --> OUT_3D
+    subgraph OUT_3D ["B. Produse 3D & Urbanism (Membru 2 & 3)"]
+        P4["4. Modele 3D Urbane LOD1 & LOD2 (.gpkg 3D / CityGML) — Clădiri volumetrice"]
+        P5["5. Cadastru Verde & Vegetație — Hărți NDVI & coronament arbori"]
+    end
+
+    %% M3: Mediu & Energie
+    E_Topo --> OUT_ENV
+    subgraph OUT_ENV ["C. Produse de Mediu & Energie (Membru 2)"]
+        P6["6. Hărți Potențial Solar Acoperișuri — Calcul kWh/kWp/an via PVGIS API"]
+        P7["7. Hărți Calitatea Aerului — Dispersie NO2, PM2.5 via Sentinel-5P"]
+    end
+
+    %% M4: Hazard & Audit Fiscal
+    E_Topo --> OUT_RISK
+    subgraph OUT_RISK ["D. Produse de Audit Fiscal & Hazard (Membru 1, 2 & 3)"]
+        P8["8. Raport Audit Fiscal DITL / Primării — Discrepanțe suprafață reală vs taxată"]
+        P9["9. Simulări Hazard Inundații & Risc Seismic — Modelare hidrodinamică & GNN"]
+    end
+
+    class IN_RGB,IN_LAS,IN_APIS inputStyle;
+    class E_SAM2,E_nDSM,E_Topo engineStyle;
+    class P1,P2,P3 cadStyle;
+    class P4,P5 threeDStyle;
+    class P6,P7 envStyle;
+    class P8,P9 riskStyle;
+```
+
+---
+
+## 7. 📊 Status Detaliat: Planul în 100 de Etape al Proiectului
 
 Planul de implementare este structurat pe **13 faze tehnice (Fazele A – K)**, definind cu precizie ce membru al echipei este responsabil pentru fiecare pas:
 
@@ -504,29 +768,23 @@ Planul de implementare este structurat pe **13 faze tehnice (Fazele A – K)**, 
 **Legendă Status:**
 * `✅ Finalizat` — Etapă complet implementată și verificată pe cod / teste.
 * `⬜ Neînceput` — Etapă de producție planificată în pipeline.
-* `🧪 Cercetare / Experimental` — Modul experimental de cercetare (ex: estimare altimetrică monoculară / nDSM sintetic din depth estimation AI); vezi [Secțiunea 5 pentru clasificarea riguroasă a surselor de date](#5-clasificare-riguroasă-a-surselor-de-date-producție-vs-ipoteze-de-cercetare).
+* `🧪 Cercetare / Experimental` — Modul experimental de cercetare (ex: estimare altimetrică monoculară / nDSM sintetic din depth estimation AI); vezi [Secțiunea 11.5 pentru clasificarea riguroasă a surselor de date](#115-clasificare-riguroasă-a-surselor-de-date-producție-vs-ipoteze-de-cercetare).
 
-### 📍 Ghid de Lucru pe Etape: Unde se execută fiecare fază?
+### 7.1 📍 Ghid de Lucru pe Etape: Unde se execută fiecare fază?
 
 Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru membrii echipei:
-*   **Faza A & B (Etapele 1-36):**
-    *   *Unde se lucrează:* **Qt Designer** (design interfață `.ui`), **VS Code / Antigravity** (scripting Python) și **QGIS Desktop** (vizualizare canvas și testare instrument AOI).
-*   **Faza C (Etapele 37-40):**
-    *   *Unde se lucrează:* **VS Code / Antigravity** (implementare `QThread` asincron în Python) și **QGIS Desktop** (validare comportament/reîncărcare).
-*   **Faza D & E (Etapele 41-60):**
-    *   *Unde se lucrează:* **VS Code Terminal** (instalare `requirements.txt` și rulare server FastAPI) și **PostgreSQL/PostGIS CLI** (configurare baze de date spațiale).
-*   **Faza F & G (Etapele 61-70):**
-    *   *Unde se lucrează:* **Ollama CLI / CMD** (pentru descărcare și rulare model Nemotron-3) și **VS Code Terminal / Python** (pentru rularea encoderului/decoderului PyTorch SAM 2 pe GPU).
-*   **Faza H (Etapele 71-75):**
-    *   *Unde se lucrează:* **VS Code** (scriere algoritmi Shapely de topologie) și **QGIS Desktop** (verificare vizuală finală a fișierelor GeoPackage).
-*   **Faza I (Etapele 76-83 — Connectori Open Data & Mediu):**
-    *   *Unde se lucrează:* **VS Code / Backend `.env`** (configurare chei API / endpoints Copernicus Sentinel-2/5P, OpenStreetMap Overpass, PVGIS API Comisia Europeană, ANAR WMS Risc Inundații).
-*   **Faza J (Etapele 84-91 — Segmentare Multi-Clasă 3D & LOD1/LOD2):**
-    *   *Unde se lucrează:* **VS Code Terminal / PyTorch / PDAL** (clasificare LiDAR `.laz` pentru garduri/drumuri/vegetație; reconstrucție 3D extruzată din cota reală LiDAR vs nDSM sintetic experimental).
-*   **Faza K (Etapele 92-100 — Export CAD ANCPI, Rapoarte PDF, ISU, DITL & Chat Agentic UI):**
-    *   *Unde se lucrează:* **VS Code** (bibliotecile Python `ezdxf` pentru `.dxf` ANCPI și `reportlab`/`FPDF` pentru fișă imobil PDF) și **Qt Designer / PyQGIS** (panou de chat agentic în UI QGIS).
+*   **Faza A & B (Etapele 1-36):** **Qt Designer** (design interfață `.ui`), **VS Code / Antigravity** (scripting Python) și **QGIS Desktop** (vizualizare canvas și testare instrument AOI).
+*   **Faza C (Etapele 37-40):** **VS Code / Antigravity** (implementare `QThread` asincron în Python) și **QGIS Desktop** (validare comportament/reîncărcare).
+*   **Faza D & E (Etapele 41-60):** **VS Code Terminal** (instalare `requirements.txt` și rulare server FastAPI) și **PostgreSQL/PostGIS CLI** (configurare baze de date spațiale).
+*   **Faza F & G (Etapele 61-70):** **Ollama CLI / CMD** (pentru descărcare și rulare model Nemotron-3) și **VS Code Terminal / Python** (pentru rularea encoderului/decoderului PyTorch SAM 2 pe GPU).
+*   **Faza H (Etapele 71-75):** **VS Code** (scriere algoritmi Shapely de topologie) și **QGIS Desktop** (verificare vizuală finală a fișierelor GeoPackage).
+*   **Faza I (Etapele 76-83 — Connectori Open Data & Mediu):** **VS Code / Backend `.env`** (configurare chei API / endpoints Copernicus Sentinel-2/5P, OpenStreetMap Overpass, PVGIS API Comisia Europeană, ANAR WMS Risc Inundații).
+*   **Faza J (Etapele 84-91 — Segmentare Multi-Clasă 3D & LOD1/LOD2):** **VS Code Terminal / PyTorch / PDAL** (clasificare LiDAR `.laz` pentru garduri/drumuri/vegetație; reconstrucție 3D extruzată din cota reală LiDAR vs nDSM sintetic experimental).
+*   **Faza K (Etapele 92-100 — Export CAD ANCPI, Rapoarte PDF, ISU, DITL & Chat Agentic UI):** **VS Code** (bibliotecile Python `ezdxf` pentru `.dxf` ANCPI și `reportlab`/`FPDF` pentru fișă imobil PDF) și **Qt Designer / PyQGIS** (panou de chat agentic în UI QGIS).
 
-### 🟩 Faza A: Structură & UI Client (Etapele 1 – 33) — STATUS: FINALIZAT 100%
+### 7.2 Faze de Implementare (A – K)
+
+#### 🟩 Faza A: Structură & UI Client (Etapele 1 – 33) — STATUS: FINALIZAT 100%
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -564,7 +822,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 32 | Înregistrare în sistemul QGIS a suportului de reîncărcare dinamică (Plugin Reloader) | Membru 1 | ✅ Finalizat |
 | 33 | Validare conformitate arhitecturală PEP8 și rezolvare importuri relative interne | Membru 1 | ✅ Finalizat |
 
-### 🟩 Faza B: Gestiune Geodezică & Map Canvas (Etapele 34 – 36) — STATUS: FINALIZAT 100%
+#### 🟩 Faza B: Gestiune Geodezică & Map Canvas (Etapele 34 – 36) — STATUS: FINALIZAT 100%
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -572,7 +830,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 35 | Citire automată CRS canvas activ și transformare geodezică instantanee în Stereo 70 (EPSG:31700) prin QgsCoordinateTransform dacă coordonatele diferă | Membru 1 | ✅ Finalizat |
 | 36 | Integrare script auto-încărcare straturi. Instanțiere obiect QgsRasterLayer și randarea sa în arborele de straturi direct la finalizarea simulării (stadiu 100%) | Membru 1 | ✅ Finalizat |
 
-### 🟩 Faza C: Conectivitate Hibridă (Etapele 37 – 40) — STATUS: FINALIZAT 100%
+#### 🟩 Faza C: Conectivitate Hibridă (Etapele 37 – 40) — STATUS: FINALIZAT 100%
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -581,7 +839,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 39 | Validare structurală a obiectului GeoJSON înainte de expedierea pachetului către server | Membru 1 | ✅ Finalizat |
 | 40 | Sincronizare fire de execuție client cu statusul asincron (Polling la /tasks/{id}) | Membru 1 | ✅ Finalizat |
 
-### 🟦 Faza D: Ingestie Date & Database MLOps (Etapele 41 – 50) — SARCINI COLEGII BACKEND
+#### 🟦 Faza D: Ingestie Date & Database MLOps (Etapele 41 – 50) — SARCINI BACKEND
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -596,7 +854,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 49 | Calculare intersecție spațială pentru identificarea automată a fișierelor raster/LiDAR corespunzătoare selecției | Membru 2 | ⬜ Neînceput |
 | 50 | Decupare dinamică raster (Raster clipping) pe limitele bounding-box-ului din payload | Membru 2 | ⬜ Neînceput |
 
-### 🟦 Faza E: Preprocesare LiDAR & Aliniere Date (Etapele 51 – 60) — SARCINI COLEGII BACKEND
+#### 🟦 Faza E: Preprocesare LiDAR & Aliniere Date (Etapele 51 – 60) — SARCINI BACKEND
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -611,7 +869,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 59 | Normalizare valori spectrale și înălțimi (pe scară de la 0 la 1) pentru optimizare pipeline rețea | Membru 2 | ⬜ Neînceput |
 | 60 | Salvare matrice hibridă preprocesată în format binar numpy (.npy) pentru acces rapid | Membru 2 | ⬜ Neînceput |
 
-### 🟦 Faza F: Orchestrare LLM local & Model Context Protocol (Etapele 61 – 65) — SARCINI COLEGII BACKEND / AI
+#### 🟦 Faza F: Orchestrare LLM local & Model Context Protocol (Etapele 61 – 65) — SARCINI BACKEND / AI
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -621,7 +879,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 64 | Analiză și decizie contextuală luată de LLM (ex: determinarea densității vegetației în AOI pentru ajustarea pragurilor de segmentare) | Membru 3 | ⬜ Neînceput |
 | 65 | Transmitere instrucțiuni structurate din agentul LLM către rețeaua neuronală de inferență | Membru 2 & 3 | ⬜ Neînceput |
 
-### 🟦 Faza G: Inferență Rețea Neuronală Meta SAM 2 (Etapele 66 – 70) — SARCINI COLEGII AI
+#### 🟦 Faza G: Inferență Rețea Neuronală Meta SAM 2 (Etapele 66 – 70) — SARCINI AI
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -631,7 +889,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 69 | Generare de indicii spațiale (points/bounding box prompts) folosind zonele cu înălțimi ridicate din nDSM (LiDAR) pentru ghidare SAM 2 | Membru 3 | ⬜ Neînceput |
 | 70 | Execuție decoder SAM 2 și generare măști de segmentare binare la nivel de clădire | Membru 3 | ⬜ Neînceput |
 
-### 🟦 Faza H: Post-procesare, Vectorizare & Validare Cadastrală (Etapele 71 – 75) — SARCINI COLEGII BACKEND / AI
+#### 🟦 Faza H: Post-procesare, Vectorizare & Validare Cadastrală (Etapele 71 – 75) — SARCINI BACKEND / AI
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -641,7 +899,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 74 | Execuție validare topologică cadastrală (eliminare suprapuneri clădiri, corectare granițe UAT) | Membru 2 | ⬜ Neînceput |
 | 75 | Salvare fișiere finale în formate standardizate: Raster GeoTIFF (.tif) și Vector GeoPackage (.gpkg), generare ID unic de task și returnare răspuns JSON de succes ce va declanșa Etapa 36 în QGIS | Membru 2 | ⬜ Neînceput |
 
-### 🟨 Faza I: Ingestie Surse Deschise Naționale & Mediu (Etapele 76 – 83) — SARCINI BACKEND
+#### 🟨 Faza I: Ingestie Surse Deschise Naționale & Mediu (Etapele 76 – 83) — SARCINI BACKEND
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -651,10 +909,10 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 79 | Client Overpass API (extragere gratuită graf rutier, hidranți și POI-uri din OpenStreetMap) | Membru 2 | ⬜ Neînceput |
 | 80 | Connector PVGIS API (Comisia Europeană — calcul gratuit potențial solar $kWh/\text{an}$ per acoperiș) | Membru 2 | ⬜ Neînceput |
 | 81 | Client WMS Risc Inundații Apele Române (ANAR — benzi de inundaabilitate HQA) | Membru 2 | ⬜ Neînceput |
-| 82 | Ingestie Date Demografice INS Grid $1\text{ km}^2$ (densitate populație per UAT) | Membru 2 | ⬜ Neînceput |
+| 82 | Ingestie Date Demographics INS Grid $1\text{ km}^2$ (densitate populație per UAT) | Membru 2 | ⬜ Neînceput |
 | 83 | Salvare date mediu în PostGIS ca straturi vectoriale/raster de context regional | Membru 2 | ⬜ Neînceput |
 
-### 🟨 Faza J: Segmentare Multi-Clasă 3D & Reconstrucție LOD1/LOD2 (Etapele 84 – 91) — SARCINI AI & BACKEND
+#### 🟨 Faza J: Segmentare Multi-Clasă 3D & Reconstrucție LOD1/LOD2 (Etapele 84 – 91) — SARCINI AI & BACKEND
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -667,7 +925,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 90 | Reconstrucție geometrie 3D acoperiș LOD2 (clasificare acoperiș în două ape, terasă, mansardă) | Membru 3 | ⬜ Neînceput |
 | 91 | Export modele 3D în format CityGML / GeoPackage 3D pentru vizualizare spatială | Membru 2 | ⬜ Neînceput |
 
-### 🟨 Faza K: Export CAD, Rapoarte, Audit Fiscal & Interfață Agentică (Etapele 92 – 100) — SARCINI CLIENT & BACKEND
+#### 🟨 Faza K: Export CAD, Rapoarte, Audit Fiscal & Interfață Agentică (Etapele 92 – 100) — SARCINI CLIENT & BACKEND
 
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
@@ -683,16 +941,30 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 
 ---
 
-## 🔌 Contract de Date API Unificat (Specificații pentru Backend)
+## 8. 📋 Suita Celor 9 Deliverabile Spațiale Realizabile
+
+| Nr. | Produs Final | Format Fișier | Responsabili | Descriere Tehnică |
+|---|---|---|---|---|
+| **1** | **Strat Vectorial 2D** | `.gpkg` (GeoPackage) | Membru 1 & 2 | Amprente clădiri, parcele și împrejmuiri validat topologic în QGIS. |
+| **2** | **Fișier CAD ANCPI** | `.dxf` / `.dwg` | Membru 1 | Export vectorial structurat pe straturile oficiale ANCPI (`CONSTRUCTII`, `PARCELE`, `GARDURI`). |
+| **3** | **Fișă Imobil & Raport PDF** | `.pdf` | Membru 1 | Documentație tehnică autogenerată cu plan de amplasament și calcule de suprafață ($S_c$, $S_d$, $P+nE$). |
+| **4** | **Modele 3D Urbane LOD1/LOD2** | `.gpkg 3D` / CityGML | Membru 2 & 3 | Clădiri volumetrice cu cote de streașină/coamă din LiDAR real și tip de acoperiș. |
+| **5** | **Cadastru Verde & Vegetație** | `.gpkg` / `.tif` | Membru 3 | Hărți ale suprafețelor verzi, masei frondose și coronamentului arborilor (NDVI Sentinel-2). |
+| **6** | **Hărți Potențial Solar** | `.gpkg` / Report | Membru 2 | Calculul producției de energie fotovoltaică în $kWh/\text{an}$ pe fiecare acoperiș (PVGIS API). |
+| **7** | **Hărți Calitatea Aerului** | `.tif` (Raster) | Membru 2 | Analiza dispersiei poluanților urbani ($NO_2$, $PM_{2.5}$) preluată din satelitul Sentinel-5P. |
+| **8** | **Raport Audit Fiscal DITL** | `.pdf` / Excel | Membru 1 & 2 | Identificarea automată a clădirilor nedeclarate sau extinse ilegal pentru primării. |
+| **9** | **Simulări Hazard & Seism** | `.gpkg` / Raport | Membru 2 & 3 | Modelare hidrodinamică (inundații urbane) și evaluare vulnerabilitate seismică (GNN). |
+
+---
+
+## 9. 🔌 Contract de Date API Unificat (Specificații pentru Backend)
 
 **Endpoint:**
-
 ```
 POST http://localhost:8000/api/v1/segmentation/process
 ```
 
 **Request JSON** (trimis de plugin):
-
 ```json
 {
   "project_name": "Segmentare_Nationala_StratumRO",
@@ -702,11 +974,11 @@ POST http://localhost:8000/api/v1/segmentation/process
     "type": "Polygon",
     "coordinates": [
       [
-        ["xmin", "ymin"],
-        ["xmax", "ymin"],
-        ["xmax", "ymax"],
-        ["xmin", "ymax"],
-        ["xmin", "ymin"]
+        [125000.00, 230000.00],
+        [880000.00, 230000.00],
+        [880000.00, 770000.00],
+        [125000.00, 770000.00],
+        [125000.00, 230000.00]
       ]
     ]
   },
@@ -724,7 +996,6 @@ POST http://localhost:8000/api/v1/segmentation/process
 ```
 
 **Response JSON** (returnat de backend):
-
 ```json
 {
   "status": "success",
@@ -745,17 +1016,9 @@ POST http://localhost:8000/api/v1/segmentation/process
 }
 ```
 
-**Coduri de eroare gestionate de client (Etapa 38):**
-
-| Cod | Situație | Comportament client |
-|---|---|---|
-| 404 | Endpoint indisponibil | QMessageBox — server neconfigurat sau oprit |
-| 500 | Eroare internă backend | QMessageBox — detalii de depanare din câmpul `errors` |
-| Timeout | Serverul nu răspunde | QMessageBox — recomandare retry / verificare server |
-
 ---
 
-## ⚠️ Notă Importantă privind Rularea Modului Mock (De reținut la Testare)
+## 10. ⚠️ Notă Importantă privind Rularea Modului Mock
 
 La testarea funcționalității în mod **Mock / Fallback**:
 *   **Locație fișier de test:** Se încarcă rasterul `test_gdal_byte.tif` din folderul `datasets/orthophotos/`.
@@ -765,28 +1028,26 @@ La testarea funcționalității în mod **Mock / Fallback**:
 
 ---
 
-## 📈 Strategia de Viabilitate a Produsului & Inovații Cadastrale
+## 11. 📈 Strategia de Viabilitate a Produsului & Inovații Cadastrale
 
-Pentru a transforma erorile geometrice inerente ale datelor open-source (LiDAR/Ortofoto) într-un produs comercial extrem de rentabil pentru firmele de topografie și autoritățile publice locale, platforma integrează următoarele principii de bază:
-
-### 1. Conceptul de „Pre-Vectorizare” cu Snap-to-RTK
+### 11.1 Conceptul de „Pre-Vectorizare” cu Snap-to-RTK
 *   Sistemul nu își propune realizarea unui cadastru 100% automatizat fără intervenție umană (ceea ce ar fi imposibil din punct de vedere legal din cauza preciziei decimetrice a datelor inițiale).
 *   În schimb, scopul este reducerea timpului de desenare cu peste **80%**. Modelul AI extrage forma, topologia și amplasamentul clădirilor, iar plugin-ul QGIS permite atragerea elastică (*snapping*) a acestora direct peste punctele GPS exacte (RTK) colectate din măsurătorile de teren.
 
-### 2. Validare Topologică și Strat de Erori (Topology Error Layer)
+### 11.2 Validare Topologică și Strat de Erori
 *   Pentru a asigura rigoarea geodezică, plugin-ul rulează reguli geometrice stricte (prin Shapely pe backend) și generează în QGIS un strat vectorial dedicat erorilor topologice (suprapuneri nepermise, micro-goluri între clădiri lipite la calcan sau fragmente reziduale sub pragul de $5\text{ mp}$). Inginerul cadastral poate audita și corecta aceste anomalii dintr-o singură privire, accelerând faza de control a calității.
 
-### 3. Extindere Strategică: Baza de Date Imobiliar-Notarială
+### 11.3 Extindere Strategică: Baza de Date Imobiliar-Notarială
 *   Fiecare clădire sau parcelă extrasă automat devine o entitate completă în baza de date spațială PostGIS. 
 *   Fiecare imobil va fi asociat printr-un identificator unic de documente notariale, acte de proprietate (.pdf, .doc), sarcini juridice și istoric de tranzacționare. Interfața QGIS dezvoltată de Membru 1 va permite interogarea și atașarea directă a acestor documente pe geometria selectată pe hartă.
 
-### 4. Integrarea Analizei Predictive: Simulare Hazard și Impact de Mediu
+### 11.4 Integrarea Analizei Predictive: Simulare Hazard și Mediu
 Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un produs cartografic static, ci constituie fundamentul pentru simulări predictive complexe:
 *   **Modelare Hidrodinamică (Risc de Inundație):** Clasele de acoperire a terenului sunt convertite în coeficienți de fricțiune hidraulică (Manning n). Corelate cu modelul DTM, acestea permit rularea ecuațiilor Saint-Venant (ex. prin motorul LISFLOOD-FP) pentru a simula acumularea apei din precipitații în medii urbane în timp real.
 *   **Vulnerabilitate Seismică:** Datele geometrice brute (amprentă, înălțime totală din LiDAR, volum, proximitate) sunt corelate cu vechimea cadastrală pentru a evalua automat riscul de colaps structural folosind Rețele Neurale pe Grafuri (GNN).
 *   **Dispersia Poluanților:** Modelele 3D ale clădirilor și coronamentul arborilor sunt exportate în simulatoare micro-meteorologice (ex. ENVI-met) pentru a identifica zonele în care particulele nocive ($PM_{2.5}$, $NO_2$) rămân blocate din cauza lipsei curenților de aer (canioane urbane).
 
-### 5. Clasificare Riguroasă a Surselor de Date: Producție vs. Ipoteze de Cercetare
+### 11.5 Clasificare Riguroasă a Surselor de Date: Producție vs. Ipoteze de Cercetare
 
 > [!IMPORTANT]
 > Pentru menținerea rigorii tehnice și geodezice în documentația oficială a proiectului, capabilitățile platformei sunt structurate strict în două categorii delimitate:
@@ -797,12 +1058,12 @@ Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un
 *   **Validare Topologică & Snap-to-RTK:** Corecție geometrică Shapely pe reguli stricte și potrivire elastică peste măsurători GPS de teren.
 
 #### 🧪 Ipoteză de Cercetare & Experimental (NU folosiți pentru depuneri cadastrale oficiale)
-*   **Estimare Altimetrică Monoculară (nDSM Sintetic / Depth Anything V2 / MiDaS):** Generarea unei hărți sintetice de adâncime din imagini aeriene 2D produce valori de adâncime relative (affine-invariant), necalibrate metric pe imagini nadir (top-down 90°). Prezintă erori absolute ($> 1.5\text{m} \dots 5\text{m}$) incompatibile cu toleranța cadastrală legală. Este marcată ca modul experimental de cercetare și este interzisă utilizarea sa pentru generarea memoriilor tehnice oficiale.
+*   **Estimare Altimetrică Monoculară (nDSM Sintetic / Depth Anything V2 / MiDaS):** Generarea unei hărți sintetice de adâncime din imagini aeriene 2D produce valori de adâncime relative (affine-invariant), necalibrate metric pe imagini nadir (top-down 90°). Prezintă erori absolute ($> 1.5\text{m} \dots 5\text{m}$) incompatibili cu toleranța cadastrală legală. Este marcată ca modul experimental de cercetare și este interzisă utilizarea sa pentru generarea memoriilor tehnice oficiale.
 *   **Seturi de date de acoperire globală fără acoperire pe România (Google Open Buildings):** Dataset-ul Google Open Buildings acoperă exclusiv Africa, Asia de Sud și America Latină; pentru România se utilizează ca fallback public exclusiv Microsoft Building Footprints și OSM.
 
 ---
 
-## 🛡️ Evaluare & Feedback pe Direcția Proiectului (AI Expert Review)
+## 12. 🛡️ Evaluare & Feedback pe Direcția Proiectului (AI Expert Review)
 
 *   **Validarea Arhitecturii Hibride:** Decizia de a dezvolta un plugin QGIS ca interfață subțire de client (Membru 1) conectat la un backend FastAPI local (Membru 2 & 3) este ideală. Aceasta elimină costurile prohibitive de cloud (GPU-uri închiriate) și oferă suveranitate totală asupra datelor, aspect critic pentru confidențialitatea lucrărilor cadastrale.
 *   **Reziliența Modelului AGMF:** Alegerea modelului AGMF ca flagship în locul unui simplu stack plat reprezintă o decizie tehnică matură. Utilizarea porții adaptive de gating ($G_{spec}$) rezolvă erorile clasice din GIS provocate de umbrele aruncate de clădiri și vegetație, alternând dinamic între datele spectrale și cota fizică brută oferită de LiDAR.
@@ -810,10 +1071,8 @@ Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un
 
 ---
 
-## 📄 Licență
+## 13. 📄 Licență & 👥 Contribuții
 
 Proiect privat dezvoltat în regim intern de inginerie. Toate drepturile rezervate autorilor (Proprietary / Private code).
-
-## 👥 Contribuții
 
 Proiect dezvoltat de o echipă mică de ingineri; contribuțiile sunt acceptate exclusiv prin Pull Request pe branch-urile de dezvoltare dedicate. Deschideți un Issue înainte de orice propunere de modificare majoră adusă arhitecturii existente.
