@@ -324,27 +324,31 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             request = QgsFeatureRequest().setFilterRect(aoi_geom.boundingBox())
             for feature in uat_layer.getFeatures(request):
                 if feature.geometry().contains(QgsGeometry.fromPointXY(centroid)) or feature.geometry().intersects(aoi_geom):
-                    siruta = 26573
-                    uat_name = "Oradea"
-                    county = "Bihor"
+                    siruta = None
+                    uat_name = None
+                    county = None
                     
                     for field in uat_layer.fields():
                         f_name = field.name().lower()
-                        if "siruta" in f_name or "cod" in f_name:
+                        if "siruta" in f_name or "natcode" in f_name or "cod_uat" in f_name or "cod" in f_name:
                             val = feature[field.name()]
-                            if val is not None:
+                            if val is not None and str(val).strip():
                                 try:
                                     siruta = int(val)
-                                except ValueError:
+                                except (ValueError, TypeError):
                                     pass
-                        elif "name" in f_name or "uat" in f_name or "localit" in f_name or "denumire" in f_name:
+                        elif "uat" in f_name or "localit" in f_name or "denumire" in f_name or "name" in f_name:
                             val = feature[field.name()]
-                            if val is not None:
+                            if val is not None and str(val).strip():
                                 uat_name = str(val)
-                        elif "county" in f_name or "judet" in f_name or "județ" in f_name:
+                        elif "judet" in f_name or "județ" in f_name or "county" in f_name:
                             val = feature[field.name()]
-                            if val is not None:
+                            if val is not None and str(val).strip():
                                 county = str(val)
+                                
+                    siruta = siruta if siruta is not None else 26573
+                    uat_name = uat_name if uat_name is not None else "Oradea"
+                    county = county if county is not None else "Bihor"
                                 
                     print(f"[StratumRO] UAT detectat dinamic: {uat_name} (SIRUTA: {siruta}), Județul: {county}")
                     return {

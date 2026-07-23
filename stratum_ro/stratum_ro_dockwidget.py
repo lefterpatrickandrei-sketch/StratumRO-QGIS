@@ -57,7 +57,7 @@ class SegmentationWorker(QtCore.QThread):
             base_url = self.api_url.rsplit("/segmentation/process", 1)[0]
             poll_url = f"{base_url}/tasks/{task_id}"
 
-            max_retries = 30  # Maxim 60 de secunde (30 interogări * 2 secunde pauză)
+            max_retries = 150  # Maxim 5 minute (150 interogări * 2 secunde pauză) pentru procesări complexe naționale
             retry_count = 0
             
             while retry_count < max_retries:
@@ -89,7 +89,7 @@ class SegmentationWorker(QtCore.QThread):
                 
                 retry_count += 1
 
-            self.taskFailed.emit("Eroare: Timpul de așteptare pentru finalizarea procesării a expirat (Timeout).")
+            self.taskFailed.emit("Eroare: Timpul de așteptare pentru finalizarea procesării a expirat (Timeout 5 min).")
 
         except requests.exceptions.Timeout:
             self.taskFailed.emit("Eroare de rețea: Timpul de conectare la server a expirat (Timeout).")
@@ -142,8 +142,10 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             transform = QgsCoordinateTransform(current_crs, stereo70, QgsProject.instance())
             point_min = transform.transform(xmin, ymin)
             point_max = transform.transform(xmax, ymax)
-            xmin, ymin = point_min.x(), point_min.y()
-            xmax, ymax = point_max.x(), point_max.y()
+            xmin = min(point_min.x(), point_max.x())
+            xmax = max(point_min.x(), point_max.x())
+            ymin = min(point_min.y(), point_max.y())
+            ymax = max(point_min.y(), point_max.y())
 
         # Structură închisă tip Poligon/Bounding Box pentru API
         self.current_aoi_geometry = [
@@ -216,27 +218,31 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             request = QgsFeatureRequest().setFilterRect(aoi_geom.boundingBox())
             for feature in uat_layer.getFeatures(request):
                 if feature.geometry().contains(QgsGeometry.fromPointXY(centroid)) or feature.geometry().intersects(aoi_geom):
-                    siruta = 26573
-                    uat_name = "Oradea"
-                    county = "Bihor"
+                    siruta = None
+                    uat_name = None
+                    county = None
                     
                     for field in uat_layer.fields():
                         f_name = field.name().lower()
-                        if "siruta" in f_name or "cod" in f_name:
+                        if "siruta" in f_name or "natcode" in f_name or "cod_uat" in f_name or "cod" in f_name:
                             val = feature[field.name()]
-                            if val is not None:
+                            if val is not None and str(val).strip():
                                 try:
                                     siruta = int(val)
-                                except ValueError:
+                                except (ValueError, TypeError):
                                     pass
-                        elif "name" in f_name or "uat" in f_name or "localit" in f_name or "denumire" in f_name:
+                        elif "uat" in f_name or "localit" in f_name or "denumire" in f_name or "name" in f_name:
                             val = feature[field.name()]
-                            if val is not None:
+                            if val is not None and str(val).strip():
                                 uat_name = str(val)
-                        elif "county" in f_name or "judet" in f_name or "județ" in f_name:
+                        elif "judet" in f_name or "județ" in f_name or "county" in f_name:
                             val = feature[field.name()]
-                            if val is not None:
+                            if val is not None and str(val).strip():
                                 county = str(val)
+                                
+                    siruta = siruta if siruta is not None else 26573
+                    uat_name = uat_name if uat_name is not None else "Oradea"
+                    county = county if county is not None else "Bihor"
                                 
                     print(f"[StratumRO] UAT detectat dinamic: {uat_name} (SIRUTA: {siruta}), Județul: {county}")
                     return {
