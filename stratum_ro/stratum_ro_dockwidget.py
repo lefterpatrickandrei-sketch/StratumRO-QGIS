@@ -166,10 +166,11 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         
         # Limitele geodezice extinse ale României în Stereo 70 (EPSG:31700)
         # Acoperă inclusiv zonele de graniță: Jimbolia (vest), Sulina (est),
-        # Vama Borșa (nord), Mangalia (sud-est)
-        # X: ~128.000 – 875.000 m, Y: ~250.000 – 765.000 m
+        # Vama Borșa (nord), Mangalia și Zimnicea (sud)
+        # X: ~125.000 – 880.000 m, Y: ~230.000 – 770.000 m
         RO_X_MIN, RO_X_MAX = 125000.0, 880000.0
-        RO_Y_MIN, RO_Y_MAX = 245000.0, 770000.0
+        # Extins RO_Y_MIN la 230000.0 m pentru a acoperi extremitatea sudică a României (Zimnicea Y=235805.15 m), cf. audit geodezic 23.07.2026
+        RO_Y_MIN, RO_Y_MAX = 230000.0, 770000.0
         
         for pt in self.current_aoi_geometry:
             x, y = pt[0], pt[1]
