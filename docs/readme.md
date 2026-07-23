@@ -165,7 +165,7 @@ class SegmentationWorker(QtCore.QThread):
             base_url = self.api_url.rsplit("/segmentation/process", 1)[0]
             poll_url = f"{base_url}/tasks/{task_id}"
 
-            max_retries = 30  # Maxim 60 de secunde (30 interogări * 2 secunde pauză)
+            max_retries = 150  # Maxim 5 minute (150 interogări * 2 secunde pauză) pentru procesări complexe naționale
             retry_count = 0
             
             while retry_count < max_retries:
@@ -197,7 +197,7 @@ class SegmentationWorker(QtCore.QThread):
                 
                 retry_count += 1
 
-            self.taskFailed.emit("Eroare: Timpul de așteptare pentru finalizarea procesării a expirat (Timeout).")
+            self.taskFailed.emit("Eroare: Timpul de așteptare pentru finalizarea procesării a expirat (Timeout 5 min).")
 
         except requests.exceptions.Timeout:
             self.taskFailed.emit("Eroare de rețea: Timpul de conectare la server a expirat (Timeout).")
@@ -250,8 +250,10 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             transform = QgsCoordinateTransform(current_crs, stereo70, QgsProject.instance())
             point_min = transform.transform(xmin, ymin)
             point_max = transform.transform(xmax, ymax)
-            xmin, ymin = point_min.x(), point_min.y()
-            xmax, ymax = point_max.x(), point_max.y()
+            xmin = min(point_min.x(), point_max.x())
+            xmax = max(point_min.x(), point_max.x())
+            ymin = min(point_min.y(), point_max.y())
+            ymax = max(point_min.y(), point_max.y())
 
         # Structură închisă tip Poligon/Bounding Box pentru API
         self.current_aoi_geometry = [
@@ -272,10 +274,11 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         
         # Limitele geodezice extinse ale României în Stereo 70 (EPSG:31700)
         # Acoperă inclusiv zonele de graniță: Jimbolia (vest), Sulina (est),
-        # Vama Borșa (nord), Mangalia (sud-est)
-        # X: ~128.000 – 875.000 m, Y: ~250.000 – 765.000 m
+        # Vama Borșa (nord), Mangalia și Zimnicea (sud)
+        # X: ~125.000 – 880.000 m, Y: ~230.000 – 770.000 m
         RO_X_MIN, RO_X_MAX = 125000.0, 880000.0
-        RO_Y_MIN, RO_Y_MAX = 245000.0, 770000.0
+        # Extins RO_Y_MIN la 230000.0 m pentru a acoperi extremitatea sudică a României (Zimnicea Y=235805.15 m), cf. audit geodezic 23.07.2026
+        RO_Y_MIN, RO_Y_MAX = 230000.0, 770000.0
         
         for pt in self.current_aoi_geometry:
             x, y = pt[0], pt[1]
