@@ -928,7 +928,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 66 | Încărcare în memorie a modelului Meta SAM 2 (Segment Anything 2) | Membru 3 | ⬜ Neînceput |
 | 67 | Alocare dinamică memorie GPU (NVIDIA CUDA), verificând menținerea resurselor sub pragul critic (minimum 8GB VRAM) | Membru 3 | ⬜ Neînceput |
 | 68 | Rulare encoder de imagine SAM 2 pe ortofotoplanul decupat pentru extragerea hărților de caracteristici | Membru 3 | ⬜ Neînceput |
-| 69 | Generare de indicii spațiale (points/bounding box prompts) folosind zonele cu înălțimi ridicate din nDSM (LiDAR) pentru ghidare SAM 2 | Membru 3 | ⬜ Neînceput |
+| 69 | Generare de indicii spațiale (points/bounding box prompts) folosind nDSM (LiDAR) și pre-procesor nDSM Watershed Splitter pentru separarea clădirilor înșiruite | Membru 3 | ⬜ Neînceput |
 | 70 | Execuție decoder SAM 2 și generare măști de segmentare binare la nivel de clădire | Membru 3 | ⬜ Neînceput |
 
 #### 🟦 Faza H: Post-procesare, Vectorizare & Validare Cadastrală (Etapele 71 – 75) — SARCINI BACKEND / AI
@@ -938,8 +938,8 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 71 | Conversie măști binare raster în structuri poligonale vectoriale (GDAL polygonize) | Membru 2 | ⬜ Neînceput |
 | 72 | Aplicare algoritm de ortogonalizare a colțurilor clădirilor (reducere poligoane neregulate la unghiuri de 90°) | Membru 2 & 3 | ⬜ Neînceput |
 | 73 | Filtrare poligoane pe baza ariei minime utile și a pragului de încredere probabilistic (confidence threshold) | Membru 2 | ⬜ Neînceput |
-| 74 | Execuție validare topologică cadastrală (eliminare suprapuneri clădiri, corectare granițe UAT) | Membru 2 | ⬜ Neînceput |
-| 75 | Salvare fișiere finale în formate standardizate: Raster GeoTIFF (.tif) și Vector GeoPackage (.gpkg), generare ID unic de task și returnare răspuns JSON de succes ce va declanșa Etapa 36 în QGIS | Membru 2 | ⬜ Neînceput |
+| 74 | Execuție validare topologică cadastrală (eliminare suprapuneri) și generare strat dedicat erorilor marcate cu roșu pentru review manual | Membru 2 | ⬜ Neînceput |
+| 75 | Execuție aliniere geodezică Auto-Snap to Cadastral Boundary (Procrustes SVD pe limite WFS ANCPI) și salvare GeoPackage (.gpkg) / GeoTIFF (.tif) | Membru 2 | ⬜ Neînceput |
 
 #### 🟨 Faza I: Ingestie Surse Deschise Naționale & Mediu (Etapele 76 – 83) — SARCINI BACKEND
 
@@ -973,7 +973,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 |---|---|---|---|
 | 92 | Motor Export CAD `.dxf` / `.dwg` structurat pe straturile ANCPI (`CONSTRUCTII`, `PARCELE`, `GARDURI`) via `ezdxf` | Membru 1 | ⬜ Neînceput |
 | 93 | Calcul Matrice Suprafață ($S_c$ construită, $S_d$ desfășurată, Regim de înălțime $P+nE$) | Membru 1 | ⬜ Neînceput |
-| 94 | Generare automată Raport PDF / Fișă Imobil cu plan de amplasament via `reportlab` | Membru 1 | ⬜ Neînceput |
+| 94 | Generare automată Raport PDF / Fișă Imobil cu plan de amplasament, matrice de precizie Auto-Snap Procrustes (SVD) și audit topologic via `reportlab` | Membru 1 | ⬜ Neînceput |
 | 95 | Modul audit fiscal DITL (verificare discrepanțe între amprenta AI și suprafața impozitată) | Membru 2 | ⬜ Neînceput |
 | 96 | Modul urgențe ISU (verificare gabarit drum de acces vs scări de intervenție pompieri) | Membru 1 | ⬜ Neînceput |
 | 97 | Simulare hidrodinamică risc inundații urbane pe baza DTM și coeficienți Manning | Membru 2 | ⬜ Neînceput |
