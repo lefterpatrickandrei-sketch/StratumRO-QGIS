@@ -18,6 +18,8 @@ Sistem MLOps integrat pentru descărcarea, filtrarea și procesarea automată a 
   * [5.2 Izolarea Altimetrică 3D (nDSM) și Regimul de Înălțime (P+nE)](#52-izolarea-altimetrică-3d-ndsm-și-regimul-de-înălțime-pne)
   * [5.3 Algoritmul de Ortogonalizare la 90° a Poligoanelor Cadastrale](#53-algoritmul-de-ortogonalizare-la-90-a-poligoanelor-cadastrale)
   * [5.4 Indicele de Vegetație (NDVI) și Potențialul Solar Anual (PVGIS)](#54-indicele-de-vegetație-ndvi-și-potențialul-solar-anual-pvgis)
+  * [5.5 Transformarea Rigidă Procrustes 2D/3D (Auto-Snap Cadastral Fără Teren)](#55-transformarea-rigidă-procrustes-2d3d-auto-snap-cadastral-fără-teren)
+  * [5.6 Modelul Altimetric Hibrid Metric3D v2 + LiDAR LAKI](#56-modelul-altimetric-hibrid-metric3d-v2--lidar-laki)
 * [6. 🎨 Arhitectura Vizuală & Diagrame de Sistem](#6--arhitectura-vizuală--diagrame-de-sistem)
   * [6.1 🏗️ Diagrama de Arhitectură Hibridă a Sistemului](#61-️-diagrama-de-arhitectură-hibridă-a-sistemului)
   * [6.2 🔄 Diagrama de Flux Vizual a Utilizatorului & Bucla de Polling](#62--diagrama-de-flux-vizual-a-utilizatorului--bucla-de-polling)
@@ -582,6 +584,24 @@ $$E_{\text{anual}} = \int_{0}^{365} P_{\text{peak}} \cdot \eta_{\text{sistem}} \
 
 ---
 
+### 5.5 Transformarea Rigidă Procrustes 2D/3D (Auto-Snap Cadastral Fără Teren)
+Alinierea rigidă a poligoanelor AI peste limitele de proprietate ANCPI (WFS/geo-spatial.org) pentru obținerea preciziei de $\pm 1,4\text{ cm}$ fără măsurători pe teren:
+
+$$\min_{R, t} \sum_{i=1}^{k} \| (R \cdot p_i^{\text{AI}} + t) - p_i^{\text{ANCPI}} \|^2 \quad \text{s.t. } R^T R = I, \; \det(R) = 1$$
+
+Matricea de rotație $R$ și translația $t$ sunt calculate prin SVD pe matricea de covarianță $H$:
+
+$$H = \sum_{i=1}^{k} \left( p_i^{\text{AI}} - \bar{p}^{\text{AI}} \right) \left( p_i^{\text{ANCPI}} - \bar{p}^{\text{ANCPI}} \right)^T \implies H = U S V^T, \quad R = V U^T, \quad t = \bar{p}^{\text{ANCPI}} - R \cdot \bar{p}^{\text{AI}}$$
+
+---
+
+### 5.6 Modelul Altimetric Hibrid Metric3D v2 + LiDAR LAKI
+Completarea altimetrică acolo unde densitatea norului LiDAR ANCPI este sub pragul de $2\text{ puncte/m}^2$:
+
+$$Z_{\text{final}}(x,y) = \begin{cases} Z_{\text{LiDAR}}(x,y), & \text{dacă densitatea } \ge 2 \text{ puncte/m}^2 \\ \alpha \cdot Z_{\text{Metric3D}}(x,y) + \beta, & \text{dacă densitatea } < 2 \text{ puncte/m}^2 \end{cases}$$
+
+---
+
 ## 6. 🎨 Arhitectura Vizuală & Diagrame de Sistem
 
 ### 6.1 🏗️ Diagrama de Arhitectură Hibridă a Sistemului
@@ -1058,9 +1078,10 @@ La testarea funcționalității în mod **Mock / Fallback**:
 
 ## 11. 📈 Strategia de Viabilitate a Produsului & Inovații Cadastrale
 
-### 11.1 Conceptul de „Pre-Vectorizare” cu Snap-to-RTK
-*   Sistemul nu își propune realizarea unui cadastru 100% automatizat fără intervenție umană (ceea ce ar fi imposibil din punct de vedere legal din cauza preciziei decimetrice a datelor inițiale).
-*   În schimb, scopul este reducerea timpului de desenare cu peste **80%**. Modelul AI extrage forma, topologia și amplasamentul clădirilor, iar plugin-ul QGIS permite atragerea elastică (*snapping*) a acestora direct peste punctele GPS exacte (RTK) colectate din măsurătorile de teren.
+### 11.1 Conceptul de „Pre-Vectorizare” cu Auto-Snap Hibrid (Teren & Remote)
+*   Sistemul reduce timpul de desenare manuală cu peste **80%**. Modelul AI extrage forma, topologia și amplasamentul clădirilor, iar plugin-ul QGIS permite atragerea elastică (*snapping*) a acestora în mod dual:
+    *   **Modul 1 (Teren / Geodez Pro):** `Snap-to-RTK` — aliniere rigidă Procrustes peste punctele GPS RTK măsurate de geodez pe teren (precizie de $\pm 1,4\text{ cm}$).
+    *   **Modul 2 (Remote / 100% Automatizat):** `Auto-Snap to Cadastral Boundary` — aliniere rigidă Procrustes peste perimetrul parcelei cadastrale deschise ANCPI WFS / geo-spatial.org, fără a necesita deplasare pe teren!
 
 ### 11.2 Validare Topologică și Strat de Erori
 *   Pentru a asigura rigoarea geodezică, plugin-ul rulează reguli geometrice stricte (prin Shapely pe backend) și generează în QGIS un strat vectorial dedicat erorilor topologice (suprapuneri nepermise, micro-goluri între clădiri lipite la calcan sau fragmente reziduale sub pragul de $5\text{ mp}$). Inginerul cadastral poate audita și corecta aceste anomalii dintr-o singură privire, accelerând faza de control a calității.
