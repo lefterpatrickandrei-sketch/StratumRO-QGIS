@@ -123,6 +123,7 @@ Workspace-ul proiectului este structurat conform standardelor profesionale PyQGI
 QGIS-AI/ (Workspace Principal)
 ├── docs/
 │   ├── architecture.md                 # Specificațiile tehnice și contractul API unificat
+│   ├── cadastral_precision_matrix_30_july_2026.md # Matricea teoretică de precizie geodezică (SVD Procrustes / ANCPI)
 │   ├── debate_and_sota_strategy_30_july_2026.md  # Master Document dezbatere SOTA, strategie 3D & aliniere Auto-Snap
 │   ├── implementation_plan_30_july_2026.md        # Auditul algoritmilor și planul de actualizare din 30 Iulie 2026
 │   └── readme.md                       # Acest ghid tehnic unificat (Manualul Proiectului)
@@ -1201,6 +1202,18 @@ Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un
 #### 🧪 Ipoteză de Cercetare & Experimental (NU folosiți pentru depuneri cadastrale oficiale)
 *   **Estimare Altimetrică Monoculară (nDSM Sintetic / Depth Anything V2 / MiDaS):** Generarea unei hărți sintetice de adâncime din imagini aeriene 2D produce valori de adâncime relative (affine-invariant), necalibrate metric pe imagini nadir (top-down 90°). Prezintă erori absolute ($> 1.5\text{m} \dots 5\text{m}$) incompatibili cu toleranța cadastrală legală. Este marcată ca modul experimental de cercetare și este interzisă utilizarea sa pentru generarea memoriilor tehnice oficiale.
 *   **Seturi de date de acoperire globală fără acoperire pe România (Google Open Buildings):** Dataset-ul Google Open Buildings acoperă exclusiv Africa, Asia de Sud și America Latină; pentru România se utilizează ca fallback public exclusiv Microsoft Building Footprints și OSM.
+
+### 11.6 Matricea Teoretică de Precizie Geodezică & Toleranțe ANCPI
+
+> ⚠️ **OBSERVAȚIE IMPORTANTĂ DE AUDIT:**  
+> **Toate valorile de precizie prezentate în tabelul de mai jos sunt DEDUSE TEORETIC pe baza modelelor matematice, a legii de propagare a erorilor spațiale și a specificațiilor oficiale ale normelor geodezice ANCPI / LAKI. Ele nu reprezintă măsurători empirice efectuate pe teren, ci limite de toleranță calculat analitic.**
+
+| Fază / Modul | Precizie Teoretică | Sursă & Model de Deducție | Standard / Toleranță ANCPI |
+|--------------|--------------------|---------------------------|----------------------------|
+| **AI Raw (SAM 2 din ortofoto)** | $\pm 10 \dots 15 \text{ cm}$ | Ortofoto ANCPI GSD $15\text{ cm/px}$ | Limitată de rezoluția optică nadir. |
+| **Auto-Snap ANCPI (Procrustes SVD)** | **$\mathbf{\pm 1,4 \text{ cm} \dots \pm 2,5 \text{ cm}}$** | $\sigma_{\text{final}} = \frac{\sigma_{\text{ANCPI}}}{\sqrt{k}}$ (SVD pe WFS deschis) | ✅ **Conform Normei ANCPI** ($\le 5\text{ cm}$ intravilan). |
+| **LiDAR LAKI 3D (Cota Z)** | **$\mathbf{\pm 5 \dots 10 \text{ cm}}$** | Specificație oficială LAKI $RMSE_Z \le 10\text{ cm}$ | Cota streașină/coamă în `EPSG:5781`. |
+| **Metric3D v2 Refinement (Fallback Z)** | $\pm 30 \dots 50 \text{ cm}$ | Estimare metrică zero-shot din ortofoto | Fallback sintetic pentru LiDAR rar ($<1\text{ p/m}^2$). |
 
 ---
 
