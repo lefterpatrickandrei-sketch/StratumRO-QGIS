@@ -14,7 +14,7 @@ Sistem MLOps integrat pentru descărcarea, filtrarea și procesarea automată a 
 * [3. 📂 Compoziția și Structura Workspace-ului](#3--compoziția-și-structura-workspace-ului)
 * [4. 💻 Codul Sursă de Referință (`stratum_ro_dockwidget.py`)](#4--codul-sursă-de-referință-stratum_ro_dockwidgetpy)
 * [5. 🧮 Ecuațiile Matematice & Geodezice Fundamentale](#5--ecuațiile-matematice--geodezice-fundamentale)
-  * [5.1 Ecuațiile Proiecției Stereografice 1970 (Stereo 70 / EPSG:31700)](#51-ecuațiile-proiecției-stereografice-1970-stereo-70--epsg31700)
+  * [5.1 Ecuațiile Proiecției Stereografice 1970 (Stereo 70 / EPSG:3844 ANCPI & EPSG:31700 Legacy)](#51-ecuațiile-proiecției-stereografice-1970-stereo-70--epsg3844-ancpi--epsg31700-legacy)
   * [5.2 Izolarea Altimetrică 3D (nDSM) și Regimul de Înălțime (P+nE)](#52-izolarea-altimetrică-3d-ndsm-și-regimul-de-înălțime-pne)
   * [5.3 Algoritmul de Ortogonalizare la 90° a Poligoanelor Cadastrale](#53-algoritmul-de-ortogonalizare-la-90-a-poligoanelor-cadastrale)
   * [5.4 Indicele de Vegetație (NDVI) și Potențialul Solar Anual (PVGIS)](#54-indicele-de-vegetație-ndvi-și-potențialul-solar-anual-pvgis)
@@ -282,16 +282,21 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         ymax = extent.yMaximum()
 
         current_crs = self.iface.mapCanvas().mapSettings().destinationCrs()
-        stereo70 = QgsCoordinateReferenceSystem("EPSG:31700")
-
-        if current_crs.authid() != "EPSG:31700":
-            transform = QgsCoordinateTransform(current_crs, stereo70, QgsProject.instance())
+        
+        if self.is_stereo70(current_crs):
+            # Canvas-ul este deja în Stereo 70 (3844 ANCPI sau 31700) -> Păstrăm coordonatele fără re-proiectare
+            self.active_crs_authid = current_crs.authid().upper()
+        else:
+            # Re-proiectăm automat din alt CRS (ex: EPSG:4326 sau EPSG:3857) în EPSG:3844 (Standardul modern ANCPI)
+            target_crs = QgsCoordinateReferenceSystem(STEREO70_ANCPI_PRIMARY)
+            transform = QgsCoordinateTransform(current_crs, target_crs, QgsProject.instance())
             point_min = transform.transform(xmin, ymin)
             point_max = transform.transform(xmax, ymax)
             xmin = min(point_min.x(), point_max.x())
             xmax = max(point_min.x(), point_max.x())
             ymin = min(point_min.y(), point_max.y())
             ymax = max(point_min.y(), point_max.y())
+            self.active_crs_authid = STEREO70_ANCPI_PRIMARY
 
         # Structură închisă tip Poligon/Bounding Box pentru API
         self.current_aoi_geometry = [
@@ -418,10 +423,17 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         # Determinarea dinamică a datelor administrative (SIRUTA / UAT)
         admin_data = self.resolve_administrative_data()
 
+        # Preluarea CRS-ului activ (EPSG:3844 sau EPSG:31700)
+        active_crs = getattr(self, "active_crs_authid", STEREO70_ANCPI_PRIMARY)
+
         # Construirea payload-ului
         payload = {
             "project_name": "Segmentare_Nationala_StratumRO",
-            "crs": "EPSG:31700",
+            "crs": active_crs,
+            "crs_vertical": VERTICAL_MAREA_NEAGRA_1975 if is_3d else None,
+            "crs_compound": CRS_3D_COMPOUND if is_3d else None,
+            "supported_crs": STEREO70_VALID_CODES,
+            "dimension": "3D" if is_3d else "2D",
             "aoi_selection_mode": "hybrid",
             "geometry": {
                 "type": "Polygon",
@@ -585,7 +597,7 @@ flowchart TB
     subgraph CLIENT ["🖥️ Client Desktop QGIS (Membru 1)"]
         UI["Qt Designer UI<br/>(stratum_ro_dockwidget_base.ui)"]
         MapTool["QgsMapToolExtent<br/>(Selecție AOI pe hartă)"]
-        GeoCheck{"Validare Geodezică<br/>Stereo 70 (EPSG:31700)<br/>RO_Y_MIN: 230.000m"}
+        GeoCheck{"Validare Geodezică<br/>Stereo 70 (EPSG:3844 / EPSG:31700)<br/>RO_Y_MIN: 230.000m"}
         Worker["SegmentationWorker<br/>(PyQt QThread Asincron)"]
         
         UI --> MapTool
@@ -653,7 +665,7 @@ flowchart TD
     classDef stepErr fill:#881337,stroke:#f43f5e,stroke-width:2px,color:#fff;
 
     P1["Pasul 1: Selectare AOI pe Hartă<br/>(Click 'Selectează AOI' + tragere dreptunghi)"]
-    P2["Pasul 2: Conversie & Validare Geodezică<br/>(Forțare Stereo 70 EPSG:31700 & RO Bounds)"]
+    P2["Pasul 2: Conversie & Validare Geodezică<br/>(Stereo 70 EPSG:3844/31700 & 3D EPSG:5781)"]
     P3["Pasul 3: Apăsare Buton 'Rulează Segmentare'<br/>(Butonul se dezactivează + pornește Thread asincron)"]
     P4["Pasul 4: Trimitere Cerere POST<br/>(POST http://localhost:8000/api/v1/segmentation/process)"]
     
@@ -978,7 +990,11 @@ POST http://localhost:8000/api/v1/segmentation/process
 ```json
 {
   "project_name": "Segmentare_Nationala_StratumRO",
-  "crs": "EPSG:31700",
+  "crs": "EPSG:3844",
+  "crs_vertical": "EPSG:5781",
+  "crs_compound": "EPSG:3844+5781",
+  "supported_crs": ["EPSG:3844", "EPSG:31700"],
+  "dimension": "3D",
   "aoi_selection_mode": "hybrid",
   "geometry": {
     "type": "Polygon",
@@ -1014,7 +1030,9 @@ POST http://localhost:8000/api/v1/segmentation/process
   "results": {
     "raster_path": "/data/output/Oradea_26573/segmentation.tif",
     "vector_path": "/data/output/Oradea_26573/buildings.gpkg",
-    "crs": "EPSG:31700",
+    "crs": "EPSG:3844",
+    "crs_vertical": "EPSG:5781",
+    "dimension": "3D",
     "feature_count": 482
   },
   "processing": {
@@ -1034,7 +1052,7 @@ La testarea funcționalității în mod **Mock / Fallback**:
 *   **Locație fișier de test:** Se încarcă rasterul `test_gdal_byte.tif` din folderul `datasets/orthophotos/`.
 *   **Georeferențiere (De ce face Zoom în California?):** Deoarece acest fișier este un eșantion standard furnizat de biblioteca GDAL, el are sistemul de proiecție definit nativ în **UTM Zone 11 North (NAD27)**, localizat în sudul Californiei (regiunea Corona/Chino Hills).
 *   **Comportament în QGIS:** Când folosiți opțiunea *Zoom to Layer* pe stratul rezultat, camera QGIS se va muta automat în California. Acesta este comportamentul corect și demonstrează citirea fișierului fizic local de pe disc.
-*   **Rularea Reală (Producție):** În rularea normală cu serverul FastAPI pornit, datele rezultate din modelul AI pentru regiunea Oradea (sau alte regiuni selectate) vor fi decupate și returnate direct în sistemul geodezic național **Stereo 70 (EPSG:31700)**.
+*   **Rularea Reală (Producție):** În rularea normală cu serverul FastAPI pornit, datele rezultate din modelul AI pentru regiunea Oradea (sau alte regiuni selectate) vor fi decupate și returnate direct în sistemul geodezic național **Stereo 70 (EPSG:3844 ANCPI / EPSG:31700 legacy)** cu altimetrie Marea Neagră 1975 (EPSG:5781).
 
 ---
 
