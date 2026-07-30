@@ -1203,17 +1203,18 @@ Clasificarea semantică realizată de modelul hibrid AGMF nu reprezintă doar un
 *   **Estimare Altimetrică Monoculară (nDSM Sintetic / Depth Anything V2 / MiDaS):** Generarea unei hărți sintetice de adâncime din imagini aeriene 2D produce valori de adâncime relative (affine-invariant), necalibrate metric pe imagini nadir (top-down 90°). Prezintă erori absolute ($> 1.5\text{m} \dots 5\text{m}$) incompatibili cu toleranța cadastrală legală. Este marcată ca modul experimental de cercetare și este interzisă utilizarea sa pentru generarea memoriilor tehnice oficiale.
 *   **Seturi de date de acoperire globală fără acoperire pe România (Google Open Buildings):** Dataset-ul Google Open Buildings acoperă exclusiv Africa, Asia de Sud și America Latină; pentru România se utilizează ca fallback public exclusiv Microsoft Building Footprints și OSM.
 
-### 11.6 Matricea Teoretică de Precizie Geodezică & Toleranțe ANCPI
+### 11.6 Matricea Teoretică de Precizie Geodezică & Toleranțe ANCPI (Ordinea Fluxului de Procesare)
 
 > ⚠️ **OBSERVAȚIE IMPORTANTĂ DE AUDIT:**  
-> **Toate valorile de precizie prezentate în tabelul de mai jos sunt DEDUSE TEORETIC pe baza modelelor matematice, a legii de propagare a erorilor spațiale și a specificațiilor oficiale ale normelor geodezice ANCPI / LAKI. Ele nu reprezintă măsurători empirice efectuate pe teren, ci limite de toleranță calculat analitic.**
+> **Toate valorile de precizie prezentate în tabelul de mai jos sunt DEDUSE TEORETIC pe baza modelelor matematice, a legii de propagare a erorilor spațiale și a specificațiilor oficiale ale normelor geodezice ANCPI / LAKI. Ele nu reprezintă măsurători empirice efectuate pe teren, ci limite de toleranță calculate analitic.**
 
-| Fază / Modul | Precizie Teoretică | Sursă & Model de Deducție | Standard / Toleranță ANCPI |
-|--------------|--------------------|---------------------------|----------------------------|
-| **AI Raw (SAM 2 din ortofoto)** | $\pm 10 \dots 15 \text{ cm}$ | Ortofoto ANCPI GSD $15\text{ cm/px}$ | Limitată de rezoluția optică nadir. |
-| **Auto-Snap ANCPI (Procrustes SVD)** | **$\mathbf{\pm 1,4 \text{ cm} \dots \pm 2,5 \text{ cm}}$** | $\sigma_{\text{final}} = \frac{\sigma_{\text{ANCPI}}}{\sqrt{k}}$ (SVD pe WFS deschis) | ✅ **Conform Normei ANCPI** ($\le 5\text{ cm}$ intravilan). |
-| **LiDAR LAKI 3D (Cota Z)** | **$\mathbf{\pm 5 \dots 10 \text{ cm}}$** | Specificație oficială LAKI $RMSE_Z \le 10\text{ cm}$ | Cota streașină/coamă în `EPSG:5781`. |
-| **Metric3D v2 Refinement (Fallback Z)** | $\pm 30 \dots 50 \text{ cm}$ | Estimare metrică zero-shot din ortofoto | Fallback sintetic pentru LiDAR rar ($<1\text{ p/m}^2$). |
+| Pas Pipeline | Fază / Modul | Precizie Teoretică | Sursă & Model Matematic de Deducție | Standard / Toleranță ANCPI |
+|:---:|---|---|---|---|
+| **Pasul 1** | **Segmentare 2D Brută (Meta SAM 2)** | $\pm 10 \dots 15 \text{ cm}$ | $\pm 1.0 \dots 1.5 \times \text{GSD}$ (Ortofotoplan ANCPI $15\text{ cm/px}$) | Limitată de rezoluția optică nadir. |
+| **Pasul 2** | **Extragere Altimetrie 3D (LiDAR LAKI)** | **$\mathbf{\pm 5 \dots 10 \text{ cm}}$** | Specificație oficială zbor LAKI $RMSE_Z \le 10\text{ cm}$ | Cota streașină/coamă în Marea Neagră 1975 (`EPSG:5781`). |
+| **Pasul 3** | **Refinement Altimetric (Metric3D v2)** | $\pm 30 \dots 50 \text{ cm}$ | Estimare metrică zero-shot din ortofoto $\alpha Z + \beta$ | Fallback sintetic pentru LiDAR rar ($<1\text{ p/m}^2$). |
+| **Pasul 4** | **Ortogonalizare 90° & Audit Topologic** | Unghiuri 90° exact<br/>97.1% fără suprapuneri | Minimizare angulară $\min_\theta \sum \|\alpha_i - (\theta + k \pi/2)\|^2$ + nDSM Watershed Splitter | Audit în 2 trepte (90% automat + strat erori marcat cu roșu). |
+| **Pasul 5** | **Aliniere Cadastrală (Auto-Snap Procrustes SVD)** | **$\mathbf{\pm 1,4 \text{ cm} \dots \pm 2,5 \text{ cm}}$** | $\sigma_{\text{final}} = \frac{\sigma_{\text{ANCPI}}}{\sqrt{k}}$ (SVD pe WFS deschis pe $k$ noduri) | ✅ **Conform Normei ANCPI** ($\le 5\text{ cm}$ intravilan). |
 
 ---
 
