@@ -145,7 +145,7 @@ QGIS-AI/ (Workspace Principal)
 
 ## 4. 💻 Codul Sursă de Referință (`stratum_ro_dockwidget.py`)
 
-Mai jos este prezentat codul sursă complet al nucleului plugin-ului. Acest script reprezintă implementarea tehnică a Etapelor 34, 35 și 36, asigurând interfața asincronă și auto-încărcarea datelor în QGIS:
+Mai jos este prezentat codul sursă complet al nucleului plugin-ului.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -154,12 +154,25 @@ import os
 import requests
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import pyqtSignal
-# Am adăugat QgsRasterLayer și QgsVectorLayer pentru importurile PyQGIS
-from qgis.core import QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsProject, QgsRasterLayer, QgsVectorLayer
+# Am adăugat QgsRasterLayer, QgsVectorLayer și QgsWkbTypes pentru importurile PyQGIS
+from qgis.core import QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsProject, QgsRasterLayer, QgsVectorLayer, QgsWkbTypes
 from qgis.gui import QgsMapToolExtent
 
 # Îi spunem programului să moștenească designul din fișierul _base
 from .stratum_ro_dockwidget_base import Ui_StratumRODockWidgetBase
+
+# Constante Geodezice Stereo 70 (România)
+# EPSG:3844 este codul oficial actualizat solicitat de ANCPI / eTerra / TransdatRO.
+# EPSG:31700 este codul istoric/legacy utilizat în unele proiecte mai vechi QGIS.
+STEREO70_ANCPI_PRIMARY = "EPSG:3844"
+STEREO70_LEGACY = "EPSG:31700"
+STEREO70_VALID_CODES = [STEREO70_ANCPI_PRIMARY, STEREO70_LEGACY]
+
+# Sistemul vertical de altitudini Marea Neagră 1975 & CRS compus 3D (România)
+VERTICAL_MAREA_NEAGRA_1975 = "EPSG:5781"
+CRS_3D_COMPOUND = "EPSG:3844+5781"
+ROMANIA_Z_MIN = 0.0
+ROMANIA_Z_MAX = 2544.0
 
 class SegmentationWorker(QtCore.QThread):
     """
@@ -276,8 +289,58 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         self.iface.mapCanvas().setMapTool(self.map_tool)
         self.lblStatus_2.setText("Status: Trage un dreptunghi pe hartă...")
 
+    def is_stereo70(self, crs):
+        """
+        Verifică dacă un CRS (QgsCoordinateReferenceSystem) reprezintă Stereo 70 
+        în oricare dintre codurile EPSG uzuale (EPSG:3844 cerut oficial de ANCPI sau EPSG:31700 legacy).
+        """
+        if not crs or not crs.isValid():
+            return False
+        auth_id = crs.authid().upper()
+        if auth_id in STEREO70_VALID_CODES:
+            return True
+        desc = crs.description().lower()
+        return "stereo 70" in desc or "stereografic 1970" in desc or "pulkovo 1942" in desc
+
+    def detect_geometry_dimension(self, layer):
+        """
+        Detectează dacă un strat (QgsVectorLayer sau QgsRasterLayer) conține geometrii sau altitudini 3D.
+        """
+        if not layer or not layer.isValid():
+            return {"dimension": "2D", "has_z": False, "crs_2d": STEREO70_ANCPI_PRIMARY, "crs_vertical": None}
+
+        crs_2d = layer.crs().authid().upper() if layer.crs().isValid() else STEREO70_ANCPI_PRIMARY
+        has_z = False
+        crs_vert = None
+
+        if isinstance(layer, QgsVectorLayer):
+            wkb_type = layer.wkbType()
+            has_z = QgsWkbTypes.hasZ(wkb_type)
+            if has_z:
+                crs_vert = VERTICAL_MAREA_NEAGRA_1975
+        elif isinstance(layer, QgsRasterLayer):
+            # Verificăm dacă rasterul conține un band numit 'elevation', 'z', sau dacă CRS-ul are componentă verticală
+            if layer.crs().isValid() and layer.crs().isVertical():
+                has_z = True
+                crs_vert = layer.crs().authid().upper()
+            else:
+                for i in range(1, layer.bandCount() + 1):
+                    b_name = str(layer.bandName(i)).lower()
+                    if "elevation" in b_name or "height" in b_name or "z" == b_name or "dsm" in b_name or "dtm" in b_name:
+                        has_z = True
+                        crs_vert = VERTICAL_MAREA_NEAGRA_1975
+                        break
+
+        dimension = "3D" if has_z else "2D"
+        return {
+            "dimension": dimension,
+            "has_z": has_z,
+            "crs_2d": crs_2d,
+            "crs_vertical": crs_vert
+        }
+
     def capture_coordinates(self, extent):
-        """Captează coordonatele de pe ecran și le forțează în Stereo 70 m."""
+        """Captează coordonatele de pe ecran și le validează/transformă în Stereo 70 (EPSG:3844 sau EPSG:31700)."""
         self.iface.mapCanvas().unsetMapTool(self.map_tool)
         
         xmin = extent.xMinimum()
@@ -311,15 +374,15 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             [xmin, ymin]
         ]
 
-        self.lblStatus_2.setText("Status: AOI salvat cu succes în Stereo 70!")
-        print(f"[StratumRO] Coordonate salvate: {self.current_aoi_geometry}")
+        self.lblStatus_2.setText(f"Status: AOI salvat cu succes în Stereo 70 ({self.active_crs_authid})!")
+        print(f"[StratumRO] Coordonate salvate ({self.active_crs_authid}): {self.current_aoi_geometry}")
 
     def validate_aoi_geometry(self):
-        """Etapa 39: Validează structura geografică a Bounding Box-ului în Stereo 70."""
+        """Etapa 39: Validează structura geografică a Bounding Box-ului în Stereo 70 (EPSG:3844 / EPSG:31700) și cota Z opțională."""
         if not self.current_aoi_geometry:
             return False, "Te rog selectează mai întâi o zonă pe hartă folosind butonul 'Selectează AOI'."
         
-        # Limitele geodezice extinse ale României în Stereo 70 (EPSG:31700)
+        # Limitele geodezice extinse ale României în Stereo 70 (EPSG:3844 / EPSG:31700)
         # Acoperă inclusiv zonele de graniță: Jimbolia (vest), Sulina (est),
         # Vama Borșa (nord), Mangalia și Zimnicea (sud)
         # X: ~125.000 – 880.000 m, Y: ~230.000 – 770.000 m
@@ -331,6 +394,12 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             x, y = pt[0], pt[1]
             if not (RO_X_MIN <= x <= RO_X_MAX) or not (RO_Y_MIN <= y <= RO_Y_MAX):
                 return False, f"Coordonatele selectate ({x:.2f}, {y:.2f}) se află în afara limitelor geodezice ale României în Stereo 70."
+            
+            # Validare opțională cota Z în intervalul altimetric al României (0m - 2544m Marea Neagră 1975)
+            if len(pt) > 2:
+                z = pt[2]
+                if not (ROMANIA_Z_MIN <= z <= ROMANIA_Z_MAX):
+                    return False, f"Altitudinea Z selectată ({z:.2f} m) este în afara domeniului altimetric al României ({ROMANIA_Z_MIN} - {ROMANIA_Z_MAX} m Marea Neagră 1975)."
         
         return True, ""
 
@@ -426,6 +495,15 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
 
         # Determinarea dinamică a datelor administrative (SIRUTA / UAT)
         admin_data = self.resolve_administrative_data()
+
+        # Verificare dinamică a dimensiunii 2D / 3D pe baza straturilor active din proiect
+        is_3d = False
+        if QgsProject.instance():
+            for layer in QgsProject.instance().mapLayers().values():
+                dim_info = self.detect_geometry_dimension(layer)
+                if dim_info["has_z"]:
+                    is_3d = True
+                    break
 
         # Preluarea CRS-ului activ (EPSG:3844 sau EPSG:31700)
         active_crs = getattr(self, "active_crs_authid", STEREO70_ANCPI_PRIMARY)
