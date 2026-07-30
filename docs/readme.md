@@ -721,11 +721,15 @@ flowchart TB
 
     subgraph AIENGINE ["🧠 Engine AI & Inferență CUDA (Membru 3)"]
         Ollama["Ollama LLM Agent<br/>(NVIDIA Nemotron-3 via MCP)"]
+        Watershed["nDSM Watershed Splitter<br/>(Separare Clădiri Înșiruite)"]
         SAM2["Meta SAM 2 Encoder/Decoder<br/>(PyTorch CUDA GPU 8GB+)"]
-        Orthogonalizer["Ortogonalizare 90° & Topologie<br/>(Shapely + GDAL Polygonize)"]
+        Orthogonalizer["Ortogonalizare 90° & Audit Topologic 2 Trepte<br/>(Shapely + Strat Erori Roșu)"]
+        AutoSnap["Auto-Snap Procrustes SVD<br/>(Aliniere Cadastrală WFS Fără Teren)"]
         
-        Ollama -->|Spatial Prompts| SAM2
+        Ollama -->|Spatial Prompts| Watershed
+        Watershed --> SAM2
         SAM2 --> Orthogonalizer
+        Orthogonalizer --> AutoSnap
     end
 
     subgraph DATASTORES ["🌐 Surse de Date & Output-uri Spațiale"]
@@ -819,20 +823,22 @@ flowchart TD
     IN_APIS["3. Open Data APIs (OSM / Sentinel / PVGIS)"]
 
     %% 2. CORE ENGINE
+    E_nDSM["Calcul nDSM & Watershed Splitter (Separare Clădiri Înșiruite)"]
     E_SAM2["Meta SAM 2 GPU Inference (Segmentare 2D)"]
-    E_nDSM["Calcul nDSM Altimetric (nDSM = DSM - DTM)"]
-    E_Topo["Ortogonalizare 90° & Topologie Shapely"]
+    E_Topo["Ortogonalizare 90° & Audit Topologic (Strat Erori Roșu)"]
+    E_Snap["Auto-Snap Procrustes SVD (Aliniere WFS ANCPI Fără Teren)"]
 
     IN_RGB --> E_SAM2
     IN_LAS --> E_nDSM
     IN_APIS --> E_SAM2
-    E_nDSM -->|Bounding Box Prompts| E_SAM2
+    E_nDSM -->|Watershed Bounding Box Prompts| E_SAM2
     E_SAM2 --> E_Topo
+    E_Topo --> E_Snap
 
     %% 3. MODULE DE OUTPUT (STRUCTURATE VERTICAL)
     
     %% M1: Cadastru
-    E_Topo --> OUT_CAD
+    E_Snap --> OUT_CAD
     subgraph OUT_CAD ["A. Produse Cadastrale & Inginerie (Membru 1 & 2)"]
         P1["1. Strat Vectorial 2D GeoPackage (.gpkg) — Amprente clădiri, parcele, garduri"]
         P2["2. Fișier CAD ANCPI (.dxf / .dwg) — Straturi CONSTRUCTII, PARCELE, GARDURI"]
