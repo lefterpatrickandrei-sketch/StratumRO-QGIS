@@ -44,7 +44,7 @@ Sistem MLOps integrat pentru descărcarea, filtrarea și procesarea automată a 
 
 ### 1.1 🇷🇴 Română
 
-Agentic GIS conectează QGIS la un backend AI local (FastAPI + Ollama LLM + Meta SAM2) pentru extragerea automată a amprentelor clădirilor din ortofotoplanuri și nori de puncte LiDAR. Plugin-ul permite selectarea unei zone de interes (AOI) direct pe hartă, trimiterea ei către backend pentru segmentare și clasificare AI, iar rezultatul revine ca strat vectorial QGIS gata de utilizare (GeoPackage).
+Agentic GIS conectează QGIS la un backend AI local (FastAPI + Ollama LLM + Meta SAM2) pentru extragerea automată a amprentelor clădirilor din ortofotoplanuri și nori de puncte LiDAR. Plugin-ul permite selectarea unei zone de interes (AOI) direct pe hartă, trimiterea ei către backend pentru segmentare și clasificare AI, iar rezultatul revine ca strat vectorial QGIS gata de utilizare (GeoPackage). Pipeline-ul suportă opțional un flux hibrid SAM 3 → SAM 2 (SAM 3 pentru descoperirea automată a clădirilor, SAM 2 pentru rafinarea pixel-level a contururilor).
 
 În spate, un agent bazat pe modelul de ultimă generație NVIDIA Nemotron-3 (rulat complet local prin Ollama) orchestrează fluxul de lucru prin Model Context Protocol (MCP), coordonând segmentarea, curățarea geometrică și validarea topologică înainte ca rezultatele să ajungă pe hartă.
 
@@ -531,7 +531,7 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
 
 ## 5. 🧮 Ecuațiile Matematice & Geodezice Fundamentale
 
-### 5.1 Ecuațiile Proiecției Stereografice 1970 (Stereo 70 / EPSG:31700)
+### 5.1 Ecuațiile Proiecției Stereografice 1970 (Stereo 70 / EPSG:3844 ANCPI & EPSG:31700 Legacy)
 Conversia riguroasă de pe elipsoidul Krasovsky 1940 în planul de proiecție național Stereo 70:
 
 $$\chi = \arctan \left( \sinh \left( \mathrm{arsinh}(\tan \varphi) - e \cdot \mathrm{artanh}(e \cdot \sin \varphi) \right) \right)$$
@@ -828,7 +828,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | Etapă | Descriere | Responsabil | Status |
 |---|---|---|---|
 | 34 | Integrare QgsMapToolExtent pentru desenare interactivă AOI pe ecran (Click stânga lung + tragere dreptunghi) | Membru 1 | ✅ Finalizat |
-| 35 | Citire automată CRS canvas activ și transformare geodezică instantanee în Stereo 70 (EPSG:31700) prin QgsCoordinateTransform dacă coordonatele diferă | Membru 1 | ✅ Finalizat |
+| 35 | Citire automată CRS canvas activ, suport dual Stereo 70 (EPSG:3844 ANCPI / EPSG:31700 legacy) și detecție 3D Marea Neagră 1975 (EPSG:5781) cu transformare geodezică instantanee prin QgsCoordinateTransform dacă coordonatele diferă | Membru 1 | ✅ Finalizat |
 | 36 | Integrare script auto-încărcare straturi. Instanțiere obiect QgsRasterLayer și randarea sa în arborele de straturi direct la finalizarea simulării (stadiu 100%) | Membru 1 | ✅ Finalizat |
 
 #### 🟩 Faza C: Conectivitate Hibridă (Etapele 37 – 40) — STATUS: FINALIZAT 100%
@@ -839,6 +839,15 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 38 | Tratare excepții de rețea, erori de tip 404/500 și Timeout prin ferestre native de eroare PyQt5 (QMessageBox) | Membru 1 | ✅ Finalizat |
 | 39 | Validare structurală a obiectului GeoJSON înainte de expedierea pachetului către server | Membru 1 | ✅ Finalizat |
 | 40 | Sincronizare fire de execuție client cu statusul asincron (Polling la /tasks/{id}) | Membru 1 | ✅ Finalizat |
+
+> **📌 Notă Audit Comparativ (Iulie 2026):** Din analiza proiectelor similare (Geo-SAM, Deepness, Mapflow, AI Segmentation TerraLab), au fost identificate următoarele funcționalități suplimentare necesare pe partea de client QGIS (Membru 1):
+> 1. **Regularizare contururi clădiri** (ortogonalizare colțuri 90° — se integrează la Etapa 72)
+> 2. **Validare topologică automată** (eliminare suprapuneri/goluri — se integrează la Etapa 74)
+> 3. **Bară de progres vizuală QProgressBar** (conectată la polling — extensie Etapa 40)
+> 4. **Selecție AOI multi-metodă** (poligon liber + selecție feature — extensie Etapa 34)
+> 5. **Preview rezultat în dockwidget** (thumbnail segmentare — extensie Etapa 36)
+> 6. **Selecție model AI din UI** (dropdown model + prag confidență — extensie Etapa 66)
+> 7. **Istoric procesări / Session Log** (jurnal JSON persistent — funcționalitate nouă)
 
 #### 🟦 Faza D: Ingestie Date & Database MLOps (Etapele 41 – 50) — SARCINI BACKEND
 
@@ -921,7 +930,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 | 85 | Segmentare AI căi de acces și suprafețe carosabile (drumuri, trotuare, parcări) | Membru 3 | ⬜ Neînceput |
 | 86 | Extragere cadru cadastru verde (identificare coronament arbori și suprafață spații verzi) | Membru 3 | ⬜ Neînceput |
 | 87 | Reconstrucție volumetrice 3D LOD1 (clădiri formate ca prisme drepte cu înălțime din LiDAR real) | Membru 2 | ⬜ Neînceput |
-| 88 | Estimare altimetrică monoculară (nDSM sintetic din Depth Anything V2) *(Modul experimental)* | Membru 3 | 🧪 Cercetare / Experimental |
+| 88 | Estimare altimetrică monoculară (nDSM sintetic din Metric3D sau Depth Anything V2 ca alternativă) *(Modul experimental)* | Membru 3 | 🧪 Cercetare / Experimental |
 | 89 | Extragere cota streașină și cota coamă din norul de puncte LiDAR real (`.laz`/`.las` / MNT LAKI) | Membru 2 | ⬜ Neînceput |
 | 90 | Reconstrucție geometrie 3D acoperiș LOD2 (clasificare acoperiș în două ape, terasă, mansardă) | Membru 3 | ⬜ Neînceput |
 | 91 | Export modele 3D în format CityGML / GeoPackage 3D pentru vizualizare spatială | Membru 2 | ⬜ Neînceput |

@@ -7,13 +7,17 @@ Acest document definește contractul unic de comunicare JSON dintre clientul des
 ## 1. Endpoint: Inițiere Task Segmentare
 * **Metodă HTTP:** POST
 * **Cale API:** `/api/v1/segmentation/process`
-* **Descriere:** Trimite un singur payload unificat care conține atât datele geometrice (Bounding Box complet România în EPSG:31700), cât și datele administrative (SIRUTA). Dacă una dintre metode nu este activă în UI, cheia respectivă va primi valoarea `null`.
+* **Descriere:** Trimite un singur payload unificat care conține atât datele geometrice (Bounding Box complet România în Stereo 70 EPSG:3844 / EPSG:31700 + Marea Neagră 1975 EPSG:5781), cât și datele administrative (SIRUTA). Dacă una dintre metode nu este activă în UI, cheia respectivă va primi valoarea `null`.
 
 ### Payload Unic Cerere (Request Body)
 ```json
 {
   "project_name": "Segmentare_Nationala_StratumRO",
-  "crs": "EPSG:31700",
+  "crs": "EPSG:3844",
+  "crs_vertical": "EPSG:5781",
+  "crs_compound": "EPSG:3844+5781",
+  "supported_crs": ["EPSG:3844", "EPSG:31700"],
+  "dimension": "3D",
   "aoi_selection_mode": "hybrid",
   "geometry": {
     "type": "Polygon",
@@ -81,3 +85,15 @@ Acest document definește contractul unic de comunicare JSON dintre clientul des
   ]
 }
 ```
+
+---
+
+## 3. Algoritmi & Modele AI Validate
+
+| Componentă | Model Ales | Alternativă Evaluată | Verdict |
+|------------|-----------|---------------------|---------|
+| Segmentare Clădiri | Meta SAM 2 | SAM 3 (batch discovery) | ✅ SAM 2 — precizie pixel cu prompt spatial LiDAR |
+| Orchestrator LLM | NVIDIA Nemotron-3 (Ollama) | Llama 4 Maverick/Scout | ✅ Nemotron-3 — raționament agentic superior |
+| Ortogonalizare | Minimizare unghiulară 90° | Frame Field Learning | ✅ Suficient pt clădiri standard ANCPI |
+| Estimare Monoculară | Depth Anything V2 | Metric3D | ⚠️ Metric3D recomandat — oferă adâncime metrică |
+| Procesare LiDAR | PDAL + laspy | - | ✅ Complementare — PDAL pipeline + laspy acces date |

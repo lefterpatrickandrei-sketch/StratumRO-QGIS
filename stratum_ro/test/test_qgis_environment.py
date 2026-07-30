@@ -44,6 +44,24 @@ class QGISTest(unittest.TestCase):
         self.assertTrue(layer.isValid())
         self.assertTrue(layer.crs().isValid())
 
+    def test_stereo70_3844(self):
+        """Test that QGIS can resolve modern ANCPI Stereo 70 (EPSG:3844)."""
+        crs = QgsCoordinateReferenceSystem("EPSG:3844")
+        self.assertTrue(crs.isValid())
+        self.assertEqual(crs.authid(), "EPSG:3844")
+
+    def test_stereo70_31700(self):
+        """Test that QGIS can resolve legacy Stereo 70 (EPSG:31700)."""
+        crs = QgsCoordinateReferenceSystem("EPSG:31700")
+        self.assertTrue(crs.isValid())
+        self.assertEqual(crs.authid(), "EPSG:31700")
+
+    def test_vertical_marea_neagra(self):
+        """Test that QGIS can resolve vertical CRS Marea Neagră 1975 (EPSG:5781)."""
+        crs = QgsCoordinateReferenceSystem("EPSG:5781")
+        self.assertTrue(crs.isValid())
+        self.assertEqual(crs.authid(), "EPSG:5781")
+
 
 if __name__ == "__main__":
     unittest.main()
