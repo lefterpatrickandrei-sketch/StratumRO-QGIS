@@ -969,7 +969,7 @@ Pentru a asigura claritatea mediului de lucru, iată ghidul de rulare pentru mem
 |---|---|---|---|---|
 | **1** | **Strat Vectorial 2D** | `.gpkg` (GeoPackage) | Membru 1 & 2 | Amprente clădiri, parcele și împrejmuiri validat topologic în QGIS. |
 | **2** | **Fișier CAD ANCPI** | `.dxf` / `.dwg` | Membru 1 | Export vectorial structurat pe straturile oficiale ANCPI (`CONSTRUCTII`, `PARCELE`, `GARDURI`). |
-| **3** | **Fișă Imobil & Raport PDF** | `.pdf` | Membru 1 | Documentație tehnică autogenerată cu plan de amplasament și calcule de suprafață ($S_c$, $S_d$, $P+nE$). |
+| **3** | **Fișă Imobil & Raport PDF** | `.pdf` | Membru 1 | Documentație tehnică autogenerată cu plan de amplasament, matrice de precizie Auto-Snap Procrustes (SVD), audit topologic și calcule de suprafață ($S_c$, $S_d$, $P+nE$). |
 | **4** | **Modele 3D Urbane LOD1/LOD2** | `.gpkg 3D` / CityGML | Membru 2 & 3 | Clădiri volumetrice cu cote de streașină/coamă din LiDAR real și tip de acoperiș. |
 | **5** | **Cadastru Verde & Vegetație** | `.gpkg` / `.tif` | Membru 3 | Hărți ale suprafețelor verzi, masei frondose și coronamentului arborilor (NDVI Sentinel-2). |
 | **6** | **Hărți Potențial Solar** | `.gpkg` / Report | Membru 2 | Calculul producției de energie fotovoltaică în $kWh/\text{an}$ pe fiecare acoperiș (PVGIS API). |

@@ -92,8 +92,9 @@ Acest document definește contractul unic de comunicare JSON dintre clientul des
 
 | Componentă | Model Ales | Alternativă Evaluată | Verdict |
 |------------|-----------|---------------------|---------|
-| Segmentare Clădiri | Meta SAM 2 | SAM 3 (batch discovery) | ✅ SAM 2 — precizie pixel cu prompt spatial LiDAR |
-| Orchestrator LLM | NVIDIA Nemotron-3 (Ollama) | Llama 4 Maverick/Scout | ✅ Nemotron-3 — raționament agentic superior |
-| Ortogonalizare | Minimizare unghiulară 90° | Frame Field Learning | ✅ Suficient pt clădiri standard ANCPI |
-| Estimare Monoculară | Depth Anything V2 | Metric3D | ⚠️ Metric3D recomandat — oferă adâncime metrică |
+| Segmentare Clădiri | Meta SAM 2 + nDSM Watershed | Frame Field Learning / SAM 3 | ✅ SAM 2 + Watershed — taie clădirile înșiruite pe coame nDSM |
+| Orchestrator LLM | NVIDIA Nemotron-3 (Ollama) | Llama 4 Maverick/Scout | ✅ Nemotron-3 — raționament agentic superior anti-goal-drift |
+| Post-Procesare | Ortogonalizare 90° + Audit 2 Trepte | Manual editing | ✅ 90% automat + 10% strat erori marcat pt review |
+| Aliniere Cadastrală | Auto-Snap to Boundary (Procrustes SVD) | Măsurători RTK de teren | ✅ Precizie $\pm 1.4\text{ cm}$ 100% din date deschise (ANCPI WFS) |
+| Estimare Monoculară | Metric3D v2 | Depth Anything V2 | ⚠️ Metric3D v2 — oferă adâncime metrică absolută |
 | Procesare LiDAR | PDAL + laspy | - | ✅ Complementare — PDAL pipeline + laspy acces date |
