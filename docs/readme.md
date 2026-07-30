@@ -117,6 +117,8 @@ Workspace-ul proiectului este structurat conform standardelor profesionale PyQGI
 QGIS-AI/ (Workspace Principal)
 ├── docs/
 │   ├── architecture.md                 # Specificațiile tehnice și contractul API unificat
+│   ├── debate_and_sota_strategy_30_july_2026.md  # Master Document dezbatere SOTA, strategie 3D & aliniere Auto-Snap
+│   ├── implementation_plan_30_july_2026.md        # Auditul algoritmilor și planul de actualizare din 30 Iulie 2026
 │   └── readme.md                       # Acest ghid tehnic unificat (Manualul Proiectului)
 ├── mcp/                                # Servicii FastMCP & Management Dataset-uri
 │   ├── filesystem/
