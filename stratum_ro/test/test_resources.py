@@ -14,10 +14,14 @@ __copyright__ = 'Copyright 2026, Lefter Patrick Andrei , GeoMateLINE'
 
 import unittest
 
-from qgis.PyQt.QtGui import QIcon
+try:
+    from qgis.PyQt.QtGui import QIcon
+    HAS_QGIS = True
+except (ImportError, ModuleNotFoundError):
+    HAS_QGIS = False
 
 
-
+@unittest.skipUnless(HAS_QGIS, "QGIS library is required for this test")
 class StratumRODialogTest(unittest.TestCase):
     """Test rerources work."""
 

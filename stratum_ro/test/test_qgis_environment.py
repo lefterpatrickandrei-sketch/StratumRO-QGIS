@@ -15,13 +15,18 @@ __copyright__ = "Copyright 2012, Australia Indonesia Facility for " "Disaster Re
 
 import os
 import unittest
-from qgis.core import QgsProviderRegistry, QgsCoordinateReferenceSystem, QgsRasterLayer
 
-from .utilities import get_qgis_app
+try:
+    from qgis.core import QgsProviderRegistry, QgsCoordinateReferenceSystem, QgsRasterLayer
+    from .utilities import get_qgis_app
+    QGIS_APP = get_qgis_app()
+    HAS_QGIS = True
+except (ImportError, ModuleNotFoundError):
+    HAS_QGIS = False
+    QGIS_APP = None
 
-QGIS_APP = get_qgis_app()
 
-
+@unittest.skipUnless(HAS_QGIS, "QGIS library is required for this test")
 class QGISTest(unittest.TestCase):
     """Test the QGIS Environment"""
 

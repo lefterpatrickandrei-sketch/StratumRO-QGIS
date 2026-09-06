@@ -14,15 +14,18 @@ __copyright__ = 'Copyright 2026, Lefter Patrick Andrei , GeoMateLINE'
 
 import unittest
 
-from qgis.PyQt.QtWidgets import QDockWidget
+try:
+    from qgis.PyQt.QtWidgets import QDockWidget
+    from stratum_ro.stratum_ro_dockwidget import StratumRODockWidget
+    from .utilities import get_qgis_app
+    QGIS_APP = get_qgis_app()
+    HAS_QGIS = True
+except (ImportError, ModuleNotFoundError):
+    HAS_QGIS = False
+    QGIS_APP = None
 
-from stratum_ro_dockwidget import StratumRODockWidget
 
-from utilities import get_qgis_app
-
-QGIS_APP = get_qgis_app()
-
-
+@unittest.skipUnless(HAS_QGIS, "QGIS library is required for this test")
 class StratumRODockWidgetTest(unittest.TestCase):
     """Test dockwidget works."""
 

@@ -36,6 +36,26 @@ desktop.ini
 .pytest_cache/
 .mypy_cache/
 
+# Secrets & Local Environment
+.env
+.env.*
+*.env
+
+# AI Models & Large Weights (>100MB)
+models/
+*.pt
+*.pth
+*.onnx
+*.bin
+*.safetensors
+
+# Workspace & Large Geodata Caches
+workspace/
+scratch/
+scratch_*.py
+tools/llm_test_results/
+.ipynb_checkpoints/
+
 # Obsidian & Agents
 Obsidian workflow/
 .agents/

@@ -7,20 +7,20 @@
      (at your option) any later version.
 
 """
-from .utilities import get_qgis_app
-
-__author__ = 'ismailsunni@yahoo.co.id'
-__date__ = '12/10/2011'
-__copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
-                 'Disaster Reduction')
 import unittest
 import os
 
-from qgis.PyQt.QtCore import QCoreApplication, QTranslator
+try:
+    from qgis.PyQt.QtCore import QCoreApplication, QTranslator
+    from .utilities import get_qgis_app
+    QGIS_APP = get_qgis_app()
+    HAS_QGIS = True
+except (ImportError, ModuleNotFoundError):
+    HAS_QGIS = False
+    QGIS_APP = None
 
-QGIS_APP = get_qgis_app()
 
-
+@unittest.skipUnless(HAS_QGIS, "QGIS library is required for this test")
 class SafeTranslationsTest(unittest.TestCase):
     """Test translations work."""
 
