@@ -1,13 +1,16 @@
-# Arhitectură Sistem & Contract API — StratumRO
+# Arhitectură Sistem & Evoluție Tehnică — StratumRO
 
-Acest document definește contractul unic de comunicare JSON dintre clientul desktop QGIS și backend-ul FastAPI / MLOps Pipeline.
+> [!NOTE]
+> **Notă Istorică de Versiune:**
+> - **Faza 1 (Arhitectură Istorică):** Protocolul client-server REST FastAPI descris în Secțiunile 1–2 reprezintă proiectarea inițială pentru procesare distribuită/headless.
+> - **Faza 2 (Arhitectură Curentă Activă):** Platformă integrată nativ în **QGIS Desktop & QGIS Processing Framework**, utilizând procesare locală prin Python (`stratum_ro`), fuziune nDSM + SAM2, motor de inferență ONNX Runtime / DirectML, export direct TopoLT CAD (`1CC`/`2CC`) și extrudare 3D LoD1 (`MultiPolygonZ` & CityJSON v1.1).
 
 ---
 
-## 1. Endpoint: Inițiere Task Segmentare
+## 1. [Istoric / Opțional] Endpoint: Inițiere Task Segmentare (FastAPI v1)
 * **Metodă HTTP:** POST
 * **Cale API:** `/api/v1/segmentation/process`
-* **Descriere:** Trimite un singur payload unificat care conține atât datele geometrice (Bounding Box complet România în Stereo 70 EPSG:3844 / EPSG:31700 + Marea Neagră 1975 EPSG:5781), cât și datele administrative (SIRUTA). Dacă una dintre metode nu este activă în UI, cheia respectivă va primi valoarea `null`.
+* **Descriere:** Protocol pentru servere de calcul la distanță. Trimite un payload unificat conținând parametrii geometrici și administrativi.
 
 ### Payload Unic Cerere (Request Body)
 ```json
@@ -46,55 +49,21 @@ Acest document definește contractul unic de comunicare JSON dintre clientul des
 
 ---
 
-## 2. Endpoint: Interogare Status Task (Polling)
+## 2. [Istoric / Opțional] Endpoint: Interogare Status Task (Polling v1)
 * **Metodă HTTP:** GET
 * **Cale API:** `/api/v1/tasks/{task_id}`
-* **Descriere:** Interogare asincronă periodică (de la 2 în 2 secunde, cu un timeout maxim de 5 minute / 150 de încercări) executată de firul de fundal `SegmentationWorker` (PyQt QThread) pentru a monitoriza stadiul de procesare al task-ului înregistrat pe server.
-
-### Răspuns JSON în Curs de Procesare (HTTP 200)
-```json
-{
-  "status": "processing",
-  "progress": 45,
-  "results": null,
-  "errors": []
-}
-```
-
-### Răspuns JSON la Finalizare cu Succes (HTTP 200)
-```json
-{
-  "status": "completed",
-  "progress": 100,
-  "results": {
-    "raster_path": "/data/output/Oradea_26573/segmentation.tif",
-    "vector_path": "/data/output/Oradea_26573/buildings.gpkg"
-  },
-  "errors": []
-}
-```
-
-### Răspuns JSON la Eșec (HTTP 200)
-```json
-{
-  "status": "failed",
-  "progress": 0,
-  "results": null,
-  "errors": [
-    "Eroare procesare LiDAR: fișier inaccesibil sau invalid"
-  ]
-}
-```
+* **Descriere:** Monitorizare asincronă a progresului pentru backend-uri remote.
 
 ---
 
-## 3. Algoritmi & Modele AI Validate
+## 3. Algoritmi & Modele AI: Analiză Tehnico-Științifică
 
-| Componentă | Model Ales | Alternativă Evaluată | Verdict |
-|------------|-----------|---------------------|---------|
-| Segmentare Clădiri | Meta SAM 2 + nDSM Watershed | Frame Field Learning / SAM 3 | ✅ SAM 2 + Watershed — taie clădirile înșiruite pe coame nDSM |
-| Orchestrator LLM | NVIDIA Nemotron-3 (Ollama) | Llama 4 Maverick/Scout | ✅ Nemotron-3 — raționament agentic superior anti-goal-drift |
-| Post-Procesare | Ortogonalizare 90° + Audit 2 Trepte | Manual editing | ✅ 90% automat + 10% strat erori marcat pt review |
-| Aliniere Cadastrală | Auto-Snap to Boundary (Procrustes SVD) | Măsurători RTK de teren | ✅ Precizie $\pm 1.4\text{ cm}$ 100% din date deschise (ANCPI WFS) |
-| Estimare Monoculară | Metric3D v2 | Depth Anything V2 | ⚠️ Metric3D v2 — oferă adâncime metrică absolută |
-| Procesare LiDAR | PDAL + laspy | - | ✅ Complementare — PDAL pipeline + laspy acces date |
+| Componentă | Metodă / Model Ales | Alternativă Evaluată | Statut de Evidență & Realitate Tehnică |
+| :--- | :--- | :--- | :--- |
+| **Segmentare Clădiri** | Fuziune Meta SAM 2 + nDSM | Watershed clasic / SAM 3 | **IMPLEMENTAT & MĂSURAT:** IoU 0.621–0.818 pe setul Tier-1 (29 clădiri). Constrângerea altimetrică elimină umbrele și vegetația joasă. |
+| **Inferență Zero-CUDA** | ONNX Runtime + DirectML | PyTorch + CUDA manual | **IMPLEMENTAT (SCHELET):** Wrapper de provider DirectML/CPU funcțional. Conversia și validarea numerică a greutăților SAM2 ONNX sunt în curs. |
+| **Post-Procesare** | Ortogonalizare 90° Canonică | Simplificare Ramer-Douglas | **IMPLEMENTAT & TESTAT:** Potrivire dreptunghi rotit (4 noduri) pentru corpuri simple; `buildingregulariser` pentru poligoane complexe. |
+| **Aliniere Cadastrală** | Auto-Snap to Boundary (Procrustes SVD) | Măsurători terestre RTK | ⚠️ **TEORETIC / NEVALIDAT PE TEREN:** Procrustes oferă o potrivire matematică pe contururi WFS ANCPI existente. **NU constituie precizie de teren $\pm 1.4\text{ cm}$** în absența unei campanii GNSS RTK independente. |
+| **Livrabile Cadastru** | TopoLT (`1CC`, `2CC`, `CP`, `VARFURI`, `NUMERE_PCT`) + PAD | Export DXF generic | **IMPLEMENTAT & TESTAT:** Generare automată tabel PAD (Ordinul 600/2023) și fișier de schimb `.cp` pentru eTerra. |
+| **Reconstrucție 3D** | LoD1 Solid Shell (`MultiPolygonZ`) & CityJSON 1.1 | Poligoane 2D plate | **IMPLEMENTAT & TESTAT:** Solide etanșe bazate pe $Z_{\text{sol}}$ și $Z_{\text{cornisa}}$ vizualizabile nativ în QGIS 3D Canvas. RANSAC 3D pentru orientare acoperiș. |
+| **Procesare LiDAR** | `laspy` + `scipy.ndimage` | PDAL pipeline extern | **IMPLEMENTAT & TESTAT:** Extragere nDSM și separare pe clase morfologice în Stereo 70 (EPSG:3844). |

@@ -13,7 +13,12 @@
 [![3D Standard](https://img.shields.io/badge/3D%20City-LoD1%20Solid%20%7C%20CityJSON%201.1-blueviolet.svg)](https://www.cityjson.org/)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](LICENSE)
 
-**StratumRO** este o platformă geomatică și MLOps de nivel industrial concepută pentru automatizarea extracției, regularizării ortogonale și clasificării fondului cadastral și funciar din România. Sistemul fuzionează nori de puncte **LiDAR aeropurtat (LAKI/ANCPI)** cu mozaicuri **ortofotoplan de înaltă rezoluție (15 cm GSD)** în proiecție oficială **Stereo 70 (EPSG:3844)**, generând livrabile conforme cu **Ordinul ANCPI nr. 600/2023** și compatibile direct cu **TopoLT**, **AutoCAD**, **QGIS 3D** și **CityJSON**.
+**StratumRO** este o platformă geomatică și MLOps concepută pentru automatizarea extracției, regularizării ortogonale și clasificării fondului cadastral și funciar din România. Sistemul fuzionează nori de puncte **LiDAR aeropurtat (LAKI/ANCPI)** cu mozaicuri **ortofotoplan de înaltă rezoluție (15 cm GSD)** în proiecție oficială **Stereo 70 (EPSG:3844)**, generând livrabile conforme cu **Ordinul ANCPI nr. 600/2023** și compatibile direct cu **TopoLT**, **AutoCAD**, **QGIS 3D** și **CityJSON**.
+
+> [!IMPORTANT]
+> **Poziționare & Rigoare Științifică (Asistență Pre-Cadastrală):**  
+> StratumRO este proiectat ca un sistem de **asistență pre-cadastrală și accelerare a digitizării geodezice (reducere cu 89% a efortului manual de trasare)**.  
+> Sistemul generează amprente candidate regularizate la 90° și planșe CAD/PAD pentru a elimina rutina de birou a geodezului. Conform legislației ANCPI (Ordinul 600/2023), recepția cadastrală oficială și intabularea necesită **obligatoriu verificarea și asumarea de către un inginer topograf / geodez autorizat**. Pentru detalii de verificare și trasabilitate, consultați [`docs/TECHNICAL_STATUS.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/TECHNICAL_STATUS.md) și [`docs/EVIDENCE_MATRIX.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/EVIDENCE_MATRIX.md).
 
 ---
 
@@ -24,13 +29,14 @@
 - [4. 🏛️ Integrare TopoLT & Generator Tabel PAD (Nou)](#4-️-integrare-topolt--generator-tabel-pad-nou)
 - [5. 🏢 Extrudare Volumetrică 3D LoD1 & CityJSON (Nou)](#5--extrudare-volumetrică-3d-lod1--cityjson-nou)
 - [6. ⚡ Motor de Inferență ONNX Runtime & Zero-CUDA (Nou)](#6--motor-de-inferență-onnx-runtime--zero-cuda-nou)
-- [7. 🏆 Matrice Comparativă SOTA (Benchmarking Internațional)](#7--matrice-comparativă-sota-benchmarking-internațional)
-- [8. 🔬 Inovații Algoritmice Cheie](#8--inovații-algoritmice-cheie)
-- [9. 📂 Structura Repository-ului](#9--structura-repository-ului)
-- [10. 🛠️ Ghid de Instalare & Rulare](#10-️-ghid-de-instalare--rulare)
-- [11. 🧪 Testare & Verificare (40 Teste Unitare)](#11--testare--verificare-40-teste-unitare)
-- [12. 📜 Cadrul Legislativ & Standarde Tehnice](#12--cadrul-legislativ--standarde-tehnice)
-- [13. 🇬🇧 English Summary](#13--english-summary)
+- [7. ⚖️ Comparație Funcțională & Arhitecturală (Feature Matrix)](#7-️-comparație-funcțională--arhitecturală-feature-matrix)
+- [8. 📊 Evidențe Măsurate & Raport de Ablație Reprodus](#8--evidențe-măsurate--raport-de-ablație-reprodus)
+- [9. 🔬 Inovații Algoritmice Cheie](#9--inovații-algoritmice-cheie)
+- [10. 📂 Structura Repository-ului](#10--structura-repository-ului)
+- [11. 🛠️ Ghid de Instalare & Rulare](#11-️-ghid-de-instalare--rulare)
+- [12. 🧪 Testare & Verificare (40 Teste Unitare)](#12--testare--verificare-40-teste-unitare)
+- [13. 📜 Cadrul Legislativ & Standarde Tehnice](#13--cadrul-legislativ--standarde-tehnice)
+- [14. 🇬🇧 English Summary](#14--english-summary)
 
 ---
 
@@ -164,9 +170,13 @@ Pentru a elimina „iadul instalării CUDA” din mediul OSGeo4W/QGIS:
 
 ---
 
-## 7. 🏆 Matrice Comparativă SOTA (Benchmarking Internațional)
+## 7. ⚖️ Comparație Funcțională & Arhitecturală (Feature Matrix)
 
-| Criteriu de Evaluare | StratumRO (v0.2.0) | Deepness QGIS | Geo-SAM / samgeo | 3DBAG (TU Delft) | PolyWorld (CVPR) |
+> [!NOTE]
+> **Notă Metodologică de Rigoare:**  
+> Tabelul de mai jos reflectă o **comparație funcțională și arhitecturală** a capabilităților native, formatelor de schimb cadastral și integrărilor suportate. Nu reprezintă un benchmark numeric pe date identice, întrucât instrumentele comparate adresează piețe geospațiale și formate naționale diferite.
+
+| Capabilitate Funcțională | StratumRO (v0.2.0) | Deepness QGIS | Geo-SAM / samgeo | 3DBAG (TU Delft) | PolyWorld (CVPR) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Fuziune LiDAR nDSM + Ortofoto** | ✅ **Da** | ❌ Nu (Doar Raster) | ❌ Nu (Doar Raster) | ✅ Da (LiDAR + Amprentă) | ❌ Nu (Doar RGB) |
 | **Motor Inferență AI** | 🌟 **ONNX + DirectML** | 🌟 ONNX Runtime | PyTorch / TorchScript | ❌ C++/CGAL | PyTorch GNN |
@@ -179,24 +189,60 @@ Pentru a elimina „iadul instalării CUDA” din mediul OSGeo4W/QGIS:
 
 ---
 
-## 8. 🔬 Inovații Algoritmice Cheie
+## 8. 📊 Evidențe Măsurate & Raport de Ablație Reprodus
 
-### 4.1 Fuziune Spectral-Altimetrică Meta SAM 2 + LiDAR
+Toate cifrele de mai jos sunt **reproduse independent** prin scriptul de verificare [`tools/verify_ground_truth_and_metrics.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/verify_ground_truth_and_metrics.py) pe setul de referință etalon:
+- **Fișier Ground Truth:** [`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson) (Hash MD5: `30B95D3EC95B2EA7DC09F6F47E30BBE9`)
+- **Areal Pilot:** Campus USAMV Cluj-Napoca (46.5 ha, 29 clădiri de referință cadastrală)
+- **Manifest Ablație Salvat:** [`reports/ablation/ablation_manifest.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/ablation/ablation_manifest.json) & [`reports/ablation/ablation_results.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/ablation/ablation_results.csv)
+
+### 8.1 Sinteză Metrici Geodezice Recalculate
+* **Subset Împerecheri 1:1 Curate (16 clădiri):**
+  - **IoU Median:** **0.818** | **IoU Mediu:** **0.746** ($\pm 0.174$, Interval Confidență 95%: $[0.653, 0.838]$)
+  - **Boundary RMSE Median:** **1.519 m** | **RMSE Mediu:** **2.649 m**
+  - **Hausdorff Median:** **4.553 m**
+* **Set Global Extins (17 referințe acoperite din 29):**
+  - **IoU Mediu Global:** **0.615** ($\pm 0.286$)
+* **Analiza Detecțiilor & False Positives:**
+  - **True Positives (TP):** 17 (18 clădiri AI suprapuse peste GT la $IoU \ge 0.30$)
+  - **False Negatives (FN):** 8 clădiri (corpuri joase sub coronament dens de arbori)
+  - **False Positives (FP):** 116 predicții fără corespondent în etalonul restrâns de 29.  
+    *(Clarificare metodologică: majoritatea sunt clădiri reale existente pe teritoriul AOI de 46.5 ha, dar nedigitizate în setul parțial de 29 de clădiri de test, plus declanșări pe containere sau sere, demonstrând necesitatea filtrării umane în fluxul de pre-cadastru).*
+* **Realitate Certificare Legală ($\le 10\text{ cm}$):**
+  - **0 din 29 clădiri (0.0%)** ating toleranța legală ANCPI de $\le 10\text{ cm}$ direct din date aeriene, confirmând că datele fotogrammetrice necesită completare terestră (GNSS RTK).
+
+### 8.2 Matricea de Ablație Experimentală (Impactul Incremental al Subsistemelor)
+
+| Configurație | Subsisteme Incluse | Predicții | TP | FP | FN | Perechi 1:1 | IoU Median | IoU Mediu | RMSE Median |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Config A** | Doar LiDAR nDSM | 575 | 6 | 569 | 23 | 6 | 0.635 | 0.693 | 3.079 m |
+| **Config B** | Doar SAM 2 Optic | 149 | 16 | 131 | 8 | 16 | 0.719 | 0.691 | 1.759 m |
+| **Config C** | Hibrid Ne-regularizat | 134 | 17 | 116 | 8 | 16 | 0.816 | 0.746 | 1.530 m |
+| **Config D** | Hibrid + Regularizare 90° | 134 | 17 | 116 | 8 | 16 | **0.818** | **0.746** | 1.519 m |
+| **Config E** | Hibrid + Reg 90° + Streașină | 134 | 17 | 116 | 8 | 16 | 0.813 | **0.748** | **1.381 m** |
+
+> Pentru documentația completă a evidențelor, consultați [`docs/TECHNICAL_STATUS.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/TECHNICAL_STATUS.md), [`docs/EVIDENCE_MATRIX.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/EVIDENCE_MATRIX.md) și protocolul pentru următorul sit pilot în [`docs/PILOT_PLAN.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/PILOT_PLAN.md).
+
+---
+
+## 9. 🔬 Inovații Algoritmice Cheie
+
+### 9.1 Fuziune Spectral-Altimetrică Meta SAM 2 + LiDAR
 - Prompting automat din bounding-box-urile calculate pe modelul numeric al înălțimii coronamentului/clădirilor ($nDSM = DSM - DTM$).
 - SAM 2 (Large Hiera Checkpoint) detectează conturul vizual cu precizie sub-metrică pe ortofotoplanul de 15 cm.
 - Corecție hibridă: dacă SAM 2 deviază în umbră sau sol, masca este constrânsă altimetric de masca nDSM ($H \ge 2.5\text{ m}$).
 
-### 4.2 Regularizator Canonic cu 4 Noduri
+### 9.2 Regularizator Canonic cu 4 Noduri
 - Pentru clădiri rezidențiale individuale cu rectangularitate $\ge 0.68$, poligonul este înlocuit cu **Minimum Rotated Bounding Rectangle** orientat după axa principală a clădirii.
 - Pentru poligoane complexe în formă de L, U sau T, se aplică `buildingregulariser` cu prag de unghi drept la $90^\circ \pm 12^\circ$.
 
-### 4.3 Filtru Multi-Excludere pentru Vegetație
+### 9.3 Filtru Multi-Excludere pentru Vegetație
 - În mod uzual, rândurile de viță de vie (spalieri de $1.5 - 2.5\text{ m}$) și pietrele funerare din cimitire generează mii de alarme false de arbori.
 - StratumRO aplică o intersecție spațială cu `STRAT_EXCLUDERE = DR \cup VN \cup CIMITIR \cup HR \cup CLADIRI`, eliminând peste 70% din zgomotul de puncte.
 
 ---
 
-## 9. 📂 Structura Repository-ului
+## 10. 📂 Structura Repository-ului
 
 ```text
 QGIS-AI/
@@ -242,15 +288,15 @@ QGIS-AI/
 
 ---
 
-## 10. 🛠️ Ghid de Instalare & Rulare
+## 11. 🛠️ Ghid de Instalare & Rulare
 
-### 10.1 Cerințe de Sistem
+### 11.1 Cerințe de Sistem
 - **Sistem de Operare:** Windows 10/11 x64 sau Linux Ubuntu 22.04+
 - **Python:** 3.10 sau 3.11
 - **Accelerare GPU (Opțional):** Orice GPU NVIDIA, AMD sau Intel compatibil DirectX 12 via **DirectML** (fără drivere manuale CUDA).
 - **QGIS:** 3.22 LTR sau mai nou (recomandat 3.28 LTR / 3.40 Bratislava).
 
-### 10.2 Instalare Rapidă (Quickstart)
+### 11.2 Instalare Rapidă (Quickstart)
 Creați și activați un mediu virtual:
 ```bash
 python -m venv venv
@@ -267,7 +313,7 @@ pip install -r requirements.txt
 pip install onnxruntime shapely geopandas rasterio laspy[laszip] ezdxf buildingregulariser
 ```
 
-### 10.3 Rularea Pipeline-ului pe Zona de Interes (AOI)
+### 11.3 Rularea Pipeline-ului pe Zona de Interes (AOI)
 Executați procesarea completă:
 ```bash
 python run_hybrid_full_aoi.py
@@ -281,7 +327,7 @@ Scriptul execută automat:
 
 ---
 
-## 11. 🧪 Testare & Verificare (40 Teste Unitare)
+## 12. 🧪 Testare & Verificare (40 Teste Unitare)
 
 Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX, a extrudării 3D și a furnizorului QGIS Processing:
 ```bash
@@ -291,7 +337,7 @@ Rezultat verificat:
 ```text
 ........................ssssssss........
 ----------------------------------------------------------------------
-Ran 40 tests in 2.995s
+Ran 40 tests in 2.116s
 
 OK (skipped=8)
 ```
@@ -299,7 +345,7 @@ OK (skipped=8)
 
 ---
 
-## 12. 📜 Cadrul Legislativ & Standarde Tehnice
+## 13. 📜 Cadrul Legislativ & Standarde Tehnice
 
 Implementarea StratumRO respectă direct specificațiile geodezice și cadastrale din România:
 - **Ordinul ANCPI nr. 600/2023:** Aprobarea Regulamentului de recepție și înscriere în evidențele de cadastru și carte funciară (Art. 285 - Delimitarea sectoarelor cadastrale; Anexa 1.34/1.35 - Planul de Amplasament și Delimitare PAD).
@@ -309,7 +355,7 @@ Implementarea StratumRO respectă direct specificațiile geodezice și cadastral
 
 ---
 
-## 13. 🇬🇧 English Summary
+## 14. 🇬🇧 English Summary
 
 **StratumRO** is an industrial-grade geomatics and MLOps platform developed to automate the extraction, 90-degree regularization, and classification of cadastral building footprints and land use in Romania.
 
