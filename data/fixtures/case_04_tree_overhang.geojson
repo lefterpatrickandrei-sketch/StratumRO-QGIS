@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "name": "case_04_tree_overhang",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3844"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CASE_04_CANOPY_OVERHANG",
+        "description": "Clădire dreptunghiulară cu colțul NV parțial acoperit de coronament",
+        "morphology": "RECTANGULAR_WITH_CANOPY",
+        "expected_vertices": 4,
+        "true_area_m2": 140.0,
+        "risk_note": "Risc: Masca optică SAM2 se deformează după frunziș dacă nDSM nu constrânge conturul pe înălțimea peretelui"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [390910.0, 585200.0],
+            [390924.0, 585200.0],
+            [390924.0, 585210.0],
+            [390910.0, 585210.0],
+            [390910.0, 585200.0]
+          ]
+        ]
+      }
+    }
+  ]
+}

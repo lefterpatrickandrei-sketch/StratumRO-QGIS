@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "name": "case_05_long_shadow",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3844"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CASE_05_LONG_SHADOW",
+        "description": "Clădire P+2E (H=10.5m) cu umbră optică de 4.5m pe fațada nordică",
+        "morphology": "RECTANGULAR_HIGH_RISE",
+        "expected_vertices": 4,
+        "true_area_m2": 300.0,
+        "risk_note": "Risc: Fără filtrare altimetrică nDSM, masca optică se extinde în pata de umbră pe terenul natural"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [390940.0, 585200.0],
+            [390960.0, 585200.0],
+            [390960.0, 585215.0],
+            [390940.0, 585215.0],
+            [390940.0, 585200.0]
+          ]
+        ]
+      }
+    }
+  ]
+}

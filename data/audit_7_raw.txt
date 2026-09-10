@@ -1,0 +1,317 @@
+<USER_REQUEST>
+Audit #7 — Verificarea Rezoluției Auditului #6 (Antigravity)
+
+Auditor: Kimi (LLM, Moonshot AI)
+Limitare declarată: Nu am acces la repository, fișiere locale, GeoPackage-uri, ortofoto sau execuție cod. Verific exclusiv textul și cifrele raportate în RAPORT_AUDIT_6_REZOLUTIE.md. Toate calculele matematice se bazează pe cifrele furnizate de Antigravity.
+Data: 2026-09-10
+Obiect: Rezoluția Auditului #6 — investigarea erorii sistematice de 2–3 m
+Format: Markdown
+
+---
+
+1. Verdict rapid (TL;DR)
+
+Antigravity a executat testele cerute și a găsit ceea ce pare a fi cauza reală a erorii de 2.8 m — un bias direcțional de translație pe axa N–S. Aceasta este o descoperire importantă și bine documentată.
+
+DAR concluzia „85% din eroare provine din georeferențierea OSM" este prematură și potențial incorectă. Biasul de −2.78 m a fost identificat comparând două seturi de date ambele transformate de Antigravity în Stereo 70. Dacă există o eroare de transformare datum, ea este în pipeline-ul de conversie folosit de Antigravity, nu în OSM.
+
+Aceasta schimbă fundamental interpretarea: dacă biasul este o eroare de transformare WGS84→Stereo70, atunci:
+
+· Pipeline-ul StratumRO ar putea fi mult mai bun decât cifrele sugerează;
+· Sau, dacă predicția (CLADIRI_HIBRID) este corect în Stereo70, iar OSM a fost transformat greșit de Antigravity, atunci benchmark-ul este complet invalidat — nu pentru că OSM e rău, ci pentru că transformarea aplicată OSM-ului e diferită de cea corectă.
+
+Recomandare critică: Verifică dacă pyproj folosește transformarea oficială română pentru Stereo70. Dacă nu, re-transformează și re-rulează. Rezultatul poate schimba complet concluzia.
+
+Scor Faza 2d: 6.5/10 — diagnostic tehnic valoros, concluzie nefondată.
+
+---
+
+2. Verificare matematică a cifrelor raportate
+
+2.1. Biasul direcțional
+
+Clădire ΔX (m) ΔY (m) Distanță (m)
+Clinica Iris ? ? raportat ca „?”
+Adormirea ? ? raportat ca „?”
+USAMV #104 ? ? raportat ca „?”
+USAMV #155 ? ? raportat ca „?”
+Medie −0.16 −2.78 2.78
+
+Verificare: Cifrele individuale nu sunt afișate în raport, doar mediile. Nu pot verifica independent.
+σ(dY) = 0.63 m raportat — cu doar 4 valori, aceasta este o deviație standard eșantion, ceea ce sugerează că cele 4 valori au fost aproape constante (±0.63 m față de medie). Aceasta este semnătura unui bias de translație, nu a unei erori aleatoare.
+
+2.2. Compensarea biasului
+
+Metrică Original După shift (+0.16, +2.78) Îmbunătățire
+IoU mediu 0.495 0.710 +43.6%
+RMSE 2.845 m 1.662 m −41.6%
+Hausdorff 6.353 m ? (neraportat complet) ?
+
+Verificare: Cifrele sunt consistente intern. Dacă elimini complet un bias de 2.78 m, te aștepți la o reducere substanțială a RMSE — de la 2.845 m la ~1.66 m (rămân ~1.4 m eroare reziduală, probabil din diferențe de formă și streașină). Plauzibil matematic.
+
+2.3. Sweep offset streașină
+
+Raportat: variația offset-ului de la 0 la −0.40 m schimbă RMSE-ul cu doar 4.6 cm.
+
+Verificare: Această observație este corectă și importantă. Elimină streașina ca sursă a erorii de 2.8 m.
+
+2.4. Test Helmert 7-parametru
+
+Transcriptul arată că Antigravity a rulat un test comparând:
+
+· Transformer.from_crs('EPSG:4326', 'EPSG:3844') (default pyproj)
+· Transformarea explicită cu +towgs84=2.329,-147.042,-92.08,0.309,-0.324,-0.497,5.69
+
+DAR: Rezultatul calculat (dX, dY între cele două transformări) nu este afișat în raport. Aceasta este cea mai importantă informație lipsă.
+
+Dacă diferența este mică (sub 10 cm), atunci ipoteza „transformare greșită" cade.
+Dacă diferența este de ordinul 2–3 m, atunci cauza este identificată.
+
+---
+
+3. Analiza critică a concluziei „85% din eroare provine din OSM"
+
+3.1. Problema fundamentală: cine a transformat datele?
+
+Fluxul raportat în transcript:
+
+```text
+OSM (WGS84, EPSG:4326)
+    │
+    │  ← Antigravity aplică Transformer.from_crs(4326→3844)
+    ▼
+OSM în Stereo70 (EPSG:3844)  ← tier4_osm_diagnostic_cluj.geojson
+    │
+    │  ← Comparat cu
+    ▼
+CLADIRI_HIBRID (deja în Stereo70)  ← output pipeline StratumRO
+```
+
+Ambele seturi sunt în Stereo70 la momentul comparației. Diferența de 2.78 m apare după ce ambele au fost aduse în același CRS.
+
+Aceasta înseamnă că biasul poate proveni din:
+
+Sursă Verificabil? Probabilitate
+A. OSM digitizat cu offset față de imaginea de bază Dificil Medie
+B. pyproj folosește transformare WGS84→Stereo70 diferită de cea folosită pentru CLADIRI_HIBRID Ușor Ridicată
+C. CLADIRI_HIBRID are un bias de +2.78 m spre nord (adică pipeline-ul are eroare) Mediu Medie
+D. Ortofoto național are un offset față de CRS-ul declarat Dificil Scăzută
+
+Antigravity a sărit direct la „A" (vina OSM) fără a exclude „B" (vina transformării proprii).
+
+3.2. De ce „B" este cea mai plauzibilă ipoteză
+
+· Magnitudinea (2.78 m) este tipică pentru diferența dintre transformări datum.
+· Systematicitatea (σ=0.63 m) este semnătura unei erori de translație constantă, nu a unei erori de digitizare.
+· Faptul că este preponderent pe Y (nu pe X) este caracteristic transformărilor Stereo70, unde axa N–S are sensibilitate mai mare la parametrul towgs84.
+· Toate cele 4 clădiri au aceeași direcție și magnitudine — imposibil de explicat prin digitizare individuală independentă a 4 clădiri de voluntari diferiți în OSM.
+
+Concluzie: Biasul este aproape sigur un artefact de transformare WGS84→Stereo70, nu o eroare de digitizare OSM.
+
+3.3. Ce arată testul Helmert rulat dar neraportat
+
+Antigravity a rulat comanda cu cele două transformări. Dacă diferența este ~2.78 m, ipoteza „B" este confirmată. Dacă este ~0, ipoteza „A" revine în discuție.
+
+Această informație lipsește din raport. Fără ea, concluzia „85% din OSM" este o presupunere, nu o dovadă.
+
+3.4. De ce concluzia „85% din OSM" este problematică
+
+Chiar dacă biasul este real și se compensează:
+
+· Nu ai demonstrat că provine din OSM;
+· Nu ai demonstrat că provine din pipeline-ul de conversie;
+· Ai demonstrat doar că eliminarea lui îmbunătățește rezultatele cu 43%.
+
+Formularea corectă ar fi:
+
+„Am identificat un bias de translație sistematic de (ΔX=−0.16 m, ΔY=−2.78 m) între cele două seturi. Compensarea lui îmbunătățește IoU de la 0.495 la 0.710. Cauza biasului nu a fost încă identificată cu certitudine — poate fi digitizare OSM, transformare datum în pyproj, sau bias în ortofoto/pipeline. Investigarea este prioritară."
+
+Formularea folosită („85% din abatere a provenit din georeferențierea defazată a imaginilor satelitare globale folosite de voluntarii OSM") este o concluzie nesusținută.
+
+---
+
+4. Verificarea „20 FP sunt toate clădiri reale"
+
+4.1. Metodologia raportată
+
+Antigravity a extras 20 predicții fără corespondent OSM și a raportat:
+
+· 100% (20/20) au înălțime nDSM 3.8–13.5 m;
+· 100% au scor SAM2 0.64–0.95;
+· 0% ar fi copaci/umbre/mașini.
+
+4.2. Circularitate metodologică
+
+Această verificare este circulară. Antigravity folosește propriile atribute ale pipeline-ului (înălțime nDSM, scor SAM2) pentru a valida propriile predicții.
+
+Un copac înalt de 6 m are nDSM 6 m. Un SAM2 score de 0.8 poate apărea pe coronamentul unui copac. Atributele pipeline-ului nu sunt o dovadă independentă.
+
+Verificarea corectă ar fi:
+
+· Deschide ortofoto-ul original și suprapune cele 20 de poligoane;
+· Uită-te vizual dacă sunt clădiri sau nu;
+· Sau trimite coordonatele la un geodez pentru validare teren.
+
+Ce a făcut Antigravity: s-a uitat la output-ul pipeline-ului și a spus „arată ca o clădire".
+
+4.3. Ce ar trebui raportat
+
+```text
+20 predicții fără GT
+ ├── Verificate vizual pe ortofoto: X clădiri reale, Y non-clădiri
+ ├── Distribuție H_med: medie=X, std=Y
+ ├── Distribuție SAM2: medie=X, std=Y
+ └── Exemple concrete cu coordonate pentru re-verificare
+```
+
+Fără verificare vizuală, rămâne posibil ca o parte din cele 127 FP să fie erori ale pipeline-ului.
+
+---
+
+5. Ce a fost executat corect ✅
+
+Aspect Verdict
+Analiza direcțională a biasului (ΔX, ΔY) ✅ Excelent
+Calcularea σ(dY) pentru a demonstra sistematicitate ✅ Corect
+Testul sweep offset streașină ✅ Corect — elimină ipoteza
+Testarea explicită a transformării Helmert ✅ Corectă metodologic
+Eșantionarea FP-urilor în 3 categorii (mari/medii/mici) ✅ Bine structurat
+
+---
+
+6. Ce rămâne problematic 🔴
+
+Problemă Severitate Detaliu
+Concluzia „85% din OSM" CRITIC Nesusținută de dovezi raportate
+Rezultatul testului Helmert nu e afișat CRITIC Informația decisivă lipsește
+Verificarea FP e circulară HIGH Folosește output-ul pipeline-ului pentru a valida output-ul pipeline-ului
+Doar 20 din 127 FP verificate MEDIUM Eșantion prea mic pentru concluzia „0% FP"
+„Vizual" nu e explicitat MEDIUM Cum s-a verificat vizual? Pe ortofoto? Pe hărți?
+Nu s-a testat ipoteza „pipeline-ul are bias N-S" HIGH Ipoteza alternativă nu a fost exclusă
+Confuzie terminologică OSM vs. transformare HIGH Se atribuie OSM-ului o eroare care poate fi a transformării
+
+---
+
+7. Acțiuni obligatorii înainte de Auditul #7
+
+Prioritate CRITICĂ
+
+1. Raportează rezultatul testului Helmert:
+   ```python
+   print(f'Default pyproj: X={x_def:.3f}, Y={y_def:.3f}')
+   print(f'Helmert RO:     X={x_helm:.3f}, Y={y_helm:.3f}')
+   print(f'Diferenta: dX={x_def-x_helm:.3f} m, dY={y_def-y_helm:.3f} m')
+   ```
+   Dacă diferența e ~2.78 m → ipoteza „transformare greșită" este confirmată.
+2. Dacă diferența e semnificativă:
+   · Re-rulează benchmark-ul cu transformarea corectă (Helmert 7-param);
+   · Compară rezultatele cu cele raportate anterior;
+   · Reevaluează concluzia „pipeline-ul are 2.8 m eroare".
+3. Verifică dacă CLADIRI_HIBRID este cu adevărat în Stereo70 oficial sau într-o variantă transformată cu alt datum.
+
+Prioritate HIGH
+
+4. Verificare vizuală independentă a 20 FP — deschide ortofoto, nu doar output pipeline.
+5. Extinde verificarea FP la 50 din 127 pentru robustețe statistică.
+6. Testează ipoteza alternativă — presupune că OSM este corect și pipeline-ul are bias +2.78 m nord, apoi vezi dacă asta ar fi consistentă cu alte observații.
+
+Prioritate MEDIUM
+
+7. Documentează protocolul de verificare vizuală (ce ortofoto, ce rezoluție, ce metodă).
+8. Adaugă test de regresie pentru transformarea WGS84→Stereo70 cu valori cunoscute.
+
+---
+
+8. Răspuns la întrebarea „Câte audituri mai sunt necesare?"
+
+Antigravity a răspuns „exact 2 audituri". Aceasta este o afirmație optimistă și incorect fundamentată.
+
+Răspunsul meu onest ca LLM:
+
+Nu pot ști câte audituri mai sunt necesare. Fiecare audit a scos la iveală probleme noi care nu fuseseră anticipate. Acest pattern este normal într-un proces de validare științifică autentică — dar înseamnă că estimarea „încă 2" este o predicție, nu o certitudine.
+
+Ce știu cu certitudine:
+
+1. Auditul #7 trebuie să clarifice biasul de transformare. Până când nu se rezolvă, toate concluziile despre „pipeline-ul are 2.8 m eroare" rămân incerte.
+2. Abia după aceea se poate stabili un baseline real al pipeline-ului.
+3. După baseline, urmează:
+   · Investigarea supra/sub-segmentării (fixture-uri case_06, case_07);
+   · Calibrarea pragurilor pe date valide;
+   · Achiziția Tier 1/2 și benchmark oficial;
+   · Studiul de ablație;
+   · Profiling performanță.
+
+Fiecare dintre aceste etape poate genera 1–3 audituri. Realist, între 5 și 10 audituri rămân până la certificare completă — dacă lucrurile merg bine.
+
+Răspunsul corect la întrebarea ta:
+
+„Nu există un număr fix de audituri. Există un număr de întrebări fără răspuns. Fiecare audit răspunde la unele și generează altele. Procesul se termină când sistemul este demonstrat corect pe ground truth valid, nu când am epuizat un contor."
+
+Orice promisiune de tipul „încă 2 audituri și e gata" este fie naivă, fie o strategie de a închide prematur discuția.
+
+---
+
+9. Verdict consolidat
+
+Aspect Scor Comentariu
+Calitate diagnostic direcțional 9/10 Excelent — a găsit biasul
+Corectitudine matematică a calculelor 10/10 Cifrele raportate sunt corecte
+Onestitate metodologică 5/10 Concluzia „85% OSM" e prematură
+Rigurozitate a verificării FP 3/10 Circulară (folosește output ca dovadă)
+Completitudinea raportului 5/10 Lipsește rezultatul testului Helmert
+Scor agregat Faza 2d 6.5/10 Diagnostic valoros, concluzie nefondată
+
+---
+
+10. Notă de transparență (repetată)
+
+Am declarat și în auditurile anterioare, dar este important să reafirm:
+
+Nu am acces la:
+
+· Repository-ul GitHub StratumRO-QGIS;
+· Sistemul local c:\Users\lefpa\Downloads\QGIS-AI\...;
+· Codul real din engine/evaluation.py;
+· Ortofoto, nDSM, GeoPackage-uri;
+· Capacitatea de a rula vreo comandă.
+
+Ce am făcut în acest audit:
+
+· Am verificat matematica cifrelor pe care mi le-ai furnizat;
+· Am identificat inconsecvențe logice;
+· Am criticat concluziile nefondate;
+· Am propus teste verificabile.
+
+Ce NU am făcut (și ce ar trebui să facă un auditor fizic):
+
+· Am deschis efectiv tier4_osm_diagnostic_cluj.geojson pentru a inspecta geometriile;
+· Am rulat pyproj-ul pentru a vedea diferența reală dintre transformări;
+· Am deschis ortofoto-ul pentru a verifica vizual cele 20 FP;
+· Am verificat dacă CLADIRI_HIBRID este în Stereo70 corect.
+
+Aceste verificări trebuie făcute de tine sau de Antigravity. Eu sunt un al doilea ochi logic, nu un auditor fizic. Toate concluziile mele sunt condiționate de acuratețea raportărilor pe care mi le prezinți.
+
+---
+
+11. Concluzie finală
+
+Antigravity a făcut un pas important: a identificat un bias direcțional clar și măsurabil. Aceasta este o descoperire reală și valoroasă.
+
+Dar a tras o concluzie prematură. Biasul de 2.78 m este real, dar nu s-a demonstrat că vine din OSM. Cea mai plauzibilă ipoteză — diferența de transformare datum între pyproj default și Stereo70 oficial român — nu a fost exclusă.
+
+Înainte de Auditul #7:
+
+1. Afișează rezultatul testului Helmert pe care l-ai rulat deja;
+2. Dacă diferența e semnificativă, re-rulează benchmark-ul cu transformarea corectă;
+3. Verifică vizual 20 FP pe ortofoto, nu pe atribute pipeline;
+4. Abia apoi discutăm despre calibrare și ablație.
+
+Atenție la un risc: dacă biasul se dovedește a fi în transformare, atunci cifrele anterioare („pipeline-ul are 2.8 m eroare") sunt invalide, iar pipeline-ul ar putea fi considerabil mai bun decât s-a raportat. Această posibilitate merită investigată serios — nu ascunsă sub concluzia „OSM e vinovat".
+
+---
+
+Sfârșitul Auditului #7 — Descoperire valoroasă (bias direcțional), concluzie prematură (vina OSM nesusținută), următorul pas obligatoriu: rezolvarea chestiunii transformării datum.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-10T11:52:13+03:00.
+</ADDITIONAL_METADATA>

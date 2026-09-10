@@ -1,0 +1,38 @@
+{
+  "type": "FeatureCollection",
+  "name": "case_01_L_shape",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3844"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CASE_01_L_SHAPE",
+        "description": "Casă în formă de L cu unghi reentrant de 90 grade",
+        "morphology": "L_SHAPE",
+        "expected_vertices": 6,
+        "true_area_m2": 138.0,
+        "mrr_ratio": 0.766,
+        "risk_note": "Risc ridicat: OBB ratio 0.766 depășește pragul 0.70 și poate fi distrus în dreptunghi dacă regularizatorul este agresiv"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [390800.0, 585200.0],
+            [390815.0, 585200.0],
+            [390815.0, 585206.0],
+            [390808.0, 585206.0],
+            [390808.0, 585212.0],
+            [390800.0, 585212.0],
+            [390800.0, 585200.0]
+          ]
+        ]
+      }
+    }
+  ]
+}

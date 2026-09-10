@@ -1,0 +1,77 @@
+# =====================================================================
+# StratumRO — Configurație Centralizată & Praguri de Calibrare
+# Standarde de referință: ANCPI Ordinul 600/2023 & MDLPA Ordinul 904/2023
+# Proiecție oficială: Stereo 70 (EPSG:3844) / Cota Marea Neagră 1975 (EPSG:5781)
+# =====================================================================
+
+paths:
+  # Căi de intrare pentru senzori (suportă căi relative sau absolute)
+  lidar_laz: "C:/Users/lefpa/Desktop/date/Z_VladP/Comparatie/LAZ/NorPuncte_St70_S42.laz"
+  dtm_raster: "C:/Users/lefpa/Desktop/date/Z_VladP/Comparatie/DTM3m/DTM3m.tif"
+  ortho_vrt: "workspace/output/ortofoto_cluj_usamv_rgb.vrt"
+  
+  # Căi de ieșire și stocare intermediară
+  output_dir: "workspace/output"
+  ground_truth_dir: "data/ground_truth"
+  fixtures_dir: "data/fixtures"
+
+# Praguri de prelucrare date LiDAR & nDSM
+lidar:
+  resolution_m: 1.0
+  min_building_height_m: 2.5
+  tree_min_height_m: 3.8
+  tree_exclusion_buffer_m: 0.8
+  pole_min_height_m: 8.0
+
+# Reguli de clasificare semantice
+classification:
+  main_building_min_area_m2: 45.0
+  main_building_min_height_m: 4.5
+  outbuilding_min_area_m2: 8.0
+  noise_area_filter_m2: 6.0
+
+# Parametri de segmentare optică (Meta SAM 2)
+sam2:
+  checkpoint: "models/sam2/sam2_hiera_tiny.pt"
+  score_threshold: 0.60
+  multimask_mode: true
+  device: "auto"  # "cuda", "cpu" sau "auto"
+
+# Parametri de regularizare geometrică CAD & Topologie
+regularization:
+  # Dacă rectangularitatea (Arie / OBB) depășește acest prag, se evaluează înlocuirea cu dreptunghi canonic
+  mrr_rectangularity_trigger: 0.70
+  mrr_batch_trigger: 0.68
+  buildingregulariser_iou_min: 0.60
+  spike_min_angle_deg: 40.0
+  collinearity_tolerance: 0.08
+  min_segment_length_m: 0.6
+  
+  # Retragere streașină pentru amprenta la sol (soclu ANCPI)
+  eave_offset_meters: 0.40
+  
+  # Toleranță frontieră sector cadastral (eliminare trepte NoData)
+  planar_partition_simplification_m: 12.0
+  adjacent_building_overlap_threshold_m2: 0.01
+
+# Parametri & Toleranțe pentru Motorul de Evaluare (engine/evaluation.py)
+evaluation:
+  crs: "EPSG:3844"
+  matching_iou_min: 0.30
+  
+  # Densificare laturi pentru calculul distanței Hausdorff
+  hausdorff_densify_step_m: 0.10
+  
+  # Pas de eșantionare a nodurilor pentru Boundary RMSE (în metri)
+  boundary_sample_step_m: 0.20
+  
+  # Limite decizionale de clasificare
+  tolerances:
+    ancpi_cadastre:
+      max_boundary_rmse_m: 0.10   # Toleranță cadastrală intravilan
+      min_iou: 0.85
+      max_area_error_pct: 5.0
+    pug_urbanism:
+      max_boundary_rmse_m: 0.30   # Toleranță PUG scara 1:1000 - 1:5000
+      min_iou: 0.70
+      max_area_error_pct: 10.0

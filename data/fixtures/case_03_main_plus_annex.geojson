@@ -1,0 +1,57 @@
+{
+  "type": "FeatureCollection",
+  "name": "case_03_main_plus_annex",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3844"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CASE_03_MAIN_HOUSE",
+        "description": "Corp clădire principală C1",
+        "category": "CLADIRE_PRINCIPALA",
+        "expected_vertices": 4,
+        "true_area_m2": 144.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [390870.0, 585200.0],
+            [390882.0, 585200.0],
+            [390882.0, 585212.0],
+            [390870.0, 585212.0],
+            [390870.0, 585200.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CASE_03_ANNEX_GARAGE",
+        "description": "Corp anexă gospodărească C2 (garaj)",
+        "category": "ANEXA_GOSPODAREASCA",
+        "expected_vertices": 4,
+        "true_area_m2": 20.0,
+        "risk_note": "Risc de ștergere: Dacă intră în aceeași mască cu casa, _extract_largest_polygon() o va arunca la coș"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [390885.0, 585200.0],
+            [390890.0, 585200.0],
+            [390890.0, 585204.0],
+            [390885.0, 585204.0],
+            [390885.0, 585200.0]
+          ]
+        ]
+      }
+    }
+  ]
+}

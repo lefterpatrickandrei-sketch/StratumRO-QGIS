@@ -1,0 +1,56 @@
+{
+  "type": "FeatureCollection",
+  "name": "case_02_calcan_split",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3844"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CASE_02_BLDG_A",
+        "description": "Clădire rezidențială A lipită la calcan de B",
+        "morphology": "CALCAN_SHARED_WALL",
+        "expected_vertices": 4,
+        "true_area_m2": 180.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [390830.0, 585200.0],
+            [390842.0, 585200.0],
+            [390842.0, 585215.0],
+            [390830.0, 585215.0],
+            [390830.0, 585200.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CASE_02_BLDG_B",
+        "description": "Clădire rezidențială B lipită la calcan de A",
+        "morphology": "CALCAN_SHARED_WALL",
+        "expected_vertices": 4,
+        "true_area_m2": 195.0
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [390842.0, 585200.0],
+            [390855.0, 585200.0],
+            [390855.0, 585215.0],
+            [390842.0, 585215.0],
+            [390842.0, 585200.0]
+          ]
+        ]
+      }
+    }
+  ]
+}
