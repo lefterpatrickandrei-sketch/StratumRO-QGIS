@@ -162,15 +162,27 @@ class StratumRO:
         return action
 
 
+    def initProcessing(self):
+        """Initializes QGIS Processing provider."""
+        try:
+            from qgis.core import QgsApplication
+            from .processing_provider import StratumROProcessingProvider
+            self.provider = StratumROProcessingProvider()
+            QgsApplication.processingRegistry().addProvider(self.provider)
+        except Exception:
+            self.provider = None
+
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = os.path.join(os.path.dirname(__file__), 'icon.png')
+        icon_path = ':/plugins/StratumRO/icon.png'
         self.add_action(
             icon_path,
             text=self.tr(u'StratumRO'),
             callback=self.run,
             parent=self.iface.mainWindow())
+
+        self.initProcessing()
 
     #--------------------------------------------------------------------------
 
@@ -195,6 +207,13 @@ class StratumRO:
         """Removes the plugin menu item and icon from QGIS GUI."""
 
         #print "** UNLOAD StratumRO"
+
+        if hasattr(self, 'provider') and self.provider is not None:
+            try:
+                from qgis.core import QgsApplication
+                QgsApplication.processingRegistry().removeProvider(self.provider)
+            except Exception:
+                pass
 
         for action in self.actions:
             self.iface.removePluginMenu(

@@ -83,20 +83,42 @@ class SegmentationWorker(QtCore.QThread):
             orch, winning_model = request_segmentation_plan(siruta_code, project_name)
             self.statusChanged.emit(f"Status: Plan AI obținut [{winning_model}]!\nSe procesează datele LiDAR...")
 
-            # 2. Căutare fișiere LiDAR și DTM locale
+            # 2. Căutare fișiere LiDAR și DTM locale (rezoluție dinamică)
             base_dir = os.path.dirname(os.path.dirname(__file__))
             candidates_laz = [
+                self.payload.get("laz_path", ""),
+                self.payload.get("lidar_path", ""),
+                os.environ.get("STRATUMRO_LIDAR_LAZ", ""),
                 os.path.join(base_dir, "datasets", "lidar", "teren.laz"),
+                os.path.join(base_dir, "data", "teren.laz"),
+                # Fallback dezvoltator local
                 r"C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\LAZ\NorPuncte_St70_S42.laz",
                 r"C:\Users\lefpa\Desktop\Negula\NorPuncte_St70_S42.laz"
             ]
             candidates_dtm = [
+                self.payload.get("dtm_path", ""),
+                os.environ.get("STRATUMRO_DTM_TIF", ""),
                 os.path.join(base_dir, "datasets", "lidar", "dtm.tif"),
+                os.path.join(base_dir, "data", "dtm.tif"),
+                # Fallback dezvoltator local
                 r"C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\DTM3m\DTM3m.tif"
             ]
 
-            laz_path = next((p for p in candidates_laz if os.path.exists(p)), None)
-            dtm_path = next((p for p in candidates_dtm if os.path.exists(p)), None)
+            # Verificare straturi active din proiectul QGIS
+            try:
+                for layer in QgsProject.instance().mapLayers().values():
+                    src = layer.source()
+                    if src and os.path.exists(src):
+                        if src.lower().endswith(('.laz', '.las')) and src not in candidates_laz:
+                            candidates_laz.insert(0, src)
+                        elif layer.type() == 1 and ("dtm" in layer.name().lower() or "dem" in layer.name().lower()):
+                            if src not in candidates_dtm:
+                                candidates_dtm.insert(0, src)
+            except Exception:
+                pass
+
+            laz_path = next((p for p in candidates_laz if p and os.path.exists(p)), None)
+            dtm_path = next((p for p in candidates_dtm if p and os.path.exists(p)), None)
 
             out_dir = os.path.join(base_dir, "workspace", "output")
             os.makedirs(out_dir, exist_ok=True)

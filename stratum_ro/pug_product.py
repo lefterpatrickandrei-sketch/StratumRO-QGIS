@@ -26,6 +26,7 @@ from shapely.ops import unary_union
 import geopandas as gpd
 
 from .vectorizer import CadastralVectorizer
+from .volumetric_3d import Volumetric3DBuilder
 
 
 class PugProductGenerator:
@@ -34,6 +35,7 @@ class PugProductGenerator:
     def __init__(self, crs: str = "EPSG:3844"):
         self.crs = crs
         self.vectorizer = CadastralVectorizer(crs=self.crs)
+        self.builder_3d = Volumetric3DBuilder()
 
     def generate_pug_package(
         self,
@@ -255,9 +257,25 @@ class PugProductGenerator:
                     })
                     cell_id += 1
 
+        # 5b. Generare Geometrii Reale 3D LoD1 (MultiPolygonZ) & CityJSON
+        lod1_solids_3d = []
+        for b in lod1_buildings:
+            solid_3d = self.builder_3d.extrude_lod1_solid(b["geometry"], b["h_cornisa_m"])
+            if solid_3d is not None:
+                b_3d = dict(b)
+                b_3d["geometry"] = solid_3d
+                lod1_solids_3d.append(b_3d)
+
+        output_cityjson = os.path.splitext(output_gpkg)[0] + "_3d.city.json"
+        try:
+            self.builder_3d.export_cityjson(lod1_buildings, output_cityjson)
+        except Exception:
+            output_cityjson = ""
+
         # 6. Salvare în GeoPackage PUG
         pug_layers = {
             "CLADIRI_VOLUMETRICE_LOD1": lod1_buildings,
+            "CLADIRI_LOD1_3D": lod1_solids_3d,
             "ANEXE_URBANISM": anexe_lod1,
             "REGISTRU_ARBORI": registru_arbori,
             "CORONAMENTE_FOND_VEGETAL": canopy_polygons,

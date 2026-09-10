@@ -147,18 +147,24 @@ class CadastralProductGenerator:
 
         self.vectorizer.save_multicategory_geopackage(cad_layers, output_gpkg)
 
-        # 5. Salvare DXF ANCPI Oficial
+        # 5. Salvare DXF ANCPI Oficial & TopoLT
         dxf_dict = {
             "CLADIRI_PRINCIPALE": formatted_main,
             "ANEXE_GOSPODARESTI": formatted_anexe,
             "ARBORI": clean_trees,
             "STALPI_TURNURI": clean_poles
         }
-        self.dxf_exporter.export_multicategory_to_dxf(dxf_dict, output_dxf, include_labels=True)
+        self.dxf_exporter.export_multicategory_to_dxf(
+            dxf_dict, output_dxf, include_labels=True, topolt_mode=True, draw_pad_table=True
+        )
+
+        output_cp = os.path.splitext(output_dxf)[0] + ".cp"
+        self.dxf_exporter.export_to_cp_file(dxf_dict, output_cp)
 
         return {
             "gpkg_path": output_gpkg,
             "dxf_path": output_dxf,
+            "cp_path": output_cp,
             "count_main": len(formatted_main),
             "count_anexe": len(formatted_anexe),
             "count_trees": len(clean_trees),
