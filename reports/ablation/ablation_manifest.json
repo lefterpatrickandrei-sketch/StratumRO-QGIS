@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "StratumRO Ablation Study Manifest",
-    "git_commit": "1dc9e919af7af496b0b3c9b7ef6db3367111616a",
-    "timestamp": "2026-09-11T13:24:08.830640",
+    "git_commit": "e870bd9a8434e2fb2c76e79e004c4cbffa115898",
+    "timestamp": "2026-09-11T13:28:56.421406",
     "ground_truth_file": "data/ground_truth/tier1_teren.geojson",
     "ground_truth_md5": "30B95D3EC95B2EA7DC09F6F47E30BBE9",
     "ground_truth_count": 29,
@@ -91,13 +91,13 @@
       "false_positives": 116,
       "false_negatives": 8,
       "clean_1_to_1_pairs": 20,
-      "clean_median_iou": 0.7631,
-      "clean_mean_iou": 0.7258,
-      "clean_median_rmse_m": 1.819,
-      "clean_mean_rmse_m": 3.017,
-      "clean_median_hausdorff_m": 6.654,
-      "clean_mean_hausdorff_m": 9.316,
-      "global_mean_iou": 0.6975,
+      "clean_median_iou": 0.7923,
+      "clean_mean_iou": 0.7279,
+      "clean_median_rmse_m": 1.842,
+      "clean_mean_rmse_m": 3.015,
+      "clean_median_hausdorff_m": 6.825,
+      "clean_mean_hausdorff_m": 9.327,
+      "global_mean_iou": 0.6997,
       "ancpi_conform_count": 0
     },
     {

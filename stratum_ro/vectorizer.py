@@ -111,11 +111,12 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
 
     # 1. Verificare dreptunghi canonic OBB (4 noduri la 90°)
     mrr = poly.minimum_rotated_rectangle
-    if mrr.area > 0:
+    if mrr.area > 0 and poly.convex_hull.area > 0:
+        solidity = poly.area / poly.convex_hull.area
         rect_ratio = poly.area / mrr.area
-        inter_iou = poly.intersection(mrr).area / mrr.area
-        # Dacă clădirea este un volum compact (rectangulare >= 70%), o asimilăm direct dreptunghiului canonic de 4 noduri
-        if rect_ratio >= 0.70 or inter_iou >= 0.70:
+        # Test de concavitate: forțăm MRR doar dacă este cu adevărat un dreptunghi simplu (soliditate >= 0.90 și dreptunghiularitate >= 0.88)
+        # Dacă soliditatea < 0.85 (indică formă concavă — L, U, curte interioară), NU forțăm MRR, lăsăm algoritmul Manhattan
+        if solidity >= 0.90 and rect_ratio >= 0.88:
             return mrr
 
     # 2. Utilizare Building-Regulariser (dacă este instalat)
@@ -223,11 +224,51 @@ def check_is_likely_container_or_shed(poly: Polygon, mean_height: Optional[float
     return {"is_temporary": False, "type": "CONSTRUCTIE_PERMANENTA"}
 
 
+def compute_adaptive_eave_offset(
+    poly: Optional[Polygon] = None,
+    ndsm_stats: Optional[Dict[str, Any]] = None,
+    mean_height: Optional[float] = None,
+    max_height: Optional[float] = None,
+    height_std: Optional[float] = None,
+    is_flat_roof: Optional[bool] = None
+) -> float:
+    """
+    Calculează retragerea adaptivă a streșinii (eave offset) în funcție de înălțimea clădirii și tipul de acoperiș:
+      1. Acoperiș terasă / atic: variație Z < 0.30m pe acoperiș -> offset = 0.0m (fără retragere, pereții sunt la fața fațadei / atic).
+      2. Acoperiș în pantă: offset = min(max(0.03 * H, 0.20), 0.60) metri.
+    """
+    if ndsm_stats:
+        mean_height = ndsm_stats.get("mean_h", ndsm_stats.get("inaltime_med_m", mean_height))
+        max_height = ndsm_stats.get("max_h", ndsm_stats.get("inaltime_max_m", max_height))
+        height_std = ndsm_stats.get("std_h", ndsm_stats.get("inaltime_std_m", height_std))
+        if "is_flat_roof" in ndsm_stats:
+            is_flat_roof = ndsm_stats["is_flat_roof"]
+
+    if is_flat_roof is True:
+        return 0.0
+
+    if height_std is not None and height_std < 0.30:
+        return 0.0
+
+    if max_height is not None and mean_height is not None:
+        delta_h = max_height - mean_height
+        if delta_h < 0.30 and mean_height >= 3.0:
+            return 0.0
+
+    h = max(mean_height, 2.5) if mean_height is not None else 4.0
+    offset = min(max(0.03 * h, 0.20), 0.60)
+    return round(float(offset), 2)
+
+
 class CadastralVectorizer:
     """Converts classified rasters & points into clean CAD-grade vector layers."""
 
     def __init__(self, crs: str = "EPSG:3844"):
         self.crs = crs
+
+    def compute_adaptive_eave_offset(self, poly: Polygon, ndsm_stats: Optional[Dict[str, Any]] = None) -> float:
+        """Calculează retragerea adaptivă a streșinii pe baza statisticilor de înălțime nDSM."""
+        return compute_adaptive_eave_offset(poly, ndsm_stats)
 
     def classify_temporary_structure(self, poly: Polygon, mean_height: Optional[float] = None) -> Dict[str, Any]:
         """Metodă de clasificare a structurilor temporare (containere, solarii)."""
@@ -336,8 +377,9 @@ class CadastralVectorizer:
         self,
         hybrid_results: List[Dict[str, Any]],
         tolerance: float = 0.7,
-        eave_offset_m: float = 0.40,
-        filter_temporary: bool = False
+        eave_offset_m: Optional[float] = 0.40,
+        filter_temporary: bool = False,
+        adaptive_eave: bool = False
     ) -> List[Dict[str, Any]]:
         """
         Takes raw validated outputs from SAM2BuildingSegmenter,
@@ -445,10 +487,15 @@ class CadastralVectorizer:
                 for _, row in reg_batch.iterrows():
                     reg_p = row.geometry
                     if reg_p is not None and reg_p.is_valid and reg_p.area >= 8.0:
-                        # Dacă clădirea este un volum compact (rectangularitate >= 68%), o asimilăm direct dreptunghiului canonic de 4 noduri
+                        # Dacă clădirea este un volum compact autentic (soliditate >= 0.90 și dreptunghiularitate >= 0.88),
+                        # o asimilăm dreptunghiului canonic de 4 noduri. Dacă e concavă (soliditate < 0.85 — L, U, T),
+                        # păstrăm poligonul ortogonalizat Manhattan din buildingregulariser.
                         mrr = reg_p.minimum_rotated_rectangle
-                        if mrr.area > 0 and (reg_p.area / mrr.area >= 0.68 or reg_p.intersection(mrr).area / mrr.area >= 0.68):
-                            reg_p = mrr
+                        if mrr.area > 0 and reg_p.convex_hull.area > 0:
+                            solidity = reg_p.area / reg_p.convex_hull.area
+                            rect_ratio = reg_p.area / mrr.area
+                            if solidity >= 0.90 and rect_ratio >= 0.88:
+                                reg_p = mrr
                         cand_copy = dict(merged_candidates[int(row["idx"])])
                         cand_copy["geometry"] = reg_p
                         regularized_items.append(cand_copy)
@@ -514,12 +561,23 @@ class CadastralVectorizer:
             centroid = p.centroid
             num_vertices = len(p.exterior.coords) - 1
 
-            # Retragere normală a streșinii pentru amprenta fundației la nivelul terenului
+            # Retragere adaptivă sau normală a streșinii pentru amprenta fundației la nivelul terenului
             p_sol = None
             area_sol = round(float(p.area), 2)
-            if eave_offset_m > 0:
+            cur_offset = 0.0
+            if adaptive_eave:
+                cur_offset = compute_adaptive_eave_offset(
+                    poly=p,
+                    mean_height=mean_h,
+                    max_height=float(it.get("max_h", mean_h)),
+                    height_std=it.get("std_h", None)
+                )
+            elif eave_offset_m and eave_offset_m > 0:
+                cur_offset = eave_offset_m
+
+            if cur_offset > 0:
                 try:
-                    p_sol_cand = p.buffer(-eave_offset_m, join_style=2)
+                    p_sol_cand = p.buffer(-cur_offset, join_style=2)
                     if not p_sol_cand.is_valid:
                         p_sol_cand = make_valid(p_sol_cand)
                     if p_sol_cand is not None and not p_sol_cand.is_empty and p_sol_cand.area >= 6.0:
@@ -538,7 +596,7 @@ class CadastralVectorizer:
                 "inaltime_max_m": round(float(it.get("max_h", 5.5)), 2),
                 "area_m2": round(float(p.area), 2),
                 "area_sol_m2": area_sol,
-                "eave_offset_m": eave_offset_m,
+                "eave_offset_m": cur_offset,
                 "perimeter_m": round(float(p.length), 2),
                 "vertices": num_vertices,
                 "is_temporary": bool(temp_info.get("is_temporary", False)),

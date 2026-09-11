@@ -62,10 +62,25 @@ print("[2/5] Extragere Config D & E...")
 gdf_d = gpd.read_file(hybrid_gpkg, layer="CLADIRI_HIBRID")
 gdf_d.to_file(out_gpkg, layer="CONFIG_D_HYBRID_REGULARIZED", driver="GPKG")
 
-gdf_e = gpd.read_file(hybrid_gpkg, layer="CLADIRI_SOL_ANCPI")
+# Generare Config E cu retragere adaptivă a streșinii (dependentă de înălțime și acoperiș terasă)
+sys.path.insert(0, os.path.abspath('.'))
+from stratum_ro.vectorizer import compute_adaptive_eave_offset
+e_geoms = []
+for _, row in gdf_d.iterrows():
+    p = row.geometry
+    mean_h = float(row.get("inaltime_med_m", 4.0))
+    max_h = float(row.get("inaltime_max_m", 5.5))
+    off = compute_adaptive_eave_offset(p, mean_height=mean_h, max_height=max_h)
+    p_sol = p.buffer(-off, join_style=2) if off > 0 else p
+    if not p_sol.is_valid:
+        p_sol = make_valid(p_sol)
+    e_geoms.append(p_sol if (p_sol is not None and not p_sol.is_empty) else p)
+
+gdf_e = gdf_d.copy()
+gdf_e.geometry = e_geoms
 gdf_e.to_file(out_gpkg, layer="CONFIG_E_HYBRID_REG_EAVE", driver="GPKG")
 print(f"   Config D: {len(gdf_d)} corpuri regularizate 90°.")
-print(f"   Config E: {len(gdf_e)} corpuri cu offset de streașină -0.40m.")
+print(f"   Config E: {len(gdf_e)} corpuri cu offset adaptiv de streașină (0.0m plat / 0.20-0.60m).")
 
 # -------------------------------------------------------------
 # 3. CONFIG C: Hibrid Ne-regularizat (Înainte de 90° Manhattan)

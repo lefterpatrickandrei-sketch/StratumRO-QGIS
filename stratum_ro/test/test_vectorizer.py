@@ -173,8 +173,65 @@ class TestCadastralVectorizer(unittest.TestCase):
         self.assertEqual(res_filtered[0]["structure_type"], "CONSTRUCTIE_PERMANENTA")
         self.assertFalse(res_filtered[0]["is_temporary"])
 
+    def test_concave_l_shape_preserves_concavity(self):
+        """Verifică că o clădire în formă de L (concavă) nu este forțată la dreptunghi de 4 noduri (P1.1 DoD)."""
+        from shapely.geometry import Polygon
+        # Clădire în formă de L cu 6 noduri: corp 10m x 20m cu decupaj de 7m x 8m
+        # Arie = 144 mp, Bounding box = 200 mp, Rectangularitate = 0.72 (care înainte era >= 0.68 și forța MRR)
+        poly_l = Polygon([(0.0, 0.0), (10.0, 0.0), (10.0, 12.0), (3.0, 12.0), (3.0, 20.0), (0.0, 20.0)])
+        self.assertEqual(len(poly_l.exterior.coords) - 1, 6)
+        self.assertEqual(poly_l.area, 144.0)
+
+        raw_input = [{"geometry": poly_l, "sam2_score": 0.92, "mean_h": 6.0, "max_h": 7.5}]
+        formatted = self.vectorizer.format_hybrid_buildings(raw_input)
+
+        self.assertEqual(len(formatted), 1)
+        out_geom = formatted[0]["geometry"]
+        out_verts = len(out_geom.exterior.coords) - 1
+
+        # Nu trebuie să fie dreptunghi de 4 noduri (nu s-a umplut decupajul!)
+        self.assertNotEqual(out_verts, 4, "Clădirea în L nu trebuie colapsată la un dreptunghi de 4 noduri")
+        # Aria trebuie să fie apropiată de 144 mp (nu 200 mp cât are MRR-ul plin)
+        self.assertLess(out_geom.area, 170.0, "Decupajul concav trebuie păstrat, nu umplut până la 200 mp")
+        self.assertGreaterEqual(out_verts, 6, "Profilul concav L trebuie să aibă cel puțin 6 noduri")
+
+    def test_compute_adaptive_eave_offset(self):
+        """Verifică retragerea adaptivă a streșinii dependentă de înălțime și tipul de acoperiș (P1.2 DoD)."""
+        from stratum_ro.vectorizer import compute_adaptive_eave_offset
+        from shapely.geometry import box
+
+        poly = box(0.0, 0.0, 10.0, 10.0)
+
+        # 1. Acoperiș terasă plat (variație Z < 0.30m) -> offset = 0.0m (fără retragere la atic)
+        off_flat = compute_adaptive_eave_offset(poly, mean_height=12.0, max_height=12.2)
+        self.assertEqual(off_flat, 0.0)
+
+        off_flat_flag = compute_adaptive_eave_offset(poly, is_flat_roof=True)
+        self.assertEqual(off_flat_flag, 0.0)
+
+        off_flat_std = compute_adaptive_eave_offset(poly, mean_height=8.0, height_std=0.20)
+        self.assertEqual(off_flat_std, 0.0)
+
+        # 2. Casă parter (H = 3.5m, în pantă) -> offset minim de 0.20m (0.03 * 3.5 = 0.105 -> limitat la 0.20m)
+        off_low = compute_adaptive_eave_offset(poly, mean_height=3.5, max_height=5.5)
+        self.assertEqual(off_low, 0.20)
+
+        # 3. Clădire medie (H = 10m) -> offset = 0.30m (0.03 * 10 = 0.30m)
+        off_med = compute_adaptive_eave_offset(poly, mean_height=10.0, max_height=13.0)
+        self.assertEqual(off_med, 0.30)
+
+        # 4. Clădire înaltă de facultate / bloc (H = 15m) -> offset = 0.45m (0.03 * 15 = 0.45m)
+        off_tall = compute_adaptive_eave_offset(poly, mean_height=15.0, max_height=18.0)
+        self.assertEqual(off_tall, 0.45)
+
+        # 5. Clădire foarte înaltă (H = 30m) -> plafonat la maxim 0.60m
+        off_very_tall = compute_adaptive_eave_offset(poly, mean_height=30.0, max_height=35.0)
+        self.assertEqual(off_very_tall, 0.60)
+
 
 if __name__ == "__main__":
     unittest.main()
+
+
 
 
