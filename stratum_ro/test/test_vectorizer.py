@@ -82,6 +82,21 @@ class TestCadastralVectorizer(unittest.TestCase):
         self.assertEqual(res.geom_type, "Polygon")
         self.assertAlmostEqual(res.area, 400.0, places=1)
 
+    def test_classify_temporary_container(self):
+        """Verifică detectarea automată a containerelor modulare (20ft)."""
+        from shapely.geometry import box
+        # Standard 20ft container: 2.44m x 6.06m ≈ 14.78 mp
+        poly_container = box(0.0, 0.0, 2.44, 6.06)
+        res = self.vectorizer.classify_temporary_structure(poly_container)
+        self.assertTrue(res["is_temporary"])
+        self.assertEqual(res["type"], "CONTAINER_MODULAR")
+
+        # Clădire rezidențială normală: 10m x 12m = 120 mp
+        poly_house = box(0.0, 0.0, 10.0, 12.0)
+        res_house = self.vectorizer.classify_temporary_structure(poly_house)
+        self.assertFalse(res_house["is_temporary"])
+        self.assertEqual(res_house["type"], "CONSTRUCTIE_PERMANENTA")
+
 
 if __name__ == "__main__":
     unittest.main()

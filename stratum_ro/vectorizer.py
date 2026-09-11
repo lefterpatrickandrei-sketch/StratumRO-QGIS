@@ -176,12 +176,58 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     return ortho_poly if (ortho_poly.is_valid and ortho_poly.area > 5.0) else poly
 
 
+def check_is_likely_container_or_shed(poly: Polygon, mean_height: Optional[float] = None) -> Dict[str, Any]:
+    """
+    Identifică dacă o amprentă seamănă cu un container maritim/modular sau seră alungită:
+      - 20ft container: ~2.44m x 6.06m (Arie ~14.8 m2, raport ~2.48, H ~2.59m)
+      - 40ft container: ~2.44m x 12.19m (Arie ~29.7 m2, raport ~5.0, H ~2.59m)
+    """
+    if poly is None or not poly.is_valid:
+        return {"is_temporary": False, "type": "UNKNOWN"}
+
+    mrr = poly.minimum_rotated_rectangle
+    coords = list(mrr.exterior.coords)[:-1]
+    if len(coords) == 4:
+        side1 = Point(coords[0]).distance(Point(coords[1]))
+        side2 = Point(coords[1]).distance(Point(coords[2]))
+        w = min(side1, side2)
+        l = max(side1, side2)
+        ratio = l / (w + 1e-5)
+        area = poly.area
+
+        # Verificare container 20ft / 40ft (lățime ~2.0 - 2.8m, lungime 5.5 - 13.0m)
+        if 2.0 <= w <= 3.0 and 5.0 <= l <= 13.5 and 10.0 <= area <= 36.0:
+            if ratio >= 2.0:
+                return {
+                    "is_temporary": True,
+                    "type": "CONTAINER_MODULAR",
+                    "width_m": round(w, 2),
+                    "length_m": round(l, 2),
+                    "aspect_ratio": round(ratio, 2)
+                }
+
+        # Verificare seră / solar ușor alungit
+        if ratio >= 3.5 and area >= 40.0:
+            return {
+                "is_temporary": True,
+                "type": "SERA_SOLAR_ALUNGIT",
+                "width_m": round(w, 2),
+                "length_m": round(l, 2),
+                "aspect_ratio": round(ratio, 2)
+            }
+
+    return {"is_temporary": False, "type": "CONSTRUCTIE_PERMANENTA"}
+
 
 class CadastralVectorizer:
     """Converts classified rasters & points into clean CAD-grade vector layers."""
 
     def __init__(self, crs: str = "EPSG:3844"):
         self.crs = crs
+
+    def classify_temporary_structure(self, poly: Polygon, mean_height: Optional[float] = None) -> Dict[str, Any]:
+        """Metodă de clasificare a structurilor temporare (containere, solarii)."""
+        return check_is_likely_container_or_shed(poly, mean_height)
 
     def clean_cad_polygon(self, poly: Polygon, tolerance: float = 0.7) -> Polygon:
         """

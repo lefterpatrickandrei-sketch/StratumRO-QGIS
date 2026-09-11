@@ -4,6 +4,7 @@
   <b><a href="#-english-summary">🇬🇧 English Summary</a></b> | <b><a href="#-cuprins-table-of-contents">🇷🇴 Română</a></b>
 </p>
 
+[![CI](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/workflows/ci.yml/badge.svg)](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![QGIS 3.22+](https://img.shields.io/badge/QGIS-3.22%20LTR%2B-589632.svg)](https://qgis.org/)
 [![CRS](https://img.shields.io/badge/CRS-Stereo%2070%20(EPSG%3A3844)-orange.svg)](https://epsg.io/3844)
@@ -17,8 +18,10 @@
 
 > [!IMPORTANT]
 > **Poziționare & Rigoare Științifică (Asistență Pre-Cadastrală):**  
-> StratumRO este proiectat ca un sistem de **asistență pre-cadastrală și accelerare a digitizării geodezice (reducere cu 89% a efortului manual de trasare)**.  
-> Sistemul generează amprente candidate regularizate la 90° și planșe CAD/PAD pentru a elimina rutina de birou a geodezului. Conform legislației ANCPI (Ordinul 600/2023), recepția cadastrală oficială și intabularea necesită **obligatoriu verificarea și asumarea de către un inginer topograf / geodez autorizat**. Pentru detalii de verificare și trasabilitate, consultați [`docs/TECHNICAL_STATUS.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/TECHNICAL_STATUS.md) și [`docs/EVIDENCE_MATRIX.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/EVIDENCE_MATRIX.md).
+> StratumRO este proiectat ca un sistem de **asistență pre-cadastrală și accelerare a digitizării geodezice**.  
+> - **Economie de Timp (89%):** Valoarea de 89% reprezintă o estimare operațională de laborator (reducere a efortului manual de trasare de la ~20 min la ~2 min per bloc), aflată în curs de cronometrare formală cu operatori independenți conform metodologiei din [`docs/PILOT_PLAN.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/PILOT_PLAN.md).  
+> - **Validare Legală Obligatorie:** Sistemul generează amprente candidate regularizate la 90° și planșe CAD/PAD pentru a elimina rutina de birou a geodezului. Conform legislației ANCPI (Ordinul 600/2023), recepția cadastrală oficială și intabularea necesită **obligatoriu verificarea și asumarea de către un inginer topograf / geodez autorizat**.  
+> Pentru detalii de verificare și trasabilitate, consultați [`docs/TECHNICAL_STATUS.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/TECHNICAL_STATUS.md) și [`docs/EVIDENCE_MATRIX.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/EVIDENCE_MATRIX.md).
 
 ---
 
@@ -160,7 +163,8 @@ Spre deosebire de pluginurile clasice care salvează doar poligoane 2D plate, St
 
 ## 6. ⚡ Motor de Inferență ONNX Runtime & Zero-CUDA (Nou)
 
-Pentru a elimina „iadul instalării CUDA” din mediul OSGeo4W/QGIS:
+Pentru a elimina dependențele greoaie de instalare CUDA din mediul OSGeo4W/QGIS:
+* **Export Decodor SAM 2 la ONNX & Validare Numerică:** Decodorul neuronal SAM 2 Hiera a fost exportat la format ONNX (`models/sam2/sam2_decoder.onnx`, 15.8 MB) prin instrumentul dedicat [`tools/export_sam2_to_onnx.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/export_sam2_to_onnx.py) și **validat numeric bit-cu-bit împotriva PyTorch** (eroare absolută maximă pe logits $< 7.7 \times 10^{-5}$, status `NUMERICALLY_VERIFIED`).
 * **DirectML pe Windows:** Folosește `onnxruntime` cu providerul `DmlExecutionProvider` (DirectX 12), rulând accelerat pe **ORICE placă video** (NVIDIA GeForce, AMD Radeon, Intel Iris/ARC) fără drivere manuale CUDA sau compilatoare C++.
 * **CPU Multithreaded Fallback:** Execuție optimizată pe procesoare moderne (AVX2/AVX-512) pentru mașini fără placă grafică dedicată.
 * **QGIS Processing Provider Oficial:** Înregistrare ca `StratumROCadastralAlgorithm` în **QGIS Processing Toolbox**, permițând execuție din Graphical Modeler sau comenzi automate headless:
@@ -179,7 +183,7 @@ Pentru a elimina „iadul instalării CUDA” din mediul OSGeo4W/QGIS:
 | Capabilitate Funcțională | StratumRO (v0.2.0) | Deepness QGIS | Geo-SAM / samgeo | 3DBAG (TU Delft) | PolyWorld (CVPR) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Fuziune LiDAR nDSM + Ortofoto** | ✅ **Da** | ❌ Nu (Doar Raster) | ❌ Nu (Doar Raster) | ✅ Da (LiDAR + Amprentă) | ❌ Nu (Doar RGB) |
-| **Motor Inferență AI** | 🌟 **ONNX + DirectML** | 🌟 ONNX Runtime | PyTorch / TorchScript | ❌ C++/CGAL | PyTorch GNN |
+| **Motor Inferență AI** | ⚙️ **ONNX + DirectML (Decodor Validat)** | 🌟 ONNX Runtime | PyTorch / TorchScript | ❌ C++/CGAL | PyTorch GNN |
 | **Integrare QGIS Processing** | 🌟 **Completă** | 🌟 Completă | ⚠️ Parțială | ❌ Nu | ❌ Nu |
 | **Regularizare Ortogonală 90°** | 🌟 **Canonică (4 noduri)** | ❌ Nu | ❌ Nu | ⚠️ Potrivire plane | 🌟 Da (Implicit în GNN) |
 | **Partiție Planară (Zero Goluri)**| 🌟 **100% (Ordin 600)** | ❌ Nu | ❌ Nu | ❌ Nu | ❌ Nu |

@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "StratumRO Ablation Study Manifest",
-    "git_commit": "0f9078257cb9304ef32ca83be0e6deb0556cdbb7",
-    "timestamp": "2026-09-10T15:58:31.077479",
+    "git_commit": "439116863dec9b3d045cd13dfb7c7165fd5ecd99",
+    "timestamp": "2026-09-11T11:59:45.692902",
     "ground_truth_file": "data/ground_truth/tier1_teren.geojson",
     "ground_truth_md5": "30B95D3EC95B2EA7DC09F6F47E30BBE9",
     "ground_truth_count": 29,

@@ -1,0 +1,40 @@
+name: StratumRO CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }} - Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10', '3.11']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install shapely geopandas ezdxf buildingregulariser onnxruntime scipy pyyaml pyogrio
+
+      - name: Run Unit Tests (40 Tests)
+        run: |
+          python -m unittest discover stratum_ro/test
+
+      - name: Run Independent Verification & Reproducibility Audit
+        run: |
+          python tools/verify_ground_truth_and_metrics.py

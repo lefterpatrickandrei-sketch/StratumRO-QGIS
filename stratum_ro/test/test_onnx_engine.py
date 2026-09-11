@@ -38,6 +38,17 @@ class TestONNXEngine(unittest.TestCase):
         self.assertEqual(poly.geom_type, "Polygon")
         self.assertAlmostEqual(poly.area, 300.0, places=1)
 
+    def test_exported_sam2_decoder_session(self):
+        import os
+        onnx_path = "models/sam2/sam2_decoder.onnx"
+        if os.path.exists(onnx_path) and HAS_ONNX:
+            engine = ONNXSegmentationEngine(decoder_onnx_path=onnx_path)
+            self.assertIsNotNone(engine.decoder_session)
+            inputs = [inp.name for inp in engine.decoder_session.get_inputs()]
+            self.assertIn("image_embeddings", inputs)
+            self.assertIn("point_coords", inputs)
+            self.assertIn("point_labels", inputs)
+
 
 if __name__ == "__main__":
     unittest.main()

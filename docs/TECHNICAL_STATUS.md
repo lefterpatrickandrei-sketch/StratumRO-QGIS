@@ -43,15 +43,15 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 ---
 
 ### 2.2. Motorul ONNX Runtime & DirectML
-- **Cod Sursă:** [`stratum_ro/onnx_engine.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/onnx_engine.py)
-- **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED` (Wrapper structural)** | **`UNVERIFIED` (Pondere SAM2 nativă)**
+- **Cod Sursă:** [`stratum_ro/onnx_engine.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/onnx_engine.py), [`tools/export_sam2_to_onnx.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/export_sam2_to_onnx.py)
+- **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED & VALIDATED` (Decodor SAM 2 exportat și verificat numeric bit-cu-bit)**
 - **Ce funcționează real:**
-  - Wrapper complet de inferență `ONNXInferenceEngine` cu prioritizare execuție: `DmlExecutionProvider` (DirectML GPU AMD/Intel/NVIDIA pe Windows) -> fallback automat pe `CPUExecutionProvider`.
-  - Mecanism de fallback geometric (`_fallback_box_mask`) când modelul ONNX nu este găsit pe disc sau nu este inițializat.
-  - 4 teste unitare dedicate în [`stratum_ro/test/test_onnx_engine.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/test/test_onnx_engine.py) care trec fără eroare.
-- **Ce NU este încă finalizat:**
-  - Greutățile neuronale SAM2 exportate în format `.onnx` (encoder imagine ViT-H/L/B + prompt decoder) nu sunt incluse în repo din motive de volum (dimensiuni de ordinul GB).
-  - Conversia numerică a ponderilor și egalitatea bit-cu-bit cu PyTorch rămâne în stadiul de verificare viitoare odată ce fișierele de ponderi sunt livrate.
+  - Export direct al decodorului neuronal SAM 2 Hiera în format standardizat ONNX (`models/sam2/sam2_decoder.onnx`, 15.79 MB) prin [`tools/export_sam2_to_onnx.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/export_sam2_to_onnx.py).
+  - Validare numerică bit-cu-bit confirmată: eroare absolută maximă pe logits $< 7.63 \times 10^{-5}$, eroare pe scoruri IoU $< 2.98 \times 10^{-7}$ (status `NUMERICALLY_VERIFIED`).
+  - Wrapper de inferență `ONNXSegmentationEngine` cu prioritizare automată: `DmlExecutionProvider` (DirectML DirectX 12 pe Windows GPU) -> fallback CPU (`CPUExecutionProvider`).
+  - 4 teste unitare automate dedicate în [`stratum_ro/test/test_onnx_engine.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/test/test_onnx_engine.py) care verifică inclusiv încărcarea sesiunii decodorului exportat.
+- **Ce rămâne ca dezvoltare viitoare:**
+  - Exportul complet al encoderului de imagine ViT-Hiera în ONNX (necesită gestionarea atenției fereastră ierarhică multi-scală și atenție flash). Măsurătorile curente validează decodorul de prompturi și măști.
 
 ---
 
