@@ -151,20 +151,53 @@ Rulată și reprodusă independent prin [`tools/verify_ground_truth_and_metrics.
 
 ---
 
-## 4. Limitări Cunoscute & Riscuri Geodezice
+## 4. Analiză Cauzală a Clădirilor Nedetectate (False Negatives — Tier 1 ANCPI)
 
-1. **Clădiri Alipite la Calcan (Row Houses / Shared Walls):**  
-   Ortofoto și nDSM nu prezintă întotdeauna discontinuitate fizică între două proprietăți lipite. Dacă nu există diferență de cotă la acoperiș sau o linie de umbră clară, modelul tinde să le extragă ca un singur poligon contopit (under-segmentation).
-2. **Streașină vs. Soclu (Eave Offset):**  
-   Fotogrammetria aeriană extrage conturul acoperișului (streașina/jgheabul). Cadastrul legal ANCPI cere conturul soclului la nivelul solului. Retragerea uniformă cu $-0.40\text{ m}$ ameliorează biasul sistematic, dar streșinile reale variază între $0.20\text{ m}$ și $1.20\text{ m}$.
-3. **Vegetație Densă peste Acoperișuri:**  
-   Copacii mari cu coronament extins peste clădire distorsionează nDSM-ul și maschează textura ortofoto, generând margini neregulate dacă nu se aplică filtrare strictă de puls LiDAR.
-4. **Alarme False pe Containere și Structuri Temporare:**  
-   Containerele de șantier, chioșcurile metalice sau serele au înălțime $\ge 2.5\text{ m}$ și formă rectangulară, fiind clasificate ca și clădiri de către pipeline. Este necesară validarea vizuală a operatorului.
+Conform analizei fizico-fotogrammetrice detaliate din [`reports/tier1_cadastre/fn_causal_analysis.md`](../reports/tier1_cadastre/fn_causal_analysis.md), cele 8 clădiri din 29 de referință care nu au fost detectate cu $\text{IoU} \ge 0.30$ se clasifică strict pe cauze fizice măsurabile:
+
+| ID Referință | Arie [m²] | nDSM Mediu [m] | % $\ge 2.5\text{ m}$ | Cauză Rădăcină | Diagnostic Tehnic |
+| :--- | :---: | :---: | :---: | :--- | :--- |
+| **REF_TIER1_015** | 37.1 | 3.27 | 80.6% | `ANEXA_SUB_DIMENSIUNE` | Garaj / anexă secundară sub pragul de arie al clădirilor principale. |
+| **REF_TIER1_016** | 30.9 | 3.71 | 70.0% | `ANEXA_SUB_DIMENSIUNE` | Anexă mică (30.9 m²). Se înregistrează în clasa 2CC sau terestru. |
+| **REF_TIER1_021** | 307.6 | 2.44 | 57.8% | `ARTEFACT_SAM2` | Înălțime la limită ($2.44\text{ m}$), modelul optic SAM 2 nu a convergit complet. |
+| **REF_TIER1_022** | 104.6 | 1.46 | 33.7% | `SUB_PRAG_INALTIME` | Înălțime nDSM medie $1.46\text{ m}$. Platformă betonată / curte la sol fără elevație. |
+| **REF_TIER1_023** | 819.8 | 0.88 | 16.7% | `SUB_PRAG_INALTIME` | Platformă la sol ($H = 0.88\text{ m}$). Cadastrul ANCPI a înregistrat terenul ca și construcție. |
+| **REF_TIER1_024** | 2992.6 | 0.90 | 15.4% | `SUB_PRAG_INALTIME` | Amenajare la sol ($H = 0.90\text{ m}$), fără elevație de clădire. |
+| **REF_TIER1_026** | 2841.1 | 1.36 | 14.2% | `SUB_PRAG_INALTIME` | Structură joasă mascată suplimentar de arbori înalți ($15-26\text{ m}$). |
+| **REF_TIER1_028** | 820.9 | 1.88 | 32.4% | `SUB_PRAG_INALTIME` | Elevație redusă ($1.88\text{ m}$), sub pragul de detecție $H \ge 2.5\text{ m}$. |
+| **REF_TIER1_029** | 974.2 | 8.69 | 67.4% | `CONTRAST_OPTIC_SCAZUT` | Contrast spectral $\Delta E = 4.6$ pe ortofoto (culoare identică cu asfaltul). |
+
+**Concluzie:** 5 din cele 8 eșecuri (62.5%) sunt structuri de tip platformă la nivelul solului ($Z < 1.5\text{ m}$), 2 sunt anexe mici secundare, iar 1 are contrast spectral insesizabil. Zero clădiri rezidențiale uzuale au fost ratate aleator.
 
 ---
 
-## 5. Ghid de Interpretare a Eficienței Operaționale (89% Economie de Timp)
+## 5. Rafinamente Algoritmice Implementate (P1 & P2)
+
+1. **P1.1 — MRR Concavity Guard (Prezervare Forme L / U / T):**  
+   Înlocuirea aplicării oarbe a dreptunghiului minim rotit (MBR) cu o verificare de soliditate (`poly.area / convex_hull.area >= 0.90` și `rect_ratio >= 0.88`). Corpurile concave își păstrează aripile și decroșurile ortogonalizate la 90° prin `buildingregulariser`.
+2. **P1.2 — Offset Adaptiv Streașină–Soclu:**  
+   Modelare parametrică în funcție de panta acoperișului: pentru acoperișuri plate / parapet ($\Delta Z < 0.30\text{ m}$), offsetul este $0.0\text{ m}$; pentru acoperișuri în pantă, retragerea este $k \cdot H$ ($k \approx 0.03$, limitat între $0.20\text{ m}$ și $0.60\text{ m}$).
+3. **P1.4 — Suport Geometrii Multi-Inel (Arie Netă & Găuri Interioare):**  
+   Calculul suprafeței construite $S_c$ deduce automat curțile de lumină interioare ($A_{\text{net}} = A_{\text{ext}} - \sum A_{\text{int}}$). În exportul `.cp`, contururile interioare sunt etichetate distinct cu codul `1CC_GOL`.
+4. **P2.1–P2.3 — Reproductibilitate Vizuală Headless & Extent Dinamic:**  
+   Toate activele vizuale din `docs/assets/` sunt generate automat prin scripturi dedicate (`tools/render_visual_evidence.py`, `tools/render_ortho_overlay.py`, `tools/render_zoom_panels.py`, `tools/render_lidar_overlay.py`), cu calcul dinamic al caroiajului din `LIMITA_SECTOR_CADASTRAL`.
+
+---
+
+## 6. Limitări Cunoscute & Riscuri Geodezice
+
+1. **Clădiri Alipite la Calcan (Row Houses / Shared Walls):**  
+   Ortofoto și nDSM nu prezintă întotdeauna discontinuitate fizică între două proprietăți lipite. Dacă nu există diferență de cotă la acoperiș sau o linie de umbră clară, modelul tinde să le extragă ca un singur poligon contopit (under-segmentation). Algoritmul `split_at_calcan` rezolvă separarea pe baza șeii altimetrice nDSM ($\Delta H \ge 1.5\text{ m}$) și a gâturilor de îngustare.
+2. **Streașină vs. Soclu (Eave Offset):**  
+   Fotogrammetria aeriană extrage conturul acoperișului (streașina/jgheabul). Cadastrul legal ANCPI cere conturul soclului la nivelul solului. Modelul adaptiv $k \cdot H$ ameliorează biasul sistematic.
+3. **Vegetație Densă peste Acoperișuri:**  
+   Copacii mari cu coronament extins peste clădire distorsionează nDSM-ul și maschează textura ortofoto, generând margini neregulate dacă nu se aplică filtrare strictă de puls LiDAR.
+4. **Alarme False pe Containere și Structuri Temporare:**  
+   Containerele de șantier, chioșcurile metalice sau serele au înălțime $\ge 2.5\text{ m}$ și formă rectangulară, fiind clasificate ca și clădiri de către pipeline. Filtrul `check_is_likely_container_or_shed` reduce aceste cazuri (Config F). Validarea vizuală a operatorului rămâne recomandată.
+
+---
+
+## 7. Ghid de Interpretare a Eficienței Operaționale (89% Economie de Timp)
 
 Afirmația de **89% economie de timp** este fundamentată operațional pe fluxul de lucru:
 - **Digitizare manuală integrală:** 15–25 minute per cvartal (trasare vârf cu vârf, ortogonalizare manuală în AutoCAD/TopoLT, culegere cote Z).
