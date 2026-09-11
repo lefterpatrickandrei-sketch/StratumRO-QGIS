@@ -1,0 +1,185 @@
+{
+  "total_fn_analyzed": 9,
+  "fn_records": [
+    {
+      "ref_id": "REF_TIER1_015",
+      "area_m2": 37.15,
+      "ndsm_mean_m": 3.27,
+      "ndsm_max_m": 6.77,
+      "ndsm_std_m": 1.0,
+      "pct_above_2_5m": 80.6,
+      "mean_rgb": [
+        112.5,
+        85.6,
+        75.5
+      ],
+      "spectral_contrast": 29.6,
+      "lidar_layer_overlap_pct": 97.1,
+      "sam2_layer_overlap_pct": 100.0,
+      "best_hybrid_pred_id": "31",
+      "best_hybrid_iou": 0.038,
+      "root_cause": "ANEXA_SUB_DIMENSIUNE",
+      "explanation": "Suprafață mică (37.1 mp). Sub pragul minim de relevanță cadastrală principală."
+    },
+    {
+      "ref_id": "REF_TIER1_016",
+      "area_m2": 30.94,
+      "ndsm_mean_m": 3.71,
+      "ndsm_max_m": 9.58,
+      "ndsm_std_m": 2.14,
+      "pct_above_2_5m": 70.0,
+      "mean_rgb": [
+        97.5,
+        71.0,
+        78.3
+      ],
+      "spectral_contrast": 16.6,
+      "lidar_layer_overlap_pct": 71.5,
+      "sam2_layer_overlap_pct": 100.0,
+      "best_hybrid_pred_id": "27",
+      "best_hybrid_iou": 0.03,
+      "root_cause": "ANEXA_SUB_DIMENSIUNE",
+      "explanation": "Suprafață mică (30.9 mp). Sub pragul minim de relevanță cadastrală principală."
+    },
+    {
+      "ref_id": "REF_TIER1_021",
+      "area_m2": 307.59,
+      "ndsm_mean_m": 2.44,
+      "ndsm_max_m": 4.41,
+      "ndsm_std_m": 1.98,
+      "pct_above_2_5m": 57.8,
+      "mean_rgb": [
+        108.7,
+        126.3,
+        123.2
+      ],
+      "spectral_contrast": 78.4,
+      "lidar_layer_overlap_pct": 59.8,
+      "sam2_layer_overlap_pct": 0.0,
+      "best_hybrid_pred_id": "NONE",
+      "best_hybrid_iou": 0.0,
+      "root_cause": "ARTEFACT_SAM2",
+      "explanation": "Semnal prezent (nDSM=2.4m, ΔE=78.4), dar modelul optic SAM 2 nu a convergit pe contur complet."
+    },
+    {
+      "ref_id": "REF_TIER1_022",
+      "area_m2": 104.57,
+      "ndsm_mean_m": 1.46,
+      "ndsm_max_m": 8.81,
+      "ndsm_std_m": 1.55,
+      "pct_above_2_5m": 33.7,
+      "mean_rgb": [
+        114.9,
+        111.2,
+        105.3
+      ],
+      "spectral_contrast": 68.4,
+      "lidar_layer_overlap_pct": 40.4,
+      "sam2_layer_overlap_pct": 0.0,
+      "best_hybrid_pred_id": "NONE",
+      "best_hybrid_iou": 0.0,
+      "root_cause": "SUB_PRAG_INALTIME",
+      "explanation": "Înălțime nDSM insuficientă (medie 1.46m, doar 33.7% >= 2.5m). Structură joasă, curte sau platformă la sol."
+    },
+    {
+      "ref_id": "REF_TIER1_023",
+      "area_m2": 819.82,
+      "ndsm_mean_m": 0.88,
+      "ndsm_max_m": 14.62,
+      "ndsm_std_m": 1.84,
+      "pct_above_2_5m": 16.7,
+      "mean_rgb": [
+        149.0,
+        149.8,
+        153.4
+      ],
+      "spectral_contrast": 134.3,
+      "lidar_layer_overlap_pct": 5.5,
+      "sam2_layer_overlap_pct": 0.0,
+      "best_hybrid_pred_id": "NONE",
+      "best_hybrid_iou": 0.0,
+      "root_cause": "SUB_PRAG_INALTIME",
+      "explanation": "Înălțime nDSM insuficientă (medie 0.88m, doar 16.7% >= 2.5m). Structură joasă, curte sau platformă la sol."
+    },
+    {
+      "ref_id": "REF_TIER1_024",
+      "area_m2": 2992.55,
+      "ndsm_mean_m": 0.9,
+      "ndsm_max_m": 5.65,
+      "ndsm_std_m": 1.18,
+      "pct_above_2_5m": 15.4,
+      "mean_rgb": [
+        110.7,
+        106.6,
+        101.4
+      ],
+      "spectral_contrast": 44.9,
+      "lidar_layer_overlap_pct": 9.6,
+      "sam2_layer_overlap_pct": 0.0,
+      "best_hybrid_pred_id": "NONE",
+      "best_hybrid_iou": 0.0,
+      "root_cause": "SUB_PRAG_INALTIME",
+      "explanation": "Înălțime nDSM insuficientă (medie 0.90m, doar 15.4% >= 2.5m). Structură joasă, curte sau platformă la sol."
+    },
+    {
+      "ref_id": "REF_TIER1_026",
+      "area_m2": 2841.1,
+      "ndsm_mean_m": 1.36,
+      "ndsm_max_m": 26.1,
+      "ndsm_std_m": 3.75,
+      "pct_above_2_5m": 14.2,
+      "mean_rgb": [
+        84.4,
+        80.3,
+        74.0
+      ],
+      "spectral_contrast": 7.4,
+      "lidar_layer_overlap_pct": 12.7,
+      "sam2_layer_overlap_pct": 2.7,
+      "best_hybrid_pred_id": "16",
+      "best_hybrid_iou": 0.008,
+      "root_cause": "SUB_PRAG_INALTIME",
+      "explanation": "Înălțime nDSM insuficientă (medie 1.36m, doar 14.2% >= 2.5m). Structură joasă, curte sau platformă la sol."
+    },
+    {
+      "ref_id": "REF_TIER1_028",
+      "area_m2": 820.85,
+      "ndsm_mean_m": 1.88,
+      "ndsm_max_m": 11.35,
+      "ndsm_std_m": 2.52,
+      "pct_above_2_5m": 32.4,
+      "mean_rgb": [
+        65.0,
+        62.0,
+        54.7
+      ],
+      "spectral_contrast": 37.0,
+      "lidar_layer_overlap_pct": 34.3,
+      "sam2_layer_overlap_pct": 8.7,
+      "best_hybrid_pred_id": "307",
+      "best_hybrid_iou": 0.065,
+      "root_cause": "SUB_PRAG_INALTIME",
+      "explanation": "Înălțime nDSM insuficientă (medie 1.88m, doar 32.4% >= 2.5m). Structură joasă, curte sau platformă la sol."
+    },
+    {
+      "ref_id": "REF_TIER1_029",
+      "area_m2": 974.21,
+      "ndsm_mean_m": 8.69,
+      "ndsm_max_m": 21.78,
+      "ndsm_std_m": 7.38,
+      "pct_above_2_5m": 67.4,
+      "mean_rgb": [
+        92.1,
+        77.4,
+        60.3
+      ],
+      "spectral_contrast": 4.6,
+      "lidar_layer_overlap_pct": 71.3,
+      "sam2_layer_overlap_pct": 20.5,
+      "best_hybrid_pred_id": "117",
+      "best_hybrid_iou": 0.143,
+      "root_cause": "CONTRAST_OPTIC_SCAZUT",
+      "explanation": "Contrast spectral redus pe ortofoto (ΔE=4.6). Textura acoperișului se confundă cu pavajul adiacent."
+    }
+  ]
+}
