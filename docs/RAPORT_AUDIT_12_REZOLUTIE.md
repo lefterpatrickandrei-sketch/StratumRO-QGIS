@@ -7,10 +7,10 @@
 **Data:** 2026-09-10  
 **Statut:** **REZOLUȚIE INTEGRALĂ A RECOMANDĂRILOR DIN AUDITUL #12 — BASELINE OPERAȚIONAL CONSOLIDAT**  
 **Documentație asociată:**
-- Raport Rezoluție Audit #11: [`RAPORT_AUDIT_11_REZOLUTIE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/RAPORT_AUDIT_11_REZOLUTIE.md)
-- GeoJSON Cadastru Teren (29 Clădiri Pure): [`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson)
-- Raport Agregat JSON: [`reports/tier1_cadastre/tier1_29bldg_summary.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_summary.json)
-- Tabela Detaliată CSV: [`reports/tier1_cadastre/tier1_29bldg_buildings.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_buildings.csv)
+- Raport Rezoluție Audit #11: [`RAPORT_AUDIT_11_REZOLUTIE.md`](../RAPORT_AUDIT_11_REZOLUTIE.md)
+- GeoJSON Cadastru Teren (29 Clădiri Pure): [`data/ground_truth/tier1_teren.geojson`](../data/ground_truth/tier1_teren.geojson)
+- Raport Agregat JSON: [`reports/tier1_cadastre/tier1_29bldg_summary.json`](../reports/tier1_cadastre/tier1_29bldg_summary.json)
+- Tabela Detaliată CSV: [`reports/tier1_cadastre/tier1_29bldg_buildings.csv`](../reports/tier1_cadastre/tier1_29bldg_buildings.csv)
 
 ---
 

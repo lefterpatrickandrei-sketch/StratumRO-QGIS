@@ -123,7 +123,7 @@ A fost exclus din grupul curat deoarece este un caz documentat de **supra-segmen
 
 Auditul #7 a remarcat pe bună dreptate circularitatea verificării a doar 20 de clădiri pe baza atributelor interne ale modelului. Pentru a aduce o probă empirică solidă, am extras **50 de clădiri fără corespondent OSM** acoperind întregul spectru de mărimi și le-am confruntat direct cu datele din norul de puncte LiDAR brut.
 
-Fișierul CSV complet generat se află salvat în: [`data/fp_50_sample_validation.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/fp_50_sample_validation.csv).
+Fișierul CSV complet generat se află salvat în: [`data/fp_50_sample_validation.csv`](data/fp_50_sample_validation.csv).
 
 ### 5.1. Sinteză Statistică pe Eșantionul de 50 de Clădiri
 
@@ -156,7 +156,7 @@ Această verificare pe 50 de corpuri demonstrează matematic și fizic că cele 
 
 ## 6. Testul de Regresie Geodezică în Suita Unit Test
 
-Pentru a asigura integritatea continuă a transformărilor în cod, am adăugat un test dedicat în suita de testare automată [`stratum_ro/test/test_evaluation.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/test/test_evaluation.py):
+Pentru a asigura integritatea continuă a transformărilor în cod, am adăugat un test dedicat în suita de testare automată [`stratum_ro/test/test_evaluation.py`](stratum_ro/test/test_evaluation.py):
 
 - Funcție: `test_wgs84_to_stereo70_helmert_regression()`
 - Verifică concordanța sub-milimetrică dintre `Transformer.from_crs('EPSG:4326', 'EPSG:3844')` și formula explicită Helmert 7-parametri EPSG:15995 pe coordonatele Cluj USAMV ($X = 390896.060\text{ m}, Y = 585256.749\text{ m}$).

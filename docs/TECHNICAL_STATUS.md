@@ -1,7 +1,7 @@
 # Inventar Tehnic & Matrice de Realitate — StratumRO 🧭🔬
 
 Acest document constituie **inventarul tehnic unic anti-halucinare** al platformei **StratumRO-QGIS**.  
-Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8 nivele stricte de evidență definite în [`AGENTS.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/AGENTS.md).
+Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8 nivele stricte de evidență definite în [`AGENTS.md`](../AGENTS.md).
 
 > [!IMPORTANT]
 > **Directiva Fundamentală:**
@@ -28,7 +28,7 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 ## 2. Inventar Tehnic per Modul & Funcționalitate
 
 ### 2.1. Segmentare Hibridă nDSM + SAM2
-- **Cod Sursă:** [`stratum_ro/cadastral_engine.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/cadastral_engine.py), [`stratum_ro/ortho_extractor.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/ortho_extractor.py)
+- **Cod Sursă:** [`stratum_ro/cadastral_engine.py`](../stratum_ro/cadastral_engine.py), [`stratum_ro/ortho_extractor.py`](../stratum_ro/ortho_extractor.py)
 - **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED`**
 - **Ce funcționează real:**
   - Decupare automată ortofoto + nDSM pe caroiaje (tile-uri) georeferențiate în Stereo 70 (EPSG:3844).
@@ -43,20 +43,20 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 ---
 
 ### 2.2. Motorul ONNX Runtime & DirectML
-- **Cod Sursă:** [`stratum_ro/onnx_engine.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/onnx_engine.py), [`tools/export_sam2_to_onnx.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/export_sam2_to_onnx.py)
+- **Cod Sursă:** [`stratum_ro/onnx_engine.py`](../stratum_ro/onnx_engine.py), [`tools/export_sam2_to_onnx.py`](../tools/export_sam2_to_onnx.py)
 - **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED & VALIDATED` (Decodor SAM 2 exportat și verificat numeric bit-cu-bit)**
 - **Ce funcționează real:**
-  - Export direct al decodorului neuronal SAM 2 Hiera în format standardizat ONNX (`models/sam2/sam2_decoder.onnx`, 15.79 MB) prin [`tools/export_sam2_to_onnx.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/export_sam2_to_onnx.py).
+  - Export direct al decodorului neuronal SAM 2 Hiera în format standardizat ONNX (`models/sam2/sam2_decoder.onnx`, 15.79 MB) prin [`tools/export_sam2_to_onnx.py`](../tools/export_sam2_to_onnx.py).
   - Validare numerică bit-cu-bit confirmată: eroare absolută maximă pe logits $< 7.63 \times 10^{-5}$, eroare pe scoruri IoU $< 2.98 \times 10^{-7}$ (status `NUMERICALLY_VERIFIED`).
   - Wrapper de inferență `ONNXSegmentationEngine` cu prioritizare automată: `DmlExecutionProvider` (DirectML DirectX 12 pe Windows GPU) -> fallback CPU (`CPUExecutionProvider`).
-  - 4 teste unitare automate dedicate în [`stratum_ro/test/test_onnx_engine.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/test/test_onnx_engine.py) care verifică inclusiv încărcarea sesiunii decodorului exportat.
+  - 4 teste unitare automate dedicate în [`stratum_ro/test/test_onnx_engine.py`](../stratum_ro/test/test_onnx_engine.py) care verifică inclusiv încărcarea sesiunii decodorului exportat.
 - **Ce rămâne ca dezvoltare viitoare:**
   - Exportul complet al encoderului de imagine ViT-Hiera în ONNX (necesită gestionarea atenției fereastră ierarhică multi-scală și atenție flash). Măsurătorile curente validează decodorul de prompturi și măști.
 
 ---
 
 ### 2.3. Regularizare CAD 90° & Topologie Canonică
-- **Cod Sursă:** [`stratum_ro/cadastral_engine.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/cadastral_engine.py) (funcțiile `regularize_building_cad`, `minimum_rotated_rectangle_fit`)
+- **Cod Sursă:** [`stratum_ro/cadastral_engine.py`](../stratum_ro/cadastral_engine.py) (funcțiile `regularize_building_cad`, `minimum_rotated_rectangle_fit`)
 - **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED`**
 - **Ce funcționează real:**
   - Fitare automată de dreptunghi rotit (exact 4 noduri la 90°) pentru corpuri rectangulare simple (garaje, anexe, case izolate) când IoU cu conturul brut depășește pragul de 0.88.
@@ -68,25 +68,25 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 ---
 
 ### 2.4. Export CAD TopoLT, PAD & Schimb ANCPI (.cp)
-- **Cod Sursă:** [`stratum_ro/cad_exporter.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/cad_exporter.py)
+- **Cod Sursă:** [`stratum_ro/cad_exporter.py`](../stratum_ro/cad_exporter.py)
 - **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`**
 - **Ce funcționează real:**
   - Generare fișiere `.dxf` conforme TopoLT cu straturi standardizate: `1CC` (Construcții principale), `2CC` (Anexe/Construcții secundare), `CP` (Contur Parcelă), `VARFURI` (Puncte de contur), `NUMERE_PCT` (Texte cu numere de puncte 1..N).
   - Desenare automată a **Tabelului de Coordonate PAD** direct în spațiul model CAD, conform cerințelor Ordinului ANCPI 600/2023 (coloane: Nr. Pct., X [m], Y [m], Lungimi laturi $D(i, i+1)$).
   - Generare fișiere text `.cp` pentru import direct în eTerra și TopoLT.
-  - 5 teste unitare dedicate în [`stratum_ro/test/test_cad_exporter.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/test/test_cad_exporter.py).
+  - 5 teste unitare dedicate în [`stratum_ro/test/test_cad_exporter.py`](../stratum_ro/test/test_cad_exporter.py).
 
 ---
 
 ### 2.5. Reconstrucție 3D LoD1 & CityJSON 1.1
-- **Cod Sursă:** [`stratum_ro/volumetric_3d.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/volumetric_3d.py)
+- **Cod Sursă:** [`stratum_ro/volumetric_3d.py`](../stratum_ro/volumetric_3d.py)
 - **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`**
 - **Ce funcționează real:**
   - Extrudare 3D a poligoanelor 2D între $Z_{\text{sol}}$ și $Z_{\text{cornisa}}$ calculate statistic din norul de puncte LiDAR (percentilele 5 și 95).
   - Generare geometrie etanșă (closed solid shell) formată din podea (bottom), pereți verticali (walls) și acoperiș plat (roof).
   - Salvare vectorială directă sub formă de `MultiPolygonZ` în fișiere GeoPackage (`.gpkg`) compatibile cu vizualizarea 3D din QGIS Canvas.
   - Export în format standard OGC **CityJSON v1.1** cu atribute cadastrale și metadate de referință Stereo 70.
-  - 5 teste unitare dedicate în [`stratum_ro/test/test_volumetric_3d.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/test/test_volumetric_3d.py).
+  - 5 teste unitare dedicate în [`stratum_ro/test/test_volumetric_3d.py`](../stratum_ro/test/test_volumetric_3d.py).
 - **Ce este THEORETICAL / În Lucru:**
   - LoD2 cu ape de acoperiș reale (RANSAC plane fitting pentru lucarne, pante și creste) este schițat teoretic, dar producția activă generează LoD1.
 
@@ -103,7 +103,7 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 ---
 
 ### 2.7. Integrare QGIS: DockWidget & Processing Algorithm
-- **Cod Sursă:** [`stratum_ro/cadastral_algorithm.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/cadastral_algorithm.py), [`stratum_ro/processing_provider.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/processing_provider.py), [`stratum_ro/stratum_ro_dockwidget.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/stratum_ro_dockwidget.py)
+- **Cod Sursă:** [`stratum_ro/cadastral_algorithm.py`](../stratum_ro/cadastral_algorithm.py), [`stratum_ro/processing_provider.py`](../stratum_ro/processing_provider.py), [`stratum_ro/stratum_ro_dockwidget.py`](../stratum_ro/stratum_ro_dockwidget.py)
 - **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`**
 - **Ce funcționează real:**
   - Pluginul expune un algoritm oficial de procesare QGIS (`QgsProcessingAlgorithm`) în Processing Toolbox, permițând rularea în batch și integrarea în Graphical Modeler.
@@ -113,7 +113,7 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 
 ## 3. Evaluarea Cantitativă pe Setul de Referință Teren (Tier 1 Cluj USAMV)
 
-- **Fișier Ground Truth:** [`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson)
+- **Fișier Ground Truth:** [`data/ground_truth/tier1_teren.geojson`](../data/ground_truth/tier1_teren.geojson)
 - **Hash MD5 Verificat:** `30B95D3EC95B2EA7DC09F6F47E30BBE9`
 - **Volum Eșantion:** 29 clădiri cadastrale reale măsurate / confirmate în Stereo 70.
 - **Predicții Generate de Pipeline:** 134 poligoane în layer-ul `CLADIRI_HIBRID`.

@@ -6,10 +6,10 @@
 **Data Încheierii:** 2026-09-10  
 **Statut Final:** **SIGN-OFF FINAL ACORDAT (Scor: 9.5 / 10) — CICLU DE AUDIT METODOLOGIC ÎNCHIS**  
 **Documente de referință în repository:**
-- Ground Truth Oficial Tier 1 (29 clădiri pure): [`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson) (MD5: `30B95D3EC95B2EA7DC09F6F47E30BBE9`)
-- Raport Evaluare Finală JSON: [`reports/tier1_cadastre/tier1_29bldg_summary.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_summary.json)
-- Tabela Detaliată Clădiri CSV: [`reports/tier1_cadastre/tier1_29bldg_buildings.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_buildings.csv)
-- Rezoluția Auditului #12: [`RAPORT_AUDIT_12_REZOLUTIE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/RAPORT_AUDIT_12_REZOLUTIE.md)
+- Ground Truth Oficial Tier 1 (29 clădiri pure): [`data/ground_truth/tier1_teren.geojson`](data/ground_truth/tier1_teren.geojson) (MD5: `30B95D3EC95B2EA7DC09F6F47E30BBE9`)
+- Raport Evaluare Finală JSON: [`reports/tier1_cadastre/tier1_29bldg_summary.json`](reports/tier1_cadastre/tier1_29bldg_summary.json)
+- Tabela Detaliată Clădiri CSV: [`reports/tier1_cadastre/tier1_29bldg_buildings.csv`](reports/tier1_cadastre/tier1_29bldg_buildings.csv)
+- Rezoluția Auditului #12: [`RAPORT_AUDIT_12_REZOLUTIE.md`](RAPORT_AUDIT_12_REZOLUTIE.md)
 
 ---
 

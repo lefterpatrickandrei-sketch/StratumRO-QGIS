@@ -19,9 +19,9 @@
 > [!IMPORTANT]
 > **Poziționare & Rigoare Științifică (Asistență Pre-Cadastrală):**  
 > StratumRO este proiectat ca un sistem de **asistență pre-cadastrală și accelerare a digitizării geodezice**.  
-> - **Economie de Timp (89%):** Valoarea de 89% reprezintă o estimare operațională de laborator (reducere a efortului manual de trasare de la ~20 min la ~2 min per bloc), aflată în curs de cronometrare formală cu operatori independenți conform metodologiei din [`docs/PILOT_PLAN.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/PILOT_PLAN.md).  
+> - **Economie de Timp (89%):** Valoarea de 89% reprezintă o estimare operațională de laborator (reducere a efortului manual de trasare de la ~20 min la ~2 min per bloc), aflată în curs de cronometrare formală cu operatori independenți conform metodologiei din [`docs/PILOT_PLAN.md`](docs/PILOT_PLAN.md).  
 > - **Validare Legală Obligatorie:** Sistemul generează amprente candidate regularizate la 90° și planșe CAD/PAD pentru a elimina rutina de birou a geodezului. Conform legislației ANCPI (Ordinul 600/2023), recepția cadastrală oficială și intabularea necesită **obligatoriu verificarea și asumarea de către un inginer topograf / geodez autorizat**.  
-> Pentru detalii de verificare și trasabilitate, consultați [`docs/TECHNICAL_STATUS.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/TECHNICAL_STATUS.md) și [`docs/EVIDENCE_MATRIX.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/EVIDENCE_MATRIX.md).
+> Pentru detalii de verificare și trasabilitate, consultați [`docs/TECHNICAL_STATUS.md`](docs/TECHNICAL_STATUS.md) și [`docs/EVIDENCE_MATRIX.md`](docs/EVIDENCE_MATRIX.md).
 
 ---
 
@@ -153,7 +153,7 @@ StratumRO exportă acum direct în standardul de lucru al inginerilor topografi 
 
 ## 5. 🏢 Extrudare Volumetrică 3D LoD1 & CityJSON (Nou)
 
-Spre deosebire de pluginurile clasice care salvează doar poligoane 2D plate, StratumRO include modulul [`Volumetric3DBuilder`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/volumetric_3d.py):
+Spre deosebire de pluginurile clasice care salvează doar poligoane 2D plate, StratumRO include modulul [`Volumetric3DBuilder`](stratum_ro/volumetric_3d.py):
 * **Corpuri 3D Etanșe (`MultiPolygonZ`):** Generează solide LoD1 complete (podea la cota terenului $Z_{\text{sol}}$, pereți verticali și tavan la $Z_{\text{cornisa}}$).
 * **Compatibilitate Nativă QGIS 3D:** Stratul `CLADIRI_LOD1_3D` din GeoPackage se randează instantaneu în vizualizatorul 3D al QGIS fără a necesita styling manual de extrudare.
 * **Export OGC CityJSON v1.1:** Fișier `.city.json` generat automat pentru interoperabilitate cu **3DBAG**, **Cesium 3D Tiles** și gemeni digitali urbani.
@@ -164,7 +164,7 @@ Spre deosebire de pluginurile clasice care salvează doar poligoane 2D plate, St
 ## 6. ⚡ Motor de Inferență ONNX Runtime & Zero-CUDA (Nou)
 
 Pentru a elimina dependențele greoaie de instalare CUDA din mediul OSGeo4W/QGIS:
-* **Export Decodor SAM 2 la ONNX & Validare Numerică:** Decodorul neuronal SAM 2 Hiera a fost exportat la format ONNX (`models/sam2/sam2_decoder.onnx`, 15.8 MB) prin instrumentul dedicat [`tools/export_sam2_to_onnx.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/export_sam2_to_onnx.py) și **validat numeric bit-cu-bit împotriva PyTorch** (eroare absolută maximă pe logits $< 7.7 \times 10^{-5}$, status `NUMERICALLY_VERIFIED`).
+* **Export Decodor SAM 2 la ONNX & Validare Numerică:** Decodorul neuronal SAM 2 Hiera a fost exportat la format ONNX (`models/sam2/sam2_decoder.onnx`, 15.8 MB) prin instrumentul dedicat [`tools/export_sam2_to_onnx.py`](tools/export_sam2_to_onnx.py) și **validat numeric bit-cu-bit împotriva PyTorch** (eroare absolută maximă pe logits $< 7.7 \times 10^{-5}$, status `NUMERICALLY_VERIFIED`).
 * **DirectML pe Windows:** Folosește `onnxruntime` cu providerul `DmlExecutionProvider` (DirectX 12), rulând accelerat pe **ORICE placă video** (NVIDIA GeForce, AMD Radeon, Intel Iris/ARC) fără drivere manuale CUDA sau compilatoare C++.
 * **CPU Multithreaded Fallback:** Execuție optimizată pe procesoare moderne (AVX2/AVX-512) pentru mașini fără placă grafică dedicată.
 * **QGIS Processing Provider Oficial:** Înregistrare ca `StratumROCadastralAlgorithm` în **QGIS Processing Toolbox**, permițând execuție din Graphical Modeler sau comenzi automate headless:
@@ -195,10 +195,10 @@ Pentru a elimina dependențele greoaie de instalare CUDA din mediul OSGeo4W/QGIS
 
 ## 8. 📊 Evidențe Măsurate & Raport de Ablație Reprodus
 
-Toate cifrele de mai jos sunt **reproduse independent** prin scriptul de verificare [`tools/verify_ground_truth_and_metrics.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/verify_ground_truth_and_metrics.py) pe setul de referință etalon:
-- **Fișier Ground Truth:** [`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson) (Hash MD5: `30B95D3EC95B2EA7DC09F6F47E30BBE9`)
+Toate cifrele de mai jos sunt **reproduse independent** prin scriptul de verificare [`tools/verify_ground_truth_and_metrics.py`](tools/verify_ground_truth_and_metrics.py) pe setul de referință etalon:
+- **Fișier Ground Truth:** [`data/ground_truth/tier1_teren.geojson`](data/ground_truth/tier1_teren.geojson) (Hash MD5: `30B95D3EC95B2EA7DC09F6F47E30BBE9`)
 - **Areal Pilot:** Campus USAMV Cluj-Napoca (46.5 ha, 29 clădiri de referință cadastrală)
-- **Manifest Ablație Salvat:** [`reports/ablation/ablation_manifest.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/ablation/ablation_manifest.json) & [`reports/ablation/ablation_results.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/ablation/ablation_results.csv)
+- **Manifest Ablație Salvat:** [`reports/ablation/ablation_manifest.json`](reports/ablation/ablation_manifest.json) & [`reports/ablation/ablation_results.csv`](reports/ablation/ablation_results.csv)
 
 ### 8.1 Sinteză Metrici Geodezice Recalculate
 * **Subset Împerecheri 1:1 Curate (16 clădiri):**
@@ -225,7 +225,7 @@ Toate cifrele de mai jos sunt **reproduse independent** prin scriptul de verific
 | **Config D** | Hibrid + Regularizare 90° | 134 | 17 | 116 | 8 | 16 | **0.818** | **0.746** | 1.519 m |
 | **Config E** | Hibrid + Reg 90° + Streașină | 134 | 17 | 116 | 8 | 16 | 0.813 | **0.748** | **1.381 m** |
 
-> Pentru documentația completă a evidențelor, consultați [`docs/TECHNICAL_STATUS.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/TECHNICAL_STATUS.md), [`docs/EVIDENCE_MATRIX.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/EVIDENCE_MATRIX.md) și protocolul pentru următorul sit pilot în [`docs/PILOT_PLAN.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/docs/PILOT_PLAN.md).
+> Pentru documentația completă a evidențelor, consultați [`docs/TECHNICAL_STATUS.md`](docs/TECHNICAL_STATUS.md), [`docs/EVIDENCE_MATRIX.md`](docs/EVIDENCE_MATRIX.md) și protocolul pentru următorul sit pilot în [`docs/PILOT_PLAN.md`](docs/PILOT_PLAN.md).
 
 ---
 

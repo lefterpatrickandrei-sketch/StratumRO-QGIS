@@ -17,7 +17,7 @@ Auditul #8 a recunoscut validitatea demonstrației geodezice din Faza 2e:
 În prezentul raport:
 1. **Livrăm Addendum-ul la Poarta 1**, acoperind exhaustiv cele 3 rezerve metodologice semnalate de auditor (acuratețea absolută vs. consistența internă, metodologia de eșantionare pe 50 FP, distincția vizual/LiDAR și distribuția statistică a decalajelor).
 2. **Închidem tehnic Poarta 2 (Segmentare Multipart & Topologie)**:
-   - Am refactorizat logica distructivă `_extract_largest_polygon()` prin modulul dedicat [`stratum_ro/geometry_utils.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/geometry_utils.py) și funcția semantică `resolve_multipart_geometry()`.
+   - Am refactorizat logica distructivă `_extract_largest_polygon()` prin modulul dedicat [`stratum_ro/geometry_utils.py`](../stratum_ro/geometry_utils.py) și funcția semantică `resolve_multipart_geometry()`.
    - Am demonstrat o **reducere de 50.5% a erorii de contur (RMSE de la 14.98 m la 7.41 m)** pe Biblioteca USAMV (`case_06`).
    - Am demonstrat o **reducere de 80.0% a erorii de contur (RMSE de la 17.06 m la 3.41 m, IoU de la 0.238 la 0.586)** prin separarea calcanului pe Biserica Sf. Maria (`case_07`).
    - Am verificat **100% absența oricărei regresii pe cele 4 clădiri curate 1:1**.
@@ -47,7 +47,7 @@ Distribuția celor 127 FP (Arie Totală: 8.42 ha pe campus):
 ```
 
 Setul complet de 50 de clădiri cu coordonate Stereo 70, înălțimi nDSM, număr de reflexii laser și scoruri de confidență se află în fișierul de audit:
-👉 [`data/fp_50_sample_validation.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/fp_50_sample_validation.csv).
+👉 [`data/fp_50_sample_validation.csv`](../data/fp_50_sample_validation.csv).
 
 ### 2.3. Rezerva C: Distincția dintre Confirmarea Fizică (LiDAR) și Denumirea Funcțională
 
@@ -94,7 +94,7 @@ Această linie provoca trei eșecuri structurale majore:
 
 ### 3.2. Noua Arhitectură Semantică: `stratum_ro/geometry_utils.py`
 
-Am creat modulul independent [`stratum_ro/geometry_utils.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/geometry_utils.py), centrat pe funcția `resolve_multipart_geometry()`:
+Am creat modulul independent [`stratum_ro/geometry_utils.py`](../stratum_ro/geometry_utils.py), centrat pe funcția `resolve_multipart_geometry()`:
 
 ```python
 def resolve_multipart_geometry(

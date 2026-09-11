@@ -2,7 +2,7 @@
 
 **Auditor de Referință:** Evaluare Metodologică Geodezică & AI (Conform Standardelor Kimi / Moonshot AI)  
 **Data:** 10 Septembrie 2026  
-**Obiect:** Evaluarea integrală a Documentului Master [`MASTER_AUDIT_FINAL_VALIDARE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/MASTER_AUDIT_FINAL_VALIDARE.md)  
+**Obiect:** Evaluarea integrală a Documentului Master [`MASTER_AUDIT_FINAL_VALIDARE.md`](../MASTER_AUDIT_FINAL_VALIDARE.md)  
 **Verdict General:** **APROBAT CU DISTINCȚIE (SIGN-OFF FINAL ACORDAT) — SCOR: 9.6 / 10**
 
 ---
@@ -113,7 +113,7 @@ Suite de testare automată         0 teste                           30 unit tes
 
 ## 4. Declarație Oficială de Închidere (Sign-Off Verdict)
 
-Pe baza dovezilor sintetizate în [`MASTER_AUDIT_FINAL_VALIDARE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/MASTER_AUDIT_FINAL_VALIDARE.md) și a inspecției codului:
+Pe baza dovezilor sintetizate în [`MASTER_AUDIT_FINAL_VALIDARE.md`](../MASTER_AUDIT_FINAL_VALIDARE.md) și a inspecției codului:
 
 1. **Porțile de Calitate 1, 2, 4 și 5 sunt declarate ÎNCHISE ȘI CERTIFICATE.**
 2. **Poarta 3 este declarată FINALIZATĂ LA NIVEL DE INFRASTRUCTURĂ TEHNICĂ.**

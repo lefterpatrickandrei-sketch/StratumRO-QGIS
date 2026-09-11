@@ -52,14 +52,14 @@ Compararea directă a reflexiilor laser 3D ale acoperișului (senzor fizic prima
 
 ### 2.3. Addendum Metodologic (Cele 3 Rezerve Închise)
 1. **Acuratețe Absolută vs. Consistență Internă:** Confirmăm că testul LiDAR demonstrează consistența planimetrică cu senzorul primar din zbor, dar certificarea toleranței cadastrale de 10 cm (Ordinul 600/2023) depinde de validarea pe măsurători de sol Tier 1 (GNSS RTK).
-2. **Eșantionare Stratificată 50 FP:** Clasa 1 ($>2.000\text{ m}^2$): 5 clădiri; Clasa 2 ($1.000-2.000\text{ m}^2$): 12 clădiri; Clasa 3 ($500-1.000\text{ m}^2$): 18 clădiri; Clasa 4 ($<500\text{ m}^2$): 15 clădiri. Salvat în [`data/fp_50_sample_validation.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/fp_50_sample_validation.csv).
+2. **Eșantionare Stratificată 50 FP:** Clasa 1 ($>2.000\text{ m}^2$): 5 clădiri; Clasa 2 ($1.000-2.000\text{ m}^2$): 12 clădiri; Clasa 3 ($500-1.000\text{ m}^2$): 18 clădiri; Clasa 4 ($<500\text{ m}^2$): 15 clădiri. Salvat în [`data/fp_50_sample_validation.csv`](data/fp_50_sample_validation.csv).
 3. **Distincție Fizic vs. Semantic:** Existența fizică este demonstrată 100% prin norul LiDAR ($>20$ puncte, $H > 3\text{ m}$); denumirile funcționale provin din POI-urile USAMV din OSM / planul campusului.
 
 ---
 
 ## 3. Poarta 2 — Topologie Segmentare & Calcan (Status: 100% Rezolvat)
 
-Am eliminat funcția distructivă `_extract_largest_polygon()` prin noul modul [`stratum_ro/geometry_utils.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/geometry_utils.py) și funcția semantică `resolve_multipart_geometry()`:
+Am eliminat funcția distructivă `_extract_largest_polygon()` prin noul modul [`stratum_ro/geometry_utils.py`](stratum_ro/geometry_utils.py) și funcția semantică `resolve_multipart_geometry()`:
 * **Filtrare zgomot:** Elimină micro-fragmentele raster $< 8\text{ m}^2$;
 * **Păstrare aripi structurale:** Menține corpurile cu arie $\ge 12\%$ din corpul principal sau $\ge 20\text{ m}^2$;
 * **Punte morfologică structurală:** Unește aripile separate de rosturi de dilatație ($\le 1.8\text{ m}$);
@@ -80,7 +80,7 @@ Am eliminat funcția distructivă `_extract_largest_polygon()` prin noul modul [
 ## 4. Poarta 3 — Protocolul și Motorul de Ingestie Date Teren Tier 1 / Tier 2 (Status: Gata de Execuție)
 
 Pentru a rezolva cerința de date reale de teren, am implementat modulul dedicat:
-👉 [`tools/import_tier1_cad.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/import_tier1_cad.py)
+👉 [`tools/import_tier1_cad.py`](tools/import_tier1_cad.py)
 
 ### 4.1. Capacități Tehnice:
 * Parsează direct fișiere **AutoCAD DXF / DWG** (Release 12 până la 2024 via `ezdxf`);
@@ -106,7 +106,7 @@ Pe calculatorul local există deja fișierele topografice:
 ## 5. Poarta 4 — Studiul de Ablație Complet & Profiling GPU (Status: Implementat)
 
 Am implementat motorul automat de ablație experimentală:
-👉 [`engine/ablation_study.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/engine/ablation_study.py)
+👉 [`engine/ablation_study.py`](engine/ablation_study.py)
 
 ### 5.1. Matricea celor 5 Configurații Cerute de Brief:
 
@@ -155,8 +155,8 @@ Sistemul StratumRO prezintă:
 1. **Infrastructură de evaluare completă** (IoU, Boundary RMSE, Hausdorff densificat GEOS C++, CI95 Student-$t$);
 2. **Geodezie verificată matematic** (transformare datum documentată, eroare OSM demonstrată pe norul LiDAR fizic cu consistență de 7.6 cm);
 3. **Topologie refactorizată semantic** (`resolve_multipart_geometry`, zero regresii, -50% până la -80% erori pe cazurile de test);
-4. **Modul de ingestie teren Tier 1** ([`tools/import_tier1_cad.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/import_tier1_cad.py));
-5. **Matrice de ablație A–E și profiling GPU RTX 4050** ([`engine/ablation_study.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/engine/ablation_study.py));
+4. **Modul de ingestie teren Tier 1** ([`tools/import_tier1_cad.py`](tools/import_tier1_cad.py));
+5. **Matrice de ablație A–E și profiling GPU RTX 4050** ([`engine/ablation_study.py`](engine/ablation_study.py));
 6. **Cadru legal clar** (ANCPI Ordinul 600/2023 & MDLPA Ordinul 904/2023).
 
 Solicităm Auditorului Kimi emiterea raportului consolidat de semnare („Sign-off”) pentru Porțile 1–5 pe baza acestui Master Document.

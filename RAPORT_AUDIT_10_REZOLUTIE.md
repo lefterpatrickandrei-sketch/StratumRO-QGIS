@@ -7,11 +7,11 @@
 **Data:** 2026-09-10  
 **Statut:** **REZOLUȚIE INTEGRALĂ A CELOR 5 PAȘI METODOLOGICI**  
 **Documentație asociată:**
-- Master de Validare: [`MASTER_AUDIT_FINAL_VALIDARE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/MASTER_AUDIT_FINAL_VALIDARE.md)
-- GeoJSON Cadastru Teren (Tier 1): [`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson)
-- GeoPackage Straturi Ablație: [`workspace/output/ablation_layers.gpkg`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/output/ablation_layers.gpkg)
-- Raport Sumar Evaluare Tier 1: [`reports/tier1_cadastre/tier1_real_summary.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_real_summary.json)
-- Raport CSV Detaliat pe Clădiri: [`reports/tier1_cadastre/tier1_real_buildings.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_real_buildings.csv)
+- Master de Validare: [`MASTER_AUDIT_FINAL_VALIDARE.md`](MASTER_AUDIT_FINAL_VALIDARE.md)
+- GeoJSON Cadastru Teren (Tier 1): [`data/ground_truth/tier1_teren.geojson`](data/ground_truth/tier1_teren.geojson)
+- GeoPackage Straturi Ablație: [`workspace/output/ablation_layers.gpkg`](workspace/output/ablation_layers.gpkg)
+- Raport Sumar Evaluare Tier 1: [`reports/tier1_cadastre/tier1_real_summary.json`](reports/tier1_cadastre/tier1_real_summary.json)
+- Raport CSV Detaliat pe Clădiri: [`reports/tier1_cadastre/tier1_real_buildings.csv`](reports/tier1_cadastre/tier1_real_buildings.csv)
 
 ---
 
@@ -31,7 +31,7 @@ Prezentul raport oferă rezolvarea strictă, măsurată și complet reprodutibil
 ## 2. Pasul 1: Studiul de Ablație Reparat (Poarta 4)
 
 ### 2.1. Arhitectura Tehnică a Straturilor Discrete
-Pentru a elimina orice posibilitate de reutilizare a aceluiași strat în evaluare, am construit utilitarul [`tools/build_ablation_layers.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/build_ablation_layers.py), care a generat fizic în GeoPackage-ul [`workspace/output/ablation_layers.gpkg`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/output/ablation_layers.gpkg) 5 straturi vectoriale complet distincte:
+Pentru a elimina orice posibilitate de reutilizare a aceluiași strat în evaluare, am construit utilitarul [`tools/build_ablation_layers.py`](tools/build_ablation_layers.py), care a generat fizic în GeoPackage-ul [`workspace/output/ablation_layers.gpkg`](workspace/output/ablation_layers.gpkg) 5 straturi vectoriale complet distincte:
 
 1. **`CONFIG_A_LIDAR_ONLY` (575 poligoane):** Vectorizare pură a rasterului nDSM (`ndsm_stereo70.tif >= 2.5m`), fără intervenția segmentării optice SAM 2, fără simplificare geometrică Douglas-Peucker și fără regularizare ortogonală. Păstrează treptele brute de rezoluție (scăriță de pixel).
 2. **`CONFIG_B_SAM2_OPTIC_ONLY` (149 poligoane):** Segmentare bazată exclusiv pe imaginea aeriană RGB (ortofotoplan 10 cm GSD), fără mască de înălțime nDSM. Acest strat include umbre optice proiectate la sol și suprafețe orizontale plate (platforme betonate, terenuri de sport) care păcălesc viziunea computațională optică.
@@ -41,7 +41,7 @@ Pentru a elimina orice posibilitate de reutilizare a aceluiași strat în evalua
 
 ### 2.2. Rezultatele Empirice Distincte
 
-Rularea modulului [`engine/ablation_study.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/engine/ablation_study.py) produce rezultate **genuin distincte, consistente fizic și explicabile geodezic**:
+Rularea modulului [`engine/ablation_study.py`](engine/ablation_study.py) produce rezultate **genuin distincte, consistente fizic și explicabile geodezic**:
 
 #### A. Matricea de Ablație pe Ground Truth Cadastral de Teren (Tier 1 — `tier1_teren.geojson`):
 *Notă: Rulată în coordonate native Stereo 70 (EPSG:3844), fără translații artificiale.*
@@ -79,10 +79,10 @@ Acest fișier conține straturi oficiale extrase din planuri cadastrale și docu
 - `DEF_LAYER_AREA="Constructii"`
 
 ### 3.2. Scriptul de Extracție și Decodare Geodezică
-Deoarece datele vectoriale erau serializate în streamuri binare codificate uuencode pe 64 de biți (reprezentând tupluri de coordonate dublă precizie IEEE 754), am dezvoltat scriptul dedicat [`tools/extract_all_imobile.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/extract_all_imobile.py).
+Deoarece datele vectoriale erau serializate în streamuri binare codificate uuencode pe 64 de biți (reprezentând tupluri de coordonate dublă precizie IEEE 754), am dezvoltat scriptul dedicat [`tools/extract_all_imobile.py`](tools/extract_all_imobile.py).
 
 Scriptul a decodat streamurile binare în coordonate plane Stereo 70 (EPSG:3844) și a exportat fișierul fizic:
-👉 **[`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson)**
+👉 **[`data/ground_truth/tier1_teren.geojson`](data/ground_truth/tier1_teren.geojson)**
 
 ### 3.3. Caracteristicile Geodezice ale Fișierului `tier1_teren.geojson`
 - **Număr entități cadastrale:** **19 poligoane** (depășind cerința minimă de 5).
@@ -97,7 +97,7 @@ Scriptul a decodat streamurile binare în coordonate plane Stereo 70 (EPSG:3844)
 
 ## 4. Pasul 4: Rularea Benchmark-ului Cantitativ pe Ground Truth Tier 1
 
-Am executat motorul oficial de evaluare [`engine/evaluation.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/engine/evaluation.py) pe cele 19 corpuri de teren:
+Am executat motorul oficial de evaluare [`engine/evaluation.py`](engine/evaluation.py) pe cele 19 corpuri de teren:
 ```powershell
 python engine/evaluation.py `
   --prediction workspace/output/cladiri_stereo70.gpkg `

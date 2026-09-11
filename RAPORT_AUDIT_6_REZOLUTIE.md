@@ -6,10 +6,10 @@
 **Proiect:** StratumRO-QGIS (Pipeline Geomatic MLOps Stereo 70 / EPSG:3844)  
 **Obiect:** Răspuns tehnic, investigație empirică și geodezică la Auditul #6  
 **Fișiere cheie inspectate & validate:**
-* [`engine/evaluation.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/engine/evaluation.py) (Motorul de evaluare și CLI)
-* [`workspace/output/cladiri_stereo70.gpkg`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/output/cladiri_stereo70.gpkg) (Layer `CLADIRI_HIBRID`)
-* [`data/ground_truth/tier4_osm_diagnostic_cluj.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier4_osm_diagnostic_cluj.geojson) (Set diagnostic)
-* [`RAPORT_AUDIT_5_REZOLUTIE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/RAPORT_AUDIT_5_REZOLUTIE.md) (Raportul anterior)
+* [`engine/evaluation.py`](engine/evaluation.py) (Motorul de evaluare și CLI)
+* [`workspace/output/cladiri_stereo70.gpkg`](workspace/output/cladiri_stereo70.gpkg) (Layer `CLADIRI_HIBRID`)
+* [`data/ground_truth/tier4_osm_diagnostic_cluj.geojson`](data/ground_truth/tier4_osm_diagnostic_cluj.geojson) (Set diagnostic)
+* [`RAPORT_AUDIT_5_REZOLUTIE.md`](RAPORT_AUDIT_5_REZOLUTIE.md) (Raportul anterior)
 
 ---
 
@@ -91,7 +91,7 @@ Am testat dacă offset-ul de streașină poate reduce restul de $1.66\text{ m}$ 
 
 ### De unde provine translația de $-2.78\text{ m}$ pe Y?
 1. **Imaginile de fundal din OpenStreetMap:** Voluntarii OSM digitizează peste mozaicuri satelitare globale (Bing Maps / Esri World Imagery). În Europa de Est, aceste imagini satelitare au în mod documentat o eroare reziduală de georeferențiere de $2 \dots 4\text{ m}$ față de rețeaua geodezică națională a României dacă mapperul nu face calibrare manuală peste urme GPS.
-2. **Transformarea de Datum WGS84 $\leftrightarrow$ Stereo 70:** În scriptul [`tools/build_ground_truth_cluj.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/build_ground_truth_cluj.py), transformarea s-a realizat prin apelul generic `Transformer.from_crs("EPSG:4326", "EPSG:3844")`. Fără aplicarea explicită a parametrilor naționali Helmert 7-parametri (`+towgs84=2.329,-147.042,-92.08,0.309,-0.324,-0.497,5.69`) sau a grilei Transdat `ETRS89_Stereo70.gsb`, biblioteca PROJ introduce o abatere de translație de câțiva metri.
+2. **Transformarea de Datum WGS84 $\leftrightarrow$ Stereo 70:** În scriptul [`tools/build_ground_truth_cluj.py`](tools/build_ground_truth_cluj.py), transformarea s-a realizat prin apelul generic `Transformer.from_crs("EPSG:4326", "EPSG:3844")`. Fără aplicarea explicită a parametrilor naționali Helmert 7-parametri (`+towgs84=2.329,-147.042,-92.08,0.309,-0.324,-0.497,5.69`) sau a grilei Transdat `ETRS89_Stereo70.gsb`, biblioteca PROJ introduce o abatere de translație de câțiva metri.
 
 ---
 

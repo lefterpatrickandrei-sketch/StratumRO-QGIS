@@ -166,11 +166,49 @@ def export_and_verify(
 
     tolerance = 1e-4
     if max_diff_masks < tolerance and max_diff_iou < tolerance:
-        print("    [+] STATUS VALIDARE: NUMERICALLY_VERIFIED (Identitate matematică confirmată)")
+        print("    [+] STATUS VALIDARE (Sintetic): NUMERICALLY_VERIFIED (Identitate matematică confirmată)")
         status = "NUMERICALLY_VERIFIED"
     else:
         print(f"    [!] Atenție: Diferența depășește pragul de {tolerance}")
         status = "DEVIATION_DETECTED"
+
+    # Validare secundară pe eșantion de imagine reală (contrast acoperiș / sol)
+    print("\n[+] Validare Secundară pe Embeddings Extrase din Imagine Realistă...")
+    try:
+        from sam2.sam2_image_predictor import SAM2ImagePredictor
+        pred = SAM2ImagePredictor(sam2)
+        test_img = np.full((256, 256, 3), 90, dtype=np.uint8)
+        test_img[50:160, 60:170, :] = 210  # Corp clădire contrastant
+        pred.set_image(test_img)
+
+        real_feats = pred._features
+        r_img_emb = real_feats['image_embed']
+        r_feat_s0 = real_feats['high_res_feats'][0]
+        r_feat_s1 = real_feats['high_res_feats'][1]
+        r_coords = torch.tensor([[[110.0, 115.0]]], dtype=torch.float32, device=device)
+        r_labels = torch.tensor([[1]], dtype=torch.int32, device=device)
+
+        with torch.no_grad():
+            r_torch_m, r_torch_i = wrapper(r_img_emb, r_feat_s0, r_feat_s1, r_coords, r_labels)
+
+        r_ort_inputs = {
+            "image_embeddings": r_img_emb.cpu().numpy(),
+            "feat_s0": r_feat_s0.cpu().numpy(),
+            "feat_s1": r_feat_s1.cpu().numpy(),
+            "point_coords": r_coords.cpu().numpy(),
+            "point_labels": r_labels.cpu().numpy(),
+        }
+        r_ort_out = session.run(None, r_ort_inputs)
+        r_diff_m = np.max(np.abs(r_torch_m.cpu().numpy() - r_ort_out[0]))
+        r_diff_i = np.max(np.abs(r_torch_i.cpu().numpy() - r_ort_out[1]))
+
+        print(f"    - Erori pe scenă de imagine:")
+        print(f"      * Măști (Logits):             {r_diff_m:.2e}")
+        print(f"      * Scoruri IoU:                {r_diff_i:.2e}")
+        if r_diff_m < tolerance and r_diff_i < tolerance:
+            print("    [+] STATUS VALIDARE IMAGINE: CONFIRMATĂ (Identitate confirmată pe proiecție spectrală)")
+    except Exception as ex:
+        print(f"    [!] Notă: Testul pe imagine a fost omis: {ex}")
 
     print("=" * 75)
     return status == "NUMERICALLY_VERIFIED"

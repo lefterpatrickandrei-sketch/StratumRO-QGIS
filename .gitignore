@@ -42,12 +42,14 @@ desktop.ini
 *.env
 
 # AI Models & Large Weights (>100MB)
-models/
 *.pt
 *.pth
-*.onnx
 *.bin
 *.safetensors
+models/sam2/*.pt
+models/sam2/*.pth
+# Allow verified ONNX decoders
+!models/sam2/sam2_decoder.onnx
 
 # Workspace & Large Geodata Caches
 workspace/

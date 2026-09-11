@@ -6,11 +6,11 @@
 **Proiect:** StratumRO-QGIS (Pipeline Geomatic MLOps Stereo 70 / EPSG:3844)  
 **Obiect:** Răspuns exhaustiv, diagnosticare matematică și geospațială la observațiile Auditului #5  
 **Fișiere cheie auditate & actualizate:**
-* [`engine/evaluation.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/engine/evaluation.py) (Motorul de evaluare și CLI)
-* [`stratum_ro/test/test_evaluation.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/test/test_evaluation.py) (Suita de teste de regresie și sanitate — 26 teste)
-* [`data/ground_truth/README.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/README.md) (Protocolul ierarhic Tiers 1–4)
-* [`data/fixtures/case_06_usamv_library_split.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/fixtures/case_06_usamv_library_split.geojson) (Fixture regresie supra-segmentare)
-* [`data/fixtures/case_07_sf_maria_calcan_merge.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/fixtures/case_07_sf_maria_calcan_merge.geojson) (Fixture regresie sub-segmentare calcan)
+* [`engine/evaluation.py`](engine/evaluation.py) (Motorul de evaluare și CLI)
+* [`stratum_ro/test/test_evaluation.py`](stratum_ro/test/test_evaluation.py) (Suita de teste de regresie și sanitate — 26 teste)
+* [`data/ground_truth/README.md`](data/ground_truth/README.md) (Protocolul ierarhic Tiers 1–4)
+* [`data/fixtures/case_06_usamv_library_split.geojson`](data/fixtures/case_06_usamv_library_split.geojson) (Fixture regresie supra-segmentare)
+* [`data/fixtures/case_07_sf_maria_calcan_merge.geojson`](data/fixtures/case_07_sf_maria_calcan_merge.geojson) (Fixture regresie sub-segmentare calcan)
 
 ---
 

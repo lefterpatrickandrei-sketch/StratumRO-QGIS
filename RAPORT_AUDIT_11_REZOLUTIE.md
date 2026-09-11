@@ -7,12 +7,12 @@
 **Data:** 2026-09-10  
 **Statut:** **VALIDARE OPERAȚIONALĂ FINALIZATĂ — EȘANTION EXTINS DE 29 CLĂDIRI PURE**  
 **Documentație asociată:**
-- Raport Rezoluție Audit #10: [`RAPORT_AUDIT_10_REZOLUTIE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/RAPORT_AUDIT_10_REZOLUTIE.md)
-- GeoJSON Cadastru Teren Extins (29 Clădiri Pure): [`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson)
-- Raport Evaluare Hibrid (29 Clădiri): [`reports/tier1_cadastre/tier1_29bldg_summary.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_summary.json)
-- Raport Evaluare LiDAR Only (29 Clădiri): [`reports/tier1_cadastre/tier1_29bldg_config_A_summary.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_config_A_summary.json)
-- Raport Evaluare SAM 2 Only (29 Clădiri): [`reports/tier1_cadastre/tier1_29bldg_config_B_summary.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_config_B_summary.json)
-- Tabela CSV Detaliată pe 29 Clădiri: [`reports/tier1_cadastre/tier1_29bldg_buildings.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_buildings.csv)
+- Raport Rezoluție Audit #10: [`RAPORT_AUDIT_10_REZOLUTIE.md`](RAPORT_AUDIT_10_REZOLUTIE.md)
+- GeoJSON Cadastru Teren Extins (29 Clădiri Pure): [`data/ground_truth/tier1_teren.geojson`](data/ground_truth/tier1_teren.geojson)
+- Raport Evaluare Hibrid (29 Clădiri): [`reports/tier1_cadastre/tier1_29bldg_summary.json`](reports/tier1_cadastre/tier1_29bldg_summary.json)
+- Raport Evaluare LiDAR Only (29 Clădiri): [`reports/tier1_cadastre/tier1_29bldg_config_A_summary.json`](reports/tier1_cadastre/tier1_29bldg_config_A_summary.json)
+- Raport Evaluare SAM 2 Only (29 Clădiri): [`reports/tier1_cadastre/tier1_29bldg_config_B_summary.json`](reports/tier1_cadastre/tier1_29bldg_config_B_summary.json)
+- Tabela CSV Detaliată pe 29 Clădiri: [`reports/tier1_cadastre/tier1_29bldg_buildings.csv`](reports/tier1_cadastre/tier1_29bldg_buildings.csv)
 
 ---
 
@@ -61,7 +61,7 @@ Am reanalizat fișierul cadastral de proiect [`COAJE LUCRU DATE.gmw`](file:///C:
 
 ### 2.2. Noul Set de Date de Referință: `tier1_teren.geojson`
 Am dezvoltat scriptul de unificare și deduplicare spațială, generând noul fișier:  
-👉 **[`data/ground_truth/tier1_teren.geojson`](file:///c:/Users/lefpa/Downloads/QGIS-AI/data/ground_truth/tier1_teren.geojson)**
+👉 **[`data/ground_truth/tier1_teren.geojson`](data/ground_truth/tier1_teren.geojson)**
 
 - **Număr entități:** **29 poligoane cadastrale de clădiri pure**;
 - **Suprafețe:** cuprinse strict între $30.9\text{ m²}$ și $2.992,5\text{ m²}$ (arie mediană: $448.6\text{ m²}$);
@@ -72,7 +72,7 @@ Am dezvoltat scriptul de unificare și deduplicare spațială, generând noul fi
 
 ## 3. Pasul 3 & 4: Benchmark Cantitativ pe Eșantionul Extins (29 Clădiri)
 
-Am rulat [`engine/evaluation.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/engine/evaluation.py) pe noul set complet de 29 de clădiri pure:
+Am rulat [`engine/evaluation.py`](engine/evaluation.py) pe noul set complet de 29 de clădiri pure:
 
 ```
 ===========================================================================
@@ -131,7 +131,7 @@ Adoptăm această abordare metrologică constructivă și introducem **Grilele d
 
 ## 5. Catalogul Detaliat al Celor 17 Clădiri Împerecheate Curat
 
-Prezentăm fișa tehnică per-clădire extrasă direct din [`reports/tier1_cadastre/tier1_29bldg_buildings.csv`](file:///c:/Users/lefpa/Downloads/QGIS-AI/reports/tier1_cadastre/tier1_29bldg_buildings.csv):
+Prezentăm fișa tehnică per-clădire extrasă direct din [`reports/tier1_cadastre/tier1_29bldg_buildings.csv`](reports/tier1_cadastre/tier1_29bldg_buildings.csv):
 
 | ID Referință Teren | ID Predicție AI | IoU | Boundary RMSE | Hausdorff | Arie GT (m²) | Arie AI (m²) | Eroare Arie (%) | Tipologie & Comportament |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
