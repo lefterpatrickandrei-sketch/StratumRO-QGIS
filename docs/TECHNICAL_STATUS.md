@@ -38,7 +38,11 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
   - Pentru testele unitare și mediile fără model SAM2 descărcat local, motorul utilizează un mecanism de fallback pe măști morfologice nDSM.
 - **Metrici măsurate (pe AOI Cluj USAMV, 29 clădiri GT):**
   - Fuziunea hibridă reduce alarmele false de la 569 (LiDAR pur) la 116.
-  - IoU Median pe împerecheri 1:1 curate: **0.818** (Medie: **0.746**).
+  - IoU Median pe împerecheri 1:1 curate: **0.804** (Medie: **0.725**, pe 20 clădiri 1:1, după separarea la calcan).
+  - True Positives (TP): **20/29** (creștere de la 17/29 prin `split_at_calcan`).
+  - Zero multi-matching: împerecherile cu același pred_id au fost eliminate complet (0 sub-segmentări).
+  - Îmbunătățire IoU pe clădirile alipite: REF 002 (0.31 -> 0.836), REF 004 (0.20 -> 0.480), REF 007 (0.20 -> 0.641), REF 014 (0.11 -> 0.604).
+  - IoU Mediu Global a crescut de la 0.615 la **0.697** (+0.082).
 
 ---
 

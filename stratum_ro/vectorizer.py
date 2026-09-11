@@ -402,6 +402,24 @@ class CadastralVectorizer:
                         "status": "CONFIRMAT_HIBRID"
                     })
 
+        # 2b. Separare topologică la calcan (rosturi structurale și trepte altimetrice nDSM)
+        from stratum_ro.geometry_utils import split_at_calcan
+        calcan_split_candidates = []
+        for cand in merged_candidates:
+            geom = cand.get("geometry")
+            if geom is not None and geom.area >= 350.0:
+                bodies = split_at_calcan(geom)
+                if len(bodies) > 1:
+                    for b in bodies:
+                        c_copy = dict(cand)
+                        c_copy["geometry"] = b
+                        calcan_split_candidates.append(c_copy)
+                else:
+                    calcan_split_candidates.append(cand)
+            else:
+                calcan_split_candidates.append(cand)
+        merged_candidates = calcan_split_candidates
+
         # 3. Curățare colți (spikes) și ortogonalizare Manhattan la 90 de grade
         # Dacă este disponibil buildingregulariser, rulăm direct în batch pentru performanță maximă și 100% 90°
         if HAS_REGULARISER and merged_candidates:

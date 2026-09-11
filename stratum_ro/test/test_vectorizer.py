@@ -97,7 +97,47 @@ class TestCadastralVectorizer(unittest.TestCase):
         self.assertFalse(res_house["is_temporary"])
         self.assertEqual(res_house["type"], "CONSTRUCTIE_PERMANENTA")
 
+    def test_split_at_calcan(self):
+        """
+        Verifică separarea automată la calcan (zid comun) a două corpuri de clădire
+        adiacente cu treaptă de înălțime nDSM (P0.1 DoD).
+        """
+        from stratum_ro.geometry_utils import split_at_calcan
+        from shapely.geometry import box
+        from shapely.ops import unary_union
+
+        # 1. Două dreptunghiuri adiacente de 300 mp fiecare (comun la X = 15.0)
+        # Clădirea A: [0, 0, 15, 20], H = 4.0 m
+        # Clădirea B: [15, 0, 30, 20], H = 8.5 m
+        r1 = box(0.0, 0.0, 15.0, 20.0)
+        r2 = box(15.0, 0.0, 30.0, 20.0)
+        merged = unary_union([r1, r2])
+        self.assertEqual(merged.area, 600.0)
+
+        # Mock funcție nDSM altimetrică
+        def mock_ndsm(x, y):
+            return 4.0 if x < 15.0 else 8.5
+
+        bodies = split_at_calcan(
+            merged,
+            ndsm_callable=mock_ndsm,
+            min_split_area_m2=350.0,
+            min_height_step_m=1.5
+        )
+
+        self.assertEqual(len(bodies), 2, "Clădirea contopită la calcan trebuie separată în 2 corpuri")
+        for b in bodies:
+            self.assertTrue(b.is_valid)
+            self.assertAlmostEqual(b.area, 300.0, delta=25.0)
+
+        # 2. Clădire compactă sub pragul minim (nu trebuie fragmentată eronat)
+        small_bldg = box(0.0, 0.0, 10.0, 10.0)
+        unaffected = split_at_calcan(small_bldg, min_split_area_m2=350.0)
+        self.assertEqual(len(unaffected), 1)
+        self.assertEqual(unaffected[0].area, 100.0)
+
 
 if __name__ == "__main__":
     unittest.main()
+
 
