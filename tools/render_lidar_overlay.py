@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Render LiDAR nDSM with Pseudocolor Shader and Cadastral Overlays
 ==============================================================
@@ -81,7 +81,18 @@ gt_layer.setRenderer(QgsSingleSymbolRenderer(sym_gt))
 settings = QgsMapSettings()
 settings.setLayers([gt_layer, pred_layer, r_layer])
 settings.setDestinationCrs(QgsCoordinateReferenceSystem("EPSG:3844"))
-bbox = QgsRectangle(390620.0, 585350.0, 391180.0, 585780.0)
+
+# Dynamic AOI extent from LIMITA_SECTOR_CADASTRAL (P2.3)
+limita_path = os.path.join(base_dir, "workspace", "output", "cladiri_stereo70.gpkg") + "|layername=LIMITA_SECTOR_CADASTRAL"
+limita_layer = QgsVectorLayer(limita_path, "Limita Sector", "ogr")
+if limita_layer.isValid() and not limita_layer.extent().isEmpty():
+    bbox = limita_layer.extent()
+    print(f"[+] Loaded dynamic extent from LIMITA_SECTOR_CADASTRAL: {bbox.toString()}")
+else:
+    import warnings
+    warnings.warn("LIMITA_SECTOR_CADASTRAL not found or empty. Using fallback hardcoded extent.")
+    bbox = QgsRectangle(390620.0, 585350.0, 391180.0, 585780.0)
+
 settings.setExtent(bbox)
 settings.setOutputSize(QSize(2400, 1840))
 

@@ -115,20 +115,14 @@ def ndsm_to_rgb(ndsm_array):
     return rgb
 
 
-def render_all():
-    print("=" * 80)
-    print("  STRATUM-RO: GENERARE AUTOMATĂ ACTIVE VIZUALE (VISUAL EVIDENCE)")
-    print("=" * 80)
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-
+def render_general_inspection_map(out_path=None):
+    if out_path is None:
+        out_path = os.path.join(OUTPUT_DIR, "inspectie_orto_cadastru_ai.jpg")
     gdf_pred = gpd.read_file(PRED_GPKG, layer=PRED_LAYER)
     gdf_gt = gpd.read_file(GT_GEOJSON)
-
     pred_geoms = list(gdf_pred.geometry)
     gt_geoms = list(gdf_gt.geometry)
 
-    # 1. Harta Generală AOI (inspectie_orto_cadastru_ai.jpg)
-    print("[1/5] Randează Harta Generală de Inspecție (Full AOI)...")
     bounds_full = (390580.0, 584900.0, 391500.0, 585860.0)
     with rasterio.open(ORTO_VRT) as src:
         win = from_bounds(*bounds_full, src.transform)
@@ -138,21 +132,27 @@ def render_all():
         img = img.resize((2400, 1840), Image.Resampling.BILINEAR)
 
     draw = ImageDraw.Draw(img)
-    # Desenăm GT cu Cyan (lățime 4)
     draw_polygons(draw, gt_geoms, bounds_full[0], bounds_full[1], bounds_full[2], bounds_full[3], 2400, 1840, outline_color=(0, 235, 255), line_width=4)
-    # Desenăm AI cu Portocaliu (lățime 3)
     draw_polygons(draw, pred_geoms, bounds_full[0], bounds_full[1], bounds_full[2], bounds_full[3], 2400, 1840, outline_color=(255, 120, 0), line_width=3)
 
     img = add_legend(img, "STRATUM-RO: INSPECȚIE COMPARATIVĂ", [
         ((255, 120, 0), "Predicție AI Hibrid (CLADIRI_HIBRID - 90° Regularizat)"),
         ((0, 235, 255), "Ground Truth Teren ANCPI (tier1_teren.geojson - 29 Clădiri)")
     ])
-    out_1 = os.path.join(OUTPUT_DIR, "inspectie_orto_cadastru_ai.jpg")
-    img.save(out_1, "JPEG", quality=90)
-    print(f"    [+] Salvat: {out_1} (2400x1840)")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    img.save(out_path, "JPEG", quality=90)
+    print(f"    [+] Salvat: {out_path} (2400x1840)")
+    return out_path
 
-    # 2. Zoom Campus Core (zoom_campus_core.jpg)
-    print("[2/5] Randează Detaliu Inima Campusului USAMV...")
+
+def render_campus_core_zoom(out_path=None):
+    if out_path is None:
+        out_path = os.path.join(OUTPUT_DIR, "zoom_campus_core.jpg")
+    gdf_pred = gpd.read_file(PRED_GPKG, layer=PRED_LAYER)
+    gdf_gt = gpd.read_file(GT_GEOJSON)
+    pred_geoms = list(gdf_pred.geometry)
+    gt_geoms = list(gdf_gt.geometry)
+
     bounds_campus = (390700.0, 585350.0, 391180.0, 585780.0)
     with rasterio.open(ORTO_VRT) as src:
         win = from_bounds(*bounds_campus, src.transform)
@@ -170,12 +170,20 @@ def render_all():
         ((255, 120, 0), "Predicție StratumRO (Ortogonalizat 90°)"),
         ((0, 235, 255), "Referință Terestră ANCPI (Stereo 70)")
     ])
-    out_2 = os.path.join(OUTPUT_DIR, "zoom_campus_core.jpg")
-    img.save(out_2, "JPEG", quality=90)
-    print(f"    [+] Salvat: {out_2}")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    img.save(out_path, "JPEG", quality=90)
+    print(f"    [+] Salvat: {out_path}")
+    return out_path
 
-    # 3. Zoom Boulevard Calea Mănăștur (zoom_boulevard_fp_reale.jpg)
-    print("[3/5] Randează Detaliu Calea Mănăștur (Clădiri Rezidențiale)...")
+
+def render_boulevard_zoom(out_path=None):
+    if out_path is None:
+        out_path = os.path.join(OUTPUT_DIR, "zoom_boulevard_fp_reale.jpg")
+    gdf_pred = gpd.read_file(PRED_GPKG, layer=PRED_LAYER)
+    gdf_gt = gpd.read_file(GT_GEOJSON)
+    pred_geoms = list(gdf_pred.geometry)
+    gt_geoms = list(gdf_gt.geometry)
+
     bounds_blvd = (390550.0, 585500.0, 391150.0, 585860.0)
     with rasterio.open(ORTO_VRT) as src:
         win = from_bounds(*bounds_blvd, src.transform)
@@ -193,12 +201,20 @@ def render_all():
         ((255, 120, 0), "Case / Vile rezidențiale detectate de AI (79.3% confirmate OSM)"),
         ((0, 235, 255), "Limită GT ANCPI (oprește la gardul USAMV)")
     ])
-    out_3 = os.path.join(OUTPUT_DIR, "zoom_boulevard_fp_reale.jpg")
-    img.save(out_3, "JPEG", quality=90)
-    print(f"    [+] Salvat: {out_3}")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    img.save(out_path, "JPEG", quality=90)
+    print(f"    [+] Salvat: {out_path}")
+    return out_path
 
-    # 4. Zoom Cimitir & Sud (zoom_cimitir_sud.jpg)
-    print("[4/5] Randează Detaliu Cimitirul Mănăștur & Zona Sud...")
+
+def render_cemetery_zoom(out_path=None):
+    if out_path is None:
+        out_path = os.path.join(OUTPUT_DIR, "zoom_cimitir_sud.jpg")
+    gdf_pred = gpd.read_file(PRED_GPKG, layer=PRED_LAYER)
+    gdf_gt = gpd.read_file(GT_GEOJSON)
+    pred_geoms = list(gdf_pred.geometry)
+    gt_geoms = list(gdf_gt.geometry)
+
     bounds_cim = (390550.0, 584900.0, 391150.0, 585350.0)
     with rasterio.open(ORTO_VRT) as src:
         win = from_bounds(*bounds_cim, src.transform)
@@ -216,12 +232,18 @@ def render_all():
         ((255, 120, 0), "Predicții clădiri AI (pietrele funerare respinse corect)"),
         ((0, 235, 255), "Referință ANCPI")
     ])
-    out_4 = os.path.join(OUTPUT_DIR, "zoom_cimitir_sud.jpg")
-    img.save(out_4, "JPEG", quality=90)
-    print(f"    [+] Salvat: {out_4}")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    img.save(out_path, "JPEG", quality=90)
+    print(f"    [+] Salvat: {out_path}")
+    return out_path
 
-    # 5. Inspecție nDSM LiDAR Pseudocolor (inspectie_lidar_ndsm.jpg)
-    print("[5/5] Randează Harta Altimetrică LiDAR nDSM...")
+
+def render_ndsm_lidar(out_path=None):
+    if out_path is None:
+        out_path = os.path.join(OUTPUT_DIR, "inspectie_lidar_ndsm.jpg")
+    gdf_pred = gpd.read_file(PRED_GPKG, layer=PRED_LAYER)
+    pred_geoms = list(gdf_pred.geometry)
+
     bounds_lidar = (390620.0, 585100.0, 391400.0, 585820.0)
     with rasterio.open(NDSM_TIF) as src:
         win = from_bounds(*bounds_lidar, src.transform)
@@ -241,9 +263,32 @@ def render_all():
         ((230, 80, 25), "Clădiri înalte / coroane arbori (12 - 25 m)"),
         ((255, 220, 0), "Contur clădiri extrase StratumRO")
     ])
-    out_5 = os.path.join(OUTPUT_DIR, "inspectie_lidar_ndsm.jpg")
-    img_lidar.save(out_5, "JPEG", quality=90)
-    print(f"    [+] Salvat: {out_5}")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    img_lidar.save(out_path, "JPEG", quality=90)
+    print(f"    [+] Salvat: {out_path}")
+    return out_path
+
+
+def render_all():
+    print("=" * 80)
+    print("  STRATUM-RO: GENERARE AUTOMATĂ ACTIVE VIZUALE (VISUAL EVIDENCE)")
+    print("=" * 80)
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+    print("[1/5] Randează Harta Generală de Inspecție (Full AOI)...")
+    render_general_inspection_map()
+
+    print("[2/5] Randează Detaliu Inima Campusului USAMV...")
+    render_campus_core_zoom()
+
+    print("[3/5] Randează Detaliu Calea Mănăștur (Clădiri Rezidențiale)...")
+    render_boulevard_zoom()
+
+    print("[4/5] Randează Detaliu Cimitirul Mănăștur & Zona Sud...")
+    render_cemetery_zoom()
+
+    print("[5/5] Randează Harta Altimetrică LiDAR nDSM...")
+    render_ndsm_lidar()
 
     print("\n[+] Toate cele 5 imagini au fost regenerate cu succes în docs/assets/!")
 
