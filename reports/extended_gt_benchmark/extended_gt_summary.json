@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-09-11T14:48:57.476906",
+  "total_ground_truth": 150,
+  "total_predictions": 195,
+  "true_positives": 88,
+  "false_positives": 104,
+  "false_negatives": 62,
+  "precision": 0.4667,
+  "precision_ci_95": [
+    0.398,
+    0.5367
+  ],
+  "recall": 0.5867,
+  "recall_ci_95": [
+    0.5067,
+    0.6623
+  ],
+  "f1_score": 0.5198,
+  "median_iou": 0.4578,
+  "mean_iou": 0.5108,
+  "median_rmse_m": 3.048,
+  "mean_rmse_m": 3.286,
+  "breakdown": {
+    "campus_ancpi": {
+      "gt_count": 29,
+      "detected": 22,
+      "recall": 0.7586
+    },
+    "residential_osm": {
+      "gt_count": 121,
+      "detected": 69,
+      "recall": 0.5702
+    }
+  }
+}

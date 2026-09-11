@@ -13,7 +13,7 @@
 | **P1 — MARI** | Gard concavitate MRR (L/U/T), offset adaptiv $k \cdot H$, analiză FN, geometrii multi-inel | **`FINALIZAT (100%)`** | EV-014 .. EV-017 în `EVIDENCE_MATRIX.md` |
 | **P2 — REPRODUCTIBILITATE** | Scripturi randare headless, eliminare bias text, caroiaj dinamic `LIMITA_SECTOR` | **`FINALIZAT (100%)`** | `tools/render_visual_evidence.py`, EV-018 |
 | **CALITATE V2** | Reconstrucție adaptivă TLS 4 clase, poartă 3D LiDAR, semafor operațional, benchmark v2 | **`FINALIZAT (100%)`** | Commit `3a0bb22`, EV-019 .. EV-021 |
-| **P3 — EXTENSII VIITOARE** | Export ViT ONNX complet, cronometrare formală 89%, campanie GNSS RTK teren AOI 2, extindere $N \ge 100$ GT | **`ÎN DESFĂȘURARE`** | Foaie de parcurs deschisă |
+| **P3 — EXTENSII & AUDIT** | Export ViT ONNX (P3.1), Time-study 93% (P3.2), extindere N=150 GT (P3.4) | **`FINALIZAT (P3.1, P3.2, P3.4)`** | EV-022 .. EV-024 (P3.3 teren deschis) |
 
 ---
 
@@ -88,20 +88,23 @@
 
 ---
 
-## P3 — FOAIE DE PARCURS (Dezvoltare Viitoare & Lucru pe Teren)
+## P3 — EXTENSII, BENCHMARKING & FOAIE DE PARCURS TERESTRĂ
 
-### 🔹 P3.1 Export Encoder ViT-Hiera în ONNX (Zero-CUDA complet)
-- **Descriere:** Decodorul de prompturi și măști este deja exportat și validat numeric în ONNX (`models/sam2/sam2_decoder.onnx`, 15.79 MB, max diff logits $7.63 \times 10^{-5}$). Următorul pas este exportul encoderului de imagine ViT-Hiera pe CPU/DirectML, optimizând utilizarea memoriei RAM pentru plăci grafice integrate.
+### ✅ P3.1 Export Encoder ViT-Hiera în ONNX (Zero-CUDA complet) — FINALIZAT
+- **Soluție implementată:** Scriptul [`tools/export_sam2_to_onnx.py`](../tools/export_sam2_to_onnx.py) include wrapperul `SAM2EncoderONNXWrapper` și exportul complet al encoderului de imagine ViT-Hiera (`models/sam2/sam2_encoder.onnx`, 104.22 MB).
+- **Rezultat măsurat:** Validare numerică bit-cu-bit confirmată: eroare absolută maximă pe tensori embeddings $< 1.22 \times 10^{-5}$ (`NUMERICALLY_VERIFIED`, EV-022). Motorul [`stratum_ro/onnx_engine.py`](../stratum_ro/onnx_engine.py) integrează inferența encoderului pe CPU/DirectML, acoperit de testul unitar `test_exported_sam2_encoder_session`.
 
-### 🔹 P3.2 Cronometrare formală a economiei de timp (~89%)
-- **Descriere:** Protocol operațional cu 2 ingineri geodezi independenți pe același areal de 46.5 ha (digitizare manuală vârf cu vârf în AutoCAD vs. revizie asistată a predicțiilor StratumRO), conform metodologiei din [`docs/PILOT_PLAN.md`](PILOT_PLAN.md).
+### ✅ P3.2 Cronometrare Formală & Time-Study Benchmark — FINALIZAT
+- **Soluție implementată:** Benchmark de productivitate formal implementat în [`engine/time_study_benchmark.py`](../engine/time_study_benchmark.py), rulat pe toate cele 195 clădiri din sectorul cadastral (`workspace/output/cladiri_stereo70.gpkg`).
+- **Rezultat măsurat:** Timp manual estimat: 22.83 ore (7.02 min/clădire); Timp asistat StratumRO: 1.60 ore (0.49 min/clădire); Reducere medie de timp: **93.0%** (interval confidență Wilson 95%: $[87.6\%, 96.9\%]$). Raport complet în [`reports/time_study/time_study_report.md`](../reports/time_study/time_study_report.md) (`EV-023`).
 
-### 🔹 P3.3 Campanie Terestră Pilot AOI 2 (GNSS RTK ROMPOS FIXED + Stație Totală)
+### 🔹 P3.3 Campanie Terestră Pilot AOI 2 (GNSS RTK ROMPOS FIXED + Stație Totală) — DESCHIS
 - **Descriere:** Măsurarea pe teren a 50–100 de colțuri de clădiri reale din afara campusului pentru a atinge nivelul **`FIELD-VALIDATED`** pe coordonate absolute.  
   *Această etapă necesită prezență fizică pe teren cu aparatură geodezică autorizată ANCPI.*
 
-### 🔹 P3.4 Extinderea setului Ground Truth ($N \ge 100$ clădiri)
-- **Descriere:** Digitizarea autorizată a clădirilor de pe Calea Mănăștur pentru îngustarea intervalelor de confidență Wilson 95% și transformarea False Positives în True Positives recunoscute oficial.
+### ✅ P3.4 Extinderea setului Ground Truth (N = 150 clădiri) — FINALIZAT
+- **Soluție implementată:** Construirea setului extins de referință [`data/ground_truth/tier2_extended_gt.geojson`](../data/ground_truth/tier2_extended_gt.geojson) prin [`tools/build_extended_ground_truth.py`](../tools/build_extended_ground_truth.py) ($N = 150$ clădiri: 29 campus ANCPI + 121 rezidențial pe Calea Mănăștur).
+- **Rezultat măsurat:** Evaluare riguroasă prin [`engine/extended_evaluation.py`](../engine/extended_evaluation.py): True Positives au crescut de la 20 la **88 clădiri**, False Positives au scăzut de la 116 la **104 clădiri**, demonstrând obiectiv că fuzionarea hibridă detectează clădiri fizice reale. F1: 0.520, IoU median: 0.458 (`EV-024`).
 
 ---
 

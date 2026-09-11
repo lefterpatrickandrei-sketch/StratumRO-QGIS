@@ -48,7 +48,8 @@ desktop.ini
 *.safetensors
 models/sam2/*.pt
 models/sam2/*.pth
-# Allow verified ONNX decoders
+models/sam2/*.onnx
+# Allow verified compact ONNX decoders (<100MB)
 !models/sam2/sam2_decoder.onnx
 
 # Workspace & Large Geodata Caches

@@ -71,6 +71,19 @@ class SAM2DecoderONNXWrapper(nn.Module):
         return low_res_multimasks, iou_predictions
 
 
+class SAM2EncoderONNXWrapper(nn.Module):
+    """
+    Wrapper PyTorch optimizat pentru exportul ONNX al encoderului de imagine ViT-Hiera SAM 2.
+    """
+    def __init__(self, sam2_model):
+        super().__init__()
+        self.image_encoder = sam2_model.image_encoder
+
+    def forward(self, image):
+        out = self.image_encoder(image)
+        return out['vision_features'], out['backbone_fpn'][0], out['backbone_fpn'][1]
+
+
 def export_and_verify(
     checkpoint_path: str = "models/sam2/sam2_hiera_tiny.pt",
     config_name: str = "sam2_hiera_t.yaml",
@@ -214,12 +227,111 @@ def export_and_verify(
     return status == "NUMERICALLY_VERIFIED"
 
 
+def export_and_verify_encoder(
+    checkpoint_path: str = "models/sam2/sam2_hiera_tiny.pt",
+    config_name: str = "sam2_hiera_t.yaml",
+    output_onnx_path: str = "models/sam2/sam2_encoder.onnx",
+    device: str = "cpu"
+):
+    print("=" * 75)
+    print("  STRATUM-RO: EXPORT ENCODER SAM 2 (ViT-Hiera) -> ONNX & VALIDARE NUMERICĂ")
+    print("=" * 75)
+
+    if not SAM2_AVAILABLE:
+        print("[-] EROARE: Pachetul 'sam2' nu este instalat.")
+        return False
+    if not ONNX_AVAILABLE:
+        print("[-] EROARE: 'onnx' sau 'onnxruntime' lipsesc din mediu.")
+        return False
+    if not os.path.exists(checkpoint_path):
+        print(f"[-] EROARE: Checkpointul SAM 2 nu există la: {checkpoint_path}")
+        return False
+
+    print(f"[+] Încărcare model SAM 2 din: {checkpoint_path} ({config_name})...")
+    sam2 = build_sam2(config_name, checkpoint_path, device=device)
+    sam2.eval()
+
+    wrapper = SAM2EncoderONNXWrapper(sam2)
+    wrapper.eval()
+
+    dummy_image = torch.randn(1, 3, 1024, 1024, dtype=torch.float32, device=device)
+
+    print("[+] Rulare inferență PyTorch de referință (ViT Encoder)...")
+    with torch.no_grad():
+        torch_vf, torch_s0, torch_s1 = wrapper(dummy_image)
+
+    print(f"    - Torch vision_features shape: {list(torch_vf.shape)}")
+    print(f"    - Torch feat_s0 shape:         {list(torch_s0.shape)}")
+    print(f"    - Torch feat_s1 shape:         {list(torch_s1.shape)}")
+
+    os.makedirs(os.path.dirname(os.path.abspath(output_onnx_path)), exist_ok=True)
+    print(f"[+] Export către ONNX: {output_onnx_path}...")
+    t0 = time.perf_counter()
+
+    torch.onnx.export(
+        wrapper,
+        dummy_image,
+        output_onnx_path,
+        export_params=True,
+        opset_version=17,
+        do_constant_folding=True,
+        input_names=["image"],
+        output_names=["vision_features", "feat_s0", "feat_s1"]
+    )
+    export_duration = time.perf_counter() - t0
+    file_size_mb = os.path.getsize(output_onnx_path) / 1024 / 1024
+    print(f"    - Export encoder finalizat cu succes în {export_duration:.2f} s. Mărime: {file_size_mb:.2f} MB")
+
+    print("\n[+] Inițializare sesiune ONNX Runtime & Validare Numerică...")
+    providers = ["CPUExecutionProvider"]
+    if "DmlExecutionProvider" in ort.get_available_providers():
+        providers.insert(0, "DmlExecutionProvider")
+
+    session = ort.InferenceSession(output_onnx_path, providers=providers)
+    ort_inputs = {"image": dummy_image.cpu().numpy()}
+    ort_outputs = session.run(None, ort_inputs)
+    ort_vf, ort_s0, ort_s1 = ort_outputs[0], ort_outputs[1], ort_outputs[2]
+
+    diff_vf = np.max(np.abs(torch_vf.cpu().numpy() - ort_vf))
+    diff_s0 = np.max(np.abs(torch_s0.cpu().numpy() - ort_s0))
+    diff_s1 = np.max(np.abs(torch_s1.cpu().numpy() - ort_s1))
+
+    print("-" * 75)
+    print(f"    - Provider ONNX utilizat:        {session.get_providers()[0]}")
+    print(f"    - Erori numerice absolute maxime:")
+    print(f"      * vision_features:            {diff_vf:.2e}")
+    print(f"      * high_res feat_s0:           {diff_s0:.2e}")
+    print(f"      * high_res feat_s1:           {diff_s1:.2e}")
+
+    tolerance = 1e-4
+    if diff_vf < tolerance and diff_s0 < tolerance and diff_s1 < tolerance:
+        print("    [+] STATUS VALIDARE ENCODER: NUMERICALLY_VERIFIED (Identitate matematică confirmată)")
+        status = "NUMERICALLY_VERIFIED"
+    else:
+        print(f"    [!] Atenție: Diferența depășește pragul de {tolerance}")
+        status = "DEVIATION_DETECTED"
+
+    print("=" * 75)
+    return status == "NUMERICALLY_VERIFIED"
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Export SAM 2 la ONNX și validare numerică.")
     parser.add_argument("--checkpoint", default="models/sam2/sam2_hiera_tiny.pt", help="Cale fișier checkpoint .pt")
     parser.add_argument("--config", default="sam2_hiera_t.yaml", help="Nume fișier config YAML SAM 2")
-    parser.add_argument("--output", default="models/sam2/sam2_decoder.onnx", help="Cale ieșire fișier .onnx")
+    parser.add_argument("--output-decoder", default="models/sam2/sam2_decoder.onnx", help="Cale ieșire decodor .onnx")
+    parser.add_argument("--output-encoder", default="models/sam2/sam2_encoder.onnx", help="Cale ieșire encoder .onnx")
+    parser.add_argument("--export-encoder", action="store_true", help="Exportă exclusiv encoderul de imagine")
+    parser.add_argument("--export-all", action="store_true", help="Exportă atât decodorul cât și encoderul")
     args = parser.parse_args()
 
-    success = export_and_verify(args.checkpoint, args.config, args.output)
+    if args.export_encoder:
+        success = export_and_verify_encoder(args.checkpoint, args.config, args.output_encoder)
+    elif args.export_all:
+        s_dec = export_and_verify(args.checkpoint, args.config, args.output_decoder)
+        s_enc = export_and_verify_encoder(args.checkpoint, args.config, args.output_encoder)
+        success = s_dec and s_enc
+    else:
+        success = export_and_verify(args.checkpoint, args.config, args.output_decoder)
+
     sys.exit(0 if success else 1)

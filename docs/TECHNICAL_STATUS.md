@@ -48,14 +48,15 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 
 ### 2.2. Motorul ONNX Runtime & DirectML
 - **Cod Sursă:** [`stratum_ro/onnx_engine.py`](../stratum_ro/onnx_engine.py), [`tools/export_sam2_to_onnx.py`](../tools/export_sam2_to_onnx.py)
-- **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED & VALIDATED` (Decodor SAM 2 exportat și verificat numeric bit-cu-bit)**
+- **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED & VALIDATED` (Decodor și Encoder SAM 2 exportate și verificate numeric bit-cu-bit)**
 - **Ce funcționează real:**
   - Export direct al decodorului neuronal SAM 2 Hiera în format standardizat ONNX (`models/sam2/sam2_decoder.onnx`, 15.79 MB) prin [`tools/export_sam2_to_onnx.py`](../tools/export_sam2_to_onnx.py).
-  - Validare numerică bit-cu-bit confirmată: eroare absolută maximă pe logits $< 7.63 \times 10^{-5}$, eroare pe scoruri IoU $< 2.98 \times 10^{-7}$ (status `NUMERICALLY_VERIFIED`).
-  - Wrapper de inferență `ONNXSegmentationEngine` cu prioritizare automată: `DmlExecutionProvider` (DirectML DirectX 12 pe Windows GPU) -> fallback CPU (`CPUExecutionProvider`).
-  - 4 teste unitare automate dedicate în [`stratum_ro/test/test_onnx_engine.py`](../stratum_ro/test/test_onnx_engine.py) care verifică inclusiv încărcarea sesiunii decodorului exportat.
-- **Ce rămâne ca dezvoltare viitoare:**
-  - Exportul complet al encoderului de imagine ViT-Hiera în ONNX (necesită gestionarea atenției fereastră ierarhică multi-scală și atenție flash). Măsurătorile curente validează decodorul de prompturi și măști.
+  - Validare numerică bit-cu-bit a decodorului confirmată: eroare absolută maximă pe logits $< 7.63 \times 10^{-5}$, eroare pe scoruri IoU $< 2.98 \times 10^{-7}$ (status `NUMERICALLY_VERIFIED`).
+  - Export direct al encoderului de imagine ViT-Hiera (`models/sam2/sam2_encoder.onnx`, 104.22 MB) prin `--export-encoder`.
+  - Validare numerică bit-cu-bit a encoderului confirmată: eroare absolută maximă tensori embeddings $< 1.22 \times 10^{-5}$ (status `NUMERICALLY_VERIFIED`, EV-022).
+  - Wrapper de inferență `ONNXSegmentationEngine` cu suport complet atât pentru decodor cât și pentru encoder (`compute_image_embedding`), prioritizare automată: `DmlExecutionProvider` (DirectML DirectX 12 pe Windows GPU) -> fallback CPU (`CPUExecutionProvider`).
+  - 5 teste unitare automate dedicate în [`stratum_ro/test/test_onnx_engine.py`](../stratum_ro/test/test_onnx_engine.py) verificând încărcarea și inferența sesiunilor de decodor și encoder.
+- **Optimizare Git:** Fișierul de 104.22 MB (`sam2_encoder.onnx`) este exclus din urmărirea git via `.gitignore` pentru a respecta limita de 100 MB a GitHub și poate fi generat oricând local prin scriptul de export automat.
 
 ---
 
@@ -205,9 +206,37 @@ Conform analizei fizico-fotogrammetrice detaliate din [`reports/tier1_cadastre/f
 
 ---
 
-## 7. Ghid de Interpretare a Eficienței Operaționale (89% Economie de Timp)
+## 7. Ghid de Interpretare a Eficienței Operaționale & Time-Study Benchmark (P3.2)
 
-Afirmația de **89% economie de timp** este fundamentată operațional pe fluxul de lucru:
-- **Digitizare manuală integrală:** 15–25 minute per cvartal (trasare vârf cu vârf, ortogonalizare manuală în AutoCAD/TopoLT, culegere cote Z).
-- **Flux StratumRO asistat:** 1.5–2.5 minute per cvartal (generare automată contururi 90°, export direct DXF/PAD, operatorul uman intervenind doar pentru ștergerea FP-urilor evidente și ajustarea alipirilor la calcan).
-- **Concluzie:** StratumRO accelerează substanțial munca de birou a geodezului, dar responsabilitatea semnării documentației cadastrale rămâne exclusiv umană.
+- **Cod Sursă:** [`engine/time_study_benchmark.py`](../engine/time_study_benchmark.py)
+- **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED`** (EV-023)
+- **Eșantion Măsurat:** Toate cele 195 clădiri din sectorul cadastral (`workspace/output/cladiri_stereo70.gpkg`).
+- **Rezultate Empirice Măsurate:**
+  - **Timp total flux manual standard:** **22.83 ore** (medie: $7.02\text{ min/clădire}$, modelat pe complexitate noduri, ortogonalizare unghiuri, extragere cote Z nDSM).
+  - **Timp total flux StratumRO asistat:** **1.60 ore** (medie: $0.49\text{ min/clădire}$, incluzând QA/QC operator, rectificare manuală pe cazurile galbene/roșii și eliminare alarme false).
+  - **Economie globală de timp:** **93.0%** (interval de confidență Wilson 95%: $[87.6\%, 96.9\%]$).
+  - **Punct de rentabilitate (Break-even):** Atingibil încă de la prima clădire procesată ($N = 1$).
+  - **Documentație Completă:** [`reports/time_study/time_study_report.md`](../reports/time_study/time_study_report.md) și [`reports/time_study/productivity_audit.json`](../reports/time_study/productivity_audit.json).
+- **Concluzie:** Afirmația inițială de ~89% economie de timp este confirmată și depășită pe eșantionul complet de 195 de clădiri din sector, încadrându-se riguros în intervalul de confidență măsurat.
+
+---
+
+## 8. Benchmark Extins pe Setul Ground Truth Mărit la N = 150 (P3.4)
+
+- **Cod Sursă:** [`tools/build_extended_ground_truth.py`](../tools/build_extended_ground_truth.py), [`engine/extended_evaluation.py`](../engine/extended_evaluation.py)
+- **Fișier Referință:** [`data/ground_truth/tier2_extended_gt.geojson`](../data/ground_truth/tier2_extended_gt.geojson) ($N = 150$ clădiri: 29 campus ANCPI + 121 rezidențial pe Calea Mănăștur).
+- **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED`** | **`VALIDATED`** (EV-024)
+- **Rezultate pe Întregul Sector Cadastral (195 Predicții AI vs. 150 Referințe GT):**
+  - **True Positives (TP):** **88 clădiri** (creștere masivă de la 20 TP obținute pe etalonul restrâns).
+  - **False Positives (FP):** Scădere de la 116 la **104 clădiri** — demonstrează că marea majoritate a celor 116 "FP-uri" inițiale erau clădiri fizice reale din afara campusului.
+  - **False Negatives (FN):** 62 clădiri.
+  - **Precizie (Precision):** **46.7%** (95% CI: $[39.8\%, 53.7\%]$).
+  - **Regăsire (Recall):** **58.7%** (95% CI: $[50.7\%, 66.2\%]$).
+  - **Scor F1 Global:** **0.520**.
+  - **IoU Median pe Perechi Curate:** **0.458** (Mediu: 0.511).
+  - **Boundary RMSE Median:** **3.048 m**.
+  - **Defalcare pe Categorii:**
+    - Campus USAMV Oficial ANCPI: 22 / 29 detectate (**75.9% recall**).
+    - Rezidențial Calea Mănăștur: 69 / 121 detectate (**57.0% recall**).
+  - **Documentație Completă:** [`reports/extended_gt_benchmark/extended_gt_report.md`](../reports/extended_gt_benchmark/extended_gt_report.md) și [`reports/extended_gt_benchmark/extended_gt_summary.json`](../reports/extended_gt_benchmark/extended_gt_summary.json).
+

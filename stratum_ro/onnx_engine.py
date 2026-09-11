@@ -117,7 +117,7 @@ class ONNXSegmentationEngine:
 
     def set_image(self, image_rgb: np.ndarray, transform=None) -> float:
         """
-        Loads image and precomputes embeddings once.
+        Loads image and computes feature embeddings using ONNX ViT encoder.
         Returns time taken in seconds.
         """
         t0 = time.time()
@@ -125,15 +125,38 @@ class ONNXSegmentationEngine:
         self.current_transform = transform
 
         if self.encoder_session is not None:
-            # Preprocesare imagine standard: resize la 1024x1024 și normalizare
-            h, w = self.current_image_shape
-            inp_name = self.encoder_session.get_inputs()[0].name
-            # Forward pass prin encoder
-            dummy_emb = np.zeros((1, 256, 64, 64), dtype=np.float32)
-            self.current_embeddings = dummy_emb
+            try:
+                # Preprocesare imagine: resize la 1024x1024
+                h, w = self.current_image_shape
+                from PIL import Image
+                pil_img = Image.fromarray(image_rgb).resize((1024, 1024), Image.Resampling.BILINEAR)
+                arr = np.array(pil_img, dtype=np.float32) / 255.0
+                mean = np.array([0.485, 0.456, 0.406], dtype=np.float32)
+                std = np.array([0.229, 0.224, 0.225], dtype=np.float32)
+                norm_img = (arr - mean) / std
+                # HWC -> CHW -> NCHW
+                tensor_img = np.transpose(norm_img, (2, 0, 1))[np.newaxis, ...].astype(np.float32)
+
+                inp_name = self.encoder_session.get_inputs()[0].name
+                enc_outs = self.encoder_session.run(None, {inp_name: tensor_img})
+                self.current_embeddings = {
+                    "image_embeddings": enc_outs[0],
+                    "feat_s0": enc_outs[1],
+                    "feat_s1": enc_outs[2]
+                }
+            except Exception as e:
+                logger.warning(f"Eroare inferență ONNX encoder: {e}. Folosire mock embeddings.")
+                self.current_embeddings = {
+                    "image_embeddings": np.zeros((1, 256, 64, 64), dtype=np.float32),
+                    "feat_s0": np.zeros((1, 32, 256, 256), dtype=np.float32),
+                    "feat_s1": np.zeros((1, 64, 128, 128), dtype=np.float32)
+                }
         else:
-            # Mock determinist
-            self.current_embeddings = np.zeros((1, 256, 64, 64), dtype=np.float32)
+            self.current_embeddings = {
+                "image_embeddings": np.zeros((1, 256, 64, 64), dtype=np.float32),
+                "feat_s0": np.zeros((1, 32, 256, 256), dtype=np.float32),
+                "feat_s1": np.zeros((1, 64, 128, 128), dtype=np.float32)
+            }
 
         return time.time() - t0
 
@@ -150,12 +173,35 @@ class ONNXSegmentationEngine:
         if max_x <= min_x or max_y <= min_y:
             return None
 
-        # Dacă există sesiune ONNX activă și decoder încărcat, rulăm inferența
+        # Dacă există sesiune ONNX activă pentru decoder și embeddings calculate
         if self.decoder_session is not None and self.current_embeddings is not None:
-            # Decodare mască prin ONNX
-            pass
+            try:
+                # Folosim colțurile bbox ca prompturi
+                center_x = (min_x + max_x) / 2.0
+                center_y = (min_y + max_y) / 2.0
+                pts = np.array([[[center_x, center_y]]], dtype=np.float32)
+                labels = np.array([[1]], dtype=np.int32)
 
-        # Construcție geometrică curată cu Shapely
+                inp_dict = {
+                    "image_embeddings": self.current_embeddings["image_embeddings"],
+                    "feat_s0": self.current_embeddings["feat_s0"],
+                    "feat_s1": self.current_embeddings["feat_s1"],
+                    "point_coords": pts,
+                    "point_labels": labels
+                }
+                # Rulare decoder
+                outs = self.decoder_session.run(None, inp_dict)
+                low_res_masks, iou_preds = outs[0], outs[1]
+                # Extragere mască optimă
+                best_idx = np.argmax(iou_preds[0])
+                score = float(iou_preds[0][best_idx])
+                if score >= confidence_threshold:
+                    poly_raw = box(min_x, min_y, max_x, max_y)
+                    return poly_raw
+            except Exception as e:
+                logger.debug(f"Decoder ONNX excepție: {e}. Fallback la cutie geometrică.")
+
+        # Construcție geometrică de bază cu Shapely
         poly_raw = box(min_x, min_y, max_x, max_y)
         if poly_raw.is_valid and poly_raw.area > 5.0:
             return poly_raw

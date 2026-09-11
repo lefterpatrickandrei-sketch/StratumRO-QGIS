@@ -49,6 +49,19 @@ class TestONNXEngine(unittest.TestCase):
             self.assertIn("point_coords", inputs)
             self.assertIn("point_labels", inputs)
 
+    def test_exported_sam2_encoder_session(self):
+        import os
+        onnx_path = "models/sam2/sam2_encoder.onnx"
+        if os.path.exists(onnx_path) and HAS_ONNX:
+            engine = ONNXSegmentationEngine(encoder_onnx_path=onnx_path)
+            self.assertIsNotNone(engine.encoder_session)
+            inputs = [inp.name for inp in engine.encoder_session.get_inputs()]
+            self.assertIn("image", inputs)
+            outputs = [out.name for out in engine.encoder_session.get_outputs()]
+            self.assertIn("vision_features", outputs)
+            self.assertIn("feat_s0", outputs)
+            self.assertIn("feat_s1", outputs)
+
 
 if __name__ == "__main__":
     unittest.main()

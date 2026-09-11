@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-09-11T14:48:03.517298",
+  "total_buildings": 195,
+  "traffic_light_breakdown": {
+    "green_auto_accepted": 0,
+    "yellow_quick_review": 11,
+    "red_manual_decision": 184
+  },
+  "time_manual_hours": 22.83,
+  "time_assisted_hours": 1.6,
+  "time_saved_hours": 21.22,
+  "overall_time_reduction_pct": 92.98,
+  "confidence_interval_95": [
+    87.6,
+    96.87
+  ],
+  "breakeven_buildings": 1,
+  "parameters_calibrated": {
+    "manual_mean_sec_per_bldg": 421.4,
+    "assisted_mean_sec_per_bldg": 29.6,
+    "machine_runtime_total_sec": 38.0
+  }
+}

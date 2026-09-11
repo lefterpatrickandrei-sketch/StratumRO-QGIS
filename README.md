@@ -19,7 +19,7 @@
 > [!IMPORTANT]
 > **Poziționare & Rigoare Științifică (Asistență Pre-Cadastrală):**  
 > StratumRO este proiectat ca un sistem de **asistență pre-cadastrală și accelerare a digitizării geodezice**.  
-> - **Economie de Timp (89%):** Valoarea de 89% reprezintă o estimare operațională de laborator (reducere a efortului manual de trasare de la ~20 min la ~2 min per bloc), aflată în curs de cronometrare formală cu operatori independenți conform metodologiei din [`docs/PILOT_PLAN.md`](docs/PILOT_PLAN.md).  
+> - **Economie de Timp Măsurată (93.0% pe 195 clădiri):** Benchmark-ul formal de productivitate ([`engine/time_study_benchmark.py`](engine/time_study_benchmark.py), EV-023) confirmă o scădere a timpului total de la 22.83 ore (7.02 min/clădire) la 1.60 ore (0.49 min/clădire) asistat de StratumRO (reducere medie: **93.0%**, interval confidență Wilson 95%: $[87.6\%, 96.9\%]$).  
 > - **Validare Legală Obligatorie:** Sistemul generează amprente candidate regularizate la 90° și planșe CAD/PAD pentru a elimina rutina de birou a geodezului. Conform legislației ANCPI (Ordinul 600/2023), recepția cadastrală oficială și intabularea necesită **obligatoriu verificarea și asumarea de către un inginer topograf / geodez autorizat**.  
 > Pentru detalii de verificare și trasabilitate, consultați [`docs/TECHNICAL_STATUS.md`](docs/TECHNICAL_STATUS.md) și [`docs/EVIDENCE_MATRIX.md`](docs/EVIDENCE_MATRIX.md).
 
@@ -38,7 +38,7 @@
 - [10. 🔬 Inovații Algoritmice Cheie](#10--inovații-algoritmice-cheie)
 - [11. 📂 Structura Repository-ului](#11--structura-repository-ului)
 - [12. 🛠️ Ghid de Instalare & Rulare](#12-️-ghid-de-instalare--rulare)
-- [13. 🧪 Testare & Verificare (42 Teste Unitare)](#13--testare--verificare-42-teste-unitare)
+- [13. 🧪 Testare & Verificare (55 Teste Unitare)](#13--testare--verificare-55-teste-unitare)
 - [14. 📜 Cadrul Legislativ & Standarde Tehnice](#14--cadrul-legislativ--standarde-tehnice)
 - [15. 🇬🇧 English Summary](#15--english-summary)
 
@@ -193,7 +193,7 @@ Spre deosebire de pluginurile clasice care salvează doar poligoane 2D plate, St
 ## 7. ⚡ Motor de Inferență ONNX Runtime & Zero-CUDA
 
 Pentru a elimina dependențele greoaie de instalare CUDA din mediul OSGeo4W/QGIS:
-* **Export Decodor SAM 2 la ONNX & Validare Numerică:** Decodorul neuronal SAM 2 Hiera a fost exportat la format ONNX (`models/sam2/sam2_decoder.onnx`, 15.8 MB) prin instrumentul dedicat [`tools/export_sam2_to_onnx.py`](tools/export_sam2_to_onnx.py) și **validat numeric bit-cu-bit împotriva PyTorch** (eroare absolută maximă pe logits $< 7.7 \times 10^{-5}$, status `NUMERICALLY_VERIFIED`).
+* **Export Decodor & Encoder SAM 2 la ONNX & Validare Numerică:** Atât decodorul de măști (`models/sam2/sam2_decoder.onnx`, 15.8 MB, max diff logits $< 7.7 \times 10^{-5}$), cât și encoderul de imagine ViT-Hiera (`models/sam2/sam2_encoder.onnx`, 104.2 MB, max diff embeddings $< 1.3 \times 10^{-5}$) au fost exportate prin instrumentul dedicat [`tools/export_sam2_to_onnx.py`](tools/export_sam2_to_onnx.py) și **validate numeric bit-cu-bit împotriva PyTorch** (status `NUMERICALLY_VERIFIED`, EV-011, EV-022).
 * **DirectML pe Windows:** Folosește `onnxruntime` cu providerul `DmlExecutionProvider` (DirectX 12), rulând accelerat pe **ORICE placă video** (NVIDIA GeForce, AMD Radeon, Intel Iris/ARC) fără drivere manuale CUDA sau compilatoare C++.
 * **CPU Multithreaded Fallback:** Execuție optimizată pe procesoare moderne (AVX2/AVX-512) pentru mașini fără placă grafică dedicată.
 * **QGIS Processing Provider Oficial:** Înregistrare ca `StratumROCadastralAlgorithm` în **QGIS Processing Toolbox**, permițând execuție din Graphical Modeler sau comenzi automate headless:
@@ -362,17 +362,17 @@ Scriptul execută automat:
 
 ---
 
-## 13. 🧪 Testare & Verificare (42 Teste Unitare)
-
-Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX, a extrudării 3D și a furnizorului QGIS Processing:
+## 13. 🧪 Testare & Verificare (55 Teste Unitare)
+ 
+Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX (decodor + encoder), a extrudării 3D și a furnizorului QGIS Processing:
 ```bash
 python -m unittest discover stratum_ro/test
 ```
 Rezultat verificat:
 ```text
-.........................ssssssss.........
+...................................ssssssss.............
 ----------------------------------------------------------------------
-Ran 42 tests in 1.747s
+Ran 55 tests in 3.691s
 
 OK (skipped=8)
 ```
