@@ -1,0 +1,17 @@
+{
+  "total_fp_evaluated": 116,
+  "osm_confirmed_real_buildings": 88,
+  "osm_partial_overlap_buildings": 4,
+  "total_osm_backed_real_structures": 92,
+  "pct_osm_backed_real": 79.31,
+  "temporary_containers_or_sheds": 2,
+  "small_annexes_or_garages": 1,
+  "other_unmapped_or_canopy": 21,
+  "categories_breakdown": {
+    "ANEXA_INDIVIDUALA_MICA": 1,
+    "CLADIRE_POTENTIALA_SAU_VEGETATIE_DENSA": 21,
+    "CLADIRE_REALA_CONFIRMATA_OSM": 88,
+    "CLADIRE_REALA_PARTIAL_SUPRAPUSA_OSM": 4,
+    "SERA_SOLAR_ALUNGIT": 2
+  }
+}

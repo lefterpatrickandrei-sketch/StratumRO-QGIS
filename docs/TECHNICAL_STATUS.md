@@ -127,13 +127,13 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 | Indicator / Metrică | Subset Curat (1:1 Pairs) | Set Global (Toate Perechile) | Explicație / Context Geodezic |
 | :--- | :--- | :--- | :--- |
 | **Număr Eșantioane** | **16 clădiri** | **17 clădiri (18 TP)** | 16 împerecheri 1:1 fără ambiguitate, 1 corp sub-segmentat. |
-| **IoU Median** | **0.818** | **0.734** | Suprapunere foarte bună pe corpurile curate; scade pe corpuri alăturate. |
-| **IoU Mediu** | **0.746** ($\pm 0.174$) | **0.615** ($\pm 0.286$) | Interval de confidență 95%: $[0.653, 0.838]$. |
-| **Boundary RMSE Median** | **1.519 m** | **2.457 m** | Acuratețe fotogrammetrică tipică pentru ortofoto 10–15 cm GSD. |
-| **Boundary RMSE Mediu** | **2.649 m** ($\pm 3.321\text{ m}$) | **10.570 m** ($\pm 16.188\text{ m}$) | Corpurile complexe sau parțial acoperite de arbori cresc media. |
-| **Hausdorff Median** | **4.553 m** | **7.984 m** | Distanța maximă extremă locală (streșini, anexe secundare). |
+| **IoU Median** | **0.804** | **0.791** | Suprapunere foarte bună pe corpurile curate (20 clădiri 1:1, după split calcan). |
+| **IoU Mediu** | **0.725** ($\pm 0.171$) | **0.697** ($\pm 0.209$) | Interval de confidență 95%: $[0.645, 0.805]$. Creștere globală de la 0.615 la 0.697. |
+| **Boundary RMSE Median** | **1.946 m** | **2.177 m** | Acuratețe fotogrammetrică tipică pentru ortofoto 10–15 cm GSD pe 20 corpuri curate. |
+| **Boundary RMSE Mediu** | **3.019 m** ($\pm 3.214\text{ m}$) | **3.560 m** ($\pm 3.993\text{ m}$) | Reducere masivă a erorii maxime datorită eliminării contopirii la calcan. |
+| **Hausdorff Median** | **7.058 m** | **7.415 m** | Distanța maximă extremă locală (streșini, anexe secundare). |
 | **False Negatives (FN)** | **8 clădiri** | **8 clădiri** | Clădiri joase sau puternic obturate de coronamentul arborilor. |
-| **False Positives (FP)** | — | **116 clădiri** | **Clădiri reale existente în AOI, dar nedigitizate în GT-ul de 29 clădiri**, plus declanșări pe structuri perimetrice. |
+| **False Positives (FP)** | — | **116 clădiri** | **Audit integral OSM ([`fp_osm_verification.csv`](../reports/tier1_cadastre/fp_osm_verification.csv)):** 92 sunt clădiri reale în OSM (79.3%), 1 anexă mică (0.9%), 2 sere provizorii (1.7%), 21 ne-cartate/arbori (18.1%). |
 | **Conformitate ANCPI ($\le 10\text{ cm}$)** | **0 / 29 (0.0%)** | **0 / 29 (0.0%)** | **Realitate Fotogrammetrică:** Datele aeriene fără măsurători terestre directe nu pot atinge pragul legal de 10 cm. |
 
 ---

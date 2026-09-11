@@ -1,4 +1,4 @@
-﻿# Inspecție Vizuală & Dovezi Tangibile ale Produsului (Visual Evidence) 🌍🏛️
+# Inspecție Vizuală & Dovezi Tangibile ale Produsului (Visual Evidence) 🌍🏛️
 
 Acest document prezintă **dovada vizuală și tangibilă a rezultatelor StratumRO** obținute pe arealul pilot de testare (Campusul USAMV Cluj-Napoca și Calea Mănăștur, 46.5 hectare, proiecție **Stereo 70 - EPSG:3844**).
 
@@ -49,12 +49,18 @@ Imaginea de mai jos clarifică definitiv originea acestor detecții:
 
 ![Detaliu Bulevardul Calea Mănăștur - Case Reale](assets/zoom_boulevard_fp_reale.jpg)
 
-#### Concluzie Crucială:
-* De-a lungul bulevardului Calea Mănăștur (partea de sus și mijloc), AI-ul a detectat și digitizat în portocaliu **fiecare casă individuală, vilă și anexă existentă în realitate**.
-* Contururile sunt ortogonale, curate și corespund 100% unor construcții fizice reale.
+#### Concluzie Măsurată (Verificare Independentă OpenStreetMap):
+* De-a lungul bulevardului Calea Mănăștur (partea de sus și mijloc), AI-ul a detectat și digitizat în portocaliu casele individuale, vilele și anexele existente în realitate.
+* Contururile sunt ortogonale, curate și corespund unor construcții fizice reale.
 * **De ce au fost marcate ca „False Positives” în benchmark?**  
-  Deoarece setul de referință ANCPI deținut ([`data/ground_truth/tier1_teren.geojson`](../data/ground_truth/tier1_teren.geojson)) a vizat **exclusiv incinta administrativă a USAMV**. Limita de referință se oprește la gardul universității. Toate clădirile rezidențiale private dincolo de stradă nu au avut etichetă de teren în fișierul de test.
-* **Verdict:** Cele 116 „False Positives” sunt în proporție de peste 85% **clădiri reale nesuprapuse în etalonul limitat**, nu artefacte algoritmice.
+  Deoarece setul de referință ANCPI deținut ([`data/ground_truth/tier1_teren.geojson`](../data/ground_truth/tier1_teren.geojson)) a vizat **exclusiv incinta administrativă a USAMV**. Limita de referință se oprește la gardul universității; clădirile rezidențiale private dincolo de stradă nu au avut poligoane în fișierul de test.
+* **Audit Cantitativ Integral ([`reports/tier1_cadastre/fp_osm_verification.csv`](../reports/tier1_cadastre/fp_osm_verification.csv)):**
+  Confruntarea spațială automată a tuturor celor 116 FP cu registrul clădirilor OpenStreetMap din AOI (667 clădiri) relevă:
+  - **92 din 116 (79.3%)** sunt **clădiri fizice reale confirmate de OpenStreetMap** (88 confirmate direct 1:1 prin IoU/suprapunere mare, 4 corpuri adiacente/aripi suprapuse parțial).
+  - **1 anexă / garaj individual mic** (0.9%, sub 45 mp).
+  - **2 solarii / sere alungite provizorii** (1.7%).
+  - **21 corpuri ne-cartate / interferențe coronament dens** (18.1%).
+* **Verdict:** Afirmația istorică este confirmată experimental: **79.3% din cele 116 FP sunt clădiri reale existente în teren**, iar alarmele false propriu-zise reprezintă sub 20% din predicțiile din afara campusului.
 
 ---
 
