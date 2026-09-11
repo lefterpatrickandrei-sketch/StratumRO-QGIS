@@ -214,7 +214,10 @@ def main():
 
     # 4.2 Extragere Categorii de Folosință ANCPI (DR, HR, VN, CIMITIR, A)
     print("\nEtapa 4.2: Extragere Categorii de Folosință ANCPI (Ordinul 600/2023)...")
-    aoi_bounds = (390529.4, 584837.7, 391578.0, 585886.3)
+    if sector_boundary and not sector_boundary.is_empty:
+        aoi_bounds = tuple(round(coord, 1) for coord in sector_boundary.bounds)
+    else:
+        aoi_bounds = (390529.4, 584837.7, 391578.0, 585886.3)
     landuse = get_ancpi_landuse(aoi_bounds, sector_boundary)
     for k, v in landuse.items():
         print(f"   - {k} ({v.geom_type}): {v.area:.1f} m2")

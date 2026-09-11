@@ -29,54 +29,66 @@ Imaginea de mai jos reprezintă randarea de înaltă rezoluție (2400 × 1840 pi
 
 #### Observații Tehnice & Geodezice:
 1. **Aula Centrală (Clădirea în formă de cruce, stânga-sus):**
-   * Conturul portocaliu AI urmărește cu fidelitate extremă laturile, intrările în retragere și aripile simetrice ale aulei.
-   * IoU calculat pe acest corp depășește **0.88**.
+   * Conturul portocaliu AI urmărește conturul planimetric al fațadelor, intrările în retragere și aripile simetrice ale aulei.
+   * IoU calculat pe acest corp este de **0.88**.
 2. **Corpul Dreptunghiular Principal (dreapta-sus, acoperiș roșu):**
-   * Regularizarea canonică cu 4 noduri a produs un dreptunghi precis, paralel cu coama și streașina.
+   * Regularizarea canonică cu 4 noduri a produs un dreptunghi aliniat cu coama și streașina.
 3. **Complexul Didactic L/U (stânga-jos):**
    * Laturile interioare ale curții de lumină și decroșurile arhitecturale sunt păstrate la unghiuri de $90^\circ \pm 1^\circ$.
 4. **Decalajul Sistematic al Streșinii (Eave Displacement):**
-   * Se observă un mic decalaj de $0.5 - 1.2\text{ m}$ pe laturile nordice între conturul cadastral terestru (cyan) și acoperișul văzut pe ortofoto.
-   * Acest decalaj este **cauzat de unghiul de incidență al camerei fotogrammetrice aeriene** (deplasare radială a coamei față de fundația la sol). Modelul detectează corect acoperișul fizic vizibil; aducerea la sol necesită parametrizarea înălțimii nDSM și a unghiului de zbor.
+   * Se observă un decalaj planimetric de $0.4 - 1.0\text{ m}$ pe laturile nordice între conturul cadastral terestru (cyan) și acoperișul văzut pe ortofoto.
+   * Acest decalaj este **cauzat de unghiul de incidență al camerei fotogrammetrice aeriene** (deplasare radială a coamei față de fundația la sol). Modelul detectează acoperișul fizic vizibil; aducerea la sol este compensată prin retragerea adaptivă a streșinii (`compute_adaptive_eave_offset`, 0.20–0.60 m).
 
 ---
 
 ### Zona 2: Dezvăluirea celor „116 False Positives” (Bulevardul & Cartierul Rezidențial)
 
-În rapoartele automate de benchmark, sistemul a raportat **116 False Positives**. O inspecție pur numerică ar putea lăsa impresia că AI-ul „halucinează” sau inventează clădiri. 
+În rapoartele automate de benchmark, sistemul a raportat inițial **116 False Positives**. O inspecție pur numerică ar putea lăsa impresia că AI-ul inventează clădiri. 
 
-Imaginea de mai jos clarifică definitiv originea acestor detecții:
+Imaginea de mai jos clarifică originea acestor detecții:
 
 ![Detaliu Bulevardul Calea Mănăștur - Case Reale](assets/zoom_boulevard_fp_reale.jpg)
 
 #### Concluzie Măsurată (Verificare Independentă OpenStreetMap):
 * De-a lungul bulevardului Calea Mănăștur (partea de sus și mijloc), AI-ul a detectat și digitizat în portocaliu casele individuale, vilele și anexele existente în realitate.
-* Contururile sunt ortogonale, curate și corespund unor construcții fizice reale.
+* Contururile sunt ortogonale și corespund unor construcții fizice reale.
 * **De ce au fost marcate ca „False Positives” în benchmark?**  
   Deoarece setul de referință ANCPI deținut ([`data/ground_truth/tier1_teren.geojson`](../data/ground_truth/tier1_teren.geojson)) a vizat **exclusiv incinta administrativă a USAMV**. Limita de referință se oprește la gardul universității; clădirile rezidențiale private dincolo de stradă nu au avut poligoane în fișierul de test.
 * **Audit Cantitativ Integral ([`reports/tier1_cadastre/fp_osm_verification.csv`](../reports/tier1_cadastre/fp_osm_verification.csv)):**
   Confruntarea spațială automată a tuturor celor 116 FP cu registrul clădirilor OpenStreetMap din AOI (667 clădiri) relevă:
   - **92 din 116 (79.3%)** sunt **clădiri fizice reale confirmate de OpenStreetMap** (88 confirmate direct 1:1 prin IoU/suprapunere mare, 4 corpuri adiacente/aripi suprapuse parțial).
   - **1 anexă / garaj individual mic** (0.9%, sub 45 mp).
-  - **2 solarii / sere alungite provizorii** (1.7%).
+  - **2 solarii / sere alungite provizorii** (1.7%, eliminate în Config F a studiului de ablație).
   - **21 corpuri ne-cartate / interferențe coronament dens** (18.1%).
-* **Verdict:** Afirmația istorică este confirmată experimental: **79.3% din cele 116 FP sunt clădiri reale existente în teren**, iar alarmele false propriu-zise reprezintă sub 20% din predicțiile din afara campusului.
+* **Verdict:** **79.3% din cele 116 FP sunt clădiri reale existente în teren**, iar alarmele false propriu-zise reprezintă sub 20% din predicțiile din afara campusului.
 
 ---
 
-### Zona 3: Imunitatea la Vegetație, Vii și Cimitir (Robustness Validation)
+### Zona 3: Rejecția Zgomotului la Vegetație, Vii și Cimitir (Robustness Validation)
 
 Un risc major în fotogrammetria automată este declanșarea de alarme false pe coronamente de arbori, rânduri dense de viță de vie sau monumente funerare.
 
 ![Detaliu Cimitirul Mănăștur și Sudul Campusului](assets/zoom_cimitir_sud.jpg)
 
-#### Rezultate Remarcabile:
+#### Observații privind Comportamentul la Zgomot:
 1. **Cimitirul Mănăștur (stânga-jos):**
    * Cuprinde mii de pietre funerare, cruci din beton/piatră și arbori izolați.
-   * Sistemul a generat **ZERO poligoane parazite în interiorul cimitirului**.
-   * Filtrarea combinată a înălțimii ($H \ge 2.5\text{ m}$), a ariei minime ($S \ge 15\text{ m}^2$) și a stratului de excludere topologică `CIMITIR` elimină complet zgomotul.
+   * Sistemul a generat **zero poligoane parazite în interiorul cimitirului**.
+   * Filtrarea combinată a înălțimii ($H \ge 2.5\text{ m}$), a ariei minime ($S \ge 15\text{ m}^2$) și a stratului de excludere topologică `CIMITIR` elimină zgomotul.
 2. **Plantația Viticolă / Pomicolă (dreapta-jos):**
-   * Rândurile regulate de spalieri și viță de vie nu au fost confundate cu construcții industriale alungite.
+   * Rândurile regulate de spalieri și viță de vie nu au fost preluate ca și construcții industriale alungite datorită pragurilor nDSM și analizei raportului l/w.
+
+---
+
+### Zona 4: Clădirile Alipite la Calcan și Separarea Morfo-Altimetrică (P0.1)
+
+Clădirile alipite cu zid comun (calcan) reprezintă cea mai frecventă cauză de sub-segmentare (contopire într-un singur corp poligon).
+- **Problema inițială:** Predicția uriașă `pred_id=2` ($3958.8\text{ m}^2$) unea eronat 4 corpuri de clădire de referință (`REF_TIER1_002`, `004`, `007`, `014`), generând IoU-uri scăzute de 0.11–0.31.
+- **Soluția implementată (`split_at_calcan`):** 
+  1. Detectează istmul morfologic prin eroziune la $-3.2\text{ m}$ (separă aripile Est și Vest).
+  2. Scanează treapta altimetrică nDSM ($\Delta Z \ge 1.5\text{ m}$) de-a lungul axelor principale.
+  3. Aplică mediana platoului pentru alinierea exactă pe linia de creastă a zidului despărțitor.
+- **Rezultat Măsurat:** Multi-matching-ul a fost redus de la 1 la **0**, True Positives au crescut de la 17 la **20**, iar IoU-ul pe clădirile afectate a crescut substanțial: `REF_002` ($0.31 \to 0.836$), `REF_007` ($0.20 \to 0.641$), `REF_014` ($0.11 \to 0.604$).
 
 ---
 
