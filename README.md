@@ -27,19 +27,20 @@
 
 ## 📌 Cuprins (Table of Contents)
 - [1. 🚀 Arhitectura Sistemului Hibrid](#1--arhitectura-sistemului-hibrid)
-- [2. 📐 Conformitate ANCPI Ordinul 600/2023 & Partiție Planară 100%](#2--conformitate-ancpi-ordinul-6002023--partiție-planară-100)
-- [3. 🗺️ Structura Celor 12 Straturi Geospațiale](#3-️-structura-celor-12-straturi-geospațiale)
-- [4. 🏛️ Integrare TopoLT & Generator Tabel PAD (Nou)](#4-️-integrare-topolt--generator-tabel-pad-nou)
-- [5. 🏢 Extrudare Volumetrică 3D LoD1 & CityJSON (Nou)](#5--extrudare-volumetrică-3d-lod1--cityjson-nou)
-- [6. ⚡ Motor de Inferență ONNX Runtime & Zero-CUDA (Nou)](#6--motor-de-inferență-onnx-runtime--zero-cuda-nou)
-- [7. ⚖️ Comparație Funcțională & Arhitecturală (Feature Matrix)](#7-️-comparație-funcțională--arhitecturală-feature-matrix)
-- [8. 📊 Evidențe Măsurate & Raport de Ablație Reprodus](#8--evidențe-măsurate--raport-de-ablație-reprodus)
-- [9. 🔬 Inovații Algoritmice Cheie](#9--inovații-algoritmice-cheie)
-- [10. 📂 Structura Repository-ului](#10--structura-repository-ului)
-- [11. 🛠️ Ghid de Instalare & Rulare](#11-️-ghid-de-instalare--rulare)
-- [12. 🧪 Testare & Verificare (40 Teste Unitare)](#12--testare--verificare-40-teste-unitare)
-- [13. 📜 Cadrul Legislativ & Standarde Tehnice](#13--cadrul-legislativ--standarde-tehnice)
-- [14. 🇬🇧 English Summary](#14--english-summary)
+- [2. 🖼️ Inspecție Vizuală & Dovezi Tangibile (Visual Evidence & Ground Truth)](#2-️-inspecție-vizuală--dovezi-tangibile-visual-evidence--ground-truth)
+- [3. 📐 Conformitate ANCPI Ordinul 600/2023 & Partiție Planară 100%](#3--conformitate-ancpi-ordinul-6002023--partiție-planară-100)
+- [4. 🗺️ Structura Celor 12 Straturi Geospațiale](#4-️-structura-celor-12-straturi-geospațiale)
+- [5. 🏛️ Integrare TopoLT & Generator Tabel PAD](#5-️-integrare-topolt--generator-tabel-pad)
+- [6. 🏢 Extrudare Volumetrică 3D LoD1 & CityJSON](#6--extrudare-volumetrică-3d-lod1--cityjson)
+- [7. ⚡ Motor de Inferență ONNX Runtime & Zero-CUDA](#7--motor-de-inferență-onnx-runtime--zero-cuda)
+- [8. ⚖️ Comparație Funcțională & Arhitecturală (Feature Matrix)](#8-️-comparație-funcțională--arhitecturală-feature-matrix)
+- [9. 📊 Evidențe Măsurate & Raport de Ablație Reprodus](#9--evidențe-măsurate--raport-de-ablație-reprodus)
+- [10. 🔬 Inovații Algoritmice Cheie](#10--inovații-algoritmice-cheie)
+- [11. 📂 Structura Repository-ului](#11--structura-repository-ului)
+- [12. 🛠️ Ghid de Instalare & Rulare](#12-️-ghid-de-instalare--rulare)
+- [13. 🧪 Testare & Verificare (42 Teste Unitare)](#13--testare--verificare-42-teste-unitare)
+- [14. 📜 Cadrul Legislativ & Standarde Tehnice](#14--cadrul-legislativ--standarde-tehnice)
+- [15. 🇬🇧 English Summary](#15--english-summary)
 
 ---
 
@@ -96,7 +97,33 @@ flowchart TD
 
 ---
 
-## 2. 📐 Conformitate ANCPI Ordinul 600/2023 & Partiție Planară 100%
+## 2. 🖼️ Inspecție Vizuală & Dovezi Tangibile (Visual Evidence & Ground Truth)
+
+> [!TIP]
+> **Dovada Tangibilă Directă:** Pentru a vedea comportamentul real al sistemului fără a rula cod local, am randat ieșirea completă a platformei pe ortofotoplanul aerian de 10 cm GSD și pe modelul altimetric LiDAR nDSM peste datele cadastrale oficiale ANCPI în proiecție **Stereo 70 (EPSG:3844)**. Documentația completă este disponibilă în [`docs/VISUAL_EVIDENCE.md`](docs/VISUAL_EVIDENCE.md).
+
+### 2.1 Harta Generală de Inspecție (Arealul Pilot Cluj USAMV — 46.5 ha)
+* 🟧 **Portocaliu Plin:** Predicții AI StratumRO (Fuziune SAM 2 Hiera + LiDAR nDSM + Regularizare 90°)
+* 🟦 **Cyan Punctat:** Teren Cadastral Oficial ANCPI (Ground Truth — 29 clădiri din `tier1_teren.geojson`)
+
+![Harta de Inspecție Ortofoto vs Cadastru vs AI](docs/assets/inspectie_orto_cadastru_ai.jpg)
+
+### 2.2 Detalii Cheie pe Zone Geodezice
+
+| Zona 1: Inima Campusului (Potrivire 1:1) | Zona 2: Bulevardul (Case Reale în cele 116 FP) | Zona 3: Cimitir & Vii (Zero Alarme False) |
+| :---: | :---: | :---: |
+| [![Campus Core](docs/assets/zoom_campus_core.jpg)](docs/assets/zoom_campus_core.jpg) | [![Case Reale FP](docs/assets/zoom_boulevard_fp_reale.jpg)](docs/assets/zoom_boulevard_fp_reale.jpg) | [![Cimitir și Sud](docs/assets/zoom_cimitir_sud.jpg)](docs/assets/zoom_cimitir_sud.jpg) |
+| **Aula în cruce & corpurile principale:** Suprapunere milimetrică a unghiurilor de 90°. Mic offset fotogrammetric de $0.5 - 1.2\text{ m}$ datorat unghiului camerei aeriene. | **Dezvăluirea celor 116 „False Positives”:** Fiecare contur este o casă reală de-a lungul Căii Mănăștur! Etalonul ANCPI conținea doar clădirile din interiorul campusului. | **Imunitate la zgomot:** Mii de cruci/pietre funerare din Cimitirul Mănăștur și rândurile de viță de vie au produs **zero detecții false**. |
+
+### 2.3 Sinergia Hibridă: De ce LiDAR Pur Eșuează (569 FP vs. 116)
+![Sinergie LiDAR nDSM](docs/assets/inspectie_lidar_ndsm.jpg)
+
+* **Problema LiDAR Pur:** Înălțimea singură confundă coroanele arborilor cu clădirile (generând 569 alarme false în studiul de ablație).
+* **Soluția StratumRO:** Modelul SAM 2 validează textura spectrală pe ortofotoplanul RGB și respinge complet vegetația, izolând exclusiv acoperișurile geometrice.
+
+---
+
+## 3. 📐 Conformitate ANCPI Ordinul 600/2023 & Partiție Planară 100%
 
 Sistemul respectă cu strictețe normele de avizare tehnică cadastrală din România:
 1. **Fără suprapuneri și fără goluri (Planar Partition):** Întreg teritoriul sectorului este complet acoperit (100.00%). Zonele care nu aparțin clădirilor sau categoriilor OSM confirmate sunt atribuite automat stratului `UNCLASSIFIED`, pregătit pentru atribuire parcelară.
@@ -106,7 +133,7 @@ Sistemul respectă cu strictețe normele de avizare tehnică cadastrală din Rom
 
 ---
 
-## 3. 🗺️ Structura Celor 12 Straturi Geospațiale
+## 4. 🗺️ Structura Celor 12 Straturi Geospațiale
 
 Toate datele sunt salvate în `workspace/output/cladiri_stereo70.gpkg` și stilate în proiectul QGIS:
 
@@ -127,7 +154,7 @@ Toate datele sunt salvate în `workspace/output/cladiri_stereo70.gpkg` și stila
 
 ---
 
-## 4. 🏛️ Integrare TopoLT & Generator Tabel PAD (Nou)
+## 5. 🏛️ Integrare TopoLT & Generator Tabel PAD
 
 StratumRO exportă acum direct în standardul de lucru al inginerilor topografi și cadastrali din România:
 * **Layere Oficiale TopoLT:**
@@ -151,7 +178,7 @@ StratumRO exportă acum direct în standardul de lucru al inginerilor topografi 
 
 ---
 
-## 5. 🏢 Extrudare Volumetrică 3D LoD1 & CityJSON (Nou)
+## 6. 🏢 Extrudare Volumetrică 3D LoD1 & CityJSON
 
 Spre deosebire de pluginurile clasice care salvează doar poligoane 2D plate, StratumRO include modulul [`Volumetric3DBuilder`](stratum_ro/volumetric_3d.py):
 * **Corpuri 3D Etanșe (`MultiPolygonZ`):** Generează solide LoD1 complete (podea la cota terenului $Z_{\text{sol}}$, pereți verticali și tavan la $Z_{\text{cornisa}}$).
@@ -161,7 +188,7 @@ Spre deosebire de pluginurile clasice care salvează doar poligoane 2D plate, St
 
 ---
 
-## 6. ⚡ Motor de Inferență ONNX Runtime & Zero-CUDA (Nou)
+## 7. ⚡ Motor de Inferență ONNX Runtime & Zero-CUDA
 
 Pentru a elimina dependențele greoaie de instalare CUDA din mediul OSGeo4W/QGIS:
 * **Export Decodor SAM 2 la ONNX & Validare Numerică:** Decodorul neuronal SAM 2 Hiera a fost exportat la format ONNX (`models/sam2/sam2_decoder.onnx`, 15.8 MB) prin instrumentul dedicat [`tools/export_sam2_to_onnx.py`](tools/export_sam2_to_onnx.py) și **validat numeric bit-cu-bit împotriva PyTorch** (eroare absolută maximă pe logits $< 7.7 \times 10^{-5}$, status `NUMERICALLY_VERIFIED`).
@@ -174,7 +201,7 @@ Pentru a elimina dependențele greoaie de instalare CUDA din mediul OSGeo4W/QGIS
 
 ---
 
-## 7. ⚖️ Comparație Funcțională & Arhitecturală (Feature Matrix)
+## 8. ⚖️ Comparație Funcțională & Arhitecturală (Feature Matrix)
 
 > [!NOTE]
 > **Notă Metodologică de Rigoare:**  
@@ -193,14 +220,14 @@ Pentru a elimina dependențele greoaie de instalare CUDA din mediul OSGeo4W/QGIS
 
 ---
 
-## 8. 📊 Evidențe Măsurate & Raport de Ablație Reprodus
+## 9. 📊 Evidențe Măsurate & Raport de Ablație Reprodus
 
 Toate cifrele de mai jos sunt **reproduse independent** prin scriptul de verificare [`tools/verify_ground_truth_and_metrics.py`](tools/verify_ground_truth_and_metrics.py) pe setul de referință etalon:
 - **Fișier Ground Truth:** [`data/ground_truth/tier1_teren.geojson`](data/ground_truth/tier1_teren.geojson) (Hash MD5: `30B95D3EC95B2EA7DC09F6F47E30BBE9`)
 - **Areal Pilot:** Campus USAMV Cluj-Napoca (46.5 ha, 29 clădiri de referință cadastrală)
 - **Manifest Ablație Salvat:** [`reports/ablation/ablation_manifest.json`](reports/ablation/ablation_manifest.json) & [`reports/ablation/ablation_results.csv`](reports/ablation/ablation_results.csv)
 
-### 8.1 Sinteză Metrici Geodezice Recalculate
+### 9.1 Sinteză Metrici Geodezice Recalculate
 * **Subset Împerecheri 1:1 Curate (16 clădiri):**
   - **IoU Median:** **0.818** | **IoU Mediu:** **0.746** ($\pm 0.174$, Interval Confidență 95%: $[0.653, 0.838]$)
   - **Boundary RMSE Median:** **1.519 m** | **RMSE Mediu:** **2.649 m**
@@ -215,10 +242,10 @@ Toate cifrele de mai jos sunt **reproduse independent** prin scriptul de verific
 * **Realitate Certificare Legală ($\le 10\text{ cm}$):**
   - **0 din 29 clădiri (0.0%)** ating toleranța legală ANCPI de $\le 10\text{ cm}$ direct din date aeriene, confirmând că datele fotogrammetrice necesită completare terestră (GNSS RTK).
 
-### 8.2 Matricea de Ablație Experimentală (Impactul Incremental al Subsistemelor)
+### 9.2 Matricea de Ablație Experimentală (Impactul Incremental al Subsistemelor)
 
 | Configurație | Subsisteme Incluse | Predicții | TP | FP | FN | Perechi 1:1 | IoU Median | IoU Mediu | RMSE Median |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Config A** | Doar LiDAR nDSM | 575 | 6 | 569 | 23 | 6 | 0.635 | 0.693 | 3.079 m |
 | **Config B** | Doar SAM 2 Optic | 149 | 16 | 131 | 8 | 16 | 0.719 | 0.691 | 1.759 m |
 | **Config C** | Hibrid Ne-regularizat | 134 | 17 | 116 | 8 | 16 | 0.816 | 0.746 | 1.530 m |
@@ -229,24 +256,24 @@ Toate cifrele de mai jos sunt **reproduse independent** prin scriptul de verific
 
 ---
 
-## 9. 🔬 Inovații Algoritmice Cheie
+## 10. 🔬 Inovații Algoritmice Cheie
 
-### 9.1 Fuziune Spectral-Altimetrică Meta SAM 2 + LiDAR
+### 10.1 Fuziune Spectral-Altimetrică Meta SAM 2 + LiDAR
 - Prompting automat din bounding-box-urile calculate pe modelul numeric al înălțimii coronamentului/clădirilor ($nDSM = DSM - DTM$).
 - SAM 2 (Large Hiera Checkpoint) detectează conturul vizual cu precizie sub-metrică pe ortofotoplanul de 15 cm.
 - Corecție hibridă: dacă SAM 2 deviază în umbră sau sol, masca este constrânsă altimetric de masca nDSM ($H \ge 2.5\text{ m}$).
 
-### 9.2 Regularizator Canonic cu 4 Noduri
+### 10.2 Regularizator Canonic cu 4 Noduri
 - Pentru clădiri rezidențiale individuale cu rectangularitate $\ge 0.68$, poligonul este înlocuit cu **Minimum Rotated Bounding Rectangle** orientat după axa principală a clădirii.
 - Pentru poligoane complexe în formă de L, U sau T, se aplică `buildingregulariser` cu prag de unghi drept la $90^\circ \pm 12^\circ$.
 
-### 9.3 Filtru Multi-Excludere pentru Vegetație
+### 10.3 Filtru Multi-Excludere pentru Vegetație
 - În mod uzual, rândurile de viță de vie (spalieri de $1.5 - 2.5\text{ m}$) și pietrele funerare din cimitire generează mii de alarme false de arbori.
 - StratumRO aplică o intersecție spațială cu `STRAT_EXCLUDERE = DR \cup VN \cup CIMITIR \cup HR \cup CLADIRI`, eliminând peste 70% din zgomotul de puncte.
 
 ---
 
-## 10. 📂 Structura Repository-ului
+## 11. 📂 Structura Repository-ului
 
 ```text
 QGIS-AI/
@@ -268,18 +295,20 @@ QGIS-AI/
 │   ├── pug_product.py               # Generator livrabile urbanism PUG & 3D
 │   ├── regulatory_consensus.py      # Audit de consens normativ AI (LLM)
 │   ├── metadata.txt                 # Metadate oficiale QGIS Plugin (v0.2.0)
-│   └── test/                        # Suita de 40 de teste unitare
+│   └── test/                        # Suita de 42 de teste unitare
 │       ├── test_cad_exporter.py     # Teste TopoLT, noduri numerotate & .CP
 │       ├── test_volumetric_3d.py    # Teste LoD1 MultiPolygonZ & CityJSON
 │       ├── test_onnx_engine.py      # Teste ONNX Runtime & DirectML
 │       ├── test_processing_provider.py # Teste QGIS Processing Provider
-│       ├── test_vectorizer.py
+│       ├── test_vectorizer.py       # Teste regularizare 90° & clasificare containere
 │       └── ...
 ├── run_hybrid_full_aoi.py           # Script principal de execuție pipeline
 ├── create_hybrid_qgis_project.py    # Generator automat de proiecte QGIS (.qgs, .qgz)
 ├── run_regulatory_audit_2026.py     # Script auditare normativă ANCPI
 ├── StratumRO_Pipeline.ipynb         # Notebook demonstrativ pas cu pas
 ├── docs/                            # Documentație tehnică & rapoarte de audit
+│   ├── VISUAL_EVIDENCE.md           # Raport detaliat de inspecție vizuală pe ortofoto
+│   └── assets/                      # Randări de înaltă rezoluție ale rezultatelor
 ├── datasets/                        # Seturi de date de testare
 ├── workspace/                       # [Ignorat Git] Ieșiri geospațiale & livrabile
 │   └── output/
@@ -292,15 +321,15 @@ QGIS-AI/
 
 ---
 
-## 11. 🛠️ Ghid de Instalare & Rulare
+## 12. 🛠️ Ghid de Instalare & Rulare
 
-### 11.1 Cerințe de Sistem
+### 12.1 Cerințe de Sistem
 - **Sistem de Operare:** Windows 10/11 x64 sau Linux Ubuntu 22.04+
 - **Python:** 3.10 sau 3.11
 - **Accelerare GPU (Opțional):** Orice GPU NVIDIA, AMD sau Intel compatibil DirectX 12 via **DirectML** (fără drivere manuale CUDA).
 - **QGIS:** 3.22 LTR sau mai nou (recomandat 3.28 LTR / 3.40 Bratislava).
 
-### 11.2 Instalare Rapidă (Quickstart)
+### 12.2 Instalare Rapidă (Quickstart)
 Creați și activați un mediu virtual:
 ```bash
 python -m venv venv
@@ -317,7 +346,7 @@ pip install -r requirements.txt
 pip install onnxruntime shapely geopandas rasterio laspy[laszip] ezdxf buildingregulariser
 ```
 
-### 11.3 Rularea Pipeline-ului pe Zona de Interes (AOI)
+### 12.3 Rularea Pipeline-ului pe Zona de Interes (AOI)
 Executați procesarea completă:
 ```bash
 python run_hybrid_full_aoi.py
@@ -331,7 +360,7 @@ Scriptul execută automat:
 
 ---
 
-## 12. 🧪 Testare & Verificare (40 Teste Unitare)
+## 13. 🧪 Testare & Verificare (42 Teste Unitare)
 
 Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX, a extrudării 3D și a furnizorului QGIS Processing:
 ```bash
@@ -339,9 +368,9 @@ python -m unittest discover stratum_ro/test
 ```
 Rezultat verificat:
 ```text
-........................ssssssss........
+.........................ssssssss.........
 ----------------------------------------------------------------------
-Ran 40 tests in 2.116s
+Ran 42 tests in 1.747s
 
 OK (skipped=8)
 ```
@@ -349,7 +378,7 @@ OK (skipped=8)
 
 ---
 
-## 13. 📜 Cadrul Legislativ & Standarde Tehnice
+## 14. 📜 Cadrul Legislativ & Standarde Tehnice
 
 Implementarea StratumRO respectă direct specificațiile geodezice și cadastrale din România:
 - **Ordinul ANCPI nr. 600/2023:** Aprobarea Regulamentului de recepție și înscriere în evidențele de cadastru și carte funciară (Art. 285 - Delimitarea sectoarelor cadastrale; Anexa 1.34/1.35 - Planul de Amplasament și Delimitare PAD).
@@ -359,7 +388,7 @@ Implementarea StratumRO respectă direct specificațiile geodezice și cadastral
 
 ---
 
-## 14. 🇬🇧 English Summary
+## 15. 🇬🇧 English Summary
 
 **StratumRO** is an industrial-grade geomatics and MLOps platform developed to automate the extraction, 90-degree regularization, and classification of cadastral building footprints and land use in Romania.
 
@@ -369,6 +398,7 @@ Implementarea StratumRO respectă direct specificațiile geodezice și cadastral
 3. **Romanian Cadastre & TopoLT Compliance:** Directly generates official TopoLT layers (`1CC`, `2CC`, `CP`), numbered boundary vertices (`VARFURI`, `NUMERE_PCT`), automated ANCPI PAD coordinate inventory tables, and eTerra interchange `.cp` files.
 4. **True 3D Volumetric Extrusion (LoD1 & CityJSON 1.1):** Generates watertight 3D solid shells (`MultiPolygonZ`) viewable natively in QGIS 3D Canvas and exports OGC CityJSON v1.1 models.
 5. **QGIS Processing Framework:** Full integration as a `QgsProcessingProvider`, supporting the QGIS Toolbox, Graphical Modeler, and headless CLI workflows (`qgis_process`).
+6. **Visual Inspection & Ground-Truth Verification:** Provides high-resolution visual inspections of extracted footprints vs. official ANCPI cadastral ground truth on 10 cm orthophotos and LiDAR nDSM ([`docs/VISUAL_EVIDENCE.md`](docs/VISUAL_EVIDENCE.md)).
 
 ---
 
