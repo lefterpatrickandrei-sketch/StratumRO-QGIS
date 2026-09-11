@@ -75,7 +75,8 @@ class CadastralDxfExporter:
         origin_y: float,
         row_height: float = 3.5,
         col_widths: Tuple[float, float, float, float] = (14.0, 24.0, 24.0, 20.0),
-        table_title: str = "INVENTAR DE COORDONATE STEREO 70 (PAD)"
+        table_title: str = "INVENTAR DE COORDONATE STEREO 70 (PAD)",
+        total_area_m2: Optional[float] = None
     ):
         """
         Draws an official ANCPI PAD coordinate table in CAD model space using lines and text.
@@ -128,6 +129,15 @@ class CadastralDxfExporter:
                     dxfattribs={"layer": "TABEL_PAD", "height": 1.1, "color": colors.WHITE}
                 ).set_placement((c_start + c_w / 2.0, y_cur - row_height / 2.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
 
+            y_cur -= row_height
+
+        # Total Net Ground Area Row (Sc)
+        if total_area_m2 is not None and total_area_m2 > 0:
+            msp.add_line((x_cur, y_cur - row_height), (x_cur + w_tot, y_cur - row_height), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+            msp.add_text(
+                f"Suprafata Construita la Sol (Sc) = {total_area_m2:.2f} mp",
+                dxfattribs={"layer": "TABEL_PAD", "height": 1.2, "color": colors.YELLOW}
+            ).set_placement((x_cur + w_tot / 2.0, y_cur - row_height / 2.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
             y_cur -= row_height
 
         # Outer box & vertical column dividers
@@ -304,6 +314,8 @@ class CadastralDxfExporter:
             table_origin_x = max_x + 8.0
             table_origin_y = max_y
 
+            total_main_area = round(sum(float(b.get("area_m2", sum(p.area for p in _extract_polygons(b.get("geometry"))))) for b in main_buildings), 2)
+
             # Limit table to first 35 points to avoid drawing thousands of rows in complex AOIs
             display_entries = pad_table_entries[:35]
             self._draw_pad_coordinate_table(
@@ -311,7 +323,8 @@ class CadastralDxfExporter:
                 display_entries,
                 origin_x=table_origin_x,
                 origin_y=table_origin_y,
-                table_title="INVENTAR COORDONATE PAD (ORDINUL ANCPI 600/2023)"
+                table_title="INVENTAR COORDONATE PAD (ORDINUL ANCPI 600/2023)",
+                total_area_m2=total_main_area
             )
 
         doc.saveas(output_dxf_path)
@@ -325,6 +338,7 @@ class CadastralDxfExporter:
         """
         Exports vector data into standard TopoLT / ANCPI eTerra interchange .CP text file.
         Format: Point index, X (North), Y (East), Z (Elevation), Code (1CC/2CC/CP).
+        Handles multi-ring polygons (buildings with inner courtyards / atriums).
         """
         os.makedirs(os.path.dirname(os.path.abspath(output_cp_path)), exist_ok=True)
         lines = [
@@ -349,6 +363,13 @@ class CadastralDxfExporter:
                     gx, gy = round(pt[0], 3), round(pt[1], 3)
                     lines.append(f"{pt_counter},{gx:.3f},{gy:.3f},0.000,1CC")
                     pt_counter += 1
+
+                for int_i, interior in enumerate(poly.interiors, start=1):
+                    lines.append(f"; [GOL_INTERIOR_{int_i}]")
+                    for pt in list(interior.coords)[:-1]:
+                        gx, gy = round(pt[0], 3), round(pt[1], 3)
+                        lines.append(f"{pt_counter},{gx:.3f},{gy:.3f},0.000,1CC_GOL")
+                        pt_counter += 1
 
         # 2. Anexe Gospodaresti (2CC)
         outbuildings = categories_dict.get("ANEXE_GOSPODARESTI", [])
