@@ -52,6 +52,11 @@ count_a = get_count("A")
 count_unclass = get_count("UNCLASSIFIED")
 count_trees = get_count("ARBORI")
 count_poles = get_count("STALPI_TURNURI")
+count_s1 = get_count("STAGE_1_RAW_CONTOUR")
+count_s2 = get_count("STAGE_2_CLEANED_CONTOUR")
+count_s3 = get_count("STAGE_3_ADAPTIVE_POLYGON")
+count_s4 = get_count("STAGE_4_LIDAR_CONSTRAINED")
+count_s5 = get_count("STAGE_5_FINAL_CONFIDENCE")
 
 qgs_content = f"""<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 <qgis projectname="StratumRO — Cadastru Sistematic &amp; Cartografiere ANCPI v3" version="3.40.0">
@@ -87,6 +92,13 @@ qgs_content = f"""<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
     <layer-tree-layer id="layer_cimitir" name="StratumRO — CIMITIR: Destinație Specială CC ({count_cimitir} Parcele)" source="{gpkg_path}|layername=CIMITIR" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
     <layer-tree-layer id="layer_a" name="StratumRO — A: Terenuri Arabile ({count_a} Parcele)" source="{gpkg_path}|layername=A" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
     <layer-tree-layer id="layer_unclassified" name="StratumRO — UNCLASSIFIED: Teren Rezidual / Curți ({count_unclass} Parcele)" source="{gpkg_path}|layername=UNCLASSIFIED" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-group name="Etape Inspecție Calitate V2 (Audit AI -> Cadastru)" expanded="0" checked="Qt::Unchecked">
+      <layer-tree-layer id="layer_stage5" name="Etapa 5: Validare 3D LiDAR &amp; Semaphor ({count_s5} Clădiri)" source="{gpkg_path}|layername=STAGE_5_FINAL_CONFIDENCE" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+      <layer-tree-layer id="layer_stage4" name="Etapa 4: Constrângeri Topologice &amp; Calcan ({count_s4} Clădiri)" source="{gpkg_path}|layername=STAGE_4_LIDAR_CONSTRAINED" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+      <layer-tree-layer id="layer_stage3" name="Etapa 3: Regularizare Adaptivă TLS V2 ({count_s3} Clădiri)" source="{gpkg_path}|layername=STAGE_3_ADAPTIVE_POLYGON" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+      <layer-tree-layer id="layer_stage2" name="Etapa 2: Contur Curățat &amp; Fuzionat ({count_s2} Clădiri)" source="{gpkg_path}|layername=STAGE_2_CLEANED_CONTOUR" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+      <layer-tree-layer id="layer_stage1" name="Etapa 1: Mască AI Brută SAM2 ({count_s1} Clădiri)" source="{gpkg_path}|layername=STAGE_1_RAW_CONTOUR" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+    </layer-tree-group>
     <layer-tree-layer id="layer_ndsm" name="StratumRO — Model Înălțimi nDSM (1m)" source="{ndsm_path}" providerKey="gdal" expanded="1" checked="Qt::Unchecked"/>
     <layer-tree-layer id="layer_ortofoto" name="StratumRO — Ortofotoplan Aerian Cluj USAMV (RGB)" source="{orto_vrt}" providerKey="gdal" expanded="1" checked="Qt::Checked"/>
   </layer-tree-group>
@@ -113,15 +125,51 @@ qgs_content = f"""<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
       </renderer-v2>
     </maplayer>
 
-    <!-- CLADIRI SOL ANCPI -->
+    <!-- CLADIRI SOL ANCPI (Semafor Încredere V2) -->
     <maplayer id="layer_cladiri_sol" name="StratumRO — Clădiri Sol ANCPI (-40cm) ({count_sol} Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
       <id>layer_cladiri_sol</id>
       <datasource>{gpkg_path}|layername=CLADIRI_SOL_ANCPI</datasource>
       <layername>StratumRO — Clădiri Sol ANCPI (-40cm) ({count_sol} Clădiri)</layername>
       <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
-      <renderer-v2 type="singleSymbol" symbollevels="0">
+      <renderer-v2 type="RuleRenderer" symbollevels="0">
+        <rules key="root_sol">
+          <rule key="sol_green" filter="&quot;action_code&quot; = 'VERDE_ACCEPTAT_AUTOMAT' or &quot;conf_final&quot; &gt;= 0.85" symbol="0" label="🟢 Verde: Acceptat Automat (Conf ≥ 0.85)"/>
+          <rule key="sol_yellow" filter="&quot;action_code&quot; = 'GALBEN_INSPECTIE_GEODEZ' or (&quot;conf_final&quot; &gt;= 0.65 and &quot;conf_final&quot; &lt; 0.85)" symbol="1" label="🟡 Galben: Inspecție Geodez (0.65 ≤ Conf &lt; 0.85)"/>
+          <rule key="sol_red" filter="&quot;action_code&quot; = 'ROSU_RESPINS_ARTEFACT' or (&quot;conf_final&quot; &lt; 0.65 and &quot;conf_final&quot; &gt; 0)" symbol="2" label="🔴 Roșu: Respins / Artefact (Conf &lt; 0.65)"/>
+          <rule key="sol_else" filter="ELSE" symbol="3" label="⚪ Contur Standard Sol ANCPI"/>
+        </rules>
         <symbols>
-          <symbol type="fill" name="0" alpha="0.95" clip_to_extent="1">
+          <symbol type="fill" name="0" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,230,118,80"/>
+                <Option name="outline_color" type="QString" value="0,180,80,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="1" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,214,0,80"/>
+                <Option name="outline_color" type="QString" value="255,160,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="2" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,23,68,80"/>
+                <Option name="outline_color" type="QString" value="213,0,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="3" alpha="0.85" clip_to_extent="1">
             <layer class="SimpleFill" pass="0" locked="0">
               <Option type="Map">
                 <Option name="color" type="QString" value="255,40,40,80"/>
@@ -349,6 +397,152 @@ qgs_content = f"""<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
                 <Option name="color" type="QString" value="255,180,0,50"/>
                 <Option name="outline_color" type="QString" value="255,140,0,255"/>
                 <Option name="outline_width" type="QString" value="0.7"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 1: MASCA BRUTA AI -->
+    <maplayer id="layer_stage1" name="Etapa 1: Mască AI Brută SAM2 ({count_s1} Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage1</id>
+      <datasource>{gpkg_path}|layername=STAGE_1_RAW_CONTOUR</datasource>
+      <layername>Etapa 1: Mască AI Brută SAM2 ({count_s1} Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.7" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="233,30,99,40"/>
+                <Option name="outline_color" type="QString" value="233,30,99,255"/>
+                <Option name="outline_width" type="QString" value="0.7"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 2: CONTUR CURATAT & FUZIONAT -->
+    <maplayer id="layer_stage2" name="Etapa 2: Contur Curățat &amp; Fuzionat ({count_s2} Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage2</id>
+      <datasource>{gpkg_path}|layername=STAGE_2_CLEANED_CONTOUR</datasource>
+      <layername>Etapa 2: Contur Curățat &amp; Fuzionat ({count_s2} Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.7" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,152,0,40"/>
+                <Option name="outline_color" type="QString" value="255,152,0,255"/>
+                <Option name="outline_width" type="QString" value="0.8"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 3: REGULARIZARE ADAPTIVA TLS V2 -->
+    <maplayer id="layer_stage3" name="Etapa 3: Regularizare Adaptivă TLS V2 ({count_s3} Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage3</id>
+      <datasource>{gpkg_path}|layername=STAGE_3_ADAPTIVE_POLYGON</datasource>
+      <layername>Etapa 3: Regularizare Adaptivă TLS V2 ({count_s3} Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.75" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="156,39,176,40"/>
+                <Option name="outline_color" type="QString" value="156,39,176,255"/>
+                <Option name="outline_width" type="QString" value="0.9"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 4: CONSTRANGERI TOPOLOGICE & CALCAN -->
+    <maplayer id="layer_stage4" name="Etapa 4: Constrângeri Topologice &amp; Calcan ({count_s4} Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage4</id>
+      <datasource>{gpkg_path}|layername=STAGE_4_LIDAR_CONSTRAINED</datasource>
+      <layername>Etapa 4: Constrângeri Topologice &amp; Calcan ({count_s4} Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.75" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,188,212,40"/>
+                <Option name="outline_color" type="QString" value="0,188,212,255"/>
+                <Option name="outline_width" type="QString" value="0.9"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 5: VALIDARE 3D LIDAR & SEMAFOR -->
+    <maplayer id="layer_stage5" name="Etapa 5: Validare 3D LiDAR &amp; Semaphor ({count_s5} Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage5</id>
+      <datasource>{gpkg_path}|layername=STAGE_5_FINAL_CONFIDENCE</datasource>
+      <layername>Etapa 5: Validare 3D LiDAR &amp; Semaphor ({count_s5} Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="RuleRenderer" symbollevels="0">
+        <rules key="root_s5">
+          <rule key="s5_green" filter="&quot;action_code&quot; = 'VERDE_ACCEPTAT_AUTOMAT' or &quot;conf_final&quot; &gt;= 0.85" symbol="0" label="🟢 Verde: Acceptat Automat (Conf ≥ 0.85)"/>
+          <rule key="s5_yellow" filter="&quot;action_code&quot; = 'GALBEN_INSPECTIE_GEODEZ' or (&quot;conf_final&quot; &gt;= 0.65 and &quot;conf_final&quot; &lt; 0.85)" symbol="1" label="🟡 Galben: Inspecție Geodez (0.65 ≤ Conf &lt; 0.85)"/>
+          <rule key="s5_red" filter="&quot;action_code&quot; = 'ROSU_RESPINS_ARTEFACT' or (&quot;conf_final&quot; &lt; 0.65 and &quot;conf_final&quot; &gt; 0)" symbol="2" label="🔴 Roșu: Respins / Artefact (Conf &lt; 0.65)"/>
+          <rule key="s5_else" filter="ELSE" symbol="3" label="⚪ Alte Clădiri"/>
+        </rules>
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,230,118,70"/>
+                <Option name="outline_color" type="QString" value="0,180,80,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="1" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,214,0,70"/>
+                <Option name="outline_color" type="QString" value="255,160,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="2" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,23,68,70"/>
+                <Option name="outline_color" type="QString" value="213,0,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="3" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,220,255,50"/>
+                <Option name="outline_color" type="QString" value="0,180,220,255"/>
+                <Option name="outline_width" type="QString" value="0.8"/>
                 <Option name="style" type="QString" value="solid"/>
               </Option>
             </layer>

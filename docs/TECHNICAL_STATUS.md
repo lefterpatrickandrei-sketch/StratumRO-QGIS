@@ -181,6 +181,14 @@ Conform analizei fizico-fotogrammetrice detaliate din [`reports/tier1_cadastre/f
    Calculul suprafeței construite $S_c$ deduce automat curțile de lumină interioare ($A_{\text{net}} = A_{\text{ext}} - \sum A_{\text{int}}$). În exportul `.cp`, contururile interioare sunt etichetate distinct cu codul `1CC_GOL`.
 4. **P2.1–P2.3 — Reproductibilitate Vizuală Headless & Extent Dinamic:**  
    Toate activele vizuale din `docs/assets/` sunt generate automat prin scripturi dedicate (`tools/render_visual_evidence.py`, `tools/render_ortho_overlay.py`, `tools/render_zoom_panels.py`, `tools/render_lidar_overlay.py`), cu calcul dinamic al caroiajului din `LIMITA_SECTOR_CADASTRAL`.
+5. **P3 / V2 — Reconstrucție Geometrică Adaptivă, Poartă de Calitate 3D LiDAR & Scoring Compozit:**  
+   - **Clasificator adaptiv în 4 clase de formă:** Clasa A (OBB 4 noduri pentru corpuri compacte simple), Clasa B (Manhattan L/U/T 5–8 noduri pentru locuințe individuale), Clasa C (Pavilioane complexe multi-corp), Clasa D (Clădiri autentic oblice/curbe — conservate fără forțare 90°).
+   - **Fitare analitică TLS/SVD pe linii suport:** Segmentele de contur sunt grupate pe orientări dominante extrase prin KDE circular modulo 90°, regularizate Total Least Squares și intersectate geometric exact.
+   - **Arbitru 3D LiDAR activ (`LidarQualityGate`):** Verifică treapta verticală a fațadei ($\Delta Z \ge 1.8\text{ m}$ pe $\ge 50\%$ din perimetru) și planeitatea acoperișului ($\sigma_{\text{roof}} \le 1.2\text{ m}$).
+   - **Sistem de Încredere Compozită & Semafor:** Calcul $C_{\text{final}} \in [0.0, 1.0]$ din 5 factori ponderați. Clasificare operațională: 🟢 `VERDE_ACCEPTAT_AUTOMAT` ($\ge 0.85$), 🟡 `GALBEN_INSPECTIE_GEODEZ` ($0.65–0.85$), 🔴 `ROSU_RESPINS_ARTEFACT` ($< 0.65$).
+   - **Straturi de inspecție auditabilă în QGIS:** Etapele intermediare (`STAGE_1_RAW_CONTOUR` până la `STAGE_5_FINAL_CONFIDENCE`) sunt salvate direct în GeoPackage și organizate într-un grup dedicat în proiectul QGIS.
+6. **Benchmark Morfologic Dedicat (`STRATUMRO_BUILDING_BENCHMARK` v2):**  
+   Evaluare detaliată pe tipologii cadastrale reale ([`reports/benchmark_v2/benchmark_report.md`](../reports/benchmark_v2/benchmark_report.md)): Dreptunghiuri (IoU 0.805, RMSE 1.148 m, 80% recall), Corpuri L/U/T (IoU 0.630, RMSE 3.387 m, 100% recall), Pavilioane Campus Complexe (IoU 0.623, RMSE 4.909 m, 66.7% recall). 20 TP / 29 clădiri de referință.
 
 ---
 

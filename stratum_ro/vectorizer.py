@@ -27,6 +27,9 @@ try:
 except ImportError:
     HAS_REGULARISER = False
 
+from stratum_ro.geometric_reconstruction_v2 import AdaptiveContourReconstructor
+from stratum_ro.lidar_quality_gate import LidarQualityGate
+
 
 def _extract_largest_polygon(geom) -> Optional[Polygon]:
     """Recursively extracts the largest valid Polygon from any geometry collection."""
@@ -265,6 +268,9 @@ class CadastralVectorizer:
 
     def __init__(self, crs: str = "EPSG:3844"):
         self.crs = crs
+        self.reconstructor_v2 = AdaptiveContourReconstructor(gsd_m=0.15)
+        self.quality_gate = LidarQualityGate()
+        self.last_intermediate_stages: Dict[str, List[Dict[str, Any]]] = {}
 
     def compute_adaptive_eave_offset(self, poly: Polygon, ndsm_stats: Optional[Dict[str, Any]] = None) -> float:
         """Calculează retragerea adaptivă a streșinii pe baza statisticilor de înălțime nDSM."""
@@ -379,15 +385,19 @@ class CadastralVectorizer:
         tolerance: float = 0.7,
         eave_offset_m: Optional[float] = 0.40,
         filter_temporary: bool = False,
-        adaptive_eave: bool = False
+        adaptive_eave: bool = False,
+        use_quality_v2: bool = True,
+        ndsm_array: Optional[np.ndarray] = None,
+        ndsm_transform: Optional[rasterio.Affine] = None,
+        record_intermediate_stages: bool = False
     ) -> List[Dict[str, Any]]:
         """
         Takes raw validated outputs from SAM2BuildingSegmenter,
         resolves all topological overlaps (merging multi-component fragments of the same building),
-        applies SOTA Cadastral regularisation (Building-Regulariser / Manhattan 90 deg CAD alignment)
-        calculates eave retraction offset (-0.40m for ANCPI ground footprint)
+        applies SOTA Cadastral regularisation (Building-Regulariser / Adaptive Support-Line V2)
+        calculates eave retraction offset (-0.40m or adaptive k*H for ANCPI ground footprint)
         and guarantees strictly disjoint (0.0 m2 overlap) clean building footprints.
-        Optional filter_temporary parameter excludes temporary containers and agricultural polytunnels/sheds.
+        Computes composite 5-factor confidence scores and traffic-light operational codes.
         """
         import scipy.sparse as sp
         from scipy.sparse.csgraph import connected_components
@@ -468,9 +478,18 @@ class CadastralVectorizer:
                 calcan_split_candidates.append(cand)
         merged_candidates = calcan_split_candidates
 
-        # 3. Curățare colți (spikes) și ortogonalizare Manhattan la 90 de grade
-        # Dacă este disponibil buildingregulariser, rulăm direct în batch pentru performanță maximă și 100% 90°
-        if HAS_REGULARISER and merged_candidates:
+        # 3. Curățare colți (spikes) și ortogonalizare adaptivă V2 / Manhattan la 90 de grade
+        regularized_items = []
+        if use_quality_v2:
+            for cand in merged_candidates:
+                p = cand["geometry"]
+                p_clean = remove_acute_spikes(p, min_angle_deg=40.0)
+                v2_res = self.reconstructor_v2.classify_and_reconstruct(p_clean)
+                cand_copy = dict(cand)
+                cand_copy["geometry"] = v2_res["geometry"]
+                cand_copy["clasa_forma"] = v2_res["clasa_forma"]
+                regularized_items.append(cand_copy)
+        elif HAS_REGULARISER and merged_candidates:
             try:
                 temp_geoms = [c["geometry"] for c in merged_candidates]
                 batch_gdf = gpd.GeoDataFrame(
@@ -483,13 +502,9 @@ class CadastralVectorizer:
                     parallel_threshold=1.0,
                     num_cores=1
                 )
-                regularized_items = []
                 for _, row in reg_batch.iterrows():
                     reg_p = row.geometry
                     if reg_p is not None and reg_p.is_valid and reg_p.area >= 8.0:
-                        # Dacă clădirea este un volum compact autentic (soliditate >= 0.90 și dreptunghiularitate >= 0.88),
-                        # o asimilăm dreptunghiului canonic de 4 noduri. Dacă e concavă (soliditate < 0.85 — L, U, T),
-                        # păstrăm poligonul ortogonalizat Manhattan din buildingregulariser.
                         mrr = reg_p.minimum_rotated_rectangle
                         if mrr.area > 0 and reg_p.convex_hull.area > 0:
                             solidity = reg_p.area / reg_p.convex_hull.area
@@ -498,24 +513,25 @@ class CadastralVectorizer:
                                 reg_p = mrr
                         cand_copy = dict(merged_candidates[int(row["idx"])])
                         cand_copy["geometry"] = reg_p
+                        cand_copy["clasa_forma"] = "MANHATTAN_LUT"
                         regularized_items.append(cand_copy)
             except Exception:
-                regularized_items = []
                 for cand in merged_candidates:
                     p = cand["geometry"]
                     p_clean = self.clean_cad_polygon(p, tolerance=tolerance)
                     if p_clean is not None and p_clean.is_valid and p_clean.area >= 8.0:
                         cand_copy = dict(cand)
                         cand_copy["geometry"] = p_clean
+                        cand_copy["clasa_forma"] = "MANHATTAN_LUT"
                         regularized_items.append(cand_copy)
         else:
-            regularized_items = []
             for cand in merged_candidates:
                 p = cand["geometry"]
                 p_clean = self.clean_cad_polygon(p, tolerance=tolerance)
                 if p_clean is not None and p_clean.is_valid and p_clean.area >= 8.0:
                     cand_copy = dict(cand)
                     cand_copy["geometry"] = p_clean
+                    cand_copy["clasa_forma"] = "MANHATTAN_LUT"
                     regularized_items.append(cand_copy)
 
         # 4. Asigurare topologică strictă: zero suprapuneri (disjoint) între clădiri
@@ -587,6 +603,14 @@ class CadastralVectorizer:
                 except Exception:
                     p_sol = p
 
+            clasa_forma = it.get("clasa_forma", "DREPTUNGHI_OBB" if num_vertices == 4 else "MANHATTAN_LUT")
+            conf_info = self.quality_gate.compute_composite_confidence(
+                poly=p,
+                sam2_score=float(it.get("sam2_score", 0.85)),
+                ndsm_array=ndsm_array,
+                transform=ndsm_transform
+            )
+
             features.append({
                 "id": fid,
                 "category": "CLADIRE_HIBRID",
@@ -603,13 +627,44 @@ class CadastralVectorizer:
                 "structure_type": temp_info.get("type", "CONSTRUCTIE_PERMANENTA"),
                 "center_x": round(float(centroid.x), 2),
                 "center_y": round(float(centroid.y), 2),
+                "clasa_forma": clasa_forma,
+                "conf_final": conf_info["conf_final"],
+                "action_code": conf_info["action_code"],
+                "step_valid_pct": conf_info["step_valid_pct"],
+                "std_acoperis": conf_info["std_acoperis"],
                 "geometry": p,
                 "geometry_sol": p_sol or p,
                 "crs": self.crs
             })
             fid += 1
 
+        if record_intermediate_stages:
+            self.last_intermediate_stages = {
+                "STAGE_1_RAW_CONTOUR": [dict(it) for it in valid_items],
+                "STAGE_2_CLEANED_CONTOUR": [dict(it) for it in merged_candidates],
+                "STAGE_3_ADAPTIVE_POLYGON": [dict(it) for it in regularized_items],
+                "STAGE_4_LIDAR_CONSTRAINED": [dict(it) for it in strictly_disjoint],
+                "STAGE_5_FINAL_CONFIDENCE": [dict(it) for it in features]
+            }
+
         return features
+
+    def save_intermediate_stages_to_gpkg(self, gpkg_path: str):
+        """Saves STAGE_1 to STAGE_5 layers into the specified GeoPackage for visual QGIS inspection."""
+        if not self.last_intermediate_stages:
+            return
+        for stage_name, items in self.last_intermediate_stages.items():
+            if not items:
+                continue
+            geoms = [it.get("geometry") for it in items if it.get("geometry") is not None and not it.get("geometry").is_empty]
+            if not geoms:
+                continue
+            clean_items = []
+            for it in items:
+                c_it = {k: str(v) if isinstance(v, (dict, list)) else v for k, v in it.items() if k not in ["geometry", "geometry_sol"]}
+                clean_items.append(c_it)
+            gdf = gpd.GeoDataFrame(clean_items, geometry=geoms, crs=self.crs)
+            gdf.to_file(gpkg_path, layer=stage_name, driver="GPKG")
 
     def vectorize_points(
         self,

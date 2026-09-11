@@ -202,7 +202,15 @@ def main():
     sector_boundary = vectorizer.extract_sector_boundary(vrt_orto, tolerance=10.0)
     print(f"   [Limita Sector] Calculat LIMITA_SECTOR_CADASTRAL: {sector_boundary.area:.1f} m2 (elimina treptele NoData)")
 
-    cad_main = vectorizer.format_hybrid_buildings(all_hybrid_buildings, tolerance=0.5, eave_offset_m=0.40)
+    cad_main = vectorizer.format_hybrid_buildings(
+        all_hybrid_buildings,
+        tolerance=0.5,
+        eave_offset_m=0.40,
+        use_quality_v2=True,
+        ndsm_array=ndsm,
+        ndsm_transform=tr_ndsm,
+        record_intermediate_stages=True,
+    )
     if sector_boundary and not sector_boundary.is_empty:
         cad_main = [b for b in cad_main if b.get("geometry") and sector_boundary.intersects(b["geometry"])]
 
@@ -293,7 +301,9 @@ def main():
     final_dxf = r"workspace\output\cadastru_ancpi.dxf"
 
     vectorizer.save_multicategory_geopackage(multicategory_dict, final_gpkg)
+    vectorizer.save_intermediate_stages_to_gpkg(final_gpkg)
     print(f"   [OK] GeoPackage Multi-Layer Complet: {final_gpkg}")
+    print(f"   [OK] Straturi Inspectie Etape V2 (STAGE_1..5) salvate in: {final_gpkg}")
 
     dxf_exporter = CadastralDxfExporter(dxf_version="R2010")
     dxf_exporter.export_multicategory_to_dxf(multicategory_dict, final_dxf, include_labels=True)

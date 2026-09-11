@@ -130,6 +130,8 @@ Sistemul respectă cu strictețe normele de avizare tehnică cadastrală din Rom
 2. **Limită Cadastrală Continuă (`LIMITA_SECTOR_CADASTRAL`):** Limita sectorului nu mai preia „treptele” de pixeli NoData raster, ci definește o frontieră geometrică netedă și convexă.
 3. **Filtru de Vegetație Multi-Excludere:** Arborii solitari sunt izolați la $H \ge 3.8\text{ m}$ și validați strict în afara viilor (`VN`), drumurilor (`DR`), hidrografiei (`HR`) și mormintelor din cimitire (`CIMITIR`), eliminând peste 3.200 de puncte false.
 4. **Regularizare Canonică la 90°:** Clădirile rezidențiale simple sunt ajustate la dreptunghiuri perfecte cu 4 noduri (99.88% ortogonalitate), eliminând lobii paraziți rezultați din vegetație adiacentă sau autovehicule parcate.
+5. **Reconstrucție Geometrică Adaptivă V2 & Prezervare Fațade Oblice:** În loc de forțarea oarbă a unghiurilor drepte pe orice poligon, clasificatorul separă 4 tipologii (Clasa A: OBB 4 noduri; Clasa B: Manhattan L/U/T; Clasa C: Pavilioane complexe; Clasa D: Forme autentic oblice/atipice conservate fără deformare forțată).
+6. **Poartă 3D LiDAR & Semafor de Încredere ($C_{\text{final}}$):** Fiecare clădire este validată altimetric pe treapta verticală de fațadă ($\Delta Z \ge 1.8\text{ m}$) și coplanaritatea acoperișului, primind cod operațional: 🟢 `VERDE_ACCEPTAT_AUTOMAT` ($\ge 0.85$), 🟡 `GALBEN_INSPECTIE_GEODEZ` ($0.65–0.85$), 🔴 `ROSU_RESPINS_ARTEFACT` ($< 0.65$). În QGIS sunt incluse straturile de audit pe etape (`STAGE_1_RAW_CONTOUR` $\to$ `STAGE_5_FINAL_CONFIDENCE`).
 
 ---
 

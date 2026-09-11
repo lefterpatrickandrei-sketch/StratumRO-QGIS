@@ -1,0 +1,52 @@
+{
+  "benchmark_name": "STRATUMRO_BUILDING_BENCHMARK_V2",
+  "total_references": 29,
+  "total_matched": 20,
+  "global_recall_pct": 69.0,
+  "median_iou_matched": 0.677,
+  "mean_iou_matched": 0.659,
+  "median_rmse_m": 2.898,
+  "mean_conf_score": 0.571,
+  "by_typology": {
+    "ANEXA_GOSPODAREASCA": {
+      "total_count": 2,
+      "matched_count": 0,
+      "recall_pct": 0.0,
+      "median_iou": 0.0,
+      "mean_iou": 0.0,
+      "median_rmse_m": null,
+      "mean_area_err_pct": 100.0,
+      "mean_conf": 0.0
+    },
+    "CASA_SIMPLA_DREPTUNGHI": {
+      "total_count": 10,
+      "matched_count": 8,
+      "recall_pct": 80.0,
+      "median_iou": 0.805,
+      "mean_iou": 0.731,
+      "median_rmse_m": 1.148,
+      "mean_area_err_pct": 28.6,
+      "mean_conf": 0.587
+    },
+    "CORP_L_U_T": {
+      "total_count": 2,
+      "matched_count": 2,
+      "recall_pct": 100.0,
+      "median_iou": 0.63,
+      "mean_iou": 0.63,
+      "median_rmse_m": 3.387,
+      "mean_area_err_pct": 26.6,
+      "mean_conf": 0.614
+    },
+    "PAVILION_CAMPUS_COMPLEX": {
+      "total_count": 15,
+      "matched_count": 10,
+      "recall_pct": 66.7,
+      "median_iou": 0.623,
+      "mean_iou": 0.608,
+      "median_rmse_m": 4.909,
+      "mean_area_err_pct": 36.6,
+      "mean_conf": 0.549
+    }
+  }
+}
