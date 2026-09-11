@@ -120,21 +120,34 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 - **Fișier Ground Truth:** [`data/ground_truth/tier1_teren.geojson`](../data/ground_truth/tier1_teren.geojson)
 - **Hash MD5 Verificat:** `30B95D3EC95B2EA7DC09F6F47E30BBE9`
 - **Volum Eșantion:** 29 clădiri cadastrale reale măsurate / confirmate în Stereo 70.
-- **Predicții Generate de Pipeline:** 134 poligoane în layer-ul `CLADIRI_HIBRID`.
+- **Predicții Generate de Pipeline:** 137 poligoane în layer-ul `CLADIRI_HIBRID` (135 poligoane în `CONFIG_F_HYBRID_FILTERED`).
 
 ### Sinteză Rezultate Recalculate Proaspăt:
 
 | Indicator / Metrică | Subset Curat (1:1 Pairs) | Set Global (Toate Perechile) | Explicație / Context Geodezic |
 | :--- | :--- | :--- | :--- |
-| **Număr Eșantioane** | **16 clădiri** | **17 clădiri (18 TP)** | 16 împerecheri 1:1 fără ambiguitate, 1 corp sub-segmentat. |
-| **IoU Median** | **0.804** | **0.791** | Suprapunere foarte bună pe corpurile curate (20 clădiri 1:1, după split calcan). |
+| **Număr Eșantioane** | **20 clădiri** | **20 clădiri (20 TP)** | 20 împerecheri 1:1 fără ambiguitate, zero multi-matching după split la calcan. |
+| **IoU Median** | **0.804** | **0.804** | Suprapunere foarte bună pe corpurile curate (20 clădiri 1:1, după split calcan). |
 | **IoU Mediu** | **0.725** ($\pm 0.171$) | **0.697** ($\pm 0.209$) | Interval de confidență 95%: $[0.645, 0.805]$. Creștere globală de la 0.615 la 0.697. |
-| **Boundary RMSE Median** | **1.946 m** | **2.177 m** | Acuratețe fotogrammetrică tipică pentru ortofoto 10–15 cm GSD pe 20 corpuri curate. |
-| **Boundary RMSE Mediu** | **3.019 m** ($\pm 3.214\text{ m}$) | **3.560 m** ($\pm 3.993\text{ m}$) | Reducere masivă a erorii maxime datorită eliminării contopirii la calcan. |
-| **Hausdorff Median** | **7.058 m** | **7.415 m** | Distanța maximă extremă locală (streșini, anexe secundare). |
+| **Boundary RMSE Median** | **1.946 m** | **1.946 m** | Acuratețe fotogrammetrică tipică pentru ortofoto 10–15 cm GSD pe 20 corpuri curate. |
+| **Boundary RMSE Mediu** | **3.019 m** ($\pm 3.214\text{ m}$) | **3.019 m** ($\pm 3.214\text{ m}$) | Reducere masivă a erorii maxime datorită eliminării contopirii la calcan. |
+| **Hausdorff Median** | **7.058 m** | **7.058 m** | Distanța maximă extremă locală (streșini, anexe secundare). |
 | **False Negatives (FN)** | **8 clădiri** | **8 clădiri** | Clădiri joase sau puternic obturate de coronamentul arborilor. |
-| **False Positives (FP)** | — | **116 clădiri** | **Audit integral OSM ([`fp_osm_verification.csv`](../reports/tier1_cadastre/fp_osm_verification.csv)):** 92 sunt clădiri reale în OSM (79.3%), 1 anexă mică (0.9%), 2 sere provizorii (1.7%), 21 ne-cartate/arbori (18.1%). |
+| **False Positives (FP)** | — | **116 clădiri** (114 în Config F) | **Audit integral OSM ([`fp_osm_verification.csv`](../reports/tier1_cadastre/fp_osm_verification.csv)):** 92 sunt clădiri reale în OSM (79.3%), 1 anexă mică (0.9%), 2 sere provizorii (1.7%), 21 ne-cartate/arbori (18.1%). |
 | **Conformitate ANCPI ($\le 10\text{ cm}$)** | **0 / 29 (0.0%)** | **0 / 29 (0.0%)** | **Realitate Fotogrammetrică:** Datele aeriene fără măsurători terestre directe nu pot atinge pragul legal de 10 cm. |
+
+### Matricea Studiului de Ablație (Config A – F):
+
+Rulată și reprodusă independent prin [`tools/verify_ground_truth_and_metrics.py`](../tools/verify_ground_truth_and_metrics.py) pe cele 29 clădiri de referință ANCPI (manifest salvat în [`reports/ablation/ablation_results.csv`](../reports/ablation/ablation_results.csv)):
+
+| Configurație | Descriere Tehnică | Strat GPKG | Predicții | TP | FP | FN | Perechi 1:1 | IoU Mediu | RMSE Mediu [m] | Rol Arhitectural & Concluzii |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Config A** | Doar LiDAR nDSM (H $\ge 2.5\text{ m}$) | `CONFIG_A_LIDAR_ONLY` | 575 | 6 | 569 | 23 | 6 | 0.693 | 2.95 | Recall scăzut (20.7%), sute de FP pe vegetație și teren. |
+| **Config B** | Doar SAM 2 Optic (RGB) | `CONFIG_B_SAM2_OPTIC_ONLY` | 152 | 20 | 131 | 8 | 20 | 0.677 | 3.27 | Recall bun, dar deformat de umbre și texturi de asfalt. |
+| **Config C** | Hibrid Ne-regularizat (LiDAR+SAM2) | `CONFIG_C_HYBRID_RAW` | 137 | 20 | 116 | 8 | 20 | 0.725 | 3.04 | Fuziunea reduce FP cu 79.6% față de LiDAR brut. |
+| **Config D** | Hibrid + Regularizare CAD 90° | `CONFIG_D_HYBRID_REGULARIZED` | 137 | 20 | 116 | 8 | 20 | 0.725 | 3.02 | Aliniere Manhattan 90°, reducerea nodurilor la colțuri CAD. |
+| **Config E** | Hibrid + Regularizare + Streașină | `CONFIG_E_HYBRID_REG_EAVE` | 137 | 20 | 116 | 8 | 20 | 0.726 | 3.02 | Offset streașină $-0.40\text{ m}$ pentru fundație la sol. |
+| **Config F** | Hibrid + Reg 90° + Filtru Provizorii | `CONFIG_F_HYBRID_FILTERED` | 135 | 20 | **114** | 8 | 20 | 0.725 | 3.02 | **Elimină -2 FP provizorii (solarii alungite) cu zero regresii pe TP (20/29 păstrat).** |
 
 ---
 

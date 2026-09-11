@@ -83,7 +83,7 @@ class TestCadastralVectorizer(unittest.TestCase):
         self.assertAlmostEqual(res.area, 400.0, places=1)
 
     def test_classify_temporary_container(self):
-        """Verifică detectarea automată a containerelor modulare (20ft)."""
+        """Verifică detectarea automată a containerelor modulare (20ft) și solariilor, protejând clădirile mari."""
         from shapely.geometry import box
         # Standard 20ft container: 2.44m x 6.06m ≈ 14.78 mp
         poly_container = box(0.0, 0.0, 2.44, 6.06)
@@ -96,6 +96,18 @@ class TestCadastralVectorizer(unittest.TestCase):
         res_house = self.vectorizer.classify_temporary_structure(poly_house)
         self.assertFalse(res_house["is_temporary"])
         self.assertEqual(res_house["type"], "CONSTRUCTIE_PERMANENTA")
+
+        # Seră / solar alungit îngust: 6m x 36m (raport 6.0, arie 216 mp, H 4m)
+        poly_greenhouse = box(0.0, 0.0, 6.0, 36.0)
+        res_gh = self.vectorizer.classify_temporary_structure(poly_greenhouse, mean_height=3.8)
+        self.assertTrue(res_gh["is_temporary"])
+        self.assertEqual(res_gh["type"], "SERA_SOLAR_ALUNGIT")
+
+        # Corp masiv de facultate / bloc alungit: 20m x 80m (raport 4.0, arie 1600 mp, H 15m) -> NU e provizoriu!
+        poly_univ = box(0.0, 0.0, 20.0, 80.0)
+        res_univ = self.vectorizer.classify_temporary_structure(poly_univ, mean_height=14.5)
+        self.assertFalse(res_univ["is_temporary"])
+        self.assertEqual(res_univ["type"], "CONSTRUCTIE_PERMANENTA")
 
     def test_split_at_calcan(self):
         """
@@ -135,6 +147,31 @@ class TestCadastralVectorizer(unittest.TestCase):
         unaffected = split_at_calcan(small_bldg, min_split_area_m2=350.0)
         self.assertEqual(len(unaffected), 1)
         self.assertEqual(unaffected[0].area, 100.0)
+
+    def test_format_hybrid_buildings_filter_temporary(self):
+        """Verifică excluderea structurilor temporare când filter_temporary=True."""
+        from shapely.geometry import box
+        bldg_permanent = box(100.0, 100.0, 115.0, 120.0)  # 15m x 20m = 300 mp
+        bldg_container = box(200.0, 200.0, 202.44, 206.06)  # 2.44m x 6.06m = 14.8 mp container
+        bldg_polytunnel = box(300.0, 300.0, 305.0, 340.0)  # 5m x 40m = 200 mp solar alungit
+
+        raw_inputs = [
+            {"geometry": bldg_permanent, "sam2_score": 0.95, "mean_h": 6.5, "max_h": 8.0},
+            {"geometry": bldg_container, "sam2_score": 0.88, "mean_h": 2.6, "max_h": 2.7},
+            {"geometry": bldg_polytunnel, "sam2_score": 0.85, "mean_h": 3.5, "max_h": 4.0},
+        ]
+
+        # Fără filtru: toate cele 3 sunt păstrate și adnotate
+        res_unfiltered = self.vectorizer.format_hybrid_buildings(raw_inputs, filter_temporary=False)
+        self.assertEqual(len(res_unfiltered), 3)
+        self.assertTrue(any(r["is_temporary"] and r["structure_type"] == "CONTAINER_MODULAR" for r in res_unfiltered))
+        self.assertTrue(any(r["is_temporary"] and r["structure_type"] == "SERA_SOLAR_ALUNGIT" for r in res_unfiltered))
+
+        # Cu filtru activat: doar clădirea permanentă este păstrată
+        res_filtered = self.vectorizer.format_hybrid_buildings(raw_inputs, filter_temporary=True)
+        self.assertEqual(len(res_filtered), 1)
+        self.assertEqual(res_filtered[0]["structure_type"], "CONSTRUCTIE_PERMANENTA")
+        self.assertFalse(res_filtered[0]["is_temporary"])
 
 
 if __name__ == "__main__":

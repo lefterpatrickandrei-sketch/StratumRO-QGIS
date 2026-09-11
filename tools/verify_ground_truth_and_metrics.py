@@ -129,6 +129,7 @@ def main():
         ("CONFIG_C", "Hibrid Ne-regularizat", "CONFIG_C_HYBRID_RAW"),
         ("CONFIG_D", "Hibrid + Regularizare 90°", "CONFIG_D_HYBRID_REGULARIZED"),
         ("CONFIG_E", "Hibrid + Regularizare + Streașină", "CONFIG_E_HYBRID_REG_EAVE"),
+        ("CONFIG_F", "Hibrid + Reg + Filtru Provizorii", "CONFIG_F_HYBRID_FILTERED"),
     ]
 
     ablation_results = []

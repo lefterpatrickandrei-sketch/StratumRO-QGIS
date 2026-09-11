@@ -115,4 +115,24 @@ gdf_b = gpd.GeoDataFrame([{"id": f"OPTIC_{i+1:03d}", "config": "B_SAM2_OPTIC_ONL
 gdf_b.to_file(out_gpkg, layer="CONFIG_B_SAM2_OPTIC_ONLY", driver="GPKG")
 print(f"   Config B: {len(gdf_b)} corpuri (include deformări de umbră și artefacte fără înălțime).")
 
-print("\n[+] Toate cele 5 straturi reale de ablație au fost generate cu succes în:", out_gpkg)
+# -------------------------------------------------------------
+# 6. CONFIG F: Hibrid + Regularizare 90° + Filtru Structuri Temporare
+# -------------------------------------------------------------
+print("[5/5] Extragere Config F: Hibrid Regularizat + Filtru Provizorii (Containere & Solarii)...")
+sys.path.insert(0, os.path.abspath('.'))
+from stratum_ro.vectorizer import check_is_likely_container_or_shed
+
+filtered_rows = []
+for idx, row in gdf_d.iterrows():
+    p = row.geometry
+    mean_h = float(row.get("inaltime_med_m", 4.0))
+    chk = check_is_likely_container_or_shed(p, mean_height=mean_h)
+    if not chk.get("is_temporary", False):
+        filtered_rows.append(row)
+
+gdf_f = gpd.GeoDataFrame(filtered_rows, crs=gdf_d.crs)
+gdf_f.to_file(out_gpkg, layer="CONFIG_F_HYBRID_FILTERED", driver="GPKG")
+print(f"   Config F: {len(gdf_f)} corpuri (eliminate {len(gdf_d) - len(gdf_f)} structuri provizorii: containere/solarii).")
+
+print("\n[+] Toate cele 6 straturi reale de ablație (Config A - F) au fost generate cu succes în:", out_gpkg)
+

@@ -178,9 +178,11 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
 
 def check_is_likely_container_or_shed(poly: Polygon, mean_height: Optional[float] = None) -> Dict[str, Any]:
     """
-    Identifică dacă o amprentă seamănă cu un container maritim/modular sau seră alungită:
+    Identifică dacă o amprentă seamănă cu un container maritim/modular sau seră/solar alungit:
       - 20ft container: ~2.44m x 6.06m (Arie ~14.8 m2, raport ~2.48, H ~2.59m)
       - 40ft container: ~2.44m x 12.19m (Arie ~29.7 m2, raport ~5.0, H ~2.59m)
+      - Seră / solar alungit: lățime îngustă (w <= 8.1m), raport mare (>= 3.5), H <= 6.0m
+    Protejează explicit corpurile permanente mari (ex. corpuri de campus de 15-25m lățime).
     """
     if poly is None or not poly.is_valid:
         return {"is_temporary": False, "type": "UNKNOWN"}
@@ -195,7 +197,7 @@ def check_is_likely_container_or_shed(poly: Polygon, mean_height: Optional[float
         ratio = l / (w + 1e-5)
         area = poly.area
 
-        # Verificare container 20ft / 40ft (lățime ~2.0 - 2.8m, lungime 5.5 - 13.0m)
+        # Verificare container 20ft / 40ft (lățime ~2.0 - 3.0m, lungime 5.0 - 13.5m, arie 10-36 m2)
         if 2.0 <= w <= 3.0 and 5.0 <= l <= 13.5 and 10.0 <= area <= 36.0:
             if ratio >= 2.0:
                 return {
@@ -206,15 +208,17 @@ def check_is_likely_container_or_shed(poly: Polygon, mean_height: Optional[float
                     "aspect_ratio": round(ratio, 2)
                 }
 
-        # Verificare seră / solar ușor alungit
-        if ratio >= 3.5 and area >= 40.0:
-            return {
-                "is_temporary": True,
-                "type": "SERA_SOLAR_ALUNGIT",
-                "width_m": round(w, 2),
-                "length_m": round(l, 2),
-                "aspect_ratio": round(ratio, 2)
-            }
+        # Verificare seră / solar ușor alungit / tunel agricol
+        # Solariile au o lățime constructivă îngustă (w <= 8.1m) și structură ușoară (H <= 6.0m)
+        if w <= 8.1 and ratio >= 3.5 and 30.0 <= area <= 500.0:
+            if mean_height is None or mean_height <= 6.0:
+                return {
+                    "is_temporary": True,
+                    "type": "SERA_SOLAR_ALUNGIT",
+                    "width_m": round(w, 2),
+                    "length_m": round(l, 2),
+                    "aspect_ratio": round(ratio, 2)
+                }
 
     return {"is_temporary": False, "type": "CONSTRUCTIE_PERMANENTA"}
 
@@ -332,7 +336,8 @@ class CadastralVectorizer:
         self,
         hybrid_results: List[Dict[str, Any]],
         tolerance: float = 0.7,
-        eave_offset_m: float = 0.40
+        eave_offset_m: float = 0.40,
+        filter_temporary: bool = False
     ) -> List[Dict[str, Any]]:
         """
         Takes raw validated outputs from SAM2BuildingSegmenter,
@@ -340,6 +345,7 @@ class CadastralVectorizer:
         applies SOTA Cadastral regularisation (Building-Regulariser / Manhattan 90 deg CAD alignment)
         calculates eave retraction offset (-0.40m for ANCPI ground footprint)
         and guarantees strictly disjoint (0.0 m2 overlap) clean building footprints.
+        Optional filter_temporary parameter excludes temporary containers and agricultural polytunnels/sheds.
         """
         import scipy.sparse as sp
         from scipy.sparse.csgraph import connected_components
@@ -494,10 +500,17 @@ class CadastralVectorizer:
 
         # 5. Formatare finală a atributelor cadastrale și calcul amprentă la sol (ANCPI)
         features = []
-        for fid, it in enumerate(strictly_disjoint, start=1):
+        fid = 1
+        for it in strictly_disjoint:
             p = _extract_largest_polygon(it["geometry"])
             if p is None or p.is_empty:
                 continue
+
+            mean_h = float(it.get("mean_h", 4.0))
+            temp_info = check_is_likely_container_or_shed(p, mean_height=mean_h)
+            if filter_temporary and temp_info.get("is_temporary", False):
+                continue
+
             centroid = p.centroid
             num_vertices = len(p.exterior.coords) - 1
 
@@ -521,19 +534,22 @@ class CadastralVectorizer:
                 "category": "CLADIRE_HIBRID",
                 "validare": it.get("status", "CONFIRMAT_HIBRID"),
                 "sam2_score": round(float(it.get("sam2_score", 0.0)), 3),
-                "inaltime_med_m": round(float(it.get("mean_h", 4.0)), 2),
+                "inaltime_med_m": round(mean_h, 2),
                 "inaltime_max_m": round(float(it.get("max_h", 5.5)), 2),
                 "area_m2": round(float(p.area), 2),
                 "area_sol_m2": area_sol,
                 "eave_offset_m": eave_offset_m,
                 "perimeter_m": round(float(p.length), 2),
                 "vertices": num_vertices,
+                "is_temporary": bool(temp_info.get("is_temporary", False)),
+                "structure_type": temp_info.get("type", "CONSTRUCTIE_PERMANENTA"),
                 "center_x": round(float(centroid.x), 2),
                 "center_y": round(float(centroid.y), 2),
                 "geometry": p,
                 "geometry_sol": p_sol or p,
                 "crs": self.crs
             })
+            fid += 1
 
         return features
 

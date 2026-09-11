@@ -50,6 +50,7 @@ def run_ablation_matrix(
         {"id": "Config C", "name": "Hibrid Ne-regularizat", "layer": "CONFIG_C_HYBRID_RAW", "eave_offset": 0.0},
         {"id": "Config D", "name": "Hibrid + Regularizare 90°", "layer": "CONFIG_D_HYBRID_REGULARIZED", "eave_offset": 0.0},
         {"id": "Config E", "name": "Hibrid + Regularizare + Streașină", "layer": "CONFIG_E_HYBRID_REG_EAVE", "eave_offset": -0.40},
+        {"id": "Config F", "name": "Hibrid + Reg + Filtru Provizorii", "layer": "CONFIG_F_HYBRID_FILTERED", "eave_offset": 0.0},
     ]
 
     results = []
