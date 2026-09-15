@@ -61,5 +61,5 @@ tools/llm_test_results/
 
 # Obsidian & Agents
 Obsidian workflow/
-.agents/
+.agents/skills/
 skills-lock.json

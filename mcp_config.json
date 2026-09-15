@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "stratumro": {
+      "command": "venv/Scripts/fastmcp.exe",
+      "args": ["run", "mcp/stratumro_server.py"],
+      "description": "StratumRO Cadastral, LiDAR, SAM2, and Vector Regularization Engine"
+    },
+    "filesystem": {
+      "command": "venv/Scripts/fastmcp.exe",
+      "args": ["run", "mcp/filesystem/server.py"],
+      "description": "Sandboxed Workspace Filesystem Manager"
+    },
+    "dataset_manager": {
+      "command": "venv/Scripts/fastmcp.exe",
+      "args": ["run", "mcp/dataset_manager/server.py"],
+      "description": "Geospatial Dataset Ingestion and Structural Validation"
+    }
+  }
+}
