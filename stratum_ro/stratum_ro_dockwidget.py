@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import os
+import re
+import json
 import requests
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import pyqtSignal
 # Am adăugat QgsRasterLayer, QgsVectorLayer și QgsWkbTypes pentru importurile PyQGIS
-from qgis.core import QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsProject, QgsRasterLayer, QgsVectorLayer, QgsWkbTypes
+from qgis.core import QgsCoordinateReferenceSystem, QgsCoordinateTransform, QgsProject, QgsRasterLayer, QgsVectorLayer, QgsWkbTypes, QgsFeature, QgsGeometry
 from qgis.gui import QgsMapToolExtent
 
 # Îi spunem programului să moștenească designul din fișierul _base
@@ -19,9 +21,12 @@ from .ai.task_graph import TaskGraph, TaskNode, TaskStatus
 from .ai.executor import TaskExecutor
 from .ai.registry import ProviderRegistry
 from .ai.router import AIRouter, ExecutionMode, TaskType
+from .ai.context import get_default_context_engine, get_context_snapshot
+from .ai.memory.session import SessionMemory, sanitize_secrets
+from .ai.memory.listener import attach_memory_to_event_bus
 from .ai.tools.project_tools import get_workspace_context
 from .ai.tools.vector_tools import regularize_footprints, apply_eave_offset
-from .ai.tools.cadastral_tools import validate_topology, export_topolt_cad, export_cp_file
+from .ai.tools.cadastral_tools import validate_topology, validate_ancpi, export_topolt_cad, export_cp_file
 
 # Constante Geodezice Stereo 70 (România)
 # EPSG:3844 este codul oficial actualizat solicitat de ANCPI / eTerra / TransdatRO.
@@ -101,17 +106,12 @@ class SegmentationWorker(QtCore.QThread):
                 os.environ.get("STRATUMRO_LIDAR_LAZ", ""),
                 os.path.join(base_dir, "datasets", "lidar", "teren.laz"),
                 os.path.join(base_dir, "data", "teren.laz"),
-                # Fallback dezvoltator local
-                r"C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\LAZ\NorPuncte_St70_S42.laz",
-                r"C:\Users\lefpa\Desktop\Negula\NorPuncte_St70_S42.laz"
             ]
             candidates_dtm = [
                 self.payload.get("dtm_path", ""),
                 os.environ.get("STRATUMRO_DTM_TIF", ""),
                 os.path.join(base_dir, "datasets", "lidar", "dtm.tif"),
                 os.path.join(base_dir, "data", "dtm.tif"),
-                # Fallback dezvoltator local
-                r"C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\DTM3m\DTM3m.tif"
             ]
 
             # Verificare straturi active din proiectul QGIS
@@ -300,9 +300,14 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         self.ai_worker = None
         self.pending_approval_task_id = None
         self.intermediate_features = []
+        self.current_session_memory = None
+        self.memory_subscriber = None
+        self._task_tree_items = {}
 
         # Inițializăm Tab-ul AI Orchestrator & Task Graph
         self._setup_ai_assistant_ui()
+        self.refresh_context_display()
+        self.refresh_history_display()
 
     def init_map_tool(self):
         """Activează instrumentul de selecție elastică pe canvas-ul QGIS."""
@@ -645,7 +650,7 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             self.lblStatus_2.setText("Status: Eroare la încărcarea straturilor geospațiale rezultate.")
 
     def _setup_ai_assistant_ui(self):
-        """Configurează panoul modern cu Tab-uri: Flux Clasic și AI Orchestrator."""
+        """Configurează panoul modern cu Tab-uri: Flux Clasic și AI Orchestrator (MD 5 Conformance)."""
         self.tabs = QtWidgets.QTabWidget(self.dockWidgetContents)
 
         # Tab 1: Flux Clasic
@@ -660,30 +665,60 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         layout_classic.addStretch()
         self.tabs.addTab(self.tabClassic, "🗺️ Flux Clasic")
 
-        # Tab 2: AI Orchestrator
+        # Tab 2: AI Orchestrator cu ScrollArea pentru prevenirea trunchierii
         self.tabAI = QtWidgets.QWidget()
-        layout_ai = QtWidgets.QVBoxLayout(self.tabAI)
+        tab_layout = QtWidgets.QVBoxLayout(self.tabAI)
+        tab_layout.setContentsMargins(0, 0, 0, 0)
 
-        # Indicator Status Provideri
-        self.lblProviders = QtWidgets.QLabel("🟢 NVIDIA NIM  |  🟢 SAM2  |  🟢 Ollama  |  ⚪ OpenAI")
+        scroll_area = QtWidgets.QScrollArea()
+        scroll_area.setWidgetResizable(True)
+        scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
+
+        content_widget = QtWidgets.QWidget()
+        layout_ai = QtWidgets.QVBoxLayout(content_widget)
+        layout_ai.setContentsMargins(6, 6, 6, 6)
+        layout_ai.setSpacing(6)
+
+        # 1. Indicator Status Provideri (Badges)
+        self.lblProviders = QtWidgets.QLabel("🟢 Local | 🟢 SAM2 | ⚪ NVIDIA NIM | ⚪ Union Alpha | ⚪ Ollama")
+        self.lblProviders.setWordWrap(True)
         self.lblProviders.setStyleSheet("color: #1b5e20; font-weight: bold; padding: 5px; background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 4px;")
         layout_ai.addWidget(self.lblProviders)
 
-        # Selector Mod Execuție
-        layout_mode = QtWidgets.QHBoxLayout()
+        # 2. Selector Provider & Mod Execuție
+        layout_selectors = QtWidgets.QHBoxLayout()
+        lbl_provider = QtWidgets.QLabel("Provider:")
+        self.comboAIProvider = QtWidgets.QComboBox()
+        self._populate_providers_combo()
+        layout_selectors.addWidget(lbl_provider)
+        layout_selectors.addWidget(self.comboAIProvider, stretch=2)
+
         lbl_mode = QtWidgets.QLabel("Mod:")
         self.comboAIMode = QtWidgets.QComboBox()
-        self.comboAIMode.addItems(["Hibrid (Auto - Recomandat)", "Local Offline (Ollama/Mock)", "NVIDIA NIM Cloud"])
-        layout_mode.addWidget(lbl_mode)
-        layout_mode.addWidget(self.comboAIMode)
-        layout_ai.addLayout(layout_mode)
+        self.comboAIMode.addItems(["Hibrid (Auto - Recomandat)", "Local Offline (Deterministic/Ollama)", "Cloud Provider (Union Alpha / NIM)"])
+        layout_selectors.addWidget(lbl_mode)
+        layout_selectors.addWidget(self.comboAIMode, stretch=2)
+        layout_ai.addLayout(layout_selectors)
 
-        # Prompt Input
+        # 3. Context Proiect & Mediu (Panou expandabil)
+        self.grpContext = QtWidgets.QGroupBox("📐 Context Proiect & Mediu (EPSG:3844 Stereo 70)")
+        self.grpContext.setCheckable(True)
+        self.grpContext.setChecked(True)
+        layout_ctx = QtWidgets.QVBoxLayout(self.grpContext)
+        self.lblContextDetails = QtWidgets.QLabel("Se încarcă contextul...")
+        self.lblContextDetails.setWordWrap(True)
+        self.lblContextDetails.setStyleSheet("font-size: 11px; color: #37474f; background: #eceff1; padding: 6px; border-radius: 4px;")
+        layout_ctx.addWidget(self.lblContextDetails)
+        self.btnRefreshContext = QtWidgets.QPushButton("🔄 Reîmprospătează Contextul")
+        layout_ctx.addWidget(self.btnRefreshContext)
+        layout_ai.addWidget(self.grpContext)
+
+        # 4. Prompt Input
         self.txtAIPrompt = QtWidgets.QLineEdit("Extrage clădirile din AOI curent (LiDAR + SAM2)")
         self.txtAIPrompt.setPlaceholderText("Introdu comanda geospațială...")
         layout_ai.addWidget(self.txtAIPrompt)
 
-        # Butoane Rulare / Stop
+        # 5. Butoane Rulare / Stop
         layout_btns = QtWidgets.QHBoxLayout()
         self.btnRunAI = QtWidgets.QPushButton("🚀 Planifică & Rulează AI")
         self.btnStopAI = QtWidgets.QPushButton("⏹️ Oprește")
@@ -692,43 +727,82 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         layout_btns.addWidget(self.btnStopAI)
         layout_ai.addLayout(layout_btns)
 
-        # Progres
+        # 6. Progres
         self.progressBarAI = QtWidgets.QProgressBar()
         self.progressBarAI.setValue(0)
         layout_ai.addWidget(self.progressBarAI)
 
-        # Task Graph Tree View
+        # 7. Task Graph Tree View (DAG Monitor)
         lbl_dag = QtWidgets.QLabel("Etape Execuție (Task Graph):")
-        lbl_dag.setStyleSheet("font-weight: bold; margin-top: 4px;")
+        lbl_dag.setStyleSheet("font-weight: bold; margin-top: 2px;")
         layout_ai.addWidget(lbl_dag)
 
         self.treeTaskGraph = QtWidgets.QTreeWidget()
         self.treeTaskGraph.setHeaderLabels(["Etapă", "Status"])
-        self.treeTaskGraph.setColumnWidth(0, 200)
+        self.treeTaskGraph.setColumnWidth(0, 220)
+        self.treeTaskGraph.setMinimumHeight(140)
         layout_ai.addWidget(self.treeTaskGraph)
 
-        # Poartă de Aprobare Umană
-        self.widgetApproval = QtWidgets.QGroupBox("Poartă de Aprobare Cadastrală")
+        # 8. Raport Validare Tehnică & ANCPI 600/2023
+        self.grpValidation = QtWidgets.QGroupBox("📋 Raport Validare Tehnică & ANCPI")
+        layout_val = QtWidgets.QVBoxLayout(self.grpValidation)
+        self.lblValidationReport = QtWidgets.QLabel("Validare: În așteptarea execuției fluxului...")
+        self.lblValidationReport.setWordWrap(True)
+        self.lblValidationReport.setStyleSheet("font-size: 11px; color: #263238; background: #e0f2f1; padding: 6px; border-radius: 4px;")
+        layout_val.addWidget(self.lblValidationReport)
+        layout_ai.addWidget(self.grpValidation)
+
+        # 9. Poartă de Aprobare Cadastrală (Preview-First Approval Gate)
+        self.widgetApproval = QtWidgets.QGroupBox("Poartă de Aprobare Cadastrală (ANCPI Ordin 600/2023)")
         self.widgetApproval.setStyleSheet("QGroupBox { border: 2px solid #f57c00; border-radius: 6px; margin-top: 4px; font-weight: bold; }")
         layout_appr = QtWidgets.QVBoxLayout(self.widgetApproval)
-        self.lblApprovalMsg = QtWidgets.QLabel("⚠️ Aprobare necesară pentru exportul fișierelor CAD TopoLT.")
+        self.lblApprovalMsg = QtWidgets.QLabel("⚠️ Aprobare necesară pentru finalizarea livrabilelor cadastrale.")
         self.lblApprovalMsg.setWordWrap(True)
         layout_appr.addWidget(self.lblApprovalMsg)
 
+        # Buton Previzualizare Straturi Intermediare pe Canvas
+        self.btnPreviewLayers = QtWidgets.QPushButton("👁️ Previzualizează Straturi Intermediare pe Canvas")
+        self.btnPreviewLayers.setStyleSheet("background-color: #0288d1; color: white; font-weight: bold; padding: 5px;")
+        layout_appr.addWidget(self.btnPreviewLayers)
+
+        # Câmp text motiv respingere
+        self.txtRejectReason = QtWidgets.QLineEdit()
+        self.txtRejectReason.setPlaceholderText("Motiv respingere opțional (ex: depășire aliniament, suprapunere parcelă)...")
+        layout_appr.addWidget(self.txtRejectReason)
+
         layout_appr_btns = QtWidgets.QHBoxLayout()
         self.btnApproveAI = QtWidgets.QPushButton("✅ Aprobă și Scrie Straturile")
-        self.btnApproveAI.setStyleSheet("background-color: #2e7d32; color: white; font-weight: bold; padding: 4px;")
-        self.btnCancelAI = QtWidgets.QPushButton("❌ Respinge")
-        self.btnCancelAI.setStyleSheet("background-color: #c62828; color: white; padding: 4px;")
+        self.btnApproveAI.setStyleSheet("background-color: #2e7d32; color: white; font-weight: bold; padding: 5px;")
+        self.btnRejectAI = QtWidgets.QPushButton("❌ Respinge cu Motiv")
+        self.btnRejectAI.setStyleSheet("background-color: #e65100; color: white; font-weight: bold; padding: 5px;")
+        self.btnCancelAI = QtWidgets.QPushButton("⏹️ Anulează Tot Graful")
+        self.btnCancelAI.setStyleSheet("background-color: #c62828; color: white; padding: 5px;")
         layout_appr_btns.addWidget(self.btnApproveAI)
+        layout_appr_btns.addWidget(self.btnRejectAI)
         layout_appr_btns.addWidget(self.btnCancelAI)
         layout_appr.addLayout(layout_appr_btns)
         self.widgetApproval.setVisible(False)
         layout_ai.addWidget(self.widgetApproval)
 
-        # Status Label AI
+        # 10. Istoric Rulări Recente (Session Memory)
+        self.grpHistory = QtWidgets.QGroupBox("📜 Istoric Rulări Recente (Session Memory)")
+        self.grpHistory.setCheckable(True)
+        self.grpHistory.setChecked(False)
+        layout_hist = QtWidgets.QVBoxLayout(self.grpHistory)
+        self.listHistory = QtWidgets.QListWidget()
+        self.listHistory.setMaximumHeight(110)
+        layout_hist.addWidget(self.listHistory)
+        self.btnRefreshHistory = QtWidgets.QPushButton("🔄 Reîmprospătează Istoricul")
+        layout_hist.addWidget(self.btnRefreshHistory)
+        layout_ai.addWidget(self.grpHistory)
+
+        # 11. Status Label AI
         self.lblAIStatus = QtWidgets.QLabel("Status AI: Gata de planificare.")
+        self.lblAIStatus.setWordWrap(True)
         layout_ai.addWidget(self.lblAIStatus)
+
+        scroll_area.setWidget(content_widget)
+        tab_layout.addWidget(scroll_area)
 
         self.tabs.addTab(self.tabAI, "🤖 Orchestrator AI")
 
@@ -738,8 +812,82 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         # Conectăm sloturile AI
         self.btnRunAI.clicked.connect(self.run_ai_orchestrator_pipeline)
         self.btnStopAI.clicked.connect(self.on_ai_stop_clicked)
+        self.btnPreviewLayers.clicked.connect(self.on_ai_preview_clicked)
         self.btnApproveAI.clicked.connect(self.on_ai_approve_clicked)
+        self.btnRejectAI.clicked.connect(self.on_ai_reject_clicked)
         self.btnCancelAI.clicked.connect(self.on_ai_cancel_clicked)
+        self.btnRefreshContext.clicked.connect(self.refresh_context_display)
+        self.btnRefreshHistory.clicked.connect(self.refresh_history_display)
+
+    def _populate_providers_combo(self):
+        """Populează dinamic combo-ul de provideri din ProviderRegistry."""
+        try:
+            self.comboAIProvider.clear()
+            self.comboAIProvider.addItem("Auto (Intelligent Capability Routing)")
+            registry = ProviderRegistry()
+            for p in registry.list_all():
+                status_str = "🟢 Activ" if p.is_available() else "⚪ Inactiv"
+                self.comboAIProvider.addItem(f"{p.name} ({status_str})")
+        except Exception:
+            self.comboAIProvider.addItem("Auto (Intelligent Capability Routing)")
+
+    def refresh_context_display(self):
+        """Interoghează ContextEngine și actualizează sumarul de mediu și badge-urile de provideri."""
+        try:
+            engine = get_default_context_engine()
+            ctx = engine.refresh()
+
+            crs_info = ctx.get("crs", {})
+            proj_crs = crs_info.get("project_crs", "EPSG:3844")
+            hw = ctx.get("hardware", {})
+            providers = ctx.get("providers", {})
+            layers = ctx.get("layers", [])
+
+            ctx_txt = (
+                f"📐 Proiect CRS: {proj_crs} (Stereo 70) | Vertical: {crs_info.get('vertical_datum', 'EPSG:5781')}\n"
+                f"💻 Hardware: {hw.get('preferred_device', 'CPU')} "
+                f"(DirectML: {'DA' if hw.get('directml_available') else 'NU'}, "
+                f"CUDA: {'DA' if hw.get('cuda_available') else 'NU'})\n"
+                f"🗺️ Straturi active QGIS: {len(layers)} straturi detectate\n"
+                f"📦 Stocare / Memorie: SQLite WAL activ (workspace/memory.db)"
+            )
+            self.lblContextDetails.setText(ctx_txt)
+
+            badges = []
+            for p_name, p_info in providers.items():
+                avail = p_info.get("available", False)
+                icon = "🟢" if avail else "⚪"
+                badges.append(f"{icon} {p_name}")
+            if badges:
+                self.lblProviders.setText(" | ".join(badges))
+        except Exception as e:
+            self.lblContextDetails.setText(f"Eroare la citirea contextului: {e}")
+
+    def refresh_history_display(self):
+        """Încarcă ultimele rulări din SessionMemory în QListWidget."""
+        try:
+            mem = SessionMemory()
+            runs = mem.get_recent_runs(limit=8)
+            self.listHistory.clear()
+            if not runs:
+                self.listHistory.addItem("Nu există rulări anterioare înregistrate.")
+                return
+            for r in runs:
+                status_icon = "✅" if r.get("status") == "success" else "❌" if r.get("status") == "failed" else "⚠️"
+                dur = f"{r.get('duration_sec', 0.0):.1f}s"
+                ts = r.get("timestamp", "")[:19].replace("T", " ")
+                item_text = f"{status_icon} [{ts}] {r.get('tool', 'task')} ({dur}) - {r.get('status', 'unknown')}"
+                self.listHistory.addItem(item_text)
+        except Exception as e:
+            self.listHistory.clear()
+            self.listHistory.addItem(f"Eroare la citirea istoricului: {e}")
+
+    def show_sanitized_error(self, title: str, message: str):
+        """Afișează un dialog de eroare cu detalii igienizate (fără secrete sau căi locale expuse)."""
+        cleaned = sanitize_secrets(str(message))
+        cleaned = re.sub(r"[A-Za-z]:\\[Uu]sers\\[^\\]+", "<USER_HOME>", cleaned)
+        cleaned = re.sub(r"/home/[^/]+", "<USER_HOME>", cleaned)
+        QtWidgets.QMessageBox.critical(self, title, cleaned)
 
     def run_ai_orchestrator_pipeline(self):
         """Construiește TaskGraph-ul geodezic și lansează AITaskGraphWorker asincron."""
@@ -757,8 +905,14 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         self.pending_approval_task_id = None
         self.lblAIStatus.setText("Status AI: Se inițializează Task Graph...")
 
+        provider_name = self.comboAIProvider.currentText()
+        mode_name = self.comboAIMode.currentText()
+
         # Construim graful DAG
-        graph = TaskGraph(goal="Extragere clădiri și generare livrabile ANCPI")
+        graph = TaskGraph(
+            goal="Extragere clădiri și generare livrabile ANCPI",
+            metadata={"provider": provider_name, "mode": mode_name}
+        )
         tasks = [
             TaskNode("t1_ctx", "1. Inspecție Context & CRS (EPSG:3844)", "project.get_context"),
             TaskNode("t2_lidar", "2. Detecție Candidați LiDAR & nDSM", "lidar.detect_candidates", dependencies=["t1_ctx"]),
@@ -775,6 +929,13 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
             item = QtWidgets.QTreeWidgetItem([t.name, "⏳ În așteptare"])
             self.treeTaskGraph.addTopLevelItem(item)
             self._task_tree_items[t.id] = item
+
+        # Atașăm memoria de sesiune la EventBus
+        try:
+            self.current_session_memory = SessionMemory()
+            self.memory_subscriber = attach_memory_to_event_bus(self.current_session_memory)
+        except Exception:
+            pass
 
         # Înregistrare unelte în executor
         executor = TaskExecutor(graph)
@@ -810,38 +971,129 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         if item:
             item.setText(1, f"✅ Finalizat ({duration:.1f}s)")
 
+        # Dacă s-a finalizat validarea, actualizăm panoul dedicat de raportare
+        if task_id == "t6_val" and self.ai_worker:
+            node = self.ai_worker.graph.get_task("t6_val")
+            if node and node.result:
+                top = node.result.get("topology", {})
+                ancpi = node.result.get("ancpi", {})
+                is_valid = top.get("valid", True)
+                fc = top.get("feature_count", len(self.intermediate_features))
+
+                ancpi_checks = ancpi.get("checks", {})
+                edge_p = ancpi_checks.get("min_edge_1m", {}).get("passed", fc)
+
+                report_txt = (
+                    f"Topologie: {'✅ CONFORM' if is_valid else '⚠️ DEFICIENȚE'}\n"
+                    f"• Corpuri clădiri verificate: {fc}\n"
+                    f"• Auto-intersecții: {top.get('self_intersections', 0)} | Vârfuri duplicate: {top.get('duplicate_vertices', 0)}\n"
+                    f"• Poligoane sliver: {top.get('sliver_count', 0)}\n"
+                    f"ANCPI 600/2023: Suprafață minimă & laturi >= 1.0m ({edge_p} validate conform)."
+                )
+                self.lblValidationReport.setText(report_txt)
+
     def _on_ai_task_failed(self, task_id, error_message):
         item = self._task_tree_items.get(task_id)
         if item:
             item.setText(1, "❌ Eșuat")
-        self.lblAIStatus.setText(f"Status AI: Eroare la pasul {task_id}: {error_message}")
+        clean_err = sanitize_secrets(str(error_message))
+        self.lblAIStatus.setText(f"Status AI: Eroare la pasul {task_id}: {clean_err}")
 
     def _on_ai_approval_required(self, task_id, task_name, tool):
         self.pending_approval_task_id = task_id
         item = self._task_tree_items.get(task_id)
         if item:
             item.setText(1, "🛑 Așteaptă aprobare")
-        self.lblApprovalMsg.setText(f"⚠️ Pasul final '{task_name}' este gata de scriere pe disc.\nConfirmi generarea fișierelor oficiale TopoLT CAD și .CP eTerra?")
+
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        out_dxf = os.path.join(base_dir, "workspace", "output", "cadastru_ancpi_ai.dxf")
+        out_cp = os.path.join(base_dir, "workspace", "output", "imobil_ai.cp")
+        count = len(self.intermediate_features)
+
+        self.lblApprovalMsg.setText(
+            f"⚠️ Poartă de Aprobare Cadastrală — Pasul '{task_name}'\n"
+            f"• Obiecte extrase: {count} poligoane clădiri (Stereo 70 / EPSG:3844)\n"
+            f"• Livrabile țintă:\n"
+            f"   - CAD TopoLT: {os.path.basename(out_dxf)}\n"
+            f"   - Interchange: {os.path.basename(out_cp)}\n"
+            f"Apasă 'Previzualizează' pentru a inspecta pe hartă sau aprobă pentru a genera fișierele."
+        )
         self.widgetApproval.setVisible(True)
         self.lblAIStatus.setText("Status AI: Întrerupt temporar — este necesară aprobarea ta.")
+
+    def on_ai_preview_clicked(self):
+        """Încarcă poligoanele intermediare curente într-un strat memorie pe harta QGIS."""
+        if not self.intermediate_features:
+            self.lblAIStatus.setText("Status AI: Nu există geometrii intermediare disponibile pentru previzualizare.")
+            return
+
+        try:
+            layer_name = "StratumRO — Previzualizare Aprobare"
+
+            # Îndepărtăm stratul anterior de previzualizare dacă există deja
+            for l in list(QgsProject.instance().mapLayers().values()):
+                if l.name() == layer_name:
+                    QgsProject.instance().removeMapLayer(l.id())
+
+            vl = QgsVectorLayer("Polygon?crs=EPSG:3844", layer_name, "memory")
+            pr = vl.dataProvider()
+            feats = []
+            for item in self.intermediate_features:
+                if isinstance(item, dict):
+                    geom = QgsGeometry.fromGeoJson(json.dumps(item))
+                elif hasattr(item, "__geo_interface__"):
+                    geom = QgsGeometry.fromGeoJson(json.dumps(item.__geo_interface__))
+                else:
+                    continue
+                if geom and not geom.isEmpty():
+                    f = QgsFeature()
+                    f.setGeometry(geom)
+                    feats.append(f)
+
+            if feats:
+                pr.addFeatures(feats)
+                vl.updateExtents()
+                QgsProject.instance().addMapLayer(vl)
+                self.lblAIStatus.setText(f"Status AI: S-au adăugat {len(feats)} poligoane în stratul '{layer_name}'.")
+            else:
+                self.lblAIStatus.setText("Status AI: Nu s-au putut crea geometrii din poligoanele intermediare.")
+        except Exception as e:
+            self.lblAIStatus.setText(f"Status AI: Notificare previzualizare: {e}")
 
     def on_ai_approve_clicked(self):
         self.widgetApproval.setVisible(False)
         if self.ai_worker and self.pending_approval_task_id:
             self.lblAIStatus.setText("Status AI: Aprobare primită. Se finalizează scrierea pe disc...")
             self.ai_worker.approve_task(self.pending_approval_task_id)
+            self.pending_approval_task_id = None
+
+    def on_ai_reject_clicked(self):
+        """Respinge pasul aflat în așteptare de aprobare și transmite motivul."""
+        reason = self.txtRejectReason.text().strip() or "Respins de utilizator (modificare necesară)"
+        self.widgetApproval.setVisible(False)
+        item = self._task_tree_items.get(self.pending_approval_task_id)
+        if item:
+            item.setText(1, "❌ Respins")
+        if self.ai_worker and self.pending_approval_task_id:
+            self.lblAIStatus.setText(f"Status AI: Pasul {self.pending_approval_task_id} respins: {reason}")
+            self.ai_worker.reject_task(self.pending_approval_task_id, reason=reason)
+            self.pending_approval_task_id = None
 
     def on_ai_cancel_clicked(self):
         self.widgetApproval.setVisible(False)
         if self.ai_worker:
             self.ai_worker.cancel()
             self.lblAIStatus.setText("Status AI: Execuție oprită de utilizator.")
+        self.pending_approval_task_id = None
+        self.btnRunAI.setEnabled(True)
+        self.btnStopAI.setEnabled(False)
 
     def on_ai_stop_clicked(self):
         if self.ai_worker:
             self.ai_worker.cancel()
         self.btnStopAI.setEnabled(False)
         self.btnRunAI.setEnabled(True)
+        self.lblAIStatus.setText("Status AI: Execuția a fost oprită.")
 
     def _on_ai_graph_finished(self, success, message):
         self.btnRunAI.setEnabled(True)
@@ -849,16 +1101,21 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
         self.widgetApproval.setVisible(False)
         self.lblAIStatus.setText(f"Status AI: {message}")
 
+        # Actualizează istoricul sesiunilor
+        self.refresh_history_display()
+
         if success:
-            out_gpkg = os.path.abspath(r"workspace\output\cladiri_stereo70.gpkg")
-            out_ndsm = os.path.abspath(r"workspace\output\ndsm_stereo70.tif")
+            base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            out_gpkg = os.path.join(base_dir, "workspace", "output", "cladiri_stereo70.gpkg")
+            out_ndsm = os.path.join(base_dir, "workspace", "output", "ndsm_stereo70.tif")
             self.load_results_into_qgis(raster_path=out_ndsm, vector_path=out_gpkg)
 
     def _exec_lidar_candidates(self, inputs):
-        base_dir = os.path.dirname(os.path.dirname(__file__))
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         laz_path = os.path.join(base_dir, "datasets", "lidar", "teren.laz")
         dtm_path = os.path.join(base_dir, "datasets", "dtm", "dtm.tif")
         if os.path.isfile(laz_path) and os.path.isfile(dtm_path):
+            from .lidar_processor import generate_ndsm
             return generate_ndsm(laz_path, dtm_path)
         return {
             "main_building_candidates": 14,
@@ -892,11 +1149,20 @@ class StratumRODockWidget(QtWidgets.QDockWidget, Ui_StratumRODockWidgetBase):
 
     def _exec_validate_topology(self, inputs):
         polys = inputs.get("dep_t5_eave_outputs", {}).get("polygons", self.intermediate_features)
-        return validate_topology(polys)
+        top_res = validate_topology(polys)
+        ancpi_res = validate_ancpi(polys)
+        return {
+            "topology": top_res,
+            "ancpi": ancpi_res,
+            "status": "success" if top_res.get("valid") else "warning"
+        }
 
     def _exec_export_cad(self, inputs):
-        out_dxf = os.path.abspath(r"workspace\output\cadastru_ancpi_ai.dxf")
-        out_cp = os.path.abspath(r"workspace\output\imobil_ai.cp")
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        out_dir = os.path.join(base_dir, "workspace", "output")
+        os.makedirs(out_dir, exist_ok=True)
+        out_dxf = os.path.join(out_dir, "cadastru_ancpi_ai.dxf")
+        out_cp = os.path.join(out_dir, "imobil_ai.cp")
         polys = self.intermediate_features
         res_dxf = export_topolt_cad(out_dxf, buildings=polys)
         pts = [{"nr": idx+1, "x": 390500.0 + idx*10, "y": 585500.0 + idx*10, "z": 340.0} for idx in range(len(polys))]

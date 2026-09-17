@@ -13,18 +13,70 @@ try:
     HAS_PYQT = True
 except (ImportError, ModuleNotFoundError):
     HAS_PYQT = False
-    # Mock base class for headless environments
+    import threading
+    import time
+    # Mock base class and signals for headless / non-GUI environments
     class QThread:
-        def __init__(self, parent=None): pass
-        def start(self): self.run()
-        def msleep(self, ms): pass
+        def __init__(self, parent=None):
+            self.parent = parent
+            self._thread = None
+
+        def start(self):
+            self._thread = threading.Thread(target=self.run, daemon=True)
+            self._thread.start()
+
+        def wait(self, timeout_ms=5000):
+            if self._thread and self._thread.is_alive():
+                timeout_s = (timeout_ms / 1000.0) if timeout_ms is not None else None
+                self._thread.join(timeout=timeout_s)
+
+        def isRunning(self):
+            return self._thread.is_alive() if self._thread else False
+
+        def msleep(self, ms):
+            time.sleep(max(0.005, min(0.05, ms / 1000.0)))
+
     class QtCore:
         class QObject: pass
+
+    class MockBoundSignal:
+        def __init__(self):
+            self._callbacks = []
+
+        def connect(self, slot):
+            if slot not in self._callbacks:
+                self._callbacks.append(slot)
+
+        def disconnect(self, slot=None):
+            if slot in self._callbacks:
+                self._callbacks.remove(slot)
+            elif slot is None:
+                self._callbacks.clear()
+
+        def emit(self, *args, **kwargs):
+            for cb in list(self._callbacks):
+                try:
+                    cb(*args, **kwargs)
+                except Exception:
+                    pass
+
+    class MockSignalDescriptor:
+        def __init__(self, *args, **kwargs):
+            self._name = None
+
+        def __set_name__(self, owner, name):
+            self._name = f"_mock_signal_{name}"
+
+        def __get__(self, instance, owner):
+            if instance is None:
+                return self
+            attr = self._name or f"_mock_sig_{id(self)}"
+            if not hasattr(instance, attr):
+                setattr(instance, attr, MockBoundSignal())
+            return getattr(instance, attr)
+
     def pyqtSignal(*args, **kwargs):
-        class MockSignal:
-            def connect(self, slot): pass
-            def emit(self, *a, **kw): pass
-        return MockSignal()
+        return MockSignalDescriptor(*args, **kwargs)
 
 from .events import Event, EventBus, EventType, default_event_bus
 from .executor import TaskExecutor
@@ -93,6 +145,10 @@ class AITaskGraphWorker(QThread):
         """Resumes execution of a paused task after human approval."""
         self.executor.approve_task(task_id)
 
+    def reject_task(self, task_id: str, reason: str = "User rejected execution"):
+        """Rejects a task waiting for user approval and skips dependent tasks."""
+        self.executor.reject_task(task_id, reason=reason)
+
     def run(self):
         """Main execution thread loop."""
         try:
@@ -115,7 +171,7 @@ class AITaskGraphWorker(QThread):
                     ]
                     if waiting:
                         # Wait in thread loop until approval is received or cancelled
-                        self.msleep(500)
+                        self.msleep(50)
                         continue
                     else:
                         break

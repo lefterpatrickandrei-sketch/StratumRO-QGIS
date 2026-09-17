@@ -20,8 +20,6 @@ class OrthoExtractor:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     CLUJ_USAMV_DIR = os.environ.get("STRATUMRO_ORTHO_DIR", os.path.join(BASE_DIR, "datasets", "ortho"))
     DEFAULT_ORTO_TIF = os.environ.get("STRATUMRO_ORTHO_TIF", os.path.join(BASE_DIR, "workspace", "output", "orto.tif"))
-    _DEV_FALLBACK_DIR = r"C:\Users\lefpa\Desktop\date\Z_VladP\OrtoFoto Cluj USAMV"
-    _DEV_FALLBACK_TIF = r"C:\Users\lefpa\Desktop\date\georeferentiere\ORTO\ORTO.tif"
     OSGEO4W_ENV_BAT = os.environ.get("OSGEO4W_ENV_BAT", r"C:\Program Files\QGIS 3.40.0\bin\o4w_env.bat")
 
     def __init__(self, tiles_dir: Optional[str] = None):
@@ -29,8 +27,6 @@ class OrthoExtractor:
             self.tiles_dir = tiles_dir
         elif os.path.exists(self.CLUJ_USAMV_DIR):
             self.tiles_dir = self.CLUJ_USAMV_DIR
-        elif os.path.exists(self._DEV_FALLBACK_DIR):
-            self.tiles_dir = self._DEV_FALLBACK_DIR
         else:
             self.tiles_dir = None
         self.tiles_index = self._index_sid_tiles()
