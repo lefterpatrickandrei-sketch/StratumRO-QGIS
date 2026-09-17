@@ -5,6 +5,8 @@ Restricts filesystem operations to authorized repository subdirectories
 and implements the ALLOW / SAFE_WRITE / ASK / DENY permission hierarchy.
 """
 
+import sys
+import re
 import tempfile
 from enum import Enum
 from pathlib import Path
@@ -97,6 +99,9 @@ def resolve_sandboxed_path(
     if not path_str or path_str == ".":
         resolved = REPO_ROOT
     else:
+        # Block Windows-style drive paths on POSIX systems where Path.is_absolute() evaluates to False
+        if re.match(r"^[a-zA-Z]:", path_str) and sys.platform != "win32":
+            raise PermissionError(f"Access denied: Windows-style path '{user_path}' escapes the authorized project workspace sandbox.")
         p = Path(path_str)
         if p.is_absolute():
             resolved = p.resolve()

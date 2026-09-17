@@ -87,6 +87,8 @@ class TestMCPToolsAndSecurity(unittest.TestCase):
     def test_sandbox_blocks_os_root(self):
         with self.assertRaises(PermissionError):
             resolve_sandboxed_path("C:/Windows/System32/cmd.exe")
+        with self.assertRaises(PermissionError):
+            resolve_sandboxed_path("/etc/passwd")
 
     def test_sandbox_blocks_sensitive_env_files(self):
         with self.assertRaises(PermissionError):
