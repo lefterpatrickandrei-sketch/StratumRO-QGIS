@@ -29,9 +29,13 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install shapely geopandas ezdxf buildingregulariser onnxruntime scipy pyyaml pyogrio
+          pip install shapely geopandas ezdxf buildingregulariser onnxruntime scipy pyyaml pyogrio rasterio requests pillow fastmcp laspy
 
-      - name: Run Unit Tests (40 Tests)
+      - name: Run Fast Project Validation (Golden Geometry & Providers)
+        run: |
+          python scripts/validate_project.py --mode fast
+
+      - name: Run Full Test Suite
         run: |
           python -m unittest discover stratum_ro/test
 

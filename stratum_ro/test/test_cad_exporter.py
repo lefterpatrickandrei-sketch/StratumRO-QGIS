@@ -13,7 +13,7 @@ from stratum_ro.cad_exporter import CadastralDxfExporter
 class TestCadastralDxfExporter(unittest.TestCase):
 
     def setUp(self):
-        self.output_dxf = r"workspace\output\test_unit_cadastru.dxf"
+        self.output_dxf = os.path.join("workspace", "output", "test_unit_cadastru.dxf")
 
     def tearDown(self):
         if os.path.exists(self.output_dxf):
@@ -107,7 +107,7 @@ class TestCadastralDxfExporter(unittest.TestCase):
         self.assertGreater(len(table_lines), 5)
 
     def test_export_to_cp_file(self):
-        output_cp = r"workspace\output\test_interchange.cp"
+        output_cp = os.path.join("workspace", "output", "test_interchange.cp")
         poly = Polygon([
             (390500.0, 585800.0),
             (390520.0, 585800.0),
