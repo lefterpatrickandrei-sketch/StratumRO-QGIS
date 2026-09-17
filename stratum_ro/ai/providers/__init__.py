@@ -10,6 +10,7 @@ from .nvidia_nim_provider import NvidiaNIMProvider
 from .openai_provider import OpenAIProvider
 from .ollama_provider import OllamaProvider
 from .local_provider import LocalProvider
+from .union_alpha_provider import UnionAlphaProvider
 
 __all__ = [
     "BaseAIProvider",
@@ -19,4 +20,6 @@ __all__ = [
     "OpenAIProvider",
     "OllamaProvider",
     "LocalProvider",
+    "UnionAlphaProvider",
 ]
+

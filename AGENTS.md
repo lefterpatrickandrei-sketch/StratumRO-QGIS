@@ -54,3 +54,19 @@ For every technical claim, benchmark result, or metric, agents must classify it 
   ```
   Report the exact test count (e.g., `40 passed, 8 skipped, 0 failed`). A skipped test is **NOT** a passed test.
 - **Python Environment:** Always use the local virtual environment in [`venv/`](venv/).
+
+---
+
+## 5. Model Routing & Execution Guardrails (MD 1C)
+
+1. **Geometry / Math → Deterministic Local:**
+   - All spatial transformations, Helmert 2D, 90° CAD orthogonalization, eave retraction offsets, polygon areas, perimeters, PAD coordinate tables, and topology cleanup MUST run exclusively through local deterministic Python/GEOS/GDAL math. Zero LLM hallucinations permitted.
+2. **Building Segmentation → SAM2 / Local:**
+   - Optical delineation uses Meta SAM 2 Hiera (PyTorch / ONNX DirectML) cross-validated with local LiDAR nDSM height statistics.
+3. **Complex Repo Debugging → Union Alpha / Frontier Model:**
+   - Deep multi-file analysis, architectural reviews, failure autopsies, and cadastral edge cases route to Union Alpha (`stealth/union-alpha` with 256k context) or top frontier models.
+4. **Fast Simple Coding → Fast Coding Model:**
+   - Local unit tests, small isolated functions, typos, formatting, and quick script edits route to fast models for maximum developer iteration speed.
+5. **Provider Unavailable → Graceful Fallback:**
+   - When an external API or network connection is unavailable or unconfigured, the system automatically rolls over across the fallback chain (Union Alpha → NVIDIA NIM → OpenAI → Ollama → Local Mock) ensuring 0 crashes.
+

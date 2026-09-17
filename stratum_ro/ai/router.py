@@ -117,12 +117,13 @@ class AIRouter:
             )
 
         # AUTO or HYBRID / CLOUD_PREFERRED sequence
-        # Priority order: OpenAI -> NVIDIA NIM -> Ollama -> Local Mock
-        candidate_names = ["openai", "nvidia_nim", "ollama", "local_mock"]
+        # Priority order: Union Alpha (frontier reasoning) -> OpenAI -> NVIDIA NIM -> Ollama -> Local Mock
+        candidate_names = ["union_alpha", "openai", "nvidia_nim", "ollama", "local_mock"]
         if mode == ExecutionMode.HYBRID:
-            # In hybrid mode, prefer NVIDIA NIM for vision, OpenAI/Ollama for planning
+            # In hybrid mode, prefer NVIDIA NIM for vision, Union Alpha / OpenAI for planning
             if task_type == TaskType.FAILURE_DIAGNOSIS:
-                candidate_names = ["nvidia_nim", "openai", "ollama", "local_mock"]
+                candidate_names = ["nvidia_nim", "union_alpha", "openai", "ollama", "local_mock"]
+
 
         for name in candidate_names:
             p = self.registry.get(name)

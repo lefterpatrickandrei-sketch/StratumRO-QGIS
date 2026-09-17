@@ -11,6 +11,7 @@ from .providers.local_provider import LocalProvider
 from .providers.nvidia_nim_provider import NvidiaNIMProvider
 from .providers.openai_provider import OpenAIProvider
 from .providers.ollama_provider import OllamaProvider
+from .providers.union_alpha_provider import UnionAlphaProvider
 
 
 class ProviderRegistry:
@@ -28,13 +29,16 @@ class ProviderRegistry:
         # 1. Local deterministic mock (always available)
         self.register(LocalProvider())
 
-        # 2. NVIDIA NIM (reads key from .env / env var)
+        # 2. Union Alpha (256k large-context frontier reasoning via OpenRouter)
+        self.register(UnionAlphaProvider())
+
+        # 3. NVIDIA NIM (reads key from .env / env var)
         self.register(NvidiaNIMProvider())
 
-        # 3. OpenAI Platform (reads key from env var)
+        # 4. OpenAI Platform (reads key from env var)
         self.register(OpenAIProvider())
 
-        # 4. Ollama (local daemon)
+        # 5. Ollama (local daemon)
         self.register(OllamaProvider())
 
     def register(self, provider: BaseAIProvider):

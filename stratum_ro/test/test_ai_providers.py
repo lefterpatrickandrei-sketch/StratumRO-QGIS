@@ -19,6 +19,8 @@ from stratum_ro.ai.providers.local_provider import LocalProvider
 from stratum_ro.ai.providers.nvidia_nim_provider import NvidiaNIMProvider
 from stratum_ro.ai.providers.openai_provider import OpenAIProvider
 from stratum_ro.ai.providers.ollama_provider import OllamaProvider
+from stratum_ro.ai.providers.union_alpha_provider import UnionAlphaProvider
+
 
 
 class TestAIProviders(unittest.TestCase):
@@ -126,6 +128,40 @@ Hope this helps!"""
         self.assertTrue(provider.is_available())
         self.assertIn("llama3.2:3b", provider.list_models())
 
+    def test_union_alpha_provider_availability(self):
+        p_no_key = UnionAlphaProvider(api_key="")
+        self.assertFalse(p_no_key.is_available())
+        resp = p_no_key.generate("Test prompt")
+        self.assertEqual(resp.status, "failed")
+        self.assertIn("not configured", resp.error)
+
+        p_valid = UnionAlphaProvider(api_key="sk-or-v1-mock-key-1234567890")
+        self.assertTrue(p_valid.is_available())
+        self.assertIn(ProviderCapability.REASONING, p_valid.capabilities())
+        self.assertIn(ProviderCapability.VISION, p_valid.capabilities())
+        self.assertIn("stealth/union-alpha", p_valid.list_models())
+
+    @patch("requests.post")
+    def test_union_alpha_provider_mock_generate(self, mock_post):
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.json.return_value = {
+            "choices": [{"message": {"content": '{"status": "ok", "action": "cadastral_audit"}'}}],
+            "usage": {"total_tokens": 128}
+        }
+        mock_post.return_value = mock_resp
+
+        provider = UnionAlphaProvider(api_key="sk-or-v1-mock-test-key")
+        resp = provider.generate("Audit parcel geometry", timeout=10.0)
+
+        self.assertEqual(resp.status, "success")
+        self.assertEqual(resp.parsed_json.get("status"), "ok")
+        self.assertEqual(resp.parsed_json.get("action"), "cadastral_audit")
+        self.assertEqual(resp.usage.get("total_tokens"), 128)
+        self.assertEqual(resp.provider_name, "union_alpha")
+        self.assertEqual(resp.model_name, "stealth/union-alpha")
+
 
 if __name__ == "__main__":
     unittest.main()
+

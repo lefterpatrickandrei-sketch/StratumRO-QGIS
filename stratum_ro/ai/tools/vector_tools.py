@@ -91,3 +91,75 @@ def create_planar_partition(
         "total_sector_area_m2": round(boundary_geom.area, 2),
         "unclassified_geometry": mapping(unclassified_land) if not unclassified_land.is_empty else None
     }
+
+
+def export_gpkg_layer(
+    output_gpkg_path: str,
+    polygons: List[Dict[str, Any]],
+    layer_name: str = "CLADIRI_SOL_ANCPI",
+    crs: str = "EPSG:3844"
+) -> Dict[str, Any]:
+    """
+    Exports building polygons to an official OGC GeoPackage (.gpkg) layer in Stereo 70 (EPSG:3844).
+    """
+    from .security import resolve_sandboxed_path
+    import geopandas as gpd
+
+    dst_p = resolve_sandboxed_path(output_gpkg_path)
+    geoms = [shape(p) if isinstance(p, dict) else p for p in polygons if not shape(p).is_empty]
+
+    gdf = gpd.GeoDataFrame({
+        "id": list(range(1, len(geoms) + 1)),
+        "area_m2": [round(g.area, 2) for g in geoms],
+        "category": ["1CC" if g.area >= 45.0 else "2CC" for g in geoms],
+        "geometry": geoms
+    }, crs=crs)
+
+    gdf.to_file(dst_p, driver="GPKG", layer=layer_name)
+
+    return {
+        "status": "success",
+        "output_gpkg_path": str(dst_p),
+        "layer_name": layer_name,
+        "features_written": len(geoms),
+        "crs": crs
+    }
+
+
+def export_cityjson_lod1(
+    output_cityjson_path: str,
+    buildings: List[Dict[str, Any]],
+    default_ground_z: float = 345.0,
+    epsg_code: int = 3844
+) -> Dict[str, Any]:
+    """
+    Exports 3D LoD1 solid building shells to OGC CityJSON v1.1.
+    """
+    from .security import resolve_sandboxed_path
+    from stratum_ro.volumetric_3d import Volumetric3DBuilder
+
+    dst_p = resolve_sandboxed_path(output_cityjson_path)
+    builder = Volumetric3DBuilder(default_ground_z=default_ground_z)
+
+    # Format buildings for CityJSON
+    lod1_input = []
+    for idx, b in enumerate(buildings):
+        geom = shape(b) if isinstance(b, dict) else b
+        lod1_input.append({
+            "id": f"building_{idx + 1}",
+            "geometry": geom,
+            "ground_z": default_ground_z,
+            "height_m": 6.5,
+            "roof_z": default_ground_z + 6.5,
+            "category": "1CC"
+        })
+
+    out_path = builder.export_cityjson(lod1_input, str(dst_p), epsg_code=epsg_code)
+
+    return {
+        "status": "success",
+        "output_cityjson_path": out_path,
+        "buildings_count": len(lod1_input),
+        "epsg": epsg_code
+    }
+

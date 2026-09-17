@@ -34,6 +34,7 @@ graph TD
 
 | Provider | Integration Type | Models Supported | Current Status | Required Credentials / URL | Primary Purpose |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Union Alpha** | Remote REST API (OpenRouter) | `stealth/union-alpha` (262k context) | **CONFIGURED & OPERATIONAL** | `UNION_ALPHA_API_KEY` (Present in `.env`)<br>URL: `https://openrouter.ai/api/v1` | 256k large-context repository analysis, multi-file architectural reasoning, complex cadastral debugging |
 | **NVIDIA NIM** | Remote REST API (OpenAI client) | `meta/llama-3.2-11b-vision-instruct`<br>`meta/llama-3.2-90b-vision-instruct`<br>`meta/llama-3.3-70b-instruct` | **CONFIGURED** | `NVIDIA_API_KEY` (Present in `.env`)<br>URL: `https://integrate.api.nvidia.com/v1` | Fast multimodal vision analysis, cloud GPU acceleration |
 | **OpenAI** | Remote REST API (`openai` SDK) | `gpt-4o`<br>`gpt-4o-mini`<br>`o3-mini` | **AVAILABLE IN VENV** (Key required) | `OPENAI_API_KEY` (Developer API key, not ChatGPT Plus) | Multi-step task planning, root-cause diagnosis of failed segmentations |
 | **Anthropic** | Remote REST API (`httpx` / `anthropic`) | `claude-3-5-sonnet`<br>`claude-3-7-sonnet` | **OPTIONAL** | `ANTHROPIC_API_KEY` | Architectural reviews, code audits, adversarial validation |
@@ -55,8 +56,9 @@ The orchestrator selects tools and providers based on task characteristics, secu
 | **Topology Validation** | Shapely `is_valid` + `explain_validity` | *None needed* | Deterministic | **NO (Strictly Forbidden)** |
 | **nDSM Elevation Profile** | `LidarProcessor` (`laspy` + `scipy`) | *None needed* | Deterministic | **NO (Strictly Forbidden)** |
 | **Building Optical Segmentation** | Local SAM 2 (PyTorch GPU) | Local ONNX DirectML | Local SAM 2 CPU | Mask weights only |
-| **AOI Work Plan Decomposition** | Antigravity / OpenAI `gpt-4o` | Claude 3.5 Sonnet / Gemini | Ollama `llama3.2` | High-level metadata only |
-| **Segmentation Anomaly Diagnosis** | NVIDIA NIM Vision / OpenAI `gpt-4o` | Claude 3.5 Sonnet | Ollama + nDSM Stats | Thumbnail chip + Stats |
+| **AOI Work Plan Decomposition** | Union Alpha / OpenAI `gpt-4o` | Claude 3.5 Sonnet / Gemini | Ollama `llama3.2` | High-level metadata only |
+| **Complex Multi-File Debugging & Failure Diagnosis** | Union Alpha (`stealth/union-alpha`) | OpenAI `gpt-4o` / Claude | Local / Deterministic | Diagnostic logs only |
+| **Segmentation Anomaly Diagnosis** | NVIDIA NIM Vision / Union Alpha | OpenAI `gpt-4o` / Claude | Ollama + nDSM Stats | Thumbnail chip + Stats |
 | **TopoLT CAD / PAD Generation** | Deterministic `CadastralDxfExporter` | *None needed* | Deterministic | **NO (Strictly Forbidden)** |
 
 ---

@@ -103,27 +103,106 @@ def remove_acute_spikes(poly: Polygon, min_angle_deg: float = 40.0) -> Polygon:
     return poly
 
 
+def count_macro_reflex_corners(poly: Polygon, min_edge_len: float = 0.35, tol_deg: float = 20.0) -> int:
+    """
+    Numără unghiurile interioare apropiate de 270° (colțuri reflex/concave)
+    formate de laturi cu lungimea >= min_edge_len.
+    """
+    if poly is None or poly.is_empty:
+        return 0
+    coords = list(poly.exterior.coords)[:-1]
+    n = len(coords)
+    if n < 4:
+        return 0
+    count = 0
+    for i in range(n):
+        p_prev = np.array(coords[(i - 1) % n])
+        p_curr = np.array(coords[i])
+        p_next = np.array(coords[(i + 1) % n])
+        u = p_curr - p_prev
+        v = p_next - p_curr
+        d1 = np.linalg.norm(u)
+        d2 = np.linalg.norm(v)
+        if d1 < min_edge_len or d2 < min_edge_len:
+            continue
+        cross = u[0] * v[1] - u[1] * v[0]
+        dot = u[0] * v[0] + u[1] * v[1]
+        turning = math.atan2(cross, dot)
+        interior = math.pi - turning
+        int_deg = math.degrees(interior) % 360.0
+        if abs(int_deg - 270.0) <= tol_deg:
+            count += 1
+    return count
+
+
+def compute_orthogonality_ratio(poly: Polygon, min_edge_len: float = 0.20, tol_deg: float = 15.0) -> float:
+    """
+    Calculează fracțiunea de noduri cu unghiuri interioare de 90° sau 270° (+/- tol_deg).
+    """
+    if poly is None or poly.is_empty:
+        return 0.0
+    coords = list(poly.exterior.coords)[:-1]
+    n = len(coords)
+    if n < 4:
+        return 0.0
+    ortho_count = 0
+    valid_corners = 0
+    for i in range(n):
+        p_prev = np.array(coords[(i - 1) % n])
+        p_curr = np.array(coords[i])
+        p_next = np.array(coords[(i + 1) % n])
+        u = p_prev - p_curr
+        v = p_next - p_curr
+        d1 = np.linalg.norm(u)
+        d2 = np.linalg.norm(v)
+        if d1 < min_edge_len or d2 < min_edge_len:
+            continue
+        valid_corners += 1
+        cos_a = np.clip(np.dot(u, v) / (d1 * d2 + 1e-9), -1.0, 1.0)
+        deg = np.degrees(np.arccos(cos_a))
+        if abs(deg - 90.0) <= tol_deg:
+            ortho_count += 1
+    return float(ortho_count / max(valid_corners, 1))
+
+
 def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     """
     Ortogonalizează conturul clădirii la unghiuri drepte de 90° folosind algoritmul
-    bazat pe drepte suport (Building-Regulariser / Manhattan Support-Line Intersection).
+    bazat pe unghi dominant / drepte suport.
     Garantează unghiuri stricte de 90° fără teșituri diagonale de tip Douglas-Peucker.
+    Protejează formele curbate (absidă, turn circular) și decroșurile mici de fațadă.
     """
     if not poly.is_valid or poly.is_empty or poly.area < 6.0:
         return poly
+
+    # 0. Verificare dacă forma este preponderent curbată sau non-ortogonală (ex. absidă biserică)
+    ortho_ratio = compute_orthogonality_ratio(poly, min_edge_len=0.20)
+    if ortho_ratio < 0.65:
+        # Păstrăm curbura autentică fără a forța unghiuri de 90°
+        smooth_poly = poly.simplify(min(tolerance, 0.18), preserve_topology=True)
+        return smooth_poly if (smooth_poly.is_valid and smooth_poly.area >= 6.0) else poly
 
     # 1. Verificare dreptunghi canonic OBB (4 noduri la 90°)
     mrr = poly.minimum_rotated_rectangle
     if mrr.area > 0 and poly.convex_hull.area > 0:
         solidity = poly.area / poly.convex_hull.area
         rect_ratio = poly.area / mrr.area
-        # Test de concavitate: forțăm MRR doar dacă este cu adevărat un dreptunghi simplu (soliditate >= 0.90 și dreptunghiularitate >= 0.88)
-        # Dacă soliditatea < 0.85 (indică formă concavă — L, U, curte interioară), NU forțăm MRR, lăsăm algoritmul Manhattan
-        if solidity >= 0.90 and rect_ratio >= 0.88:
-            return mrr
+        coords = list(poly.exterior.coords)[:-1]
+        num_v = len(coords)
+        reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.35)
+        h_dist_mrr = poly.hausdorff_distance(mrr)
 
-    # 2. Utilizare Building-Regulariser (dacă este instalat)
-    if HAS_REGULARISER:
+        # Forțăm MRR doar dacă este cu adevărat un dreptunghi simplu:
+        # Fără colțuri reflex macro (fără decroșuri, aripi, intrări), și formă foarte apropiată de OBB
+        if reflex_corners == 0:
+            if (num_v <= 6 and solidity >= 0.90 and rect_ratio >= 0.88) or \
+               (solidity >= 0.94 and rect_ratio >= 0.92 and h_dist_mrr <= 0.35):
+                return mrr
+
+    # 2. Utilizare Building-Regulariser (dacă este instalat și forma nu este concavă)
+    reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.35)
+    solidity = poly.area / poly.convex_hull.area if poly.convex_hull.area > 0 else 1.0
+    if HAS_REGULARISER and reflex_corners == 0 and solidity >= 0.88:
         try:
             temp_gdf = gpd.GeoDataFrame([{"geometry": poly}], crs="EPSG:3844")
             reg_gdf = regularize_geodataframe(
@@ -135,7 +214,7 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
             reg_poly = reg_gdf.geometry.iloc[0]
             if reg_poly is not None and reg_poly.is_valid and reg_poly.area >= 6.0:
                 inter_iou = poly.intersection(reg_poly).area / (poly.union(reg_poly).area + 1e-6)
-                if inter_iou >= 0.60:
+                if inter_iou >= 0.80:
                     return reg_poly
         except Exception:
             pass
@@ -154,13 +233,13 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
         dx = p2[0] - p1[0]
         dy = p2[1] - p1[1]
         length = math.hypot(dx, dy)
-        if length > 1.2:
+        if length > 0.25:
             ang = math.degrees(math.atan2(dy, dx)) % 90.0
             weighted_angles.append((ang, length))
             total_len += length
 
     if not weighted_angles:
-        return poly.simplify(min(tolerance, 0.4), preserve_topology=True)
+        return poly.simplify(min(tolerance, 0.3), preserve_topology=True)
 
     rad_angles = [math.radians(a * 4.0) for a, l in weighted_angles]
     weights = [l / total_len for a, l in weighted_angles]
@@ -171,8 +250,8 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     origin = poly.centroid
     rot_poly = rotate(poly, -dom_angle, origin=origin)
 
-    # Simplificare conservativă (toleranță mică de 0.3m, nu 1.4m)
-    simp_rot = rot_poly.simplify(min(tolerance, 0.35), preserve_topology=True)
+    # Conservăm decroșurile mici prin toleranță adaptivă
+    simp_rot = rot_poly.simplify(min(tolerance, 0.20), preserve_topology=True)
     if not simp_rot.is_valid:
         simp_rot = rot_poly
 
@@ -314,8 +393,8 @@ class CadastralVectorizer:
                 d1 = math.hypot(v1[0], v1[1])
                 d2 = math.hypot(v2[0], v2[1])
 
-                if d1 < 0.6 or d2 < 0.6:
-                    continue
+                if d1 < 0.10 and d2 < 0.10:
+                    continue  # micro-spike parazit sub-decimetric
 
                 cross = v1[0] * v2[1] - v1[1] * v2[0]
                 if abs(cross) / (d1 * d2 + 1e-6) < 0.08:
@@ -597,8 +676,17 @@ class CadastralVectorizer:
                     if not p_sol_cand.is_valid:
                         p_sol_cand = make_valid(p_sol_cand)
                     if p_sol_cand is not None and not p_sol_cand.is_empty and p_sol_cand.area >= 6.0:
-                        p_sol = _extract_largest_polygon(p_sol_cand)
-                        if p_sol is not None:
+                        if isinstance(p_sol_cand, MultiPolygon):
+                            valid_parts = [part for part in p_sol_cand.geoms if part.is_valid and part.area >= 6.0]
+                            if valid_parts:
+                                p_sol = valid_parts[0] if len(valid_parts) == 1 else MultiPolygon(valid_parts)
+                                area_sol = round(float(sum(part.area for part in valid_parts)), 2)
+                            else:
+                                p_sol = _extract_largest_polygon(p_sol_cand)
+                                if p_sol is not None:
+                                    area_sol = round(float(p_sol.area), 2)
+                        else:
+                            p_sol = p_sol_cand
                             area_sol = round(float(p_sol.area), 2)
                 except Exception:
                     p_sol = p

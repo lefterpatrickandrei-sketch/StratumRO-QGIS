@@ -98,7 +98,8 @@ class OrthoExtractor:
         xmax: float,
         ymax: float,
         output_crop_path: str,
-        target_res: float = 0.20
+        target_res: float = 0.20,
+        reuse_cache: bool = True
     ) -> Dict[str, Any]:
         """
         Crops an RGB GeoTIFF of the AOI from the optimal MrSID or GeoTIFF source.
@@ -106,8 +107,26 @@ class OrthoExtractor:
         :param xmin, ymin, xmax, ymax: Coordinates in Stereo 70 (EPSG:3844).
         :param output_crop_path: Destination path for the cropped GeoTIFF.
         :param target_res: Target resolution in meters per pixel (default 20cm).
+        :param reuse_cache: If True and output_crop_path exists and is valid, reuses cached crop.
         :return: Dict containing image array (H, W, 3), transform, and metadata.
         """
+        # Fast path: if cache file already exists, load directly via rasterio
+        if reuse_cache and os.path.exists(output_crop_path) and os.path.getsize(output_crop_path) > 1000:
+            try:
+                with rasterio.open(output_crop_path) as crop_src:
+                    rgb_data = crop_src.read([1, 2, 3])
+                    rgb_image = np.transpose(rgb_data, (1, 2, 0))
+                    return {
+                        "image": rgb_image,
+                        "transform": crop_src.transform,
+                        "bounds": crop_src.bounds,
+                        "path": output_crop_path,
+                        "width": rgb_image.shape[1],
+                        "height": rgb_image.shape[0]
+                    }
+            except Exception:
+                pass  # If file corrupted, fall through to re-crop
+
         os.makedirs(os.path.dirname(os.path.abspath(output_crop_path)), exist_ok=True)
         source_sid = self.find_best_tile(xmin, ymin, xmax, ymax)
 
