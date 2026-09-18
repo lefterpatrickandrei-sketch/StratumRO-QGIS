@@ -21,6 +21,17 @@ from typing import Optional, Dict, Any, List, Tuple
 from PIL import ImageGrab
 
 
+if sys.platform == "win32":
+    try:
+        import ctypes
+        _u32 = ctypes.windll.user32
+        _h = _u32.OpenDesktopW("default", 0, False, 0x01FF)
+        if _h:
+            _u32.SetThreadDesktop(_h)
+    except Exception:
+        pass
+
+
 @dataclass
 class OperatorEvent:
     timestamp: float
@@ -73,22 +84,28 @@ class DesktopOperator:
         try:
             import ctypes
             user32 = ctypes.windll.user32
-            # Check if OpenDesktopW('default') succeeds
-            h_def = user32.OpenDesktopW("default", 0, False, 0x01FF)
-            if not h_def:
-                return {
-                    "available": False,
-                    "mode": "PYQGIS_ONLY",
-                    "reason": "OpenDesktopW('default') failed to acquire handle"
-                }
+            kernel32 = ctypes.windll.kernel32
 
-            ok = user32.SetThreadDesktop(h_def)
-            if not ok:
-                return {
-                    "available": False,
-                    "mode": "PYQGIS_ONLY",
-                    "reason": "SetThreadDesktop(h_def) failed"
-                }
+            # Check if current desktop is already default
+            h_cur = user32.GetThreadDesktop(kernel32.GetCurrentThreadId())
+            buf = ctypes.create_unicode_buffer(256)
+            user32.GetUserObjectInformationW(h_cur, 2, buf, 256, None)
+            if buf.value.lower() != "default":
+                h_def = user32.OpenDesktopW("default", 0, False, 0x01FF)
+                if not h_def:
+                    return {
+                        "available": False,
+                        "mode": "PYQGIS_ONLY",
+                        "reason": "OpenDesktopW('default') failed to acquire handle"
+                    }
+
+                ok = user32.SetThreadDesktop(h_def)
+                if not ok:
+                    return {
+                        "available": False,
+                        "mode": "PYQGIS_ONLY",
+                        "reason": "SetThreadDesktop(h_def) failed"
+                    }
 
             # Test actual screenshot capture
             test_img = ImageGrab.grab()
@@ -119,6 +136,12 @@ class DesktopOperator:
         try:
             import ctypes
             user32 = ctypes.windll.user32
+            kernel32 = ctypes.windll.kernel32
+            h_cur = user32.GetThreadDesktop(kernel32.GetCurrentThreadId())
+            buf = ctypes.create_unicode_buffer(256)
+            user32.GetUserObjectInformationW(h_cur, 2, buf, 256, None)
+            if buf.value.lower() == "default":
+                return True
             h_def = user32.OpenDesktopW("default", 0, False, 0x01FF)
             if h_def:
                 return bool(user32.SetThreadDesktop(h_def))
@@ -147,7 +170,7 @@ class DesktopOperator:
                     buff = ctypes.create_unicode_buffer(length + 1)
                     user32.GetWindowTextW(hwnd, buff, length + 1)
                     title = buff.value
-                    if "qgis" in title.lower():
+                    if "qgis" in title.lower() and "antigravity" not in title.lower():
                         # Get PID
                         pid = ctypes.c_ulong()
                         user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))

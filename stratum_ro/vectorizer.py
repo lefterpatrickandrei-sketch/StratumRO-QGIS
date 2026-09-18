@@ -187,16 +187,13 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     if mrr.area > 0 and poly.convex_hull.area > 0:
         solidity = poly.area / poly.convex_hull.area
         rect_ratio = poly.area / mrr.area
-        coords = list(poly.exterior.coords)[:-1]
-        num_v = len(coords)
-        reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.35)
         h_dist_mrr = poly.hausdorff_distance(mrr)
 
-        # Forțăm MRR doar dacă este cu adevărat un dreptunghi simplu:
-        # Fără colțuri reflex macro (fără decroșuri, aripi, intrări), și formă foarte apropiată de OBB
+        # Forțăm MRR doar dacă nu există colțuri reflex macro (fără decroșuri, aripi, intrări/proeminențe)
+        reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.35)
         if reflex_corners == 0:
-            if (num_v <= 6 and solidity >= 0.90 and rect_ratio >= 0.88) or \
-               (solidity >= 0.94 and rect_ratio >= 0.92 and h_dist_mrr <= 0.35):
+            if (solidity >= 0.88 and rect_ratio >= 0.85) or \
+               (solidity >= 0.94 and rect_ratio >= 0.92 and h_dist_mrr <= 0.40):
                 return mrr
 
     # 2. Utilizare Building-Regulariser (dacă este instalat și forma nu este concavă)
@@ -219,7 +216,7 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
         except Exception:
             pass
 
-    # 3. Fallback ortogonal pe unghi dominant (fără Douglas-Peucker agresiv)
+    # 3. Fallback ortogonal pe unghi dominant (cu simplificare cadastrală realistă)
     coords = list(poly.exterior.coords)[:-1]
     n = len(coords)
     if n < 4:
@@ -239,7 +236,7 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
             total_len += length
 
     if not weighted_angles:
-        return poly.simplify(min(tolerance, 0.3), preserve_topology=True)
+        return poly.simplify(max(0.60, min(tolerance, 0.90)), preserve_topology=True)
 
     rad_angles = [math.radians(a * 4.0) for a, l in weighted_angles]
     weights = [l / total_len for a, l in weighted_angles]
@@ -393,7 +390,7 @@ class CadastralVectorizer:
                 d1 = math.hypot(v1[0], v1[1])
                 d2 = math.hypot(v2[0], v2[1])
 
-                if d1 < 0.10 and d2 < 0.10:
+                if d1 < 0.15 and d2 < 0.15:
                     continue  # micro-spike parazit sub-decimetric
 
                 cross = v1[0] * v2[1] - v1[1] * v2[0]

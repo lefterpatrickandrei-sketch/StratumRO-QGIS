@@ -298,7 +298,7 @@ class AdaptiveContourReconstructor:
         # -------------------------------------------------------------
         # 1. CLASA A: Dreptunghi Canonic Simplu (OBB - 4 noduri la 90°)
         # -------------------------------------------------------------
-        if solidity >= 0.89 and rect_ratio >= 0.86 and num_v <= 8:
+        if (solidity >= 0.88 and rect_ratio >= 0.85 and ortho_ratio >= 0.70):
             return {
                 "geometry": mrr,
                 "clasa_forma": "DREPTUNGHI_OBB",
@@ -317,8 +317,8 @@ class AdaptiveContourReconstructor:
             if rec_poly is not None:
                 final_poly = rec_poly
             else:
-                # Conservative Manhattan simplification
-                final_poly = poly.simplify(0.35, preserve_topology=True)
+                # Cadastral Manhattan simplification (removes pixel stair-steps)
+                final_poly = poly.simplify(0.65, preserve_topology=True)
 
             return {
                 "geometry": final_poly if (final_poly.is_valid and final_poly.area >= 6.0) else poly,
@@ -337,7 +337,7 @@ class AdaptiveContourReconstructor:
             if rec_poly is not None:
                 final_poly = rec_poly
             else:
-                final_poly = poly.simplify(0.40, preserve_topology=True)
+                final_poly = poly.simplify(0.70, preserve_topology=True)
 
             return {
                 "geometry": final_poly if (final_poly.is_valid and final_poly.area >= 6.0) else poly,

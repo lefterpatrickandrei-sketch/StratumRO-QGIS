@@ -62,22 +62,22 @@ if os.path.exists(ndsm_path):
         project.layerTreeRoot().findLayer(ndsm_layer.id()).setItemVisibilityChecked(False)
         print("[+] Adaugat layer: nDSM LiDAR")
 
-# 3. Add AI Predictions (CLADIRI_HIBRID)
+# 3. Add Clean Cadastral Vectorization (CLADIRI_CADASTRU_CLEAN / CLADIRI_HIBRID)
 pred_gpkg = os.path.join(base_dir, "workspace", "output", "cladiri_stereo70.gpkg")
-pred_uri = f"{pred_gpkg}|layername=CLADIRI_HIBRID"
-pred_layer = QgsVectorLayer(pred_uri, "3. Predicții AI Hibrid (StratumRO SAM 2 + LiDAR)", "ogr")
+pred_uri = f"{pred_gpkg}|layername=CLADIRI_CADASTRU_CLEAN"
+pred_layer = QgsVectorLayer(pred_uri, "3. Vectorizare Finală Cadastru (StratumRO ANCPI Clean — 29 Clădiri)", "ogr")
 
 if pred_layer.isValid():
-    # Style: Orange border, semi-transparent fill
+    # Style: Orange border, semi-transparent fill, clean CAD lines
     sym = QgsFillSymbol.createSimple({
-        'color': '255,109,0,30',           # Portocaliu foarte transparent
+        'color': '255,109,0,35',           # Portocaliu transparent
         'outline_color': '255,109,0,255',   # Portocaliu aprins
-        'outline_width': '0.7',             # 0.7 mm
+        'outline_width': '0.8',             # 0.8 mm
         'outline_style': 'solid'
     })
     pred_layer.setRenderer(QgsSingleSymbolRenderer(sym))
 
-    # Labeling: AI #ID
+    # Labeling: CAD #ID (Arie m²)
     text_format = QgsTextFormat()
     text_format.setSize(8.5)
     text_format.setColor(QColor(255, 109, 0))
@@ -88,13 +88,13 @@ if pred_layer.isValid():
     text_format.setBuffer(buffer)
 
     settings = QgsPalLayerSettings()
-    settings.fieldName = "'AI #' || to_string(id)"
+    settings.fieldName = "'CAD #' || to_string(id) || '\n(' || to_string(round(area_m2, 0)) || ' m²)'"
     settings.setFormat(text_format)
     pred_layer.setLabeling(QgsVectorLayerSimpleLabeling(settings))
     pred_layer.setLabelsEnabled(True)
 
     project.addMapLayer(pred_layer)
-    print("[+] Adaugat layer: Predicții AI (CLADIRI_HIBRID)")
+    print("[+] Adaugat layer: Vectorizare Finală Cadastru (CLADIRI_CADASTRU_CLEAN)")
 
 # 4. Add Ground Truth (29 Cadastral Buildings)
 gt_path = os.path.join(base_dir, "data", "ground_truth", "tier1_teren.geojson")
@@ -105,7 +105,7 @@ if gt_layer.isValid():
     sym_gt = QgsFillSymbol.createSimple({
         'color': '0,0,0,0',                 # 100% transparent
         'outline_color': '0,229,255,255',   # Cyan / Neon Blue
-        'outline_width': '0.9',             # 0.9 mm (mai gros, vizibil pe orto)
+        'outline_width': '0.9',             # 0.9 mm
         'outline_style': 'dash'             # Linie intrerupta
     })
     gt_layer.setRenderer(QgsSingleSymbolRenderer(sym_gt))
@@ -131,6 +131,22 @@ if gt_layer.isValid():
 
     project.addMapLayer(gt_layer)
     print("[+] Adaugat layer: Cadastru Teren (Ground Truth)")
+
+# 5. Add Rejected SAM2 Artifacts (Audit Layer - Unchecked by default)
+rej_uri = f"{pred_gpkg}|layername=ARTEFACTE_RESPINSE_SAM2"
+rej_layer = QgsVectorLayer(rej_uri, "5. Artefacte Respinse SAM2 (Audit - 184 Poligoane)", "ogr")
+if rej_layer.isValid():
+    sym_rej = QgsFillSymbol.createSimple({
+        'color': '230,0,0,25',              # Rosu semi-transparent
+        'outline_color': '230,0,0,200',     # Rosu
+        'outline_width': '0.4',
+        'outline_style': 'dot'
+    })
+    rej_layer.setRenderer(QgsSingleSymbolRenderer(sym_rej))
+    project.addMapLayer(rej_layer)
+    # Debifat implicit pentru a păstra vederea curată
+    project.layerTreeRoot().findLayer(rej_layer.id()).setItemVisibilityChecked(False)
+    print("[+] Adaugat layer audit: Artefacte Respinse SAM2 (Debifat implicit)")
 
 # Save Project
 out_qgz = os.path.join(base_dir, "StratumRO_Inspectie_Vizuala.qgz")
