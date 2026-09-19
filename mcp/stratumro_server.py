@@ -7,6 +7,9 @@ strict permission classes (ALLOW / SAFE_WRITE / ASK / DENY), and CRS integrity.
 """
 
 import sys
+import subprocess
+import shutil
+import platform
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 from fastmcp import FastMCP
@@ -361,7 +364,73 @@ def tool_memory_search(query: str, category: Optional[str] = None) -> List[Dict[
     return mem.search_memory(query=query, category=category)
 
 
+# =============================================================================
+# 11. System & Audit Execution Tools (For Independent Reviewers) — ALLOW
+# =============================================================================
+
+@mcp.tool(name="system.run_command")
+def tool_system_run_command(command: str, cwd: Optional[str] = None, timeout: int = 120) -> Dict[str, Any]:
+    """Executes a local command/audit (git status, python tests, benchmarks) to independently verify claims."""
+    target_cwd = cwd or str(root_dir)
+    try:
+        res = subprocess.run(
+            command,
+            shell=True,
+            cwd=target_cwd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            timeout=timeout,
+        )
+        return {
+            "exit_code": res.returncode,
+            "stdout": res.stdout,
+            "stderr": res.stderr,
+            "cwd": target_cwd,
+            "success": res.returncode == 0,
+        }
+    except Exception as e:
+        return {
+            "exit_code": -1,
+            "stdout": "",
+            "stderr": str(e),
+            "cwd": target_cwd,
+            "success": False,
+        }
+
+
+@mcp.tool(name="system.get_system_info")
+def tool_system_get_system_info() -> Dict[str, Any]:
+    """Retrieves authoritative local environment status: Git branch/commit, Python version, disk usage, and hardware context."""
+    git_head = ""
+    try:
+        r = subprocess.run("git rev-parse HEAD", shell=True, cwd=str(root_dir), stdout=subprocess.PIPE, text=True)
+        git_head = r.stdout.strip()
+    except Exception:
+        pass
+    git_branch = ""
+    try:
+        r = subprocess.run("git branch --show-current", shell=True, cwd=str(root_dir), stdout=subprocess.PIPE, text=True)
+        git_branch = r.stdout.strip()
+    except Exception:
+        pass
+
+    total, used, free = shutil.disk_usage(str(root_dir))
+    return {
+        "os": platform.system(),
+        "os_version": platform.version(),
+        "python": sys.version,
+        "python_executable": sys.executable,
+        "repo_root": str(root_dir),
+        "git_head": git_head,
+        "git_branch": git_branch,
+        "disk_free_gb": round(free / (1024**3), 2),
+        "disk_total_gb": round(total / (1024**3), 2),
+    }
+
+
 if __name__ == "__main__":
     mcp.run()
+
 
 
