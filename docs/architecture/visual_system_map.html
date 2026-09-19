@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StratumRO — Harta Vizuală de Arhitectură și Sistem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0d14;
+      --surface-card: #121824;
+      --surface-hover: #192232;
+      --surface-border: #232e42;
+      --accent-cyan: #00d2ff;
+      --accent-blue: #3a7bd5;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+      --accent-purple: #8b5cf6;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 210, 255, 0.1);
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      color: var(--accent-cyan);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 800px;
+    }
+
+    /* Top Metric Pills */
+    .status-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .metric-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .metric-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .metric-value {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pill-green {
+      color: var(--accent-green);
+    }
+
+    .pill-cyan {
+      color: var(--accent-cyan);
+    }
+
+    .pill-amber {
+      color: var(--accent-amber);
+    }
+
+    /* Tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--surface-border);
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      font-family: var(--font-sans);
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: var(--surface-hover);
+    }
+
+    .tab-btn.active {
+      background: var(--surface-card);
+      color: var(--accent-cyan);
+      border-color: var(--accent-cyan);
+    }
+
+    /* Tab Content Sections */
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Flow Diagrams */
+    .diagram-wrapper {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .diagram-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* SVG Flow Layout */
+    .svg-container {
+      width: 100%;
+      overflow-x: auto;
+      text-align: center;
+    }
+
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Grid Layouts */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .info-card {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .info-card:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .card-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+    }
+
+    /* Rules Table */
+    .table-wrapper {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--surface-border);
+      color: var(--text-main);
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .badge-strict {
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Callout Alert */
+    .alert-box {
+      background: rgba(0, 210, 255, 0.05);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .alert-box strong {
+      color: var(--accent-cyan);
+    }
+
+    footer {
+      border-top: 1px solid var(--surface-border);
+      padding-top: 1.5rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <header>
+    <div class="header-badge">
+      <span class="badge-dot"></span> StratumRO Visual System Map v1.0
+    </div>
+    <h1>Harta de Arhitectură și Sistem StratumRO</h1>
+    <p class="subtitle">Ghid vizual unificat pentru echipa de dezvoltare, controlul execuției și guvernanța geodezică riguroasă.</p>
+  </header>
+
+  <!-- Status Metric Bar -->
+  <div class="status-bar">
+    <div class="metric-card">
+      <span class="metric-label">Suita de Teste Unitare</span>
+      <span class="metric-value pill-green">✓ 193 Descoperite</span>
+      <span style="font-size:0.75rem; color: var(--text-dim);">184 trecute • 9 omise • 0 eșuate</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Proiecție Oficială</span>
+      <span class="metric-value pill-cyan">Stereo 70 (EPSG:3844)</span>
+      <span style="font-size:0.75rem; color: var(--text-dim);">Krasovski 1940 • Plan secant unic</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Statut Legal</span>
+      <span class="metric-value pill-amber">Pre-Cadastru Asistat</span>
+      <span style="font-size:0.75rem; color: var(--text-dim);">Semnătură geodez ANCPI obligatorie</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">Sursă Unică de Adevăr</span>
+      <span class="metric-value">🐙 origin/main</span>
+      <span style="font-size:0.75rem; color: var(--text-dim);">GitHub authoritative state</span>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('actors')">👥 1. Echipă & Actori</button>
+    <button class="tab-btn" onclick="switchTab('mental-model')">🧠 2. Model Mental (Astăzi vs Țintă)</button>
+    <button class="tab-btn" onclick="switchTab('engines')">🏛️ 3. Motoare pe Disc</button>
+    <button class="tab-btn" onclick="switchTab('pipeline')">🔄 4. Pipeline Cadastral</button>
+    <button class="tab-btn" onclick="switchTab('providers')">🤖 5. Provideri AI & Fallback</button>
+    <button class="tab-btn" onclick="switchTab('rules')">🛑 6. Linii Roșii & Siguranță</button>
+  </div>
+
+  <!-- TAB 1: Echipă & Actori -->
+  <div id="tab-actors" class="tab-pane active">
+    <div class="diagram-wrapper">
+      <div class="diagram-title"><span>👥</span> Fluxul Operațional Activ al Proiectului</div>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+        Un singur lanț de execuție autorizat. Claude Desktop este retras; Kilo asigură review-ul adversarial.
+      </p>
+
+      <div class="svg-container">
+        <svg viewBox="0 0 960 260" width="960" height="260">
+          <defs>
+            <linearGradient id="gradUser" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3b82f6" />
+              <stop offset="100%" stop-color="#1d4ed8" />
+            </linearGradient>
+            <linearGradient id="gradAgy" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00d2ff" />
+              <stop offset="100%" stop-color="#3a7bd5" />
+            </linearGradient>
+            <linearGradient id="gradPlatform" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#10b981" />
+              <stop offset="100%" stop-color="#047857" />
+            </linearGradient>
+            <linearGradient id="gradKilo" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f59e0b" />
+              <stop offset="100%" stop-color="#b45309" />
+            </linearGradient>
+            <linearGradient id="gradGit" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8b5cf6" />
+              <stop offset="100%" stop-color="#6d28d9" />
+            </linearGradient>
+            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+            </marker>
+          </defs>
+
+          <!-- Node 1: User -->
+          <g transform="translate(20, 70)">
+            <rect width="140" height="110" rx="12" fill="#161e2e" stroke="#3b82f6" stroke-width="2"/>
+            <text x="70" y="38" fill="#fff" font-weight="700" font-size="14" text-anchor="middle">👤 USER (TU)</text>
+            <text x="70" y="65" fill="#94a3b8" font-size="11" text-anchor="middle">Decident Strategic</text>
+            <text x="70" y="85" fill="#64748b" font-size="10" text-anchor="middle">Aprobă planuri & cod</text>
+          </g>
+
+          <!-- Arrow 1 -->
+          <line x1="160" y1="125" x2="205" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <!-- Node 2: Antigravity -->
+          <g transform="translate(215, 60)">
+            <rect width="170" height="130" rx="12" fill="#161e2e" stroke="#00d2ff" stroke-width="2.5"/>
+            <text x="85" y="36" fill="#00d2ff" font-weight="800" font-size="15" text-anchor="middle">⚡ ANTIGRAVITY</text>
+            <text x="85" y="60" fill="#fff" font-size="11" font-weight="600" text-anchor="middle">Motor Principal Dev</text>
+            <text x="85" y="80" fill="#94a3b8" font-size="10" text-anchor="middle">• Scrie cod & teste</text>
+            <text x="85" y="98" fill="#94a3b8" font-size="10" text-anchor="middle">• Rulează experimente</text>
+            <text x="85" y="115" fill="#94a3b8" font-size="10" text-anchor="middle">• Face commit & push</text>
+          </g>
+
+          <!-- Arrow 2 -->
+          <line x1="385" y1="125" x2="430" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <!-- Node 3: StratumRO -->
+          <g transform="translate(440, 50)">
+            <rect width="160" height="150" rx="12" fill="#161e2e" stroke="#10b981" stroke-width="2"/>
+            <text x="80" y="34" fill="#10b981" font-weight="700" font-size="14" text-anchor="middle">🏛️ STRATUMRO</text>
+            <text x="80" y="58" fill="#94a3b8" font-size="10" text-anchor="middle">QGIS Desktop / CLI</text>
+            <text x="80" y="76" fill="#94a3b8" font-size="10" text-anchor="middle">Date Reale (LiDAR/Orto)</text>
+            <text x="80" y="94" fill="#94a3b8" font-size="10" text-anchor="middle">Math Determinist</text>
+            <text x="80" y="112" fill="#94a3b8" font-size="10" text-anchor="middle">Provideri AI & MCP</text>
+            <text x="80" y="132" fill="#10b981" font-size="10" font-weight="600" text-anchor="middle">193 Teste Verificate</text>
+          </g>
+
+          <!-- Arrow 3 -->
+          <line x1="600" y1="125" x2="645" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <!-- Node 4: Kilo -->
+          <g transform="translate(655, 70)">
+            <rect width="135" height="110" rx="12" fill="#161e2e" stroke="#f59e0b" stroke-width="2"/>
+            <text x="67" y="36" fill="#f59e0b" font-weight="700" font-size="14" text-anchor="middle">🛡️ KILO</text>
+            <text x="67" y="60" fill="#fff" font-size="11" text-anchor="middle">Reviewer Adversar</text>
+            <text x="67" y="80" fill="#94a3b8" font-size="10" text-anchor="middle">Second opinion</text>
+            <text x="67" y="96" fill="#94a3b8" font-size="10" text-anchor="middle">Anti metric-leak</text>
+          </g>
+
+          <!-- Arrow 4 -->
+          <line x1="790" y1="125" x2="825" y2="125" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <!-- Node 5: GitHub -->
+          <g transform="translate(835, 70)">
+            <rect width="115" height="110" rx="12" fill="#161e2e" stroke="#8b5cf6" stroke-width="2"/>
+            <text x="57" y="36" fill="#8b5cf6" font-weight="700" font-size="14" text-anchor="middle">🐙 GITHUB</text>
+            <text x="57" y="60" fill="#fff" font-size="11" text-anchor="middle">origin/main</text>
+            <text x="57" y="80" fill="#94a3b8" font-size="10" text-anchor="middle">Sursă de Adevăr</text>
+            <text x="57" y="96" fill="#94a3b8" font-size="10" text-anchor="middle">Autoritară</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Antigravity (Eu)</div>
+        <div class="card-desc">Motorul de dezvoltare primar. Scrie implementarea, execută teste pe venv, măsoară timpii și latențele reale, produce dovezi vizuale și livrează commit-urile.</div>
+        <div class="card-tags"><span class="tag">Primary Developer</span><span class="tag">Execution Engine</span></div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">Kilo</div>
+        <div class="card-desc">Reviewer-ul adversarial independent. Verifică diff-urile, semnalează no-op-uri, previne umflarea inutilă a arhitecturii și contestă concluziile neprobate.</div>
+        <div class="card-tags"><span class="tag">Adversarial Review</span><span class="tag">Anti-Leakage</span></div>
+      </div>
+      <div class="info-card">
+        <div class="card-icon">📜</div>
+        <div class="card-title">Claude Desktop (Retras)</div>
+        <div class="card-desc">A fost exclus din fluxul activ de execuție. Rămâne exclusiv un punct de referință istoric. Nu participă la procesele de rulare sau de luare a deciziilor curente.</div>
+        <div class="card-tags"><span class="tag">Retired</span><span class="tag">Historical Only</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: Model Mental Dual -->
+  <div id="tab-mental-model" class="tab-pane">
+    <div class="diagram-wrapper">
+      <div class="diagram-title"><span>🧠</span> Regula de Aur: Realitate Implementată ≠ Arhitectură Țintă</div>
+      <div class="alert-box">
+        <strong>Nu confunda Faza 4 cu starea de astăzi!</strong> Conceptele precum Evidence Graph, 18 moduri de lucru și simularea senzorială sunt specificații țintă. Fundația lor a început acum prin <code>TaskSpec</code> și <code>CapabilityMatch</code>, fără a rescrie nucleul funcțional existent.
+      </div>
+
+      <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="info-card" style="border-left: 4px solid var(--accent-green);">
+          <div class="card-title" style="color: var(--accent-green); font-size: 1.2rem;">STRATUMRO ASTĂZI (Implementat pe Disc)</div>
+          <p class="card-desc" style="margin-bottom: 1rem;">Un sistem hibrid GeoAI centrat pe QGIS care combină LiDAR-ul cu ortofotoplanul pentru pre-cadastru asistat:</p>
+          <ul style="padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+            <li>Ortofoto + LiDAR Stereo 70 (EPSG:3844)</li>
+            <li>Inferență SAM 2 prin ONNX DirectML / CPU</li>
+            <li>Regularizare la 90° și dreptunghi canonic 4-noduri</li>
+            <li>Retragere streașină (-0.40m) și partiție planară</li>
+            <li>Livrabile TopoLT (DXF: 1CC, 2CC, CP), .CP, PAD</li>
+            <li>Extrudare 3D LoD1 (MultiPolygonZ, CityJSON v1.1)</li>
+            <li><strong>193 teste unitare verificate (184 passed, 0 failed)</strong></li>
+          </ul>
+        </div>
+
+        <div class="info-card" style="border-left: 4px solid var(--accent-cyan);">
+          <div class="card-title" style="color: var(--accent-cyan); font-size: 1.2rem;">STRATUMRO ȚINTĂ (Faza 4 - Platformă)</div>
+          <p class="card-desc" style="margin-bottom: 1rem;">O platformă complet autonomă și adaptivă ce decuplează nucleul de interfețele de consum:</p>
+          <ul style="padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+            <li><strong style="color:#fff;">STRATUMRO CORE</strong> decuplat complet</li>
+            <li><code>TaskSpec</code> formal (CRS, bounds, riscuri, livrabile)</li>
+            <li>Rutare dinamică bazată pe capabilități & fallback</li>
+            <li>Context Engine (profilare hardware, mediu, layere active)</li>
+            <li>Evidence Graph & Provenance completă</li>
+            <li>Simulare parametrică a senzorilor & scenarii sintetice</li>
+            <li>Învățare adaptivă din corecțiile topografului</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: Motoare pe Disc -->
+  <div id="tab-engines" class="tab-pane">
+    <div class="diagram-wrapper">
+      <div class="diagram-title"><span>🏛️</span> Cele 5 Subsisteme Reale din Codul Sursă</div>
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="card-icon">📐</div>
+          <div class="card-title">1. Geomatics & Cadastre</div>
+          <div class="card-desc">Motor matematic determinist (Python, Shapely, GEOS). Zero halucinații LLM.</div>
+          <div class="card-tags">
+            <span class="tag">vectorizer.py</span>
+            <span class="tag">cad_exporter.py</span>
+            <span class="tag">volumetric_3d.py</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-icon">🛰️</div>
+          <div class="card-title">2. Fuziune Senzorială</div>
+          <div class="card-desc">Procesează nori de puncte LiDAR aeropurtat și ortofotoplanuri de înaltă rezoluție.</div>
+          <div class="card-tags">
+            <span class="tag">lidar_processor.py</span>
+            <span class="tag">ortho_extractor.py</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">3. AI Segmentation</div>
+          <div class="card-desc">Segmentare optică prin Meta SAM 2 Hiera pe DirectX 12 GPU (DirectML) sau CPU multithreaded.</div>
+          <div class="card-tags">
+            <span class="tag">onnx_engine.py</span>
+            <span class="tag">DirectML</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-icon">🧭</div>
+          <div class="card-title">4. Nucleu AI Decuplat</div>
+          <div class="card-desc">Gestiunea sarcinilor, specificarea geodezică și rutarea pe capabilități.</div>
+          <div class="card-tags">
+            <span class="tag">task_spec.py</span>
+            <span class="tag">registry.py</span>
+            <span class="tag">router.py</span>
+            <span class="tag">vlm_verifier.py</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-icon">🖥️</div>
+          <div class="card-title">5. Integrare QGIS & MCP</div>
+          <div class="card-desc">Interfață utilizator în QGIS Canvas, algoritmi de procesare în Graphical Modeler și server MCP.</div>
+          <div class="card-tags">
+            <span class="tag">dockwidget.py</span>
+            <span class="tag">processing_provider.py</span>
+            <span class="tag">mcp/server.py</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: Pipeline Cadastral -->
+  <div id="tab-pipeline" class="tab-pane">
+    <div class="diagram-wrapper">
+      <div class="diagram-title"><span>🔄</span> Pipeline-ul End-to-End: De la Senzor la Livrabil</div>
+      
+      <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="info-card" style="border-top: 3px solid #3b82f6;">
+          <div style="font-size:0.8rem; font-weight:700; color:#3b82f6;">PASUL 1</div>
+          <div class="card-title">Ingestie Senzori</div>
+          <div class="card-desc">Nor LiDAR (.LAZ) + Ortofoto (.TIF) în Stereo 70. Generare nDSM pentru H >= 2.5m.</div>
+        </div>
+        <div class="info-card" style="border-top: 3px solid #00d2ff;">
+          <div style="font-size:0.8rem; font-weight:700; color:#00d2ff;">PASUL 2</div>
+          <div class="card-title">SAM 2 Delineation</div>
+          <div class="card-desc">Prompte din centroizi LiDAR. Inferență DirectML pe GPU fără dependențe CUDA.</div>
+        </div>
+        <div class="info-card" style="border-top: 3px solid #10b981;">
+          <div style="font-size:0.8rem; font-weight:700; color:#10b981;">PASUL 3</div>
+          <div class="card-title">Regularizare 90°</div>
+          <div class="card-desc">Dreptunghi canonic 4-noduri, retragere streașină (-0.40m) și partiție planară completă.</div>
+        </div>
+        <div class="info-card" style="border-top: 3px solid #8b5cf6;">
+          <div style="font-size:0.8rem; font-weight:700; color:#8b5cf6;">PASUL 4</div>
+          <div class="card-title">Livrabile CAD</div>
+          <div class="card-desc">DXF TopoLT (1CC, 2CC, CP, VARFURI), fișiere .CP pentru e-Terra și tabele PAD.</div>
+        </div>
+        <div class="info-card" style="border-top: 3px solid #f59e0b;">
+          <div style="font-size:0.8rem; font-weight:700; color:#f59e0b;">PASUL 5</div>
+          <div class="card-title">Poartă Umană</div>
+          <div class="card-desc">Inspecție în QGIS 3D Canvas. Semnătură și asumare de către geodezul autorizat.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: Provideri AI & Fallback -->
+  <div id="tab-providers" class="tab-pane">
+    <div class="diagram-wrapper">
+      <div class="diagram-title"><span>🤖</span> Matricea Providerilor și Ierarhia de Rezolvare</div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Model Principal Verificat</th>
+              <th>Capabilitate</th>
+              <th>Latență</th>
+              <th>Stare Curentă</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>OpenRouter / Kilo</strong></td>
+              <td><code>meta-llama/llama-3.3-70b-instruct</code></td>
+              <td>Raționament & Audit Cod</td>
+              <td>722 ms</td>
+              <td><span class="badge-verified">CONECTAT</span></td>
+            </tr>
+            <tr>
+              <td><strong>NVIDIA NIM</strong></td>
+              <td><code>meta/llama-3.2-11b-vision-instruct</code></td>
+              <td>Inspecție Vizuală VLM</td>
+              <td>652 ms</td>
+              <td><span class="badge-verified">CONECTAT</span></td>
+            </tr>
+            <tr>
+              <td><strong>Local Mock</strong></td>
+              <td><code>deterministic-planner-v1</code></td>
+              <td>Planificare Offline Deterministă</td>
+              <td>0.0 ms</td>
+              <td><span class="badge-verified">GARANTAT (Air-Gapped)</span></td>
+            </tr>
+            <tr>
+              <td><strong>OpenAI Direct</strong></td>
+              <td>GPT-4o / o3-mini</td>
+              <td>General Reasoning</td>
+              <td>—</td>
+              <td><span class="badge-strict">NECONFIGURAT (Fără cheie)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Ollama</strong></td>
+              <td>Modele locale descărcate</td>
+              <td>Local Offline LLM</td>
+              <td>—</td>
+              <td><span class="badge-strict">INDISPONIBIL (Daemon oprit)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 6: Linii Roșii & Siguranță -->
+  <div id="tab-rules" class="tab-pane">
+    <div class="diagram-wrapper">
+      <div class="diagram-title"><span>🛑</span> Liniile Roșii și Regulile Științifice Inviolabile</div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Regulă</th>
+              <th>Descriere & Constrângere</th>
+              <th>Nivel de Risc</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Zero Coordonate Halucinate</strong></td>
+              <td>Calculele topo, coordonatele Stereo 70 (EPSG:3844) și tabelele PAD sunt generate <em>exclusiv</em> prin matematică deterministă (Python/GEOS). Niciun LLM nu are voie să inventeze coordonate.</td>
+              <td><span class="badge-strict">CRITIC</span></td>
+            </tr>
+            <tr>
+              <td><strong>Asistență Pre-Cadastrală</strong></td>
+              <td>StratumRO produce schițe și propuneri de digitalizare, nu intabulare juridică automată. Validarea este efectuată de o persoană autorizată ANCPI.</td>
+              <td><span class="badge-strict">LEGAL</span></td>
+            </tr>
+            <tr>
+              <td><strong>Transparenta Denumitorilor</strong></td>
+              <td>Pe benchmark-ul Phase 3 recall-ul a fost de 6.15% (4 TP din 65 referințe). Se raportează întotdeauna adevărul empiric fără a ascunde limitele detecției.</td>
+              <td><span class="badge-strict">RIGOR</span></td>
+            </tr>
+            <tr>
+              <td><strong>Poartă de Teste Obligatorie</strong></td>
+              <td>Nicio modificare în producție fără rularea celor 193 de teste unitare (184 passed, 9 skipped, 0 failed).</td>
+              <td><span class="badge-verified">CALITATE</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div>StratumRO — Industrial Geomatics & GeoAI Platform</div>
+    <div>Documentație generată automat de Antigravity • Sincronizat pe GitHub origin/main</div>
+  </footer>
+</div>
+
+<script>
+  function switchTab(tabId) {
+    // Remove active from all tabs and buttons
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+    // Activate selected
+    event.target.classList.add('active');
+    const targetPane = document.getElementById('tab-' + tabId);
+    if (targetPane) {
+      targetPane.classList.add('active');
+    }
+  }
+</script>
+
+</body>
+</html>

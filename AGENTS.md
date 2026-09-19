@@ -23,8 +23,9 @@
   - **193 unit tests** (184 passed, 9 skipped, 0 failed — *verified in runtime on 2026-09-19*) covering vectorization, CAD export, TopoLT layers, PAD tables, .CP export, ONNX wrappers, 3D extrusion, QGIS Processing metadata, TaskSpec/capability matching, and AI core execution.
 * **Ground Truth & Reference Data:** [`data/ground_truth/`](data/ground_truth/)
   - Official reference datasets, including `tier1_teren.geojson` (29 real cadastral buildings in Stereo 70) and `cluj_combined_unique_150.geojson` (150 unique reference buildings).
-* **Official Reports:** [`reports/`](reports/) & [`docs/`](docs/)
+* **Official Reports & Architecture Maps:** [`reports/`](reports/) & [`docs/`](docs/)
   - Quality gate verification, audit resolutions, architectural documentation, and model inventories.
+  - **Visual System Maps:** [`docs/architecture/STRATUMRO_VISUAL_SYSTEM_MAP.md`](docs/architecture/STRATUMRO_VISUAL_SYSTEM_MAP.md) (Mermaid diagrams) & [`docs/architecture/visual_system_map.html`](docs/architecture/visual_system_map.html) (Interactive dashboard).
 
 ---
 
