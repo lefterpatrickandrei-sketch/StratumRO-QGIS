@@ -185,7 +185,7 @@ class VLMVerifier:
     def __init__(
         self,
         provider: Optional[BaseAIProvider] = None,
-        default_model: str = "meta/llama-3.2-11b-vision-instruct",
+        default_model: str = "meta/llama-3.3-70b-instruct",
         fallback_to_heuristic: bool = True
     ):
         self.provider = provider or NvidiaNIMProvider(default_model=default_model)

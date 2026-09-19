@@ -38,14 +38,14 @@ class RegulatoryConsensusEngine:
     NVIDIA_ENDPOINT = "https://integrate.api.nvidia.com/v1/chat/completions"
 
     # Modele specializate verificate activ
-    MODEL_CADASTRE = "meta/llama-3.2-11b-vision-instruct"
-    MODEL_CADASTRE_FALLBACK = "meta/llama-3.2-90b-vision-instruct"
+    MODEL_CADASTRE = "meta/llama-3.3-70b-instruct"
+    MODEL_CADASTRE_FALLBACK = "nemotron-4-340b"
 
-    MODEL_URBANISM = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning"
-    MODEL_URBANISM_FALLBACK = "meta/llama-3.2-11b-vision-instruct"
+    MODEL_URBANISM = "nemotron-4-340b"
+    MODEL_URBANISM_FALLBACK = "meta-llama/llama-3.1-8b-instruct"
 
-    MODEL_ARBITER = "nvidia/nemotron-3-super-120b-a12b"
-    MODEL_ARBITER_FALLBACK = "nvidia/nemotron-3.5-lightning-30b-a3b"
+    MODEL_ARBITER = "meta/llama-3.3-70b-instruct"
+    MODEL_ARBITER_FALLBACK = "nemotron-4-340b"
 
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or _get_nvidia_api_key()

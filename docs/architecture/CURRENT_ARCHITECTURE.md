@@ -61,7 +61,7 @@ The system is transitioning from a hybrid QGIS plugin with prototype external ca
 ### 2.3 Existing AI & Orchestration Components
 * **`stratum_ro/orchestrator.py`**:
   - Contains `request_segmentation_plan(siruta_code, project_name, chain)`.
-  - Uses `DEFAULT_FALLBACK_CHAIN` targeting NVIDIA NIM models (`meta/llama-3.2-11b-vision-instruct`, `meta/llama-3.2-90b-vision-instruct`, `meta/llama-3.3-70b-instruct`) using the `OpenAI` client pointing to `https://integrate.api.nvidia.com/v1`.
+  - Uses `DEFAULT_FALLBACK_CHAIN` targeting NVIDIA NIM models (`meta/llama-3.3-70b-instruct`, `nemotron-4-340b`, `meta-llama/llama-3.1-8b-instruct`) using the `OpenAI` client pointing to `https://integrate.api.nvidia.com/v1`.
   - Implements guaranteed local mock fallback (`get_mock_segmentation_plan()`).
 * **`stratum_ro/logic_handler.py`**:
   - `extract_json_from_llm()` for robust JSON extraction from LLM completion text.

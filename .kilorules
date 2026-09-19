@@ -1,0 +1,40 @@
+# Kilo Code Configuration & Model Routing Guidelines for StratumRO
+
+## 1. Available Providers & API Keys
+The workspace provides two authenticated external model providers via environment variables (`.env` and Windows User Environment):
+- **OpenRouter (Primary Frontier Provider)**
+  - API Key: Available in `.env` as `OPENROUTER_API_KEY` / `UNION_ALPHA_API_KEY`
+  - Base URL: `https://openrouter.ai/api/v1`
+  - Access to: Claude 3.5 Sonnet, DeepSeek V3/R1, Llama 3.3 70B, GPT-4o
+- **NVIDIA NIM (High-Throughput Vision & Inference)**
+  - API Key: Available in `.env` as `NVIDIA_API_KEY`
+  - Base URL: `https://integrate.api.nvidia.com/v1`
+  - Access to: Llama 3.3 70B Instruct, Nemotron-4 340B, Llama 3.1 8B
+
+## 2. Recommended Model Assignments in Kilo Code
+When selecting models in the Kilo Settings:
+- **Default Model (Primary Conversation & Reasoning):**
+  `anthropic/claude-3.5-sonnet` (via OpenRouter)
+  *Fallback:* `openai/gpt-4o` or `deepseek/deepseek-chat`
+- **Small Model (Titles, Commit Messages, Quick Tasks):**
+  `deepseek/deepseek-chat` (via OpenRouter)
+  *Fallback:* `meta-llama/llama-3.1-8b-instruct`
+- **Subagent Model (Task & Tool Execution):**
+  `anthropic/claude-3.5-sonnet` (via OpenRouter)
+- **Compaction Model (Context Window Summaries):**
+  `deepseek/deepseek-chat` or `anthropic/claude-3.5-haiku` (via OpenRouter)
+- **Autocomplete Model (Inline Code Completions):**
+  `deepseek/deepseek-chat` or `meta-llama/llama-3.1-8b-instruct`
+
+## 3. StratumRO Engineering Guardrails (MANDATORY)
+1. **Deterministic Local Math & Geometry:**
+   - Spatial transformations, Helmert 2D, 90° CAD orthogonalization, PAD tables, and polygon area/perimeter calculations MUST run locally through Python (`shapely`, `geopandas`, `gdal`, `pyproj`).
+   - DO NOT invent or hallucinate coordinates or geodetic transformations.
+2. **Environment Execution:**
+   - Always run Python commands in the local virtual environment:
+     `venv\Scripts\python`
+3. **Evidence-First Verification:**
+   - Run tests before claiming success:
+     `venv\Scripts\python -m unittest discover stratum_ro/test`
+4. **Coordinate Reference System:**
+   - Official projection is Romania Stereo 70 (`EPSG:3844`), conforming to ANCPI Ordinul nr. 600/2023.

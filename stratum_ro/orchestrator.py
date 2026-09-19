@@ -31,10 +31,10 @@ def _get_api_key() -> str:
 
 # Active, verified Fallback Chain for Romanian Geodetic Planning
 DEFAULT_FALLBACK_CHAIN = [
-    {"name": "meta/llama-3.2-11b-vision-instruct", "timeout": 8.0, "desc": "Tier 1: Fast Multimodal (Llama 3.2 11B)"},
-    {"name": "meta/llama-3.2-90b-vision-instruct", "timeout": 10.0, "desc": "Tier 2: Heavy Quality (Llama 3.2 90B)"},
-    {"name": "meta/llama-3.3-70b-instruct",        "timeout": 8.0, "desc": "Tier 3: Reasoning Backup (Llama 3.3 70B)"},
-    {"name": "local_mock_engine",                  "timeout": 0.1, "desc": "Tier 4: Guaranteed Local Mock Fallback"}
+    {"name": "meta/llama-3.3-70b-instruct",  "timeout": 8.0, "desc": "Tier 1: Reasoning (Llama 3.3 70B)"},
+    {"name": "nemotron-4-340b",               "timeout": 6.0, "desc": "Tier 2: High Throughput (Nemotron 4 340B)"},
+    {"name": "meta-llama/llama-3.1-8b-instruct", "timeout": 4.0, "desc": "Tier 3: Fast (Llama 3.1 8B)"},
+    {"name": "local_mock_engine",             "timeout": 0.1, "desc": "Tier 4: Guaranteed Local Mock Fallback"}
 ]
 
 SYSTEM_PROMPT = """Ești un orchestrator GIS pentru România (StratumRO). Răspunde EXCLUSIV cu un obiect JSON valid care respectă schema de segmentare.
