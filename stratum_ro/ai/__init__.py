@@ -7,14 +7,20 @@ without compromising deterministic geodetic and cadastral operations.
 """
 
 from .providers.base import BaseAIProvider, ProviderCapability, ProviderResponse
-from .registry import ProviderRegistry
+from .registry import ProviderRegistry, CapabilityMatch
 from .router import AIRouter, TaskType
+from .task_spec import TaskSpec, RiskTolerance, DeliverableType
 
 __all__ = [
     "BaseAIProvider",
     "ProviderCapability",
     "ProviderResponse",
     "ProviderRegistry",
+    "CapabilityMatch",
     "AIRouter",
     "TaskType",
+    "TaskSpec",
+    "RiskTolerance",
+    "DeliverableType",
 ]
+

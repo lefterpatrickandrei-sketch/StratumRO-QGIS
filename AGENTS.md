@@ -20,11 +20,11 @@
   - `evaluation.py`: Rigorous geodetic evaluation metrics (IoU, Hausdorff Distance, Boundary RMSE, Centroid Shift, PASCAL/COCO matching, Wilson score confidence intervals).
   - `ablation_study.py`: Formal 5-configuration ablation study (Configs A through E).
 * **Automated Test Suite:** [`stratum_ro/test/`](stratum_ro/test/)
-  - 40 unit tests covering vectorization, CAD export, TopoLT layers, PAD tables, .CP export, ONNX wrappers, 3D extrusion, and QGIS Processing metadata.
+  - **193 unit tests** (184 passed, 9 skipped, 0 failed) covering vectorization, CAD export, TopoLT layers, PAD tables, .CP export, ONNX wrappers, 3D extrusion, QGIS Processing metadata, TaskSpec/capability matching, and AI core execution.
 * **Ground Truth & Reference Data:** [`data/ground_truth/`](data/ground_truth/)
-  - Official reference datasets, including `tier1_teren.geojson` (29 real cadastral buildings in Stereo 70).
+  - Official reference datasets, including `tier1_teren.geojson` (29 real cadastral buildings in Stereo 70) and `cluj_combined_unique_150.geojson` (150 unique reference buildings).
 * **Official Reports:** [`reports/`](reports/) & [`docs/`](docs/)
-  - Quality gate verification, audit resolutions, and architectural documentation.
+  - Quality gate verification, audit resolutions, architectural documentation, and model inventories.
 
 ---
 
@@ -44,29 +44,47 @@ For every technical claim, benchmark result, or metric, agents must classify it 
 ---
 
 ## 4. Working Conventions & Anti-Hallucination Guardrails
+- **Current Implementation ≠ Target Platform:** Do not treat future Phase 4 target architecture concepts (e.g. Evidence Graph, 18 workflow modes, full sensor simulation) as already implemented on disk.
 - **No Blind Feature Inflation:** Never add new features, frameworks, or dependencies merely because they sound impressive. Make StratumRO **more trustworthy**, not just larger.
-- **Never Hide False Positives:** The 116 False Positives relative to the 29-building reference set represent adjacent unannotated structures, outbuildings, or tree canopies. Report all 3 denominators explicitly (TP, matched references, total predictions).
-- **No Unsupported Accuracy Claims:** A mathematical transformation consistency (e.g. Helmert residual = 0.0000 m) is **NOT** a proof of absolute zero-centimeter cadastral accuracy on the ground.
-- **Honest ONNX Status:** The ONNX engine currently provides execution provider management (DirectML/CPU) and geometric fallbacks. Real end-to-end SAM2 ONNX model weights require separate conversion and numerical validation against PyTorch before claiming full equivalence.
+- **Never Hide Recall Limits or False Positives:** In Phase 3 (E9), the pipeline reduced false positives from 90 to 22, but recall remained at 6.15% (4 TP out of 65 references). Always report all 3 denominators explicitly (TP, matched references, total predictions).
+- **Assisted Pre-Cadastre Only:** StratumRO is strictly an **assisted pre-cadastral digitizing candidate (Human-in-the-Loop)**. Never claim autonomous legal registration.
 - **Testing Standard:** When modifying code, always execute:
   ```bash
   venv\Scripts\python -m unittest discover stratum_ro/test
   ```
-  Report the exact test count (e.g., `40 passed, 8 skipped, 0 failed`). A skipped test is **NOT** a passed test.
+  Report the exact test count (e.g., `184 passed, 9 skipped, 0 failed`). A skipped test is **NOT** a passed test.
 - **Python Environment:** Always use the local virtual environment in [`venv/`](venv/).
 
 ---
 
-## 5. Model Routing & Execution Guardrails (MD 1C)
+## 5. Actor Roles & Operational Model
+
+* **Antigravity (Primary Development & Execution Engine):**
+  Inspects workspace, runs tests, executes real experiments, drives QGIS verification, produces visual evidence, commits and pushes verified code.
+* **Kilo (Adversarial Reviewer):**
+  Performs second-opinion code reviews, checks for metric leakage, identifies no-op experiments, and challenges over-engineered architectures.
+* **ChatGPT (Architecture & System Reasoning Partner):**
+  Synthesizes source-of-truth documentation, reviews system designs, and creates detailed execution plans for Antigravity.
+* **Claude Desktop (External Historical / Consulting Reviewer):**
+  Operates strictly via local MCP on stdio. Is **NOT** part of the internal StratumRO runtime or production pipeline.
+* **GitHub (`origin/main`):**
+  The single authoritative shared source of truth for code, tests, and data.
+
+---
+
+## 6. Model Routing & Execution Guardrails
 
 1. **Geometry / Math → Deterministic Local:**
    - All spatial transformations, Helmert 2D, 90° CAD orthogonalization, eave retraction offsets, polygon areas, perimeters, PAD coordinate tables, and topology cleanup MUST run exclusively through local deterministic Python/GEOS/GDAL math. Zero LLM hallucinations permitted.
 2. **Building Segmentation → SAM2 / Local:**
    - Optical delineation uses Meta SAM 2 Hiera (PyTorch / ONNX DirectML) cross-validated with local LiDAR nDSM height statistics.
-3. **Complex Repo Debugging → Union Alpha / Frontier Model:**
-   - Deep multi-file analysis, architectural reviews, failure autopsies, and cadastral edge cases route to Union Alpha (`stealth/union-alpha` with 256k context) or top frontier models.
-4. **Fast Simple Coding → Fast Coding Model:**
-   - Local unit tests, small isolated functions, typos, formatting, and quick script edits route to fast models for maximum developer iteration speed.
-5. **Provider Unavailable → Graceful Fallback:**
-   - When an external API or network connection is unavailable or unconfigured, the system automatically rolls over across the fallback chain (Union Alpha → NVIDIA NIM → OpenAI → Ollama → Local Mock) ensuring 0 crashes.
+3. **Reasoning & Code Audits → OpenRouter / Kilo:**
+   - Verified models: `meta-llama/llama-3.3-70b-instruct` (722ms) and `meta-llama/llama-3.1-8b-instruct` (540ms).
+4. **Visual Multimodal Verification → NVIDIA NIM:**
+   - Verified model: `meta/llama-3.2-11b-vision-instruct` (652ms).
+5. **Provider Status Reality:**
+   - OpenAI direct: `NOT_CONFIGURED` (no direct key).
+   - Ollama: `UNAVAILABLE` (daemon offline).
+   - Local Mock: `OPERATIONAL` (0.0ms air-gapped deterministic baseline).
+
 

@@ -5,6 +5,7 @@ Maintains a dynamic catalog of model providers and capability mappings,
 supporting auto-discovery and health inspection.
 """
 
+from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 from .providers.base import BaseAIProvider, ProviderCapability
 from .providers.local_provider import LocalProvider
@@ -12,6 +13,16 @@ from .providers.nvidia_nim_provider import NvidiaNIMProvider
 from .providers.openai_provider import OpenAIProvider
 from .providers.ollama_provider import OllamaProvider
 from .providers.union_alpha_provider import UnionAlphaProvider
+
+
+@dataclass
+class CapabilityMatch:
+    """Resolved provider mapping for a specific capability requirement."""
+    provider: BaseAIProvider
+    capability: ProviderCapability
+    is_fallback: bool
+    rationale: str
+
 
 
 class ProviderRegistry:
@@ -78,3 +89,49 @@ class ProviderRegistry:
                 "models": provider.list_models() if avail else [],
             }
         return summary
+
+    def resolve_provider(
+        self,
+        required_capability: ProviderCapability,
+        preferred_provider: Optional[str] = None,
+        allow_fallback: bool = True,
+    ) -> Optional[CapabilityMatch]:
+        """
+        Resolves the optimal provider for a requested capability, respecting
+        preferred choice, live health/availability, and fallback hierarchy.
+        """
+        # 1. Check preferred provider first if specified
+        if preferred_provider:
+            p = self.get(preferred_provider)
+            if p and p.is_available() and required_capability in p.capabilities():
+                return CapabilityMatch(
+                    provider=p,
+                    capability=required_capability,
+                    is_fallback=False,
+                    rationale=f"Preferred provider '{preferred_provider}' is available and matched.",
+                )
+
+        # 2. Find all candidates offering capability
+        candidates = self.find_by_capability(required_capability)
+        if not candidates:
+            # Fallback to local deterministic mock if permitted
+            if allow_fallback:
+                local_mock = self.get("local_mock")
+                if local_mock:
+                    return CapabilityMatch(
+                        provider=local_mock,
+                        capability=required_capability,
+                        is_fallback=True,
+                        rationale="All specialized providers unavailable; routed to air-gapped local mock.",
+                    )
+            return None
+
+        # Return first available candidate
+        matched = candidates[0]
+        return CapabilityMatch(
+            provider=matched,
+            capability=required_capability,
+            is_fallback=False,
+            rationale=f"Resolved active candidate '{matched.name}' matching capability '{required_capability.value}'.",
+        )
+

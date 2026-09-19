@@ -38,7 +38,7 @@
 - [10. 🔬 Inovații Algoritmice Cheie](#10--inovații-algoritmice-cheie)
 - [11. 📂 Structura Repository-ului](#11--structura-repository-ului)
 - [12. 🛠️ Ghid de Instalare & Rulare](#12-️-ghid-de-instalare--rulare)
-- [13. 🧪 Testare & Verificare (55 Teste Unitare)](#13--testare--verificare-55-teste-unitare)
+- [13. 🧪 Testare & Verificare (193 Teste Unitare)](#13--testare--verificare-193-teste-unitare)
 - [14. 📜 Cadrul Legislativ & Standarde Tehnice](#14--cadrul-legislativ--standarde-tehnice)
 - [15. 🇬🇧 English Summary](#15--english-summary)
 
@@ -362,21 +362,19 @@ Scriptul execută automat:
 
 ---
 
-## 13. 🧪 Testare & Verificare (55 Teste Unitare)
+## 13. 🧪 Testare & Verificare (193 Teste Unitare)
  
-Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX (decodor + encoder), a extrudării 3D și a furnizorului QGIS Processing:
+Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX (decodor + encoder), a extrudării 3D, a furnizorului QGIS Processing, a nucleului AI decuplat și a specificațiilor de sarcini Phase 4 (`TaskSpec` + capability resolver):
 ```bash
-python -m unittest discover stratum_ro/test
+venv\Scripts\python -m unittest discover stratum_ro/test
 ```
 Rezultat verificat:
 ```text
-...................................ssssssss.............
-----------------------------------------------------------------------
-Ran 55 tests in 3.691s
+Ran 193 tests in 32.283s
 
-OK (skipped=8)
+OK (skipped=9)
 ```
-*(Testele QGIS GUI sunt omise automat când sunt rulate în afara interpretorului Python din OSGeo4W/QGIS).*
+*(9 teste opționale de integrare CUDA GPU sunt omise automat când sunt rulate în mod DirectML/CPU).*
 
 ---
 
