@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-09-10 10:55:05",
+  "crs": "EPSG:3844",
+  "total_references": 1,
+  "total_predictions": 1,
+  "true_positives": 1,
+  "false_positives": 0,
+  "false_negatives": 0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1_score": 1.0,
+  "mean_iou": 1.0,
+  "mean_hausdorff_m": 0.0,
+  "mean_boundary_rmse_m": 0.0,
+  "mean_centroid_disp_m": 0.0,
+  "mean_abs_area_error_pct": 0.0,
+  "ancpi_conform_count": 1,
+  "pug_acceptable_count": 0,
+  "rejected_count": 0,
+  "ancpi_compliance_rate_pct": 100.0,
+  "pug_compliance_rate_pct": 100.0,
+  "building_results": [
+    {
+      "ref_id": "CASE_01_L_SHAPE",
+      "pred_id": "CASE_01_L_SHAPE",
+      "matched": true,
+      "iou": 1.0,
+      "hausdorff_m": 0.0,
+      "boundary_rmse_m": 0.0,
+      "centroid_disp_m": 0.0,
+      "area_ref_m2": 138.0,
+      "area_pred_m2": 138.0,
+      "area_error_m2": 0.0,
+      "area_error_pct": 0.0,
+      "perimeter_ref_m": 54.0,
+      "perimeter_pred_m": 54.0,
+      "mean_angle_dev_deg": 0.0,
+      "compliance_tier": "CONFORM_ANCPI",
+      "error_flags": [],
+      "svg_data": "<svg width=\"240\" height=\"200\" viewBox=\"0 0 240 200\" class=\"bldg-svg\">\n  <rect width=\"100%\" height=\"100%\" fill=\"#1a1d24\" rx=\"6\"/>\n  <!-- Referinta Ground Truth (Albastru) -->\n  <polygon points=\"35.4,165.5 204.6,165.5 204.6,100.0 125.6,100.0 125.6,34.5 35.4,34.5 35.4,165.5\" fill=\"rgba(33, 150, 243, 0.25)\" stroke=\"#2196F3\" stroke-width=\"2\" stroke-dasharray=\"3,2\"/>\n  <!-- Predictie AI Hibrid (Portocaliu) -->\n  <polygon points=\"35.4,165.5 204.6,165.5 204.6,100.0 125.6,100.0 125.6,34.5 35.4,34.5 35.4,165.5\" fill=\"rgba(255, 87, 34, 0.3)\" stroke=\"#FF5722\" stroke-width=\"2\"/>\n</svg>"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "topology": {
+    "status": "success",
+    "valid": true,
+    "is_all_valid": true,
+    "valid_count": 1,
+    "invalid_count": 0,
+    "feature_count": 1,
+    "invalid_features": 0,
+    "self_intersections": 0,
+    "duplicate_vertices": 0,
+    "sliver_count": 0,
+    "errors": []
+  },
+  "ancpi_ordin_600_2023": {
+    "status": "success",
+    "passed": true,
+    "regulation": "ANCPI Ordinul nr. 600/2023",
+    "total_features": 1,
+    "failed_count": 0,
+    "checks": {
+      "min_area_main_45m2": {
+        "passed": 1,
+        "failed": 0
+      },
+      "min_area_annex_8m2": {
+        "passed": 0,
+        "failed": 0
+      },
+      "min_edge_1m": {
+        "passed": 0,
+        "failed": 1
+      },
+      "stereo70_bounds": {
+        "passed": 1,
+        "failed": 0
+      }
+    },
+    "warnings": [
+      "Building #0: contains micro-edges (< 0.5m)"
+    ],
+    "evidence": {
+      "standards": [
+        "Art. 35 - Geometrie imobile",
+        "Art. 41 - Delimitare constructii"
+      ],
+      "crs": "EPSG:3844"
+    }
+  },
+  "ground_truth": {
+    "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\data\\ground_truth\\tier1_teren.geojson",
+    "sha256": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+    "reference_buildings_count": 29,
+    "predicted_buildings_count": 1,
+    "status": "VALIDATED"
+  }
+}

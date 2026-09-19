@@ -1,0 +1,1318 @@
+<USER_REQUEST>
+# MD 9 — TRUE E2E REAL DESKTOP OPERATOR & NO-SHORTCUT VALIDATION
+
+## Scop
+
+Transformă StratumRO-QGIS dintr-un sistem care demonstrează corect orchestrarea și încărcarea rezultatelor existente într-un sistem care poate executa un flux geospațial real, observabil și auditabil, folosind:
+
+* QGIS instalat local pe Windows
+* proiectul QGIS real
+* fișierele reale ale utilizatorului
+* LiDAR-ul real
+* DTM-ul real Pentru Antigravity pe Windows, trebuie să separăm două lucruri: accesul la fișiere/comenzi și controlul efectiv al ferestrei QGIS.
+Din documentația actuală, Antigravity pe Windows permite agentului să execute comenzi și să acceseze fișiere în afara workspace-ului, dar documentația oficială descrie explicit automatizarea UI în primul rând pentru Chrome, nu un „Allow desktop control” universal pentru orice aplicație Windows. ([Google Antigravity](https://www.antigravity.google/docs/permissions?utm_source=chatgpt.com))
+1. În Antigravity, activează accesul complet la proiect
+Deschide:
+Settings → Projects → StratumRO-QGIS
+și verifică:
+Terminal Command Auto Execution → Always Proceed
+și:
+Agent Non-Workspace File Access → Enabled
+Pe Windows, aceste setări permit agentului să execute comenzile fără aprobare și să acceseze fișiere din afara proiectului. ([Google Antigravity](https://antigravity.google/docs/agent-settings?utm_source=chatgpt.com))
+Pentru proiectul tău asta este important deoarece datele sunt în:
+C:\Users\lefpa\Desktop\date\...
+și nu în folderul repo-ului.
+2. Dar asta NU îi dă automat control de mouse asupra QGIS
+Aici a fost problema din MD8.
+Faptul că Antigravity poate executa:
+Start-Process "C:\Program Files\QGIS 3.40.0\bin\qgis.exe"
+nu înseamnă automat că agentul poate apoi:
+vedea fereastra QGIS ca un om;
+apăsa butoane;
+selecta straturi cu mouse-ul;
+trage AOI-ul;
+apăsa Run;
+interacționa cu dialogurile Qt.
+Documentația Antigravity menționează explicit că Browser Agent poate acționa în Chrome, inclusiv screenshots și UI interaction, dar asta este diferit de controlul general al desktopului Windows. ([Google Antigravity](https://antigravity.google/docs/ide/overview/?utm_source=chatgpt.com))
+3. Pentru ceea ce vrei tu, trebuie adăugat un „bridge” Windows UI
+Pentru QGIS, abordarea potrivită este să-i dai Antigravity un tool/MCP care poate controla Windows UI, de exemplu printr-un mecanism de Windows UI Automation.
+Arhitectura ar fi:
+Antigravity │ ├── Terminal / PowerShell │ ├── PyQGIS │ └── Windows UI Automation │ ▼ QGIS.exe │ ▼ StratumRO plugin │ ▼ REAL PIPELINE
+Asta este partea care lipsea practic din MD8.
+4. Atenție la o confuzie importantă
+Nu aș face:
+Antigravity ↓ pyautogui click x=500,y=300
+ca mecanism principal.
+Pentru QGIS este mult mai robust:
+Antigravity ↓ UI Automation / accessibility tree ↓ QGIS controls
+iar operațiile geospațiale reale:
+PyQGIS QGIS Processing GDAL SAM2 LiDAR
+să ruleze prin API.
+Astfel, tu vezi QGIS lucrând, dar agentul nu depinde de poziția exactă a butoanelor pe ecran.
+5. Ce trebuie să-i spui lui Antigravity acum
+Pune-i mesajul acesta înainte de MD9:
+Before executing MD9, first determine whether this Windows machine provides REAL interactive desktop/UI automation for Antigravity.
+My required behavior is:
+Antigravity
+→ launch the actual QGIS 3.40 installation
+→ open the real StratumRO QGIS project
+→ interact with the visible QGIS application
+→ start StratumRO from the real QGIS UI
+→ execute the real processing pipeline
+→ keep QGIS visible while processing
+→ update the QGIS map after each real processing stage
+→ allow me to watch the complete workflow
+→ stop at the human approval gate
+→ continue only after my approval
+→ perform the real export.
+Important distinction:
+Terminal access, PowerShell access, filesystem access and PyQGIS access are NOT equivalent to interactive desktop control.
+First run a capability audit for:
+QGIS process detection
+QGIS top-level window detection
+Windows UI Automation availability
+ability to inspect QGIS controls
+ability to bring QGIS to foreground
+ability to interact with QGIS controls
+screenshot capability
+ability to detect whether the interaction actually affected QGIS
+If native Antigravity desktop automation is NOT available, do not pretend it is.
+Instead determine what local Windows UI Automation bridge/MCP/tool can provide real control of the QGIS application and integrate that into the existing StratumRO architecture.
+Do not replace the real pipeline with shell-only execution.
+Do not replace QGIS interaction with a simulated transcript.
+Do not use fake mouse coordinates unless there is no semantic UI automation alternative.
+The final goal is REAL DESKTOP E2E:
+I should be able to physically see QGIS open on my Windows desktop and watch StratumRO perform the actual workflow.
+6. Iar aici este partea foarte importantă pentru cazul tău
+Antigravity 2.0 este acum o aplicație desktop separată și Google documentează că agenții pot executa comenzi de sistem, opera fișiere, folosi MCP și interacționa cu Chrome. ([Google Antigravity](https://www.antigravity.google/blog/introducing-google-antigravity-2?utm_source=chatgpt.com))
+Nu găsesc în documentația oficială actuală o setare de tip „Allow Antigravity to control all Windows applications” pe care pur și simplu s-o activezi. Așa că nu ți-aș spune să cauți o opțiune care poate nici nu există.
+Pentru proiectul tău, soluția corectă este să verificăm ce mecanism Windows UI Automation are Antigravity-ul tău instalat și, dacă nu are unul, să-i adăugăm unul prin MCP/tool.
+Asta ar transforma efectiv MD9 din „rulează QGIS din shell” în „deschide QGIS și lucrează în el în timp ce mă uit”.Da — sunt **două locații diferite**, și în cazul tău ambele contează.
+
+`C:\Users\lefpa\Downloads\QGIS-AI` este **proiectul/repository-ul StratumRO-QGIS**. Acolo sunt codul, `venv`, `workspace`, `models` etc.
+
+Datele reale pe care Antigravity le-a găsit în rularea MD8 sunt în afara repo-ului, aici:
+
+`C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\LAZ\NorPuncte_St70_S42.laz`
+
+și:
+
+`C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\DTM3m\DTM3m.tif`
+
+iar ortofotoplanurile sunt în:
+
+`C:\Users\lefpa\Desktop\date\Z_VladP\OrtoFoto Cluj USAMV`
+
+Deci arhitectura este:
+
+```text
+C:\Users\lefpa\Downloads\QGIS-AI
+        │
+        ├── StratumRO-QGIS
+        ├── venv
+        ├── models
+        ├── workspace
+        └── data
+             │
+             └── ground_truth
+             
+C:\Users\lefpa\Desktop\date
+        │
+        └── Z_VladP
+             ├── Comparatie
+             │    ├── LAZ
+             │    │    └── NorPuncte_St70_S42.laz
+             │    └── DTM3m
+             │         └── DTM3m.tif
+             │
+             └── OrtoFoto Cluj USAMV
+                  └── *.sid
+```
+
+Și tocmai de aceea, când spuneam **„Agent Non-Workspace File Access”**, mă refeream la faptul că Antigravity trebuie să poată accesa și `Desktop\date`, nu doar:
+
+`C:\Users\lefpa\Downloads\QGIS-AI`.
+
+În plus, există și QGIS propriu-zis:
+
+`C:\Program Files\QGIS 3.40.0`
+
+Așadar, pentru ce vrei tu, Antigravity trebuie să aibă acces efectiv la **toate trei**:
+
+**1. Proiectul**
+`C:\Users\lefpa\Downloads\QGIS-AI`
+
+**2. Datele reale**
+`C:\Users\lefpa\Desktop\date`
+
+**3. QGIS**
+`C:\Program Files\QGIS 3.40.0`
+
+Important: **nu trebuie să muți datele în `QGIS-AI`**. Mai bine păstrăm structura actuală și facem resolverul din StratumRO să descopere datele externe în mod explicit.
+
+În MD9, deci, aș pune exact aceste trei locații ca **known environment paths**, dar fără să le transformăm în paths obligatorii pentru alte calculatoare.
+
+* ortofotoplanurile reale MrSID
+* modelul SAM2 real
+* GPU-ul local disponibil
+* rezultatele intermediare produse în acel RUN
+* vizualizarea lor în QGIS
+* aprobare umană înaintea exportului autoritativ
+
+NU reconstrui proiectul de la zero.
+
+NU elimina TaskGraph, Executor, Router, Context, Memory, MCP, AI Assistant UI, provider system sau componentele existente care funcționează.
+
+Acest MD este o fază de consolidare și corectitudine E2E.
+
+---
+
+# 1. REGULA ABSOLUTĂ: NO FAKE SUCCESS
+
+În acest milestone este interzis ca o etapă să fie declarată EXECUTED dacă doar:
+
+* reutilizează implicit un rezultat anterior;
+* citește un GPKG produs anterior;
+* returnează numere hardcodate;
+* generează geometrie demonstrativă;
+* generează coordonate artificiale;
+* simulează existența SAM2;
+* simulează existența LiDAR;
+* raportează „success” după un fallback mock.
+
+Un rezultat reutilizat este permis numai dacă manifestul spune explicit:
+
+```
+execution_mode = "CACHE_REUSED"
+```
+
+și trebuie înregistrat:
+
+* path
+* SHA256
+* timestamp
+* producătorul rezultatului
+* etapa care l-a generat
+* motivul reutilizării
+
+Un rezultat nou calculat trebuie marcat:
+
+```
+execution_mode = "EXECUTED_REAL"
+```
+
+---
+
+# 2. PRIMA TASK: AUDITĂ REPO-UL ACTUAL
+
+Înainte să modifici cod:
+
+analizează versiunile actuale ale:
+
+* stratum_ro/stratum_ro_dockwidget.py
+* stratum_ro/ai/task_graph.py
+* stratum_ro/ai/executor.py
+* stratum_ro/ai/router.py
+* stratum_ro/ai/context/*
+* stratum_ro/ai/tools/*
+* tools/live_qgis_spectator.py
+* run_hybrid_full_aoi.py
+* ortho_extractor.py
+* lidar_processor.py
+* orice implementare SAM2
+* proiectele .qgz
+* testele existente
+* workflow-urile CI
+
+Mapează exact:
+
+```
+existing file
+    ↓
+existing function
+    ↓
+desired new responsibility
+```
+
+NU crea duplicate ale funcțiilor deja existente.
+
+---
+
+# 3. CANONICAL DATA DISCOVERY
+
+Construiește un singur mecanism centralizat:
+
+```
+CanonicalDatasetResolver
+```
+
+Acesta trebuie să descopere datele reale pe Windows.
+
+Ordinea:
+
+1. date explicit furnizate de UI
+2. sursele layerelor QGIS active
+3. configurație StratumRO
+4. environment variables
+5. paths locale cunoscute
+6. fallback doar dacă este declarat
+
+Pentru fiecare dataset returnează:
+
+* path
+* exists
+* readable
+* file size
+* SHA256
+* CRS
+* bounds
+* dimensions / point count când este relevant
+* dataset type
+* confidence/source of discovery
+
+Nu mai hardcoda în mai multe module aceleași paths.
+
+---
+
+# 4. CANONICAL REAL DATASET SET
+
+Pentru mediul actual de validare, verifică efectiv existența:
+
+LiDAR:
+
+C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\LAZ\NorPuncte_St70_S42.laz
+
+DTM:
+
+C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\DTM3m\DTM3m.tif
+
+Ortofoto:
+
+C:\Users\lefpa\Desktop\date\Z_VladP\OrtoFoto Cluj USAMV
+
+Ground Truth:
+
+data/ground_truth/tier1_teren.geojson
+
+Model:
+
+models/sam2/sam2_hiera_tiny.pt
+
+Important:
+
+nu presupune că aceste paths vor fi valabile pentru altă instalare.
+
+Ele reprezintă datasetul curent de validare.
+
+---
+
+# 5. QGIS REAL OPERATOR SESSION
+
+Implementarea trebuie să suporte o sesiune QGIS reală.
+
+Detectează:
+
+* QGIS executable
+* python-qgis.bat
+* QGIS version
+* active profile
+* active project
+* plugin path
+* loaded layers
+* layer sources
+* CRS proiect
+* map canvas
+
+Pentru mediul actual:
+
+QGIS:
+
+C:\Program Files\QGIS 3.40.0
+
+Trebuie verificat runtime-ul actual, nu presupus.
+
+---
+
+# 6. MODUL DESKTOP OPERATOR
+
+Adaugă o componentă separată:
+
+```
+tools/desktop_operator.py
+```
+
+Responsabilități:
+
+* detect QGIS window/process
+* launch QGIS dacă este necesar
+* open project
+* wait until QGIS is ready
+* focus QGIS
+* inspect visible UI state
+* trigger StratumRO UI
+* trigger workflow
+* capture screenshots
+* detect failure
+* return structured operator events
+
+NU presupune că automation GUI este disponibilă.
+
+La startup execută un capability check:
+
+```
+DESKTOP_CONTROL_AVAILABLE
+DESKTOP_CONTROL_UNAVAILABLE
+```
+
+Dacă este unavailable:
+
+NU simula clickurile.
+
+NU declara desktop operation finalizată.
+
+Continuă doar în mod PyQGIS/headless și marchează clar:
+
+```
+operator_mode = "PYQGIS_ONLY"
+```
+
+Dacă desktop automation este disponibilă:
+
+```
+operator_mode = "REAL_DESKTOP"
+```
+
+---
+
+# 7. QGIS STARTUP CONTROL
+
+Folosește PyQGIS pentru acțiunile care trebuie făcute deterministic în interiorul QGIS.
+
+Poți utiliza mecanismele native QGIS de startup/code execution.
+
+Obiectivul:
+
+QGIS pornește
+↓
+proiectul este încărcat
+↓
+StratumRO plugin este disponibil
+↓
+datele sunt verificate
+↓
+workflow-ul este pornit
+↓
+rezultatele sunt încărcate în map canvas
+
+Nu reproduce clickuri GUI pentru operații care pot fi realizate sigur prin API.
+
+GUI automation este pentru:
+
+* demonstrație
+* observabilitate
+* UI interaction
+* verification
+
+PyQGIS este pentru:
+
+* layer management
+* project management
+* processing
+* CRS
+* data sources
+* map canvas state
+* rendering
+
+---
+
+# 8. REAL LIDAR EXECUTION
+
+Corectează:
+
+```
+_exec_lidar_candidates()
+```
+
+Este interzis:
+
+```
+if ndsm exists:
+    return hardcoded candidate counts
+```
+
+În schimb:
+
+Dacă rezultatul există:
+
+verifică explicit dacă trebuie recalculat.
+
+Pentru un TRUE RUN:
+
+```
+REAL LAZ
+    ↓
+REAL DTM
+    ↓
+generate_ndsm()
+    ↓
+real nDSM
+    ↓
+real candidate detection
+```
+
+Rezultatul trebuie să conțină:
+
+* input SHA256
+* output SHA256
+* point count
+* bounds
+* CRS
+* DTM metadata
+* nDSM dimensions
+* resolution
+* runtime
+* execution_mode
+
+Dacă cache-ul este reutilizat:
+
+nu spune EXECUTED.
+
+Spune:
+
+```
+CACHE_REUSED
+```
+
+---
+
+# 9. REAL SAM2 EXECUTION
+
+Corectează radical:
+
+```
+_exec_sam2_segmentation()
+```
+
+NU mai încărca automat:
+
+```
+workspace/output/cladiri_stereo70.gpkg
+```
+
+ca substitut pentru SAM2.
+
+GPKG-ul este OUTPUT, nu INPUT pentru segmentarea curentă.
+
+Fluxul obligatoriu:
+
+```
+real orthophoto
+    +
+LiDAR candidates
+    ↓
+tile selection
+    ↓
+SAM2 model
+    ↓
+actual masks
+    ↓
+post-processing
+    ↓
+vectorization
+```
+
+SAM2 trebuie să fie executat numai dacă modelul este disponibil.
+
+Dacă modelul nu poate fi executat:
+
+```
+status = BLOCKED
+```
+
+sau:
+
+```
+status = DEGRADED
+```
+
+dar niciodată:
+
+```
+status = success
+```
+
+prin generarea unor dreptunghiuri artificiale.
+
+---
+
+# 10. ORTHOPHOTO INGESTION
+
+Utilizează efectiv tile-urile MrSID existente.
+
+Sistemul trebuie să:
+
+1. detecteze tile-urile
+2. inspecteze bounds
+3. detecteze CRS
+4. determine ce tile-uri intersectează AOI
+5. extragă tile-urile necesare
+6. creeze raster intermediar numai dacă este necesar
+7. păstreze legătura dintre output și tile-urile originale
+
+Manifest:
+
+```
+orthophoto_tiles_used = [...]
+```
+
+---
+
+# 11. REAL SENSOR FUSION
+
+Fluxul trebuie să fie:
+
+LiDAR candidates
++
+orthophoto/SAM2 masks
+↓
+spatial matching
+↓
+height validation
+↓
+building confirmation
+↓
+vectorization
+
+Nu copia geometria din GPKG-ul produs anterior.
+
+Nu folosi ground truth pentru a produce rezultatul prediction.
+
+Ground truth poate fi folosit numai pentru evaluare.
+
+---
+
+# 12. INTERMEDIATE OUTPUTS
+
+Fiecare etapă trebuie să aibă output separat.
+
+Exemplu:
+
+workspace/e2e/
+
+```
+01_context/
+02_lidar/
+03_ndsm/
+04_orthophoto/
+05_sam2/
+06_fusion/
+07_vectorization/
+08_regularization/
+09_eave/
+10_validation/
+11_export/
+```
+
+Fiecare folder trebuie să conțină:
+
+* data output
+* metadata
+* timing
+* logs
+* screenshot când este relevant
+
+---
+
+# 13. QGIS LIVE SPECTATOR — REIMPLEMENTARE
+
+tools/live_qgis_spectator.py
+
+NU trebuie să fie doar un demo care schimbă visibility.
+
+Trebuie transformat într-un spectator al outputurilor reale.
+
+Exemplu:
+
+ETAPA 1:
+
+QGIS:
+
+```
+Ortofoto
+LiDAR
+AOI
+```
+
+Screenshot.
+
+ETAPA 2:
+
+QGIS:
+
+```
+nDSM real
+candidate buildings real
+```
+
+Screenshot.
+
+ETAPA 3:
+
+QGIS:
+
+```
+real SAM2 masks
+```
+
+Screenshot.
+
+ETAPA 4:
+
+QGIS:
+
+```
+fused building polygons
+```
+
+Screenshot.
+
+ETAPA 5:
+
+QGIS:
+
+```
+regularized polygons
+```
+
+Screenshot.
+
+ETAPA 6:
+
+QGIS:
+
+```
+ground/eave-adjusted polygons
+```
+
+Screenshot.
+
+ETAPA 7:
+
+QGIS:
+
+```
+validation overlay
+```
+
+Screenshot.
+
+ETAPA 8:
+
+QGIS:
+
+```
+final result
+```
+
+Screenshot.
+
+IMPORTANT:
+
+Spectatorul NU produce rezultatele.
+
+Pipeline-ul produce rezultatele.
+
+Spectatorul doar le afișează.
+
+---
+
+# 14. VIZUAL EVIDENCE
+
+După fiecare etapă:
+
+capture screenshot.
+
+Păstrează:
+
+```
+workspace/e2e/evidence/
+```
+
+Exemplu:
+
+```
+stage01_context.png
+stage02_lidar.png
+stage03_ndsm.png
+stage04_sam2.png
+stage05_fusion.png
+stage06_regularization.png
+stage07_validation.png
+stage08_final.png
+```
+
+Fiecare screenshot trebuie asociat cu:
+
+* timestamp
+* stage
+* QGIS project
+* layer names
+* CRS
+* output hashes
+
+---
+
+# 15. VLM VERIFICATION
+
+Dacă VLM este configurat:
+
+VLM-ul poate inspecta screenshoturile.
+
+Dar VLM-ul NU are voie să declare geodetic accuracy doar dintr-o imagine.
+
+Poate verifica:
+
+* layer present
+* expected visual stage
+* obvious empty output
+* obvious misalignment
+* unexpected artifacts
+* rendering failure
+* missing layer
+
+Metricile geometrice trebuie calculate determinist.
+
+---
+
+# 16. GEOMETRIC VALIDATION
+
+Menține validarea deterministă:
+
+* validity
+* self intersections
+* duplicate vertices
+* ring closure
+* overlaps
+* gaps unde sunt relevante
+* area
+* perimeter
+* geometry count
+* CRS consistency
+
+Pentru comparația cu GT:
+
+calculează metricile explicit.
+
+Nu declara accuracy din simpla validitate Shapely.
+
+---
+
+# 17. GROUND TRUTH SEPARATION
+
+Ground truth NU poate intra în pipeline-ul de producție ca să „ajute” predicția.
+
+Permis:
+
+```
+prediction
+    ↓
+compare against GT
+    ↓
+metrics
+```
+
+Interzis:
+
+```
+GT
+    ↓
+modify prediction
+    ↓
+calculate metric
+```
+
+Obiectivul este să măsurăm pipeline-ul, nu să-l ajutăm cu răspunsul.
+
+---
+
+# 18. RTK / SURVEY CONTROL
+
+În datasetul actual nu există un set RTK confirmat.
+
+NU inventa RTK.
+
+NU genera coordonate RTK artificiale.
+
+Manifestul trebuie să spună explicit:
+
+```
+RTK_AVAILABLE = false
+```
+
+dacă nu există date reale.
+
+Workflow-ul poate continua fără RTK pentru extragerea din raster/LiDAR dacă algoritmii permit acest lucru.
+
+Însă orice produs care necesită control topografic real trebuie marcat corespunzător.
+
+---
+
+# 19. CP EXPORT — REMOVE SYNTHETIC COORDINATES
+
+Elimină:
+
+```
+x = 390500 + i*10
+y = 585500 + i*10
+z = 340
+```
+
+Nu genera CP din coordonate fictive.
+
+Pentru exportul CP există numai trei situații:
+
+A.
+
+Există observații/coordonnate reale compatibile:
+
+```
+EXPORT REAL
+```
+
+B.
+
+Există o sursă geodezică reală dar nu a fost încă mapată în export:
+
+```
+BLOCKED_NEEDS_MAPPING
+```
+
+C.
+
+Nu există datele necesare:
+
+```
+NOT_AVAILABLE
+```
+
+Nu crea un fișier care pare real dacă datele sunt artificiale.
+
+---
+
+# 20. EXPORT AUTHORITATIVE GATE
+
+Păstrează approval gate.
+
+Flux:
+
+validation
+↓
+preview in QGIS
+↓
+human approval
+↓
+authoritative export
+
+Înainte de aprobare:
+
+NU scrie output autoritativ.
+
+După reject:
+
+NU exporta.
+
+---
+
+# 21. RUN MANIFEST
+
+Pentru fiecare execuție creează:
+
+```
+workspace/e2e/run_manifest.json
+```
+
+Include obligatoriu:
+
+* run_id
+* timestamp
+* OS
+* Python
+* QGIS version
+* GPU
+* model
+* model hash
+* input paths
+* input hashes
+* input CRS
+* AOI
+* execution mode
+* cache reuse status
+* stage timings
+* output paths
+* output hashes
+* warnings
+* failures
+* approval state
+* RTK availability
+* desktop control availability
+
+---
+
+# 22. EXACT STATUS VOCABULARY
+
+Folosește statusuri clare:
+
+```
+DISCOVERED
+READY
+EXECUTING
+SUCCESS
+CACHE_REUSED
+DEGRADED
+BLOCKED
+FAILED
+WAITING_FOR_USER
+CANCELLED
+```
+
+Nu transforma BLOCKED sau FAILED în SUCCESS.
+
+---
+
+# 23. TESTING STRATEGY
+
+Păstrează testele existente.
+
+Adaugă separat:
+
+### Unit tests
+
+Testează:
+
+* resolver
+* manifests
+* state transitions
+* cache detection
+* hash verification
+
+### Integration tests
+
+Testează:
+
+* real LAZ → nDSM
+* real raster → extraction
+* real geometry → regularization
+* real validation
+
+### Real E2E test
+
+Un test trebuie să demonstreze:
+
+```
+REAL FILES
+  ↓
+REAL PROCESSING
+  ↓
+REAL INTERMEDIATE OUTPUTS
+  ↓
+REAL QGIS DISPLAY
+  ↓
+REAL APPROVAL GATE
+  ↓
+REAL EXPORT
+```
+
+---
+
+# 24. CI VS LOCAL E2E
+
+Nu pretinde că GitHub CI validează:
+
+* local QGIS GUI
+* local GPU
+* local MrSID files
+* user's Windows filesystem
+* local SAM2 inference
+
+CI poate valida software.
+
+Local workstation E2E validează mediul real.
+
+Manifestul trebuie să distingă explicit:
+
+```
+CI_VALIDATION
+```
+
+de:
+
+```
+REAL_DESKTOP_E2E
+```
+
+---
+
+# 25. DESKTOP AUTOMATION CAPABILITY
+
+Înainte de orice GUI automation:
+
+detectează dacă procesul agentului are acces la desktopul interactiv.
+
+Test minim:
+
+* detect QGIS process
+* detect QGIS top-level window
+* query window title
+* screenshot capability
+* UI Automation capability
+
+Dacă testul eșuează:
+
+NU pretinde că ai controlat mouse-ul.
+
+Raportează:
+
+```
+REAL_DESKTOP_CONTROL = UNAVAILABLE
+```
+
+și rulează în PyQGIS operator mode.
+
+---
+
+# 26. HUMAN-OBSERVABLE MODE
+
+Obiectivul final:
+
+Utilizatorul pornește workflow-ul.
+
+El poate vedea:
+
+1. QGIS deschis
+2. proiectul încărcat
+3. datele selectate
+4. AOI-ul
+5. LiDAR/nDSM
+6. segmentarea
+7. fuziunea
+8. regularizarea
+9. validarea
+10. rezultatul final
+11. approval dialog
+12. exportul numai după aprobare
+
+Nu este necesar ca fiecare operație internă să fie un click de mouse.
+
+Este necesar ca operația să fie reală și vizibilă.
+
+---
+
+# 27. IMPORTANT — DO NOT DESTROY CURRENT IMPLEMENTATION
+
+Nu elimina componentele actuale doar pentru că trebuie refăcute anumite etape.
+
+Prioritate:
+
+1. păstrează arhitectura
+2. repară short-circuits
+3. înlocuiește mock-urile implicite
+4. separă cache de execution
+5. conectează spectatorul la outputurile reale
+6. introdu manifestul E2E
+7. introdu desktop capability detection
+8. apoi optimizează
+
+---
+
+# 28. ACCEPTANCE CRITERIA
+
+Nu considera MD9 terminat până când poți demonstra factual:
+
+### A.
+
+QGIS local este detectat și versiunea este citită din runtime.
+
+### B.
+
+Dataseturile reale sunt descoperite și hash-uite.
+
+### C.
+
+LiDAR-ul real este procesat sau reutilizarea cache-ului este declarată explicit.
+
+### D.
+
+SAM2 real este executat pe datele optice în modul REAL.
+
+### E.
+
+Rezultatul SAM2 nu provine din GPKG-ul final anterior.
+
+### F.
+
+Fuziunea folosește outputuri intermediare reale.
+
+### G.
+
+QGIS afișează outputurile reale pe etapă.
+
+### H.
+
+Screenshoturile sunt generate din starea reală QGIS.
+
+### I.
+
+Ground truth este folosit numai pentru evaluare.
+
+### J.
+
+CP nu mai conține coordonate sintetice.
+
+### K.
+
+Approval gate blochează exportul autoritativ.
+
+### L.
+
+Manifestul poate demonstra exact ce a fost EXECUTED și ce a fost CACHE_REUSED.
+
+### M.
+
+Dacă desktop automation nu este disponibilă, sistemul spune explicit acest lucru și nu simulează controlul GUI.
+
+---
+
+# 29. FINAL REPORT FORMAT
+
+Raportul final trebuie să conțină separat:
+
+## VERIFIED
+
+lucruri efectiv executate și măsurate.
+
+## CACHE_REUSED
+
+lucruri reutilizate dintr-un run anterior.
+
+## SIMULATED / MOCK
+
+orice fallback artificial rămas.
+
+## BLOCKED
+
+orice componentă care nu poate fi executată în mediul actual.
+
+## NOT IMPLEMENTED
+
+funcționalități încă lipsă.
+
+Nu amesteca aceste categorii.
+
+---
+
+# 30. PRINCIPIUL FINAL
+
+Scopul MD9 nu este să obțină un raport care spune „PASS”.
+
+Scopul este ca, dacă utilizatorul deschide QGIS și privește procesul, fiecare rezultat pe care îl vede să fie rezultatul efectiv produs de etapa respectivă.
+
+Prefer:
+
+```
+BLOCKED / NEEDS FIX
+```
+
+în loc de:
+
+```
+SUCCESS
+```
+
+bazat pe un output vechi, mock sau coordonate artificiale.
+
+Nu modifica raportul pentru a ascunde limitările.
+
+Repară implementarea astfel încât raportul să devină adevărat.Pentru Antigravity pe Windows, trebuie să separăm două lucruri: accesul la fișiere/comenzi și controlul efectiv al ferestrei QGIS.
+Din documentația actuală, Antigravity pe Windows permite agentului să execute comenzi și să acceseze fișiere în afara workspace-ului, dar documentația oficială descrie explicit automatizarea UI în primul rând pentru Chrome, nu un „Allow desktop control” universal pentru orice aplicație Windows. ([Google Antigravity](https://www.antigravity.google/docs/permissions?utm_source=chatgpt.com))
+1. În Antigravity, activează accesul complet la proiect
+Deschide:
+Settings → Projects → StratumRO-QGIS
+și verifică:
+Terminal Command Auto Execution → Always Proceed
+și:
+Agent Non-Workspace File Access → Enabled
+Pe Windows, aceste setări permit agentului să execute comenzile fără aprobare și să acceseze fișiere din afara proiectului. ([Google Antigravity](https://antigravity.google/docs/agent-settings?utm_source=chatgpt.com))
+Pentru proiectul tău asta este important deoarece datele sunt în:
+C:\Users\lefpa\Desktop\date\...
+și nu în folderul repo-ului.
+2. Dar asta NU îi dă automat control de mouse asupra QGIS
+Aici a fost problema din MD8.
+Faptul că Antigravity poate executa:
+Start-Process "C:\Program Files\QGIS 3.40.0\bin\qgis.exe"
+nu înseamnă automat că agentul poate apoi:
+vedea fereastra QGIS ca un om;
+apăsa butoane;
+selecta straturi cu mouse-ul;
+trage AOI-ul;
+apăsa Run;
+interacționa cu dialogurile Qt.
+Documentația Antigravity menționează explicit că Browser Agent poate acționa în Chrome, inclusiv screenshots și UI interaction, dar asta este diferit de controlul general al desktopului Windows. ([Google Antigravity](https://antigravity.google/docs/ide/overview/?utm_source=chatgpt.com))
+3. Pentru ceea ce vrei tu, trebuie adăugat un „bridge” Windows UI
+Pentru QGIS, abordarea potrivită este să-i dai Antigravity un tool/MCP care poate controla Windows UI, de exemplu printr-un mecanism de Windows UI Automation.
+Arhitectura ar fi:
+Antigravity │ ├── Terminal / PowerShell │ ├── PyQGIS │ └── Windows UI Automation │ ▼ QGIS.exe │ ▼ StratumRO plugin │ ▼ REAL PIPELINE
+Asta este partea care lipsea practic din MD8.
+4. Atenție la o confuzie importantă
+Nu aș face:
+Antigravity ↓ pyautogui click x=500,y=300
+ca mecanism principal.
+Pentru QGIS este mult mai robust:
+Antigravity ↓ UI Automation / accessibility tree ↓ QGIS controls
+iar operațiile geospațiale reale:
+PyQGIS QGIS Processing GDAL SAM2 LiDAR
+să ruleze prin API.
+Astfel, tu vezi QGIS lucrând, dar agentul nu depinde de poziția exactă a butoanelor pe ecran.
+5. Ce trebuie să-i spui lui Antigravity acum
+Pune-i mesajul acesta înainte de MD9:
+Before executing MD9, first determine whether this Windows machine provides REAL interactive desktop/UI automation for Antigravity.
+My required behavior is:
+Antigravity
+→ launch the actual QGIS 3.40 installation
+→ open the real StratumRO QGIS project
+→ interact with the visible QGIS application
+→ start StratumRO from the real QGIS UI
+→ execute the real processing pipeline
+→ keep QGIS visible while processing
+→ update the QGIS map after each real processing stage
+→ allow me to watch the complete workflow
+→ stop at the human approval gate
+→ continue only after my approval
+→ perform the real export.
+Important distinction:
+Terminal access, PowerShell access, filesystem access and PyQGIS access are NOT equivalent to interactive desktop control.
+First run a capability audit for:
+QGIS process detection
+QGIS top-level window detection
+Windows UI Automation availability
+ability to inspect QGIS controls
+ability to bring QGIS to foreground
+ability to interact with QGIS controls
+screenshot capability
+ability to detect whether the interaction actually affected QGIS
+If native Antigravity desktop automation is NOT available, do not pretend it is.
+Instead determine what local Windows UI Automation bridge/MCP/tool can provide real control of the QGIS application and integrate that into the existing StratumRO architecture.
+Do not replace the real pipeline with shell-only execution.
+Do not replace QGIS interaction with a simulated transcript.
+Do not use fake mouse coordinates unless there is no semantic UI automation alternative.
+The final goal is REAL DESKTOP E2E:
+I should be able to physically see QGIS open on my Windows desktop and watch StratumRO perform the actual workflow.
+6. Iar aici este partea foarte importantă pentru cazul tău
+Antigravity 2.0 este acum o aplicație desktop separată și Google documentează că agenții pot executa comenzi de sistem, opera fișiere, folosi MCP și interacționa cu Chrome. ([Google Antigravity](https://www.antigravity.google/blog/introducing-google-antigravity-2?utm_source=chatgpt.com))
+Nu găsesc în documentația oficială actuală o setare de tip „Allow Antigravity to control all Windows applications” pe care pur și simplu s-o activezi. Așa că nu ți-aș spune să cauți o opțiune care poate nici nu există.
+Pentru proiectul tău, soluția corectă este să verificăm ce mecanism Windows UI Automation are Antigravity-ul tău instalat și, dacă nu are unul, să-i adăugăm unul prin MCP/tool.
+Asta ar transforma efectiv MD9 din „rulează QGIS din shell” în „deschide QGIS și lucrează în el în timp ce mă uit”. vezi daca poti 
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-17T21:42:46+03:00.
+</ADDITIONAL_METADATA>

@@ -1,0 +1,2 @@
+ref_id,pred_id,matched,iou,boundary_rmse_m,hausdorff_m,centroid_disp_m,area_ref_m2,area_pred_m2,area_error_m2,area_error_pct,perimeter_ref_m,perimeter_pred_m,mean_angle_dev_deg,compliance_tier,error_flags
+CASE_01_L_SHAPE,CASE_01_L_SHAPE,True,1.0000,0.000,0.000,0.000,138.00,138.00,0.00,0.00,54.00,54.00,0.00,CONFORM_ANCPI,"NONE"

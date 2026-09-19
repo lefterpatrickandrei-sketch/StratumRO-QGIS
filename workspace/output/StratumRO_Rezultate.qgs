@@ -1,0 +1,534 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis projectname="StratumRO — Cadastru Sistematic &amp; Cartografiere ANCPI v3" version="3.40.0">
+  <homePath path=""/>
+  <title>StratumRO — Cadastru General &amp; Partiție Planară 100% (Cluj USAMV)</title>
+  <autotransaction active="0"/>
+  <evaluateDefaultValues active="0"/>
+  <trust active="0"/>
+  <projectCrs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt>PROJCRS["Pulkovo 1942(58) / Stereo70",BASEGEOGCRS["Pulkovo 1942",DATUM["Pulkovo 1942",ELLIPSOID["Krassowsky 1940",6378245,298.3,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4284]],CONVERSION["Stereo70",METHOD["Oblique Stereographic",ID["EPSG",9809]],PARAMETER["Latitude of natural origin",46,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",25,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.99975,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",500000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["northing (X)",north,ORDER[1],LENGTHUNIT["metre",1]],AXIS["easting (Y)",east,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Romania - onshore."],BBOX[43.62,20.26,48.27,29.74]],ID["EPSG",3844]]</wkt>
+      <proj4>+proj=sterea +lat_0=46 +lon_0=25 +k=0.99975 +x_0=500000 +y_0=500000 +ellps=krass +towgs84=2.3287,-147.0416,-92.0802,0.3092483,0.3248219,-0.4972993,5.68906266 +units=m +no_defs</proj4>
+      <srsid>100000</srsid>
+      <srid>3844</srid>
+      <authid>EPSG:3844</authid>
+      <description>Pulkovo 1942(58) / Stereo70</description>
+      <projectionacronym>sterea</projectionacronym>
+      <ellipsoidacronym>EPSG:7024</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </projectCrs>
+  <layer-tree-group>
+    <customproperties><Option/></customproperties>
+    <layer-tree-layer id="layer_limita" name="StratumRO — Limită Sector Cadastral (Cadru Lucru)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=LIMITA_SECTOR_CADASTRAL" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_stalpi" name="StratumRO — Stâlpi &amp; Turnuri (7 Puncte)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STALPI_TURNURI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_arbori" name="StratumRO — Arbori Solitari Validați (1,358 Puncte)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=ARBORI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_cladiri_sol" name="StratumRO — Clădiri Sol ANCPI (-40cm) (29 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_SOL_ANCPI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_cladiri_hibrid" name="StratumRO — Acoperișuri Clădiri 90° (29 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_HIBRID" providerKey="ogr" expanded="1" checked="Qt::Unchecked"/>
+    <layer-tree-layer id="layer_anexe" name="StratumRO — Anexe Gospodărești (1 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=ANEXE_GOSPODARESTI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_dr" name="StratumRO — DR: Căi Comunicații Rutiere &amp; Parcări (5 Parcele)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=DR" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_hr" name="StratumRO — HR: Hidrografie &amp; Cursuri Apă (2 Parcele)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=HR" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_vn" name="StratumRO — VN: Vii &amp; Plantații Didactice (1 Parcele)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=VN" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_cimitir" name="StratumRO — CIMITIR: Destinație Specială CC (1 Parcele)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CIMITIR" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_a" name="StratumRO — A: Terenuri Arabile (7 Parcele)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=A" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_unclassified" name="StratumRO — UNCLASSIFIED: Teren Rezidual / Curți (111 Parcele)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=UNCLASSIFIED" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-group name="Etape Inspecție Calitate V2 (Audit AI -> Cadastru)" expanded="0" checked="Qt::Unchecked">
+      <layer-tree-layer id="layer_stage5" name="Etapa 5: Validare 3D LiDAR &amp; Semaphor (483 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_5_FINAL_CONFIDENCE" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+      <layer-tree-layer id="layer_stage4" name="Etapa 4: Constrângeri Topologice &amp; Calcan (483 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_4_LIDAR_CONSTRAINED" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+      <layer-tree-layer id="layer_stage3" name="Etapa 3: Regularizare Adaptivă TLS V2 (483 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_3_ADAPTIVE_POLYGON" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+      <layer-tree-layer id="layer_stage2" name="Etapa 2: Contur Curățat &amp; Fuzionat (483 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_2_CLEANED_CONTOUR" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+      <layer-tree-layer id="layer_stage1" name="Etapa 1: Mască AI Brută SAM2 (416 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_1_RAW_CONTOUR" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
+    </layer-tree-group>
+    <layer-tree-layer id="layer_ndsm" name="StratumRO — Model Înălțimi nDSM (1m)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ndsm_stereo70.tif" providerKey="gdal" expanded="1" checked="Qt::Unchecked"/>
+    <layer-tree-layer id="layer_ortofoto" name="StratumRO — Ortofotoplan Aerian Cluj USAMV (RGB)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ortofoto_cluj_usamv_rgb.vrt" providerKey="gdal" expanded="1" checked="Qt::Checked"/>
+  </layer-tree-group>
+  <projectlayers>
+
+    <!-- LIMITA SECTOR CADASTRAL -->
+    <maplayer id="layer_limita" name="StratumRO — Limită Sector Cadastral (Cadru Lucru)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_limita</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=LIMITA_SECTOR_CADASTRAL</datasource>
+      <layername>StratumRO — Limită Sector Cadastral (Cadru Lucru)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="1" clip_to_extent="1">
+            <layer class="SimpleLine" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="line_color" type="QString" value="0,0,0,255"/>
+                <Option name="line_width" type="QString" value="1.2"/>
+                <Option name="line_style" type="QString" value="dash"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- CLADIRI SOL ANCPI (Semafor Încredere V2) -->
+    <maplayer id="layer_cladiri_sol" name="StratumRO — Clădiri Sol ANCPI (-40cm) (29 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_cladiri_sol</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_SOL_ANCPI</datasource>
+      <layername>StratumRO — Clădiri Sol ANCPI (-40cm) (29 Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="RuleRenderer" symbollevels="0">
+        <rules key="root_sol">
+          <rule key="sol_green" filter="&quot;action_code&quot; = 'VERDE_ACCEPTAT_AUTOMAT' or &quot;conf_final&quot; &gt;= 0.85" symbol="0" label="🟢 Verde: Acceptat Automat (Conf ≥ 0.85)"/>
+          <rule key="sol_yellow" filter="&quot;action_code&quot; = 'GALBEN_INSPECTIE_GEODEZ' or (&quot;conf_final&quot; &gt;= 0.65 and &quot;conf_final&quot; &lt; 0.85)" symbol="1" label="🟡 Galben: Inspecție Geodez (0.65 ≤ Conf &lt; 0.85)"/>
+          <rule key="sol_red" filter="&quot;action_code&quot; = 'ROSU_RESPINS_ARTEFACT' or (&quot;conf_final&quot; &lt; 0.65 and &quot;conf_final&quot; &gt; 0)" symbol="2" label="🔴 Roșu: Respins / Artefact (Conf &lt; 0.65)"/>
+          <rule key="sol_else" filter="ELSE" symbol="3" label="⚪ Contur Standard Sol ANCPI"/>
+        </rules>
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,230,118,80"/>
+                <Option name="outline_color" type="QString" value="0,180,80,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="1" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,214,0,80"/>
+                <Option name="outline_color" type="QString" value="255,160,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="2" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,23,68,80"/>
+                <Option name="outline_color" type="QString" value="213,0,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="3" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,40,40,80"/>
+                <Option name="outline_color" type="QString" value="230,0,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- CLADIRI HIBRID -->
+    <maplayer id="layer_cladiri_hibrid" name="StratumRO — Acoperișuri Clădiri 90° (29 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_cladiri_hibrid</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_HIBRID</datasource>
+      <layername>StratumRO — Acoperișuri Clădiri 90° (29 Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.8" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,255,255,40"/>
+                <Option name="outline_color" type="QString" value="0,220,255,255"/>
+                <Option name="outline_width" type="QString" value="0.8"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- DR: DRUMURI -->
+    <maplayer id="layer_dr" name="StratumRO — DR: Căi Comunicații Rutiere &amp; Parcări (5 Parcele)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_dr</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=DR</datasource>
+      <layername>StratumRO — DR: Căi Comunicații Rutiere &amp; Parcări (5 Parcele)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.6" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="130,130,130,140"/>
+                <Option name="outline_color" type="QString" value="80,80,80,255"/>
+                <Option name="outline_width" type="QString" value="0.6"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- HR: HIDROGRAFIE -->
+    <maplayer id="layer_hr" name="StratumRO — HR: Hidrografie &amp; Cursuri Apă (2 Parcele)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_hr</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=HR</datasource>
+      <layername>StratumRO — HR: Hidrografie &amp; Cursuri Apă (2 Parcele)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.75" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="65,150,240,160"/>
+                <Option name="outline_color" type="QString" value="30,100,200,255"/>
+                <Option name="outline_width" type="QString" value="0.7"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- VN: VII -->
+    <maplayer id="layer_vn" name="StratumRO — VN: Vii &amp; Plantații Didactice (1 Parcele)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_vn</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=VN</datasource>
+      <layername>StratumRO — VN: Vii &amp; Plantații Didactice (1 Parcele)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.6" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="100,160,50,110"/>
+                <Option name="outline_color" type="QString" value="60,110,30,255"/>
+                <Option name="outline_width" type="QString" value="0.6"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- CIMITIR -->
+    <maplayer id="layer_cimitir" name="StratumRO — CIMITIR: Destinație Specială CC (1 Parcele)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_cimitir</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CIMITIR</datasource>
+      <layername>StratumRO — CIMITIR: Destinație Specială CC (1 Parcele)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.55" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="160,130,170,120"/>
+                <Option name="outline_color" type="QString" value="110,80,120,255"/>
+                <Option name="outline_width" type="QString" value="0.7"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- A: ARABIL -->
+    <maplayer id="layer_a" name="StratumRO — A: Terenuri Arabile (7 Parcele)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_a</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=A</datasource>
+      <layername>StratumRO — A: Terenuri Arabile (7 Parcele)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.5" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="235,215,140,110"/>
+                <Option name="outline_color" type="QString" value="180,150,70,255"/>
+                <Option name="outline_width" type="QString" value="0.6"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- UNCLASSIFIED: PARTITIE PLANARA 100% -->
+    <maplayer id="layer_unclassified" name="StratumRO — UNCLASSIFIED: Teren Rezidual / Curți (111 Parcele)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_unclassified</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=UNCLASSIFIED</datasource>
+      <layername>StratumRO — UNCLASSIFIED: Teren Rezidual / Curți (111 Parcele)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.35" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="245,240,215,90"/>
+                <Option name="outline_color" type="QString" value="200,190,160,180"/>
+                <Option name="outline_width" type="QString" value="0.4"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ARBORI (Puncte Verzi) -->
+    <maplayer id="layer_arbori" name="StratumRO — Arbori Solitari Validați (1,358 Puncte)" type="vector" geometry="Point" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_arbori</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=ARBORI</datasource>
+      <layername>StratumRO — Arbori Solitari Validați (1,358 Puncte)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="marker" name="0" alpha="1" clip_to_extent="1">
+            <layer class="SimpleMarker" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="name" type="QString" value="circle"/>
+                <Option name="size" type="QString" value="3.0"/>
+                <Option name="color" type="QString" value="34,180,34,255"/>
+                <Option name="outline_color" type="QString" value="0,80,0,255"/>
+                <Option name="outline_width" type="QString" value="0.5"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- STALPI TURNURI -->
+    <maplayer id="layer_stalpi" name="StratumRO — Stâlpi &amp; Turnuri (7 Puncte)" type="vector" geometry="Point" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stalpi</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STALPI_TURNURI</datasource>
+      <layername>StratumRO — Stâlpi &amp; Turnuri (7 Puncte)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="marker" name="0" alpha="1" clip_to_extent="1">
+            <layer class="SimpleMarker" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="name" type="QString" value="diamond"/>
+                <Option name="size" type="QString" value="4.5"/>
+                <Option name="color" type="QString" value="0,230,255,255"/>
+                <Option name="outline_color" type="QString" value="0,0,139,255"/>
+                <Option name="outline_width" type="QString" value="0.8"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ANEXE GOSPODARESTI -->
+    <maplayer id="layer_anexe" name="StratumRO — Anexe Gospodărești (1 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_anexe</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=ANEXE_GOSPODARESTI</datasource>
+      <layername>StratumRO — Anexe Gospodărești (1 Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.8" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,180,0,50"/>
+                <Option name="outline_color" type="QString" value="255,140,0,255"/>
+                <Option name="outline_width" type="QString" value="0.7"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 1: MASCA BRUTA AI -->
+    <maplayer id="layer_stage1" name="Etapa 1: Mască AI Brută SAM2 (416 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage1</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_1_RAW_CONTOUR</datasource>
+      <layername>Etapa 1: Mască AI Brută SAM2 (416 Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.7" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="233,30,99,40"/>
+                <Option name="outline_color" type="QString" value="233,30,99,255"/>
+                <Option name="outline_width" type="QString" value="0.7"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 2: CONTUR CURATAT & FUZIONAT -->
+    <maplayer id="layer_stage2" name="Etapa 2: Contur Curățat &amp; Fuzionat (483 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage2</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_2_CLEANED_CONTOUR</datasource>
+      <layername>Etapa 2: Contur Curățat &amp; Fuzionat (483 Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.7" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,152,0,40"/>
+                <Option name="outline_color" type="QString" value="255,152,0,255"/>
+                <Option name="outline_width" type="QString" value="0.8"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 3: REGULARIZARE ADAPTIVA TLS V2 -->
+    <maplayer id="layer_stage3" name="Etapa 3: Regularizare Adaptivă TLS V2 (483 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage3</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_3_ADAPTIVE_POLYGON</datasource>
+      <layername>Etapa 3: Regularizare Adaptivă TLS V2 (483 Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.75" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="156,39,176,40"/>
+                <Option name="outline_color" type="QString" value="156,39,176,255"/>
+                <Option name="outline_width" type="QString" value="0.9"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 4: CONSTRANGERI TOPOLOGICE & CALCAN -->
+    <maplayer id="layer_stage4" name="Etapa 4: Constrângeri Topologice &amp; Calcan (483 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage4</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_4_LIDAR_CONSTRAINED</datasource>
+      <layername>Etapa 4: Constrângeri Topologice &amp; Calcan (483 Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.75" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,188,212,40"/>
+                <Option name="outline_color" type="QString" value="0,188,212,255"/>
+                <Option name="outline_width" type="QString" value="0.9"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ETAPA 5: VALIDARE 3D LIDAR & SEMAFOR -->
+    <maplayer id="layer_stage5" name="Etapa 5: Validare 3D LiDAR &amp; Semaphor (483 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+      <id>layer_stage5</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STAGE_5_FINAL_CONFIDENCE</datasource>
+      <layername>Etapa 5: Validare 3D LiDAR &amp; Semaphor (483 Clădiri)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <renderer-v2 type="RuleRenderer" symbollevels="0">
+        <rules key="root_s5">
+          <rule key="s5_green" filter="&quot;action_code&quot; = 'VERDE_ACCEPTAT_AUTOMAT' or &quot;conf_final&quot; &gt;= 0.85" symbol="0" label="🟢 Verde: Acceptat Automat (Conf ≥ 0.85)"/>
+          <rule key="s5_yellow" filter="&quot;action_code&quot; = 'GALBEN_INSPECTIE_GEODEZ' or (&quot;conf_final&quot; &gt;= 0.65 and &quot;conf_final&quot; &lt; 0.85)" symbol="1" label="🟡 Galben: Inspecție Geodez (0.65 ≤ Conf &lt; 0.85)"/>
+          <rule key="s5_red" filter="&quot;action_code&quot; = 'ROSU_RESPINS_ARTEFACT' or (&quot;conf_final&quot; &lt; 0.65 and &quot;conf_final&quot; &gt; 0)" symbol="2" label="🔴 Roșu: Respins / Artefact (Conf &lt; 0.65)"/>
+          <rule key="s5_else" filter="ELSE" symbol="3" label="⚪ Alte Clădiri"/>
+        </rules>
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,230,118,70"/>
+                <Option name="outline_color" type="QString" value="0,180,80,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="1" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,214,0,70"/>
+                <Option name="outline_color" type="QString" value="255,160,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="2" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="255,23,68,70"/>
+                <Option name="outline_color" type="QString" value="213,0,0,255"/>
+                <Option name="outline_width" type="QString" value="1.0"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+          <symbol type="fill" name="3" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="0,220,255,50"/>
+                <Option name="outline_color" type="QString" value="0,180,220,255"/>
+                <Option name="outline_width" type="QString" value="0.8"/>
+                <Option name="style" type="QString" value="solid"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- nDSM (Unchecked) -->
+    <maplayer id="layer_ndsm" name="StratumRO — Model Înălțimi nDSM (1m)" type="raster" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" autoRefreshEnabled="0">
+      <id>layer_ndsm</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ndsm_stereo70.tif</datasource>
+      <layername>StratumRO — Model Înălțimi nDSM (1m)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <pipe-data-defined-properties><Option type="Map"><Option name="name" type="QString" value=""/><Option name="properties"/><Option name="type" type="QString" value="collection"/></Option></pipe-data-defined-properties>
+      <pipe>
+        <provider><operation>gdal</operation></provider>
+        <rasterrenderer type="singlebandgray" opacity="0.7" alphaBand="-1" grayBand="1" gradient="BlackToWhite">
+          <rasterTransparency/>
+          <contrastEnhancement>
+            <minValue>0.0</minValue>
+            <maxValue>25.0</maxValue>
+            <algorithm>StretchToMinimumMaximum</algorithm>
+          </contrastEnhancement>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeOn="0" colorizeStrength="100"/>
+        <resamplingStage>resamplingFilter</resamplingStage>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+
+    <!-- ORTOFOTOPLAN RGB (Checked at bottom) -->
+    <maplayer id="layer_ortofoto" name="StratumRO — Ortofotoplan Aerian Cluj USAMV (RGB)" type="raster" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" autoRefreshEnabled="0">
+      <id>layer_ortofoto</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ortofoto_cluj_usamv_rgb.vrt</datasource>
+      <layername>StratumRO — Ortofotoplan Aerian Cluj USAMV (RGB)</layername>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <pipe>
+        <provider><operation>gdal</operation></provider>
+        <rasterrenderer type="multibandcolor" opacity="1.0" redBand="1" greenBand="2" blueBand="3">
+          <rasterTransparency/>
+        </rasterrenderer>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+
+  </projectlayers>
+</qgis>

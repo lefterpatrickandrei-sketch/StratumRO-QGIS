@@ -1,0 +1,22 @@
+{
+  "PROJECT_PATH": "C:/Users/lefpa/Downloads/QGIS-AI/StratumRO_Inspectie_Vizuala.qgz",
+  "PROJECT_CRS": "EPSG:3844",
+  "TOTAL_LAYERS": 5,
+  "LAYER_NAMES": [
+    "1. Ortofoto Aerian RGB (10 cm GSD)",
+    "2. Înălțime LiDAR nDSM (H > 2.5m)",
+    "3. Vectorizare Finală Cadastru (StratumRO ANCPI Clean — 29 Clădiri)",
+    "4. Cadastru Teren (Ground Truth - 29 Clădiri)",
+    "5. Artefacte Respinse SAM2 (Audit - 184 Poligoane)"
+  ],
+  "STRATUM_RO_DOCKWIDGET_ACTIVE": true,
+  "STRATUM_RO_DOCKWIDGET_CLASS": "StratumRODockWidget",
+  "MAP_CANVAS_RENDERED": true,
+  "SCREENSHOTS": {
+    "FULL_WORKSPACE": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\evidence\\01_stratum_ro_full_workspace.png",
+    "MAP_CANVAS": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\evidence\\02_cadastral_map_canvas.png",
+    "DOCKWIDGET": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\evidence\\03_stratum_ro_dockwidget.png"
+  },
+  "TIMESTAMP": 1789737395.15872,
+  "STATUS": "VERIFIED_GENUINE_STRATUMRO"
+}

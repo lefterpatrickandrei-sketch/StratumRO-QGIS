@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "test_preview",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3844" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "area_m2": 150.0, "category": "1CC" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ 392015.0, 585000.0 ], [ 392015.0, 585010.0 ], [ 392000.0, 585010.0 ], [ 392000.0, 585000.0 ], [ 392015.0, 585000.0 ] ] ] } }
+]
+}

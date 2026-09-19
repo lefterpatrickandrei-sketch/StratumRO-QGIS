@@ -1,0 +1,21 @@
+{
+  "TIMESTAMP": 1789737395.159781,
+  "TARGET": "StratumRO Cadastral Suite (Stereo 70 EPSG:3844)",
+  "PROJECT_FILE": "StratumRO_Inspectie_Vizuala.qgz",
+  "TOTAL_LAYERS": 5,
+  "KEY_LAYERS": [
+    "3. Vectorizare Finală Cadastru (StratumRO ANCPI Clean — 29 Clădiri)",
+    "4. Cadastru Teren (Ground Truth - 29 Clădiri)",
+    "1. Ortofoto Aerian RGB (10 cm GSD)",
+    "2. Înălțime LiDAR nDSM (H > 2.5m)",
+    "5. Artefacte Respinse SAM2 (Audit - 184 Poligoane) [Debifat]"
+  ],
+  "DOCKWIDGET_VISIBLE": true,
+  "VERIFIED_INTERACTION": "Project StratumRO_Inspectie_Vizuala loaded, red false positive artifacts filtered out, clean simplified 90° cadastral vectorization rendered without stair-steps, canvas zoomed to 29 cadastral buildings.",
+  "SCREENSHOTS": [
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\evidence\\01_stratum_ro_full_workspace.png",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\evidence\\02_cadastral_map_canvas.png",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\evidence\\03_stratum_ro_dockwidget.png"
+  ],
+  "STATUS": "SUCCESS"
+}

@@ -1,0 +1,17 @@
+{
+  "source_tiles_dir": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV",
+  "tiles_indexed": 8,
+  "selected_crop_aoi": [
+    390650.0,
+    585350.0,
+    391150.0,
+    585750.0
+  ],
+  "crop_shape": [
+    2000,
+    2500,
+    3
+  ],
+  "crop_path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\04_orthophoto\\active_ortho_crop.tif",
+  "crop_sha256": "132b8dc43df659ffe420f2ce2de3998919199052c9a5a8d391c4a7e606d08bbb"
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis projectname="StratumRO — Cadastru Oficial ANCPI (Stereo 70)" version="3.40.0">
+  <homePath path=""/>
+  <title>StratumRO — Livrabil Cadastru ANCPI (Legea 7/1996)</title>
+  <autotransaction active="0"/>
+  <evaluateDefaultValues active="0"/>
+  <trust active="0"/>
+  <projectCrs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt>PROJCRS["Pulkovo 1942(58) / Stereo70",BASEGEOGCRS["Pulkovo 1942",DATUM["Pulkovo 1942",ELLIPSOID["Krassowsky 1940",6378245,298.3,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4284]],CONVERSION["Stereo70",METHOD["Oblique Stereographic",ID["EPSG",9809]],PARAMETER["Latitude of natural origin",46,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",25,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.99975,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",500000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["northing (X)",north,ORDER[1],LENGTHUNIT["metre",1]],AXIS["easting (Y)",east,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping (large and medium scale)."],AREA["Romania - onshore."],BBOX[43.62,20.26,48.27,29.74]],ID["EPSG",3844]]</wkt>
+      <proj4>+proj=sterea +lat_0=46 +lon_0=25 +k=0.99975 +x_0=500000 +y_0=500000 +ellps=krass +towgs84=2.3287,-147.0416,-92.0802,0.3092483,0.3248219,-0.4972993,5.68906266 +units=m +no_defs</proj4>
+      <srsid>100000</srsid>
+      <srid>3844</srid>
+      <authid>EPSG:3844</authid>
+      <description>Pulkovo 1942(58) / Stereo70</description>
+      <projectionacronym>sterea</projectionacronym>
+      <ellipsoidacronym>EPSG:7024</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </projectCrs>
+  <layer-tree-group>
+    <customproperties><Option/></customproperties>
+    <layer-tree-layer id="cad_stalpi" name="ANCPI — Stâlpi &amp; Rețele Utilități (8 Puncte)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cadastru_ancpi.gpkg|layername=STALPI_UTILITATI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="cad_arbori" name="ANCPI — Arbori Aliniament (Fără Suprapunere Clădiri - 3,937 Puncte)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cadastru_ancpi.gpkg|layername=ARBORI_ALINIAMENT" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="cad_anexe" name="ANCPI — Corpuri C2: Anexe Gospodărești (3 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cadastru_ancpi.gpkg|layername=ANEXE" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="cad_constructii" name="ANCPI — Corpuri C1: Construcții Principale Ortogonalizate 90° (290 Clădiri - 0 Suprapuneri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cadastru_ancpi.gpkg|layername=CONSTRUCTII" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="cad_ndsm" name="Cadastru — Model Înălțimi nDSM LiDAR (1m)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ndsm_stereo70.tif" providerKey="gdal" expanded="0" checked="Qt::Unchecked"/>
+    <layer-tree-layer id="cad_orto" name="ANCPI — Ortofotoplan Cluj USAMV (RGB Stereo 70)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ortofoto_cluj_usamv.vrt" providerKey="gdal" expanded="1" checked="Qt::Checked"/>
+    <custom-order enabled="0">
+      <item>cad_stalpi</item>
+      <item>cad_arbori</item>
+      <item>cad_anexe</item>
+      <item>cad_constructii</item>
+      <item>cad_ndsm</item>
+      <item>cad_orto</item>
+    </custom-order>
+  </layer-tree-group>
+  <projectlayers>
+    <!-- STALPI -->
+    <maplayer id="cad_stalpi" name="ANCPI — Stâlpi &amp; Rețele Utilități (8 Puncte)" type="vector" geometry="Point">
+      <id>cad_stalpi</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cadastru_ancpi.gpkg|layername=STALPI_UTILITATI</datasource>
+      <layername>ANCPI — Stâlpi &amp; Rețele Utilități (8 Puncte)</layername>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="marker" name="0" alpha="1" clip_to_extent="1">
+            <layer class="SimpleMarker" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="name" type="QString" value="diamond"/>
+                <Option name="size" type="QString" value="4.0"/>
+                <Option name="color" type="QString" value="0,230,255,255"/>
+                <Option name="outline_color" type="QString" value="0,0,139,255"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ARBORI ALINIAMENT -->
+    <maplayer id="cad_arbori" name="ANCPI — Arbori Aliniament (Fără Suprapunere Clădiri - 3,927 Puncte)" type="vector" geometry="Point">
+      <id>cad_arbori</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cadastru_ancpi.gpkg|layername=ARBORI_ALINIAMENT</datasource>
+      <layername>ANCPI — Arbori Aliniament (Fără Suprapunere Clădiri - 3,927 Puncte)</layername>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="marker" name="0" alpha="0.7" clip_to_extent="1">
+            <layer class="SimpleMarker" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="name" type="QString" value="circle"/>
+                <Option name="size" type="QString" value="1.8"/>
+                <Option name="color" type="QString" value="34,197,94,180"/>
+                <Option name="outline_color" type="QString" value="21,128,61,255"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- ANEXE C2 -->
+    <maplayer id="cad_anexe" name="ANCPI — Corpuri C2: Anexe Gospodărești (6 Clădiri)" type="vector" geometry="Polygon">
+      <id>cad_anexe</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cadastru_ancpi.gpkg|layername=ANEXE</datasource>
+      <layername>ANCPI — Corpuri C2: Anexe Gospodărești (6 Clădiri)</layername>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.85" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="250,204,21,140"/>
+                <Option name="outline_color" type="QString" value="202,138,4,255"/>
+                <Option name="outline_width" type="QString" value="0.7"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- CONSTRUCTII C1 -->
+    <maplayer id="cad_constructii" name="ANCPI — Corpuri C1: Construcții Principale Ortogonalizate 90° (377 Clădiri)" type="vector" geometry="Polygon">
+      <id>cad_constructii</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cadastru_ancpi.gpkg|layername=CONSTRUCTII</datasource>
+      <layername>ANCPI — Corpuri C1: Construcții Principale Ortogonalizate 90° (377 Clădiri)</layername>
+      <renderer-v2 type="singleSymbol" symbollevels="0">
+        <symbols>
+          <symbol type="fill" name="0" alpha="0.9" clip_to_extent="1">
+            <layer class="SimpleFill" pass="0" locked="0">
+              <Option type="Map">
+                <Option name="color" type="QString" value="239,68,68,140"/>
+                <Option name="outline_color" type="QString" value="185,28,28,255"/>
+                <Option name="outline_width" type="QString" value="0.9"/>
+              </Option>
+            </layer>
+          </symbol>
+        </symbols>
+      </renderer-v2>
+    </maplayer>
+
+    <!-- nDSM -->
+    <maplayer id="cad_ndsm" name="Cadastru — Model Înălțimi nDSM (1m)" type="raster">
+      <id>cad_ndsm</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ndsm_stereo70.tif</datasource>
+      <layername>Cadastru — Model Înălțimi nDSM (1m)</layername>
+      <pipe>
+        <rasterrenderer type="singlebandpseudocolor" opacity="0.6" band="1">
+          <rastershader>
+            <colorrampshader colorRampType="INTERPOLATED">
+              <item label="0.0 m" value="0" color="44,123,182,0"/>
+              <item label="3.0 m" value="3" color="171,217,233,180"/>
+              <item label="8.0 m" value="8" color="255,255,191,210"/>
+              <item label="20.0 m" value="20" color="215,25,28,255"/>
+            </colorrampshader>
+          </rastershader>
+        </rasterrenderer>
+      </pipe>
+    </maplayer>
+
+    <!-- ORTOFOTOPLAN RGB CLUJ USAMV -->
+    <maplayer id="cad_orto" name="ANCPI — Ortofotoplan Cluj USAMV (RGB Stereo 70)" type="raster">
+      <id>cad_orto</id>
+      <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ortofoto_cluj_usamv.vrt</datasource>
+      <layername>ANCPI — Ortofotoplan Cluj USAMV (RGB Stereo 70)</layername>
+      <provider>gdal</provider>
+      <pipe>
+        <rasterrenderer type="multibandcolor" opacity="1.0" redBand="1" greenBand="2" blueBand="3">
+        </rasterrenderer>
+      </pipe>
+    </maplayer>
+  </projectlayers>
+</qgis>

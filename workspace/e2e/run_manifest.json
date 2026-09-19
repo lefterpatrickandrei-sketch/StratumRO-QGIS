@@ -1,0 +1,116 @@
+{
+  "run_id": "e2e_real_1789671679",
+  "timestamp": "2026-09-17T22:01:23.326172",
+  "total_runtime_sec": 3.74,
+  "environment": {
+    "os": "win32",
+    "python": "3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]",
+    "qgis_version": "3.40.0-Bratislava",
+    "gpu": {
+      "cuda_available": true,
+      "device_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+      "device_count": 1
+    },
+    "desktop_control_available": true,
+    "desktop_mode": "REAL_DESKTOP"
+  },
+  "model": {
+    "name": "Meta SAM 2 Hiera Tiny",
+    "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\models\\sam2\\sam2_hiera_tiny.pt",
+    "sha256": "65b50056e05bcb13694174f51bb6da89c894b57b75ccdf0ba6352c597c5d1125",
+    "execution_mode": "REAL (CUDA GPU)"
+  },
+  "inputs": {
+    "lidar": {
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\Comparatie\\LAZ\\NorPuncte_St70_S42.laz",
+      "sha256": "fa68802289500d005eda5689316f31db3b6e076c4775c7b6543e8d7d67bcfb5e",
+      "points": 4624905
+    },
+    "dtm": {
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\Comparatie\\DTM3m\\DTM3m.tif",
+      "sha256": "2813f631c5167a30ccc8d494d222f8f8ee3e257149be6bce77e886b01da72b77"
+    },
+    "orthophoto": {
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV",
+      "sha256": "66d95a807b525826a2b581d72fd313ce2861d76239ff381dcb7ff17d11627bbb"
+    },
+    "ground_truth": {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\data\\ground_truth\\tier1_teren.geojson",
+      "sha256": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424"
+    }
+  },
+  "stage_execution_status": {
+    "01_context": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 0.35
+    },
+    "02_lidar": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 0.0
+    },
+    "03_ndsm": {
+      "status": "CACHE_REUSED",
+      "timing_sec": 0.01
+    },
+    "04_orthophoto": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 0.04
+    },
+    "05_sam2": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 2.07
+    },
+    "06_fusion": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 0.01
+    },
+    "07_vectorization": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 0.0
+    },
+    "08_regularization": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 0.35
+    },
+    "09_eave": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 0.0
+    },
+    "10_validation": {
+      "status": "EXECUTED_REAL",
+      "timing_sec": 0.0
+    },
+    "11_export": {
+      "status": "EXPORT_REAL",
+      "timing_sec": 0.41
+    }
+  },
+  "outputs": {
+    "dxf": {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\11_export\\cadastru_ancpi_ai.dxf",
+      "sha256": "bee87f4ef5f7a4ae7f758592c21301626780dcfcf7bdc03a67ed663b1e1db791"
+    },
+    "cp": {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\11_export\\imobil_ai.cp",
+      "sha256": "fc1012ab3327164a870955eec509146c06d457f63ada3425f493caf87f9cd4e4"
+    },
+    "evidence_screenshots": [
+      "stage00_baseline_1789671000.png",
+      "stage00_baseline_1789671679.png",
+      "stage00_test_1789670883.png",
+      "stage01_context_1789671682.png",
+      "stage04_ortho_crop_1789671683.png",
+      "stage05_sam2_masks_1789671683.png",
+      "stage08_regularization_1789671683.png",
+      "stage11_final_export_1789671683.png"
+    ]
+  },
+  "approval_gate": {
+    "approved": true,
+    "reason": "Aprobat pentru export eTerra si TopoLT CAD conform auditului MD 9",
+    "sign_off_status": "APPROVED"
+  },
+  "rtk_available": false,
+  "warnings": [],
+  "failures": []
+}

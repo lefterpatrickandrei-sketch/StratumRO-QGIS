@@ -1,0 +1,59 @@
+{
+  "audit_metadata": {
+    "phase": "MD 8 \u2014 Real Desktop Operator Mode & E2E Validation",
+    "timestamp": "2026-09-17T21:05:53.840422",
+    "crs_official": "EPSG:3844 (Stereo 70)",
+    "aoi_study_area": "Cluj-Napoca USAMV Sector 42",
+    "aoi_bounds": {
+      "xmin": 390529.4,
+      "ymin": 584837.7,
+      "xmax": 391578.0,
+      "ymax": 585886.3
+    }
+  },
+  "datasets": {
+    "lidar": {
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\Comparatie\\LAZ\\NorPuncte_St70_S42.laz",
+      "exists": true,
+      "size_bytes": 21306592,
+      "point_count": 4624905,
+      "crs": "EPSG:4284 (Stereo 70 coordinates)",
+      "bounds": [
+        390478.54,
+        584981.23,
+        391522.11,
+        585877.66
+      ]
+    },
+    "dtm": {
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\Comparatie\\DTM3m\\DTM3m.tif",
+      "exists": true,
+      "size_bytes": 421864,
+      "resolution": [
+        3.0,
+        3.0
+      ],
+      "dimensions": [
+        349,
+        300
+      ],
+      "crs": "Stereo 70 S-42"
+    },
+    "orthophoto_mrsid_dir": {
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV",
+      "exists": true,
+      "tile_count": 8
+    },
+    "ground_truth": {
+      "path": "data/ground_truth/tier1_teren.geojson",
+      "exists": true,
+      "building_count": 29,
+      "crs": "EPSG:3844"
+    }
+  },
+  "hardware_and_runtime": {
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU (6.0 GB VRAM)",
+    "pytorch_model": "models/sam2/sam2_hiera_tiny.pt",
+    "qgis_version": "3.40.0-Bratislava"
+  }
+}

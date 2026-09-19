@@ -1,0 +1,28 @@
+{
+  "status": "EXPORT_REAL",
+  "dxf_path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\11_export\\cadastru_ancpi_ai.dxf",
+  "dxf_sha256": "bee87f4ef5f7a4ae7f758592c21301626780dcfcf7bdc03a67ed663b1e1db791",
+  "cp_path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\11_export\\imobil_ai.cp",
+  "cp_sha256": "fc1012ab3327164a870955eec509146c06d457f63ada3425f493caf87f9cd4e4",
+  "total_vertices_exported": 20,
+  "sample_coordinates": [
+    {
+      "nr": 1,
+      "x": 391106.273,
+      "y": 585551.4,
+      "z": 340.0
+    },
+    {
+      "nr": 2,
+      "x": 391126.224,
+      "y": 585551.4,
+      "z": 342.263
+    },
+    {
+      "nr": 3,
+      "x": 391127.01,
+      "y": 585550.614,
+      "z": 343.452
+    }
+  ]
+}

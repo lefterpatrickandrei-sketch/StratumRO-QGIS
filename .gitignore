@@ -52,8 +52,12 @@ models/sam2/*.onnx
 # Allow verified compact ONNX decoders (<100MB)
 !models/sam2/sam2_decoder.onnx
 
-# Workspace & Large Geodata Caches
-workspace/
+# Workspace runtime logs and temp files
+workspace/logs/
+workspace/*.db
+workspace/*~
+workspace/**/*.aux.xml
+.kilo/
 scratch/
 scratch_*.py
 tools/llm_test_results/
@@ -63,3 +67,4 @@ tools/llm_test_results/
 Obsidian workflow/
 .agents/skills/
 skills-lock.json
+

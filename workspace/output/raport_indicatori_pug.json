@@ -1,0 +1,24 @@
+{
+  "titlu": "Raport Indicatori Urbanistici PUG & Registrul Spațiilor Verzi",
+  "legislatie_aplicabila": [
+    "Legea nr. 350/2001 privind amenajarea teritoriului și urbanismul",
+    "Legea nr. 24/2007 privind reglementarea și administrarea spațiilor verzi"
+  ],
+  "statistici_fond_construit": {
+    "numar_cladiri_principale": 290,
+    "numar_anexe": 3,
+    "suprafata_construita_totala_sc_mp": 166967.14,
+    "suprafata_desfasurata_totala_sd_mp": 414454.77,
+    "volum_construit_total_mc": 1504235.8
+  },
+  "registru_spatii_verzi": {
+    "numar_arbori_identificati": 3943,
+    "copaci_pe_acoperisuri": 0,
+    "suprafata_acoperire_coronament_mp": 213299.4
+  },
+  "indicatori_generali_zona": {
+    "pot_mediu_procent": 15.1,
+    "cut_mediu": 0.38,
+    "procent_fond_vegetal": 14.5
+  }
+}

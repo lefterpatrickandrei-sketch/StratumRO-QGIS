@@ -1,0 +1,64 @@
+<USER_REQUEST>
+# MD 9 — TRUE E2E REAL DESKTOP OPERATOR & NO-SHORTCUT VALIDATION
+
+## Scop
+
+Transformă StratumRO-QGIS dintr-un sistem care demonstrează corect orchestrarea și încărcarea rezultatelor existente într-un sistem care poate executa un flux geospațial real, observabil și auditabil, folosind:
+
+* QGIS instalat local pe Windows
+* proiectul QGIS real
+* fișierele reale ale utilizatorului
+* LiDAR-ul real
+* DTM-ul real Pentru Antigravity pe Windows, trebuie să separăm două lucruri: accesul la fișiere/comenzi și controlul efectiv al ferestrei QGIS.
+Din documentația actuală, Antigravity pe Windows permite agentului să execute comenzi și să acceseze fișiere în afara workspace-ului, dar documentația oficială descrie explicit automatizarea UI în primul rând pentru Chrome, nu un „Allow desktop control” universal pentru orice aplicație Windows. ([Google Antigravity](https://www.antigravity.google/docs/permissions?utm_source=chatgpt.com))
+1. În Antigravity, activează accesul complet la proiect
+Deschide:
+Settings → Projects → StratumRO-QGIS
+și verifică:
+Terminal Command Auto Execution → Always Proceed
+și:
+Agent Non-Workspace File Access → Enabled
+Pe Windows, aceste setări permit agentului să execute comenzile fără aprobare și să acceseze fișiere din afara proiectului. ([Google Antigravity](https://antigravity.google/docs/agent-settings?utm_source=chatgpt.com))
+Pentru proiectul tău asta este important deoarece datele sunt în:
+C:\Users\lefpa\Desktop\date\...
+și nu în folderul repo-ului.
+2. Dar asta NU îi dă automat control de mouse asupra QGIS
+Aici a fost problema din MD8.
+Faptul că Antigravity poate executa:
+Start-Process "C:\Program Files\QGIS 3.40.0\bin\qgis.exe"
+nu înseamnă automat că agentul poate apoi:
+vedea fereastra QGIS ca un om;
+apăsa butoane;
+selecta straturi cu mouse-ul;
+trage AOI-ul;
+apăsa Run;
+interacționa cu dialogurile Qt.
+Documentația Antigravity menționează explicit că Browser Agent poate acționa în Chrome, inclusiv screensho
+<truncated 26040 bytes>
+GIS access are NOT equivalent to interactive desktop control.
+First run a capability audit for:
+QGIS process detection
+QGIS top-level window detection
+Windows UI Automation availability
+ability to inspect QGIS controls
+ability to bring QGIS to foreground
+ability to interact with QGIS controls
+screenshot capability
+ability to detect whether the interaction actually affected QGIS
+If native Antigravity desktop automation is NOT available, do not pretend it is.
+Instead determine what local Windows UI Automation bridge/MCP/tool can provide real control of the QGIS application and integrate that into the existing StratumRO architecture.
+Do not replace the real pipeline with shell-only execution.
+Do not replace QGIS interaction with a simulated transcript.
+Do not use fake mouse coordinates unless there is no semantic UI automation alternative.
+The final goal is REAL DESKTOP E2E:
+I should be able to physically see QGIS open on my Windows desktop and watch StratumRO perform the actual workflow.
+6. Iar aici este partea foarte importantă pentru cazul tău
+Antigravity 2.0 este acum o aplicație desktop separată și Google documentează că agenții pot executa comenzi de sistem, opera fișiere, folosi MCP și interacționa cu Chrome. ([Google Antigravity](https://www.antigravity.google/blog/introducing-google-antigravity-2?utm_source=chatgpt.com))
+Nu găsesc în documentația oficială actuală o setare de tip „Allow Antigravity to control all Windows applications” pe care pur și simplu s-o activezi. Așa că nu ți-aș spune să cauți o opțiune care poate nici nu există.
+Pentru proiectul tău, soluția corectă este să verificăm ce mecanism Windows UI Automation are Antigravity-ul tău instalat și, dacă nu are unul, să-i adăugăm unul prin MCP/tool.
+Asta ar transforma efectiv MD9 din „rulează QGIS din shell” în „deschide QGIS și lucrează în el în timp ce mă uit”. vezi daca poti 
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-09-17T21:42:46+03:00.
+</ADDITIONAL_METADATA>

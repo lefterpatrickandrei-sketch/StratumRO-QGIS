@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "name": "LIDAR_EXTENT_STEREO70",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3844"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "point_count": 4624905,
+        "name": "NorPuncte_St70_S42"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391522.10599999997,
+              584981.226
+            ],
+            [
+              391522.10599999997,
+              585877.657
+            ],
+            [
+              390478.54,
+              585877.657
+            ],
+            [
+              390478.54,
+              584981.226
+            ],
+            [
+              391522.10599999997,
+              584981.226
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

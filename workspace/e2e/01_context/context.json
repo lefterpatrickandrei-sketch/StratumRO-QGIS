@@ -1,0 +1,114 @@
+{
+  "run_id": "e2e_real_1789671679",
+  "timestamp": "2026-09-17T22:01:20.057252",
+  "os": "win32",
+  "python": "3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]",
+  "gpu": {
+    "cuda_available": true,
+    "device_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "device_count": 1
+  },
+  "qgis_version": "3.40.0-Bratislava",
+  "crs": "EPSG:3844 (Stereo 70)",
+  "aoi_name": "Cluj USAMV Campus Core",
+  "datasets": {
+    "lidar": {
+      "name": "lidar",
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\Comparatie\\LAZ\\NorPuncte_St70_S42.laz",
+      "exists": true,
+      "readable": true,
+      "file_size": 21306592,
+      "sha256": "fa68802289500d005eda5689316f31db3b6e076c4775c7b6543e8d7d67bcfb5e",
+      "crs": "EPSG:3844",
+      "bounds": [
+        390478.54,
+        584981.226,
+        391522.10599999997,
+        585877.657
+      ],
+      "dimensions": null,
+      "point_count": 4624905,
+      "dataset_type": "lidar",
+      "source": "known_path",
+      "confidence": 0.85
+    },
+    "dtm": {
+      "name": "dtm",
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\Comparatie\\DTM3m\\DTM3m.tif",
+      "exists": true,
+      "readable": true,
+      "file_size": 421864,
+      "sha256": "2813f631c5167a30ccc8d494d222f8f8ee3e257149be6bce77e886b01da72b77",
+      "crs": "LOCAL_CS[\"ESRI PE String = Projection     STEREO70\nDatum          S-42_ROMANIA\nZunits         NO\nUnits          METERS\nXshift         0.000000\nYshift         0.000000\nParameters\",UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH]]",
+      "bounds": [
+        390477.040156963,
+        584979.157128235,
+        391524.040156963,
+        585879.157128235
+      ],
+      "dimensions": [
+        300,
+        349
+      ],
+      "point_count": null,
+      "dataset_type": "dtm",
+      "source": "known_path",
+      "confidence": 0.85
+    },
+    "orthophoto": {
+      "name": "orthophoto",
+      "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV",
+      "exists": true,
+      "readable": true,
+      "file_size": 520051048,
+      "sha256": "66d95a807b525826a2b581d72fd313ce2861d76239ff381dcb7ff17d11627bbb",
+      "crs": "EPSG:3844",
+      "bounds": [
+        390529.3848255,
+        584837.7441744999,
+        391577.97482550004,
+        585886.3341745
+      ],
+      "dimensions": null,
+      "point_count": 8,
+      "dataset_type": "orthophoto",
+      "source": "known_path",
+      "confidence": 0.85
+    },
+    "ground_truth": {
+      "name": "ground_truth",
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\data\\ground_truth\\tier1_teren.geojson",
+      "exists": true,
+      "readable": true,
+      "file_size": 26209,
+      "sha256": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+      "crs": "EPSG:3844",
+      "bounds": [
+        390549.0244075255,
+        585210.4533461216,
+        391307.24884869496,
+        585823.3619952397
+      ],
+      "dimensions": null,
+      "point_count": 29,
+      "dataset_type": "ground_truth",
+      "source": "known_path",
+      "confidence": 0.95
+    },
+    "sam2_model": {
+      "name": "sam2_model",
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\models\\sam2\\sam2_hiera_tiny.pt",
+      "exists": true,
+      "readable": true,
+      "file_size": 155906050,
+      "sha256": "65b50056e05bcb13694174f51bb6da89c894b57b75ccdf0ba6352c597c5d1125",
+      "crs": "",
+      "bounds": null,
+      "dimensions": null,
+      "point_count": null,
+      "dataset_type": "model",
+      "source": "known_path",
+      "confidence": 0.9
+    }
+  }
+}
