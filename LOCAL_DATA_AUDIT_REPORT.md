@@ -13,7 +13,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **DS_VLAD_01** | `Z_VladP.7z` | `C:\Users\lefpa\Desktop\date\Z_VladP.7z` | 7z (LZMA2) | 493.9 MB | Internal (S-42) | 2023-02-01 | RAW_ARCHIVE | **FOUND** |
 | **DS_VLAD_02** | `OrtoFoto Cluj USAMV` (8 tiles) | `C:\Users\lefpa\Desktop\date\Z_VladP\OrtoFoto Cluj USAMV\` | MrSID (MG2) + SDW | 520.1 MB | Stereo 70 (SDW) | 2017-03-07 | CALIBRATED (Ortho) | **FOUND** |
-| **DS_VLAD_03** | `NorPuncte_St70_S42.laz` | `C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\LAZ\` | LAZ 1.2 (PntFmt 1) | 21.3 MB | Stereo 70 (EPSG:4284/S42)| 2017-03-09 | CALIBRATED (LiDAR) | **FOUND** |
+| **DS_VLAD_03** | `NorPuncte_St70_S42.laz` | `C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\LAZ\` | LAZ 1.2 (PntFmt 1) | 21.3 MB | Stereo 70 (S-42 Grid / EPSG:3844 target)| 2017-03-09 | CALIBRATED (LiDAR) | **FOUND** |
 | **DS_VLAD_04** | `DTM3m.tif` | `C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\DTM3m\` | GeoTIFF (Float32) | 421.9 KB | Stereo 70 (S-42) | 2017-03-09 | DERIVED (DTM) | **FOUND** |
 | **DS_VLAD_05** | `Somes_dtm_*.dwg` (2 files) | `C:\Users\lefpa\Desktop\date\Z_VladP\Comparatie\DWG_BKL\` | AutoCAD DWG (AC1009) | 3.6 MB | Stereo 70 (Grid 390_585) | 2011-11-30 | REFERENCE (CAD Breaklines)| **FOUND** |
 | **DS_VLAD_06** | `COAJE LUCRU DATE.gmw` | `C:\Users\lefpa\Desktop\date\COAJE LUCRU DATE.gmw` | Global Mapper Workspace | 100.5 MB | Stereo 70 (S-42) | 2025-05-28 | DERIVED (Project) | **FOUND** |
@@ -31,7 +31,7 @@
 - **Geographical Footprint:** Cluj-Napoca, Romania, along Someșul Mic river corridor, encompassing the USAMV Cluj-Napoca campus (Str. Mănăștur) and surrounding urban fabric.
 - **Coverage Extent:** Easting: `390,478 m` to `391,578 m` (~1,100 m); Northing: `584,838 m` to `585,886 m` (~1,048 m). Total bounding box: **~1.15 km²**.
 - **Internal Relationships:**
-  - `OrtoFoto Cluj USAMV` provides the high-resolution radiometric ground truth imagery.
+  - `OrtoFoto Cluj USAMV` provides the high-resolution RGB optical imagery (uncalibrated 8-bit DN mosaic, not physically calibrated surface reflectance).
   - `LAZ\NorPuncte_St70_S42.laz` provides the photogrammetric/airborne LiDAR elevation reference.
   - `DTM3m\DTM3m.tif` is the bare-earth digital terrain model derived directly from the Ground (Class 2) points of the LAZ.
   - `DWG_BKL\Somes_dtm_*.dwg` are CAD breakline files covering 1x1 km cadastral map sheets `390_585` and `391_585`.
@@ -181,12 +181,16 @@ We executed empirical spatial co-registration between the LiDAR Class 6 (Buildin
 | `REF_TIER1_010` | 114.7 m² | 439 | -0.536 | +0.939 | 1.081 m | 376.7 m – 380.5 m |
 
 ### Co-Registration Summary Statistics:
-- **Systematic Bias $\Delta X$:** **$+0.064 \text{ m}$** ($\pm 2.14 \text{ m}$)
-- **Systematic Bias $\Delta Y$:** **$-0.086 \text{ m}$** ($\pm 1.77 \text{ m}$)
-- **Mean Absolute Position Shift $\Delta XY$:** **$2.44 \text{ m}$** ($\pm 1.33 \text{ m}$)
+- **Mean Signed Difference $\Delta X$:** **$+0.064 \text{ m}$** ($\pm 2.14 \text{ m}$)
+- **Mean Signed Difference $\Delta Y$:** **$-0.086 \text{ m}$** ($\pm 1.77 \text{ m}$)
+- **Mean Absolute Position Shift $\Delta XY$ (MAE):** **$2.44 \text{ m}$** ($\pm 1.33 \text{ m}$)
+- **Root Mean Square Error (RMSE):** **$2.78 \text{ m}$**
+- **Maximum Shift:** **$4.63 \text{ m}$** (`REF_TIER1_006`)
 
-### Engineering Interpretation:
-The net systematic bias is less than $10 \text{ cm}$ in both axes ($+6.4 \text{ cm}$ in Easting, $-8.6 \text{ cm}$ in Northing). This proves **near-perfect geodetic alignment** between the LiDAR point cloud and the cadastral ground truth. The observed individual offsets of $1.5\text{--}3.0 \text{ m}$ represent the physical geometric difference between **cadastral ground-floor footprints** (amprenta la sol) and **optical/LiDAR roof overhangs** (streșini/cornișe) plus roof pitch asymmetry.
+### Engineering Interpretation & Guardrail:
+The signed mean values ($\Delta X = +6.4\text{ cm}, \Delta Y = -8.6\text{ cm}$) are near zero primarily due to the algebraic cancellation of positive and negative residuals across the sample. **This does NOT demonstrate centimeter-level co-registration.** Individual positional discrepancies range up to $4.63\text{ m}$, with a mean absolute error (MAE) of $2.44\text{ m}$. 
+
+Furthermore, the centroid of a LiDAR roof point cloud (Class 6) is geometrically distinct from the cadastral ground-floor footprint (amprenta la sol) due to physical roof overhangs (streșini/cornișe), roof pitch asymmetry, and vegetation shadowing. True geodetic co-registration must be evaluated on identifiable control features (corners, stable hard-surface monuments), not inferred solely from building centroids.
 
 ---
 
@@ -407,12 +411,12 @@ DATA AUDIT COMPLETE
 
 | Dataset / Module | Readiness Rating | Operational Purpose |
 | :--- | :--- | :--- |
-| **Vlad Dataset (Cluj AOI)** | **READY** | **Baseline Development & Scientific Validation Benchmark** |
-| **Bucharest FIFIM Dataset** | **READY** | **Secondary Independent High-Precision Validation Benchmark** |
+| **Vlad Dataset (Cluj AOI)** | **READY** | **Multimodal Development & Core E2E Benchmark (LiDAR + Ortho)** |
+| **Bucharest FIFIM Dataset** | **READY (Optical + Plan)** | **Independent Optical & Cadastral Transfer Benchmark (Lacks Georeferenced LiDAR)** |
 | **USAMV 79.5M LAS** | **QUARANTINED** | Archived (Requires 3D Terrestrial Helmert Registration) |
-| **Ground Truth (150 unique)** | **READY (After Deduplication)**| Authoritative Evaluation Standard |
-| **Deterministic Geometry Engine**| **READY (170/170 tests passing)** | 90° CAD Orthogonalization & TopoLT CAD Export |
-| **End-to-End AI Inference** | **CONDITIONALLY READY** | Requires nDSM Candidate Prompting decoupling |
+| **Ground Truth (29 T1 + 121 T2)**| **READY (Disjoint Sets)** | Primary Evaluation: 29 Survey Tier 1; Secondary: 121 Digitized Reference Tier 2 |
+| **Deterministic Geometry Engine**| **READY (193/193 tests passing)** | 90° CAD Orthogonalization, PAD tables, .CP, TopoLT DXF |
+| **End-to-End AI Inference** | **CONDITIONALLY READY** | Requires nDSM Candidate Prompting decoupling (True Pixel-to-Polygon) |
 
 ---
 
