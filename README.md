@@ -14,13 +14,13 @@
 [![3D Standard](https://img.shields.io/badge/3D%20City-LoD1%20Solid%20%7C%20CityJSON%201.1-blueviolet.svg)](https://www.cityjson.org/)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](LICENSE)
 
-**StratumRO** este o platformă geomatică și MLOps concepută pentru automatizarea extracției, regularizării ortogonale și clasificării fondului cadastral și funciar din România. Sistemul fuzionează nori de puncte **LiDAR aeropurtat (LAKI/ANCPI)** cu mozaicuri **ortofotoplan de înaltă rezoluție (15 cm GSD)** în proiecție oficială **Stereo 70 (EPSG:3844)**, generând livrabile conforme cu **Ordinul ANCPI nr. 600/2023** și compatibile direct cu **TopoLT**, **AutoCAD**, **QGIS 3D** și **CityJSON**.
+**StratumRO** este o platformă geomatică și MLOps orientată către fluxuri pre-cadastrale românești și proiectată să genereze produse tehnice compatibile cu cerințele aplicabile (inclusiv convențiile tehnice de layere conform **Ordinului ANCPI nr. 600/2023** și proiecției oficiale **Stereo 70 EPSG:3844**), cu verificare umană și profesională obligatorie. Sistemul fuzionează nori de puncte **LiDAR aeropurtat (LAKI/ANCPI)** cu mozaicuri **ortofotoplan de înaltă rezoluție (15 cm GSD)**, generând livrabile tehnice compatibile direct cu **TopoLT**, **AutoCAD**, **QGIS 3D** și **CityJSON**.
 
 > [!IMPORTANT]
 > **Poziționare & Rigoare Științifică (Asistență Pre-Cadastrală):**  
-> StratumRO este proiectat ca un sistem de **asistență pre-cadastrală și accelerare a digitizării geodezice**.  
+> StratumRO este un sistem de **asistență pre-cadastrală și accelerare a digitizării geodezice (Human-in-the-Loop)**.  
 > - **Economie de Timp Măsurată (93.0% pe 195 clădiri):** Benchmark-ul formal de productivitate ([`engine/time_study_benchmark.py`](engine/time_study_benchmark.py), EV-023) confirmă o scădere a timpului total de la 22.83 ore (7.02 min/clădire) la 1.60 ore (0.49 min/clădire) asistat de StratumRO (reducere medie: **93.0%**, interval confidență Wilson 95%: $[87.6\%, 96.9\%]$).  
-> - **Validare Legală Obligatorie:** Sistemul generează amprente candidate regularizate la 90° și planșe CAD/PAD pentru a elimina rutina de birou a geodezului. Conform legislației ANCPI (Ordinul 600/2023), recepția cadastrală oficială și intabularea necesită **obligatoriu verificarea și asumarea de către un inginer topograf / geodez autorizat**.  
+> - **Validare Legală Obligatorie:** Faptul că sistemul generează geometrii regularizate la 90°, layere DXF TopoLT, fișiere `.CP` și tabele PAD nu constituie în sine conformitate juridică autonomă. Conform legislației ANCPI (Ordinul 600/2023), recepția cadastrală oficială și intabularea necesită **obligatoriu verificarea și asumarea de către un inginer topograf / geodez autorizat**.  
 > Pentru detalii de verificare și trasabilitate, consultați [`docs/TECHNICAL_STATUS.md`](docs/TECHNICAL_STATUS.md) și [`docs/EVIDENCE_MATRIX.md`](docs/EVIDENCE_MATRIX.md).
 
 ---
@@ -390,15 +390,15 @@ Implementarea StratumRO respectă direct specificațiile geodezice și cadastral
 
 ## 15. 🇬🇧 English Summary
 
-**StratumRO** is an industrial-grade geomatics and MLOps platform developed to automate the extraction, 90-degree regularization, and classification of cadastral building footprints and land use in Romania.
+**StratumRO** is an industrial-grade geomatics and MLOps platform oriented toward Romanian pre-cadastral workflows and engineered to produce technical deliverables compatible with applicable specifications, with mandatory professional human validation.
 
 ### Key Capabilities:
 1. **Sensor Fusion:** Merges airborne LiDAR point clouds (ASPRS Class 6) with sub-decimeter RGB orthophotos in national projection Stereo 70 (`EPSG:3844`).
-2. **Zero-CUDA Inference via ONNX Runtime & DirectML:** Runs accelerated AI segmentation on any Windows GPU (NVIDIA, AMD Radeon, Intel) through DirectX 12 without complex CUDA toolkit compilation.
-3. **Romanian Cadastre & TopoLT Compliance:** Directly generates official TopoLT layers (`1CC`, `2CC`, `CP`), numbered boundary vertices (`VARFURI`, `NUMERE_PCT`), automated ANCPI PAD coordinate inventory tables, and eTerra interchange `.cp` files.
+2. **Accelerated Inference via ONNX Runtime & DirectML:** Supports accelerated AI segmentation via DirectML on compatible Windows/DirectX hardware when available, with multithreaded CPU fallback.
+3. **Romanian Cadastre & TopoLT Technical Deliverables:** Directly generates official TopoLT layers (`1CC`, `2CC`, `CP`), numbered boundary vertices (`VARFURI`, `NUMERE_PCT`), automated ANCPI PAD coordinate inventory tables, and eTerra interchange `.cp` files.
 4. **True 3D Volumetric Extrusion (LoD1 & CityJSON 1.1):** Generates watertight 3D solid shells (`MultiPolygonZ`) viewable natively in QGIS 3D Canvas and exports OGC CityJSON v1.1 models.
 5. **QGIS Processing Framework:** Full integration as a `QgsProcessingProvider`, supporting the QGIS Toolbox, Graphical Modeler, and headless CLI workflows (`qgis_process`).
-6. **Visual Inspection & Ground-Truth Verification:** Provides high-resolution visual inspections of extracted footprints vs. official ANCPI cadastral ground truth on 10 cm orthophotos and LiDAR nDSM ([`docs/VISUAL_EVIDENCE.md`](docs/VISUAL_EVIDENCE.md)).
+6. **Visual Inspection & Ground-Truth Verification:** Evaluates candidate footprints against official ANCPI cadastral ground truth on 10 cm orthophotos and LiDAR nDSM ([`docs/VISUAL_EVIDENCE.md`](docs/VISUAL_EVIDENCE.md)); in Phase 3 benchmarks, recall was 6.15% (4 TP / 65 references), reinforcing that candidates are pre-cadastral drafts requiring licensed surveyor sign-off.
 
 ---
 

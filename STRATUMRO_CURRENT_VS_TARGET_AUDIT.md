@@ -59,19 +59,19 @@ The repository currently contains an industrial-grade, QGIS-centered geomatics a
 venv\Scripts\python -m unittest discover stratum_ro/test
 ```
 
-**Actual Execution Result (Measured 2026-09-19):**
-* **Total Tests Ran:** 184
-* **Passed:** 175
-* **Skipped:** 9 (Optional CUDA GPU integration tests when running in CPU-only / DirectML mode)
+**Actual Execution Result (Empirically Measured in Runtime on 2026-09-19):**
+* **Discovered & Ran:** 193 unit tests
+* **Passed:** 184 tests
+* **Skipped:** 9 tests (Optional CUDA GPU integration tests when running in CPU-only / DirectML mode)
 * **Failed:** 0
 * **Errors:** 0
-* **Runtime:** 30.25 seconds
+* **Runtime:** 32.28 seconds
 
 > [!IMPORTANT]
-> **Audit Finding on Documentation Divergence:**  
-> * `README.md` previously claimed: **55 Unit Tests** (stale from early development).  
-> * `AGENTS.md` previously claimed: **40 Unit Tests** (stale from Phase 1 baseline).  
-> * **Actual Code Truth:** **184 Unit Tests** organized across 10 test modules in `stratum_ro/test/`.
+> **Evolution of Test Count:**  
+> * Initial baseline: **184 Unit Tests** (175 passed, 9 skipped, 0 failed).  
+> * Slice 1 Foundation: Added **9 Unit Tests** in [`stratum_ro/test/test_task_spec.py`](file:///c:/Users/lefpa/Downloads/QGIS-AI/stratum_ro/test/test_task_spec.py) verifying `TaskSpec` geodetic validation, CRS enforcement, and `ProviderRegistry.resolve_provider()`.  
+> * **Current Empirically Verified Runtime State:** **193 Unit Tests** (184 passed, 9 skipped, 0 failed).
 
 ---
 
@@ -160,17 +160,18 @@ During this audit, the following concrete discrepancies were uncovered across th
    * `README.md` (line 41): References **55 Unit Tests**.
    * `AGENTS.md` (Section 2 & 4): References **40 Unit Tests**.
    * **Actual Verified Reality:** **184 Unit Tests** (`stratum_ro/test/`).
-2. **Claude Desktop Role Clarification:**
-   * Earlier notes treated Claude Desktop as an internal core orchestrator.
-   * **Authoritative Operating Rule:** Claude Desktop is **NOT** part of the internal StratumRO runtime. It is an **external, read-only consulting reviewer via MCP**. Antigravity is the primary development engine; Kilo is the adversarial reviewer; GitHub is the source of truth.
+2. **Claude Desktop Status (RETIRED / Historical Only):**
+   * Claude Desktop **NU mai face parte din fluxul activ al proiectului**; feedback-ul și intervențiile anterioare au caracter strict istoric.
+   * **Fluxul activ de operare:** `USER (TU) -> ANTIGRAVITY (Dev Engine) -> STRATUMRO -> KILO (Adversarial Reviewer) -> GITHUB (Source of Truth)`.
 3. **OpenAI Provider Status:**
    * Some high-level architectural diagrams placed `OpenAI: GPT-4o / o3-mini` as the primary cloud reasoning engine.
    * **Reality:** `OPENAI_API_KEY` is not present in `.env`. OpenAI direct is `NOT_CONFIGURED`. The active, verified cloud reasoning provider is OpenRouter (`meta-llama/llama-3.3-70b-instruct`).
 4. **E5 Latency vs. VRAM Confusion (Purged):**
    * Early draft logs accidentally mentioned "0.35s VRAM" for E5.
    * Reconciled in Phase 3 audit: E5 was a **NO-OP / DEFERRED** trial for the evaluated crop. This correction must remain immutable.
-5. **Cadastral Legal Scope:**
-   * Any legacy phrase implying "autonomous cadastral registration" has been audited and replaced with the defensible standard: **assisted pre-cadastral digitization candidate (Human-in-the-Loop)**.
+5. **Cadastral Legal Scope & Recall Limits:**
+   * Any legacy phrase implying "autonomous cadastral registration" or "conforming to ANCPI 600/2023" has been audited and calibrated to: **„platformă orientată către fluxuri pre-cadastrale românești și proiectată să genereze produse tehnice compatibile cu cerințele aplicabile, cu verificare umană/profesională obligatorie.”**
+   * Producerea tehnică de layere TopoLT (DXF), fișiere `.CP` sau tabele PAD nu demonstrează de una singură conformitatea juridică integrală. Pe benchmark-ul Phase 3 recall-ul a fost de **6.15% (4 TP din 65 referințe)**, confirmând că extracția automată generează doar propuneri candidate pre-cadastrale pentru asistența topografului autorizat.
 
 ---
 

@@ -1,8 +1,9 @@
-# StratumRO — Consulting & Audit Context for Claude Desktop
+# StratumRO — Consulting & Audit Context (Historical Record)
 
-## 1. Operating Role of Claude Desktop
-* **External Reviewer via MCP:** Claude Desktop operates as an independent, external reviewer and architectural consultant communicating via the local Model Context Protocol (MCP) over `stdio`.
-* **Not Internal Core Runtime:** Claude Desktop is **NOT** a built-in execution provider or internal pipeline component of StratumRO. Antigravity is the primary development and execution engine, Kilo is the adversarial reviewer, and GitHub (`origin/main`) is the authoritative source of truth.
+## 1. Status of Claude Desktop in Project
+* **RETIRED / Historical Only:** Claude Desktop **NU mai face parte din fluxul activ al proiectului**; feedback-ul și intervențiile anterioare au caracter strict istoric.
+* **Fluxul activ curent:** Este operat exclusiv prin `USER (TU) -> ANTIGRAVITY (Dev Engine) -> STRATUMRO -> KILO (Adversarial Reviewer) -> GITHUB (Source of Truth)`.
+* **Not Internal Core Runtime:** Claude Desktop nu a fost și nu este o componentă internă din runtime-ul de producție al StratumRO.
 
 ## 2. Available Verified Model Providers in StratumRO
 * **OpenRouter / Kilo**: `OPENROUTER_API_KEY` in `.env`
