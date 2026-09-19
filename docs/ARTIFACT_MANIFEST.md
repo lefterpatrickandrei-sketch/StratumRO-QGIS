@@ -26,6 +26,7 @@
 | **`p3_test_suite`** | Phase 3 | `CODE` | `TESTED` | `stratum_ro/test/test_phase3_modules.py` | `VERIFIED` | N/A | Yes | 5 unit test cases covering Phase 3 modules. |
 | **`p3_spectator_qgs`**| Phase 3| `QGIS_PROJECT`| `DERIVED` | `workspace/phase3/StratumRO_Cluj_Phase3_Spectator.qgs` | `VERIFIED` | Yes | Yes | Pre-centered QGIS 3.40 inspection project on Cluj AOI. |
 | **`p3_overview_png`**| Phase 3 | `IMAGE` | `DERIVED` | `docs/assets/phases/phase3/StratumRO_phase3_overview.png` | `VERIFIED` | Yes | Yes | 2500x2000 px inspection map with legend and scale bar. |
+| **`p3_full_campus_png`**| Phase 3| `IMAGE` | `DERIVED` | `docs/assets/phases/phase3/StratumRO_cluj_full_campus_ortho.png` | `VERIFIED` | Yes | Yes | 2500x2500 px full USAMV campus map (1.05km x 1.05km, 110 ha) with all 150 ground truth buildings.<br>`e899313305bb4c8e73d9250e44dbec2f0e97740df138ecd2db40dda89654a7c7` |
 | **`p3_e9_vector`** | Phase 3 | `VECTOR` | `MODEL_PREDICTION` | `workspace/phase3/predictions/EXP_009_integrated_pipeline_reg.geojson` | `VERIFIED` | Yes | Yes | 26 regularized building footprints (4 TP, 22 FP). |
 | **`p3_lidar_cls`** | Phase 3 | `RASTER` | `DERIVED` | `workspace/phase3/derived/cluj_lidar_classes_1m.tif` | `VERIFIED` | Yes | Yes | 1.0m raster grid of ASPRS point cloud classes. |
 | **`p3_audit_dossier`**| Phase 3| `BENCHMARK`| `MEASURED` | `workspace/phase3/audit_factual_dossier.json` | `VERIFIED` | N/A | Yes | Complete recalculated metrics and hashes across E0–E9. |

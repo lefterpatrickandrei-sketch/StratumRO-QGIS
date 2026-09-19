@@ -137,11 +137,12 @@ PHASE 3 OPTIMIZATION (RECONCILED & FROZEN CHECKPOINT)
 
 1. **`workspace/phase3/StratumRO_Cluj_Phase3_Spectator.qgs`:** Official QGIS 3.40 inspection project with pre-centered mapcanvas on the Cluj AOI ($390650 - 391150\text{ m}$ E, $585350 - 585750\text{ m}$ N).
 2. **`docs/assets/phases/phase3/StratumRO_phase3_overview.png`:** 2500×2000 px (2.5 MB) technical inspection map showing 0.20m RGB orthophoto, cyan Ground Truth, neon green E9 predictions, scale bar, and verified metrics panel.
-3. **`workspace/phase3/predictions/EXP_009_integrated_pipeline_reg.geojson`:** 26 regularized building footprints in Stereo 70.
-4. **`workspace/phase3/derived/cluj_lidar_classes_1m.tif`:** Rasterized 1.0m ASPRS classification grid.
-5. **`reports/cluj/phase3/PHASE3_RECONCILIATION.md`:** Authoritative 10-question reconciliation document.
-6. **`reports/cluj/phase3/KILO_PHASE4_ARCHITECTURE_REVIEW.md`:** Independent adversarial review.
-7. **`reports/cluj/phase3/KILO_PHASE3_INDEPENDENT_AUDIT.md`:** 19-section independent forensic audit.
+3. **`docs/assets/phases/phase3/StratumRO_cluj_full_campus_ortho.png`:** 2500×2500 px (5.2 MB) full USAMV Cluj Campus mosaic (1.05 km × 1.05 km, 110 ha) showing all 150 cadastral buildings, 0.15m GSD RGB orthophoto, and Phase 3 active crop bounding box.
+4. **`workspace/phase3/predictions/EXP_009_integrated_pipeline_reg.geojson`:** 26 regularized building footprints in Stereo 70.
+5. **`workspace/phase3/derived/cluj_lidar_classes_1m.tif`:** Rasterized 1.0m ASPRS classification grid.
+6. **`reports/cluj/phase3/PHASE3_RECONCILIATION.md`:** Authoritative 10-question reconciliation document.
+7. **`reports/cluj/phase3/KILO_PHASE4_ARCHITECTURE_REVIEW.md`:** Independent adversarial review.
+8. **`reports/cluj/phase3/KILO_PHASE3_INDEPENDENT_AUDIT.md`:** 19-section independent forensic audit.
 
 ---
 

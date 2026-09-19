@@ -26,7 +26,8 @@
     <layer-tree-layer id="layer_p2_base" name="🔴 Phase 2 Baseline: Raw AI E0 (94 Poligoane, 90 FP)" source="c:\Users\lefpa\Downloads\QGIS-AI\workspace\phase3\predictions\EXP_000_baseline_raw.geojson" providerKey="ogr" expanded="0" checked="Qt::Unchecked"/>
     <layer-tree-layer id="layer_lidar_cls" name="StratumRO — LiDAR ASPRS Classes (1m Grid)" source="c:\Users\lefpa\Downloads\QGIS-AI\workspace\phase3\derived\cluj_lidar_classes_1m.tif" providerKey="gdal" expanded="0" checked="Qt::Unchecked"/>
     <layer-tree-layer id="layer_ndsm" name="StratumRO — LiDAR nDSM Height (1m Grid)" source="c:\Users\lefpa\Downloads\QGIS-AI\workspace\derived\cluj_ndsm_1m.tif" providerKey="gdal" expanded="0" checked="Qt::Unchecked"/>
-    <layer-tree-layer id="layer_ortho" name="StratumRO — Cluj Aerial Orthophoto (RGB 0.20m)" source="c:\Users\lefpa\Downloads\QGIS-AI\workspace\e2e\04_orthophoto\active_ortho_crop.tif" providerKey="gdal" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_ortho" name="StratumRO — Decupaj Faza 3 E9 (RGB 0.20m Crop)" source="c:\Users\lefpa\Downloads\QGIS-AI\workspace\e2e\04_orthophoto\active_ortho_crop.tif" providerKey="gdal" expanded="0" checked="Qt::Unchecked"/>
+    <layer-tree-layer id="layer_ortho_full" name="🗺️ Ortofotoplan Integral USAMV Cluj (RGB 0.15m Mozaic, 110 ha)" source="c:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ortofoto_cluj_usamv_rgb.vrt" providerKey="gdal" expanded="1" checked="Qt::Checked"/>
   </layer-tree-group>
 
   <!-- MAP CANVAS: PRE-ZOOMED DIRECTLY TO CLUJ AOI EXTENT -->
@@ -163,10 +164,18 @@
       <provider>gdal</provider>
     </maplayer>
 
-    <!-- ORTHOPHOTO (Base RGB) -->
-    <maplayer id="layer_ortho" name="StratumRO — Cluj Aerial Orthophoto (RGB 0.20m)" type="raster">
+    <!-- ORTHOPHOTO (Crop RGB) -->
+    <maplayer id="layer_ortho" name="StratumRO — Decupaj Faza 3 E9 (RGB 0.20m Crop)" type="raster">
       <id>layer_ortho</id>
       <datasource>c:\Users\lefpa\Downloads\QGIS-AI\workspace\e2e\04_orthophoto\active_ortho_crop.tif</datasource>
+      <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
+      <provider>gdal</provider>
+    </maplayer>
+
+    <!-- FULL CAMPUS ORTHOPHOTO (RGB Mosaic 110 ha) -->
+    <maplayer id="layer_ortho_full" name="🗺️ Ortofotoplan Integral USAMV Cluj (RGB 0.15m Mozaic, 110 ha)" type="raster">
+      <id>layer_ortho_full</id>
+      <datasource>c:\Users\lefpa\Downloads\QGIS-AI\workspace\output\ortofoto_cluj_usamv_rgb.vrt</datasource>
       <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
       <provider>gdal</provider>
     </maplayer>
