@@ -33,6 +33,8 @@
 | **`p3_reconcile`** | Phase 3 | `REPORT` | `HUMAN_VERIFIED` | `reports/cluj/phase3/PHASE3_RECONCILIATION.md` | `VERIFIED` | N/A | Yes | Formal reconciliation answering the 10 mandatory questions. |
 | **`p4_arch_map`** | Phase 4 | `REPORT` | `DERIVED` | `docs/architecture/ADAPTIVE_GEOAI_CORE_MAP.md` | `BLUEPRINT`| N/A | Yes | Architectural topology, TaskSpec, 11 workflow modes. |
 | **`p4_kilo_review`** | Phase 4 | `REPORT` | `HUMAN_VERIFIED` | `reports/cluj/phase3/KILO_PHASE4_ARCHITECTURE_REVIEW.md`| `VERIFIED` | N/A | Yes | Adversarial milestone review on Phase 4 blueprint. |
+| **`p3_provider_inv_md`**| Phase 3| `REPORT` | `MEASURED` | `docs/MODEL_PROVIDER_INVENTORY.md` | `VERIFIED` | N/A | Yes | Canonical verified provider & model inventory.<br>`faee3523199f49b776eb7070502b4700452f38f7913811faf24bba96c8d7794a` |
+| **`p3_provider_inv_js`**| Phase 3| `CONFIG` | `MEASURED` | `docs/MODEL_PROVIDER_INVENTORY.json` | `VERIFIED` | N/A | Yes | Machine-readable provider & model catalog schema.<br>`51536678e3e9e1c0dae5968f0410a8833b72a16a805edbf428b0683e9919a17e` |
 
 ---
 

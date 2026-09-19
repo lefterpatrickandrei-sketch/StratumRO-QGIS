@@ -1,0 +1,176 @@
+{
+  "inventory_version": "1.0",
+  "generated_at": "2026-09-19T15:28:24Z",
+  "environment": {
+    "os": "Windows 11 (build 26100)",
+    "python": "3.12.9",
+    "torch": "2.6.0+cu124",
+    "cuda_available": true,
+    "onnxruntime": "1.20.1"
+  },
+  "providers": [
+    {
+      "id": "openrouter_kilo",
+      "implementation": "UnionAlphaProvider",
+      "endpoint": "https://openrouter.ai/api/v1",
+      "status": "CONNECTED",
+      "evidence_level": "SMOKE_TEST_VERIFIED",
+      "models_in_catalogue": 447,
+      "models": [
+        {
+          "id": "meta-llama/llama-3.3-70b-instruct",
+          "role": "kilo_reviewer_and_primary_reasoner",
+          "status": "SMOKE_TESTED",
+          "evidence_level": "SMOKE_TEST_VERIFIED",
+          "capabilities": {
+            "reasoning": "YES",
+            "coding": "YES",
+            "vision": "NO",
+            "multimodal": "NO",
+            "structured_output": "YES",
+            "long_context": "YES"
+          },
+          "smoke_test": {
+            "status": "PASS",
+            "latency_ms": 722.2,
+            "response": "PASS"
+          }
+        },
+        {
+          "id": "meta-llama/llama-3.1-8b-instruct",
+          "role": "fast_coding_assistant",
+          "status": "SMOKE_TESTED",
+          "evidence_level": "SMOKE_TEST_VERIFIED",
+          "capabilities": {
+            "reasoning": "YES",
+            "coding": "YES",
+            "vision": "NO",
+            "multimodal": "NO"
+          },
+          "smoke_test": {
+            "status": "PASS",
+            "latency_ms": 139.2,
+            "response": "PASS"
+          }
+        },
+        {
+          "id": "stealth/union-alpha",
+          "role": "legacy_endpoint",
+          "status": "UNAVAILABLE",
+          "evidence_level": "AVAILABILITY_VERIFIED",
+          "notes": "Unlisted/deprecated in public OpenRouter catalogue; superseded by meta-llama/llama-3.3-70b-instruct"
+        }
+      ]
+    },
+    {
+      "id": "nvidia_nim",
+      "implementation": "NvidiaNIMProvider",
+      "endpoint": "https://integrate.api.nvidia.com/v1",
+      "status": "CONNECTED",
+      "evidence_level": "SMOKE_TEST_VERIFIED",
+      "models_in_catalogue": 82,
+      "models": [
+        {
+          "id": "meta/llama-3.2-11b-vision-instruct",
+          "role": "cloud_multimodal_vision_qa",
+          "status": "SMOKE_TESTED",
+          "evidence_level": "SMOKE_TEST_VERIFIED",
+          "capabilities": {
+            "reasoning": "YES",
+            "coding": "YES",
+            "vision": "YES",
+            "multimodal": "YES"
+          },
+          "smoke_test": {
+            "status": "PASS",
+            "latency_ms": 652.5,
+            "image_tested": true,
+            "response": "Blue."
+          }
+        },
+        {
+          "id": "meta/llama-3.2-90b-vision-instruct",
+          "role": "high_capacity_vision",
+          "status": "AVAILABLE",
+          "evidence_level": "AVAILABILITY_VERIFIED",
+          "capabilities": {
+            "reasoning": "YES",
+            "coding": "YES",
+            "vision": "YES",
+            "multimodal": "YES"
+          }
+        },
+        {
+          "id": "meta/llama-3.3-70b-instruct",
+          "role": "legacy_nim_text",
+          "status": "BROKEN",
+          "evidence_level": "SMOKE_TEST_VERIFIED",
+          "notes": "HTTP 410 Gone (Reached EOL on 2026-08-26)"
+        }
+      ]
+    },
+    {
+      "id": "openai",
+      "implementation": "OpenAIProvider",
+      "endpoint": "https://api.openai.com/v1",
+      "status": "NOT_CONFIGURED",
+      "evidence_level": "CONFIGURATION_VERIFIED",
+      "models": []
+    },
+    {
+      "id": "local_sam2",
+      "implementation": "Meta SAM 2 Hiera / ONNX Runtime",
+      "status": "LOADED",
+      "evidence_level": "BENCHMARK_VERIFIED",
+      "models": [
+        {
+          "id": "sam2_hiera_tiny.pt",
+          "role": "building_footprint_segmentation",
+          "status": "BENCHMARKED",
+          "evidence_level": "BENCHMARK_VERIFIED",
+          "size_bytes": 155906050,
+          "device": "cuda",
+          "capabilities": {
+            "segmentation": "YES",
+            "local_inference": "YES"
+          },
+          "smoke_test": {
+            "status": "PASS",
+            "latency_ms": 2183.2
+          }
+        },
+        {
+          "id": "sam2_encoder.onnx + sam2_decoder.onnx",
+          "role": "directml_cross_platform_segmentation",
+          "status": "LOADED",
+          "evidence_level": "AVAILABILITY_VERIFIED",
+          "encoder_bytes": 109279593,
+          "decoder_bytes": 16556852,
+          "providers": ["AzureExecutionProvider", "CPUExecutionProvider"]
+        }
+      ]
+    },
+    {
+      "id": "local_mock",
+      "implementation": "LocalProvider",
+      "status": "AVAILABLE",
+      "evidence_level": "SMOKE_TEST_VERIFIED",
+      "models": [
+        {
+          "id": "deterministic-planner-v1",
+          "role": "deterministic_offline_planning",
+          "status": "SMOKE_TESTED",
+          "evidence_level": "SMOKE_TEST_VERIFIED",
+          "capabilities": {
+            "planning": "YES",
+            "local_inference": "YES"
+          },
+          "smoke_test": {
+            "status": "PASS",
+            "latency_ms": 0.0
+          }
+        }
+      ]
+    }
+  ]
+}

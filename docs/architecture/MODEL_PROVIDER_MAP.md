@@ -34,14 +34,15 @@ graph TD
 
 | Provider | Integration Type | Models Supported | Current Status | Required Credentials / URL | Primary Purpose |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Union Alpha** | Remote REST API (OpenRouter) | `stealth/union-alpha` (262k context) | **CONFIGURED & OPERATIONAL** | `UNION_ALPHA_API_KEY` (Present in `.env`)<br>URL: `https://openrouter.ai/api/v1` | 256k large-context repository analysis, multi-file architectural reasoning, complex cadastral debugging |
-| **NVIDIA NIM** | Remote REST API (OpenAI client) | `meta/llama-3.2-11b-vision-instruct`<br>`meta/llama-3.2-90b-vision-instruct`<br>`meta/llama-3.3-70b-instruct` | **CONFIGURED** | `NVIDIA_API_KEY` (Present in `.env`)<br>URL: `https://integrate.api.nvidia.com/v1` | Fast multimodal vision analysis, cloud GPU acceleration |
-| **OpenAI** | Remote REST API (`openai` SDK) | `gpt-4o`<br>`gpt-4o-mini`<br>`o3-mini` | **AVAILABLE IN VENV** (Key required) | `OPENAI_API_KEY` (Developer API key, not ChatGPT Plus) | Multi-step task planning, root-cause diagnosis of failed segmentations |
-| **Anthropic** | Remote REST API (`httpx` / `anthropic`) | `claude-3-5-sonnet`<br>`claude-3-7-sonnet` | **OPTIONAL** | `ANTHROPIC_API_KEY` | Architectural reviews, code audits, adversarial validation |
-| **Google Gemini** | Antigravity Control Plane / REST | `gemini-1.5-pro`<br>`gemini-2.5-pro` | **NATIVE IN AGY** | Built into Antigravity IDE (or optional `GEMINI_API_KEY` for scripts) | Control plane orchestration, large-context workspace planning |
-| **Ollama** | Local REST HTTP | `llama3.2:3b`<br>`qwen2.5-coder:7b`<br>`mistral:7b` | **LOCAL ENGINE** | `http://localhost:11434` (No API key, zero cost) | 100% offline fallback, private cadastral data processing |
-| **Local SAM 2** | Local PyTorch Engine (`torch`) | `sam2_hiera_tiny.pt`<br>`sam2_hiera_large.pt` | **READY ON DISK** | GPU CUDA / DirectML / CPU (Weights in `models/sam2/`) | High-resolution building boundary segmentation |
-| **ONNX Runtime** | DirectML / CPU (`onnxruntime`) | SAM 2 ONNX exported models | **READY (SKELETON)** | DirectX 12 GPU on Windows (Zero CUDA dependency) | Lightweight cross-vendor local inference |
+| **OpenRouter / Kilo** | Remote REST API (OpenRouter) | `meta-llama/llama-3.3-70b-instruct`<br>`meta-llama/llama-3.1-8b-instruct` | **TESTED & OPERATIONAL (722ms)** | `OPENROUTER_API_KEY` (Present in `.env`)<br>URL: `https://openrouter.ai/api/v1` | Kilo adversarial audit, repository-level reasoning, cadastral code review |
+| **NVIDIA NIM** | Remote REST API (OpenAI client) | `meta/llama-3.2-11b-vision-instruct`<br>`meta/llama-3.2-90b-vision-instruct` | **TESTED & OPERATIONAL (652ms)** | `NVIDIA_API_KEY` (Present in `.env`)<br>URL: `https://integrate.api.nvidia.com/v1` | Multimodal vision QA (verified with image payload), high-throughput inference |
+| **OpenAI** | Remote REST API (`openai` SDK) | `gpt-4o`<br>`gpt-4o-mini`<br>`o3-mini` | **NOT_CONFIGURED** | `OPENAI_API_KEY` (Key missing from `.env`) | Direct OpenAI API access |
+| **Anthropic** | Remote REST API (`httpx` / `anthropic`) | `claude-3-5-sonnet`<br>`claude-3-7-sonnet` | **PLANNED / OPTIONAL** | `ANTHROPIC_API_KEY` | Architectural reviews, code audits, adversarial validation |
+| **Google Gemini** | Antigravity Control Plane / REST | `gemini-1.5-pro`<br>`gemini-2.5-pro` | **NATIVE IN AGY** | Built into Antigravity IDE | Control plane orchestration, workspace planning |
+| **Ollama** | Local REST HTTP | `qwen2.5-coder:7b`<br>`qwen3:8b` (Installed) | **UNAVAILABLE (DAEMON OFFLINE)** | `http://localhost:11434` (Zero cost) | 100% offline fallback, private cadastral data processing |
+| **Local SAM 2** | Local PyTorch Engine (`torch` CUDA) | `sam2_hiera_tiny.pt` (155.9 MB) | **BENCHMARKED (CUDA GPU)** | Weights in `models/sam2/` | High-resolution building boundary segmentation |
+| **ONNX Runtime** | DirectML / CPU (`onnxruntime`) | `sam2_encoder.onnx`<br>`sam2_decoder.onnx` | **LOADED ON DISK** | Weights in `models/sam2/` | Lightweight cross-vendor local inference |
+| **Local Mock** | Deterministic Python Engine | `deterministic-planner-v1` | **TESTED & OPERATIONAL (0.0ms)** | Built-in Python class | Air-gapped fallback, deterministic Stereo 70 plan generation |
 
 ---
 
