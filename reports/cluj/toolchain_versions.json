@@ -1,0 +1,58 @@
+{
+  "python": {
+    "version": "3.10.10",
+    "executable": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\venv\\Scripts\\python.exe"
+  },
+  "pytorch": {
+    "version": "2.6.0+cu124",
+    "cuda_available": true,
+    "device_count": 1
+  },
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "capability": [
+      8,
+      9
+    ],
+    "total_memory_mb": 6140.5
+  },
+  "cuda": {
+    "torch_cuda_version": "12.4"
+  },
+  "sam2": {
+    "model_name": "sam2_hiera_tiny",
+    "checkpoint_path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\models\\sam2\\sam2_hiera_tiny.pt",
+    "size_bytes": 155906050,
+    "verified_on_disk": true
+  },
+  "qgis": {
+    "version": "3.40.0-Bratislava",
+    "path": "C:\\Program Files\\QGIS 3.40.0\\bin\\qgis-bin.exe",
+    "verified_executable": true
+  },
+  "gdal": {
+    "version": "3.9.3",
+    "mrsid_driver_supported": true,
+    "verified_via": "QGIS Python runtime"
+  },
+  "pdal": {
+    "version_string": "--------------------------------------------------------------------------------",
+    "path": "C:\\Program Files\\QGIS 3.40.0\\bin\\pdal.exe",
+    "verified_executable": true
+  },
+  "proj": {
+    "pyproj_version": "3.7.0",
+    "proj_version": "9.5.0",
+    "verified_via": "QGIS Python runtime"
+  },
+  "snap": {
+    "version": "11.0.0",
+    "path": "C:\\Program Files\\esa-snap\\bin\\gpt.exe",
+    "verified_executable": true,
+    "engine": "ESA SNAP GPT CLI"
+  },
+  "cloudcompare": {
+    "status": "NOT_INSTALLED",
+    "verified": true
+  }
+}

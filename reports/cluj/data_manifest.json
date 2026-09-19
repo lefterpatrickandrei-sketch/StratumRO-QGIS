@@ -1,0 +1,168 @@
+{
+  "manifest_version": "1.0.0",
+  "benchmark_aoi": "Cluj-Napoca (USAMV / Some\u0219ul Mic)",
+  "project_identity": "StratumRO \u2014 AI Geospatial Platform for QGIS",
+  "benchmark_role": "High-Precision Pre-Cadastral Assistance Validation Laboratory",
+  "generated_date": "2026-09-19T15:07:16.211071",
+  "crs_primary": "Stereo 70 (EPSG:3844)",
+  "hardware": "NVIDIA GeForce RTX 4050 Laptop GPU (6GB VRAM, CUDA sm_89)",
+  "software_versions": {
+    "qgis": "3.40.0-Bratislava",
+    "gdal": "3.9.3",
+    "pdal": "2.8.1",
+    "pytorch": "2.6.0+cu124",
+    "python": "3.10.10"
+  },
+  "artifacts": [
+    {
+      "relative_path": "C:/Users/lefpa/Desktop/date/Z_VladP/Comparatie/DTM3m/DTM3m.tif",
+      "category": "SOURCE_RASTER",
+      "description": "Bare-Earth Digital Terrain Model (3m resolution)",
+      "size_bytes": 421864,
+      "size_mb": 0.4,
+      "last_modified": "2017-03-09T10:57:14",
+      "crs": "EPSG:3844",
+      "sha256": "2813f631c5167a30ccc8d494d222f8f8ee3e257149be6bce77e886b01da72b77"
+    },
+    {
+      "relative_path": "C:/Users/lefpa/Desktop/date/Z_VladP/Comparatie/LAZ/NorPuncte_St70_S42.laz",
+      "category": "SOURCE_POINTCLOUD",
+      "description": "Classified Airborne LiDAR Point Cloud (4,624,905 points)",
+      "size_bytes": 21306592,
+      "size_mb": 20.32,
+      "last_modified": "2017-03-09T10:58:24",
+      "crs": "EPSG:3844",
+      "sha256": "fa68802289500d005eda5689316f31db3b6e076c4775c7b6543e8d7d67bcfb5e"
+    },
+    {
+      "relative_path": "workspace/e2e/04_orthophoto/active_ortho_crop.tif",
+      "category": "INPUT_RASTER",
+      "description": "Active Cluj Orthophoto Crop (20cm GSD, 2500x2000)",
+      "size_bytes": 15013470,
+      "size_mb": 14.32,
+      "last_modified": "2026-09-17T21:50:01.664774",
+      "crs": "EPSG:3844",
+      "sha256": "132b8dc43df659ffe420f2ce2de3998919199052c9a5a8d391c4a7e606d08bbb"
+    },
+    {
+      "relative_path": "workspace/derived/cluj_ndsm_1m.tif",
+      "category": "DERIVED_RASTER",
+      "description": "Reconstructed Normalized Digital Surface Model (1m resolution)",
+      "size_bytes": 3751630,
+      "size_mb": 3.58,
+      "last_modified": "2026-09-19T14:22:35.515853",
+      "crs": "EPSG:3844",
+      "sha256": "0b4bc40b73f154a23a507137edbe44f41ab35c54d8149488695598df5d1b7220"
+    },
+    {
+      "relative_path": "data/derived_reference/tier1_primary_29.geojson",
+      "category": "REFERENCE_GT",
+      "description": "Deduplicated Primary Cadastral Reference (29 buildings)",
+      "size_bytes": 27432,
+      "size_mb": 0.03,
+      "last_modified": "2026-09-19T14:21:13.861037",
+      "crs": "EPSG:3844",
+      "sha256": "50724423cf809af04c3a208ebf4bfa851a0b0f219593b17def9a8581f069d677"
+    },
+    {
+      "relative_path": "data/derived_reference/tier2_additional_121.geojson",
+      "category": "REFERENCE_GT",
+      "description": "Deduplicated Complementary Reference (121 buildings)",
+      "size_bytes": 79689,
+      "size_mb": 0.08,
+      "last_modified": "2026-09-19T14:21:13.869797",
+      "crs": "EPSG:3844",
+      "sha256": "ee3aebf58195d58bd8f7d695e6931987161df7a77ba9c3266e03f3b2dbc53f79"
+    },
+    {
+      "relative_path": "data/derived_reference/cluj_combined_unique_150.geojson",
+      "category": "REFERENCE_GT",
+      "description": "Clean Deduplicated Cadastral Reference (150 unique buildings)",
+      "size_bytes": 127997,
+      "size_mb": 0.12,
+      "last_modified": "2026-09-19T14:21:13.881504",
+      "crs": "EPSG:3844",
+      "sha256": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44"
+    },
+    {
+      "relative_path": "workspace/predictions/cluj_raw_sam2_predictions.geojson",
+      "category": "MODEL_PREDICTION",
+      "description": "Raw Organic Footprints from Meta SAM 2 Inference",
+      "size_bytes": 2423461,
+      "size_mb": 2.31,
+      "last_modified": "2026-09-19T14:25:04.128973",
+      "crs": "EPSG:3844",
+      "sha256": "04d37e59a0d16082e08206a6e2ee6783fcb3fb9dea060bc9fd5924d1b2f14bc7"
+    },
+    {
+      "relative_path": "workspace/predictions/cluj_regularized_predictions.geojson",
+      "category": "REGULARIZED_CAD",
+      "description": "90-degree Orthogonal Cadastral Regularized Footprints",
+      "size_bytes": 451321,
+      "size_mb": 0.43,
+      "last_modified": "2026-09-19T14:25:05.959146",
+      "crs": "EPSG:3844",
+      "sha256": "1ad0517a2a8c07f3ca049df9322802072ae538cb7028c1ec3ae1b31fe92faf7b"
+    },
+    {
+      "relative_path": "reports/cluj/coregistration_points.geojson",
+      "category": "QC_VALIDATION",
+      "description": "Roof-to-Reference Centroid Divergence Points (26 buildings, EPSG:3844)",
+      "size_bytes": 10103,
+      "size_mb": 0.01,
+      "last_modified": "2026-09-19T14:41:28.771019",
+      "crs": "EPSG:3844",
+      "sha256": "3d557303450755be5bed607e3c4be4ea4b7e587d07d5380eeef6e500eb1e5aac"
+    },
+    {
+      "relative_path": "reports/cluj/sam2_cluj_benchmark_metrics.json",
+      "category": "METRICS",
+      "description": "Authentic Benchmark Performance & Evaluation Metrics",
+      "size_bytes": 1198,
+      "size_mb": 0.0,
+      "last_modified": "2026-09-19T14:25:06.943534",
+      "crs": "N/A",
+      "sha256": "2145e56cdb7626d3ebcdb0f8daf0e05884492d3f74089f377d80cfeef632a230"
+    },
+    {
+      "relative_path": "reports/cluj/toolchain_versions.json",
+      "category": "TOOLCHAIN_SPEC",
+      "description": "Windows CLI Verified Toolchain Versions (QGIS, GDAL, PDAL, SNAP, PyTorch, CUDA)",
+      "size_bytes": 1533,
+      "size_mb": 0.0,
+      "last_modified": "2026-09-19T14:43:11.603529",
+      "crs": "N/A",
+      "sha256": "9faf5a78381e51138995848e27be0e39393df5a5c18395de36ecca2f44362134"
+    },
+    {
+      "relative_path": "reports/cluj/KILO_INDEPENDENT_PHASE2_AUDIT.md",
+      "category": "AUDIT_HISTORICAL",
+      "description": "Historical Independent Pre-Correction Audit Report (Superseded)",
+      "size_bytes": 22025,
+      "size_mb": 0.02,
+      "last_modified": "2026-09-19T15:06:39.500319",
+      "crs": "N/A",
+      "sha256": "27e16ad43db36c9702a6a6f53093f98cbc8b48d55dbf72a6555d94d1728226ae"
+    },
+    {
+      "relative_path": "reports/cluj/KILO_PHASE2_REAUDIT.md",
+      "category": "AUDIT_VALIDATION",
+      "description": "Post-Correction Independent Re-Audit Validation Report",
+      "size_bytes": 10389,
+      "size_mb": 0.01,
+      "last_modified": "2026-09-19T14:51:03.885698",
+      "crs": "N/A",
+      "sha256": "46a856761a6eacf69ce4902db6638f9f194a25e42263ca799d347d1562c3d44c"
+    },
+    {
+      "relative_path": "StratumRO_Cluj_Phase2_Spectator.qgs",
+      "category": "QGIS_PROJECT",
+      "description": "Phase 2 Live Inspection QGIS Project File",
+      "size_bytes": 152528,
+      "size_mb": 0.15,
+      "last_modified": "2026-09-19T14:45:59.804330",
+      "crs": "EPSG:3844",
+      "sha256": "46822eafb2d3863b3055f5a68f6087a510ec272a32fb853f1473ee6190acc865"
+    }
+  ]
+}
