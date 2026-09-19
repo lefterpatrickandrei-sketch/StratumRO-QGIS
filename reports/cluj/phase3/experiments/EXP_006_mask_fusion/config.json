@@ -1,0 +1,4 @@
+{
+  "experiment": "EXP_006_mask_fusion",
+  "iou_merge_threshold": 0.2
+}

@@ -1,0 +1,266 @@
+{
+  "phase2_hashes": {
+    "tier1": {
+      "path": "c:\\Users\\lefpa\\Downloads\\QGIS-AI\\data\\ground_truth\\tier1_teren.geojson",
+      "sha256": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+      "size": 26209
+    },
+    "tier2": {
+      "path": "c:\\Users\\lefpa\\Downloads\\QGIS-AI\\data\\ground_truth\\tier2_extended_gt.geojson",
+      "sha256": "44deb76b82f639f81fd64e4327a17a80783b48d6b0d188a818ef97f473671d34",
+      "size": 97188
+    },
+    "ref_150": {
+      "path": "c:\\Users\\lefpa\\Downloads\\QGIS-AI\\data\\derived_reference\\cluj_combined_unique_150.geojson",
+      "sha256": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44",
+      "size": 127997
+    },
+    "ndsm": {
+      "path": "c:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\derived\\cluj_ndsm_1m.tif",
+      "sha256": "0b4bc40b73f154a23a507137edbe44f41ab35c54d8149488695598df5d1b7220",
+      "size": 3751630
+    },
+    "ortho": {
+      "path": "c:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\e2e\\04_orthophoto\\active_ortho_crop.tif",
+      "sha256": "132b8dc43df659ffe420f2ce2de3998919199052c9a5a8d391c4a7e606d08bbb",
+      "size": 15013470
+    },
+    "p2_raw_pred": {
+      "path": "c:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\predictions\\cluj_raw_sam2_predictions.geojson",
+      "sha256": "04d37e59a0d16082e08206a6e2ee6783fcb3fb9dea060bc9fd5924d1b2f14bc7",
+      "size": 2423461
+    },
+    "p2_reg_pred": {
+      "path": "c:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\predictions\\cluj_regularized_predictions.geojson",
+      "sha256": "1ad0517a2a8c07f3ca049df9322802072ae538cb7028c1ec3ae1b31fe92faf7b",
+      "size": 451321
+    }
+  },
+  "ref_in_aoi": 65,
+  "recalculated_metrics": {
+    "E0_raw": {
+      "pred_count": 94,
+      "tp": 4,
+      "fp": 90,
+      "fn": 61,
+      "precision": 0.0426,
+      "recall": 0.0615,
+      "f1": 0.0503,
+      "mean_iou": 0.6952,
+      "median_iou": 0.6938,
+      "mae_2d": 2.72,
+      "rmse_2d": 3.41,
+      "mean_vertex_count": 378.7
+    },
+    "E0_reg": {
+      "pred_count": 94,
+      "tp": 4,
+      "fp": 90,
+      "fn": 61,
+      "precision": 0.0426,
+      "recall": 0.0615,
+      "f1": 0.0503,
+      "mean_iou": 0.7037,
+      "median_iou": 0.694,
+      "mae_2d": 2.49,
+      "rmse_2d": 3.36,
+      "mean_vertex_count": 86.1
+    },
+    "E1_raw": {
+      "pred_count": 75,
+      "tp": 4,
+      "fp": 71,
+      "fn": 61,
+      "precision": 0.0533,
+      "recall": 0.0615,
+      "f1": 0.0571,
+      "mean_iou": 0.7047,
+      "median_iou": 0.7128,
+      "mae_2d": 2.55,
+      "rmse_2d": 3.22,
+      "mean_vertex_count": 281.1
+    },
+    "E1_reg": {
+      "pred_count": 75,
+      "tp": 4,
+      "fp": 71,
+      "fn": 61,
+      "precision": 0.0533,
+      "recall": 0.0615,
+      "f1": 0.0571,
+      "mean_iou": 0.713,
+      "median_iou": 0.7127,
+      "mae_2d": 2.32,
+      "rmse_2d": 3.16,
+      "mean_vertex_count": 60.0
+    },
+    "E2_raw": {
+      "pred_count": 31,
+      "tp": 4,
+      "fp": 27,
+      "fn": 61,
+      "precision": 0.129,
+      "recall": 0.0615,
+      "f1": 0.0833,
+      "mean_iou": 0.7047,
+      "median_iou": 0.7128,
+      "mae_2d": 2.55,
+      "rmse_2d": 3.22,
+      "mean_vertex_count": 458.3
+    },
+    "E2_reg": {
+      "pred_count": 31,
+      "tp": 4,
+      "fp": 27,
+      "fn": 61,
+      "precision": 0.129,
+      "recall": 0.0615,
+      "f1": 0.0833,
+      "mean_iou": 0.713,
+      "median_iou": 0.7127,
+      "mae_2d": 2.32,
+      "rmse_2d": 3.16,
+      "mean_vertex_count": 98.4
+    },
+    "E3_raw": {
+      "pred_count": 31,
+      "tp": 4,
+      "fp": 27,
+      "fn": 61,
+      "precision": 0.129,
+      "recall": 0.0615,
+      "f1": 0.0833,
+      "mean_iou": 0.6502,
+      "median_iou": 0.6039,
+      "mae_2d": 3.13,
+      "rmse_2d": 3.38,
+      "mean_vertex_count": 607.7
+    },
+    "E3_reg": {
+      "pred_count": 31,
+      "tp": 4,
+      "fp": 27,
+      "fn": 61,
+      "precision": 0.129,
+      "recall": 0.0615,
+      "f1": 0.0833,
+      "mean_iou": 0.6547,
+      "median_iou": 0.5977,
+      "mae_2d": 2.9,
+      "rmse_2d": 3.32,
+      "mean_vertex_count": 134.7
+    },
+    "E4_raw": {
+      "pred_count": 31,
+      "tp": 4,
+      "fp": 27,
+      "fn": 61,
+      "precision": 0.129,
+      "recall": 0.0615,
+      "f1": 0.0833,
+      "mean_iou": 0.6802,
+      "median_iou": 0.6476,
+      "mae_2d": 3.17,
+      "rmse_2d": 3.41,
+      "mean_vertex_count": 472.6
+    },
+    "E4_reg": {
+      "pred_count": 31,
+      "tp": 4,
+      "fp": 27,
+      "fn": 61,
+      "precision": 0.129,
+      "recall": 0.0615,
+      "f1": 0.0833,
+      "mean_iou": 0.6835,
+      "median_iou": 0.6462,
+      "mae_2d": 2.94,
+      "rmse_2d": 3.38,
+      "mean_vertex_count": 99.9
+    },
+    "E6_raw": {
+      "pred_count": 26,
+      "tp": 4,
+      "fp": 22,
+      "fn": 61,
+      "precision": 0.1538,
+      "recall": 0.0615,
+      "f1": 0.0879,
+      "mean_iou": 0.6665,
+      "median_iou": 0.6365,
+      "mae_2d": 2.82,
+      "rmse_2d": 2.99,
+      "mean_vertex_count": 400.0
+    },
+    "E6_reg": {
+      "pred_count": 26,
+      "tp": 4,
+      "fp": 22,
+      "fn": 61,
+      "precision": 0.1538,
+      "recall": 0.0615,
+      "f1": 0.0879,
+      "mean_iou": 0.6725,
+      "median_iou": 0.6331,
+      "mae_2d": 2.64,
+      "rmse_2d": 2.99,
+      "mean_vertex_count": 136.9
+    },
+    "E7_raw": {
+      "pred_count": 26,
+      "tp": 4,
+      "fp": 22,
+      "fn": 61,
+      "precision": 0.1538,
+      "recall": 0.0615,
+      "f1": 0.0879,
+      "mean_iou": 0.6672,
+      "median_iou": 0.6359,
+      "mae_2d": 2.83,
+      "rmse_2d": 3.0,
+      "mean_vertex_count": 129.2
+    },
+    "E7_reg": {
+      "pred_count": 26,
+      "tp": 4,
+      "fp": 22,
+      "fn": 61,
+      "precision": 0.1538,
+      "recall": 0.0615,
+      "f1": 0.0879,
+      "mean_iou": 0.6659,
+      "median_iou": 0.6333,
+      "mae_2d": 2.87,
+      "rmse_2d": 3.04,
+      "mean_vertex_count": 127.6
+    },
+    "E8_reg": {
+      "pred_count": 26,
+      "tp": 4,
+      "fp": 22,
+      "fn": 61,
+      "precision": 0.1538,
+      "recall": 0.0615,
+      "f1": 0.0879,
+      "mean_iou": 0.6724,
+      "median_iou": 0.6331,
+      "mae_2d": 2.64,
+      "rmse_2d": 2.99,
+      "mean_vertex_count": 136.9
+    },
+    "E9_reg": {
+      "pred_count": 26,
+      "tp": 4,
+      "fp": 22,
+      "fn": 61,
+      "precision": 0.1538,
+      "recall": 0.0615,
+      "f1": 0.0879,
+      "mean_iou": 0.6659,
+      "median_iou": 0.6333,
+      "mae_2d": 2.87,
+      "rmse_2d": 3.04,
+      "mean_vertex_count": 127.6
+    }
+  }
+}

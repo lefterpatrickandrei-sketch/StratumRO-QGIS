@@ -1,0 +1,9 @@
+{
+  "experiment": "EXP_001_candidate_gen",
+  "morphology": "closing_5x5",
+  "fill_holes": true,
+  "height_threshold": 2.5,
+  "min_area_m2": 25.0,
+  "max_area_m2": 8000.0,
+  "prompt_strategy": "box_and_center"
+}

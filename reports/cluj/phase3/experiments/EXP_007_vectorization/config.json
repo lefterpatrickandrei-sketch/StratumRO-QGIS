@@ -1,0 +1,5 @@
+{
+  "experiment": "EXP_007_vectorization",
+  "simplify_tol_m": 0.25,
+  "remove_small_holes_m2": 12.0
+}

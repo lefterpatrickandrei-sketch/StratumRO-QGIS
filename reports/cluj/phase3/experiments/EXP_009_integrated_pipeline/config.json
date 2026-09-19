@@ -1,0 +1,10 @@
+{
+  "pipeline": "Phase 3 Integrated Best-of-Breed",
+  "stages": [
+    "CandidateGenerator(closing_5x5, fill_holes)",
+    "MultimodalVegetationFilter(ExG + LiDAR)",
+    "SAM2(box_prompt)",
+    "MaskFusionEngine(iou_merge=0.20)",
+    "OrientationAwareRegularizer(tolerance=0.65)"
+  ]
+}

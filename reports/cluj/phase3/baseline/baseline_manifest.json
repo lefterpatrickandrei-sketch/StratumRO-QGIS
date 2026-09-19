@@ -1,0 +1,44 @@
+{
+  "baseline_checkpoint": "4c1497a2c8a2a743fcd94906d688b20be1224821",
+  "git_branch": "main",
+  "python_version": "3.10.10",
+  "pytorch_version": "2.6.0+cu124",
+  "cuda_device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "inputs": {
+    "active_ortho_crop": {
+      "path": "workspace/e2e/04_orthophoto/active_ortho_crop.tif",
+      "size_bytes": 15013470,
+      "sha256": "132b8dc43df659ffe420f2ce2de3998919199052c9a5a8d391c4a7e606d08bbb"
+    },
+    "cluj_ndsm_1m": {
+      "path": "workspace/derived/cluj_ndsm_1m.tif",
+      "size_bytes": 3751630,
+      "sha256": "0b4bc40b73f154a23a507137edbe44f41ab35c54d8149488695598df5d1b7220"
+    },
+    "sam2_checkpoint": {
+      "path": "models/sam2/sam2_hiera_tiny.pt",
+      "size_bytes": 155906050,
+      "sha256": "65b50056e05bcb13694174f51bb6da89c894b57b75ccdf0ba6352c597c5d1125"
+    },
+    "sam2_config": {
+      "path": "venv/Lib/site-packages/sam2/configs/sam2/sam2_hiera_t.yaml",
+      "size_bytes": 3753,
+      "sha256": "33399c73cd13bbc3d0c1cea843fa2fc255fdb20139fe07f042743e046ac46b6b"
+    },
+    "ground_truth_ref": {
+      "path": "data/derived_reference/cluj_combined_unique_150.geojson",
+      "size_bytes": 127997,
+      "sha256": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44"
+    },
+    "tier1_teren": {
+      "path": "data/ground_truth/tier1_teren.geojson",
+      "size_bytes": 26209,
+      "sha256": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424"
+    },
+    "tier2_extended": {
+      "path": "data/ground_truth/tier2_extended_gt.geojson",
+      "size_bytes": 97188,
+      "sha256": "44deb76b82f639f81fd64e4327a17a80783b48d6b0d188a818ef97f473671d34"
+    }
+  }
+}

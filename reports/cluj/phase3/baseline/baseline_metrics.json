@@ -1,0 +1,45 @@
+{
+  "execution_date": "2026-09-19",
+  "runtime_seconds": 13.15,
+  "device": "cuda",
+  "aoi_extent": [
+    390649.9901520001,
+    585349.999998,
+    391149.9901520001,
+    585749.999998
+  ],
+  "candidates_detected": 94,
+  "raw_predictions_count": 94,
+  "regularized_predictions_count": 94,
+  "reference_buildings_in_aoi": 65,
+  "raw_metrics": {
+    "name": "RAW_SAM2",
+    "tp": 4,
+    "fp": 90,
+    "fn": 61,
+    "precision": 0.0425531914893617,
+    "recall": 0.06153846153846154,
+    "f1": 0.050314465408805034,
+    "mean_iou": 0.6952059688745625,
+    "median_iou": 0.6938066188009465,
+    "mean_dx": -0.18466087589331437,
+    "mean_dy": -0.8745550137246028,
+    "mae_2d": 2.7158521225676653,
+    "rmse_2d": 3.4117540869147107
+  },
+  "regularized_metrics": {
+    "name": "REGULARIZED_CAD",
+    "tp": 4,
+    "fp": 90,
+    "fn": 61,
+    "precision": 0.0425531914893617,
+    "recall": 0.06153846153846154,
+    "f1": 0.050314465408805034,
+    "mean_iou": 0.7036783876487472,
+    "median_iou": 0.6939591265790199,
+    "mean_dx": -0.44619052347843535,
+    "mean_dy": -0.9740639178198762,
+    "mae_2d": 2.4909014441089115,
+    "rmse_2d": 3.36368291983831
+  }
+}

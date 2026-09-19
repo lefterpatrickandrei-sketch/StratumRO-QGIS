@@ -1,0 +1,9 @@
+{
+  "experiment": "EXP_002_vegetation_filter",
+  "exg_threshold": 0.06,
+  "veg_ratio_threshold": 0.8,
+  "bldg_ratio_min": 0.05,
+  "roughness_threshold_m": 1.8,
+  "accepted_candidates": 31,
+  "rejected_vegetation_candidates": 44
+}

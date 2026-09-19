@@ -1,0 +1,48 @@
+{
+  "phase": "Phase 2 Frozen Baseline (E0)",
+  "checkpoint": "4c1497a2c8a2a743fcd94906d688b20be1224821",
+  "execution_date": "2026-09-19",
+  "aoi_extent_epsg3844": [
+    390649.990152,
+    585350.0,
+    391149.990152,
+    585750.0
+  ],
+  "candidate_generation": {
+    "method": "raw_ndsm_threshold_connected_components",
+    "ndsm_height_threshold_m": 2.5,
+    "min_area_m2": 25.0,
+    "max_area_m2": null,
+    "morphological_operations": "none",
+    "hole_filling": false
+  },
+  "vegetation_filtering": {
+    "enabled": false,
+    "lidar_class_filter": null,
+    "optical_index_filter": null
+  },
+  "sam2_prompting": {
+    "model_name": "Meta SAM 2 Hiera Tiny",
+    "checkpoint": "models/sam2/sam2_hiera_tiny.pt",
+    "config": "sam2_hiera_t.yaml",
+    "device": "cuda",
+    "prompt_strategy": "point_and_box",
+    "point_source": "candidate_pixel_centroid",
+    "box_source": "candidate_pixel_bounding_box"
+  },
+  "vectorization": {
+    "engine": "rasterio.features.shapes",
+    "min_polygon_area_m2": 15.0,
+    "multi_polygon_handling": "largest_component"
+  },
+  "regularization": {
+    "method": "CadastralVectorizer.clean_cad_polygon",
+    "tolerance_m": 0.7,
+    "orthogonal_ratio_threshold": 0.85
+  },
+  "ground_truth_reference": {
+    "file": "data/derived_reference/cluj_combined_unique_150.geojson",
+    "buildings_in_aoi": 65,
+    "evaluation_iou_threshold": 0.50
+  }
+}
