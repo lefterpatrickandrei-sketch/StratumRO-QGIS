@@ -16,6 +16,10 @@
 
 **StratumRO** este o platformă geomatică și MLOps orientată către fluxuri pre-cadastrale românești și proiectată să genereze produse tehnice compatibile cu cerințele aplicabile (inclusiv convențiile tehnice de layere conform **Ordinului ANCPI nr. 600/2023** și proiecției oficiale **Stereo 70 EPSG:3844**), cu verificare umană și profesională obligatorie. Sistemul fuzionează nori de puncte **LiDAR aeropurtat (LAKI/ANCPI)** cu mozaicuri **ortofotoplan de înaltă rezoluție (15 cm GSD)**, generând livrabile tehnice compatibile direct cu **TopoLT**, **AutoCAD**, **QGIS 3D** și **CityJSON**.
 
+<p align="center">
+  <img src="docs/assets/stratumro_overview_infographic.jpg" alt="StratumRO Harta Vizuală de Arhitectură și Sistem" width="100%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);" />
+</p>
+
 > [!IMPORTANT]
 > **Poziționare & Rigoare Științifică (Asistență Pre-Cadastrală):**  
 > StratumRO este un sistem de **asistență pre-cadastrală și accelerare a digitizării geodezice (Human-in-the-Loop)**.  
