@@ -12,6 +12,9 @@ from enum import Enum
 from typing import Any, Dict, List, Optional, Set
 
 
+from .task_spec import TaskSpec, RiskTolerance, WorkflowMode
+
+
 class TaskStatus(str, Enum):
     PENDING = "pending"
     RUNNING = "running"
@@ -21,6 +24,10 @@ class TaskStatus(str, Enum):
     RETRY = "retry"
     WAITING_FOR_USER = "waiting_for_user"
     CANCELLED = "cancelled"
+
+
+TaskNodeStatus = TaskStatus
+TaskGraphStatus = TaskStatus
 
 
 # Deterministic state machine transition rules
@@ -145,8 +152,15 @@ class TaskGraph:
     def __init__(self, goal: str = "", metadata: Optional[Dict[str, Any]] = None):
         self._lock = threading.RLock()
         self.goal = goal
+        self.graph_id = ""
         self.metadata = metadata or {}
         self._nodes: Dict[str, TaskNode] = {}
+
+    @property
+    def nodes(self) -> List[TaskNode]:
+        """Returns all task nodes in the graph."""
+        with self._lock:
+            return list(self._nodes.values())
 
     def add_task(self, task: TaskNode):
         """Adds a task node to the graph."""
@@ -317,3 +331,72 @@ class TaskGraph:
         for t_data in data.get("tasks", []):
             graph.add_task(TaskNode.from_dict(t_data))
         return graph
+
+    @classmethod
+    def from_task_spec(cls, task_spec: Any) -> "TaskGraph":
+        """
+        Synthesizes a deterministic TaskGraph DAG directly from a formal TaskSpec.
+        Enforces approval gates on export if risk_tolerance in ('LOW', 'MEDIUM', 'BALANCED').
+        """
+        t_id = getattr(task_spec, "task_id", "")
+        graph = cls(
+            goal=getattr(task_spec, "name", "Cadastral Workflow Task"),
+            metadata={
+                "task_id": t_id,
+                "target_crs": getattr(task_spec, "target_crs", "EPSG:3844"),
+                "risk_tolerance": getattr(task_spec, "risk_tolerance", "LOW"),
+                "deliverables": getattr(task_spec, "deliverables", []),
+            }
+        )
+        graph.graph_id = f"graph_{t_id}" if t_id else "graph_task"
+
+        raw_risk = getattr(task_spec, "risk_tolerance", "LOW")
+        if hasattr(raw_risk, "value"):
+            risk_val = str(raw_risk.value).upper()
+        else:
+            risk_val = str(raw_risk).split(".")[-1].upper()
+        requires_gate = risk_val in ("LOW", "MEDIUM", "BALANCED")
+
+        # 1. Validation node
+        graph.add_task(TaskNode(
+            id="task_validate_inputs",
+            name="profile_data_sources",
+            tool="cadastral.validate_ancpi",
+            task_type="topology_validation",
+            inputs=getattr(task_spec, "inputs", {}),
+            requires_approval=False
+        ))
+
+        # 2. Candidate extraction node
+        graph.add_task(TaskNode(
+            id="task_extract_candidates",
+            name="building_candidate_segmentation",
+            tool="lidar.generate_ndsm",
+            task_type="ndsm_extraction",
+            inputs=getattr(task_spec, "inputs", {}),
+            dependencies=["task_validate_inputs"],
+            requires_approval=False
+        ))
+
+        # 3. Regularization & eave offset
+        graph.add_task(TaskNode(
+            id="task_regularize_cadastral",
+            name="vectorization_and_orthogonalization",
+            tool="vector.regularize",
+            task_type="geometry",
+            dependencies=["task_extract_candidates"],
+            requires_approval=False
+        ))
+
+        # 4. Deliverables export (CAD TopoLT / GPKG / .CP)
+        graph.add_task(TaskNode(
+            id="task_export_deliverables",
+            name="export_cad_deliverables",
+            tool="cadastral.export_topolt_cad",
+            task_type="cad_export",
+            dependencies=["task_regularize_cadastral"],
+            requires_approval=requires_gate
+        ))
+
+        return graph
+

@@ -1,0 +1,316 @@
+{
+  "timestamp": "2026-09-20T10:45:00Z",
+  "pipeline": "StratumRO Phase 4 Foundation E2E",
+  "status": "SUCCESS",
+  "stages": {
+    "stage_1_task_spec": {
+      "task_id": "cluj_cadastre_e2e_p4",
+      "is_valid": true,
+      "errors": [],
+      "risk_tolerance": "BALANCED",
+      "deliverables": [
+        "dxf",
+        "cp",
+        "gpkg",
+        "pad_table"
+      ]
+    },
+    "stage_2_profiling": {
+      "resource_snapshot": {
+        "os": "win32",
+        "os_platform": "win32",
+        "cpu_count": 16,
+        "cpu_logical_cores": 16,
+        "ram_total_mb": 15610,
+        "ram_total_gb": 15.24,
+        "ram_available_gb": 9.14,
+        "gpu_available": true,
+        "gpu_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "cuda_available": true,
+        "directml_available": false,
+        "qgis_socket_available": true,
+        "qgis_mcp_live": true,
+        "qgis_socket_port": 9876,
+        "active_project": "StratumRO_Inspectie_Vizuala",
+        "active_layers_count": 0,
+        "active_crs": "EPSG:3844"
+      },
+      "qgis_mcp_socket_live": true,
+      "qgis_active_layers": [
+        "1. Ortofoto Aerian RGB (10 cm GSD)",
+        "2. \u00cen\u0103l\u021bime LiDAR nDSM (H > 2.5m)",
+        "3. Vectorizare Final\u0103 Cadastru (StratumRO ANCPI Clean \u2014 29 Cl\u0103diri)",
+        "4. Cadastru Teren (Ground Truth - 29 Cl\u0103diri)",
+        "5. Artefacte Respinse SAM2 (Audit - 184 Poligoane)"
+      ]
+    },
+    "stage_3_data_profiling": {
+      "target_path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\data\\ground_truth\\tier1_teren.geojson",
+      "highest_level_passed": "L5_FIELD_VALIDATED",
+      "passed_levels": [
+        "L0_FILE_VALID",
+        "L1_DATASET_VALID",
+        "L2_SPATIALLY_CONSISTENT",
+        "L4_PURPOSE_SUITABLE",
+        "L5_FIELD_VALIDATED",
+        "L3_CROSS_SOURCE_AGREED"
+      ],
+      "crs_detected": "urn:ogc:def:crs:EPSG::3844",
+      "bbox": [
+        390549.0244075255,
+        585210.4533461216,
+        391307.24884869496,
+        585823.3619952397
+      ],
+      "feature_count": 29,
+      "issues": [],
+      "is_cadastral_ready": true,
+      "checks": {
+        "L0": {
+          "exists": true,
+          "size_bytes": 26209
+        },
+        "L2": {
+          "stereo70_conforming": true,
+          "bbox": [
+            390549.0244075255,
+            585210.4533461216,
+            391307.24884869496,
+            585823.3619952397
+          ]
+        },
+        "L5": {
+          "field_survey_verified": true
+        },
+        "L3": {
+          "cross_source_overlap": true,
+          "raster_bbox": [
+            391000.0,
+            584800.0,
+            391800.0,
+            585400.0
+          ]
+        }
+      }
+    },
+    "stage_4_capabilities": {
+      "stereo70_transform": {
+        "capability": "stereo70_transform",
+        "type": "deterministic",
+        "target": "stratum_ro.geodesy (PROJ / EPSG:3844)",
+        "is_llm": false,
+        "available": true,
+        "rationale": "Deterministic local geodetic engine. LLM bypassed."
+      },
+      "ndsm_extraction": {
+        "capability": "ndsm_extraction",
+        "type": "deterministic",
+        "target": "stratum_ro.lidar_processor (PDAL / laspy)",
+        "is_llm": false,
+        "available": true,
+        "rationale": "Deterministic local geodetic engine. LLM bypassed."
+      },
+      "optical_segmentation": {
+        "capability": "optical_segmentation",
+        "type": "local_model",
+        "target": "SAM2 (ONNX DirectML / PyTorch)",
+        "is_llm": false,
+        "available": true,
+        "rationale": "Meta SAM 2 local boundary segmentation."
+      },
+      "regularization_90deg": {
+        "capability": "regularization_90deg",
+        "type": "deterministic",
+        "target": "stratum_ro.vectorizer.regularize_footprints",
+        "is_llm": false,
+        "available": true,
+        "rationale": "Deterministic local geodetic engine. LLM bypassed."
+      },
+      "cad_topolt_export": {
+        "capability": "cad_topolt_export",
+        "type": "deterministic",
+        "target": "stratum_ro.cad_exporter (TopoLT / ANCPI 600)",
+        "is_llm": false,
+        "available": true,
+        "rationale": "Deterministic local geodetic engine. LLM bypassed."
+      }
+    },
+    "stage_5_task_graph": {
+      "graph_id": "graph_cluj_cadastre_e2e_p4",
+      "nodes": [
+        {
+          "id": "task_validate_inputs",
+          "name": "profile_data_sources",
+          "tool": "cadastral.validate_ancpi",
+          "task_type": "topology_validation",
+          "requires_approval": false
+        },
+        {
+          "id": "task_extract_candidates",
+          "name": "building_candidate_segmentation",
+          "tool": "lidar.generate_ndsm",
+          "task_type": "ndsm_extraction",
+          "requires_approval": false
+        },
+        {
+          "id": "task_regularize_cadastral",
+          "name": "vectorization_and_orthogonalization",
+          "tool": "vector.regularize",
+          "task_type": "geometry",
+          "requires_approval": false
+        },
+        {
+          "id": "task_export_deliverables",
+          "name": "export_cad_deliverables",
+          "tool": "cadastral.export_topolt_cad",
+          "task_type": "cad_export",
+          "requires_approval": true
+        }
+      ],
+      "has_approval_gate": true
+    },
+    "stage_6_risk_policy": {
+      "ground_truth_protection": "deny",
+      "cadastral_export_approval_gate": "require_approval",
+      "secret_scrubbing_working": true
+    },
+    "stage_7_simulation": {
+      "original_vertices": [
+        [
+          391000.0,
+          585000.0
+        ],
+        [
+          391020.0,
+          585000.0
+        ],
+        [
+          391020.0,
+          585015.0
+        ],
+        [
+          391000.0,
+          585015.0
+        ],
+        [
+          391000.0,
+          585000.0
+        ]
+      ],
+      "perturbed_vertices": [
+        [
+          391002.3707,
+          584998.3152
+        ],
+        [
+          391021.8977,
+          585000.0672
+        ],
+        [
+          391020.6157,
+          585014.6013
+        ],
+        [
+          391001.1133,
+          585012.9545
+        ],
+        [
+          391002.3707,
+          584998.3152
+        ]
+      ],
+      "perturbation_config": {
+        "shift_x": 1.5,
+        "shift_y": -1.0,
+        "rotation_deg": 5.0,
+        "scale": 0.98
+      }
+    },
+    "stage_8_provenance": {
+      "task_id": "cluj_cadastre_e2e_p4",
+      "record_count": 4,
+      "created_at": "2026-09-20T07:43:30.199216+00:00",
+      "latest_update": "2026-09-20T07:43:30.199216+00:00",
+      "has_human_signoff": true,
+      "lineage": [
+        {
+          "record_id": "rec_0001_e5be98",
+          "timestamp": "2026-09-20T07:43:30.199216+00:00",
+          "evidence_class": "OBSERVED",
+          "step_name": "profile_data_sources",
+          "operator": "DataProfiler",
+          "inputs": [
+            "data/orthophoto/cluj_ortho_crop.tif",
+            "data/ground_truth/tier1_teren.geojson"
+          ],
+          "outputs": [
+            "metadata_profile.json"
+          ],
+          "parameters": {},
+          "validation_status": "PASSED (L4_PURPOSE_SUITABLE)",
+          "human_signed_off": false,
+          "metadata": {}
+        },
+        {
+          "record_id": "rec_0002_fb36f8",
+          "timestamp": "2026-09-20T07:43:30.199216+00:00",
+          "evidence_class": "MODEL_PREDICTION",
+          "step_name": "building_candidate_segmentation",
+          "operator": "SAM2-Hiera (DirectML)",
+          "inputs": [
+            "metadata_profile.json"
+          ],
+          "outputs": [
+            "building_candidates.geojson"
+          ],
+          "parameters": {
+            "box_prompt": true,
+            "nDSM_gate": true
+          },
+          "validation_status": "PASSED",
+          "human_signed_off": false,
+          "metadata": {}
+        },
+        {
+          "record_id": "rec_0003_6f06ca",
+          "timestamp": "2026-09-20T07:43:30.199216+00:00",
+          "evidence_class": "DERIVED",
+          "step_name": "vectorization_and_orthogonalization",
+          "operator": "stratum_ro.vectorizer (GEOS)",
+          "inputs": [
+            "building_candidates.geojson"
+          ],
+          "outputs": [
+            "regularized_footprints.geojson"
+          ],
+          "parameters": {
+            "orthogonalize_90deg": true,
+            "eave_offset_m": -0.4
+          },
+          "validation_status": "PASSED",
+          "human_signed_off": false,
+          "metadata": {}
+        },
+        {
+          "record_id": "rec_0004_0b49a2",
+          "timestamp": "2026-09-20T07:43:30.199216+00:00",
+          "evidence_class": "HUMAN_DECISION",
+          "step_name": "export_cad_deliverables",
+          "operator": "Ing_Geodez_Autorizat",
+          "inputs": [
+            "regularized_footprints.geojson"
+          ],
+          "outputs": [
+            "plan_cadastral.dxf",
+            "imobil.cp",
+            "pad_table.csv"
+          ],
+          "parameters": {},
+          "validation_status": "SIGNED_OFF",
+          "human_signed_off": true,
+          "metadata": {}
+        }
+      ]
+    }
+  }
+}

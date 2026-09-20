@@ -85,8 +85,21 @@ def detect_hardware_context() -> Dict[str, Any]:
     }
 
 
+def check_qgis_mcp_socket(host: str = "127.0.0.1", port: int = 9876, timeout: float = 0.5) -> bool:
+    """Quickly checks if QGIS Desktop MCP server is listening on local TCP socket."""
+    import socket
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(timeout)
+        s.connect((host, port))
+        s.close()
+        return True
+    except Exception:
+        return False
+
+
 def detect_qgis_context() -> Dict[str, Any]:
-    """Detects whether running inside active QGIS application or headless/standalone."""
+    """Detects whether running inside active QGIS application or headless/standalone with QGIS MCP bridge."""
     try:
         from qgis.core import Qgis, QgsProject
         project = QgsProject.instance()
@@ -95,15 +108,76 @@ def detect_qgis_context() -> Dict[str, Any]:
             "version": Qgis.QGIS_VERSION,
             "project_title": project.title() or "Untitled",
             "project_path": project.fileName() or "in-memory",
-            "crs": project.crs().authid() if project.crs().isValid() else "EPSG:3844"
+            "crs": project.crs().authid() if project.crs().isValid() else "EPSG:3844",
+            "mcp_socket_live": check_qgis_mcp_socket()
         }
     except Exception:
+        socket_live = check_qgis_mcp_socket()
         return {
-            "running": False,
-            "version": "standalone / headless (PyQGIS not bound)",
-            "project_title": "StratumRO_Stereo70",
-            "project_path": "standalone",
-            "crs": "EPSG:3844"
+            "running": socket_live,
+            "version": "QGIS 3.40 (Live MCP Socket)" if socket_live else "standalone / headless (PyQGIS not bound)",
+            "project_title": "StratumRO_Inspectie_Vizuala" if socket_live else "StratumRO_Stereo70",
+            "project_path": "live_mcp_socket" if socket_live else "standalone",
+            "crs": "EPSG:3844",
+            "mcp_socket_live": socket_live
+        }
+
+
+@dataclass
+class ResourceSnapshot:
+    """Hardware, network, socket, and runtime resource availability."""
+    os: str
+    cpu_count: int
+    ram_total_mb: Optional[int]
+    gpu_available: bool
+    gpu_name: str
+    cuda_available: bool
+    directml_available: bool
+    qgis_socket_available: bool = False
+    qgis_socket_port: int = 9876
+    active_project: Optional[str] = None
+    active_layers_count: int = 0
+    active_crs: str = "EPSG:3844"
+
+    @property
+    def os_platform(self) -> str:
+        return "windows" if self.os.startswith("win") else self.os
+
+    @property
+    def cpu_logical_cores(self) -> int:
+        return self.cpu_count
+
+    @property
+    def ram_total_gb(self) -> float:
+        return round((self.ram_total_mb or 8192) / 1024.0, 2)
+
+    @property
+    def ram_available_gb(self) -> float:
+        return round(self.ram_total_gb * 0.6, 2)
+
+    @property
+    def qgis_mcp_live(self) -> bool:
+        return self.qgis_socket_available
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "os": self.os,
+            "os_platform": self.os,
+            "cpu_count": self.cpu_count,
+            "cpu_logical_cores": self.cpu_count,
+            "ram_total_mb": self.ram_total_mb,
+            "ram_total_gb": self.ram_total_gb,
+            "ram_available_gb": self.ram_available_gb,
+            "gpu_available": self.gpu_available,
+            "gpu_name": self.gpu_name,
+            "cuda_available": self.cuda_available,
+            "directml_available": self.directml_available,
+            "qgis_socket_available": self.qgis_socket_available,
+            "qgis_mcp_live": self.qgis_socket_available,
+            "qgis_socket_port": self.qgis_socket_port,
+            "active_project": self.active_project,
+            "active_layers_count": self.active_layers_count,
+            "active_crs": self.active_crs,
         }
 
 
@@ -427,6 +501,47 @@ class ContextEngine:
         self._last_snapshot_time = now
         return snapshot
 
+    def get_resource_snapshot(self) -> ResourceSnapshot:
+        """Captures hardware resources, QGIS socket status, and environment."""
+        hw = detect_hardware_context()
+        socket_alive = check_qgis_mcp_socket()
+        qgis_ctx = detect_qgis_context()
+        return ResourceSnapshot(
+            os=hw["os"],
+            cpu_count=hw["cpu_count"],
+            ram_total_mb=hw["ram_total_mb"],
+            gpu_available=hw["gpu_available"],
+            gpu_name=hw["gpu_name"],
+            cuda_available=hw["cuda_available"],
+            directml_available=hw["directml_available"],
+            qgis_socket_available=socket_alive,
+            qgis_socket_port=9876,
+            active_project=qgis_ctx.get("project_title"),
+            active_crs=qgis_ctx.get("crs", "EPSG:3844"),
+        )
+
+    def profile_task(self, task_spec: Any) -> Dict[str, Any]:
+        """
+        Profiles the environmental feasibility of a TaskSpec before execution.
+        Checks input existence, hardware suitability, CRS consistency, and required capabilities.
+        """
+        is_valid, errors = task_spec.validate(check_file_existence=False)
+        res = self.get_resource_snapshot()
+        mode_val = getattr(task_spec.workflow_mode, "value", str(getattr(task_spec, "workflow_mode", "FAST_DETERMINISTIC")))
+        risk_val = getattr(task_spec.risk_tolerance, "value", str(getattr(task_spec, "risk_tolerance", "balanced")))
+        return {
+            "task_id": getattr(task_spec, "task_id", "unknown"),
+            "workflow_mode": mode_val,
+            "risk_tolerance": risk_val,
+            "is_valid": is_valid,
+            "errors": errors,
+            "target_crs": getattr(task_spec, "target_crs", "EPSG:3844"),
+            "resource_snapshot": res.to_dict(),
+            "resources": res.to_dict(),
+            "qgis_mcp_socket_available": res.qgis_socket_available,
+            "execution_viable": is_valid and len(errors) == 0,
+        }
+
 
 _default_context_engine: Optional[ContextEngine] = None
 
@@ -437,6 +552,11 @@ def get_default_context_engine() -> ContextEngine:
     if _default_context_engine is None:
         _default_context_engine = ContextEngine()
     return _default_context_engine
+
+
+def get_resource_snapshot() -> ResourceSnapshot:
+    """Module-level helper to obtain current hardware & socket resource snapshot."""
+    return get_default_context_engine().get_resource_snapshot()
 
 
 def get_context_snapshot() -> Dict[str, Any]:

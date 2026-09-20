@@ -1,0 +1,9 @@
+{
+  "name": "stratumro-agent-plugin",
+  "version": "1.0.0",
+  "description": "StratumRO Cadastral, LiDAR, SAM2, TopoLT and QGIS Live Agent Plugin for Antigravity",
+  "author": {
+    "name": "StratumRO Team"
+  },
+  "license": "Proprietary"
+}

@@ -135,3 +135,74 @@ class ProviderRegistry:
             rationale=f"Resolved active candidate '{matched.name}' matching capability '{required_capability.value}'.",
         )
 
+
+OpenRouterProvider = UnionAlphaProvider
+
+
+class CapabilityRegistry:
+    """
+    Unified platform capability registry.
+    Maps requested geodetic and AI capabilities to their deterministic engines or AI providers.
+    """
+    DETERMINISTIC_MAP = {
+        "stereo70_transform": "stratum_ro.geodesy (PROJ / EPSG:3844)",
+        "topology_cleanup": "stratum_ro.vectorizer (GEOS / Shapely)",
+        "regularization_90deg": "stratum_ro.vectorizer.regularize_footprints",
+        "eave_retraction": "stratum_ro.vectorizer.apply_eave_offset",
+        "cad_topolt_export": "stratum_ro.cad_exporter (TopoLT / ANCPI 600)",
+        "ndsm_extraction": "stratum_ro.lidar_processor (PDAL / laspy)",
+    }
+
+    def __init__(self, provider_registry: Optional[ProviderRegistry] = None):
+        self.provider_registry = provider_registry or ProviderRegistry()
+
+    def resolve_capability(self, cap: str) -> Dict[str, Any]:
+        """Resolves capability to deterministic engine or AI provider."""
+        # 1. Check deterministic first (Strict anti-hallucination guardrail)
+        if cap in self.DETERMINISTIC_MAP:
+            return {
+                "capability": cap,
+                "type": "deterministic",
+                "target": self.DETERMINISTIC_MAP[cap],
+                "is_llm": False,
+                "available": True,
+                "rationale": "Deterministic local geodetic engine. LLM bypassed."
+            }
+
+        # 2. Check local AI models
+        if cap in ("optical_segmentation", "OPTICAL_SEGMENTATION"):
+            return {
+                "capability": "optical_segmentation",
+                "type": "local_model",
+                "target": "SAM2 (ONNX DirectML / PyTorch)",
+                "is_llm": False,
+                "available": True,
+                "rationale": "Meta SAM 2 local boundary segmentation."
+            }
+
+        # 3. Remote reasoning / VLM providers
+        ai_cap = ProviderCapability.REASONING
+        if "vision" in cap.lower() or "vlm" in cap.lower():
+            ai_cap = ProviderCapability.VISION
+
+        match = self.provider_registry.resolve_provider(ai_cap)
+        if match:
+            return {
+                "capability": cap,
+                "type": "ai_provider",
+                "target": match.provider.name,
+                "is_llm": True,
+                "available": match.provider.is_available(),
+                "rationale": match.rationale
+            }
+
+        return {
+            "capability": cap,
+            "type": "unknown",
+            "target": "unsupported",
+            "is_llm": False,
+            "available": False,
+            "rationale": f"Capability '{cap}' not supported."
+        }
+
+

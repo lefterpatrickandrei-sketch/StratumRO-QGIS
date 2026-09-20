@@ -14,6 +14,16 @@
       "command": "venv/Scripts/fastmcp.exe",
       "args": ["run", "mcp/dataset_manager/server.py"],
       "description": "Geospatial Dataset Ingestion and Structural Validation"
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "description": "Up-to-date live documentation lookup for GDAL, Shapely, PyQGIS, Rasterio, PyTorch"
+    },
+    "qgis": {
+      "command": "py",
+      "args": ["-3.12", "-m", "qgis_mcp.server"],
+      "description": "Live QGIS Desktop 3.40 control plane: layer management, canvas navigation, styling, processing"
     }
   }
 }

@@ -20,7 +20,7 @@
   - `evaluation.py`: Rigorous geodetic evaluation metrics (IoU, Hausdorff Distance, Boundary RMSE, Centroid Shift, PASCAL/COCO matching, Wilson score confidence intervals).
   - `ablation_study.py`: Formal 5-configuration ablation study (Configs A through E).
 * **Automated Test Suite:** [`stratum_ro/test/`](stratum_ro/test/)
-  - **193 unit tests** (184 passed, 9 skipped, 0 failed — *verified in runtime on 2026-09-19*) covering vectorization, CAD export, TopoLT layers, PAD tables, .CP export, ONNX wrappers, 3D extrusion, QGIS Processing metadata, TaskSpec/capability matching, and AI core execution.
+  - **206 unit tests** (197 passed, 9 skipped, 0 failed — *verified in runtime on 2026-09-20*) covering vectorization, CAD export, TopoLT layers, PAD tables, .CP export, ONNX wrappers, 3D extrusion, QGIS Processing metadata, TaskSpec/capability matching, ContextEngine resource snapshots, RiskEngine policy, DataProfiler L0-L5 validation, ProvenanceChain lineage, and Simulation perturbation.
 * **Ground Truth & Reference Data:** [`data/ground_truth/`](data/ground_truth/)
   - Official reference datasets, including `tier1_teren.geojson` (29 real cadastral buildings in Stereo 70) and `cluj_combined_unique_150.geojson` (150 unique reference buildings).
 * **Official Reports & Architecture Maps:** [`reports/`](reports/) & [`docs/`](docs/)
@@ -53,7 +53,7 @@ For every technical claim, benchmark result, or metric, agents must classify it 
   ```bash
   venv\Scripts\python -m unittest discover stratum_ro/test
   ```
-  Report the exact test count (e.g., `184 passed, 9 skipped, 0 failed` out of 193 discovered). A skipped test is **NOT** a passed test.
+  Report the exact test count (e.g., `197 passed, 9 skipped, 0 failed` out of 206 discovered). A skipped test is **NOT** a passed test.
 - **Python Environment:** Always use the local virtual environment in [`venv/`](venv/).
 
 ---

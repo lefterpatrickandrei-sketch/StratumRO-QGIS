@@ -1,0 +1,86 @@
+{
+  "task_id": "cluj_cadastre_e2e_p4",
+  "record_count": 4,
+  "created_at": "2026-09-20T07:43:30.199216+00:00",
+  "latest_update": "2026-09-20T07:43:30.199216+00:00",
+  "has_human_signoff": true,
+  "lineage": [
+    {
+      "record_id": "rec_0001_e5be98",
+      "timestamp": "2026-09-20T07:43:30.199216+00:00",
+      "evidence_class": "OBSERVED",
+      "step_name": "profile_data_sources",
+      "operator": "DataProfiler",
+      "inputs": [
+        "data/orthophoto/cluj_ortho_crop.tif",
+        "data/ground_truth/tier1_teren.geojson"
+      ],
+      "outputs": [
+        "metadata_profile.json"
+      ],
+      "parameters": {},
+      "validation_status": "PASSED (L4_PURPOSE_SUITABLE)",
+      "human_signed_off": false,
+      "metadata": {}
+    },
+    {
+      "record_id": "rec_0002_fb36f8",
+      "timestamp": "2026-09-20T07:43:30.199216+00:00",
+      "evidence_class": "MODEL_PREDICTION",
+      "step_name": "building_candidate_segmentation",
+      "operator": "SAM2-Hiera (DirectML)",
+      "inputs": [
+        "metadata_profile.json"
+      ],
+      "outputs": [
+        "building_candidates.geojson"
+      ],
+      "parameters": {
+        "box_prompt": true,
+        "nDSM_gate": true
+      },
+      "validation_status": "PASSED",
+      "human_signed_off": false,
+      "metadata": {}
+    },
+    {
+      "record_id": "rec_0003_6f06ca",
+      "timestamp": "2026-09-20T07:43:30.199216+00:00",
+      "evidence_class": "DERIVED",
+      "step_name": "vectorization_and_orthogonalization",
+      "operator": "stratum_ro.vectorizer (GEOS)",
+      "inputs": [
+        "building_candidates.geojson"
+      ],
+      "outputs": [
+        "regularized_footprints.geojson"
+      ],
+      "parameters": {
+        "orthogonalize_90deg": true,
+        "eave_offset_m": -0.4
+      },
+      "validation_status": "PASSED",
+      "human_signed_off": false,
+      "metadata": {}
+    },
+    {
+      "record_id": "rec_0004_0b49a2",
+      "timestamp": "2026-09-20T07:43:30.199216+00:00",
+      "evidence_class": "HUMAN_DECISION",
+      "step_name": "export_cad_deliverables",
+      "operator": "Ing_Geodez_Autorizat",
+      "inputs": [
+        "regularized_footprints.geojson"
+      ],
+      "outputs": [
+        "plan_cadastral.dxf",
+        "imobil.cp",
+        "pad_table.csv"
+      ],
+      "parameters": {},
+      "validation_status": "SIGNED_OFF",
+      "human_signed_off": true,
+      "metadata": {}
+    }
+  ]
+}

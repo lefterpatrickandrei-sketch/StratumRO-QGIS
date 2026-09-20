@@ -10,7 +10,7 @@ from enum import Enum
 from typing import Any, Dict, List, Optional
 
 from .providers.base import BaseAIProvider, ProviderCapability, ProviderResponse
-from .registry import ProviderRegistry
+from .registry import ProviderRegistry, CapabilityRegistry
 
 
 class TaskType(str, Enum):
@@ -59,8 +59,17 @@ class AIRouter:
         TaskType.NDSM_EXTRACTION,
     }
 
-    def __init__(self, registry: Optional[ProviderRegistry] = None):
+    def __init__(
+        self,
+        registry: Optional[ProviderRegistry] = None,
+        capability_registry: Optional[CapabilityRegistry] = None,
+    ):
         self.registry = registry or ProviderRegistry()
+        self.capability_registry = capability_registry or CapabilityRegistry(provider_registry=self.registry)
+
+    def resolve_capability(self, cap: str) -> Dict[str, Any]:
+        """Resolves capability to deterministic engine or AI provider."""
+        return self.capability_registry.resolve_capability(cap)
 
     def route_task(
         self,
@@ -117,12 +126,12 @@ class AIRouter:
             )
 
         # AUTO or HYBRID / CLOUD_PREFERRED sequence
-        # Priority order: Union Alpha (frontier reasoning) -> OpenAI -> NVIDIA NIM -> Ollama -> Local Mock
-        candidate_names = ["union_alpha", "openai", "nvidia_nim", "ollama", "local_mock"]
+        # Priority order: OpenRouter / Union Alpha (frontier reasoning) -> OpenAI -> NVIDIA NIM -> Ollama -> Local Mock
+        candidate_names = ["openrouter", "union_alpha", "openai", "nvidia_nim", "ollama", "local_mock"]
         if mode == ExecutionMode.HYBRID:
-            # In hybrid mode, prefer NVIDIA NIM for vision, Union Alpha / OpenAI for planning
+            # In hybrid mode, prefer NVIDIA NIM for vision, Union Alpha / OpenRouter for planning
             if task_type == TaskType.FAILURE_DIAGNOSIS:
-                candidate_names = ["nvidia_nim", "union_alpha", "openai", "ollama", "local_mock"]
+                candidate_names = ["nvidia_nim", "openrouter", "union_alpha", "openai", "ollama", "local_mock"]
 
 
         for name in candidate_names:
@@ -181,7 +190,7 @@ class AIRouter:
             return resp
 
         # Fallback cascade if primary fails
-        fallback_order = ["nvidia_nim", "ollama", "local_mock"]
+        fallback_order = ["openrouter", "union_alpha", "nvidia_nim", "ollama", "local_mock"]
         for fb_name in fallback_order:
             if fb_name == decision.provider.name:
                 continue

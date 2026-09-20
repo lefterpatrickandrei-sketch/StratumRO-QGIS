@@ -42,7 +42,7 @@
 - [10. 🔬 Inovații Algoritmice Cheie](#10--inovații-algoritmice-cheie)
 - [11. 📂 Structura Repository-ului](#11--structura-repository-ului)
 - [12. 🛠️ Ghid de Instalare & Rulare](#12-️-ghid-de-instalare--rulare)
-- [13. 🧪 Testare & Verificare (193 Teste Unitare)](#13--testare--verificare-193-teste-unitare)
+- [13. 🧪 Testare & Verificare (206 Teste Unitare)](#13--testare--verificare-206-teste-unitare)
 - [14. 📜 Cadrul Legislativ & Standarde Tehnice](#14--cadrul-legislativ--standarde-tehnice)
 - [15. 🇬🇧 English Summary](#15--english-summary)
 
@@ -366,15 +366,15 @@ Scriptul execută automat:
 
 ---
 
-## 13. 🧪 Testare & Verificare (193 Teste Unitare)
+## 13. 🧪 Testare & Verificare (206 Teste Unitare)
  
-Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX (decodor + encoder), a extrudării 3D, a furnizorului QGIS Processing, a nucleului AI decuplat și a specificațiilor de sarcini Phase 4 (`TaskSpec` + capability resolver):
+Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX (decodor + encoder), a extrudării 3D, a furnizorului QGIS Processing, a nucleului AI decuplat, a specificațiilor de sarcini Phase 4 (`TaskSpec` + capability resolver), a motorului de securitate și politică de risc (`RiskEngine`), a validării geodezice multinivel (`DataProfiler` L0–L5), a trasabilității liniare (`ProvenanceChain`) și a simulării geometrice de robustețe (`PerturbationEngine`):
 ```bash
 venv\Scripts\python -m unittest discover stratum_ro/test
 ```
 Rezultat verificat:
 ```text
-Ran 193 tests in 32.283s
+Ran 206 tests in 30.295s
 
 OK (skipped=9)
 ```

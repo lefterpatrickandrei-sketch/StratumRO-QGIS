@@ -17,7 +17,23 @@ from typing import Any, Dict, List, Optional, Tuple
 class RiskTolerance(str, Enum):
     LOW = "LOW"        # Strict validation gates, all mutations require explicit human review
     MEDIUM = "MEDIUM"  # Automatic preview generation, human gate on official cadastral export
+    BALANCED = "BALANCED" # Standard balanced cadastral workflow (human gate on final deliverables)
     HIGH = "HIGH"      # Fully automated batch processing / experimental simulation
+
+
+class WorkflowMode(str, Enum):
+    FAST_DETERMINISTIC = "FAST_DETERMINISTIC"
+    GIS_ANALYSIS = "GIS_ANALYSIS"
+    RASTER_ANALYSIS = "RASTER_ANALYSIS"
+    REMOTE_SENSING = "REMOTE_SENSING"
+    LIDAR_3D = "LIDAR_3D"
+    VISION_SEGMENTATION = "VISION_SEGMENTATION"
+    MULTIMODAL_GEOAI = "MULTIMODAL_GEOAI"
+    GEODESY_SURVEY = "GEODESY_SURVEY"
+    CADASTRAL_PRECADASTRAL = "CADASTRAL_PRECADASTRAL"
+    BENCHMARK_EXPERIMENT = "BENCHMARK_EXPERIMENT"
+    SIMULATION = "SIMULATION"
+    QUALITY_ASSURANCE = "QUALITY_ASSURANCE"
 
 
 class DeliverableType(str, Enum):
@@ -39,6 +55,7 @@ class TaskSpec:
     task_id: str = field(default_factory=lambda: str(uuid.uuid4()))
     name: str = "Cadastral Workflow Task"
     description: str = ""
+    workflow_mode: str = WorkflowMode.CADASTRAL_PRECADASTRAL.value
     target_crs: str = "EPSG:3844"
     aoi_bounds: Optional[Tuple[float, float, float, float]] = None  # (minx, miny, maxx, maxy) in Stereo 70
     required_capabilities: List[str] = field(default_factory=list)

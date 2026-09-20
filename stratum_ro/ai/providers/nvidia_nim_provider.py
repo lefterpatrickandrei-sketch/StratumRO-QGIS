@@ -17,16 +17,17 @@ class NvidiaNIMProvider(BaseAIProvider):
 
     DEFAULT_BASE_URL = "https://integrate.api.nvidia.com/v1"
     DEFAULT_MODELS = [
-        "meta/llama-3.3-70b-instruct",
-        "nemotron-4-340b",
-        "meta-llama/llama-3.1-8b-instruct",
+        "meta/llama-3.2-11b-vision-instruct",
+        "meta/llama-3.2-90b-vision-instruct",
+        "nvidia/llama-3.1-nemotron-70b-instruct",
+        "microsoft/phi-3-vision-128k-instruct",
     ]
 
     def __init__(
         self,
         api_key: Optional[str] = None,
         base_url: Optional[str] = None,
-        default_model: str = "meta/llama-3.3-70b-instruct"
+        default_model: str = "meta/llama-3.2-11b-vision-instruct"
     ):
         super().__init__(name="nvidia_nim")
         self.api_key = api_key if api_key is not None else (read_env_file_key("NVIDIA_API_KEY") or "")
