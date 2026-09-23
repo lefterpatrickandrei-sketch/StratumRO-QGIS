@@ -11,6 +11,7 @@ from .openai_provider import OpenAIProvider
 from .ollama_provider import OllamaProvider
 from .local_provider import LocalProvider
 from .union_alpha_provider import UnionAlphaProvider
+from .anthropic_provider import AnthropicProvider
 
 __all__ = [
     "BaseAIProvider",
@@ -21,5 +22,6 @@ __all__ = [
     "OllamaProvider",
     "LocalProvider",
     "UnionAlphaProvider",
+    "AnthropicProvider",
 ]
 

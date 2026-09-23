@@ -1,0 +1,11 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="vector" geometry="Point">
+      <id>cimec_ran_arcgis_rest</id>
+      <datasource>crs='EPSG:3857' filter='' url='https://eism.geo-spatial.ro/eismgeo/rest/services/Patrimoniu/PatrimoniuWM/MapServer/0'</datasource>
+      <title>cIMeC Repertoriul Arheologic National (ArcGIS REST)</title>
+      <layername>cIMeC Repertoriul Arheologic National (ArcGIS REST)</layername>
+    </maplayer>
+  </maplayers>
+</qlr>

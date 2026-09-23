@@ -1,0 +1,19 @@
+<!DOCTYPE qgis_connections SYSTEM "http://mrcc.com/qgis/connections.dtd">
+<qgis_connections version="1.0">
+  <wms>
+    <connection name="RO - ANCPI Ortofotoplan National" url="https://geoportal.ancpi.ro/arcgis/services/INSPIRE/Orthophoto/ImageServer/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+    <connection name="RO - EEA Natura 2000 Sites (Discomap)" url="https://bio.discomap.eea.europa.eu/arcgis/services/ProtectedSites/Natura2000Sites/MapServer/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+    <connection name="RO - cIMeC Repertoriul Arheologic National (RAN)" url="https://map.cimec.ro/Mapserver/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+  </wms>
+  <wfs>
+    <connection name="RO - ANCPI INSPIRE Administrative Units (WFS)" url="https://geoportal.ancpi.ro/arcgis/services/INSPIRE/AdministrativeUnits/MapServer/WFSServer" version="auto" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+  </wfs>
+  <arcgisfeatureserver>
+    <connection name="RO - cIMeC Patrimoniu Arheologic RAN (ArcGIS REST)" url="https://eism.geo-spatial.ro/eismgeo/rest/services/Patrimoniu/PatrimoniuWM/MapServer"/>
+    <connection name="RO - EEA Natura 2000 Sites (ArcGIS REST)" url="https://bio.discomap.eea.europa.eu/arcgis/rest/services/ProtectedSites/Natura2000Sites/MapServer"/>
+  </arcgisfeatureserver>
+  <xyz>
+    <connection name="OpenStreetMap Standard" url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" zmin="0" zmax="19"/>
+    <connection name="Esri World Imagery" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" zmin="0" zmax="19"/>
+  </xyz>
+</qgis_connections>

@@ -79,6 +79,53 @@ class TestVolumetric3D(unittest.TestCase):
         self.assertEqual(data["CityObjects"]["BLDG_0001"]["attributes"]["measuredHeight"], 6.5)
         self.assertGreater(len(data["vertices"]), 0)
 
+    def test_canonical_import_and_forwarder_equivalence(self):
+        """Verifies that the canonical domain builder and legacy forwarder produce identical outputs."""
+        from stratum_ro.domain.city_3d.builder import Volumetric3DBuilder as CanonicalBuilder
+        from stratum_ro.domain.city_3d import Volumetric3DBuilder as PackageBuilder
+        from stratum_ro.volumetric_3d import Volumetric3DBuilder as ForwarderBuilder
+        from stratum_ro.volumetric_3d import _extract_polygons as forwarder_extract
+        from stratum_ro.domain.city_3d.builder import _extract_polygons as canonical_extract
+
+        # Verify class object identity
+        self.assertIs(ForwarderBuilder, CanonicalBuilder)
+        self.assertIs(PackageBuilder, CanonicalBuilder)
+        self.assertIs(forwarder_extract, canonical_extract)
+
+        # Verify behavioral equivalence on LoD1 solid
+        can_b = CanonicalBuilder(default_ground_z=350.0)
+        fwd_b = ForwarderBuilder(default_ground_z=350.0)
+
+        solid_can = can_b.extrude_lod1_solid(self.test_poly, height_m=6.5, ground_z=350.0)
+        solid_fwd = fwd_b.extrude_lod1_solid(self.test_poly, height_m=6.5, ground_z=350.0)
+
+        self.assertTrue(solid_can.equals_exact(solid_fwd, 1e-9))
+
+    def test_degenerate_and_edge_case_handling(self):
+        """Verifies safe handling of empty polygons, sub-threshold areas, and minimal points."""
+        # Empty polygon
+        empty_poly = Polygon()
+        self.assertIsNone(self.builder.extrude_lod1_solid(empty_poly, height_m=5.0))
+        self.assertIsNone(self.builder.create_lod1_roof_surface(empty_poly, height_m=5.0))
+
+        # Sub-threshold area (< 2.0 m^2)
+        tiny_poly = Polygon([(0.0, 0.0), (1.0, 0.0), (1.0, 1.0), (0.0, 1.0), (0.0, 0.0)])
+        self.assertIsNone(self.builder.extrude_lod1_solid(tiny_poly, height_m=5.0))
+
+        # Degenerate roof points (< 6 points returns fallback TERASA_LOD1)
+        few_pts = np.array([[390500.0, 585800.0, 350.0], [390510.0, 585800.0, 350.0]])
+        res = self.builder.estimate_lod2_roof_planes(few_pts)
+        self.assertEqual(res["tip_acoperis"], "TERASA_LOD1")
+        self.assertEqual(res["panta_grade"], 0.0)
+
+    def test_create_lod1_roof_surface(self):
+        """Verifies creation of 2.5D horizontal roof polygon."""
+        roof = self.builder.create_lod1_roof_surface(self.test_poly, height_m=7.0, ground_z=340.0)
+        self.assertIsNotNone(roof)
+        self.assertTrue(roof.has_z)
+        self.assertAlmostEqual(list(roof.exterior.coords)[0][2], 347.0)
+
 
 if __name__ == "__main__":
     unittest.main()
+

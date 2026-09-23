@@ -20,6 +20,7 @@ from stratum_ro.ai.providers.nvidia_nim_provider import NvidiaNIMProvider
 from stratum_ro.ai.providers.openai_provider import OpenAIProvider
 from stratum_ro.ai.providers.ollama_provider import OllamaProvider
 from stratum_ro.ai.providers.union_alpha_provider import UnionAlphaProvider
+from stratum_ro.ai.providers.anthropic_provider import AnthropicProvider
 
 
 
@@ -161,7 +162,48 @@ Hope this helps!"""
         self.assertEqual(resp.provider_name, "union_alpha")
         self.assertEqual(resp.model_name, "stealth/union-alpha")
 
+    def test_anthropic_provider_availability_and_caps(self):
+        p_no_key = AnthropicProvider(api_key="")
+        self.assertFalse(p_no_key.is_available())
+        resp = p_no_key.generate("Test prompt")
+        self.assertEqual(resp.status, "failed")
+        self.assertIn("ANTHROPIC_API_KEY", resp.error)
+
+        p_valid = AnthropicProvider(api_key="sk-ant-api03-mock-key-for-test-suite")
+        self.assertTrue(p_valid.is_available())
+        self.assertIn(ProviderCapability.REASONING, p_valid.capabilities())
+        self.assertIn(ProviderCapability.VISION, p_valid.capabilities())
+        self.assertIn("claude-3-5-sonnet-latest", p_valid.list_models())
+
+    @patch("anthropic.Anthropic")
+    def test_anthropic_provider_mock_generate(self, mock_anthropic_cls):
+        mock_client = MagicMock()
+        mock_anthropic_cls.return_value = mock_client
+
+        mock_content_block = MagicMock()
+        mock_content_block.type = "text"
+        mock_content_block.text = '{"cadastral_status": "verified", "confidence": 0.98}'
+
+        mock_resp = MagicMock()
+        mock_resp.id = "msg_test_123"
+        mock_resp.model = "claude-3-5-sonnet-latest"
+        mock_resp.content = [mock_content_block]
+        mock_resp.usage.input_tokens = 50
+        mock_resp.usage.output_tokens = 25
+
+        mock_client.messages.create.return_value = mock_resp
+
+        provider = AnthropicProvider(api_key="sk-ant-mock-key")
+        resp = provider.generate("Analyze this cadastral sector")
+
+        self.assertEqual(resp.status, "success")
+        self.assertEqual(resp.parsed_json.get("cadastral_status"), "verified")
+        self.assertEqual(resp.parsed_json.get("confidence"), 0.98)
+        self.assertEqual(resp.usage.get("input_tokens"), 50)
+        self.assertEqual(resp.provider_name, "anthropic")
+
 
 if __name__ == "__main__":
     unittest.main()
+
 

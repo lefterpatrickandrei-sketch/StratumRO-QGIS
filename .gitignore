@@ -37,6 +37,13 @@ tmp/
 *.las
 *.laz
 
+# Large GIS binary datasets (>50MB) in national_server
+national_server/**/*.shp
+national_server/**/*.dbf
+national_server/**/*.sbn
+national_server/**/*.sbx
+national_server/**/*.zip
+
 # AutoCAD temporary locks
 *.dwl
 *.dwl2

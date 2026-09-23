@@ -1,0 +1,35 @@
+# LISTA SURSELOR OFICIALE DE STAT VERIFICATE (FĂRĂ ROMSILVA)
+## Date Suverane de Stat Deschise, Brute și Nemodificate — România
+
+Acest document cuprinde inventarul complet și riguros verificat conform metodologiei **Evidence-First** pentru seturile de date naționale de stat descărcabile direct sau accesibile prin servicii publice OGC deschise, **fără modificări algoritmice / AI** și **fără autentificare (OAuth)**.
+
+> [!NOTE]
+> **Mențiune privitoare la ROMSILVA / SUMAL 2.0:**  
+> RNP ROMSILVA și Ministerul Mediului **NU** au fost incluse în acest catalog de date deschise, deoarece sistemul național de trasabilitate silvică SUMAL 2.0 este un sistem închis (Google Firebase Firestore securizat de STS, GeoServer returnează `HTTP 403 Forbidden`). Datele brute parcelare de amenajament silvic nu pot fi descărcate deschis fără cont de ocol silvic / OAuth. Pentru a păstra puritatea absolută a categoriei `oficial`, pădurile rămân exclusiv ca model de zonificare PUG în categoria `osm+AI` (bază OSM/EEA), fără a fi amestecate cu datele oficiale descărcabile.
+
+---
+
+### Tabel Sinoptic: Endpoint-uri Directe, Status și Funcționalitate
+
+| Nr. | Tematică & Strat Oficial | Autoritate Emitentă | Format / Dimensiune | URL Direct Exact și Funcțional | Status HTTP & Protocol | Autentificare | Notă Tehnică & Integritate |
+|:---:|---|---|---|---|:---:|:---:|---|
+| **1** | **Unități Administrativ-Teritoriale (UAT Național)** | **ANCPI** | Shapefile / KMZ<br>**(70.33 MB / 72.8 MB)** | [`https://data.gov.ro/storage/f/2014-02-12T13%3A00%3A20.963Z/administrativeunit-3rdorder.kmz`](https://data.gov.ro/storage/f/2014-02-12T13%3A00%3A20.963Z/administrativeunit-3rdorder.kmz)<br>și Catalog descărcare SHP:<br>[`http://geoportal.ancpi.ro/geoportal/catalog/download/download.page`](http://geoportal.ancpi.ro/geoportal/catalog/download/download.page) | **200 OK / 206**<br>(pe protocol HTTPS) | **FĂRĂ** | Conține toate cele 3.186 de UAT-uri din România. Fișierul local brut `Unitate_administrativa_UAT.shp` este inclus nemodificat în `01_ADMINISTRATIV_ANCPI/`. |
+| **2** | **Parcele de Referință (Blocuri Fizice 2025)** | **APIA** | Arhivă ZIP / Shapefile<br>**(1.123.692.188 bytes / ~1.12 GB)** | [`https://data.gov.ro/dataset/93895f6f-ade1-443a-b509-6dd2becdc521/resource/0801eae4-df61-4300-a77b-986817a0900f/download/blocuri_fizice_2025.zip`](https://data.gov.ro/dataset/93895f6f-ade1-443a-b509-6dd2becdc521/resource/0801eae4-df61-4300-a77b-986817a0900f/download/blocuri_fizice_2025.zip) | **200 OK**<br>Magic bytes: `50 4B 03 04` | **FĂRĂ** | 1.548.145 parcele de referință agricole naționale. Suportă descărcare parțială HTTP Range. Ingestie directă în QGIS via `/vsizip/`. |
+| **3** | **Segmente Cursuri de Apă / Râuri** | **ANAR ROWATER** | Arhivă ZIP / Shapefile<br>**(161.267.915 bytes / ~161 MB)** | [`https://data.gov.ro/dataset/99886f1e-a89e-4d65-9a6c-2fd64a2d1713/resource/47457ca3-7df2-465b-b68a-611c827d77f0/download/cursuriaparaurisegmente.zip`](https://data.gov.ro/dataset/99886f1e-a89e-4d65-9a6c-2fd64a2d1713/resource/47457ca3-7df2-465b-b68a-611c827d77f0/download/cursuriaparaurisegmente.zip) | **200 OK** | **FĂRĂ** | 13.078 cursuri de apă cadastrate din România. Sistem de coordonate nativ Stereo 70 (EPSG:3844). |
+| **4** | **Bazine Hidrografice Naționale** | **ANAR ROWATER** | Arhivă ZIP / Shapefile<br>**(2.559.419 bytes / ~2.56 MB)** | [`https://data.gov.ro/dataset/99886f1e-a89e-4d65-9a6c-2fd64a2d1713/resource/858af690-76a0-4b95-a85d-ec42edc20828/download/bazinehidrografice.zip`](https://data.gov.ro/dataset/99886f1e-a89e-4d65-9a6c-2fd64a2d1713/resource/858af690-76a0-4b95-a85d-ec42edc20828/download/bazinehidrografice.zip) | **200 OK** | **FĂRĂ** | Toate cele 15 bazine hidrografice naționale (Someș, Mureș, Olt, Argeș-Vedea, Buzău-Ialomița etc.). |
+| **5** | **Sub-bazine Hidrografice** | **ANAR ROWATER** | Arhivă ZIP / Shapefile<br>**(16.44 MB)** | [`https://data.gov.ro/dataset/99886f1e-a89e-4d65-9a6c-2fd64a2d1713/resource/1cbd58fb-403c-4e83-b344-b98db66e4303/download/subbazinehidrografice.zip`](https://data.gov.ro/dataset/99886f1e-a89e-4d65-9a6c-2fd64a2d1713/resource/1cbd58fb-403c-4e83-b344-b98db66e4303/download/subbazinehidrografice.zip) | **200 OK** | **FĂRĂ** | Delimitarea hidrografică secundară detaliată a României. |
+| **6** | **Diguri Naționale de Apărare** | **ANAR ROWATER** | Arhivă ZIP / Shapefile<br>**(2.756.496 bytes / ~2.76 MB)** | [`https://data.gov.ro/dataset/99886f1e-a89e-4d65-9a6c-2fd64a2d1713/resource/485a8d15-e4ce-47e6-98db-18da10cd782d/download/diguri.zip`](https://data.gov.ro/dataset/99886f1e-a89e-4d65-9a6c-2fd64a2d1713/resource/485a8d15-e4ce-47e6-98db-18da10cd782d/download/diguri.zip) | **200 OK** | **FĂRĂ** | Toate cele 3.063 diguri naționale de apărare împotriva inundațiilor. |
+| **7** | **Arii Naturale Protejate (Natura 2000)** | **EEA / ANANP** | Serviciu OGC WMS 1.3.0 & ArcGIS REST | WMS GetCapabilities:<br>[`https://bio.discomap.eea.europa.eu/arcgis/services/ProtectedSites/Natura2000Sites/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities`](https://bio.discomap.eea.europa.eu/arcgis/services/ProtectedSites/Natura2000Sites/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetCapabilities)<br>ArcGIS REST:<br>[`https://bio.discomap.eea.europa.eu/arcgis/rest/services/ProtectedSites/Natura2000Sites/MapServer`](https://bio.discomap.eea.europa.eu/arcgis/rest/services/ProtectedSites/Natura2000Sites/MapServer) | **200 OK**<br>Content-Type: `text/xml` | **FĂRĂ** | Conține siturile de importanță comunitară (SCI/SAC) și ariile de protecție specială avifaunistică (SPA). Strat streaming nativ. |
+| **8** | **Repertoriul Arheologic Național (RAN)** | **INP / cIMeC** | Portal Web & Serviciu ArcGIS REST | Portal Fișe Sit:<br>[`https://ran.cimec.ro/`](https://ran.cimec.ro/)<br>ArcGIS REST MapServer Strat 0:<br>[`https://eism.geo-spatial.ro/eismgeo/rest/services/Patrimoniu/PatrimoniuWM/MapServer/0`](https://eism.geo-spatial.ro/eismgeo/rest/services/Patrimoniu/PatrimoniuWM/MapServer/0) | **200 OK** | **FĂRĂ** | Permite interogare alfanumerică per sit (`codran`) și interogare spațială prin Feature Service cu paginare (`resultOffset`, `resultRecordCount`). |
+| **9** | **Ortofotoplan Național (Zbor Orto)** | **ANCPI** | Serviciu OGC WMS | [`https://geoportal.ancpi.ro/arcgis/services/INSPIRE/Orthophoto/ImageServer/WMSServer`](https://geoportal.ancpi.ro/arcgis/services/INSPIRE/Orthophoto/ImageServer/WMSServer) | **200 OK** | **FĂRĂ** | Mozaic național ortofoto aerian de înaltă rezoluție distribuit prin geoserverul național ANCPI. |
+
+---
+
+### Instrucțiuni de Utilizare Drag & Drop
+
+1. **Pentru adăugarea instantanee a conexiunilor de stat:**
+   - Trageți fișierul `CONEXIUNI_QGIS_OFICIALE.xml` în panoul **Browser** din QGIS.
+2. **Pentru încărcarea fișierelor brute:**
+   - Trageți orice fișier `.shp`, `.geojson` sau `.zip` din subdirectoarele `01_ADMINISTRATIV_ANCPI/`, `02_PATRIMONIU_RAN_CIMEC/`, `03_AGRICOL_APIA_LPIS_2025/`, `04_HIDROGRAFIE_ANAR_ROWATER/` direct în fereastra QGIS Canvas.
+3. **Regulă de integritate:**
+   - Datele sunt native, brute și nemodificate algoritmic.

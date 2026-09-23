@@ -1,0 +1,11 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="raster">
+      <id>cimec_ran_mapserver</id>
+      <datasource>contextualWMSLegend=0&amp;crs=EPSG:3844&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=RAN&amp;styles=&amp;url=https://map.cimec.ro/Mapserver/WMSServer</datasource>
+      <title>Patrimoniu Arheologic RAN cIMeC (WMS)</title>
+      <layername>Patrimoniu Arheologic RAN cIMeC (WMS)</layername>
+    </maplayer>
+  </maplayers>
+</qlr>
