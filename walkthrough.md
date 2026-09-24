@@ -1,16 +1,17 @@
-# Walkthrough: Clasificare Strictă, Server Național Drag & Drop și Audit Tabele de Atribute (Fără ROMSILVA)
+# Walkthrough: Clasificare Strictă, Server Național Drag & Drop, Audit Tabele de Atribute și Extracție Națională cIMeC RAN
 
 **Obiective atinse conform cerințelor utilizatorului:**
 1. **Eliminarea ROMSILVA din datele oficiale de stat:** Deoarece ROMSILVA/SUMAL 2.0 este un sistem închis fără descărcare deschisă a fișierelor brute fără OAuth (GeoServer returnează `HTTP 403 Forbidden`), stratul a fost eliminat complet din grupul `01_DATE_OFICIALE_STAT` și din `national_server/`.
 2. **Puritate absolută a celor 5 straturi oficiale suverane:** Păstrate 100% brute, nemodificate de AI, provenind din surse autentice de stat (ANCPI, APIA, cIMeC RAN, EEA, ANAR).
 3. **Catalogul Oficial Scris în Folder:** Documentul [`national_server/LISTA_SURSE_OFICIALE_VERIFICATE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/national_server/LISTA_SURSE_OFICIALE_VERIFICATE.md) conține tabelul detaliat cu toate linkurile directe funcționale, dimensiunile fișierelor, magic bytes și protocoalele verificate.
 4. **Audit Geodezic Independent READ-ONLY pe Tabelele de Atribute:** Subagentul dedicat `official_attribute_auditor_readonly` a inspectat tabelele de atribute ale tuturor straturilor oficiale, validând coloanele, tipurile de date, identificatorii unici (`natCode`, `siruta`, `cod_ran`, `sitecode`, `id_bloc`) și proiecția Stereo 70 (`EPSG:3844`).
+5. **Extracție Națională Completă cIMeC RAN (52.823 Entități):** Subagentul `cimec_national_ran_extractor` a descărcat de pe serverul cartografic deschis toate punctele, poligoanele și arhiva Pârvan, împachetându-le într-un GeoJSON unificat și un GeoPackage SQLite indexat spațial.
 
 ---
 
 ## 1. Structura Actualizată a Serverului Național (`national_server/`)
 
-Directorul conține exclusiv directoare cu surse deschise autentice și catalogul de verificări:
+Directorul conține exclusiv date brute deschise autentice și pachetele naționale complete:
 `c:\Users\lefpa\Downloads\QGIS-AI\national_server\`
 
 ```text
@@ -26,13 +27,16 @@ national_server/
 │   └── ANCPI_DataGovRo_Unitati_Administrativ_Teritoriale.url
 │
 ├── 📂 02_PATRIMONIU_RAN_CIMEC/
-│   ├── ran_iepuresti_oficial_cimec.geojson <-- Extragere cIMeC pe cod SIRSUP 103693
-│   ├── cIMeC_RAN_Romania_ArcGIS_REST.qlr   <-- Strat QLR gata configurat pentru interogare ArcGIS REST
-│   ├── Portal_Oficial_RAN_cIMeC.url        <-- https://ran.cimec.ro/
-│   └── Harta_Interactiva_Patrimoniu_cIMeC.url
+│   ├── RAN_National_Puncte_28988.geojson           <-- 28.988 puncte arheologice naționale (12.2 MB)
+│   ├── RAN_National_Poligoane_16484.geojson        <-- 16.484 poligoane/situri delimitate (25.7 MB)
+│   ├── RAR_National_Parvan_7351.geojson            <-- 7.351 situri arhivă Vasile Pârvan (1.89 MB)
+│   ├── RAN_Romania_National_Complet_Pachet_Unic.geojson <-- 52.823 ENTITĂȚI TOTALE ÎNTR-UN SINGUR FIȘIER (54.2 MB)
+│   ├── RAN_Romania_National_Complet.gpkg           <-- GeoPackage cu 3 straturi indexate spațial R-Tree (20.6 MB)
+│   ├── cIMeC_RAN_Romania_ArcGIS_REST.qlr           <-- Conexiune directă ArcGIS REST
+│   └── Portal_Oficial_RAN_cIMeC.url                <-- https://ran.cimec.ro/
 │
 ├── 📂 03_AGRICOL_APIA_LPIS_2025/
-│   ├── blocuri_fizice_2025_Romania_Complet.zip <-- 1.548.145 blocuri fizice naționale (1.12 GB)
+│   ├── blocuri_fizice_2025_Romania_Complet.zip     <-- 1.548.145 blocuri fizice naționale (1.12 GB)
 │   └── APIA_DataGovRo_Blocuri_Fizice_2025.url
 │
 ├── 📂 04_HIDROGRAFIE_ANAR_ROWATER/
@@ -56,9 +60,27 @@ national_server/
 
 ---
 
-## 2. Raportul de Audit al Tabelelor de Atribute (Subagent READ-ONLY)
+## 2. Raportul Extracției Naționale cIMeC RAN (52.823 Entități)
 
-Subagentul independent [`official_attribute_auditor_readonly`](file:///c:/Users/lefpa/Downloads/QGIS-AI/projects/UAT_Iepuresti/output/audit_tabele_atribute_oficiale.json) a inspectat tabelele de atribute și a validat următoarele:
+Subagentul [`cimec_national_ran_extractor`](file:///c:/Users/lefpa/Downloads/QGIS-AI/tools/extract_cimec_national_ran.py) a executat descărcarea secvențială în 54 de batch-uri:
+
+| Strat Național | Endpoint REST Strat | Entități Extrase | Geometrie | Dimensiune GeoJSON | Strat în GeoPackage |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Repertoriul arheologic național - puncte** | `0` | **28.988 / 28.988** | Point | 12.209.606 bytes (12.2 MB) | `01_RAN_National_Puncte` |
+| **Repertoriul arheologic național - poligoane** | `6` | **16.484 / 16.484** | MultiPolygon | 25.683.312 bytes (25.7 MB) | `02_RAN_National_Poligoane` |
+| **Arhiva Repertoriul arheologic (Vasile Pârvan)** | `1` | **7.351 / 7.351** | Point | 1.893.342 bytes (1.89 MB) | `03_RAR_National_Arhiva_Parvan` |
+| **PACHET UNIC COMBINAT** | `0, 6, 1` | **52.823 / 52.823** | Mixt | **54.178.426 bytes (54.2 MB)** | `RAN_Romania_National_Complet.gpkg` (20.6 MB) |
+
+### Caracteristici Tehnice & Performanță
+- **Standard:** RFC 7946 GeoJSON, coordonate native WGS 84 (`EPSG:4326`) cu zecimale complete `[longitude, latitude]`.
+- **Atribute Păstrate 100%:** `OBJECTID`, `IDSIT`, `CODSIT`, `NUMESIT`, `SIRUTA`, `COORD`, `CRONICA`, `REFERINȚE BIBLIOGRAFICE`.
+- **Indexare Spațială:** 33 de tabele R-Tree SQLite în GeoPackage pentru randare instantanee la nivel de UAT sau județ în QGIS Canvas.
+
+---
+
+## 3. Raportul de Audit al Tabelelor de Atribute (Subagent READ-ONLY)
+
+Subagentul independent [`official_attribute_auditor_readonly`](file:///c:/Users/lefpa/Downloads/QGIS-AI/projects/UAT_Iepuresti/output/audit_tabele_atribute_oficiale.json) a inspectat tabelele de atribute ale straturilor locale:
 
 | Nr. | Strat Oficial | Tabel GPKG | Entități | Coloane | CRS | Identificatori Cheie Validați | Status Integritate |
 |:---:|---|---|:---:|:---:|:---:|---|:---:|
@@ -66,22 +88,4 @@ Subagentul independent [`official_attribute_auditor_readonly`](file:///c:/Users/
 | **2** | **Situri Arheologice cIMeC RAN** | `IEP_01_situri_arheologice_RAN` | **1** | **11** | `EPSG:3844` | `cod_ran = "103693.01"`, `sit_nume = "Așezarea de la Iepurești - La Izvoare"` | **100% Autentic / Nemodificat AI** |
 | **3** | **Arii Protejate Natura 2000 EEA** | `IEP_02_natura2000_eea` | **4** | **11** | `EPSG:3844` | `sit_cod = "ROSAC0043"` și `"ROSPA0022"`, `sit_nume = "Comana"` | **100% Autentic / Nemodificat AI** |
 | **4** | **Cursuri de Apă ANAR ROWATER** | `IEP_04_rowater_cursuri_apa` | **8** | **10** | `EPSG:3844` | `nume_rau = "Neajlov"`, `"Balaria"`, `"Vârtop"`, `"Ilfovat"` | **100% Autentic / Nemodificat AI** |
-| **5** | **Blocuri Fizice APIA LPIS 2025** | `IEP_06_apia_blocuri_fizice_2025` | **543** | **11** | `EPSG:3844` | `id_bloc = "103693-2406"`, `"103693-3341"` ... `suprafata_ha = 0.9 .. 32.29` | **100% Autentic / Nemodificat AI** |
-
-### Validarea Câmpurilor de Proveniență și Trasabilitate
-Fiecare strat din cele 5 conține completate uniform și fără erori următoarele atribute de metadate:
-- `sursa_oficiala`: Autoritatea emitentă (ANCPI, INP / cIMeC, EEA / ANANP, ANAR - Apele Române, APIA).
-- `furnizor`: Portalul deschis de distribuție (`data.gov.ro`, `ran.cimec.ro`, `inundatii.ro`).
-- `url_accesare`: Linkul direct către portal sau catalogul guvernamental.
-- `act_normativ`: Temeiul legal (Legea 7/1996, OG 43/2000, Legea 107/1996, OUG 34/2013, Reg. UE 2021/2115).
-- `licenta`: `OGL-ROU-1.0` sau `CC-BY-4.0`.
-- `statut_juridic`: Clasificarea juridică suverană.
-- `criteriu_provenienta`: **`oficial`** (fără AI, fără alterare).
-
----
-
-## 3. Randare Canvas QGIS Actualizată (Fără ROMSILVA)
-
-![QGIS Canvas Fără ROMSILVA](/C:/Users/lefpa/.gemini/antigravity/brain/f8ee65d7-8dc0-4bfb-af86-1db074a007ed/qgis_iepuresti_official_with_providers.png)
-
-Proiectul QGIS activ `PUG_Iepuresti_WORKING.qgz` a fost salvat permanent, conținând cele 5 straturi oficiale pure și cele 12 modele derivate în categoriile corecte `osm` și `osm+AI`.
+| **5** | **Blocuri Fizice APIA LPIS 2025** | `IEP_06_apia_blocuri_fizice_2025` | **543** | **11** | `EPSG:3844` | `id_bloc = "103693-2406"`, `"103693-3341"` ... `suprafata_ha` exactă | **100% Autentic / Nemodificat AI** |

@@ -43,6 +43,10 @@ national_server/**/*.dbf
 national_server/**/*.sbn
 national_server/**/*.sbx
 national_server/**/*.zip
+national_server/**/*.gpkg
+national_server/**/*_Pachet_Unic.geojson
+national_server/**/*_Poligoane_*.geojson
+national_server/**/*_Puncte_*.geojson
 
 # AutoCAD temporary locks
 *.dwl
