@@ -14,12 +14,18 @@ prin rulare de script) sau **TESTED** (suită de teste executată cu cod de ieș
 | Punct | Stare înainte | Stare după | Efect |
 |---|---|---|---|
 | P1 Înălțimi | `inaltime_max_m=7.8` constant | mediană + P90 din nDSM | 73/147 clădiri au acoperiș real peste 7,8 m |
-| P2 Safe margin | 118 clădiri, GT 24/29, IoU 0,779 | **147 clădiri, GT 26/29, IoU 0,830** | **+29 clădiri, +2 GT, +0,051 IoU** |
+| P2 Safe margin | 94 clădiri distincte, GT 24/29, IoU 0,941 | **121 distincte, GT 26/29, IoU 0,926** | **+27 clădiri, +2 GT, IoU −0,015** |
+| P2′ Duplicate | 118 feature-uri / **94 distincte** | 147 feature-uri / **121 distincte** | 26 copii identice încă în livrabil |
 | P3 VLM | 5/6 provideri aruncau imaginea; strat 100% fals | 6/6 provideri trimit imagine; discriminare 13/17 | **rădăcină identificată și reparată** |
 | P4 Confidență | `STAGE_5` no-op 100% | măsurat: niciun prag nu bate livrabilul | etichete fabricate, dovedite |
-| P5 Artefacte | 184 „artefacte" de șters | stratul e **etichetat greșit**, nu se șterge | recall 20/29 → 3/29 dacă s-ar aplica |
+| P5 Artefacte | 184 „artefacte" de ștergere | stratul e **etichetat greșit**, nu se șterge | recall 20/29 → 3/29 dacă s-ar aplica |
 | P6 Docs | 206 teste declarate, 197 real | **250 teste, 241 trecute, 9 skipped** | corectat |
 | P7 Igienă | — | cod + raport + commit | — |
+
+> ⚠️ **Corecție necesară.** Prima versiune a acestui raport a raportat „+29 clădiri, +0,051 meanIoU". Acea
+> cifră a fost calculată pe 147 de feature-uri dintre care **26 sunt geometrii exact duplicate**. Măsurarea
+> pe geometrii distincte (secțiunea 3.1) arată că realul este **+27 clădiri distincte** și că **meanIoU a
+> scăzut** cu 0,015, nu a crescut cu 0,051. Câștigul de +2 GT rămâne valid, dar precizia a scăzut ușor.
 
 ---
 
@@ -54,15 +60,39 @@ doar conturul exterior cu `join_style=1` (ROUND).
 
 | | înainte | după |
 |---|---:|---:|
-| clădiri livrabile | 118 | **147** |
+| feature-uri | 118 | 147 |
+| **clădiri distincte** | **94** | **121** |
 | GT potrivite (IoU ≥ 0,10) | 24/29 | **26/29** |
-| meanIoU | 0,779 | **0,830** |
-| suprafață | 5,34 ha | 6,33 ha |
+| meanIoU (pe distincte) | 0,941 | **0,926** |
+| suprafață (distincte) | 3,51 ha | 4,30 ha |
 
 - Pierdere margine: **3,278 ha** (footprint 41,981 → 38,704 ha), față de 3,814 ha așteptat.
-- **GT pierdute: 0. GT câștigate: #25 și #29.**
+- **GT pierdute: 0. GT câștigate: #25 și #29** (pierdute rămase: #26, #27, #28).
 - 29 din cele 61 eliminate au fost recuperate; **32 rămân într-adevăr nesigure** pe marginea reală.
 - CSV decizii: `workspace/output/p2_safe_margin_decisions.csv`
+
+### 3.1 Măsurare de control: geometrii duplicate în livrabil
+
+Numărând WKT-uri distincte (`tools/check_footprints_on_vegetation.py` și verificare directă):
+
+| strat | feature-uri | distincte | copii duplicate |
+|---|---:|---:|---:|
+| `CLADIRI_HIBRID` (înainte de P2) | 179 | 150 | 29 |
+| `CLADIRI_CADASTRU_CLEAN` înainte de P1/P2 | 118 | 94 | 24 |
+| **`CLADIRI_CADASTRU_CLEAN` acum** | **147** | **121** | **26** |
+
+Perechi identice confirmate, de exemplu: id 1=30 (312,48 m²), id 2=31 (1407,56 m²), id 3=32 (1569,21 m²),
+id 4=33 (2088,43 m²). Diferența de `id` este exact 29 pentru perechile 1–30, 2–31 etc.
+
+**Consecințe, onest declarate:**
+1. Livrabilul real are **121 clădiri distincte**, nu 147. Orice raport care spune „147" umflă numărul cu 21%.
+2. **meanIoU a scăzut**, nu a crescut: 0,941 → 0,926. Creșterea aparentă de +0,051 din prima măsurătoare
+   venea din faptul că duplicatele unei clădiri potrivite intrau de două ori în medie.
+3. **Câștigul de +2 GT este valid** — rezistă la deduplicare (24/29 → 26/29).
+
+Dacă se elimină duplicatele, GT 26/29 și suprafața 4,30 ha rămân neschimbate.
+
+CSV: `workspace/output/footprint_vegetation_check.csv`
 
 Variante **respinse** pentru că ar încălca intenția regulii: „fără margine, găuri umplute" = 162 clădiri /
 27/29 GT / IoU 0,865 (cel mai bun scor, dar livrează clădiri care ating marginea); „simplify fără fix" =

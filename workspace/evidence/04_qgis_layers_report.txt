@@ -1,0 +1,43 @@
+=== QGIS DELIVERABLE BUILD 3.40.0-Bratislava ===
+gpkg: cladiri_stereo70.gpkg (19.5 MB)
+
+--- rasters ---
+  OK  ORTOFOTO_RGB
+  OK  NDSM_LIDAR
+
+--- deliverable vectors ---
+  OK  CLADIRI_CADASTRU_CLEAN              147 feat     6.33 ha
+  OK  CLADIRI_SOL_ANCPI                   147 feat     5.83 ha
+  OK  CLADIRI_ELIMINATE_MARGINE_UNSAFE     32 feat     2.00 ha
+  OK  MARGINE_SIGURANTA_ORTOFOTO            1 feat    38.70 ha
+  OK  VLM_REAL_AUDIT                        6 feat     0.80 ha
+  OK  CLADIRI_HIBRID                      179 feat     8.33 ha
+  OK  UNCLASSIFIED                        111 feat    22.25 ha
+
+extent: 390549.0 585103.5 391370.4 585835.1
+project written: C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\qgis_deliverable_2026-10-08.qgz
+  rendered -> 01_qgis_deliverable_layers.png (2400x1600, 3 layers)
+  rendered -> 02_qgis_safe_margin.png (2400x1600, 4 layers)
+  rendered -> 03_qgis_vlm_audit.png (2400x1600, 3 layers)
+  rendered -> 04_qgis_zoom_cluster.png (2400x1600, 3 layers)
+  zoom cluster: 29 buildings within 90 m of (391230, 585663)
+  rendered -> 06_qgis_zoom_cluster_margin.png (2400x1600, 4 layers)
+  rendered -> 05_qgis_ndsm_footprints.png (2400x1600, 3 layers)
+
+=== ATTRIBUTE EVIDENCE (CLADIRI_CADASTRU_CLEAN) ===
+columns (22): fid, id, ref_id, tier, category, validare, sam2_score, inaltime_med_m, inaltime_max_m, area_m2, area_sol_m2, eave_offset_m, perimeter_m, vertices, is_temporary, structure_type, center_x, center_y, clasa_forma, conf_final, action_code, status_finisare
+inaltime_med_m : n=147 min=0.13 max=24.49 unique=115
+inaltime_max_m : n=147 min=1.87 max=28.06 unique=117
+area_m2        : n=147 min=25.2 max=2991.6 sum=63271.4 m2
+above 7.8 m    : 73 / 147 buildings (old hard-coded max was 7.8)
+geometry area sum: 63271.3 m2  (attribute sum 63271.4 m2)
+max |attr area - geom area| = 0.004994 m2
+
+=== ALL LAYERS IN PROJECT ===
+  CLADIRI_CADASTRU_CLEAN             0              147 feat
+  CLADIRI_ELIMINATE_MARGINE_UNSAFE   0              32 feat
+  CLADIRI_HIBRID                     0              179 feat
+  CLADIRI_SOL_ANCPI                  0              147 feat
+  NDSM_LIDAR                         1              
+  ORTOFOTO_RGB                       1              
+  VLM_REAL_AUDIT                     0              6 feat
