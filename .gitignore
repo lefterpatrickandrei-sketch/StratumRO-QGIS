@@ -90,3 +90,9 @@ tools/llm_test_results/
 Obsidian workflow/
 .agents/skills/
 skills-lock.json
+
+# Project raw dumps & cache
+*.pbf
+projects/**/data/cache/
+projects/**/data/raw/
+
