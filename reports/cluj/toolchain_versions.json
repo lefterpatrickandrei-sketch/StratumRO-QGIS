@@ -46,10 +46,8 @@
     "verified_via": "QGIS Python runtime"
   },
   "snap": {
-    "version": "11.0.0",
     "path": "C:\\Program Files\\esa-snap\\bin\\gpt.exe",
-    "verified_executable": true,
-    "engine": "ESA SNAP GPT CLI"
+    "error": "Command '['C:\\\\Program Files\\\\esa-snap\\\\bin\\\\gpt.exe', '--diag']' timed out after 20 seconds"
   },
   "cloudcompare": {
     "status": "NOT_INSTALLED",

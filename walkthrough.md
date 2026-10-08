@@ -89,3 +89,20 @@ Subagentul independent [`official_attribute_auditor_readonly`](file:///c:/Users/
 | **3** | **Arii Protejate Natura 2000 EEA** | `IEP_02_natura2000_eea` | **4** | **11** | `EPSG:3844` | `sit_cod = "ROSAC0043"` și `"ROSPA0022"`, `sit_nume = "Comana"` | **100% Autentic / Nemodificat AI** |
 | **4** | **Cursuri de Apă ANAR ROWATER** | `IEP_04_rowater_cursuri_apa` | **8** | **10** | `EPSG:3844` | `nume_rau = "Neajlov"`, `"Balaria"`, `"Vârtop"`, `"Ilfovat"` | **100% Autentic / Nemodificat AI** |
 | **5** | **Blocuri Fizice APIA LPIS 2025** | `IEP_06_apia_blocuri_fizice_2025` | **543** | **11** | `EPSG:3844` | `id_bloc = "103693-2406"`, `"103693-3341"` ... `suprafata_ha` exactă | **100% Autentic / Nemodificat AI** |
+
+---
+
+## 4. Vizualizare Live în QGIS Desktop: Serverul Național Integrat
+
+Am adăugat grupul dedicat **`00_SERVER_NATIONAL_ROMANIA`** la vârful arborelui de straturi din sesiunea ta activă QGIS. Acesta încarcă direct fișierele din `national_server/` cu stilizare cartografică dedicată identică cu cea din portalul cIMeC:
+
+- **Albastru:** Arhiva Institutului de Arheologie „Vasile Pârvan” (7.351 puncte).
+- **Roșu aprins:** Repertoriul Arheologic Național (28.988 puncte clasate).
+- **Portocaliu / Roșu:** Poligoane și situri arheologice delimitate (16.484 poligoane).
+- **Gri fin:** Toate cele 3.186 de Unități Administrativ-Teritoriale din România (ANCPI).
+- **Albastru transparent:** Cele 15 bazine hidrografice naționale (ANAR).
+
+![Harta Națională a României în QGIS](/C:/Users/lefpa/.gemini/antigravity/brain/f8ee65d7-8dc0-4bfb-af86-1db074a007ed/qgis_romania_national_server_canvas.png)
+
+Proiectul QGIS `PUG_Iepuresti_WORKING.qgz` a fost salvat permanent, conținând atât perspectiva națională de nivel înalt (`00_SERVER_NATIONAL_ROMANIA`), cât și grupurile de nivel local pentru UAT Iepurești.
+

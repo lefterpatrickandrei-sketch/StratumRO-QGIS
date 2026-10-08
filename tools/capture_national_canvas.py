@@ -30,39 +30,39 @@ def send_qgis_mcp(command_type, params=None):
     s.close()
     return json.loads(data.decode("utf-8"))
 
-zoom_code = '''
-from qgis.core import QgsProject, QgsRectangle, QgsCoordinateReferenceSystem
+render_code = '''
+from qgis.core import QgsProject, QgsMapSettings, QgsMapRendererParallelJob
+from PyQt5.QtGui import QImage, QColor
+from PyQt5.QtCore import QSize
+import os
 
 project = QgsProject.instance()
+settings = QgsMapSettings()
 
-# Ascunde grupurile locale pentru o randare nationala clara
-root = project.layerTreeRoot()
-grp_local = root.findGroup("02_MODELE_ALGORITMICE_AI")
-if grp_local:
-    grp_local.setItemVisibilityChecked(False)
+# Active layers for national overview
+layers = [lyr for lyr in project.mapLayers().values() if lyr.name().startswith(('ANAR', 'ANCPI', 'cIMeC'))]
+settings.setLayers(layers)
+settings.setDestinationCrs(project.crs())
 
-uat_lyr = None
-for lyr in project.mapLayers().values():
-    if "3.186 UAT" in lyr.name() or "Bazine Hidrografice" in lyr.name():
-        uat_lyr = lyr
-        break
+uat_lyrs = project.mapLayersByName('ANCPI - Toate cele 3.186 UAT-uri din Romania (National)')
+if uat_lyrs:
+    ext = uat_lyrs[0].extent()
+    ext.scale(1.05)
+    settings.setExtent(ext)
 
-if uat_lyr and hasattr(iface, "mapCanvas"):
-    ext = uat_lyr.extent()
-    ext.scale(1.08)
-    iface.mapCanvas().setExtent(ext)
-    iface.mapCanvas().refresh()
+settings.setOutputSize(QSize(1920, 1080))
+settings.setBackgroundColor(QColor(255, 255, 255))
+
+job = QgsMapRendererParallelJob(settings)
+job.start()
+job.waitForFinished()
+img = job.renderedImage()
+out_file = r'C:/Users/lefpa/Downloads/QGIS-AI/workspace/output/qgis_romania_national_server_canvas.png'
+img.save(out_file, 'PNG')
+print(f'Rendered directly to {out_file}, size: {os.path.getsize(out_file)}')
 '''
 
 if __name__ == "__main__":
-    send_qgis_mcp("execute_code", {"code": zoom_code})
     send_qgis_mcp("save_project")
-    
-    # Capture canvas
-    res = send_qgis_mcp("get_canvas_screenshot")
-    if res.get("status") == "success":
-        b64 = res.get("result", {}).get("base64_data")
-        if b64:
-            with open(OUT_PATH, "wb") as f:
-                f.write(base64.b64decode(b64))
-            print(f"National canvas captured to: {OUT_PATH} ({OUT_PATH.stat().st_size} bytes)")
+    resp = send_qgis_mcp("execute_code", {"code": render_code})
+    print(resp.get("result", {}).get("stdout", ""))

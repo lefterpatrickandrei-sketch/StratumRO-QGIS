@@ -2,11 +2,17 @@
 <qgis_connections version="1.0">
   <wms>
     <connection name="RO - ANCPI Ortofotoplan National" url="https://geoportal.ancpi.ro/arcgis/services/INSPIRE/Orthophoto/ImageServer/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+    <connection name="RO - ANAR RO-FLOODS Inundatii T100 (inundatii.ro)" url="https://inundatii.ro/geoserver/wms" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
     <connection name="RO - EEA Natura 2000 Sites (Discomap)" url="https://bio.discomap.eea.europa.eu/arcgis/services/ProtectedSites/Natura2000Sites/MapServer/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
     <connection name="RO - cIMeC Repertoriul Arheologic National (RAN)" url="https://map.cimec.ro/Mapserver/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+    <connection name="RO - Copernicus Corine Land Cover (CLC)" url="https://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2018_WM/MapServer/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+    <connection name="RO - Copernicus Tree Cover Density (Paduri)" url="https://image.discomap.eea.europa.eu/arcgis/services/GioLandPublic/TreeCoverDensity_2018/ImageServer/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+    <connection name="RO - ANCPI Retea Geodezica TopRoSearch" url="https://geoportal.ancpi.ro/arcgis/services/Geodezie/ReteaGeodezica/MapServer/WMSServer" ignoreGetMapUrl="false" ignoreGetFeatureInfoUrl="false" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
   </wms>
   <wfs>
     <connection name="RO - ANCPI INSPIRE Administrative Units (WFS)" url="https://geoportal.ancpi.ro/arcgis/services/INSPIRE/AdministrativeUnits/MapServer/WFSServer" version="auto" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+    <connection name="RO - ANCPI INSPIRE Cadastral Parcels (WFS)" url="https://geoportal.ancpi.ro/arcgis/services/INSPIRE/CadastralParcels/MapServer/WFSServer" version="auto" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
+    <connection name="RO - ANCPI INSPIRE Addresses RENNS (WFS)" url="https://geoportal.ancpi.ro/arcgis/services/INSPIRE/Addresses/MapServer/WFSServer" version="auto" ignoreAxisOrientation="false" invertAxisOrientation="false"/>
   </wfs>
   <arcgisfeatureserver>
     <connection name="RO - cIMeC Patrimoniu Arheologic RAN (ArcGIS REST)" url="https://eism.geo-spatial.ro/eismgeo/rest/services/Patrimoniu/PatrimoniuWM/MapServer"/>
@@ -15,5 +21,6 @@
   <xyz>
     <connection name="OpenStreetMap Standard" url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" zmin="0" zmax="19"/>
     <connection name="Esri World Imagery" url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" zmin="0" zmax="19"/>
+    <connection name="Google Hybrid Satellite" url="https://mt1.google.com/vt/lyrs=y&amp;x={x}&amp;y={y}&amp;z={z}" zmin="0" zmax="20"/>
   </xyz>
 </qgis_connections>

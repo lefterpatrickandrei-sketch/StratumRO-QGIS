@@ -4,8 +4,8 @@
     <maplayer type="raster">
       <id>rofloods_hhi_t100</id>
       <datasource>contextualWMSLegend=0&amp;crs=EPSG:3844&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=rofloods:HHI_T100_extensie&amp;styles=&amp;url=https://inundatii.ro/geoserver/wms</datasource>
-      <title>Hazard Inundatii RO-FLOODS HHI T100 (WMS)</title>
-      <layername>Hazard Inundatii RO-FLOODS HHI T100 (WMS)</layername>
+      <title>ANAR - Hazard Inundatii RO-FLOODS HHI T100 (WMS)</title>
+      <layername>RO-FLOODS HHI T100 WMS (Stereo 70)</layername>
     </maplayer>
   </maplayers>
 </qlr>

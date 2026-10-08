@@ -20,10 +20,23 @@
       "args": ["-y", "@upstash/context7-mcp"],
       "description": "Up-to-date live documentation lookup for GDAL, Shapely, PyQGIS, Rasterio, PyTorch"
     },
-    "qgis": {
+    "qgis-stratumro": {
       "command": "py",
       "args": ["-3.12", "-m", "qgis_mcp.server"],
       "description": "Live QGIS Desktop 3.40 control plane: layer management, canvas navigation, styling, processing"
+    },
+    "gemini-notebook-mcp": {
+      "command": "C:\\Users\\lefpa\\.local\\bin\\notebooklm-mcp.EXE",
+      "args": [],
+      "env": {
+        "NOTEBOOKLM_MCP_CLI_PATH": "C:\\Users\\lefpa\\.notebooklm"
+      },
+      "description": "Google NotebookLM / Gemini Notebook Integration: search, query, create notes and sources"
+    },
+    "browser-puppeteer": {
+      "command": "C:\\Program Files\\nodejs\\npx.cmd",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Full browser automation: navigate web, click, fill forms, take screenshots"
     }
   }
 }

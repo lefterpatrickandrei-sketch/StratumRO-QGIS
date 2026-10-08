@@ -63,6 +63,7 @@ def check_ai_providers() -> Dict[str, Any]:
         OpenAIProvider,
         OllamaProvider,
         UnionAlphaProvider,
+        AnthropicProvider,
     )
 
     providers = {
@@ -70,6 +71,7 @@ def check_ai_providers() -> Dict[str, Any]:
         "union_alpha": UnionAlphaProvider(),
         "nvidia_nim": NvidiaNIMProvider(),
         "openai": OpenAIProvider(),
+        "anthropic": AnthropicProvider(),
         "ollama": OllamaProvider(),
     }
 
