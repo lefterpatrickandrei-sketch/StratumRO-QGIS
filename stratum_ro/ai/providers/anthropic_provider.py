@@ -70,12 +70,36 @@ class AnthropicProvider(BaseAIProvider):
             import anthropic
             client = anthropic.Anthropic(api_key=self.api_key, timeout=timeout)
 
+            # Real multimodal payload: Anthropic image content blocks.
+            # Previously the images kwarg was dropped here even though this
+            # provider advertised ProviderCapability.VISION.
+            images: Optional[List[str]] = kwargs.get("images")
+            if images:
+                user_content: List[Dict[str, Any]] = [{"type": "text", "text": prompt}]
+                for img in images:
+                    if img.startswith("http://") or img.startswith("https://"):
+                        user_content.append({"type": "image", "source": {"type": "url", "url": img}})
+                    else:
+                        if img.startswith("data:"):
+                            img = img.split(",", 1)[-1]
+                        user_content.append({
+                            "type": "image",
+                            "source": {"type": "base64", "media_type": "image/jpeg", "data": img},
+                        })
+                message_content: Any = user_content
+            else:
+                message_content = prompt
+
             call_kwargs: Dict[str, Any] = {
                 "model": chosen_model,
                 "max_tokens": kwargs.get("max_tokens", 1500),
-                "temperature": kwargs.get("temperature", 0.1),
-                "messages": [{"role": "user", "content": prompt}],
+                "messages": [{"role": "user", "content": message_content}],
             }
+            # anthropic>=1.x Messages.create() exposes no `temperature` parameter
+            # (it is rejected as an unexpected kwarg), so it must not be passed.
+            # Temperature is set through extra_body instead, when requested.
+            if "temperature" in kwargs:
+                call_kwargs["extra_body"] = {"temperature": kwargs["temperature"]}
             if system_prompt:
                 call_kwargs["system"] = system_prompt
 
@@ -102,7 +126,8 @@ class AnthropicProvider(BaseAIProvider):
                 provider_name=self.name,
                 status="success",
                 duration_sec=round(elapsed, 3),
-                raw_payload={"id": response.id, "model": response.model},
+                raw_payload={"id": response.id, "model": response.model,
+                             "images_sent": len(images) if images else 0},
                 parsed_json=parsed,
                 usage=usage_dict
             )

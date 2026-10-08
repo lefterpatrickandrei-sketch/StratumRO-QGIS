@@ -107,7 +107,8 @@ class NvidiaNIMProvider(BaseAIProvider):
                 provider_name=self.name,
                 status="success",
                 duration_sec=round(elapsed, 3),
-                raw_payload={"choices": [c.message.to_dict() if hasattr(c.message, 'to_dict') else str(c.message) for c in completion.choices]},
+                raw_payload={"choices": [c.message.to_dict() if hasattr(c.message, 'to_dict') else str(c.message) for c in completion.choices],
+                             "images_sent": len(images) if images else 0},
                 parsed_json=parsed,
                 usage=completion.usage.to_dict() if hasattr(completion, 'usage') and hasattr(completion.usage, 'to_dict') else {}
             )
@@ -136,6 +137,9 @@ class NvidiaNIMProvider(BaseAIProvider):
                 if resp.status_code == 200:
                     data = resp.json()
                     raw_text = data["choices"][0]["message"]["content"]
+                    # Mirror the images_sent marker used by the OpenAI/Anthropic
+                    # providers so callers can assert the chip was really sent.
+                    data["images_sent"] = len(images) if images else 0
                     return ProviderResponse(
                         content=raw_text,
                         model_name=chosen_model,

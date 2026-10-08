@@ -40,6 +40,7 @@ class OpenAIProvider(BaseAIProvider):
             ProviderCapability.REASONING,
             ProviderCapability.PLANNING,
             ProviderCapability.CODE_ANALYSIS,
+            ProviderCapability.VISION,
         ]
 
     def list_models(self) -> List[str]:
@@ -72,6 +73,20 @@ class OpenAIProvider(BaseAIProvider):
             messages.append({"role": "system", "content": system_prompt})
         messages.append({"role": "user", "content": prompt})
 
+        # Real multimodal payload: OpenAI chat-completions vision content parts.
+        # Without this branch the images kwarg was silently swallowed and the
+        # model answered text-only while the caller believed it saw the chip.
+        images: Optional[List[str]] = kwargs.get("images")
+        if images:
+            user_content = [{"type": "text", "text": prompt}]
+            for img in images:
+                if img.startswith("http://") or img.startswith("https://") or img.startswith("data:"):
+                    url = img
+                else:
+                    url = f"data:image/jpeg;base64,{img}"
+                user_content.append({"type": "image_url", "image_url": {"url": url}})
+            messages[-1] = {"role": "user", "content": user_content}
+
         try:
             from openai import OpenAI
             client = OpenAI(base_url=self.base_url, api_key=self.api_key)
@@ -92,7 +107,8 @@ class OpenAIProvider(BaseAIProvider):
                 provider_name=self.name,
                 status="success",
                 duration_sec=round(elapsed, 3),
-                raw_payload={"choices": [str(c.message) for c in completion.choices]},
+                raw_payload={"choices": [str(c.message) for c in completion.choices],
+                             "images_sent": len(images) if images else 0},
                 parsed_json=parsed,
                 usage=completion.usage.to_dict() if hasattr(completion, 'usage') and hasattr(completion.usage, 'to_dict') else {}
             )

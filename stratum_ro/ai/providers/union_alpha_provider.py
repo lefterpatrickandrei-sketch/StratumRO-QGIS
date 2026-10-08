@@ -75,7 +75,21 @@ class UnionAlphaProvider(BaseAIProvider):
         messages = []
         if system_prompt:
             messages.append({"role": "system", "content": system_prompt})
-        messages.append({"role": "user", "content": prompt})
+
+        # Real multimodal payload (OpenRouter/OpenAI-compatible vision format).
+        # Previously images were dropped even though VISION was advertised.
+        images: Optional[List[str]] = kwargs.get("images")
+        if images:
+            user_content = [{"type": "text", "text": prompt}]
+            for img in images:
+                if img.startswith("http://") or img.startswith("https://") or img.startswith("data:"):
+                    url = img
+                else:
+                    url = f"data:image/jpeg;base64,{img}"
+                user_content.append({"type": "image_url", "image_url": {"url": url}})
+            messages.append({"role": "user", "content": user_content})
+        else:
+            messages.append({"role": "user", "content": prompt})
 
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -128,7 +142,8 @@ class UnionAlphaProvider(BaseAIProvider):
                 provider_name=self.name,
                 status="success",
                 duration_sec=round(elapsed, 3),
-                raw_payload={"choices": [str(c.get("message")) for c in choices]},
+                raw_payload={"choices": [str(c.get("message")) for c in choices],
+                             "images_sent": len(images) if images else 0},
                 parsed_json=parsed,
                 usage=data.get("usage", {})
             )

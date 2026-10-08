@@ -13,6 +13,8 @@ from .providers.nvidia_nim_provider import NvidiaNIMProvider
 from .providers.openai_provider import OpenAIProvider
 from .providers.ollama_provider import OllamaProvider
 from .providers.union_alpha_provider import UnionAlphaProvider
+from .providers.anthropic_provider import AnthropicProvider
+from .providers.gemini_provider import GeminiProvider
 
 
 @dataclass
@@ -51,6 +53,13 @@ class ProviderRegistry:
 
         # 5. Ollama (local daemon)
         self.register(OllamaProvider())
+
+        # 6. Anthropic Claude (deep reasoning, architectural reviews)
+        self.register(AnthropicProvider())
+
+        # 7. Google Gemini (free-tier multimodal; gemini-3.1-flash-lite is the
+        #    only VLM route that passed the falsification controls on 2026-10-08)
+        self.register(GeminiProvider())
 
     def register(self, provider: BaseAIProvider):
         """Registers a provider instance."""

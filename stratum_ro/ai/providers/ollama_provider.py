@@ -17,12 +17,12 @@ class OllamaProvider(BaseAIProvider):
     """
 
     DEFAULT_HOST = "http://localhost:11434"
-    DEFAULT_MODELS = ["llama3.2:3b", "qwen2.5-coder:7b", "mistral:7b"]
+    DEFAULT_MODELS = ["qwen3-agent:8b", "qwen3:8b", "dolphin3:8b"]
 
     def __init__(
         self,
         base_url: Optional[str] = None,
-        default_model: str = "llama3.2:3b"
+        default_model: str = "qwen3-agent:8b"
     ):
         super().__init__(name="ollama")
         self.base_url = (base_url or os.getenv("OLLAMA_HOST") or self.DEFAULT_HOST).rstrip("/")
@@ -45,12 +45,24 @@ class OllamaProvider(BaseAIProvider):
         self._available_cache = False
         return False
 
+    # Model name prefixes that indicate vision/multimodal capability
+    VISION_MODEL_PREFIXES = ("llava", "minicpm-v", "bakllava", "llava-llama3")
+
     def capabilities(self) -> List[ProviderCapability]:
-        return [
+        caps = [
             ProviderCapability.LOCAL_INFERENCE,
             ProviderCapability.REASONING,
             ProviderCapability.PLANNING,
         ]
+        # Dynamically add VISION if a vision-capable model is installed
+        models = self._cached_models or self.DEFAULT_MODELS
+        has_vision = any(
+            m.split(":")[0] in self.VISION_MODEL_PREFIXES
+            for m in models
+        )
+        if has_vision:
+            caps.append(ProviderCapability.VISION)
+        return caps
 
     def list_models(self) -> List[str]:
         if self._cached_models:
@@ -63,7 +75,7 @@ class OllamaProvider(BaseAIProvider):
         system_prompt: Optional[str] = None,
         context: Optional[Dict[str, Any]] = None,
         model: Optional[str] = None,
-        timeout: float = 15.0,
+        timeout: float = 60.0,
         **kwargs
     ) -> ProviderResponse:
         t0 = time.time()
@@ -86,7 +98,32 @@ class OllamaProvider(BaseAIProvider):
             messages = []
             if system_prompt:
                 messages.append({"role": "system", "content": system_prompt})
-            messages.append({"role": "user", "content": prompt})
+
+            # Real multimodal payload for Ollama's /api/chat (images array).
+            # Previously images were dropped even though llava/minicpm-v were
+            # registered as vision models in VISION_MODEL_PREFIXES.
+            images: Optional[List[str]] = kwargs.get("images")
+            if images:
+                user_content = prompt
+                img_arr = []
+                for img in images:
+                    if img.startswith("data:"):
+                        img = img.split(",", 1)[-1]
+                    if img.startswith("http://") or img.startswith("https://"):
+                        # Ollama expects raw base64; fetch remote images first.
+                        try:
+                            import base64 as _b64
+                            import requests as _rq
+                            img = _b64.b64encode(_rq.get(img, timeout=20).content).decode("ascii")
+                        except Exception:
+                            continue
+                    img_arr.append(img)
+                if img_arr:
+                    messages.append({"role": "user", "content": user_content, "images": img_arr})
+                else:
+                    messages.append({"role": "user", "content": user_content})
+            else:
+                messages.append({"role": "user", "content": prompt})
 
             payload = {
                 "model": chosen_model,
@@ -109,6 +146,8 @@ class OllamaProvider(BaseAIProvider):
                 data = resp.json()
                 raw_text = data.get("message", {}).get("content", "")
                 parsed = extract_json(raw_text)
+                # Mark how many images actually reached the model.
+                data["images_sent"] = sum(len(m.get("images", [])) for m in messages)
 
                 return ProviderResponse(
                     content=raw_text,
