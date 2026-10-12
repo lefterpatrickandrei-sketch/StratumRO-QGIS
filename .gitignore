@@ -88,11 +88,45 @@ tools/llm_test_results/
 
 # Obsidian & Agents
 Obsidian workflow/
-.agents/skills/
 skills-lock.json
 
 # Project raw dumps & cache
 *.pbf
 projects/**/data/cache/
 projects/**/data/raw/
+
+# ── Repository Hygiene (added 2026-10-12) ──────────────────────
+# Large downloaded geodata (WMS/WFS snapshots) — generate locally
+national_server/**/*.tif
+national_server/**/*.geotiff
+national_server/**/*.kmz
+
+# Workspace binary outputs & tile cache (regenerable)
+workspace/output/cache_tile_*.tif
+workspace/output/cache_tile_*_mosaic.vrt
+workspace/output/test_crop_*.tif
+workspace/output/test_crop_*_mosaic.vrt
+workspace/output/*.qgz
+workspace/output/*.png
+workspace/output/*.csv
+workspace/output/vlm_evidence/
+workspace/output/visual_validation/
+
+# Root planning docs (should live in docs/ or workspace/)
+STRATUMRO_*.md
+
+# Temporary scripts & test output at root
+collaboration_test.py
+test_output.txt
+test_results.txt
+verbose_output.txt
+run_tests*.py
+subagent_full_report.md
+gemini_chat_extracted.txt
+supervisor.ps1
+symbology-style.db
+
+# OpenCode workspace
+opencode/
+.opencode/
 

@@ -63,6 +63,12 @@ Nicio fază de dezvoltare sau livrabil pre-cadastral nu poate fi declarat „VAL
   ```
   Report the exact test count (e.g., `251 passed, 9 skipped, 0 failed` out of 260 discovered). A skipped test is **NOT** a passed test.
 - **Python Environment:** Always use the local virtual environment in [`venv/`](venv/).
+- **Git Repository Discipline:**
+  - **No binary blobs in tracking:** `.tif`, `.gpkg` (>10 MB), `.onnx` (>100 MB), `.las`, `.laz`, `.qgz` → `.gitignore`. Exception: `models/sam2/sam2_decoder.onnx` (<16 MB).
+  - **Clean root:** Only `README.md`, `LICENSE`, `AGENTS.md`, `requirements.txt`, `.gitignore`, `.env.example`, and `metadata.txt` at repository root. All planning/architecture docs → `docs/` or `workspace/`.
+  - **Branch hygiene:** Delete merged branches within 1 week. Maximum 3 active feature branches.
+  - **Commit messages:** Follow conventional commits (`feat`/`fix`/`docs`/`chore`/`test` prefix with optional scope).
+  - **Push discipline:** Push to `origin/main` at least daily during active sprints. Verify with `git rev-list --count origin/main..HEAD` (must be 0 at end of day).
 
 ---
 
