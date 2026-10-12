@@ -139,24 +139,37 @@ Sistemul respectă cu strictețe normele de avizare tehnică cadastrală din Rom
 
 ---
 
-## 4. 🗺️ Structura Celor 12 Straturi Geospațiale
+## 4. 🗺️ Structura Celor 25 de Straturi Geospațiale
 
-Toate datele sunt salvate în `workspace/output/cladiri_stereo70.gpkg` și stilate în proiectul QGIS:
+Toate datele sunt salvate în `workspace/output/cladiri_stereo70.gpkg` (25 de straturi reale în tabela SQLite `gpkg_contents`) și stilate în proiectul QGIS:
 
 | # | Nume Strat | Tip Geometrie | Cod / Categorie ANCPI | Culoare QGIS | Rol în Proiect |
 |---|---|---|---|---|---|
 | 1 | `LIMITA_SECTOR_CADASTRAL` | Poligon | Art. 285 Ord. 600 | Roșu Cadastral (`#E31A1C`) | Granița administrativă a sectorului cadastral |
 | 2 | `CLADIRI_SOL_ANCPI` | Poligon | C1 / CC | Roșu Închis (`#BD0026`) | Amprente clădiri pe sol regularizate canonic |
-| 3 | `CLADIRI_HIBRID` | Poligon | Construcții | Portocaliu (`#E6550D`) | Contururi complexe segmentate hibrid SAM 2 |
-| 4 | `ANEXE_GOSPODARESTI` | Poligon | Anexe / Garaje | Mov / Indigo (`#756BB1`) | Corpuri secundare ($S < 35\text{ m}^2$) |
-| 5 | `DR` | Poligon | Drumuri | Gri Asfalt (`#636363`) | Rețeaua căilor de comunicație rutieră |
-| 6 | `HR` | Poligon | Ape curgătoare | Albastru Hidro (`#3182BD`) | Cursuri de apă, canale, hidrografie |
-| 7 | `VN` | Poligon | Vii | Violet Agricol (`#7B1FA2`) | Plantații viticole |
-| 8 | `CIMITIR` | Poligon | TDS (Destinație Spec.) | Gri Piatră (`#616161`) | Cimitire și monumente |
-| 9 | `A` | Poligon | Teren Arabil | Ocru / Galben (`#D9A74A`) | Terenuri agricole arabile |
-| 10 | `UNCLASSIFIED` | Poligon | Rezidual Sector | Verde Pal (`#E5F5E0`) | Diferență topologică pentru acoperire 100% |
-| 11 | `ARBORI` | Punct | Spații Verzi L24/2007 | Verde Pădure (`#2CA02C`) | Arbori solitari ($H \ge 3.8\text{ m}$, filtrați) |
-| 12 | `STALPI_TURNURI` | Punct | Rețele / Utilități | Negru Intens (`#111111`) | Structuri verticale înalte și stâlpi |
+| 3 | `CLADIRI_CADASTRU_CLEAN` | Poligon | C1 / CC Curățat | Roșu Cadastral (`#D73027`) | Clădiri pre-cadastrale validate și curățate |
+| 4 | `CLADIRI_HIBRID` | Poligon | Construcții | Portocaliu (`#E6550D`) | Contururi complexe segmentate hibrid SAM 2 |
+| 5 | `ANEXE_GOSPODARESTI` | Poligon | Anexe / Garaje | Mov / Indigo (`#756BB1`) | Corpuri secundare ($S < 35\text{ m}^2$) |
+| 6 | `DR` | Poligon | Drumuri | Gri Asfalt (`#636363`) | Rețeaua căilor de comunicație rutieră |
+| 7 | `HR` | Poligon | Ape curgătoare | Albastru Hidro (`#3182BD`) | Cursuri de apă, canale, hidrografie |
+| 8 | `VN` | Poligon | Vii | Violet Agricol (`#7B1FA2`) | Plantații viticole |
+| 9 | `CIMITIR` | Poligon | TDS (Destinație Spec.) | Gri Piatră (`#616161`) | Cimitire și monumente |
+| 10 | `A` | Poligon | Teren Arabil | Ocru / Galben (`#D9A74A`) | Terenuri agricole arabile |
+| 11 | `UNCLASSIFIED` | Poligon | Rezidual Sector | Verde Pal (`#E5F5E0`) | Diferență topologică pentru acoperire 100% |
+| 12 | `ARBORI` | Punct | Spații Verzi L24/2007 | Verde Pădure (`#2CA02C`) | Arbori solitari ($H \ge 3.8\text{ m}$, filtrați) |
+| 13 | `ARBORI_CORONAMENT` | Poligon | Spații Verzi | Verde Frunză (`#41AB5D`) | Coronamente detaliate arbori |
+| 14 | `CORONAMENT_ARBORI` | Poligon | Spații Verzi | Verde Pădure (`#238B45`) | Coronamente consolidate vegetație înaltă |
+| 15 | `STALPI_TURNURI` | Punct | Rețele / Utilități | Negru Intens (`#111111`) | Structuri verticale înalte și stâlpi |
+| 16 | `MARGINE_SIGURANTA_ORTOFOTO` | Poligon | Siguranță Orto | Galben Avertisment (`#FFFF33`) | Zonă tampon de siguranță la marginea mozaicului |
+| 17 | `CLADIRI_ELIMINATE_MARGINE_UNSAFE` | Poligon | Audit Filtrare | Roșu Transparent (`#FB9A99`) | Poligoane tăiate de marginea AOI eliminate |
+| 18 | `ARTEFACTE_RESPINSE_SAM2` | Poligon | Audit SAM 2 | Gri Șters (`#999999`) | Măști SAM 2 respinse de filtrul altimetric LiDAR |
+| 19 | `STAGE_1_RAW_CONTOUR` | Poligon | Audit Etapa 1 | Magenta (`#F781BF`) | Contur brut rasterizat inițial |
+| 20 | `STAGE_2_CLEANED_CONTOUR` | Poligon | Audit Etapa 2 | Roz (`#FB8072`) | Contur netezit fără spikuri acute |
+| 21 | `STAGE_3_ADAPTIVE_POLYGON` | Poligon | Audit Etapa 3 | Turcoaz (`#80B1D3`) | Reconstrucție adaptivă pe clase morfologice |
+| 22 | `STAGE_4_LIDAR_CONSTRAINED` | Poligon | Audit Etapa 4 | Albastru Oțel (`#386CB0`) | Ajustare altimetrică și retragere streașină |
+| 23 | `STAGE_5_FINAL_CONFIDENCE` | Poligon | Audit Etapa 5 | Verde Smarald (`#7FC97F`) | Scorul final de încredere și semaforizare |
+| 24 | `VLM_AUDITED_BUILDINGS` | Poligon | Audit VLM | Indigo (`#386CB0`) | Clădiri evaluate multimodal VLM |
+| 25 | `VLM_REAL_AUDIT` | Poligon | Audit VLM | Violet (`#666666`) | Rezultate transcript audit vizual VLM |
 
 ---
 
@@ -301,7 +314,7 @@ QGIS-AI/
 │   ├── pug_product.py               # Generator livrabile urbanism PUG & 3D
 │   ├── regulatory_consensus.py      # Audit de consens normativ AI (LLM)
 │   ├── metadata.txt                 # Metadate oficiale QGIS Plugin (v0.2.0)
-│   └── test/                        # Suita de 42 de teste unitare
+│   └── test/                        # Suita de 260 de teste unitare
 │       ├── test_cad_exporter.py     # Teste TopoLT, noduri numerotate & .CP
 │       ├── test_volumetric_3d.py    # Teste LoD1 MultiPolygonZ & CityJSON
 │       ├── test_onnx_engine.py      # Teste ONNX Runtime & DirectML
@@ -349,7 +362,7 @@ Instalați pachetele necesare:
 ```bash
 pip install -r requirements.txt
 # Sau instalare directă:
-pip install onnxruntime shapely geopandas rasterio laspy[laszip] ezdxf buildingregulariser
+pip install onnxruntime shapely geopandas rasterio laspy[lazrs,pylas] ezdxf buildingregulariser
 ```
 
 ### 12.3 Rularea Pipeline-ului pe Zona de Interes (AOI)
@@ -366,7 +379,7 @@ Scriptul execută automat:
 
 ---
 
-## 13. 🧪 Testare & Verificare (206 Teste Unitare)
+## 13. 🧪 Testare & Verificare (260 Teste Unitare)
  
 Suita completă de teste unitare verifică integritatea exportatorului CAD, a regularizatorului, a motorului ONNX (decodor + encoder), a extrudării 3D, a furnizorului QGIS Processing, a nucleului AI decuplat, a specificațiilor de sarcini Phase 4 (`TaskSpec` + capability resolver), a motorului de securitate și politică de risc (`RiskEngine`), a validării geodezice multinivel (`DataProfiler` L0–L5), a trasabilității liniare (`ProvenanceChain`) și a simulării geometrice de robustețe (`PerturbationEngine`):
 ```bash
@@ -374,11 +387,11 @@ venv\Scripts\python -m unittest discover stratum_ro/test
 ```
 Rezultat verificat:
 ```text
-Ran 206 tests in 30.295s
+Ran 260 tests in 44.039s
 
 OK (skipped=9)
 ```
-*(9 teste opționale de integrare CUDA GPU sunt omise automat când sunt rulate în mod DirectML/CPU).*
+*(251 passed, 9 skipped, 0 failed. Cele 9 teste opționale de integrare CUDA GPU sunt omise automat când sunt rulate în mod DirectML/CPU).*
 
 ---
 

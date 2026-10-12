@@ -89,11 +89,10 @@ def check_qgis_mcp_socket(host: str = "127.0.0.1", port: int = 9876, timeout: fl
     """Quickly checks if QGIS Desktop MCP server is listening on local TCP socket."""
     import socket
     try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(timeout)
-        s.connect((host, port))
-        s.close()
-        return True
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(timeout)
+            s.connect((host, port))
+            return True
     except Exception:
         return False
 

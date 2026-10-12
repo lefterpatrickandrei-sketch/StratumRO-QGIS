@@ -76,78 +76,92 @@ class CadastralDxfExporter:
         row_height: float = 3.5,
         col_widths: Tuple[float, float, float, float] = (14.0, 24.0, 24.0, 20.0),
         table_title: str = "INVENTAR DE COORDONATE STEREO 70 (PAD)",
-        total_area_m2: Optional[float] = None
+        total_area_m2: Optional[float] = None,
+        max_rows_per_col: int = 35
     ):
         """
         Draws an official ANCPI PAD coordinate table in CAD model space using lines and text.
         Compatible with all AutoCAD / TopoLT / BricsCAD / QGIS versions.
+        Supports multi-column pagination when points exceed max_rows_per_col without truncation.
         Columns: [ Nr. Pct. | Coordonata Nord (X) [m] | Coordonata Est (Y) [m] | Lungime latura D(i,i+1) [m] ]
         """
         w_tot = sum(col_widths)
         w0, w1, w2, w3 = col_widths
+        col_gap = 6.0
 
-        x_cur = origin_x
-        y_cur = origin_y
+        if not table_data:
+            return
 
-        # Title block
-        msp.add_line((x_cur, y_cur), (x_cur + w_tot, y_cur), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
-        msp.add_line((x_cur, y_cur - row_height * 1.5), (x_cur + w_tot, y_cur - row_height * 1.5), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
-        msp.add_text(
-            table_title,
-            dxfattribs={"layer": "TABEL_PAD", "height": 1.6, "color": colors.WHITE}
-        ).set_placement((x_cur + w_tot / 2.0, y_cur - row_height * 1.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
+        chunks = [table_data[i:i + max_rows_per_col] for i in range(0, len(table_data), max_rows_per_col)]
+        num_chunks = len(chunks)
 
-        y_cur -= row_height * 1.5
+        for col_idx, chunk in enumerate(chunks):
+            x_cur = origin_x + col_idx * (w_tot + col_gap)
+            y_cur = origin_y
 
-        # Header block
-        headers = ["Nr. Pct.", "X [Nord] (m)", "Y [Est] (m)", "D(i, i+1) (m)"]
-        col_starts = [x_cur, x_cur + w0, x_cur + w0 + w1, x_cur + w0 + w1 + w2]
-
-        msp.add_line((x_cur, y_cur - row_height), (x_cur + w_tot, y_cur - row_height), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
-
-        for i, (h_txt, c_start, c_w) in enumerate(zip(headers, col_starts, col_widths)):
+            # Title block
+            chunk_title = table_title if num_chunks == 1 else f"{table_title} (Col {col_idx + 1}/{num_chunks})"
+            msp.add_line((x_cur, y_cur), (x_cur + w_tot, y_cur), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+            msp.add_line((x_cur, y_cur - row_height * 1.5), (x_cur + w_tot, y_cur - row_height * 1.5), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
             msp.add_text(
-                h_txt,
-                dxfattribs={"layer": "TABEL_PAD", "height": 1.2, "color": colors.CYAN}
-            ).set_placement((c_start + c_w / 2.0, y_cur - row_height / 2.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
+                chunk_title,
+                dxfattribs={"layer": "TABEL_PAD", "height": 1.4 if num_chunks > 1 else 1.6, "color": colors.WHITE}
+            ).set_placement((x_cur + w_tot / 2.0, y_cur - row_height * 1.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
 
-        y_cur -= row_height
+            y_cur -= row_height * 1.5
 
-        # Rows
-        for row in table_data:
-            msp.add_line((x_cur, y_cur - row_height), (x_cur + w_tot, y_cur - row_height), dxfattribs={"layer": "TABEL_PAD", "color": colors.WHITE})
+            # Header block
+            headers = ["Nr. Pct.", "X [Nord] (m)", "Y [Est] (m)", "D(i, i+1) (m)"]
+            col_starts = [x_cur, x_cur + w0, x_cur + w0 + w1, x_cur + w0 + w1 + w2]
 
-            vals = [
-                str(row.get("nr", "")),
-                f"{float(row.get('x', 0.0)):.3f}",
-                f"{float(row.get('y', 0.0)):.3f}",
-                f"{float(row.get('dist', 0.0)):.2f}" if row.get('dist') is not None else "-"
-            ]
-            for val_txt, c_start, c_w in zip(vals, col_starts, col_widths):
+            msp.add_line((x_cur, y_cur - row_height), (x_cur + w_tot, y_cur - row_height), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+
+            for i, (h_txt, c_start, c_w) in enumerate(zip(headers, col_starts, col_widths)):
                 msp.add_text(
-                    val_txt,
-                    dxfattribs={"layer": "TABEL_PAD", "height": 1.1, "color": colors.WHITE}
+                    h_txt,
+                    dxfattribs={"layer": "TABEL_PAD", "height": 1.2, "color": colors.CYAN}
                 ).set_placement((c_start + c_w / 2.0, y_cur - row_height / 2.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
 
             y_cur -= row_height
 
-        # Total Net Ground Area Row (Sc)
-        if total_area_m2 is not None and total_area_m2 > 0:
-            msp.add_line((x_cur, y_cur - row_height), (x_cur + w_tot, y_cur - row_height), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
-            msp.add_text(
-                f"Suprafata Construita la Sol (Sc) = {total_area_m2:.2f} mp",
-                dxfattribs={"layer": "TABEL_PAD", "height": 1.2, "color": colors.YELLOW}
-            ).set_placement((x_cur + w_tot / 2.0, y_cur - row_height / 2.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
-            y_cur -= row_height
+            # Rows
+            for row in chunk:
+                msp.add_line((x_cur, y_cur - row_height), (x_cur + w_tot, y_cur - row_height), dxfattribs={"layer": "TABEL_PAD", "color": colors.WHITE})
 
-        # Outer box & vertical column dividers
-        top_y = origin_y
-        bot_y = y_cur
-        msp.add_line((x_cur, top_y), (x_cur, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
-        msp.add_line((x_cur + w0, top_y - row_height * 1.5), (x_cur + w0, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
-        msp.add_line((x_cur + w0 + w1, top_y - row_height * 1.5), (x_cur + w0 + w1, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
-        msp.add_line((x_cur + w0 + w1 + w2, top_y - row_height * 1.5), (x_cur + w0 + w1 + w2, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
-        msp.add_line((x_cur + w_tot, top_y), (x_cur + w_tot, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+                # Romanian cadastre convention (ANCPI Ordinul nr. 600/2023): X = Nord, Y = Est
+                x_val = row.get("x_nord") if "x_nord" in row else row.get("x", 0.0)
+                y_val = row.get("y_est") if "y_est" in row else row.get("y", 0.0)
+                vals = [
+                    str(row.get("nr", "")),
+                    f"{float(x_val):.3f}",
+                    f"{float(y_val):.3f}",
+                    f"{float(row.get('dist', 0.0)):.2f}" if row.get('dist') is not None else "-"
+                ]
+                for val_txt, c_start, c_w in zip(vals, col_starts, col_widths):
+                    msp.add_text(
+                        val_txt,
+                        dxfattribs={"layer": "TABEL_PAD", "height": 1.1, "color": colors.WHITE}
+                    ).set_placement((c_start + c_w / 2.0, y_cur - row_height / 2.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
+
+                y_cur -= row_height
+
+            # Total Net Ground Area Row (Sc) on the last column
+            if col_idx == num_chunks - 1 and total_area_m2 is not None and total_area_m2 > 0:
+                msp.add_line((x_cur, y_cur - row_height), (x_cur + w_tot, y_cur - row_height), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+                msp.add_text(
+                    f"Suprafata Construita la Sol (Sc) = {total_area_m2:.2f} mp",
+                    dxfattribs={"layer": "TABEL_PAD", "height": 1.2, "color": colors.YELLOW}
+                ).set_placement((x_cur + w_tot / 2.0, y_cur - row_height / 2.0), align=ezdxf.enums.TextEntityAlignment.MIDDLE_CENTER)
+                y_cur -= row_height
+
+            # Outer box & vertical column dividers
+            top_y = origin_y
+            bot_y = y_cur
+            msp.add_line((x_cur, top_y), (x_cur, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+            msp.add_line((x_cur + w0, top_y - row_height * 1.5), (x_cur + w0, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+            msp.add_line((x_cur + w0 + w1, top_y - row_height * 1.5), (x_cur + w0 + w1, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+            msp.add_line((x_cur + w0 + w1 + w2, top_y - row_height * 1.5), (x_cur + w0 + w1 + w2, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
+            msp.add_line((x_cur + w_tot, top_y), (x_cur + w_tot, bot_y), dxfattribs={"layer": "TABEL_PAD", "color": colors.CYAN})
 
     def export_multicategory_to_dxf(
         self,
@@ -221,8 +235,10 @@ class CadastralDxfExporter:
 
                     pad_table_entries.append({
                         "nr": global_point_idx,
-                        "x": gx,
-                        "y": gy,
+                        "x": gy,  # X = Nord in Romanian cadastre (pt[1])
+                        "y": gx,  # Y = Est in Romanian cadastre (pt[0])
+                        "x_nord": gy,
+                        "y_est": gx,
                         "dist": round(dist_to_next, 2),
                         "cod": f"C{bid}"
                     })
@@ -316,15 +332,15 @@ class CadastralDxfExporter:
 
             total_main_area = round(sum(float(b.get("area_m2", sum(p.area for p in _extract_polygons(b.get("geometry"))))) for b in main_buildings), 2)
 
-            # Limit table to first 35 points to avoid drawing thousands of rows in complex AOIs
-            display_entries = pad_table_entries[:35]
+            # Draw full coordinate table with multi-column pagination (ANCPI Ordinul 600/2023)
             self._draw_pad_coordinate_table(
                 msp,
-                display_entries,
+                pad_table_entries,
                 origin_x=table_origin_x,
                 origin_y=table_origin_y,
                 table_title="INVENTAR COORDONATE PAD (ORDINUL ANCPI 600/2023)",
-                total_area_m2=total_main_area
+                total_area_m2=total_main_area,
+                max_rows_per_col=35
             )
 
         doc.saveas(output_dxf_path)
@@ -361,14 +377,16 @@ class CadastralDxfExporter:
                 coords = list(poly.exterior.coords)[:-1]
                 for pt in coords:
                     gx, gy = round(pt[0], 3), round(pt[1], 3)
-                    lines.append(f"{pt_counter},{gx:.3f},{gy:.3f},0.000,1CC")
+                    # ANCPI Ordinul nr. 600/2023 & TopoLT: Nr_Pct, X_Nord, Y_Est, Z_Cota, Cod_Layer
+                    # In GIS Stereo 70 (EPSG:3844): pt[0]=Est, pt[1]=Nord -> X_Nord=gy, Y_Est=gx
+                    lines.append(f"{pt_counter},{gy:.3f},{gx:.3f},0.000,1CC")
                     pt_counter += 1
 
                 for int_i, interior in enumerate(poly.interiors, start=1):
                     lines.append(f"; [GOL_INTERIOR_{int_i}]")
                     for pt in list(interior.coords)[:-1]:
                         gx, gy = round(pt[0], 3), round(pt[1], 3)
-                        lines.append(f"{pt_counter},{gx:.3f},{gy:.3f},0.000,1CC_GOL")
+                        lines.append(f"{pt_counter},{gy:.3f},{gx:.3f},0.000,1CC_GOL")
                         pt_counter += 1
 
         # 2. Anexe Gospodaresti (2CC)
@@ -380,7 +398,7 @@ class CadastralDxfExporter:
                 coords = list(poly.exterior.coords)[:-1]
                 for pt in coords:
                     gx, gy = round(pt[0], 3), round(pt[1], 3)
-                    lines.append(f"{pt_counter},{gx:.3f},{gy:.3f},0.000,2CC")
+                    lines.append(f"{pt_counter},{gy:.3f},{gx:.3f},0.000,2CC")
                     pt_counter += 1
 
         with open(output_cp_path, "w", encoding="utf-8") as f:

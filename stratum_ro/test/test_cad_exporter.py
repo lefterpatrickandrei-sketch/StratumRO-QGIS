@@ -127,7 +127,8 @@ class TestCadastralDxfExporter(unittest.TestCase):
             content = f.read()
 
         self.assertIn("[CONSTRUCTIE_1CC_C1]", content)
-        self.assertIn("390500.000,585800.000,0.000,1CC", content)
+        # ANCPI Ordinul nr. 600/2023: X_Nord=585800.000, Y_Est=390500.000
+        self.assertIn("585800.000,390500.000,0.000,1CC", content)
 
         if os.path.exists(output_cp):
             try:
@@ -186,7 +187,43 @@ class TestCadastralDxfExporter(unittest.TestCase):
             except Exception:
                 pass
 
+    def test_pad_table_multi_column_pagination(self):
+        """Verifică paginarea multi-coloană a tabelului PAD când sunt mai mult de 35 de puncte."""
+        import numpy as np
+        # Generează un poligon cu 50 de noduri
+        angles = np.linspace(0, 2 * np.pi, 51)[:-1]
+        pts = [(390500.0 + 30.0 * np.cos(a), 585800.0 + 30.0 * np.sin(a)) for a in angles]
+        pts.append(pts[0])
+        poly_50 = Polygon(pts)
+
+        cat_dict = {
+            "CLADIRI_PRINCIPALE": [{"id": 1, "geometry": poly_50, "area_m2": poly_50.area}]
+        }
+        exporter = CadastralDxfExporter(dxf_version="R2010")
+        res_dxf = exporter.export_multicategory_to_dxf(
+            cat_dict,
+            self.output_dxf,
+            include_labels=True,
+            topolt_mode=True,
+            draw_pad_table=True
+        )
+        self.assertTrue(os.path.exists(res_dxf))
+        doc = ezdxf.readfile(res_dxf)
+        msp = doc.modelspace()
+
+        # Toate cele 50 de puncte trebuie să apară pe VARFURI
+        pts_entities = msp.query('POINT[layer=="VARFURI"]')
+        self.assertEqual(len(pts_entities), 50)
+
+        # Textele din TABEL_PAD trebuie să conțină ambele coloane
+        table_texts = [t.dxf.text for t in msp.query('TEXT[layer=="TABEL_PAD"]')]
+        self.assertTrue(any("Col 1/2" in t for t in table_texts))
+        self.assertTrue(any("Col 2/2" in t for t in table_texts))
+        # Punctul 50 trebuie să fie prezent în tabel
+        self.assertTrue(any(t == "50" for t in table_texts))
+
 
 if __name__ == "__main__":
     unittest.main()
+
 

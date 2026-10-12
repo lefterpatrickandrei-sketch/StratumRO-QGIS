@@ -23,8 +23,8 @@
     <layer-tree-layer id="layer_limita" name="StratumRO — Limită Sector Cadastral (Cadru Lucru)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=LIMITA_SECTOR_CADASTRAL" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
     <layer-tree-layer id="layer_stalpi" name="StratumRO — Stâlpi &amp; Turnuri (7 Puncte)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=STALPI_TURNURI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
     <layer-tree-layer id="layer_arbori" name="StratumRO — Arbori Solitari Validați (1,358 Puncte)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=ARBORI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
-    <layer-tree-layer id="layer_cladiri_sol" name="StratumRO — Clădiri Sol ANCPI (-40cm) (29 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_SOL_ANCPI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
-    <layer-tree-layer id="layer_cladiri_hibrid" name="StratumRO — Acoperișuri Clădiri 90° (29 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_HIBRID" providerKey="ogr" expanded="1" checked="Qt::Unchecked"/>
+    <layer-tree-layer id="layer_cladiri_sol" name="StratumRO — Clădiri Sol ANCPI (-40cm) (195 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_SOL_ANCPI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
+    <layer-tree-layer id="layer_cladiri_hibrid" name="StratumRO — Acoperișuri Clădiri 90° (195 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_HIBRID" providerKey="ogr" expanded="1" checked="Qt::Unchecked"/>
     <layer-tree-layer id="layer_anexe" name="StratumRO — Anexe Gospodărești (1 Clădiri)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=ANEXE_GOSPODARESTI" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
     <layer-tree-layer id="layer_dr" name="StratumRO — DR: Căi Comunicații Rutiere &amp; Parcări (5 Parcele)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=DR" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
     <layer-tree-layer id="layer_hr" name="StratumRO — HR: Hidrografie &amp; Cursuri Apă (2 Parcele)" source="C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=HR" providerKey="ogr" expanded="1" checked="Qt::Checked"/>
@@ -66,10 +66,10 @@
     </maplayer>
 
     <!-- CLADIRI SOL ANCPI (Semafor Încredere V2) -->
-    <maplayer id="layer_cladiri_sol" name="StratumRO — Clădiri Sol ANCPI (-40cm) (29 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+    <maplayer id="layer_cladiri_sol" name="StratumRO — Clădiri Sol ANCPI (-40cm) (195 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
       <id>layer_cladiri_sol</id>
       <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_SOL_ANCPI</datasource>
-      <layername>StratumRO — Clădiri Sol ANCPI (-40cm) (29 Clădiri)</layername>
+      <layername>StratumRO — Clădiri Sol ANCPI (-40cm) (195 Clădiri)</layername>
       <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
       <renderer-v2 type="RuleRenderer" symbollevels="0">
         <rules key="root_sol">
@@ -124,10 +124,10 @@
     </maplayer>
 
     <!-- CLADIRI HIBRID -->
-    <maplayer id="layer_cladiri_hibrid" name="StratumRO — Acoperișuri Clădiri 90° (29 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
+    <maplayer id="layer_cladiri_hibrid" name="StratumRO — Acoperișuri Clădiri 90° (195 Clădiri)" type="vector" geometry="Polygon" minScale="1e+08" maxScale="0" styleCategories="AllStyleCategories" readOnly="0">
       <id>layer_cladiri_hibrid</id>
       <datasource>C:\Users\lefpa\Downloads\QGIS-AI\workspace\output\cladiri_stereo70.gpkg|layername=CLADIRI_HIBRID</datasource>
-      <layername>StratumRO — Acoperișuri Clădiri 90° (29 Clădiri)</layername>
+      <layername>StratumRO — Acoperișuri Clădiri 90° (195 Clădiri)</layername>
       <srs><spatialrefsys nativeFormat="Wkt"><authid>EPSG:3844</authid></spatialrefsys></srs>
       <renderer-v2 type="singleSymbol" symbollevels="0">
         <symbols>

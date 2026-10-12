@@ -161,24 +161,6 @@ def split_at_calcan(
     if not isinstance(geom, Polygon) or geom.area < min_split_area_m2:
         return [geom] if geom.is_valid and geom.area >= 25.0 else []
 
-    # 1. Detecție gâturi morfologice / rosturi structurale înguste (istm între corpuri mari)
-    eroded = geom.buffer(-3.2, join_style=2)
-    cores: List[Polygon] = []
-    if eroded.geom_type == 'MultiPolygon':
-        cores = [c for c in eroded.geoms if c.area >= min_core_area_m2]
-
-    wings: List[Polygon] = []
-    if len(cores) >= 2:
-        cores.sort(key=lambda c: c.centroid.x)
-        div_x = (cores[0].bounds[2] + cores[1].bounds[0]) / 2.0
-        cut_line = LineString([(div_x, geom.bounds[1] - 10.0), (div_x, geom.bounds[3] + 10.0)])
-        sp = split(geom, cut_line)
-        for g in sp.geoms:
-            if g.is_valid and g.area >= min_core_area_m2:
-                wings.append(g)
-    else:
-        wings = [geom]
-
     # Pregătire acces nDSM (fie din fișier raster, fie din funcție apelabilă)
     src = None
     ndsm_data = None
@@ -207,6 +189,30 @@ def split_at_calcan(
         return 0.0
 
     has_height_info = (ndsm_callable is not None) or (src is not None)
+
+    # 1. Detecție gâturi morfologice / rosturi structurale înguste (istm între corpuri mari)
+    eroded = geom.buffer(-3.2, join_style=2)
+    cores: List[Polygon] = []
+    if eroded.geom_type == 'MultiPolygon':
+        cores = [c for c in eroded.geoms if c.area >= min_core_area_m2]
+
+    wings: List[Polygon] = []
+    if len(cores) >= 2 and has_height_info:
+        # Verificare treaptă altimetrică: separăm corpurile doar dacă există diferență reală de cotă nDSM
+        h0 = sample_height(cores[0].centroid.x, cores[0].centroid.y)
+        h1 = sample_height(cores[1].centroid.x, cores[1].centroid.y)
+        if abs(h0 - h1) >= min_height_step_m:
+            cores.sort(key=lambda c: c.centroid.x)
+            div_x = (cores[0].bounds[2] + cores[1].bounds[0]) / 2.0
+            cut_line = LineString([(div_x, geom.bounds[1] - 10.0), (div_x, geom.bounds[3] + 10.0)])
+            sp = split(geom, cut_line)
+            for g in sp.geoms:
+                if g.is_valid and g.area >= min_core_area_m2:
+                    wings.append(g)
+        else:
+            wings = [geom]
+    else:
+        wings = [geom]
 
     # 2. Căutare muchii calcan / notch pe fiecare aripă
     final_bodies: List[Polygon] = []
@@ -361,4 +367,167 @@ def split_at_calcan(
         src.close()
 
     return [b for b in final_bodies if b.is_valid and b.area >= 25.0]
+
+
+def offset_polygon_per_edge(poly: Polygon, edge_offsets: List[float]) -> Optional[Polygon]:
+    """
+    Retrage muchiile unui poligon conform vectorului de offset-uri specifice fiecărei muchii.
+    Calculează intersecțiile suporturilor deplasate pe baza normalei interioare.
+    Dacă rezultatul este invalid sau auto-intersectat, returnează None pentru fallback.
+    """
+    coords = list(poly.exterior.coords)[:-1]
+    n = len(coords)
+    if n < 3:
+        return poly
+
+    # Asigurăm orientare antiorară (CCW)
+    signed_area = 0.5 * sum(coords[i][0] * coords[(i + 1) % n][1] - coords[(i + 1) % n][0] * coords[i][1] for i in range(n))
+    if signed_area < 0:
+        coords = coords[::-1]
+        edge_offsets = edge_offsets[::-1]
+
+    lines = []
+    for i in range(n):
+        p1 = np.array(coords[i], dtype=np.float64)
+        p2 = np.array(coords[(i + 1) % n], dtype=np.float64)
+        v = p2 - p1
+        length = np.linalg.norm(v)
+        if length < 1e-6:
+            unit_v = np.array([1.0, 0.0])
+        else:
+            unit_v = v / length
+        # Normala interioară pentru poligon CCW
+        inward_n = np.array([-unit_v[1], unit_v[0]])
+        d = edge_offsets[i]
+        p_shifted = p1 + inward_n * d
+        c = float(np.dot(inward_n, p_shifted))
+        lines.append((inward_n[0], inward_n[1], c))
+
+    new_vertices = []
+    for i in range(n):
+        a1, b1, c1 = lines[(i - 1) % n]
+        a2, b2, c2 = lines[i]
+        det = a1 * b2 - a2 * b1
+        if abs(det) < 1e-5:
+            new_vertices.append(coords[i])
+        else:
+            A = np.array([[a1, b1], [a2, b2]], dtype=np.float64)
+            B = np.array([c1, c2], dtype=np.float64)
+            try:
+                p_new = np.linalg.solve(A, B)
+                new_vertices.append((float(p_new[0]), float(p_new[1])))
+            except Exception:
+                new_vertices.append(coords[i])
+
+    try:
+        res = Polygon(new_vertices)
+        res = make_valid(res)
+        if isinstance(res, Polygon) and res.is_valid and res.area > 0:
+            return res
+        elif isinstance(res, MultiPolygon) and res.geoms:
+            largest = max(res.geoms, key=lambda g: g.area)
+            if largest.is_valid and largest.area > 0:
+                return largest
+    except Exception:
+        pass
+    return None
+
+
+def apply_calcan_aware_eave_retraction(
+    building_poly: Polygon,
+    property_boundary: Optional[Union[Polygon, MultiPolygon, LineString]] = None,
+    adjacent_buildings: Optional[List[Polygon]] = None,
+    offset_eave_m: float = 0.40,
+    calcan_tol_m: float = 0.20
+) -> Polygon:
+    """
+    Retrage streașina spre interior cu offset_eave_m exclusiv pe fațadele libere.
+    Segmentele de contur situate pe limita de proprietate sau alipite la o clădire adiacentă
+    (calcan / zid comun) rămân cu deplasare nulă (0.00 m), păstrând aliniamentul legal ANCPI.
+
+    :param building_poly: Conturul geometric al clădirii (amprentă acoperiș / fațadă).
+    :param property_boundary: Limita parcelei / sectorului cadastral.
+    :param adjacent_buildings: Listă de poligoane ale clădirilor adiacente învecinate.
+    :param offset_eave_m: Retragerea standard a streșinii pe fațadele libere (implicit 0.40m).
+    :param calcan_tol_m: Toleranța de proximitate pentru detectarea zidului comun (implicit 0.20m).
+    :return: Poligonul retras la sol (CLADIRI_SOL_ANCPI) cu calcanul strict conservat.
+    """
+    if building_poly is None or building_poly.is_empty:
+        return building_poly
+
+    if offset_eave_m <= 0:
+        return building_poly
+
+    coords = list(building_poly.exterior.coords)[:-1]
+    m = len(coords)
+    if m < 3:
+        return building_poly
+
+    # 1. Identificăm muchiile situate pe calcan
+    is_calcan_edge = []
+    edge_offsets = []
+
+    for i in range(m):
+        p1 = coords[i]
+        p2 = coords[(i + 1) % m]
+        mid_pt = Point((p1[0] + p2[0]) * 0.5, (p1[1] + p2[1]) * 0.5)
+
+        is_calcan = False
+        # Verificare raportat la limita parcelei
+        if property_boundary is not None and not property_boundary.is_empty:
+            if isinstance(property_boundary, (Polygon, MultiPolygon)):
+                prop_bnd = property_boundary.boundary
+            else:
+                prop_bnd = property_boundary
+            if prop_bnd.distance(mid_pt) <= calcan_tol_m:
+                is_calcan = True
+
+        # Verificare raportat la clădiri vecine alipite
+        if not is_calcan and adjacent_buildings:
+            for adj in adjacent_buildings:
+                if adj is not None and not adj.is_empty:
+                    adj_bnd = adj.boundary if isinstance(adj, (Polygon, MultiPolygon)) else adj
+                    if adj_bnd.distance(mid_pt) <= calcan_tol_m:
+                        is_calcan = True
+                        break
+
+        is_calcan_edge.append(is_calcan)
+        edge_offsets.append(0.0 if is_calcan else offset_eave_m)
+
+    # Dacă nicio fațadă nu se află pe calcan, aplicăm retragerea uniformă standard
+    if not any(is_calcan_edge):
+        retracted = building_poly.buffer(-offset_eave_m, join_style=2)
+        retracted = make_valid(retracted)
+        if isinstance(retracted, Polygon) and retracted.is_valid and not retracted.is_empty:
+            return retracted
+        elif isinstance(retracted, MultiPolygon) and retracted.geoms:
+            return max(retracted.geoms, key=lambda g: g.area)
+        return building_poly
+
+    # 2. Încercăm mai întâi offset-ul analitic per muchie (precizie maximă geometrică)
+    analytic_res = offset_polygon_per_edge(building_poly, edge_offsets)
+    if analytic_res is not None and analytic_res.is_valid and not analytic_res.is_empty:
+        return analytic_res
+
+    # 3. Fallback morfologic robust (Blueprint 4): nucleu retras + protecție fâșie calcan
+    uniform_retracted = building_poly.buffer(-offset_eave_m, join_style=2)
+    calcan_segs = [
+        LineString([coords[i], coords[(i + 1) % m]])
+        for i in range(m) if is_calcan_edge[i]
+    ]
+    strips = [seg.buffer(offset_eave_m * 1.05).intersection(building_poly) for seg in calcan_segs]
+    combined = unary_union([uniform_retracted] + strips)
+    combined = make_valid(combined)
+
+    if isinstance(combined, Polygon) and combined.is_valid and not combined.is_empty:
+        return combined
+    elif isinstance(combined, MultiPolygon) and combined.geoms:
+        return max(combined.geoms, key=lambda g: g.area)
+
+    return building_poly
+
+
+# Alias pentru compatibilitate
+apply_eave_retraction_with_calcan = apply_calcan_aware_eave_retraction
+
 

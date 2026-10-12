@@ -28,7 +28,7 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 ## 2. Inventar Tehnic per Modul & Funcționalitate
 
 ### 2.1. Segmentare Hibridă nDSM + SAM2
-- **Cod Sursă:** [`stratum_ro/cadastral_engine.py`](../stratum_ro/cadastral_engine.py), [`stratum_ro/ortho_extractor.py`](../stratum_ro/ortho_extractor.py)
+- **Cod Sursă:** [`stratum_ro/vectorizer.py`](../stratum_ro/vectorizer.py), [`stratum_ro/ortho_extractor.py`](../stratum_ro/ortho_extractor.py)
 - **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED`**
 - **Ce funcționează real:**
   - Decupare automată ortofoto + nDSM pe caroiaje (tile-uri) georeferențiate în Stereo 70 (EPSG:3844).
@@ -61,7 +61,7 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 ---
 
 ### 2.3. Regularizare CAD 90° & Topologie Canonică
-- **Cod Sursă:** [`stratum_ro/cadastral_engine.py`](../stratum_ro/cadastral_engine.py) (funcțiile `regularize_building_cad`, `minimum_rotated_rectangle_fit`)
+- **Cod Sursă:** [`stratum_ro/vectorizer.py`](../stratum_ro/vectorizer.py) și [`stratum_ro/geometry_utils.py`](../stratum_ro/geometry_utils.py) (funcțiile `orthogonalize_cad`, `clean_cad_polygon`, `minimum_rotated_rectangle`)
 - **Statut Evidență:** **`IMPLEMENTED`** | **`TESTED`** | **`MEASURED`**
 - **Ce funcționează real:**
   - Fitare automată de dreptunghi rotit (exact 4 noduri la 90°) pentru corpuri rectangulare simple (garaje, anexe, case izolate) când IoU cu conturul brut depășește pragul de 0.88.
@@ -98,7 +98,7 @@ Fiecare modul, funcție, algoritm și afirmație este clasificat conform celor 8
 ---
 
 ### 2.6. Alinierea Cadastrală la Limita Parcelelor (Procrustes SVD)
-- **Cod Sursă:** `stratum_ro/cadastral_engine.py` / `engine/helmert_procrustes.py`
+- **Cod Sursă:** [`stratum_ro/vectorizer.py`](../stratum_ro/vectorizer.py) / [`stratum_ro/geometry_utils.py`](../stratum_ro/geometry_utils.py)
 - **Statut Evidență:** **`THEORETICAL`** | **`NOT FIELD-VALIDATED`**
 - **Realitate Tehnică:**
   - Potrivirea rigidă Procrustes (rotație + translație ortogonală prin descompunere SVD) pe fronturile la stradă ANCPI calculează o **reziduală algebrică de potrivire matematică**.

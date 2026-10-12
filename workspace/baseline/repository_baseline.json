@@ -1,0 +1,31 @@
+{
+  "repository_commit": "c9768641acb0bef0806593c84f549acba5960703",
+  "branch": "main",
+  "timestamp_utc": "2026-09-20T10:24:03.632653+00:00",
+  "python_version": "3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "qgis_version": "3.40.4-Bratislava (available in C:\\OSGeo4W64, GUI skipped in pure venv CLI)",
+  "relevant_dependency_versions": {
+    "gdal": "not_installed",
+    "osgeo": "not_installed",
+    "shapely": "2.1.2",
+    "pyproj": "3.7.1",
+    "rasterio": "1.4.4",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "onnxruntime": "1.23.2",
+    "torch": "2.6.0+cu124",
+    "ezdxf": "1.4.4",
+    "fastapi": "0.141.1",
+    "pydantic": "2.13.4",
+    "laspy": "2.7.0",
+    "pdal": "not_installed"
+  },
+  "test_summary": {
+    "total_discovered": 219,
+    "passed": 210,
+    "skipped": 9,
+    "failed": 0,
+    "duration_seconds": 28.96
+  }
+}

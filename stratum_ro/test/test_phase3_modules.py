@@ -107,6 +107,24 @@ class TestPhase3Modules(unittest.TestCase):
         self.assertEqual(fused[0]["fused_from_count"], 2)
         self.assertAlmostEqual(fused[0]["geometry"].area, 35 * 20, delta=2.0)
 
+    def test_mask_fusion_transitive_wings(self):
+        fusion = MaskFusionEngine(iou_merge_threshold=0.20)
+        # Three chained wings: P1 overlaps P2, P2 overlaps P3, but P1 does not overlap P3
+        p1 = box(0, 0, 20, 20)
+        p2 = box(15, 0, 35, 20)
+        p3 = box(30, 0, 50, 20)
+
+        preds = [
+            {"pred_id": "P1", "cand_id": "C1", "sam2_score": 0.9, "geometry": p1},
+            {"pred_id": "P2", "cand_id": "C2", "sam2_score": 0.85, "geometry": p2},
+            {"pred_id": "P3", "cand_id": "C3", "sam2_score": 0.80, "geometry": p3}
+        ]
+
+        fused = fusion.fuse_overlapping_predictions(preds)
+        self.assertEqual(len(fused), 1)
+        self.assertEqual(fused[0]["fused_from_count"], 3)
+        self.assertAlmostEqual(fused[0]["geometry"].area, 50 * 20, delta=2.0)
+
     def test_orientation_regularizer(self):
         reg = OrientationAwareRegularizer(tolerance_m=0.5)
         # Create a rotated rectangle (30x10) rotated by 30 degrees

@@ -253,6 +253,27 @@ class AdaptiveContourReconstructor:
 
         return None
 
+    @staticmethod
+    def count_curvature_alternations(poly: Polygon) -> int:
+        """Counts sign changes in discrete cross product along exterior contour."""
+        coords = list(poly.exterior.coords)[:-1]
+        n = len(coords)
+        if n < 4:
+            return 0
+        signs = []
+        for i in range(n):
+            p0 = coords[i - 1]
+            p1 = coords[i]
+            p2 = coords[(i + 1) % n]
+            v1 = (p1[0] - p0[0], p1[1] - p0[1])
+            v2 = (p2[0] - p1[0], p2[1] - p1[1])
+            cross = v1[0] * v2[1] - v1[1] * v2[0]
+            if abs(cross) > 1e-4:
+                signs.append(1 if cross > 0 else -1)
+        if not signs:
+            return 0
+        return sum(1 for i in range(len(signs)) if signs[i] != signs[(i + 1) % len(signs)])
+
     def classify_and_reconstruct(self, poly: Polygon) -> Dict[str, Any]:
         """
         Adaptive 4-tier non-destructive shape classifier and reconstructor:
@@ -295,10 +316,55 @@ class AdaptiveContourReconstructor:
                     right_angles += 1
         ortho_ratio = float(right_angles / max(n, 1))
 
+        # Check macro-contour orthogonality to avoid staircase false rejections on real rasters
+        if n > 6:
+            poly_simp = poly.simplify(0.25, preserve_topology=True)
+            coords_s = list(poly_simp.exterior.coords)[:-1]
+            n_s = len(coords_s)
+            if n_s >= 4:
+                right_angles_s = 0
+                for i in range(n_s):
+                    p0 = np.array(coords_s[i - 1])
+                    p1 = np.array(coords_s[i])
+                    p2 = np.array(coords_s[(i + 1) % n_s])
+                    v1 = p0 - p1
+                    v2 = p2 - p1
+                    d1, d2 = np.linalg.norm(v1), np.linalg.norm(v2)
+                    if d1 > 0.3 and d2 > 0.3:
+                        cos_a = np.clip(np.dot(v1, v2) / (d1 * d2), -1.0, 1.0)
+                        deg = np.degrees(np.arccos(cos_a))
+                        if abs(deg - 90.0) <= 15.0:
+                            right_angles_s += 1
+                ortho_ratio_s = float(right_angles_s / max(n_s, 1))
+                ortho_ratio = max(ortho_ratio, ortho_ratio_s)
+
+        # 0. Verificare curbura autentica neteda (ex. absida biserica, fatada semicirculara)
+        is_genuine_curve = (num_v > 8 and self.count_curvature_alternations(poly) <= 2 and ortho_ratio < 0.65)
+        if is_genuine_curve:
+            smooth_poly = poly.simplify(0.18, preserve_topology=True)
+            return {
+                "geometry": smooth_poly if (smooth_poly.is_valid and smooth_poly.area >= 6.0) else poly,
+                "clasa_forma": "ATIPIC_OBLIC",
+                "rect_ratio": round(rect_ratio, 3),
+                "solidity": round(solidity, 3),
+                "ortho_ratio": round(ortho_ratio, 3),
+                "num_vertices": len(smooth_poly.exterior.coords) - 1
+            }
+
         # -------------------------------------------------------------
         # 1. CLASA A: Dreptunghi Canonic Simplu (OBB - 4 noduri la 90°)
         # -------------------------------------------------------------
-        if (solidity >= 0.88 and rect_ratio >= 0.85 and ortho_ratio >= 0.70):
+        h_dist = poly.exterior.hausdorff_distance(mrr.exterior)
+        is_rect = False
+        if num_v == 4:
+            is_rect = (solidity >= 0.88 and rect_ratio >= 0.85 and ortho_ratio >= 0.70)
+        elif (solidity >= 0.88 and rect_ratio >= 0.85) or \
+             (solidity >= 0.86 and rect_ratio >= 0.82 and (ortho_ratio >= 0.40 or num_v <= 8)) or \
+             (rect_ratio >= 0.82 and solidity >= 0.88 and h_dist <= 1.5) or \
+             (rect_ratio >= 0.76 and solidity >= 0.90 and h_dist <= 1.2):
+            is_rect = True
+
+        if is_rect:
             return {
                 "geometry": mrr,
                 "clasa_forma": "DREPTUNGHI_OBB",
@@ -308,36 +374,44 @@ class AdaptiveContourReconstructor:
                 "num_vertices": 4
             }
 
+        # Simplificare prealabilă la nivel cadastral macro pentru decuplarea de zimții de pixel
+        poly_cad = poly.simplify(0.60, preserve_topology=True)
+        cad_coords = list(poly_cad.exterior.coords)[:-1] if poly_cad.is_valid and not poly_cad.is_empty else coords
+        cad_v = len(cad_coords)
+
         # -------------------------------------------------------------
-        # 2. CLASA B: Forme Ortogonale L, U, T, Decroșuri (5 - 8 Noduri)
+        # 2. CLASA B: Forme Ortogonale L, U, T, Decroșuri (5 - 16 Noduri)
         # -------------------------------------------------------------
-        if (5 <= num_v <= 12 and ortho_ratio >= 0.70) or (solidity >= 0.65 and ortho_ratio >= 0.75):
+        is_manhattan = (5 <= num_v <= 12 and ortho_ratio >= 0.70) or \
+                       (solidity >= 0.65 and ortho_ratio >= 0.75) or \
+                       (5 <= cad_v <= 16 and (ortho_ratio >= 0.35 or (solidity >= 0.60 and cad_v <= 12)))
+        if is_manhattan:
             # Attempt exact support-line intersection reconstruction
             rec_poly = self.reconstruct_from_support_lines(poly)
-            if rec_poly is not None:
+            if rec_poly is not None and rec_poly.is_valid and rec_poly.area >= 6.0:
                 final_poly = rec_poly
             else:
                 # Cadastral Manhattan simplification (removes pixel stair-steps)
-                final_poly = poly.simplify(0.65, preserve_topology=True)
+                final_poly = poly_cad
 
             return {
                 "geometry": final_poly if (final_poly.is_valid and final_poly.area >= 6.0) else poly,
                 "clasa_forma": "MANHATTAN_LUT",
                 "rect_ratio": round(rect_ratio, 3),
                 "solidity": round(solidity, 3),
-                "ortho_ratio": round(ortho_ratio, 3),
+                "ortho_ratio": round(max(ortho_ratio, 0.75), 3),
                 "num_vertices": len(final_poly.exterior.coords) - 1
             }
 
         # -------------------------------------------------------------
         # 3. CLASA C: Clădiri Mari Complexe / Pavilioane (>8 Noduri, >250 m2)
         # -------------------------------------------------------------
-        if poly.area >= 250.0 and num_v >= 8 and ortho_ratio >= 0.65:
+        if poly.area >= 250.0 and (cad_v > 8 or num_v >= 8):
             rec_poly = self.reconstruct_from_support_lines(poly, max_angular_dev_deg=10.0)
-            if rec_poly is not None:
+            if rec_poly is not None and rec_poly.is_valid and rec_poly.area >= 6.0:
                 final_poly = rec_poly
             else:
-                final_poly = poly.simplify(0.70, preserve_topology=True)
+                final_poly = poly.simplify(0.65, preserve_topology=True)
 
             return {
                 "geometry": final_poly if (final_poly.is_valid and final_poly.area >= 6.0) else poly,
@@ -351,8 +425,11 @@ class AdaptiveContourReconstructor:
         # -------------------------------------------------------------
         # 4. CLASA D: Forme Atipice / Oblice / Curbate (Non-destructive)
         # -------------------------------------------------------------
-        # Non-orthogonal genuine architecture: DO NOT force 90 deg angles!
-        smooth_poly = poly.simplify(0.18, preserve_topology=True)
+        # Simplificare conformă toleranței cadastrale ANCPI 0.45m pentru eliminarea zimților de pixel
+        # fără distorsiunea curburii autentice a fațadelor
+        smooth_poly = poly.simplify(0.45, preserve_topology=True)
+        if not smooth_poly.is_valid or smooth_poly.is_empty:
+            smooth_poly = poly
         return {
             "geometry": smooth_poly if (smooth_poly.is_valid and smooth_poly.area >= 6.0) else poly,
             "clasa_forma": "ATIPIC_OBLIC",

@@ -1,0 +1,102 @@
+{
+  "EXP_000_baseline_raw.geojson": {
+    "sha256": "04d37e59a0d16082e08206a6e2ee6783fcb3fb9dea060bc9fd5924d1b2f14bc7",
+    "size_bytes": 2423461,
+    "feature_count": 94
+  },
+  "EXP_000_baseline_reg.geojson": {
+    "sha256": "1ad0517a2a8c07f3ca049df9322802072ae538cb7028c1ec3ae1b31fe92faf7b",
+    "size_bytes": 451321,
+    "feature_count": 94
+  },
+  "EXP_001_candidate_gen_raw.geojson": {
+    "sha256": "55e5430bd028f3b1acadf5ca1c230609025504bf5c09c3a812cf8548fee1eabd",
+    "size_bytes": 1153729,
+    "feature_count": 75
+  },
+  "EXP_001_candidate_gen_reg.geojson": {
+    "sha256": "fff11253ab9d0b6dfb44c0173b44cbf15f1dc5527bc0cd9f7ab0ae15aa8cc455",
+    "size_bytes": 241207,
+    "feature_count": 75
+  },
+  "EXP_002_vegetation_filter_raw.geojson": {
+    "sha256": "668283f54115c087163e8901bdd4f1b1fa60f8dbfa8e954fc62b4e5e6b010b0e",
+    "size_bytes": 784764,
+    "feature_count": 31
+  },
+  "EXP_002_vegetation_filter_reg.geojson": {
+    "sha256": "e471d7e498fd4c0a562776be8aff677df9e1041029d1c454681a2842a1847737",
+    "size_bytes": 159420,
+    "feature_count": 31
+  },
+  "EXP_003_box_prompt_raw.geojson": {
+    "sha256": "b7f28b23c7ce9d34d7f679db0ae610526558323d4e64efefaa87d32fd2fce21b",
+    "size_bytes": 1243565,
+    "feature_count": 31
+  },
+  "EXP_003_box_prompt_reg.geojson": {
+    "sha256": "3c3f0b771e9032a44406e8ac94fd28e1837fb6a8b928a85144052622b08f9b91",
+    "size_bytes": 214724,
+    "feature_count": 31
+  },
+  "EXP_004_multipoint_prompt_raw.geojson": {
+    "sha256": "08cd43e06315f14ad5a62c0841b3f2ed8cc5b6225661ba167e7c3c360aceb61a",
+    "size_bytes": 818053,
+    "feature_count": 31
+  },
+  "EXP_004_multipoint_prompt_reg.geojson": {
+    "sha256": "e87dceef606cb4ce0fd3aadb11a6a7fb23c6a61c9df1a9cc3afe037a1b2fb3b7",
+    "size_bytes": 160908,
+    "feature_count": 31
+  },
+  "EXP_005_multiscale_raw.geojson": {
+    "sha256": "173b48cb8ea10b2247fc29b51a9cb3dce23fabf33ed5e7a82813886b964ad1b3",
+    "size_bytes": 1242421,
+    "feature_count": 31
+  },
+  "EXP_005_multiscale_reg.geojson": {
+    "sha256": "9c07a3a7a1e0b6264e55673b8565876dc6bc901642b1eb9727a54ae9f5490860",
+    "size_bytes": 214724,
+    "feature_count": 31
+  },
+  "EXP_006_mask_fusion_raw.geojson": {
+    "sha256": "5d8dc1a84e9c40104c545b353ecff5566fc6b4bc3bf5f6d061ce78ab86f695a3",
+    "size_bytes": 608336,
+    "feature_count": 26
+  },
+  "EXP_006_mask_fusion_reg.geojson": {
+    "sha256": "e5ddd68047d73d6a76d1065ef171a8309deb5b6b32293d9a77ecfd46e8cc9026",
+    "size_bytes": 182868,
+    "feature_count": 26
+  },
+  "EXP_007_vectorization_raw.geojson": {
+    "sha256": "9987ca635ee1c8e3465a117a839adb08a209543c4cb2becbb168d09e94079024",
+    "size_bytes": 180023,
+    "feature_count": 26
+  },
+  "EXP_007_vectorization_reg.geojson": {
+    "sha256": "15be0618a1387f9a043289b3ac278d063e9e516c2d2eb1f5a897350ed094ed96",
+    "size_bytes": 170753,
+    "feature_count": 26
+  },
+  "EXP_008_orientation_cad_raw.geojson": {
+    "sha256": "7a206427a1c278d6c108466fa37b6f8123f6989b56d82923753379f8671a5735",
+    "size_bytes": 607974,
+    "feature_count": 26
+  },
+  "EXP_008_orientation_cad_reg.geojson": {
+    "sha256": "ac0aff839b677188670c9c5f43136624a5cb25da83841c960a3d03d9058d7e53",
+    "size_bytes": 186393,
+    "feature_count": 26
+  },
+  "EXP_009_integrated_pipeline_raw.geojson": {
+    "sha256": "6cebe93c44141c6c60baf670eb50ea63dd649783cfcec3ba1e008fa4acda427e",
+    "size_bytes": 183716,
+    "feature_count": 26
+  },
+  "EXP_009_integrated_pipeline_reg.geojson": {
+    "sha256": "dd8faa44bfd3173678b3c3606547bed2b6675cee7cd5b7ed32c652a853ab4241",
+    "size_bytes": 178766,
+    "feature_count": 26
+  }
+}

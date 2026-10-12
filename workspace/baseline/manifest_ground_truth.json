@@ -1,0 +1,212 @@
+{
+  "data/ground_truth/tier1_teren.geojson": {
+    "sha256": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+    "size_bytes": 26209,
+    "feature_count": 29,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390549.0244075255,
+      585210.4533461216,
+      391307.24884869496,
+      585823.3619952397
+    ]
+  },
+  "data/ground_truth/tier2_extended_gt.geojson": {
+    "sha256": "44deb76b82f639f81fd64e4327a17a80783b48d6b0d188a818ef97f473671d34",
+    "size_bytes": 97188,
+    "feature_count": 150,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390549.0244075255,
+      585103.5139331841,
+      391370.40042424796,
+      585835.134046613
+    ]
+  },
+  "data/ground_truth/tier4_osm_diagnostic_cluj.geojson": {
+    "sha256": "6c6c9708dac8dc5a35b90734a129325dae10d98cd81cc820b553725d1a401dbf",
+    "size_bytes": 30607,
+    "feature_count": 29,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390447.3645881072,
+      584800.7069043252,
+      391671.44037245715,
+      585985.9736901633
+    ]
+  },
+  "data/ground_truth/osm_buildings_aoi.geojson": {
+    "sha256": "3f93b384e2f64f375a4405ba06fb425a82ab63cd25ab1a130f8090d79f61b183",
+    "size_bytes": 388525,
+    "feature_count": 667,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390503.55167265993,
+      584800.7662341683,
+      391624.4265115039,
+      585951.6639746721
+    ]
+  },
+  "data/derived_reference/cluj_combined_unique_150.geojson": {
+    "sha256": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44",
+    "size_bytes": 127997,
+    "feature_count": 150,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390549.0244075255,
+      585103.5139331841,
+      391370.40042424796,
+      585835.134046613
+    ]
+  },
+  "data/derived_reference/tier1_primary_29.geojson": {
+    "sha256": "50724423cf809af04c3a208ebf4bfa851a0b0f219593b17def9a8581f069d677",
+    "size_bytes": 27432,
+    "feature_count": 29,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390549.0244075255,
+      585210.4533461216,
+      391307.24884869496,
+      585823.3619952397
+    ]
+  },
+  "data/derived_reference/tier2_additional_121.geojson": {
+    "sha256": "ee3aebf58195d58bd8f7d695e6931987161df7a77ba9c3266e03f3b2dbc53f79",
+    "size_bytes": 79689,
+    "feature_count": 121,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390560.57845689746,
+      585103.5139331841,
+      391370.40042424796,
+      585835.134046613
+    ]
+  },
+  "data/fixtures/case_01_L_shape.geojson": {
+    "sha256": "edc51693f0bdba60b97926b650c883535a6fedb1396af150800d4568a742939b",
+    "size_bytes": 993,
+    "feature_count": 1,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390800.0,
+      585200.0,
+      390815.0,
+      585212.0
+    ]
+  },
+  "data/fixtures/case_02_calcan_split.geojson": {
+    "sha256": "f5c298803325ec1eebcba0c4dbd5535bf6a6476d2627093ebecb1d96e0b181a0",
+    "size_bytes": 1323,
+    "feature_count": 2,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390830.0,
+      585200.0,
+      390855.0,
+      585215.0
+    ]
+  },
+  "data/fixtures/case_03_main_plus_annex.geojson": {
+    "sha256": "0f3042a26385574b3184e4ff9c7ab347d1a3d6134420febc0b482fa1055ac347",
+    "size_bytes": 1434,
+    "feature_count": 2,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390870.0,
+      585200.0,
+      390890.0,
+      585212.0
+    ]
+  },
+  "data/fixtures/case_04_tree_overhang.geojson": {
+    "sha256": "7aa18be6534125c94d336e3161d704482466408d385ca30cf374fe8d96685858",
+    "size_bytes": 936,
+    "feature_count": 1,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390910.0,
+      585200.0,
+      390924.0,
+      585210.0
+    ]
+  },
+  "data/fixtures/case_05_long_shadow.geojson": {
+    "sha256": "04b43fd5c2c4d5dcb1b62318be62515325ce3fd4002db8c5a3a49b2d828bbd27",
+    "size_bytes": 914,
+    "feature_count": 1,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390940.0,
+      585200.0,
+      390960.0,
+      585215.0
+    ]
+  },
+  "data/fixtures/case_06_usamv_library_split.geojson": {
+    "sha256": "6db02edeff7c1ed008d801394147faa6438d52c4fc7c91767d12d2ddeb2bd8c9",
+    "size_bytes": 14414,
+    "feature_count": 4,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390935.7970104579,
+      585672.0986769492,
+      390996.8366359878,
+      585747.2659285973
+    ]
+  },
+  "data/fixtures/case_07_sf_maria_calcan_merge.geojson": {
+    "sha256": "48e068bba4f27de82d6524e44cb32ad37ee58a0d6a2553cceb23e00f2a94f663",
+    "size_bytes": 13122,
+    "feature_count": 3,
+    "geometry_types": [
+      "Polygon"
+    ],
+    "crs": "urn:ogc:def:crs:EPSG::3844",
+    "bounding_box": [
+      390878.8972897338,
+      585735.5442855039,
+      390943.1675637969,
+      585790.1175280035
+    ]
+  }
+}

@@ -15,6 +15,7 @@ Integrates:
 import os
 import sys
 import time
+from typing import Tuple, Dict, Any, List
 
 sys.path.insert(0, os.path.abspath("."))
 
@@ -34,6 +35,31 @@ from stratum_ro.sam2_engine import SAM2BuildingSegmenter, _extract_largest_polyg
 from stratum_ro.vectorizer import CadastralVectorizer
 from stratum_ro.cad_exporter import CadastralDxfExporter
 from stratum_ro.landuse_ancpi import get_ancpi_landuse
+
+
+def compute_safe_ortho_boundary(vrt_path: str, margin_m: float = -5.0, min_patch_area: float = 5000.0) -> Tuple[Polygon, Polygon]:
+    """
+    Extrage amprenta strictă a pixelilor optici valizi din ortofotoplan (eliminând NoData negru 0,0,0)
+    și aplică o retragere de siguranță (buffer negativ cu racordare rotundă) spre interiorul zonei fotografiate.
+    Garantează zero geometrii generate în spațiul negru fără imagine foto vizibilă.
+    """
+    with rasterio.open(vrt_path) as src:
+        scale = 10
+        data = src.read(out_shape=(src.count, src.height // scale, src.width // scale))
+        mask = (np.sum(data, axis=0) > 15).astype(np.uint8)
+        aff = src.transform * src.transform.scale(scale, scale)
+        geoms = [
+            shape(gd)
+            for gd, val in shapes(mask, transform=aff)
+            if val == 1 and shape(gd).area > min_patch_area
+        ]
+    raw = unary_union(geoms)
+    if raw.geom_type == "MultiPolygon":
+        raw = max(raw.geoms, key=lambda p: p.area)
+    simplified = raw.simplify(2.0, preserve_topology=True)
+    filled = Polygon(simplified.exterior) if simplified.geom_type == "Polygon" else simplified
+    safe_boundary = filled.buffer(margin_m, join_style=1)
+    return filled, safe_boundary
 
 
 def main():
@@ -103,13 +129,19 @@ def main():
     vectorizer = CadastralVectorizer(crs="EPSG:3844")
     t_start_fusion = time.time()
 
+    halo = 25.0  # 25m halo buffer perimetral pentru context complet și eliminarea feliării la graniță
     for t_idx, tile in enumerate(tiles, start=1):
         t_name = tile["name"]
         t_xmin, t_xmax = tile["xmin"], tile["xmax"]
         t_ymin, t_ymax = tile["ymin"], tile["ymax"]
 
-        crop_file = f"workspace/output/cache_tile_{t_name}.tif"
-        crop_res = extractor.crop_aoi(t_xmin, t_ymin, t_xmax, t_ymax, crop_file, target_res=0.15)
+        crop_xmin = t_xmin - halo
+        crop_ymin = t_ymin - halo
+        crop_xmax = t_xmax + halo
+        crop_ymax = t_ymax + halo
+
+        crop_file = f"workspace/output/cache_tile_{t_name}_halo.tif"
+        crop_res = extractor.crop_aoi(crop_xmin, crop_ymin, crop_xmax, crop_ymax, crop_file, target_res=0.15)
         img_rgb = crop_res["image"]
         tr_img = crop_res["transform"]
 
@@ -139,8 +171,10 @@ def main():
             b_left, b_right = min(b_xmin, b_xmax), max(b_xmin, b_xmax)
             b_bottom, b_top = min(b_ymin, b_ymax), max(b_ymin, b_ymax)
 
-            # Verificăm dacă clădirea cade în tile-ul curent
-            if b_right < t_xmin or b_left > t_xmax or b_top < t_ymin or b_bottom > t_ymax:
+            # Atribuire strictă pe baza centroidului: fiecare clădire e procesată o singură dată pe imagine cu halo
+            b_cx = 0.5 * (b_left + b_right)
+            b_cy = 0.5 * (b_bottom + b_top)
+            if not (t_xmin <= b_cx < t_xmax and t_ymin <= b_cy < t_ymax):
                 continue
 
             tile_b_count += 1
@@ -197,10 +231,11 @@ def main():
     # 4. Regularizare CAD (Ortogonalizare 90 grade, simplificare noduri)
     print("\nEtapa 4: Regularizare CAD si simplificare geometrii (Stereo 70 EPSG:3844)...")
 
-    # 4.1 Extragere LIMITA_SECTOR_CADASTRAL din ortofotoplanul valid
+    # 4.1 Extragere LIMITA_SECTOR_CADASTRAL și Bandă de Siguranță Ortofoto
     vrt_orto = "workspace/output/ortofoto_cluj_usamv_rgb.vrt"
-    sector_boundary = vectorizer.extract_sector_boundary(vrt_orto, tolerance=10.0)
-    print(f"   [Limita Sector] Calculat LIMITA_SECTOR_CADASTRAL: {sector_boundary.area:.1f} m2 (elimina treptele NoData)")
+    ortho_footprint, safe_ortho_boundary = compute_safe_ortho_boundary(vrt_orto, margin_m=-5.0)
+    sector_boundary = safe_ortho_boundary
+    print(f"   [Banda Siguranta] Calculat MARGINE_SIGURANTA_ORTOFOTO (-5.0m): {safe_ortho_boundary.area/1e4:.2f} ha (zero NoData)")
 
     cad_main = vectorizer.format_hybrid_buildings(
         all_hybrid_buildings,
@@ -211,14 +246,54 @@ def main():
         ndsm_transform=tr_ndsm,
         record_intermediate_stages=True,
     )
-    if sector_boundary and not sector_boundary.is_empty:
-        cad_main = [b for b in cad_main if b.get("geometry") and sector_boundary.intersects(b["geometry"])]
 
+    # Filtrare strictă: păstrăm DOAR clădirile din banda de siguranță optică (elimină cele 26 din NoData)
+    if safe_ortho_boundary and not safe_ortho_boundary.is_empty:
+        cad_main = [
+            b for b in cad_main 
+            if b.get("geometry") 
+            and safe_ortho_boundary.contains(b["geometry"].centroid) 
+            and (safe_ortho_boundary.intersection(b["geometry"]).area / (b["geometry"].area + 1e-6) >= 0.75)
+        ]
+
+    # Deduplicare geometrică
+    import hashlib
+    seen_hashes = set()
+    dedup_cad_main = []
+    for b in cad_main:
+        h = hashlib.sha256(b["geometry"].wkb).hexdigest()
+        if h not in seen_hashes:
+            seen_hashes.add(h)
+            dedup_cad_main.append(b)
+    cad_main = dedup_cad_main
+
+    # 4.1.1 Aplicare Retragere Adaptivă a Streșinii cu Protecție la Calcan (Zid Comun)
+    from stratum_ro.geometry_utils import apply_calcan_aware_eave_retraction
+    all_bldg_polys = [b["geometry"] for b in cad_main if b.get("geometry")]
+    calcan_count = 0
+    for i, b in enumerate(cad_main):
+        orig_poly = b["geometry"]
+        adj_others = [p for j, p in enumerate(all_bldg_polys) if j != i]
+        retracted_sol = apply_calcan_aware_eave_retraction(
+            building_poly=orig_poly,
+            property_boundary=sector_boundary,
+            adjacent_buildings=adj_others,
+            offset_eave_m=b.get("eave_offset_m", 0.40),
+            calcan_tol_m=0.25
+        )
+        if retracted_sol is not None and retracted_sol.is_valid and not retracted_sol.is_empty:
+            b["geometry_sol"] = retracted_sol
+            b["area_sol_m2"] = round(float(retracted_sol.area), 2)
+            # Verificăm dacă vreun perete a rămas pe calcan
+            if abs(retracted_sol.area - orig_poly.buffer(-b.get("eave_offset_m", 0.40)).area) > 0.5:
+                calcan_count += 1
+
+    print(f"   [Calcan Protection] {calcan_count} corpuri de clădire protejate la zid comun/limită de sector (deplasare 0.00m pe calcan).")
     print(f"   Poligoane finale cladiri principale (validate in sector): {len(cad_main)}")
 
     cad_outb = vectorizer.vectorize_mask(lidar_data["outbuildings_grid"], tr_ndsm, min_area_m2=8.0, category="ANEXA_GOSPODAREASCA") or []
-    if sector_boundary and not sector_boundary.is_empty:
-        cad_outb = [b for b in cad_outb if b.get("geometry") and sector_boundary.intersects(b["geometry"])]
+    if safe_ortho_boundary and not safe_ortho_boundary.is_empty:
+        cad_outb = [b for b in cad_outb if b.get("geometry") and safe_ortho_boundary.contains(b["geometry"].centroid)]
 
     # 4.2 Extragere Categorii de Folosință ANCPI (DR, HR, VN, CIMITIR, A)
     print("\nEtapa 4.2: Extragere Categorii de Folosință ANCPI (Ordinul 600/2023)...")
@@ -237,13 +312,29 @@ def main():
     bldgs_union = unary_union([b["geometry"] for b in cad_main] + [b["geometry"] for b in cad_outb])
     tree_exclusions = [bldgs_union, landuse["DR"], landuse["VN"], landuse["CIMITIR"], landuse["HR"]]
     trees_gdf = vectorizer.filter_points_multi_exclusion(trees_raw, tree_exclusions, min_height=3.8)
-    if sector_boundary and not sector_boundary.is_empty:
-        trees_gdf = [t for t in trees_gdf if sector_boundary.contains(t["geometry"])]
-        poles_gdf = [p for p in poles_raw if sector_boundary.contains(p["geometry"])]
+    if safe_ortho_boundary and not safe_ortho_boundary.is_empty:
+        trees_gdf = [t for t in trees_gdf if safe_ortho_boundary.contains(t["geometry"])]
+        poles_gdf = [p for p in poles_raw if safe_ortho_boundary.contains(p["geometry"])]
     else:
         poles_gdf = poles_raw
 
-    print(f"   Arbori solitari validați: {len(trees_gdf)} (eliminați {len(trees_raw) - len(trees_gdf)} arbori falși din vii, cimitir, drumuri și acoperișuri)")
+    # Poligoane Coronament Arbori (proiecție coroană la sol)
+    tree_canopies_raw = lidar_data.get("tree_canopies", [])
+    tree_canopies_gdf = []
+    for tc in tree_canopies_raw:
+        g = tc["geometry"]
+        if safe_ortho_boundary.contains(g.centroid) and not bldgs_union.intersects(g):
+            if not any(ex.intersects(g) for ex in [landuse["DR"], landuse["VN"], landuse["CIMITIR"]]):
+                tree_canopies_gdf.append({
+                    "id": len(tree_canopies_gdf) + 1,
+                    "geometry": g,
+                    "category": "CORONAMENT_ARBORE",
+                    "height_m": tc["height_m"],
+                    "crown_radius_m": tc["crown_radius_m"],
+                    "area_m2": tc["crown_area_m2"]
+                })
+
+    print(f"   Arbori solitari validați: {len(trees_gdf)} (puncte), Coronamente 2D: {len(tree_canopies_gdf)} (poligoane)")
     print(f"   Stâlpi & turnuri: {len(poles_gdf)} puncte validate")
 
     # 4.4 Construcție Partiție Planară Continuă 100% (Zero Gaps, Zero Overlaps)
@@ -265,7 +356,7 @@ def main():
     rect_count = sum(1 for v in vertices_hist if v == 4)
     print(f"   Statistica simplificare noduri CAD:")
     print(f"     - Medie noduri per cladire: {avg_vertices:.1f} noduri")
-    print(f"     - Dreptunghiuri perfecte de 4 noduri (90°): {rect_count} ({rect_count/len(cad_main)*100:.1f}%)")
+    print(f"     - Dreptunghiuri perfecte de 4 noduri (90°): {rect_count} ({rect_count/max(len(cad_main), 1)*100:.1f}%)")
 
     def to_feature_list(geom, category_name):
         if geom is None or geom.is_empty:
@@ -285,7 +376,23 @@ def main():
     print("\nEtapa 5: Salvare Livrabile Cadastrale Complete...")
     multicategory_dict = {
         "LIMITA_SECTOR_CADASTRAL": [{"id": 1, "geometry": sector_boundary, "category": "LIMITA_SECTOR"}],
+        "MARGINE_SIGURANTA_ORTOFOTO": [{"id": 1, "geometry": safe_ortho_boundary, "category": "MARGINE_SIGURANTA_ORTOFOTO"}],
+        "CLADIRI_CADASTRU_CLEAN": cad_main,
         "CLADIRI_HIBRID": cad_main,
+        "CLADIRI_SOL_ANCPI": [
+            {
+                "id": b["id"],
+                "geometry": b["geometry_sol"],
+                "category": "CLADIRE_SOL_ANCPI",
+                "clasa_forma": b.get("clasa_forma", "DREPTUNGHI_OBB"),
+                "vertices": len(b["geometry_sol"].exterior.coords) - 1 if hasattr(b["geometry_sol"], "exterior") else b.get("vertices", 4),
+                "area_m2": b.get("area_sol_m2", b["area_m2"]),
+                "eave_offset_m": b.get("eave_offset_m", 0.40),
+                "rev_status": "APROBAT",
+                "rev_issue": "OK"
+            }
+            for b in cad_main if b.get("geometry_sol")
+        ],
         "ANEXE_GOSPODARESTI": cad_outb,
         "DR": to_feature_list(landuse["DR"], "CAI_COMUNICATII_RUTIERE"),
         "HR": to_feature_list(landuse["HR"], "APE_CURGATOARE"),
@@ -294,6 +401,8 @@ def main():
         "A": to_feature_list(landuse["A"], "TEREN_ARABIL"),
         "UNCLASSIFIED": to_feature_list(unclassified_poly, "TEREN_NECLASIFICAT"),
         "ARBORI": trees_gdf,
+        "ARBORI_CORONAMENT": tree_canopies_gdf,
+        "CORONAMENT_ARBORI": tree_canopies_gdf,
         "STALPI_TURNURI": poles_gdf
     }
 

@@ -1,0 +1,117 @@
+{
+  "stratum_ro/vectorizer.py": {
+    "sha256": "61c7ecbcb5846d0386473a777710ae67b58cdd7fbeea4b730eb000c3481bc2d8",
+    "size_bytes": 42336,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/cad_exporter.py": {
+    "sha256": "160fffed3a37a65f864ac09fca4b1b51a48e4ed40246af43d91c178d0993d086",
+    "size_bytes": 21488,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/volumetric_3d.py": {
+    "sha256": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
+    "size_bytes": 9350,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/onnx_engine.py": {
+    "sha256": "de0218022e53a2373ef26d7ca2d491b90a8074a7f622fce416fd379ab7029267",
+    "size_bytes": 8972,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/candidate_generator.py": {
+    "sha256": "75debc95ebab2e73d3d8eb8e3d795fbe1d02f771a5525f9c76c03979c3e91f6b",
+    "size_bytes": 5714,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/vegetation_filter.py": {
+    "sha256": "d0946d1e24657fe1f182fd53e723fb6463816ae762259b852b7874caadba3314",
+    "size_bytes": 7160,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/mask_fusion.py": {
+    "sha256": "baf2d6d40e8b8aebecb9a39f571ecc2ad426cff1b9cd8b9b133f84a7d711e767",
+    "size_bytes": 6240,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/prompt_generator.py": {
+    "sha256": "0e02119c0009ae85b24cd3ea375426e84cad1cc2c0298bffd1583d77c435db4d",
+    "size_bytes": 4239,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/geometric_reconstruction_v2.py": {
+    "sha256": "c7a8d30529638669bddce55f4f3a7d6fe3d19ca491beebfce5e1f67585b5bed8",
+    "size_bytes": 19369,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/stratum_ro_dockwidget.py": {
+    "sha256": "f8f745d04b87b0c1797c965a20fed8a27f5814fba9a26215f6692d18d33c21f4",
+    "size_bytes": 66622,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/processing_provider.py": {
+    "sha256": "4d7eb9765be4c537a0f69a2bdcee1a0fc4247ab9eeaec42e420c3987fadf34f0",
+    "size_bytes": 1265,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/cadastral_algorithm.py": {
+    "sha256": "3d8371eec086b31eda6cf4a90a5c431ca775a82b41ef15f035a5b06396ec0f94",
+    "size_bytes": 4700,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/ai/router.py": {
+    "sha256": "e4674d9318cb7880cfcfadb346e804d2ec25d5ebf2ea55e9cdbc0576d1531acf",
+    "size_bytes": 7919,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/ai/task_graph.py": {
+    "sha256": "555a95ef6e7129fd35b80ce89cc53e724ceeda81346f49044bb8cd43731f7039",
+    "size_bytes": 14886,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/ai/executor.py": {
+    "sha256": "eb18bf298b60b8f5b2077439dcb4627d0d514979e468165d213be6b7a2959cb1",
+    "size_bytes": 16333,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/ai/provenance.py": {
+    "sha256": "69b7b53f18da985a9059927789b791d6d623083da48c5444af1c9fc1223c9b1c",
+    "size_bytes": 4769,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/ai/risk.py": {
+    "sha256": "e512ce6c585370921f314ed88bf839a8ec15fae244b2fb43df2a0d9ba56d4524",
+    "size_bytes": 7702,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/ai/data_profiler.py": {
+    "sha256": "5309bd1fc0bb3a7fb07fe13e876f1211d0b0f7b614a51bbf2ac82ec54984a3e9",
+    "size_bytes": 8114,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/ai/vlm_verifier.py": {
+    "sha256": "45cc067c358672660fffd017b07819ca023cd5e06cf0d480e26cfa8994935a67",
+    "size_bytes": 18473,
+    "git_status": "tracked_clean"
+  },
+  "stratum_ro/ai/closed_loop.py": {
+    "sha256": "1fd357351818446d6eaba6b46a08aa8b3009f501643297a2adeade5f121a7358",
+    "size_bytes": 14067,
+    "git_status": "tracked_clean"
+  },
+  "engine/evaluation.py": {
+    "sha256": "31eb4f4833a76896b1edafe8afe59b366d048bffe4bc8dd1a9681aef245ef893",
+    "size_bytes": 49172,
+    "git_status": "tracked_clean"
+  },
+  "engine/ablation_study.py": {
+    "sha256": "182789c74021023c88d293414bb095de15077f4ed81255e69487bbb4f8caf982",
+    "size_bytes": 4496,
+    "git_status": "tracked_clean"
+  },
+  "tools/phase3_experiment_runner.py": {
+    "sha256": "821373dce95abcf626d289f9f945b2b43a03ecc3639c3229d1f52bd1dfaea877",
+    "size_bytes": 49339,
+    "git_status": "tracked_clean"
+  }
+}

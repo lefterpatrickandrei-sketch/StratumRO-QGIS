@@ -110,6 +110,12 @@ def count_macro_reflex_corners(poly: Polygon, min_edge_len: float = 0.35, tol_de
     """
     if poly is None or poly.is_empty:
         return 0
+    poly = _extract_largest_polygon(poly)
+    if poly is None or poly.is_empty:
+        return 0
+    if not poly.exterior.is_ccw:
+        from shapely.geometry.polygon import orient
+        poly = orient(poly, sign=1.0)
     coords = list(poly.exterior.coords)[:-1]
     n = len(coords)
     if n < 4:
@@ -139,6 +145,9 @@ def compute_orthogonality_ratio(poly: Polygon, min_edge_len: float = 0.20, tol_d
     """
     Calculează fracțiunea de noduri cu unghiuri interioare de 90° sau 270° (+/- tol_deg).
     """
+    if poly is None or poly.is_empty:
+        return 0.0
+    poly = _extract_largest_polygon(poly)
     if poly is None or poly.is_empty:
         return 0.0
     coords = list(poly.exterior.coords)[:-1]
@@ -172,15 +181,24 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     Garantează unghiuri stricte de 90° fără teșituri diagonale de tip Douglas-Peucker.
     Protejează formele curbate (absidă, turn circular) și decroșurile mici de fațadă.
     """
-    if not poly.is_valid or poly.is_empty or poly.area < 6.0:
+    if poly is None or poly.is_empty:
+        return poly
+    poly = _extract_largest_polygon(poly)
+    if poly is None or not poly.is_valid or poly.is_empty or poly.area < 6.0:
         return poly
 
-    # 0. Verificare dacă forma este preponderent curbată sau non-ortogonală (ex. absidă biserică)
-    ortho_ratio = compute_orthogonality_ratio(poly, min_edge_len=0.20)
-    if ortho_ratio < 0.65:
-        # Păstrăm curbura autentică fără a forța unghiuri de 90°
-        smooth_poly = poly.simplify(min(tolerance, 0.18), preserve_topology=True)
-        return smooth_poly if (smooth_poly.is_valid and smooth_poly.area >= 6.0) else poly
+    # 0. Verificare prioritară: formă curbată sau atipică (ex. absidă semicirculară biserică)
+    # Evaluare pe contur macro-simplificat la 0.50m pentru a ignora treptele de pixel
+    poly_macro = poly.simplify(0.50, preserve_topology=True)
+    poly_macro = _extract_largest_polygon(poly_macro) or poly
+    ortho_ratio = compute_orthogonality_ratio(poly_macro, min_edge_len=0.35)
+    if ortho_ratio < 0.50:
+        # Păstrăm curbura autentică conform toleranței cadastrale ANCPI fără forțare la 90°
+        smooth_poly = poly.simplify(min(tolerance, 0.45), preserve_topology=True)
+        if not smooth_poly.is_valid:
+            smooth_poly = make_valid(smooth_poly)
+            smooth_poly = _extract_largest_polygon(smooth_poly)
+        return smooth_poly if (smooth_poly is not None and smooth_poly.is_valid and smooth_poly.area >= 6.0) else poly
 
     # 1. Verificare dreptunghi canonic OBB (4 noduri la 90°)
     mrr = poly.minimum_rotated_rectangle
@@ -189,10 +207,11 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
         rect_ratio = poly.area / mrr.area
         h_dist_mrr = poly.hausdorff_distance(mrr)
 
-        # Forțăm MRR doar dacă nu există colțuri reflex macro (fără decroșuri, aripi, intrări/proeminențe)
-        reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.35)
+        # Forțăm MRR dacă forma este convexă și rectilinie (fără decroșuri sau aripi)
+        reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.50)
         if reflex_corners == 0:
             if (solidity >= 0.88 and rect_ratio >= 0.85) or \
+               (solidity >= 0.86 and rect_ratio >= 0.82) or \
                (solidity >= 0.94 and rect_ratio >= 0.92 and h_dist_mrr <= 0.40):
                 return mrr
 
@@ -363,6 +382,9 @@ class CadastralVectorizer:
         2. Ortogonalizează la unghiuri de 90° (dreptunghiuri perfecte sau corpuri L/T Manhattan).
         3. Îndepărtează nodurile coliniare redundante.
         """
+        poly = _extract_largest_polygon(poly)
+        if poly is None or poly.is_empty:
+            return poly
         if not poly.is_valid:
             poly = make_valid(poly)
             poly = _extract_largest_polygon(poly)
@@ -374,6 +396,7 @@ class CadastralVectorizer:
 
         # 2. Ortogonalizare Manhattan
         p_ortho = orthogonalize_cad(p_no_spikes, tolerance=tolerance)
+        p_ortho = _extract_largest_polygon(p_ortho) or p_ortho
 
         # 3. Îndepărtare noduri coliniare reziduale
         coords = list(p_ortho.exterior.coords)[:-1]
@@ -521,7 +544,10 @@ class CadastralVectorizer:
             else:
                 cluster_polys = [polys[idx] for idx in indices]
                 cluster_items = [valid_items[idx] for idx in indices]
-                u = unary_union(cluster_polys)
+                # Punte structurală morfologică: buffer 0.75m pentru închiderea fantelor <= 1.5m, union, buffer -0.75m
+                u = unary_union([p.buffer(0.75) for p in cluster_polys]).buffer(-0.75)
+                if not u.is_valid:
+                    u = make_valid(u)
                 best_score = max(float(it.get("sam2_score", 0.0)) for it in cluster_items)
                 best_mean_h = np.mean([float(it.get("mean_h", it.get("inaltime_med_m", 4.0))) for it in cluster_items])
                 best_max_h = max(float(it.get("max_h", it.get("inaltime_max_m", 5.5))) for it in cluster_items)
@@ -617,21 +643,30 @@ class CadastralVectorizer:
 
         for item in regularized_items:
             cur_p = item["geometry"]
+            is_dup = False
             for kept in strictly_disjoint:
                 kept_p = kept["geometry"]
                 if cur_p.intersects(kept_p):
                     inter = cur_p.intersection(kept_p)
-                    if inter.area > 0.01:
+                    # Eliminare duplicate / redundanțe geometrice (IoU ridicat)
+                    if inter.area / min(cur_p.area, kept_p.area) > 0.35:
+                        is_dup = True
+                        break
+                    elif inter.area > 0.05:
                         cur_p = cur_p.difference(kept_p)
                         if cur_p.geom_type == 'MultiPolygon':
                             subs = [s for s in cur_p.geoms if s.area >= 8.0]
                             cur_p = max(subs, key=lambda s: s.area) if subs else None
                         if cur_p is None or cur_p.area < 8.0:
+                            is_dup = True
                             break
 
-            if cur_p is not None and cur_p.is_valid and cur_p.area >= 8.0:
-                # Curățare finală după tăiere
+            if not is_dup and cur_p is not None and cur_p.is_valid and cur_p.area >= 8.0:
                 p_final = remove_acute_spikes(cur_p, min_angle_deg=40.0)
+                # Re-regularizare dacă tăierea a creat muchii neregulate
+                if len(p_final.exterior.coords) > 6:
+                    reg_res = self.reconstructor_v2.classify_and_reconstruct(p_final)
+                    p_final = reg_res["geometry"]
                 if p_final.is_valid and p_final.area >= 8.0:
                     item_final = dict(item)
                     item_final["geometry"] = p_final

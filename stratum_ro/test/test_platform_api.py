@@ -60,6 +60,21 @@ class TestPlatformAPI(unittest.TestCase):
         self.assertIn("PLAN DE AMPLASAMENT SI DELIMITARE", resp.text)
         self.assertIn("Stereografic 1970", resp.text)
 
+        # MultiPolygon robustness check
+        from unittest.mock import patch
+        import geopandas as gpd
+        from shapely.geometry import MultiPolygon, Polygon
+        mp = MultiPolygon([
+            Polygon([(390500, 585800), (390510, 585800), (390510, 585810), (390500, 585810)]),
+            Polygon([(390520, 585820), (390530, 585820), (390530, 585830), (390520, 585830)])
+        ])
+        fake_gdf = gpd.GeoDataFrame([{"geometry": mp}], crs="EPSG:3844")
+        with patch("geopandas.read_file", return_value=fake_gdf):
+            resp_mp = self.client.get("/api/export/pad")
+            self.assertEqual(resp_mp.status_code, 200)
+            self.assertIn("Corp 1", resp_mp.text)
+            self.assertIn("Corp 2", resp_mp.text)
+
     def test_export_dxf_endpoint(self):
         resp = self.client.get("/api/export/dxf")
         self.assertEqual(resp.status_code, 200)

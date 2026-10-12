@@ -101,32 +101,46 @@ class MaskFusionEngine:
         geoms = list(gdf.geometry)
         n = len(geoms)
 
-        # Build adjacency graph
-        merged_groups = []
-        visited = set()
+        # Build adjacency graph using STRtree and Disjoint-Set Union (DSU) for transitive grouping
+        from shapely.strtree import STRtree
+        parent = list(range(n))
 
-        for i in range(n):
-            if i in visited:
-                continue
-            current_group = [i]
-            visited.add(i)
+        def find(i):
+            path = []
+            while parent[i] != i:
+                path.append(i)
+                i = parent[i]
+            for node in path:
+                parent[node] = i
+            return i
 
-            # Check overlaps with all remaining unvisited polygons
-            for j in range(i + 1, n):
-                if j in visited:
+        def union(i, j):
+            root_i = find(i)
+            root_j = find(j)
+            if root_i != root_j:
+                parent[root_i] = root_j
+
+        tree = STRtree(geoms)
+        for i, gi in enumerate(geoms):
+            candidates = tree.query(gi)
+            for j in candidates:
+                j = int(j)
+                if j <= i:
                     continue
-                gi = geoms[i]
                 gj = geoms[j]
                 if gi.intersects(gj):
                     inter_area = gi.intersection(gj).area
                     union_area = gi.union(gj).area
                     iou = inter_area / union_area if union_area > 0 else 0
-                    # Merge if significant overlap or adjacent touching
                     if iou >= self.iou_merge_threshold or inter_area > 20.0:
-                        current_group.append(j)
-                        visited.add(j)
+                        union(i, j)
 
-            merged_groups.append(current_group)
+        groups_dict = {}
+        for i in range(n):
+            root = find(i)
+            groups_dict.setdefault(root, []).append(i)
+
+        merged_groups = list(groups_dict.values())
 
         fused_records = []
         for g_idx, group in enumerate(merged_groups):

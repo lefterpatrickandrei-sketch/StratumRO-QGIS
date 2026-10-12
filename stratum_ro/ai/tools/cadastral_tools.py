@@ -317,8 +317,8 @@ def export_cp_file(
         f.write("; NrPct, X_Stereo70, Y_Stereo70, Cota_Z\n")
         for pt in points:
             nr = pt.get("nr", 1)
-            x = pt.get("x", 0.0)
-            y = pt.get("y", 0.0)
+            x = pt.get("x_nord", pt.get("x", 0.0))
+            y = pt.get("y_est", pt.get("y", 0.0))
             z = pt.get("z", 0.0)
             f.write(f"{nr},{x:.3f},{y:.3f},{z:.3f}\n")
 

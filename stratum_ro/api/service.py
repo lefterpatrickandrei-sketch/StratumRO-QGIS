@@ -45,26 +45,24 @@ class PlatformService:
         payload = json.dumps(req).encode("utf-8")
 
         try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.settimeout(timeout)
-            s.connect((self.qgis_host, self.qgis_port))
-            s.sendall(struct.pack(">I", len(payload)) + payload)
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.settimeout(timeout)
+                s.connect((self.qgis_host, self.qgis_port))
+                s.sendall(struct.pack(">I", len(payload)) + payload)
 
-            raw_len = s.recv(4)
-            if len(raw_len) != 4:
-                s.close()
-                return {"status": "error", "message": "Incomplete socket header from QGIS"}
+                raw_len = s.recv(4)
+                if len(raw_len) != 4:
+                    return {"status": "error", "message": "Incomplete socket header from QGIS"}
 
-            resp_len = struct.unpack(">I", raw_len)[0]
-            data = b""
-            while len(data) < resp_len:
-                chunk = s.recv(min(65536, resp_len - len(data)))
-                if not chunk:
-                    break
-                data += chunk
-            s.close()
+                resp_len = struct.unpack(">I", raw_len)[0]
+                data = b""
+                while len(data) < resp_len:
+                    chunk = s.recv(min(65536, resp_len - len(data)))
+                    if not chunk:
+                        break
+                    data += chunk
 
-            return json.loads(data.decode("utf-8"))
+                return json.loads(data.decode("utf-8"))
         except Exception as e:
             return {"status": "error", "message": f"QGIS socket connection error: {str(e)}"}
 
