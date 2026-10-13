@@ -33,12 +33,14 @@ class TestRoofRetryPrompts(unittest.TestCase):
         self.ndsm = np.zeros((self.height, self.width), dtype=np.float32)
         self.building_class = np.zeros((self.height, self.width), dtype=np.float32)
 
-    def _build_lidar_data(self, ndsm=None, building=None):
+    def _build_lidar_data(self, ndsm=None, building=None, observed=None, vegetation=None):
         return {
             'transform': self.transform,
             'ndsm': self.ndsm if ndsm is None else ndsm,
             'class_evidence': {
                 'building': self.building_class if building is None else building,
+                'observed': np.ones((self.height, self.width), dtype=np.float32) if observed is None else observed,
+                'vegetation': np.zeros((self.height, self.width), dtype=np.float32) if vegetation is None else vegetation,
             },
         }
 
@@ -189,6 +191,71 @@ class TestRoofRetryPrompts(unittest.TestCase):
         bowtie = Polygon([(0.0, 0.0), (10.0, 10.0), (0.0, 10.0), (10.0, 0.0), (0.0, 0.0)])
         with self.assertRaises(ValueError):
             roof_retry_prompts(bowtie, self.image_rgb, self.transform, lidar)
+
+    def test_trim_retry_roof_surface_retains_previously_excluded_reddish_tile_and_rejects_vegetation(self):
+        """trim_retry_roof_surface retains reddish tile under tree overhang (failing old brown/neutral/ceiling) while rejecting vegetation."""
+        from stratum_ro.roof_retry import trim_retry_roof_surface
+        # Tile where r=110, g=76, b=75, sat = (110 - 75)/110 = 0.318:
+        # Check old brown: (110 > 1.08*76=82.08 TRUE), (76 > 1.04*75=78.0 FALSE!), (110 - 75 = 35 > 18 TRUE) -> old brown is FALSE!
+        # Check old neutral: sat = 0.318 > 0.30 -> old neutral is FALSE!
+        # Check old height ceiling: h=11.5 > local_h(6.5) + 4.0 = 10.5 -> old height ceiling is FALSE!
+        # Check new reddish: (110 - 76 = 34 > 14 TRUE), (110 - 75 = 35 > 14 TRUE), (110 > 55 TRUE) -> reddish is TRUE!
+        # Check new high_overhang: (red_fraction>=0.5) & reddish & ~vegetation -> high_overhang is TRUE!
+        rgb = np.zeros((self.height, self.width, 3), dtype=np.uint8)
+        # Roof area: rows 20:40, cols 20:40
+        rgb[20:40, 20:40] = [110, 76, 75]
+        # Surrounding area has vegetation: rows 15:20, cols 20:40
+        rgb[15:20, 20:40] = [40, 160, 30]
+
+        ndsm = np.zeros((self.height, self.width), dtype=np.float32)
+        ndsm[20:40, 20:40] = 11.5  # tree canopy height overhanging roof
+        ndsm[15:20, 20:40] = 11.5  # pure tree canopy height
+        bld = np.zeros((self.height, self.width), dtype=np.float32)
+        bld[20:40, 20:40] = 1.0   # building returns under canopy
+        bld[15:20, 20:40] = 0.0   # no building return on surrounding vegetation
+        veg = np.zeros((self.height, self.width), dtype=np.float32)
+        veg[15:20, 20:40] = 1.0
+        lidar = self._build_lidar_data(ndsm=ndsm, building=bld, vegetation=veg)
+
+        seed = {'point': (30.0, 70.0), 'red_fraction': 0.8, 'mean_h': 6.5, 'local_h': 6.5, 'max_h': 7.0}
+        poly = Polygon([(20.0, 60.0), (40.0, 60.0), (40.0, 85.0), (20.0, 85.0)])
+        trimmed, color_status = trim_retry_roof_surface(poly, rgb, self.transform, lidar, seed)
+        self.assertEqual(color_status, 'LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE')
+        # Vegetation at y > 80 (rows 15:20) must be excluded from trimmed result
+        self.assertLessEqual(trimmed.bounds[3], 80.5, "Vegetation above y=80 must not be retained")
+        self.assertGreater(trimmed.area, 100.0, "Reddish tile body under canopy must be retained")
+
+    def test_retry_roof_geometry_production_path_preserves_supported_l_shape(self):
+        """Production path retry_roof_geometry preserves true L-shape under mock segmenter."""
+        from stratum_ro.roof_retry import retry_roof_geometry
+
+        # Set up an L-shaped roof in sensor arrays
+        # L-shape: box(20, 60, 40, 80) + box(40, 60, 50, 70)
+        # World coords: x in [20, 50], y in [60, 80]
+        rgb = np.zeros((self.height, self.width, 3), dtype=np.uint8)
+        rgb[20:40, 20:40] = [180, 70, 70]   # Red tile main body
+        rgb[30:40, 40:50] = [180, 70, 70]   # Red tile wing
+        ndsm = np.zeros((self.height, self.width), dtype=np.float32)
+        ndsm[20:40, 20:40] = 5.0
+        ndsm[30:40, 40:50] = 5.0
+        bld = np.zeros((self.height, self.width), dtype=np.float32)
+        bld[20:40, 20:40] = 1.0
+        bld[30:40, 40:50] = 1.0
+        lidar = self._build_lidar_data(ndsm=ndsm, building=bld)
+
+        l_poly = Polygon([(20.0, 60.0), (50.0, 60.0), (50.0, 70.0), (40.0, 70.0), (40.0, 80.0), (20.0, 80.0)])
+
+        class FakeSegmenter:
+            def segment_candidate(self, *bounds, **kwargs):
+                return {'geometry': l_poly, 'sam2_score': 0.88, 'status': 'CONFIRMAT_HIBRID'}
+
+        result = retry_roof_geometry(l_poly, rgb, self.transform, lidar, FakeSegmenter())
+        self.assertEqual(result['status'], 'RECTIFIED_HYPOTHESES_PENDING_REVIEW')
+        self.assertGreaterEqual(len(result['candidates']), 1)
+        # Verify L-shape (6 vertices) is preserved and not forced into a 4-vertex rectangle
+        cand = result['candidates'][0]
+        self.assertEqual(cand['vertices'], 6, "True L-shape must retain 6 vertices, never forced to rectangle")
+        self.assertGreater(cand['simple_support'], 0.90)
 
 
 if __name__ == '__main__':

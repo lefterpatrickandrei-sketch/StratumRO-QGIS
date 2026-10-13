@@ -97,15 +97,18 @@ def trim_retry_roof_surface(geometry,image_rgb,transform,lidar_data,seed):
     sat=(maximum-rgb.min(axis=2))/np.maximum(maximum,1)
     vegetation=(sat>.25)&(g>=.8*r)&(g>1.12*b)
     brown=(r>1.08*g)&(g>1.04*b)&(r-b>18)
+    reddish=(r-g>14)&(r-b>14)&(r>55)
     neutral=(sat<=.30)&(maximum>=50)
-    spectral=(brown|(neutral&(counts>0))) if seed['red_fraction']>=.50 else neutral
+    spectral=(brown|reddish|(neutral&(counts>0))) if seed['red_fraction']>=.50 else neutral
     local_h=seed.get('local_h',seed['mean_h'])
     # A coherent height component is more reliable than a single locally low
     # return. Local height is needed when a component mixes low and high roofs.
     if seed.get('max_h',float('inf'))-seed['mean_h']<=2.:
         local_h=seed['mean_h']
     floor=max(2.,min(local_h,seed['mean_h'])-2.5)
-    foreground=inside&valid&np.isfinite(h)&(h>=floor)&(h<=local_h+4.)&~vegetation&spectral
+    high_overhang=(seed['red_fraction']>=.50)&(brown|reddish)&~vegetation
+    height_ok=(h>=floor)&((h<=local_h+4.)|high_overhang)
+    foreground=inside&valid&np.isfinite(h)&height_ok&~vegetation&spectral
     radius=max(1,int(round(.15/math.sqrt(abs(tr.determinant)))))
     foreground=binary_closing(np.pad(foreground,radius),structure=np.ones((2*radius+1,2*radius+1)))[radius:-radius,radius:-radius]&inside
     labs,_=label(foreground);pc,pr=(~tr)*seed['point'];pr=int(math.floor(pr));pc=int(math.floor(pc))
@@ -136,7 +139,11 @@ def retry_roof_geometry(geometry,image_rgb,transform,lidar_data,segmenter):
     prompts=roof_retry_prompts(geometry,image_rgb,transform,lidar_data)
     answer={'prompts':prompts,'attempts':[],'candidates':[],'status':prompts['status']}
     height,width=image_rgb.shape[:2]
-    bounds=geometry.buffer(4).bounds
+    gx0,gy0,gx1,gy1=geometry.bounds
+    span_x,span_y=gx1-gx0,gy1-gy0
+    pad_x=max(4.,(24.-span_x)/2)
+    pad_y=max(4.,(24.-span_y)/2)
+    bounds=(gx0-pad_x,gy0-pad_y,gx1+pad_x,gy1+pad_y)
     pixels=[(~transform)*(x,y) for x in (bounds[0],bounds[2]) for y in (bounds[1],bounds[3])]
     if any(not (0<=c<width and 0<=r<height) for c,r in pixels):
         answer['status']='NEEDS_COMPLETE_IMAGE_COVERAGE';return answer
