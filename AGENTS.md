@@ -4,7 +4,30 @@
 
 Before diagnosing or changing roof/building extraction, every agent must read `docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md` and the latest owner feedback. Follow its object identity → sensor evidence → supported simple geometry → tests → native visual inspection → human verdict → Git handoff workflow. Model scores and geometric validity never substitute for the owner's explicit acceptance. Historical continuation entries below are superseded by the newest feedback. T10 is now ACCEPTED by the owner; T08/T09 remain rejected/unrecovered. This shared protocol records observable decision criteria, not an assumption that different agents have identical internal reasoning or access to other conversations.
 
-## Latest continuation entry — 2026-10-13, T10 integrat complet în proiectul QGIS comun
+## Latest continuation entry — 2026-10-13, Lotul 3 (T11–T20) în verificare și integrat în QGIS
+
+**LOTUL 3 DE VERIFICARE — T11–T20 (2026-10-13 17:50):**
+1. **Statut de guvernanță:** Toate cele 10 cazuri noi (T11–T20) au statutul `PENDING_OWNER_REVIEW` (`NECESITA_VERIFICARE_LOT3`). Niciun caz din Lotul 3 nu este declarat acceptat ca final; decizia proprietarului este suverană.
+2. **Invariante păstrate:**
+   - Lot 1 (8/8) și Lot 2 (T01–T04, T05, T06, T07, T10) rămân acceptate în starea aprobată de proprietar.
+   - T08 și T09 rămân respinse / nerecuperate.
+   - Clădirea maro-roșcată T10 și clădirea joasă gri din vest rămân strict obiecte independente separate.
+3. **Selecție înghețată a priori:**
+   - 10 cazuri noi selectate pe 7 tile-uri native înainte de inferență: `workspace/reviews/lot3_20261013/selection_manifest.json`.
+   - Diversitate de arhetipuri: acoperișuri simple (T11), rezidențial cu anexă (T12), separare vecini apropiați (T13), acoperiș metalic gri (T14), copertină/umbră (T15), cluster dens (T16), aripă articulată L/T (T17), hală L la marginea tile-ului (T18), pavilion utilitar (T19), complex multi-volum (T20).
+4. **Măsurători baseline pe implementarea de producție:**
+   - Cazuri evaluate: 10 (T11–T20).
+   - Cazuri cu corpuri extrase: 2 (T12, T17).
+   - Total corpuri extrase: 3 (`T12:C1` - 12 noduri, 678 m²; `T12:C2` - 4 noduri, 170.8 m²; `T17:C1` - 10 noduri, 725 m²).
+   - Cazuri nerecuperate: 8 (T11, T13, T14, T15, T16, T18, T19, T20).
+   - Constatări vizuale: `T12:C2` (dreptunghi canonic pe acoperiș ceramic) și `T17:C1` (aripă L/T cu muchii ortogonale) extrase curat; `T12:C1` extins eronat peste pavajul curții; T18 și T20 au atins marginea tile-ului (`NEEDS_COMPLETE_IMAGE_COVERAGE`); T14 a eșuat din cauza contrastului slab pe acoperiș metalic gri.
+5. **Integrare completă în proiectul QGIS comun:**
+   - Proiect activ: `workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs` (și `workspace/reviews/retry_six_release_20261013/inspectie_completa_8_orto_loturi.qgs`).
+   - Grup TOC: `LOT3_T11_T20_IN_VERIFICARE` cu straturile `LOT3_CORPURI_EXTRASE` (cian `#00e5ff`), `LOT3_CAZURI_NERECUPERATE` (cruce roșie `#ff1744`), `LOT3_FERESTRE_SELECTIE` (linie aurie întreruptă `#ffd700`).
+   - Capturi live verificate: `workspace/reviews/lot3_20261013/qgis_canvas_lot3.png` și `qgis_canvas_lot3_t12_closeup.png`.
+   - Raport detaliat: `docs/STRATUMRO_LOT3_HANDOFF_2026-10-13.md` și `workspace/reviews/lot3_20261013/lot3_contact_sheet.png`.
+
+## Previous continuation entry — 2026-10-13, T10 integrat complet în proiectul QGIS comun
 
 **INTEGRARE COMPLETĂ ÎN PROIECTUL QGIS COMUN (2026-10-13 17:15):**
 1. **Rădăcina unică a repository-ului:** `C:\Users\lefpa\Downloads\QGIS-AI`
