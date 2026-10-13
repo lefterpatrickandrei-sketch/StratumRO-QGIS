@@ -4,13 +4,30 @@
 
 Before diagnosing or changing roof/building extraction, every agent must read `docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md` and the latest owner feedback. Follow its object identity → sensor evidence → supported simple geometry → tests → native visual inspection → human verdict → Git handoff workflow. Model scores and geometric validity never substitute for the owner's explicit acceptance. Historical continuation entries below are superseded by the newest feedback. T10 is now ACCEPTED by the owner; T08/T09 remain rejected/unrecovered. This shared protocol records observable decision criteria, not an assumption that different agents have identical internal reasoning or access to other conversations.
 
-## Latest continuation entry — 2026-10-13, T10 rectificat și acceptat
+## Latest continuation entry — 2026-10-13, T10 integrat complet în proiectul QGIS comun
+
+**INTEGRARE COMPLETĂ ÎN PROIECTUL QGIS COMUN (2026-10-13 17:15):**
+1. **Rădăcina unică a repository-ului:** `C:\Users\lefpa\Downloads\QGIS-AI`
+2. **Calea exactă a proiectului QGIS comun:**
+   - Proiectul activ încărcat în sesiunea QGIS Desktop (`qgis-bin.exe`): `workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs`
+   - Proiectul sincronizat de release: `workspace/reviews/retry_six_release_20261013/inspectie_completa_8_orto_loturi.qgs`
+   - Ambele proiecte partajează titlul `StratumRO - toate cele 8 ortofoto; Lot1 si Lot2 T01-T10` și CRS `EPSG:3844`.
+3. **Sursa și straturile rezultatelor curente:**
+   - GeoPackage sursă: `workspace/reviews/retry_six_release_20261013/retry_six.gpkg`
+   - Strat activ vizibil: `CORPURI_RECTIFICATE` — conține corpurile acceptate `T05:A3`, `T05:A1`, `T06:A1`, `T07:A1`, `T10:A1` (toate cu contur verde neon `#39ff14`, 0.6mm solid, etichetate corespunzător; T10 etichetat `T10 - ACCEPTAT` cu atribut `owner_verdict = 'ACCEPTED_BY_OWNER'`).
+   - Strat istoric inactiv: `T10_ISTORIC_PARTIAL (Incomplet anterior)` — conectat la stratul `T10_ISTORIC_PARTIAL_RESPINS` din `retry_six.gpkg` (păstrează vechea geometrie cu 6 noduri și treaptă, stil linie portocalie întreruptă, **debifat / invizibil** în layer tree pentru a preveni contururi contradictorii pe pânză).
+   - Clădirea gri alăturată la vest rămâne un obiect independent separat, neatins.
+4. **Captură de verificare din canvasul live QGIS:**
+   - Salvată în `workspace/reviews/t10_antigravity_20261013/qgis_canvas_t10_integrated.png` (demonstrează conturul verde rectangular centrat pe acoperișul ceramic roșcat și eticheta `T10 - ACCEPTAT`).
+5. **Reguli de guvernanță pentru toți agenții:**
+   - **Regula Integrării Obligatorii:** O reparație acceptată vizual de proprietar este declarată complet integrată **numai după actualizarea și verificarea vizuală directă a proiectului QGIS comun** deschis pe mașină (sursă GPKG, geometrie, stil verde `#39ff14`, etichetă și salvare persistentă pe disc). Scripturile izolate sau imaginile standalone nu substituie integrarea în proiectul QGIS.
+   - **Regula Coordonării Scrierilor:** Înainte de a modifica straturi sau proiecte, agenții verifică procesul QGIS activ și fișierul de proiect deschis (via QGIS MCP pe portul `127.0.0.1:9876`). Este strict interzisă suprascrierea concurentă oarbă a fișierelor fără sincronizarea sesiunii live. Editările nesalvate ale utilizatorului trebuie respectate prin salvare coerentă (`save_project`).
 
 **LATEST HUMAN REVIEW (2026-10-13 16:58):** Owner explicitly evaluated `workspace/reviews/t10_antigravity_20261013/t10_before_after.png` and confirmed:
 > *"Conturul nou este bun; cele două clădiri trebuie păstrate ca obiecte separate."*
-T10 (`id: T10:A1`, `source_id: REF_TIER1_006:B00011`) is now **ACCEPTED BY OWNER** as a canonical 4-vertex rectangle (`SUPPORTED_CORE_RECTANGLE`, 143.8 m²).
+T10 (`id: T10:A1`, `source_id: REF_TIER1_006:B00011`) is **ACCEPTED BY OWNER** as a canonical 4-vertex rectangle (`SUPPORTED_CORE_RECTANGLE`, 143.8 m²).
 **STRICT ARCHITECTURAL INVARIANT:** T10 (ceramic roof) and the adjacent low western building (gray roof) **must strictly remain separate objects** in all cadastre layers and pipelines; merging them is prohibited.
-Status of retry cases: **T05, T06, T07, T10 ACCEPTED**; **T08, T09 REJECTED/UNRECOVERED**. Previous partial/pending status of T10 is superseded. Checkpoint commit: `c0bc15a`. Artifacts: `workspace/reviews/t10_antigravity_20261013/` and `docs/STRATUMRO_T10_ANTIGRAVITY_2026-10-13.md`.
+Status of retry cases: **T05, T06, T07, T10 ACCEPTED**; **T08, T09 REJECTED/UNRECOVERED**. Previous partial/pending status of T10 is superseded. Checkpoint commit: `c0bc15a` + `8e2f15e`. Artifacts: `workspace/reviews/t10_antigravity_20261013/` and `docs/STRATUMRO_T10_ANTIGRAVITY_2026-10-13.md`.
 
 **PREVIOUS HUMAN REVIEW / GIT CHECKPOINT:** User explicitly identified `six_before_after.png`: T05/T06/T07 accepted, T08/T09 rejected, T10 partially completed, NOT accepted as final. Earlier pending verdicts are superseded by `workspace/reviews/retry_six_release_20261013/owner_feedback.json` and `docs/STRATUMRO_GIT_CHECKPOINT_2026-10-13.md`. Preserve accepted geometries; T10 remains unfinished, T08/T09 have no recovered supported roof (tiny structure at T08 remains a recall issue). The user requested a local Git checkpoint of the implementation, tests, handoff and selected visual evidence. Purple is rejected historical raster outline, never cadastral reference or final corrected geometry. Complete-ortho project has8tiles; the new extraction still has not run over all8tiles.
 

@@ -128,3 +128,30 @@ Directorul de livrare dedicat: [`workspace/reviews/t10_antigravity_20261013/`](f
   - Regula de a folosi geometria parțială curentă ca „ÎNAINTE”, nu doar masca istorică greșită.
 * **Ce a fost ambiguu sau s-a corectat în cursul investigației:**
   - Ipoteza inițială presupunea că decuparea era strict o problemă de formulă spectrală (maro vs roșiatic). Analiza detaliată a senzorilor a arătat că factorul determinant era trunchierea crop-ului la `y = 585661.05` și tăierea copacului de streașină. Documentarea cauzei reale în acest raport clarifică definitiv problema pentru alți agenți.
+
+---
+
+## 8. Integrarea în Proiectul QGIS Comun
+
+1. **Rădăcina unică a repository-ului:**
+   `C:\Users\lefpa\Downloads\QGIS-AI`
+2. **Proiectele QGIS comune sincronizate:**
+   * **Proiectul activ din sesiunea live QGIS Desktop:** [`workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs)
+   * **Proiectul de release:** [`workspace/reviews/retry_six_release_20261013/inspectie_completa_8_orto_loturi.qgs`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/inspectie_completa_8_orto_loturi.qgs)
+   * Titlu comun: `StratumRO - toate cele 8 ortofoto; Lot1 si Lot2 T01-T10`, CRS `EPSG:3844`.
+3. **Straturi și Geometrii:**
+   * Strat vizibil: `RECTIFICARI_T05_T06_T07_T10` din [`workspace/reviews/retry_six_release_20261013/retry_six.gpkg`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg)
+     - Geometria T10 a fost înlocuită cu dreptunghiul canonic de 4 vârfuri (143.8 m²).
+     - Stil: contur verde neon `#39ff14`, 0.6mm solid.
+     - Etichetă pe pânză: `T10 - ACCEPTAT`.
+     - Atribut `owner_verdict = 'ACCEPTED_BY_OWNER'`, `qa_status = 'VALIDAT_VIZUAL_PROPRIETAR'`.
+   * Strat istoric inactiv: `T10_ISTORIC_PARTIAL (Incomplet anterior)`
+     - Conectat la stratul `T10_ISTORIC_PARTIAL_RESPINS` din `retry_six.gpkg`.
+     - Stil: linie portocalie întreruptă (`#ff8c00`), **debifat (invizibil)** în layer tree pentru a preveni contururi finale contradictorii pe pânză.
+   * Clădirea alăturată la vest (hala gri) este păstrată complet neatinsă ca obiect independent separat.
+4. **Captură reală din sesiunea QGIS Desktop Desktop:**
+   * [`workspace/reviews/t10_antigravity_20261013/qgis_canvas_t10_integrated.png`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/t10_antigravity_20261013/qgis_canvas_t10_integrated.png)
+5. **Reguli de cooperare multi-agent:**
+   * **Regula integrării complete:** Nicio reparație acceptată nu este finalizată fără actualizarea și verificarea vizuală directă a proiectului QGIS comun.
+   * **Regula coordonării scrierilor:** Agenții verifică procesul QGIS activ și comunică via QGIS MCP (`127.0.0.1:9876`), fără a efectua suprascrieri oarbe ale fișierelor de proiect sau GPKG.
+
