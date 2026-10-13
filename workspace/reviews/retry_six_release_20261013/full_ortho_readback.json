@@ -1,0 +1,56 @@
+{
+  "saved_project": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/inspectie_completa_8_orto_loturi.qgs",
+  "raster_count": 8,
+  "rasters": [
+    {
+      "name": "Cluj-0-0",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-0_halo.tif",
+      "valid": true
+    },
+    {
+      "name": "Cluj-0-1",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-1_halo.tif",
+      "valid": true
+    },
+    {
+      "name": "Cluj-0-2",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi\\cache_tile_Cluj-0-2_halo.tif",
+      "valid": true
+    },
+    {
+      "name": "Cluj-1-0",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-0_halo.tif",
+      "valid": true
+    },
+    {
+      "name": "Cluj-1-1",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi\\cache_tile_Cluj-1-1_halo.tif",
+      "valid": true
+    },
+    {
+      "name": "Cluj-1-2",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi\\cache_tile_Cluj-1-2_halo.tif",
+      "valid": true
+    },
+    {
+      "name": "Cluj-2-0",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi\\cache_tile_Cluj-2-0_halo.tif",
+      "valid": true
+    },
+    {
+      "name": "Cluj-2-1",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi\\cache_tile_Cluj-2-1_halo.tif",
+      "valid": true
+    }
+  ],
+  "labelled_layers": [
+    "ACOPERISURI_SIMPLE",
+    "B5_DOUA_CORPURI",
+    "RECTIFICARI_T05_T06_T07_T10",
+    "TESTE_10_REZULTATE"
+  ],
+  "layers": 17,
+  "readback": true,
+  "original_project_not_overwritten": true,
+  "scope": "Complete orthophoto display; extraction still targeted diagnostic cases, not full-AOI new-mode inference"
+}

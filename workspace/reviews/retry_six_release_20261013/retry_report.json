@@ -1,0 +1,373 @@
+[
+  {
+    "test_id": "T05",
+    "source_id": "REF_TIER1_006:B00006",
+    "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-0_halo.tif",
+    "prompts": {
+      "status": "SUPPORTED_LOCAL_SEED",
+      "seeds": [
+        {
+          "point": [
+            390868.575,
+            585646.7250000001
+          ],
+          "area_m2": 250.64999999999998,
+          "mean_h": 8.638740525853484,
+          "local_h": 4.763946533203125,
+          "max_h": 17.96484375,
+          "red_fraction": 0.009066427289048475
+        },
+        {
+          "point": [
+            390883.575,
+            585662.175
+          ],
+          "area_m2": 195.03,
+          "mean_h": 16.892936498820646,
+          "local_h": 17.1451416015625,
+          "max_h": 17.78985595703125,
+          "red_fraction": 0.0
+        },
+        {
+          "point": [
+            390885.375,
+            585647.4750000001
+          ],
+          "area_m2": 69.345,
+          "mean_h": 16.28679102972527,
+          "local_h": 17.174407958984375,
+          "max_h": 17.996917724609375,
+          "red_fraction": 0.09344581440622972
+        },
+        {
+          "point": [
+            390857.475,
+            585670.5750000001
+          ],
+          "area_m2": 58.8825,
+          "mean_h": 16.338376923831856,
+          "local_h": 16.359100341796875,
+          "max_h": 16.872833251953125,
+          "red_fraction": 0.0
+        }
+      ],
+      "building_color_area_m2": 585.6525,
+      "vegetation_fraction": 0.007674386734274359
+    },
+    "attempts": [
+      {
+        "index": 1,
+        "point": [
+          390868.575,
+          585646.7250000001
+        ],
+        "sam2_score": 0.747,
+        "status": "CONFIRMAT_HIBRID",
+        "simple_method": "SUPPORTED_CORE_RECTANGLE",
+        "simple_support": 0.954479448210334,
+        "simple_coverage": 0.9717083191209934,
+        "seed_x": 390868.575,
+        "seed_y": 585646.7250000001,
+        "attempt_index": 1,
+        "color_method": "LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE",
+        "vertices": 4,
+        "vegetation_fraction": 0.0009794319294809011,
+        "building_fraction": 0.897101
+      },
+      {
+        "index": 2,
+        "point": [
+          390883.575,
+          585662.175
+        ],
+        "sam2_score": 0.898,
+        "status": "CONFIRMAT_HIBRID",
+        "simple_method": "NEEDS_REVIEW",
+        "simple_support": 0.0,
+        "simple_coverage": 0.0,
+        "seed_x": 390883.575,
+        "seed_y": 585662.175,
+        "attempt_index": 2,
+        "color_method": "LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE",
+        "vertices": 141,
+        "vegetation_fraction": 0.00019100737288459336,
+        "building_fraction": 0.485099
+      },
+      {
+        "index": 3,
+        "point": [
+          390885.375,
+          585647.4750000001
+        ],
+        "sam2_score": 0.898,
+        "status": "CONFIRMAT_HIBRID",
+        "simple_method": "SUPPORTED_ORTHOGONAL",
+        "simple_support": 0.9524726796688763,
+        "simple_coverage": 0.9569914435159623,
+        "seed_x": 390885.375,
+        "seed_y": 585647.4750000001,
+        "attempt_index": 3,
+        "color_method": "NONE",
+        "vertices": 6,
+        "vegetation_fraction": 0.0019524426084633248,
+        "building_fraction": 0.467685
+      },
+      {
+        "index": 4,
+        "point": [
+          390857.475,
+          585670.5750000001
+        ],
+        "sam2_score": 0.844,
+        "status": "CONFIRMAT_HIBRID",
+        "simple_method": "NEEDS_REVIEW",
+        "simple_support": 0.0,
+        "simple_coverage": 0.0,
+        "seed_x": 390857.475,
+        "seed_y": 585670.5750000001,
+        "attempt_index": 4,
+        "color_method": "LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE",
+        "vertices": 125,
+        "vegetation_fraction": 0.0002640811861017844,
+        "building_fraction": 0.485784
+      }
+    ],
+    "outcome": "RECTIFIED_HYPOTHESES_PENDING_REVIEW",
+    "retained_ids": [
+      "T05:A3",
+      "T05:A1"
+    ]
+  },
+  {
+    "test_id": "T06",
+    "source_id": "REF_TIER1_006:B00007",
+    "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+    "prompts": {
+      "status": "SUPPORTED_LOCAL_SEED",
+      "seeds": [
+        {
+          "point": [
+            390894.82499999995,
+            585688.125
+          ],
+          "area_m2": 218.385,
+          "mean_h": 11.202481606069014,
+          "local_h": 12.312042236328125,
+          "max_h": 12.438873291015625,
+          "red_fraction": 0.9404492066762827
+        },
+        {
+          "point": [
+            390888.675,
+            585643.425
+          ],
+          "area_m2": 14.1075,
+          "mean_h": 14.037448232063646,
+          "local_h": 13.150299072265625,
+          "max_h": 18.009002685546875,
+          "red_fraction": 0.4130781499202552
+        },
+        {
+          "point": [
+            390888.07499999995,
+            585672.0750000001
+          ],
+          "area_m2": 12.2625,
+          "mean_h": 17.258869864087586,
+          "local_h": 17.00213623046875,
+          "max_h": 17.78985595703125,
+          "red_fraction": 0.0
+        },
+        {
+          "point": [
+            390888.07499999995,
+            585650.175
+          ],
+          "area_m2": 9.0,
+          "mean_h": 17.174907760620115,
+          "local_h": 17.178680419921875,
+          "max_h": 17.21337890625,
+          "red_fraction": 0.0
+        }
+      ],
+      "building_color_area_m2": 258.39,
+      "vegetation_fraction": 0.4561469100505828
+    },
+    "attempts": [
+      {
+        "index": 1,
+        "point": [
+          390894.82499999995,
+          585688.125
+        ],
+        "sam2_score": 0.712,
+        "status": "CONFIRMAT_HIBRID",
+        "simple_method": "SUPPORTED_CORE_RECTANGLE",
+        "simple_support": 0.9234425839098347,
+        "simple_coverage": 0.9108862931037135,
+        "seed_x": 390894.82499999995,
+        "seed_y": 585688.125,
+        "attempt_index": 1,
+        "color_method": "RED_ROOF_RELATIVE_HEIGHT",
+        "vertices": 4,
+        "vegetation_fraction": 0.09136913129041327,
+        "building_fraction": 0.72711
+      },
+      {
+        "index": 2,
+        "point": [
+          390888.675,
+          585643.425
+        ],
+        "sam2_score": 0.51,
+        "status": "LIDAR_DIRECT"
+      },
+      {
+        "index": 3,
+        "point": [
+          390888.07499999995,
+          585672.0750000001
+        ],
+        "sam2_score": 0.452,
+        "status": "LIDAR_DIRECT"
+      },
+      {
+        "index": 4,
+        "point": [
+          390888.07499999995,
+          585650.175
+        ],
+        "sam2_score": 0.477,
+        "status": "LIDAR_DIRECT"
+      }
+    ],
+    "outcome": "RECTIFIED_HYPOTHESES_PENDING_REVIEW",
+    "retained_ids": [
+      "T06:A1"
+    ]
+  },
+  {
+    "test_id": "T07",
+    "source_id": "REF_TIER1_006:B00008",
+    "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-0_halo.tif",
+    "prompts": {
+      "status": "SUPPORTED_LOCAL_SEED",
+      "seeds": [
+        {
+          "point": [
+            390879.22500000003,
+            585696.9750000001
+          ],
+          "area_m2": 390.03749999999997,
+          "mean_h": 6.008251618637556,
+          "local_h": 5.4832763671875,
+          "max_h": 9.211639404296875,
+          "red_fraction": 0.777905970579752
+        }
+      ],
+      "building_color_area_m2": 383.78249999999997,
+      "vegetation_fraction": 0.20383124458996651
+    },
+    "attempts": [
+      {
+        "index": 1,
+        "point": [
+          390879.22500000003,
+          585696.9750000001
+        ],
+        "sam2_score": 0.684,
+        "status": "CONFIRMAT_HIBRID",
+        "simple_method": "SUPPORTED_ORTHOGONAL",
+        "simple_support": 0.96289860024758,
+        "simple_coverage": 0.9356928240791896,
+        "seed_x": 390879.22500000003,
+        "seed_y": 585696.9750000001,
+        "attempt_index": 1,
+        "color_method": "LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE",
+        "vertices": 10,
+        "vegetation_fraction": 0.11637557289731203,
+        "building_fraction": 0.778537
+      }
+    ],
+    "outcome": "RECTIFIED_HYPOTHESES_PENDING_REVIEW",
+    "retained_ids": [
+      "T07:A1"
+    ]
+  },
+  {
+    "test_id": "T08",
+    "source_id": "REF_TIER1_006:B00009",
+    "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+    "prompts": {
+      "status": "NO_SUPPORTED_ROOF_SEED",
+      "seeds": [],
+      "building_color_area_m2": 0.0,
+      "vegetation_fraction": 0.7296602138892649
+    },
+    "attempts": [],
+    "outcome": "NO_SUPPORTED_ROOF_SEED",
+    "retained_ids": []
+  },
+  {
+    "test_id": "T09",
+    "source_id": "REF_TIER1_006:B00010",
+    "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+    "prompts": {
+      "status": "NO_SUPPORTED_ROOF_SEED",
+      "seeds": [],
+      "building_color_area_m2": 7.177499999999999,
+      "vegetation_fraction": 0.7424108458591218
+    },
+    "attempts": [],
+    "outcome": "NO_SUPPORTED_ROOF_SEED",
+    "retained_ids": []
+  },
+  {
+    "test_id": "T10",
+    "source_id": "REF_TIER1_006:B00011",
+    "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+    "prompts": {
+      "status": "SUPPORTED_LOCAL_SEED",
+      "seeds": [
+        {
+          "point": [
+            390933.825,
+            585669.525
+          ],
+          "area_m2": 95.49,
+          "mean_h": 6.863228167822403,
+          "local_h": 7.59844970703125,
+          "max_h": 7.848175048828125,
+          "red_fraction": 0.7047596606974552
+        }
+      ],
+      "building_color_area_m2": 95.55749999999999,
+      "vegetation_fraction": 0.1245366938472943
+    },
+    "attempts": [
+      {
+        "index": 1,
+        "point": [
+          390933.825,
+          585669.525
+        ],
+        "sam2_score": 0.85,
+        "status": "CONFIRMAT_HIBRID",
+        "simple_method": "SUPPORTED_ORTHOGONAL",
+        "simple_support": 0.9518374102240865,
+        "simple_coverage": 0.904757872235712,
+        "seed_x": 390933.825,
+        "seed_y": 585669.525,
+        "attempt_index": 1,
+        "color_method": "LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE",
+        "vertices": 6,
+        "vegetation_fraction": 0.0043433298862461224,
+        "building_fraction": 0.88724
+      }
+    ],
+    "outcome": "RECTIFIED_HYPOTHESES_PENDING_REVIEW",
+    "retained_ids": [
+      "T10:A1"
+    ]
+  }
+]

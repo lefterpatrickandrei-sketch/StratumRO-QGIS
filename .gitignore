@@ -113,7 +113,7 @@ workspace/output/vlm_evidence/
 workspace/output/visual_validation/
 
 # Root planning docs (should live in docs/ or workspace/)
-STRATUMRO_*.md
+/STRATUMRO_*.md
 
 # Temporary scripts & test output at root
 collaboration_test.py

@@ -24,6 +24,61 @@ import laspy
 from shapely.geometry import Point, Polygon
 
 
+def complete_building_grid(
+    base_grid: np.ndarray,
+    ndsm: np.ndarray,
+    vegetation_grid: np.ndarray,
+    resolution: float,
+    min_area_m2: float = 35.0
+) -> np.ndarray:
+    """
+    Pure deterministic helper to complete building candidate grids from nDSM.
+    - Preserves existing base building cells.
+    - nDSM completion candidates are finite heights >= 0.8 AND NOT known class 4/5 vegetation-only cells.
+    - Components are formed AFTER vegetation exclusion, then filtered by physical area
+      (pixel_count * resolution^2 >= min_area_m2).
+    - If a cell has explicit building support in base_grid, it is preserved even if vegetation occurs in the same cell.
+    - Returns a new uint8 grid without mutating inputs.
+    - Validates positive finite resolution and matching 2D shapes.
+    """
+    if not isinstance(resolution, (int, float, np.floating, np.integer)):
+        raise ValueError("Resolution must be a positive finite number.")
+    res = float(resolution)
+    if not np.isfinite(res) or res <= 0.0:
+        raise ValueError("Resolution must be a positive finite number.")
+
+    if not isinstance(min_area_m2, (int, float, np.floating, np.integer)):
+        raise ValueError("min_area_m2 must be a finite number.")
+    min_area = float(min_area_m2)
+    if not np.isfinite(min_area) or min_area < 0.0:
+        raise ValueError("min_area_m2 must be non-negative and finite.")
+
+    if base_grid.ndim != 2 or ndsm.ndim != 2 or vegetation_grid.ndim != 2:
+        raise ValueError("Inputs base_grid, ndsm, and vegetation_grid must all be 2D arrays.")
+
+    if base_grid.shape != ndsm.shape or base_grid.shape != vegetation_grid.shape:
+        raise ValueError("Input arrays must have matching 2D shapes.")
+
+    out_grid = (base_grid > 0).astype(np.uint8)
+
+    finite_ndsm = np.isfinite(ndsm)
+    elev_candidate = finite_ndsm & (ndsm >= 0.8) & (vegetation_grid == 0)
+
+    lbl_e, num_e = label(elev_candidate)
+    pixel_area = res * res
+    if num_e > 0:
+        objs_e = find_objects(lbl_e)
+        for e_idx, sl in enumerate(objs_e, start=1):
+            if sl is None:
+                continue
+            comp = (lbl_e[sl] == e_idx)
+            area = float(np.sum(comp)) * pixel_area
+            if area >= min_area:
+                out_grid[sl][comp] = 1
+
+    return out_grid
+
+
 def compute_3d_structural_features(
     points_xyz: np.ndarray,
     radius_m: float = 1.5,
@@ -126,13 +181,17 @@ class LidarProcessor:
         output_ndsm_path: str = None,
         resolution: float = 1.0,
         geoid_offset_m: Optional[float] = None,
-        auto_datum_adjust: bool = True
+        auto_datum_adjust: bool = True,
+        completion_policy: str = 'legacy'
     ) -> dict:
         """
         Executes multi-category extraction from LiDAR.
         Returns separated structures: main buildings, outbuildings, trees, poles.
         Handles vertical datum normalization (TransDatRO) between ellipsoidal heights and MN75 normal heights.
         """
+        if completion_policy not in ('legacy', 'exclude_known_vegetation'):
+            raise ValueError(f"Invalid completion_policy: {completion_policy}. Must be 'legacy' or 'exclude_known_vegetation'.")
+
         las = laspy.read(self.laz_path)
         x_all = np.array(las.x)
         y_all = np.array(las.y)
@@ -204,19 +263,49 @@ class LidarProcessor:
         ndsm = np.clip(dsm - dtm, 0.0, None)
 
         # 3. CATEGORIA 1 & 2: CLĂDIRI (Principale vs Anexe) din Clasa 6
-        # Dacă clasa 6 este prezentă în fișier, o folosim exclusiv
+        pts_h = z_all - dtm[row_indices, col_indices]
         has_class_6 = np.any(cls_all == 6)
         if has_class_6:
-            building_pts_mask = (cls_all == 6)
+            # Clasa 6 completata cu structuri elevate din clasa 3 (sere/acoperisuri plate) sau clasa 0 (neclasificate)
+            building_pts_mask = (cls_all == 6) | ((pts_h >= 1.0) & (cls_all == 3)) | ((pts_h >= 1.2) & (cls_all == 0))
         else:
-            # Fallback: non-ground cu înălțime > 2.5m excluzând vegetația și solul
-            pts_h = z_all - dtm[row_indices, col_indices]
-            building_pts_mask = (pts_h >= 2.5) & (~np.isin(cls_all, [2, 3, 4, 5]))
+            # Fallback: non-ground cu înălțime >= 2.0m excluzând solul și vegetația înaltă
+            building_pts_mask = (pts_h >= 2.0) & (~np.isin(cls_all, [2, 4, 5]))
 
         b_grid = np.zeros((rows, cols), dtype=np.uint8)
         b_c = col_indices[building_pts_mask]
         b_r = row_indices[building_pts_mask]
         b_grid[b_r, b_c] = 1
+
+        # Completare deterministă cu regiuni compacte din nDSM
+        if completion_policy == 'exclude_known_vegetation':
+            # Vegetatie medie si inalta (Clasa 4 si 5 ASPRS) pentru excludere la completare
+            veg_mask = np.isin(cls_all, [4, 5])
+            veg_grid = np.zeros((rows, cols), dtype=np.uint8)
+            if np.any(veg_mask):
+                veg_c = col_indices[veg_mask]
+                veg_r = row_indices[veg_mask]
+                veg_grid[veg_r, veg_c] = 1
+
+            b_grid = complete_building_grid(
+                base_grid=b_grid,
+                ndsm=ndsm,
+                vegetation_grid=veg_grid,
+                resolution=resolution,
+                min_area_m2=35.0
+            )
+        else:
+            # Legacy default: components of ndsm >= 0.8, >= 35 PIXELS, no vegetation exclusion
+            elev_candidate = (ndsm >= 0.8)
+            lbl_e, num_e = label(elev_candidate)
+            if num_e > 0:
+                objs_e = find_objects(lbl_e)
+                for e_idx, sl in enumerate(objs_e, start=1):
+                    if sl is None:
+                        continue
+                    comp = (lbl_e[sl] == e_idx)
+                    if int(np.sum(comp)) >= 35:
+                        b_grid[sl][comp] = 1
 
         lbl_b, num_b = label(b_grid)
         objs_b = find_objects(lbl_b)
@@ -346,8 +435,12 @@ class LidarProcessor:
             except Exception as e_tif:
                 print(f"[LidarProcessor] Nota: nDSM GeoTIFF nu a putut fi suprascris (posibil deschis in QGIS: {e_tif}). Continuam procesarea.")
 
+        from .sensor_review import build_class_evidence
+        class_evidence = build_class_evidence(x_all, y_all, cls_all, ndsm.shape, transform)
+
         return {
             "ndsm": ndsm,
+            "class_evidence": class_evidence,
             "transform": transform,
             "crs": "EPSG:3844",
             "resolution": resolution,
@@ -362,5 +455,6 @@ class LidarProcessor:
                 "outbuildings": outb_count,
                 "trees": len(tree_points),
                 "poles": len(pole_points)
-            }
+            },
+            "completion_policy": completion_policy
         }

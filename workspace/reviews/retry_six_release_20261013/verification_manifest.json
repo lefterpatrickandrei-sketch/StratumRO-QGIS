@@ -1,0 +1,51 @@
+{
+  "new_cases_with_hypotheses": 4,
+  "new_roof_hypotheses": 5,
+  "no_supported_new_seed": [
+    "T08",
+    "T09"
+  ],
+  "owner_previous_lot_accepted": "8/8",
+  "owner_additional_accepted": [
+    "T01",
+    "T02",
+    "T03",
+    "T04"
+  ],
+  "new_retry_verdict": "OWNER_REVIEWED",
+  "geometry_valid": true,
+  "vertices": {
+    "T05:A3": 6,
+    "T05:A1": 4,
+    "T06:A1": 4,
+    "T07:A1": 10,
+    "T10:A1": 6
+  },
+  "tests": {
+    "discovered": 373,
+    "passed": 364,
+    "skipped": 9,
+    "failed": 0,
+    "seconds": 44.447,
+    "exit_code": 0
+  },
+  "protected_hashes_unchanged": {
+    "data/ground_truth/tier1_teren.geojson": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+    "workspace/output/cladiri_stereo70.gpkg": "338feb17dc8220abd34513cf4c2b7ac709ff3adb2b7f31d956c2d4f4aaa69e39",
+    "workspace/output/cadastru_ancpi.dxf": "12777658622b0ef138254f7308cf8f8f40335c6ea6cb51b2a9deec438b692fe8"
+  },
+  "full_ortho_display_tiles": 8,
+  "full_aoi_final_extraction_run": false,
+  "owner_retry_passed": [
+    "T05",
+    "T06",
+    "T07"
+  ],
+  "owner_retry_rejected": [
+    "T08",
+    "T09"
+  ],
+  "owner_retry_partial": [
+    "T10"
+  ]
+}

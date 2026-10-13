@@ -208,11 +208,12 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
         h_dist_mrr = poly.hausdorff_distance(mrr)
 
         # Forțăm MRR dacă forma este convexă și rectilinie (fără decroșuri sau aripi)
-        reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.50)
+        reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.35)
         if reflex_corners == 0:
-            if (solidity >= 0.88 and rect_ratio >= 0.85) or \
-               (solidity >= 0.86 and rect_ratio >= 0.82) or \
-               (solidity >= 0.94 and rect_ratio >= 0.92 and h_dist_mrr <= 0.40):
+            if (solidity >= 0.84 and rect_ratio >= 0.78) or \
+               (solidity >= 0.82 and rect_ratio >= 0.75 and h_dist_mrr <= 2.5) or \
+               (solidity >= 0.88 and rect_ratio >= 0.82) or \
+               (solidity >= 0.94 and rect_ratio >= 0.90):
                 return mrr
 
     # 2. Utilizare Building-Regulariser (dacă este instalat și forma nu este concavă)
@@ -266,8 +267,8 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     origin = poly.centroid
     rot_poly = rotate(poly, -dom_angle, origin=origin)
 
-    # Conservăm decroșurile mici prin toleranță adaptivă
-    simp_rot = rot_poly.simplify(min(tolerance, 0.20), preserve_topology=True)
+    # Conservăm decroșurile mici prin toleranță adaptivă și eliminăm dinții de pixel
+    simp_rot = rot_poly.simplify(min(tolerance, 0.25), preserve_topology=True)
     if not simp_rot.is_valid:
         simp_rot = rot_poly
 
@@ -391,11 +392,14 @@ class CadastralVectorizer:
         if poly is None or poly.area < 5.0:
             return poly
 
-        # 1. Eliminare colți paraziți
+        # 1. Eliminare colți paraziți și pre-simplificare zimți de pixel
         p_no_spikes = remove_acute_spikes(poly, min_angle_deg=40.0)
+        p_simp = p_no_spikes.simplify(0.35, preserve_topology=True)
+        if not p_simp.is_valid or p_simp.is_empty:
+            p_simp = p_no_spikes
 
         # 2. Ortogonalizare Manhattan
-        p_ortho = orthogonalize_cad(p_no_spikes, tolerance=tolerance)
+        p_ortho = orthogonalize_cad(p_simp, tolerance=tolerance)
         p_ortho = _extract_largest_polygon(p_ortho) or p_ortho
 
         # 3. Îndepărtare noduri coliniare reziduale
@@ -413,12 +417,14 @@ class CadastralVectorizer:
                 d1 = math.hypot(v1[0], v1[1])
                 d2 = math.hypot(v2[0], v2[1])
 
-                if d1 < 0.15 and d2 < 0.15:
+                if d1 < 0.20 and d2 < 0.20:
                     continue  # micro-spike parazit sub-decimetric
 
                 cross = v1[0] * v2[1] - v1[1] * v2[0]
-                if abs(cross) / (d1 * d2 + 1e-6) < 0.08:
-                    continue  # Nod coliniar, eliminat
+                dot = v1[0] * v2[0] + v1[1] * v2[1]
+                ang = abs(math.degrees(math.atan2(cross, dot)))
+                if ang < 12.0:
+                    continue  # Nod coliniar pe fatada dreapta
                 clean_pts.append(curr_p)
 
             if len(clean_pts) >= 4:
@@ -488,7 +494,8 @@ class CadastralVectorizer:
         use_quality_v2: bool = True,
         ndsm_array: Optional[np.ndarray] = None,
         ndsm_transform: Optional[rasterio.Affine] = None,
-        record_intermediate_stages: bool = False
+        record_intermediate_stages: bool = False,
+        merge_min_overlap_ratio: float = 0.50
     ) -> List[Dict[str, Any]]:
         """
         Takes raw validated outputs from SAM2BuildingSegmenter,
@@ -500,6 +507,9 @@ class CadastralVectorizer:
         """
         import scipy.sparse as sp
         from scipy.sparse.csgraph import connected_components
+
+        if not 0.0 <= merge_min_overlap_ratio <= 1.0:
+            raise ValueError("merge_min_overlap_ratio must be between 0 and 1.")
 
         # 1. Filtrare inițială a geometriilor valide
         valid_items = []
@@ -521,12 +531,18 @@ class CadastralVectorizer:
             for j in range(i + 1, n):
                 if polys[i].intersects(polys[j]):
                     inter = polys[i].intersection(polys[j])
-                    if inter.area > 0.05:
+                    # A thin overlap between different buildings is not evidence
+                    # of a shared object. Only consolidate substantial duplicate
+                    # footprint support; resolve remaining overlaps later.
+                    overlap_ratio = inter.area / min(polys[i].area, polys[j].area)
+                    if inter.area > 0.05 and overlap_ratio >= merge_min_overlap_ratio:
                         adj[i, j] = True
                         adj[j, i] = True
 
         graph = sp.csr_matrix(adj)
         n_components, labels = connected_components(csgraph=graph, directed=False)
+
+        from stratum_ro.geometry_utils import resolve_multipart_geometry
 
         merged_candidates = []
         for comp_id in range(n_components):
@@ -544,10 +560,11 @@ class CadastralVectorizer:
             else:
                 cluster_polys = [polys[idx] for idx in indices]
                 cluster_items = [valid_items[idx] for idx in indices]
-                # Punte structurală morfologică: buffer 0.75m pentru închiderea fantelor <= 1.5m, union, buffer -0.75m
-                u = unary_union([p.buffer(0.75) for p in cluster_polys]).buffer(-0.75)
+                # Punte structurală morfologică: buffer 0.80m pentru închiderea fantelor <= 1.6m, union, buffer -0.80m
+                u = unary_union([p.buffer(0.80) for p in cluster_polys]).buffer(-0.80)
                 if not u.is_valid:
                     u = make_valid(u)
+                u = resolve_multipart_geometry(u, min_component_area_m2=8.0, bridge_max_distance_m=1.0) or u
                 best_score = max(float(it.get("sam2_score", 0.0)) for it in cluster_items)
                 best_mean_h = np.mean([float(it.get("mean_h", it.get("inaltime_med_m", 4.0))) for it in cluster_items])
                 best_max_h = max(float(it.get("max_h", it.get("inaltime_max_m", 5.5))) for it in cluster_items)
@@ -587,8 +604,11 @@ class CadastralVectorizer:
                 p = cand["geometry"]
                 p_clean = remove_acute_spikes(p, min_angle_deg=40.0)
                 v2_res = self.reconstructor_v2.classify_and_reconstruct(p_clean)
+                final_p = v2_res["geometry"]
+                if final_p is not None and final_p.is_valid and len(final_p.exterior.coords) > 5:
+                    final_p = self.clean_cad_polygon(final_p, tolerance=tolerance)
                 cand_copy = dict(cand)
-                cand_copy["geometry"] = v2_res["geometry"]
+                cand_copy["geometry"] = final_p if (final_p is not None and final_p.is_valid and final_p.area >= 8.0) else p
                 cand_copy["clasa_forma"] = v2_res["clasa_forma"]
                 regularized_items.append(cand_copy)
         elif HAS_REGULARISER and merged_candidates:
@@ -664,9 +684,11 @@ class CadastralVectorizer:
             if not is_dup and cur_p is not None and cur_p.is_valid and cur_p.area >= 8.0:
                 p_final = remove_acute_spikes(cur_p, min_angle_deg=40.0)
                 # Re-regularizare dacă tăierea a creat muchii neregulate
-                if len(p_final.exterior.coords) > 6:
+                if len(p_final.exterior.coords) > 5:
                     reg_res = self.reconstructor_v2.classify_and_reconstruct(p_final)
                     p_final = reg_res["geometry"]
+                    if p_final is not None and p_final.is_valid and len(p_final.exterior.coords) > 5:
+                        p_final = self.clean_cad_polygon(p_final, tolerance=tolerance)
                 if p_final.is_valid and p_final.area >= 8.0:
                     item_final = dict(item)
                     item_final["geometry"] = p_final
@@ -966,41 +988,84 @@ class CadastralVectorizer:
         """
         os.makedirs(os.path.dirname(os.path.abspath(output_gpkg_path)), exist_ok=True)
 
-        all_sol_items = []
+        # Check existing layers in GPKG if it already exists
+        existing_layers = set()
+        if os.path.exists(output_gpkg_path):
+            try:
+                existing_layers = set(gpd.list_layers(output_gpkg_path)["name"])
+            except Exception:
+                existing_layers = set()
+
+        has_explicit_sol = "CLADIRI_SOL_ANCPI" in categories_dict
+        explicit_sol_items = categories_dict.get("CLADIRI_SOL_ANCPI", [])
+
+        # Write all layers except CLADIRI_SOL_ANCPI first (or write explicit CLADIRI_SOL_ANCPI as provided)
+        auto_sol_map = {}  # building_id -> feature dict
+
+        # Validate derived identities before writing any layer; a conflict must
+        # not leave a partially overwritten GeoPackage.
+        if not has_explicit_sol:
+            for items in categories_dict.values():
+                for it in items or []:
+                    g_sol = it.get("geometry_sol")
+                    if g_sol is None:
+                        continue
+                    b_id = it.get("id")
+                    key = ("id", b_id) if b_id is not None else ("geometry", g_sol.wkb_hex)
+                    if key in auto_sol_map:
+                        if not auto_sol_map[key]["geometry"].equals(g_sol):
+                            raise ValueError(f"Conflicting ground footprints encountered for building ID {b_id} across layers.")
+                    else:
+                        it_s = dict(it)
+                        it_s["geometry"] = g_sol
+                        it_s["category"] = "CLADIRE_SOL_ANCPI"
+                        it_s["area_m2"] = it.get("area_sol_m2", it.get("area_m2"))
+                        it_s.pop("geometry_sol", None)
+                        auto_sol_map[key] = it_s
+
         for layer_name, items in categories_dict.items():
-            if not items:
+            if layer_name == "CLADIRI_SOL_ANCPI":
                 continue
 
-            for it in items:
-                if "geometry_sol" in it and it["geometry_sol"] is not None:
-                    it_s = dict(it)
-                    it_s["geometry"] = it["geometry_sol"]
-                    it_s["category"] = "CLADIRE_SOL_ANCPI"
-                    it_s["area_m2"] = it.get("area_sol_m2", it.get("area_m2"))
-                    if "geometry_sol" in it_s:
-                        del it_s["geometry_sol"]
-                    all_sol_items.append(it_s)
-
             clean_items = []
-            for it in items:
+            for it in (items or []):
                 it_c = dict(it)
-                if "geometry_sol" in it_c:
-                    del it_c["geometry_sol"]
+                it_c.pop("geometry_sol", None)
                 clean_items.append(it_c)
 
-            gdf = gpd.GeoDataFrame(clean_items, crs=self.crs)
-            if "crs" in gdf.columns:
-                gdf = gdf.drop(columns=["crs"])
+            if clean_items:
+                gdf = gpd.GeoDataFrame(clean_items, crs=self.crs)
+                if "crs" in gdf.columns:
+                    gdf = gdf.drop(columns=["crs"])
+                gdf.to_file(output_gpkg_path, layer=layer_name, driver="GPKG", mode="w")
+                existing_layers.add(layer_name)
 
-            gdf.to_file(output_gpkg_path, layer=layer_name, driver="GPKG")
-
-        if all_sol_items:
+        # Handle CLADIRI_SOL_ANCPI
+        if has_explicit_sol:
+            if explicit_sol_items:
+                clean_sol = []
+                for it in explicit_sol_items:
+                    it_c = dict(it)
+                    it_c.pop("geometry_sol", None)
+                    clean_sol.append(it_c)
+                gdf_sol = gpd.GeoDataFrame(clean_sol, crs=self.crs)
+                if "crs" in gdf_sol.columns:
+                    gdf_sol = gdf_sol.drop(columns=["crs"])
+                gdf_sol.to_file(output_gpkg_path, layer="CLADIRI_SOL_ANCPI", driver="GPKG", mode="w")
+                existing_layers.add("CLADIRI_SOL_ANCPI")
+            elif "CLADIRI_SOL_ANCPI" in existing_layers:
+                empty = gpd.GeoDataFrame({"geometry": []}, geometry="geometry", crs=self.crs)
+                empty.to_file(output_gpkg_path, layer="CLADIRI_SOL_ANCPI", driver="GPKG", mode="w")
+        elif auto_sol_map:
+            all_sol_items = list(auto_sol_map.values())
             gdf_sol = gpd.GeoDataFrame(all_sol_items, crs=self.crs)
             if "crs" in gdf_sol.columns:
                 gdf_sol = gdf_sol.drop(columns=["crs"])
-            gdf_sol.to_file(output_gpkg_path, layer="CLADIRI_SOL_ANCPI", driver="GPKG")
+            gdf_sol.to_file(output_gpkg_path, layer="CLADIRI_SOL_ANCPI", driver="GPKG", mode="w")
+            existing_layers.add("CLADIRI_SOL_ANCPI")
 
         return output_gpkg_path
+
 
     def save_to_geopackage(
         self,

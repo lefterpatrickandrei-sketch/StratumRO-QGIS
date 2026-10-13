@@ -1,0 +1,3 @@
+# Current inspection
+
+Open inspectie_completa_8_orto_loturi.qgs for all8 orthophotos and labelled cases. The new extraction is still a targeted diagnostic, not a full-AOI rerun. Start with ../../../docs/STRATUMRO_SIX_RETRY_HANDOFF_2026-10-13.md. lot2_case_correspondence.json links the SAME T01-T10 source candidates to their current results. six_before_after.png shows the rejected six. Latest owner verdict for six_before_after.png: T05/T06/T07 accepted, T08/T09 rejected, T10 partially accepted. owner_feedback.json overrides historical PENDING fields in inference artifacts. implementation_checkpoint.patch is a review/recovery snapshot, not a commit or a patch to apply over this existing dirty checkout.
