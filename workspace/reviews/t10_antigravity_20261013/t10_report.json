@@ -37,7 +37,13 @@
       "building_fraction": 0.73523
     }
   ],
-  "outcome": "RECTIFIED_HYPOTHESES_PENDING_REVIEW",
-  "status": "PENDING_OWNER_REVIEW",
+  "outcome": "RECTIFIED_HYPOTHESES_ACCEPTED",
+  "status": "ACCEPTED_BY_OWNER",
+  "owner_feedback": {
+    "verdict": "ACCEPTED",
+    "owner_quote": "Conturul nou este bun; cele două clădiri trebuie păstrate ca obiecte separate.",
+    "invariant": "Păstrarea corpurilor ca obiecte spațiale separate (T10 acoperiș țiglă și corpul alăturat vestic acoperiș gri nu se unesc niciodată)",
+    "timestamp": "2026-10-13T16:58:56+03:00"
+  },
   "retained_count": 1
 }

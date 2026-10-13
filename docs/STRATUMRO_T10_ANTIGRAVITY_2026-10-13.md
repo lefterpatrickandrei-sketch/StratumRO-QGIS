@@ -3,7 +3,7 @@
 **Dată:** 2026-10-13  
 **Autor:** Antigravity (Primary Development & Execution Engine)  
 **Status Implementare:** `IMPLEMENTED_AND_EXECUTED` (Executat cu succes pe date locale: SAM2, ortofoto nativ și nor de puncte LiDAR).  
-**Status Ipoteză T10:** `PENDING_OWNER_REVIEW` (Conform protocolului, nicio geometrie nouă nu este declarată acceptată fără verdictul proprietarului).  
+**Status Ipoteză T10:** `ACCEPTED_BY_OWNER` (**ACCEPTAT DE PROPRIETAR** la 2026-10-13 16:58: *"Conturul nou este bun; cele două clădiri trebuie păstrate ca obiecte separate."*).  
 
 ---
 
@@ -103,12 +103,20 @@ Directorul de livrare dedicat: [`workspace/reviews/t10_antigravity_20261013/`](f
 
 ---
 
-## 6. Limite Rămase și Recomandări
+## 6. Verdictul Final al Proprietarului și Invarianți Arhitecturali
 
-1. **Contur de streașină vs Amprentă la sol:**
-   - Geometria calculată urmărește marginea vizibilă a acoperișului în ortofotoplan și LiDAR. Pentru o amprentă la sol cadastrală, dacă este cerută, se aplică o retragere sistematică a streșinii (tipic 0.3–0.5 m).
-2. **Statutul livrabilului:**
-   - Rămâne strict `PENDING_OWNER_REVIEW` până la confirmarea vizuală de către utilizator. Nu a fost suprascris niciun strat de bază din proiectul principal.
+1. **Verdictul Proprietarului:**
+   - **CONFIRMAT ȘI ACCEPTAT:** Proprietarul a validat vizual rezultatul la 2026-10-13 16:58:
+     > *"Conturul nou este bun; cele două clădiri trebuie păstrate ca obiecte separate."*
+   - Cazul T10 (`REF_TIER1_006:B00011`) trece din starea `PARTIAL` / `PENDING` în starea autoritativă **`ACCEPTED_BY_OWNER`**.
+   - Cazul T10 este acum parte a grupului de cazuri acceptate: **T01, T02, T03, T04, T05, T06, T07, T10**. Cazurile T08 și T09 rămân respinse/ne-recuperate.
+
+2. **Invariant Obligatoriu de Separare Spațială:**
+   - **Regulă strictă de modelare:** Clădirea T10 (acoperiș țiglă ceramică roșiatică, 143.8 m²) și clădirea joasă alăturată la vest (acoperiș gri metalic/carton bituminos) **trebuie păstrate obligatoriu ca două obiecte cadastrale distincte**.
+   - Orice tentativă automată sau viitor pipeline de a le fuziona pe baza adiacenței de cornișă este **interzisă**.
+
+3. **Geometrie de streașină vs Amprentă la sol:**
+   - Geometria calculată și acceptată urmărește conturul exterior al acoperișului. Pentru planurile cadastrale PAD care impun amprenta la sol a zidurilor, se aplică retragerea standard a streșinii (tipic 0.3–0.5 m) fără a afecta identitatea separată a corpurilor.
 
 ---
 

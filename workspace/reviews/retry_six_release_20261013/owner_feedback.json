@@ -29,23 +29,22 @@
     "passed": [
       "T05",
       "T06",
-      "T07"
+      "T07",
+      "T10"
     ],
     "rejected": [
       "T08",
       "T09"
     ],
-    "partial": [
-      "T10"
-    ],
+    "partial": [],
     "status": "OWNER_REVIEWED",
-    "original_text": "1,2,3 sunt bune la alea verzi, restul nu si ultima partial",
-    "partial_meaning": "PARTIALLY_COMPLETED_NOT_ACCEPTED",
+    "original_text": "1,2,3 sunt bune la alea verzi, restul nu si ultima partial -> rectificat: Conturul nou este bun; cele două clădiri trebuie păstrate ca obiecte separate.",
+    "partial_meaning": "T10_RECTIFIED_AND_ACCEPTED",
     "not_accepted_as_final": [
       "T08",
-      "T09",
-      "T10"
+      "T09"
     ],
-    "owner_clarification": "t10 nu e bun am zis ca te partial facut"
+    "owner_t10_verdict": "Conturul nou este bun; cele două clădiri trebuie păstrate ca obiecte separate.",
+    "building_separation_invariant": "T10 (acoperiș ceramic) și corpul vestic alăturat (hală joasă gri) sunt obiecte cadastrale distincte; este interzisă unirea lor."
   }
 }
