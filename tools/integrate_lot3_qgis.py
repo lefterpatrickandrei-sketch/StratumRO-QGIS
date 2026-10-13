@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from tools.qgis_mcp_query import send_qgis_mcp
+from stratum_ro.evaluation_preflight import checked_qgis_result
 
 PYQGIS_SCRIPT = r"""
 import traceback
@@ -31,6 +32,11 @@ try:
 
     p = QgsProject.instance()
     root = p.layerTreeRoot()
+    expected_project = 'C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs'
+    if p.fileName().replace('\\', '/').lower() != expected_project.lower():
+        raise RuntimeError('Wrong shared project; integration stopped')
+    if p.isDirty() or any(getattr(l, 'isEditable', lambda: False)() for l in p.mapLayers().values()):
+        raise RuntimeError('Unsaved project or editable layers; reconcile user changes first')
 
     grp_name = 'LOT3_T11_T20_IN_VERIFICARE'
     
@@ -145,8 +151,12 @@ try:
         iface.mapCanvas().setExtent(ext)
         iface.mapCanvas().refresh()
 
-    p.write()
-    print("PYQGIS_SUCCESS: Integrated LOT3 group, styled layers, zoomed canvas, saved project.")
+    for layer, count in ((lyr_corp, 3), (lyr_nerec, 8), (lyr_sel, 10)):
+        if not layer.isValid() or layer.featureCount() != count:
+            raise RuntimeError('Lot3 baseline layer missing or unexpected count; not integrated')
+    if not p.write():
+        raise RuntimeError('Project save failed')
+    print('PYQGIS_SUCCESS')
 except Exception as e:
     print("PYQGIS_EXCEPTION:", traceback.format_exc())
 """
@@ -154,6 +164,7 @@ except Exception as e:
 def main():
     print("1. Sending Lot 3 integration script to QGIS MCP...")
     res = send_qgis_mcp("execute_code", {"code": PYQGIS_SCRIPT, "timeout": 30.0})
+    checked_qgis_result(res, 'PYQGIS_SUCCESS')
     stdout = res.get("result", {}).get("stdout", "")
     print("STDOUT:", stdout)
 

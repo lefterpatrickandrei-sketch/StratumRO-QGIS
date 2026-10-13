@@ -9,6 +9,7 @@ import sys
 import json
 import time
 import math
+import argparse
 import rasterio
 import numpy as np
 from rasterio.windows import from_bounds
@@ -25,6 +26,7 @@ sys.path.insert(0, str(ROOT))
 from stratum_ro.roof_retry import retry_roof_geometry
 from stratum_ro.sam2_engine import SAM2BuildingSegmenter
 from stratum_ro.lidar_processor import LidarProcessor
+from stratum_ro.evaluation_preflight import validate_selection, require_ready, sha256_file
 
 OUT_DIR = ROOT / 'workspace/reviews/lot3_20261013'
 TILE_DIR = ROOT / 'workspace/reviews/prompt_recovery_20261013/full_aoi'
@@ -65,14 +67,31 @@ def draw_panel(ax, src, extent_box, geoms_info, title):
 
 
 def main():
+    global OUT_DIR
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--manifest', type=Path, default=OUT_DIR / 'selection_manifest.json')
+    parser.add_argument('--output-dir', type=Path)
+    parser.add_argument('--preflight-only', action='store_true')
+    args = parser.parse_args()
     t0 = time.time()
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    manifest_path = OUT_DIR / 'selection_manifest.json'
+    manifest_path = args.manifest.resolve()
     if not manifest_path.exists():
         raise FileNotFoundError(f"Selection manifest not found: {manifest_path}")
 
     with open(manifest_path, 'r', encoding='utf-8') as f:
         manifest = json.load(f)
+
+    preflight = validate_selection(manifest, manifest_dir=manifest_path.parent, tile_dir=TILE_DIR)
+    print(json.dumps(preflight, indent=2, ensure_ascii=False))
+    require_ready(preflight)
+    if args.preflight_only:
+        return
+    if args.output_dir is None:
+        raise ValueError('--output-dir must name a NEW directory; historical evidence is immutable')
+    OUT_DIR = args.output_dir.resolve()
+    OUT_DIR.mkdir(parents=True, exist_ok=False)
+    # Bind this run to the reviewed selection, and disclose its actual entry point.
+    (OUT_DIR / 'selection_manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
 
     print(f"[LOT3] Starting evaluation for {len(manifest['cases'])} cases: T11-T20...")
     print(f"[LOT3] Loading LiDAR: {LAZ_PATH} ...")
@@ -296,6 +315,9 @@ def main():
 
     report = {
         'lot': 3,
+        'execution_scope': 'LOCAL_RETRY_ONLY_NOT_FULL_PRODUCTION_PIPELINE',
+        'selection_manifest_sha256': sha256_file(manifest_path),
+        'preflight': preflight,
         'date': '2026-10-13',
         'execution_duration_s': round(time.time() - t0, 1),
         'total_cases_evaluated': len(all_case_results),

@@ -2,6 +2,8 @@
 
 Scop: aceeași metodă de lucru, criterii verificabile și continuitate între Codex, Antigravity și ceilalți agenți. Nu promite rezultate identice de la modele diferite. Obligă agenții să folosească aceeași evidență, să explice diferențele și să respecte verdictul proprietarului.
 
+**Actualizare executabilă:** Citiți `docs/STRATUMRO_EVALUATION_GATES.md`. Selecțiile de lot trebuie să treacă `validate_selection` și `require_ready` înainte de inferență. Lotul3 inițial rămâne dovadă istorică neacceptată; corectați transparent țintele greșite. Starea actuală T10 este ACCEPTAT și integrat; mențiunea de mai jos despre T10 parțial este istorică. Verificările automate nu înlocuiesc inspecția vizuală sau verdictul proprietarului.
+
 ## 1. Obiectivul de optimizare
 
 Produceți **corpul corect, conturul corect și forma simplă susținută de observații**. Urmăriți separat identitatea obiectului, delimitarea, geometria și starea de verificare. Un scor SAM ridicat, un poligon valid sau un dreptunghi cu4 colțuri nu demonstrează că rezultatul este corect.

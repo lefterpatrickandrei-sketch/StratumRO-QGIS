@@ -2,6 +2,8 @@
 
 ## Required shared decision protocol
 
+**Executable evaluation prerequisites (latest correction):** Read `docs/STRATUMRO_EVALUATION_GATES.md` before any new/revised building lot. Use `stratum_ro/evaluation_preflight.py` before inference; `tools/run_lot3_evaluation.py` enforces it. Legacy Lot3 selection is blocked pending documented visual review. Preserve initial evidence. T14/T20 selected the wrong surfaces; T12:C1 includes pavement, T12:C2 needs review, T17 is partial. Historical descriptions of clean extraction and the delivered overview being verified are superseded. All Lot3 remains unaccepted. This is an input/integration gate, not a completed fix of segmentation or a full production evaluation.
+
 Before diagnosing or changing roof/building extraction, every agent must read `docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md` and the latest owner feedback. Follow its object identity → sensor evidence → supported simple geometry → tests → native visual inspection → human verdict → Git handoff workflow. Model scores and geometric validity never substitute for the owner's explicit acceptance. Historical continuation entries below are superseded by the newest feedback. T10 is now ACCEPTED by the owner; T08/T09 remain rejected/unrecovered. This shared protocol records observable decision criteria, not an assumption that different agents have identical internal reasoning or access to other conversations.
 
 ## Latest continuation entry — 2026-10-13, Lotul 3 (T11–T20) în verificare și integrat în QGIS
