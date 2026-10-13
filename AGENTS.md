@@ -1,5 +1,9 @@
 # AGENTS.md — StratumRO Engineering & Evidence-First Governance Guide
 
+## Required shared decision protocol
+
+Before diagnosing or changing roof/building extraction, every agent must read `docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md` and the latest owner feedback. Follow its object identity → sensor evidence → supported simple geometry → tests → native visual inspection → human verdict → Git handoff workflow. Model scores and geometric validity never substitute for the owner's explicit acceptance. Historical continuation entries below are superseded by the newest feedback. T10 is partially completed and NOT accepted as final; T08/T09 remain rejected/unrecovered. This shared protocol records observable decision criteria, not an assumption that different agents have identical internal reasoning or access to other conversations.
+
 ## Latest continuation entry — 2026-10-13, simple roof rectification
 
 **LATEST HUMAN REVIEW / GIT CHECKPOINT:** User explicitly identifies `six_before_after.png`: T05/T06/T07 accepted, T08/T09 rejected, T10 partially completed, NOT accepted as final. Earlier pending verdicts are superseded by `workspace/reviews/retry_six_release_20261013/owner_feedback.json` and `docs/STRATUMRO_GIT_CHECKPOINT_2026-10-13.md`. Preserve accepted geometries; T10 remains unfinished, T08/T09 have no recovered supported roof (tiny structure at T08 remains a recall issue). The user requested a local Git checkpoint of the implementation, tests, handoff and selected visual evidence. Purple is rejected historical raster outline, never cadastral reference or final corrected geometry. Complete-ortho project has8tiles; the new extraction still has not run over all8tiles.
