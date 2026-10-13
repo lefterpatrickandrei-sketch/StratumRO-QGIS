@@ -1,6 +1,6 @@
 # StratumRO — reluarea celor șase cazuri respinse
 
-> Verdict uman ulterior, identificat explicit de proprietar ca `six_before_after.png`: **T05/T06/T07 acceptate; T08/T09 respinse; T10 parțial acceptat**. Stările PENDING din artefactele de inferență sunt istorice; sidecarul `owner_feedback.json` este autoritativ pentru verdict. Progresul este inclus în checkpointul Git descris în [STRATUMRO_GIT_CHECKPOINT_2026-10-13.md](STRATUMRO_GIT_CHECKPOINT_2026-10-13.md).
+> Verdict uman ulterior, identificat explicit de proprietar ca `six_before_after.png`: **T05/T06/T07 acceptate; T08/T09 respinse; T10 parțial executat, neacceptat ca rezultat final**. Stările PENDING din artefactele de inferență sunt istorice; sidecarul `owner_feedback.json` este autoritativ pentru verdict. Progresul este inclus în checkpointul Git descris în [STRATUMRO_GIT_CHECKPOINT_2026-10-13.md](STRATUMRO_GIT_CHECKPOINT_2026-10-13.md).
 
 ## Verdictul proprietarului și directorul curent
 

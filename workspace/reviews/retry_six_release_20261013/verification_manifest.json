@@ -47,5 +47,11 @@
   ],
   "owner_retry_partial": [
     "T10"
+  ],
+  "owner_retry_partial_meaning": "T10_PARTIALLY_COMPLETED_NOT_ACCEPTED",
+  "owner_retry_not_accepted_as_final": [
+    "T08",
+    "T09",
+    "T10"
   ]
 }

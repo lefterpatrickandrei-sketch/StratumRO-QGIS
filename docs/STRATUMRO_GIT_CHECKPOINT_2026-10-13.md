@@ -13,7 +13,7 @@ Proprietarul a identificat explicit planșa `six_before_after.png`, în ordinea 
 | 3 | T07 | ACCEPTAT |
 | 4 | T08 | RESPINS |
 | 5 | T09 | RESPINS |
-| 6 | T10 | PARȚIAL ACCEPTAT; rămâne de corectat |
+| 6 | T10 | PARȚIAL EXECUTAT, NEACCEPTAT CA REZULTAT FINAL |
 
 Primul lot rămâne8/8 acceptat; T01–T04 din lotul suplimentar rămân acceptate. Acestea sunt verdicte vizuale asupra unor scene de dezvoltare, nu precizie cadastrală sau generalizare. T08/T09 nu au primit contur nou susținut; mica structură la marginea T08 rămâne nerecuperată. Niciun procent de clădiri corecte nu se deduce din aceste scene care pot conține mai multe corpuri.
 

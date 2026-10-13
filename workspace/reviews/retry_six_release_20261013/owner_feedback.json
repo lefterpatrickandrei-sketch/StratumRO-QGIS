@@ -39,6 +39,13 @@
       "T10"
     ],
     "status": "OWNER_REVIEWED",
-    "original_text": "1,2,3 sunt bune la alea verzi, restul nu si ultima partial"
+    "original_text": "1,2,3 sunt bune la alea verzi, restul nu si ultima partial",
+    "partial_meaning": "PARTIALLY_COMPLETED_NOT_ACCEPTED",
+    "not_accepted_as_final": [
+      "T08",
+      "T09",
+      "T10"
+    ],
+    "owner_clarification": "t10 nu e bun am zis ca te partial facut"
   }
 }
