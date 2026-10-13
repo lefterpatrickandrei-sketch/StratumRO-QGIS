@@ -44,7 +44,8 @@ def roof_retry_prompts(geometry,image_rgb,transform,lidar_data,min_seed_area_m2=
     red=(r-g>20)&(r-b>15)
     neutral=(saturation<=.30)&(maximum>=60)
     vegetation=(saturation>.25)&(g>=.8*r)&(g>1.12*b)
-    strong=search&valid&np.isfinite(height)&(height>=2)&(support>0)&~vegetation&(red|neutral)
+    elevated=(height>=2.0)&(support>0)
+    strong=search&valid&np.isfinite(height)&elevated&~vegetation&(red|neutral)
     # Roof-colour islands may have sparse returns; closing only bridges .3m gaps.
     step=math.sqrt(abs(tr.determinant));radius=max(1,int(round(.15/step)))
     closed=binary_closing(np.pad(strong,radius),structure=np.ones((2*radius+1,2*radius+1)))[radius:-radius,radius:-radius]
@@ -99,13 +100,14 @@ def trim_retry_roof_surface(geometry,image_rgb,transform,lidar_data,seed):
     brown=(r>1.08*g)&(g>1.04*b)&(r-b>18)
     reddish=(r-g>14)&(r-b>14)&(r>55)
     neutral=(sat<=.30)&(maximum>=50)
-    spectral=(brown|reddish|(neutral&(counts>0))) if seed['red_fraction']>=.50 else neutral
     local_h=seed.get('local_h',seed['mean_h'])
+    neutral_roof=neutral&((counts>0)|(h>=max(2.5,min(local_h,seed['mean_h'])-1.5)))
+    spectral=(brown|reddish|(neutral&(counts>0))) if seed['red_fraction']>=.50 else (brown|reddish|neutral_roof)
     # A coherent height component is more reliable than a single locally low
     # return. Local height is needed when a component mixes low and high roofs.
     if seed.get('max_h',float('inf'))-seed['mean_h']<=2.:
         local_h=seed['mean_h']
-    floor=max(2.,min(local_h,seed['mean_h'])-2.5)
+    floor=max(2.0,min(local_h,seed['mean_h'])-2.5)
     high_overhang=(seed['red_fraction']>=.50)&(brown|reddish)&~vegetation
     height_ok=(h>=floor)&((h<=local_h+4.)|high_overhang)
     foreground=inside&valid&np.isfinite(h)&height_ok&~vegetation&spectral
@@ -149,8 +151,9 @@ def retry_roof_geometry(geometry,image_rgb,transform,lidar_data,segmenter):
         answer['status']='NEEDS_COMPLETE_IMAGE_COVERAGE';return answer
     usable=[]
     for index,seed in enumerate(prompts['seeds'],1):
+        lidar_area=seed.get('area_m2',geometry.area)
         result=segmenter.segment_candidate(*bounds,mean_h=seed['mean_h'],max_h=seed['max_h'],
-            lidar_area=geometry.area,internal_pts_geo=[seed['point']],height_min_threshold=2.)
+            lidar_area=lidar_area,internal_pts_geo=[seed['point']],height_min_threshold=2.)
         optical=result.get('geometry')
         attempt={'index':index,'point':seed['point'],'sam2_score':result.get('sam2_score',0),
                  'status':result['status'],'raw_optical':optical}
@@ -168,7 +171,8 @@ def retry_roof_geometry(geometry,image_rgb,transform,lidar_data,segmenter):
                        'vertices':len(simple.exterior.coords)-1,'vegetation_fraction':vegetation,
                        'building_fraction':evidence['qa_building_fraction']}
             attempt.update(candidate)
-            if info['method']!='NEEDS_REVIEW' and vegetation<.35 and evidence['qa_building_fraction']>.15:
+            lidar_confirmed=evidence['qa_building_fraction']>.15 or seed.get('mean_h',0.)>=2.5
+            if info['method']!='NEEDS_REVIEW' and vegetation<.35 and lidar_confirmed:
                 usable.append(candidate)
         answer['attempts'].append(attempt)
     for candidate in sorted(usable,key=lambda r:(-r['sam2_score'],-r['geometry'].area)):

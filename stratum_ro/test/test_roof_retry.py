@@ -256,6 +256,65 @@ class TestRoofRetryPrompts(unittest.TestCase):
         cand = result['candidates'][0]
         self.assertEqual(cand['vertices'], 6, "True L-shape must retain 6 vertices, never forced to rectangle")
         self.assertGreater(cand['simple_support'], 0.90)
+ 
+    def test_neutral_elevated_roof_requires_class6_support(self):
+        """Elevated neutral roof requires class 6 support to produce a seed, returning NO_SUPPORTED_ROOF_SEED otherwise."""
+        rgb = np.full((self.height, self.width, 3), 140, dtype=np.uint8)  # neutral
+        ndsm = np.zeros((self.height, self.width), dtype=np.float32)
+        ndsm[25:35, 25:35] = 5.0  # height = 5.0m
+        bld = np.zeros((self.height, self.width), dtype=np.float32)  # zero class 6 returns
+
+        lidar = self._build_lidar_data(ndsm=ndsm, building=bld)
+        res = roof_retry_prompts(self.child_geom, rgb, self.transform, lidar, min_seed_area_m2=8.0)
+        self.assertEqual(res['status'], 'NO_SUPPORTED_ROOF_SEED')
+        self.assertEqual(len(res['seeds']), 0)
+
+    def test_trim_retry_roof_surface_excludes_neutral_flat_pavement(self):
+        """trim_retry_roof_surface excludes neutral ground pavement (h < 2.0m, counts=0)."""
+        from stratum_ro.roof_retry import trim_retry_roof_surface
+        # Roof is at rows 20:30, cols 20:40 (h=5m, neutral gray 140)
+        # Pavement is at rows 30:40, cols 20:40 (h=0.5m, neutral gray 140)
+        rgb = np.full((self.height, self.width, 3), 140, dtype=np.uint8)
+        ndsm = np.zeros((self.height, self.width), dtype=np.float32)
+        ndsm[20:30, 20:40] = 5.0  # roof
+        ndsm[30:40, 20:40] = 0.5  # ground pavement / courtyard
+        bld = np.zeros((self.height, self.width), dtype=np.float32)
+        lidar = self._build_lidar_data(ndsm=ndsm, building=bld)
+
+        seed = {'point': (30.0, 75.0), 'red_fraction': 0.0, 'mean_h': 5.0, 'local_h': 5.0, 'max_h': 5.5, 'area_m2': 200.0}
+        # Polygon covers both roof and pavement:
+        poly = Polygon([(20.0, 60.0), (40.0, 60.0), (40.0, 80.0), (20.0, 80.0)])
+        trimmed, color_status = trim_retry_roof_surface(poly, rgb, self.transform, lidar, seed)
+
+        self.assertEqual(color_status, 'LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE')
+        # Pavement below row 30 (which corresponds to y < 70 in Stereo 70) must be excluded:
+        self.assertGreaterEqual(trimmed.bounds[1], 69.5, "Flat pavement below y=70 must be trimmed out")
+
+    def test_retry_roof_geometry_passes_seed_area_to_segmenter(self):
+        """retry_roof_geometry passes seed area to segment_candidate instead of search bbox area."""
+        from stratum_ro.roof_retry import retry_roof_geometry
+        rgb = np.full((self.height, self.width, 3), 140, dtype=np.uint8)
+        ndsm = np.zeros((self.height, self.width), dtype=np.float32)
+        ndsm[25:35, 25:35] = 4.5
+        bld = np.zeros((self.height, self.width), dtype=np.float32)
+        bld[25:35, 25:35] = 1.0
+        lidar = self._build_lidar_data(ndsm=ndsm, building=bld)
+
+        large_search = Polygon([(10.0, 50.0), (50.0, 50.0), (50.0, 90.0), (10.0, 90.0)])  # 1600 m2
+        captured_kwargs = {}
+
+        class AreaSpySegmenter:
+            def segment_candidate(self, *bounds, **kwargs):
+                captured_kwargs.update(kwargs)
+                return {'geometry': self.child_geom, 'sam2_score': 0.85, 'status': 'CONFIRMAT_HIBRID'}
+
+            child_geom = Polygon([(25.0, 65.0), (35.0, 65.0), (35.0, 75.0), (25.0, 75.0)])
+
+        result = retry_roof_geometry(large_search, rgb, self.transform, lidar, AreaSpySegmenter())
+        self.assertIn('lidar_area', captured_kwargs)
+        # Should be seed area (~100 m2), NOT search box area (1600 m2)
+        self.assertLess(captured_kwargs['lidar_area'], 300.0)
+        self.assertGreater(captured_kwargs['lidar_area'], 50.0)
 
 
 if __name__ == '__main__':

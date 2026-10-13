@@ -6,7 +6,36 @@
 
 Before diagnosing or changing roof/building extraction, every agent must read `docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md` and the latest owner feedback. Follow its object identity → sensor evidence → supported simple geometry → tests → native visual inspection → human verdict → Git handoff workflow. Model scores and geometric validity never substitute for the owner's explicit acceptance. Historical continuation entries below are superseded by the newest feedback. T10 is now ACCEPTED by the owner; T08/T09 remain rejected/unrecovered. This shared protocol records observable decision criteria, not an assumption that different agents have identical internal reasoning or access to other conversations.
 
-## Latest continuation entry — 2026-10-13, Lotul 3 (T11–T20) în verificare și integrat în QGIS
+## Latest continuation entry — 2026-10-13, Lotul 3 Revizuit (T11–T20) în verificare și integrat în QGIS
+
+**LOTUL 3 REVIZUIT — T11–T20 (2026-10-13 18:45):**
+1. **Statut de guvernanță:** Toate cele 10 cazuri revizuite (T11–T20) au statutul `PENDING_OWNER_REVIEW` (`NECESITA_VERIFICARE_LOT3`). Niciun caz din Lotul 3 revizuit nu este declarat acceptat automat; decizia proprietarului este suverană.
+2. **Invariante păstrate:**
+   - Lot 1 (8/8) și Lot 2 (T01–T04, T05, T06, T07, T10) rămân acceptate în starea aprobată de proprietar.
+   - T08 și T09 rămân respinse / nerecuperate.
+   - Clădirea maro-roșcată T10 și clădirea joasă gri din vest rămân strict obiecte independente separate.
+   - Rezultatele inițiale Lot 3 din `workspace/reviews/lot3_20261013/` rămân nemodificate ca dovadă istorică a primei rulări neacceptate.
+3. **Corecții de selecție și acoperire raster:**
+   - Selecție revizuită cu `schema_version: 2`, SHA-256 verificate și preflight 10/10 validat (`workspace/reviews/lot3_revision_20261013/selection_manifest.json`).
+   - Rezolvat NoData și margini de tile prin GeoTIFF-uri acoperitoare continue din VRT pentru T12, T14, T18, T19, T20 (`covers/`).
+   - Relocate punctele de căutare pe acoperișurile reale: T11 (vilă), T12 (coamă acoperiș), T13 (casa A), T14 (hală gri), T15 (pavilion), T16 (acoperiș cluster), T17 (anvelopă extinsă la x=390850), T18 (hală L), T19 (pavilion), T20 (complex sportiv).
+4. **Măsurători pe fluxul de producție revizuit:**
+   - Cazuri evaluate: 10 (T11–T20).
+   - Cazuri cu corpuri extrase: **4** (T11, T12, T13, T17) — o creștere de +100% față de baseline-ul inițial.
+   - Total corpuri extrase: **6** (`T11:C1` - 4v, 129.7 m²; `T11:C2` - 4v, 147.6 m²; `T12:C1` - 8v, 74.7 m²; `T13:C1` - 4v, 93.1 m²; `T13:C2` - 4v, 110.8 m²; `T17:C1` - 8v, 1075.4 m²).
+   - Constatări fizice critice:
+     * Pavajul curții T12 (anterior 678 m²) a fost complet exclus prin filtrarea elevației pe culori neutre și utilizarea ariei seed-ului în SAM2; noul corp `T12:C1` (74.7 m²) este strict pe acoperiș.
+     * T17 cuprinde integral aripa estică (1075.4 m² vs. 725 m² anterior).
+     * T13 separă corect vecinii apropiați în două corpuri rectangulare independente.
+   - Cazuri nerecuperate: 6 (T14, T16, T18, T19 raportate `UNRESOLVED_AFTER_LOCAL_RETRY`; T15, T20 raportate `NO_SUPPORTED_ROOF_SEED` din cauza absenței clasificării ASPRS Clasa 6 în norul LAS; nicio mască forțată sau halucinată).
+5. **Integrare completă în proiectul QGIS comun:**
+   - Proiect activ: `workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs` (și copia de release `workspace/reviews/retry_six_release_20261013/inspectie_completa_8_orto_loturi.qgs`).
+   - Grup TOC activ: `LOT3_REVIZIE_T11_T20` cu straturile `LOT3_REV_CORPURI_EXTRASE` (cian `#00e5ff`, 6 corpuri), `LOT3_REV_CAZURI_NERECUPERATE` (cruce roșie `#ff1744`, 6 puncte), `LOT3_REV_FERESTRE_SELECTIE` (linie aurie `#ffd700`, 10 ferestre), `LOT3_REV_MASCA_BRUTA` (violet punctat, debifat).
+   - Grup TOC istoric: `LOT3_ISTORIC_INITIAL_NEACCEPTAT` (debifat / invizibil pe pânză).
+   - Capturi live verificate: `workspace/reviews/lot3_revision_20261013/qgis_canvas_lot3_revision.png`, `qgis_canvas_lot3_t11_t12_closeup.png` și `qgis_canvas_lot3_t17_closeup.png`.
+   - Raport detaliat: `docs/STRATUMRO_LOT3_REVISION_HANDOFF_2026-10-13.md`, `workspace/reviews/lot3_revision_20261013/results/lot3_revision_contact_sheet.png` și `lot3_revision_report.json`.
+
+## Previous continuation entry — 2026-10-13, Lotul 3 (T11–T20) inițial în verificare și integrat în QGIS
 
 **LOTUL 3 DE VERIFICARE — T11–T20 (2026-10-13 17:50):**
 1. **Statut de guvernanță:** Toate cele 10 cazuri noi (T11–T20) au statutul `PENDING_OWNER_REVIEW` (`NECESITA_VERIFICARE_LOT3`). Niciun caz din Lotul 3 nu este declarat acceptat ca final; decizia proprietarului este suverană.
