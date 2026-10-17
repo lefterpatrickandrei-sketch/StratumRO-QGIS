@@ -1,0 +1,166 @@
+{
+  "geometry_source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_edge_audit_20261017\\lot3_display_snapshot.gpkg",
+  "geometry_sha256": "56b61d21f4c1a9d13570b7c9306f10ecbedf46a1a98579f81f109c225c9f946f",
+  "cases": [
+    {
+      "test_id": "T11",
+      "image": "T11_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-0_halo.tif",
+      "bodies": [
+        {
+          "body_id": "T11:C1",
+          "area_m2": 123.20999999958296,
+          "valid": true,
+          "exterior_vertices": 4
+        },
+        {
+          "body_id": "T11:C2",
+          "area_m2": 132.13662916665913,
+          "valid": true,
+          "exterior_vertices": 8
+        },
+        {
+          "body_id": "T11:C3",
+          "area_m2": 72.08546302457833,
+          "valid": true,
+          "exterior_vertices": 10
+        }
+      ]
+    },
+    {
+      "test_id": "T12",
+      "image": "T12_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-0_halo.tif",
+      "bodies": [
+        {
+          "body_id": "T12:C1",
+          "area_m2": 171.36000000175355,
+          "valid": true,
+          "exterior_vertices": 4
+        },
+        {
+          "body_id": "T12:C2",
+          "area_m2": 69.7903035465262,
+          "valid": true,
+          "exterior_vertices": 6
+        },
+        {
+          "body_id": "T12:C3",
+          "area_m2": 99.906722468497,
+          "valid": true,
+          "exterior_vertices": 6
+        }
+      ]
+    },
+    {
+      "test_id": "T13",
+      "image": "T13_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+      "bodies": [
+        {
+          "body_id": "T13:C1",
+          "area_m2": 116.28653680105072,
+          "valid": true,
+          "exterior_vertices": 8
+        }
+      ]
+    },
+    {
+      "test_id": "T14",
+      "image": "T14_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-1_halo.tif",
+      "bodies": [
+        {
+          "body_id": "T14:C1",
+          "area_m2": 316.5749999987413,
+          "valid": true,
+          "exterior_vertices": 4
+        }
+      ]
+    },
+    {
+      "test_id": "T15",
+      "image": "T15_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-1_halo.tif",
+      "bodies": [
+        {
+          "body_id": "T15:C1",
+          "area_m2": 128.0956383647022,
+          "valid": true,
+          "exterior_vertices": 4
+        }
+      ]
+    },
+    {
+      "test_id": "T16",
+      "image": "T16_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+      "bodies": [
+        {
+          "body_id": "T16:C1",
+          "area_m2": 218.699999997055,
+          "valid": true,
+          "exterior_vertices": 4
+        }
+      ]
+    },
+    {
+      "test_id": "T17",
+      "image": "T17_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+      "bodies": [
+        {
+          "body_id": "T17:C1",
+          "area_m2": 1778.1313245070987,
+          "valid": true,
+          "exterior_vertices": 10
+        },
+        {
+          "body_id": "T17:C2",
+          "area_m2": 1620.107852206505,
+          "valid": true,
+          "exterior_vertices": 14
+        }
+      ]
+    },
+    {
+      "test_id": "T18",
+      "image": "T18_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_edge_audit_20261017\\T18_detail_5cm.tif",
+      "bodies": [
+        {
+          "body_id": "T18:C1",
+          "area_m2": 1210.9524683614288,
+          "valid": true,
+          "exterior_vertices": 14
+        },
+        {
+          "body_id": "T18:C2",
+          "area_m2": 150.0215576183454,
+          "valid": true,
+          "exterior_vertices": 4
+        }
+      ]
+    },
+    {
+      "test_id": "T19",
+      "image": "T19_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-2_halo.tif",
+      "bodies": []
+    },
+    {
+      "test_id": "T20",
+      "image": "T20_unobscured_review.png",
+      "source_raster": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-1_halo.tif",
+      "bodies": [
+        {
+          "body_id": "T20:C1",
+          "area_m2": 91.01743772778993,
+          "valid": true,
+          "exterior_vertices": 6
+        }
+      ]
+    }
+  ],
+  "predictions_changed": false
+}

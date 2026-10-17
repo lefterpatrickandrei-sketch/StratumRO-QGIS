@@ -1,5 +1,9 @@
 # AGENTS.md — StratumRO Engineering & Evidence-First Governance Guide
 
+## Latest strict recheck of major Lot3 errors — 2026-10-17
+
+Read `docs/STRATUMRO_LOT3_MAJOR_ERRORS_RECHECK_2026-10-17.md` and the ten individual comparisons in `workspace/reviews/lot3_major_errors_20261017/`. Earlier visual assessments were too lenient: T11:C3 and T20:C1 have gross shape/orientation errors, T12 has incomplete/mixed delimitations, T14 is substantially misrepresented, T19 remains entirely missing. T18 has other edge errors despite resolving one overlap; T17 topology is not proof of complete roof/courtyard correctness. Do not globally classify these as good/plausible based on small sheets, valid geometry, passed tests, or one successful local fix. This recheck changes no geometries and grants no owner acceptance. Inspect the complete object before adopting further repairs.
+
 ## Latest Lot3 native-edge correction and full visual audit — 2026-10-17
 
 Read `docs/STRATUMRO_LOT3_NATIVE_EDGES_AND_VISUAL_AUDIT_2026-10-17.md`. T18's 5.78 m² overlap is corrected using independently observed optical edges from the original SID, not clipping against an unaccepted polygon. New geometries: main 1210.95 m², annex 150.02 m²; overlap 0, model gap 1.223 m. `roof_gap_edges.py` and its regressions implement the reusable method. Shared QGIS group `LOT3_T18_MUCHII_OBSERVATE_20261017` is active; previous T18 variants remain hidden history, T17 unchanged. Relevant suite: 56 passing tests. All ten cases were visually reviewed, with findings and two sheets in `workspace/reviews/lot3_edge_audit_20261017/`. T11 has a wrong extra contour, T14 needs projection/annex review, T19 has no recovered geometry, T20 is partial. No owner acceptance changed. T17 raw-window warnings and other T18 annex edges (rounded western projection) are not declared solved. Prior 5.78 m² conflict statements below describe the preserved earlier version.
