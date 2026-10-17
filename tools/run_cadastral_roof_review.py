@@ -36,7 +36,9 @@ def main():
         {'test_id':c['body_id'],'tile':c['ortho'],'search_center':c['anchor'],
          'search_bbox':c['search_bounds'],'target_extent':c.get('target_extent',c['search_bounds']),
          'selection_review':c.get('selection_review',{})} for c in manifest['cases']]}
-    preflight=validate_selection(selection,manifest_dir=manifest_path.parent,tile_dir=manifest_path.parent)
+    from stratum_ro.roof_masked_preflight import validate_masked_selection
+    preflight=validate_masked_selection(selection,manifest_dir=manifest_path.parent,tile_dir=manifest_path.parent,
+        policies={c['body_id']:c.get('context_policy') for c in manifest['cases']})
     print(json.dumps(preflight),flush=True)
     require_ready(preflight)
     if args.preflight_only:return
@@ -93,7 +95,10 @@ def main():
             current=scene_key
         start=time.perf_counter()
         result=flow.extract(case['body_id'],case['anchor'],case['search_bounds'],reviewed=True,
-                            max_prompt_shift_m=case.get('max_prompt_shift_m'))
+                            max_prompt_shift_m=case.get('max_prompt_shift_m'),
+                            refinement_policy=case.get('refinement_policy','SENSOR_FUSION'),
+                            positive_points=case.get('positive_points'),negative_points=case.get('negative_points'),
+                            allow_invalid_context=case.get('context_policy')=='MASKED_CONTEXT_REVIEW')
         geometry=result.pop('geometry');original=result.pop('raw_geometry')
         result['duration_s']=time.perf_counter()-start
         report.append(result)

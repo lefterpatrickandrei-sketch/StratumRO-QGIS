@@ -1,5 +1,9 @@
 # AGENTS.md — StratumRO Engineering & Evidence-First Governance Guide
 
+## In-progress Lot3 repair checkpoint — 2026-10-17
+
+Read `docs/STRATUMRO_LOT3_REPAIRS_PROGRESS_2026-10-17.md`. Product opt-in optical fidelity, planar-core experiments, positive/negative prompts and explicit masked-context preflight are implemented. Real masks and all attempts are in `workspace/reviews/lot3_repairs_20261017/`; some attempts remain poor and none are owner accepted. T19 is recovered as a hypothesis; T11:C3 orientation and T12 outlines improve. T20 equipment/duct separation and T18 main-body simplification are still in progress. Do not infer success from attempt directory names or tests. No new QGIS replacements at this intermediate checkpoint. Follow the progress document before continuing.
+
 ## Latest strict recheck of major Lot3 errors — 2026-10-17
 
 Read `docs/STRATUMRO_LOT3_MAJOR_ERRORS_RECHECK_2026-10-17.md` and the ten individual comparisons in `workspace/reviews/lot3_major_errors_20261017/`. Earlier visual assessments were too lenient: T11:C3 and T20:C1 have gross shape/orientation errors, T12 has incomplete/mixed delimitations, T14 is substantially misrepresented, T19 remains entirely missing. T18 has other edge errors despite resolving one overlap; T17 topology is not proof of complete roof/courtyard correctness. Do not globally classify these as good/plausible based on small sheets, valid geometry, passed tests, or one successful local fix. This recheck changes no geometries and grants no owner acceptance. Inspect the complete object before adopting further repairs.

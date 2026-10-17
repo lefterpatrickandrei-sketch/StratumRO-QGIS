@@ -1,0 +1,191 @@
+[
+  {
+    "body_id": "T11:C3",
+    "vertices": 12,
+    "area_m2": 152.1373966693188,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_DENOISED_OPTICAL",
+      "lidar_used": false,
+      "coverage": 0.9755367450070003,
+      "support": 0.9802343504888672,
+      "boundary_shift_m": 0.5068643664847446,
+      "vertices": 12,
+      "small_holes_removed": 20,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T12:C1",
+    "vertices": 16,
+    "area_m2": 188.6150000002142,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_OPTICAL_SIMPLIFICATION",
+      "lidar_used": false,
+      "coverage": 0.9846485729466534,
+      "support": 0.9869847086532356,
+      "boundary_shift_m": 0.4974272064009539,
+      "vertices": 16,
+      "small_holes_removed": 8,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T12:C3",
+    "vertices": 14,
+    "area_m2": 154.098747302528,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_DENOISED_OPTICAL",
+      "lidar_used": false,
+      "coverage": 0.9783422199117399,
+      "support": 0.9790802851081112,
+      "boundary_shift_m": 0.6873089377184275,
+      "vertices": 14,
+      "small_holes_removed": 36,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T13:C1",
+    "vertices": 17,
+    "area_m2": 139.97280840262061,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_DENOISED_OPTICAL",
+      "lidar_used": false,
+      "coverage": 0.9775853132513967,
+      "support": 0.9803418822822173,
+      "boundary_shift_m": 0.7160343690249771,
+      "vertices": 17,
+      "small_holes_removed": 21,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T14:C1",
+    "vertices": 18,
+    "area_m2": 344.91097588834754,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_DENOISED_OPTICAL",
+      "lidar_used": false,
+      "coverage": 0.9892970012806852,
+      "support": 0.9829481599512474,
+      "boundary_shift_m": 0.7241872925475031,
+      "vertices": 18,
+      "small_holes_removed": 49,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T15:C1",
+    "vertices": 24,
+    "area_m2": 126.38875000019436,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_OPTICAL_SIMPLIFICATION",
+      "lidar_used": false,
+      "coverage": 0.9814670921298507,
+      "support": 0.9775940677317174,
+      "boundary_shift_m": 0.3734770360659508,
+      "vertices": 24,
+      "small_holes_removed": 20,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T16:C1",
+    "vertices": 44,
+    "area_m2": 227.19500000080268,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_OPTICAL_SIMPLIFICATION",
+      "lidar_used": false,
+      "coverage": 0.9770292120804709,
+      "support": 0.9830820240487248,
+      "boundary_shift_m": 0.3885884380632095,
+      "vertices": 44,
+      "small_holes_removed": 170,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T18:C1",
+    "vertices": 235,
+    "area_m2": 1157.8887499990874,
+    "diagnostic": {
+      "status": "NEEDS_GEOMETRY_REVIEW",
+      "method": "OPTICAL_MASK_PRESERVED",
+      "lidar_used": false,
+      "small_holes_removed": 131
+    }
+  },
+  {
+    "body_id": "T18:C2",
+    "vertices": 10,
+    "area_m2": 145.08887629137706,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_DENOISED_OPTICAL",
+      "lidar_used": false,
+      "coverage": 0.9759845233786166,
+      "support": 0.9832402143251988,
+      "boundary_shift_m": 0.7476103162023778,
+      "vertices": 10,
+      "small_holes_removed": 14,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T19:C1",
+    "vertices": 40,
+    "area_m2": 1025.491250000417,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "FAITHFUL_OPTICAL_SIMPLIFICATION",
+      "lidar_used": false,
+      "coverage": 0.9810236876530603,
+      "support": 0.9926982561371172,
+      "boundary_shift_m": 0.7534923238113028,
+      "vertices": 40,
+      "small_holes_removed": 139,
+      "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+      "courtyards": 0
+    }
+  },
+  {
+    "body_id": "T20:C1",
+    "vertices": 4,
+    "area_m2": 430.96499999870383,
+    "diagnostic": {
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "method": "REVIEWED_PLANAR_ROOF_CORE",
+      "lidar_used": false,
+      "removed_mask_fraction": 0.11796552360518921,
+      "removed_mask_m2": 56.921314277563695,
+      "coverage": 0.974237147318412,
+      "support": 0.9623356087078656,
+      "raw_mask_is_ground_truth": false
+    }
+  },
+  {
+    "body_id": "T20:C2",
+    "vertices": 4294,
+    "area_m2": 338.09749999984393,
+    "diagnostic": {
+      "status": "NEEDS_GEOMETRY_REVIEW",
+      "method": "EXCESSIVE_CORE_REMOVAL",
+      "lidar_used": false
+    }
+  }
+]

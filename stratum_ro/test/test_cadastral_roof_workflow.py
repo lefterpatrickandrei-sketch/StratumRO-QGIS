@@ -48,6 +48,12 @@ class CadastralRoofWorkflowTests(unittest.TestCase):
     def test_incomplete_context_is_blocked(self):
         with self.assertRaisesRegex(ValueError,'COVERAGE'):self.extract(context_m=10)
 
+    def test_masked_context_is_opt_in_and_invalid_pixels_stay_out(self):
+        self.valid[10,10]=False
+        self.flow.set_scene(self.rgb,self.tr,self.valid,crs='EPSG:3844')
+        r=self.extract(allow_invalid_context=True,refinement_policy='OPTICAL_FIDELITY')
+        self.assertIn('NODATA_NEAR_TARGET_COMPLETENESS_UNCONFIRMED',r['review_reasons'])
+
     def test_ids_stay_explicit(self):
         self.extract('T17:C1')
         with self.assertRaises(ValueError):self.extract('T17:C1')

@@ -59,8 +59,10 @@ class CadastralRoofWorkflow:
         self._ids=set();self._encoded=False
 
     def extract(self,body_id,anchor,search_bounds,*,reviewed=False,context_m=4.,score_threshold=.60,
-                max_prompt_shift_m=None):
+                max_prompt_shift_m=None,refinement_policy='SENSOR_FUSION',positive_points=None,negative_points=None,
+                allow_invalid_context=False):
         if self.rgb is None:raise RuntimeError('Set scene before extraction')
+        if refinement_policy not in ['SENSOR_FUSION','OPTICAL_FIDELITY','OPTICAL_PLANAR_CORE']:raise ValueError('Unknown refinement policy')
         if not body_id or body_id in self._ids:raise ValueError('Unique nonempty body_id required per scene')
         if not reviewed:raise ValueError('Candidate identity and optical anchor must be reviewed')
         if len(search_bounds)!=4 or not np.all(np.isfinite(search_bounds)):
@@ -78,7 +80,11 @@ class CadastralRoofWorkflow:
             raise ValueError('NEEDS_COMPLETE_IMAGE_COVERAGE')
         c0=int(np.floor(min(p[0] for p in corners)));c1=int(np.ceil(max(p[0] for p in corners)))
         r0=int(np.floor(min(p[1] for p in corners)));r1=int(np.ceil(max(p[1] for p in corners)))
-        if not self.valid[r0:r1,c0:c1].all():raise ValueError('NODATA_IN_REQUIRED_CONTEXT')
+        invalid_context=not self.valid[r0:r1,c0:c1].all()
+        if invalid_context and (not allow_invalid_context or self.valid[r0:r1,c0:c1].mean()<.90):
+            raise ValueError('NODATA_IN_REQUIRED_CONTEXT')
+        ac,ar=inv*tuple(anchor)
+        if not self.valid[int(ar),int(ac)]:raise ValueError('NODATA_AT_ROOF_ANCHOR')
         self._ids.add(body_id)
         from rasterio.features import rasterize
         local_region=rasterize([(box(a,b,c,d),1)],out_shape=self.valid.shape,
@@ -89,14 +95,22 @@ class CadastralRoofWorkflow:
         if not self._encoded:
             self.segmenter.set_image(self.rgb,self.transform);self._encoded=True
         px=inv*tuple(guidance['point'])
+        prompt_points=[px];prompt_labels=[1]
+        for points,flag in [(positive_points or [],1),(negative_points or [],0)]:
+            for point in points:
+                if len(point)!=2 or not np.all(np.isfinite(point)):raise ValueError('Finite prompt point required')
+                cp,rp=inv*tuple(point)
+                if not(0<=cp<self.valid.shape[1] and 0<=rp<self.valid.shape[0]) or not self.valid[int(rp),int(cp)]:
+                    raise ValueError('Prompt point outside valid image')
+                prompt_points.append((cp,rp));prompt_labels.append(flag)
         prompt_corners=[inv*(x,y) for x in [a,c] for y in [b,d]]
         prompt_box=np.array([min(p[0] for p in prompt_corners),min(p[1] for p in prompt_corners),
                              max(p[0] for p in prompt_corners),max(p[1] for p in prompt_corners)],dtype='float32')
         # Predictor interface deliberately avoids the old mandatory height veto.
         import torch
         with torch.inference_mode():
-            masks,scores,_=self.segmenter.predictor.predict(point_coords=np.array([px],dtype='float32'),
-                point_labels=np.array([1],dtype='int32'),box=prompt_box,multimask_output=True)
+            masks,scores,_=self.segmenter.predictor.predict(point_coords=np.array(prompt_points,dtype='float32'),
+                point_labels=np.array(prompt_labels,dtype='int32'),box=prompt_box,multimask_output=True)
         options=[]
         for mask,score in zip(masks,scores):
             if np.asarray(mask).shape!=self.valid.shape:raise ValueError('Predictor mask shape mismatch')
@@ -109,9 +123,18 @@ class CadastralRoofWorkflow:
                 'status':'NO_OPTICAL_MASK_FOR_REVIEWED_OBJECT','review_reasons':[]}
         if not options:return result
         score,raw=max(options,key=lambda item:item[0])
-        geom,diagnostic=refine_fusion_mask(raw,guidance['point'],self.rgb,self.transform,
-            self.height,self.counts,self.valid,guidance['route'],max_vertices=self.max_vertices)
+        if refinement_policy=='OPTICAL_PLANAR_CORE':
+            from .roof_mask_fidelity import rectangular_roof_core
+            geom,diagnostic=rectangular_roof_core(raw,anchor)
+        elif refinement_policy=='OPTICAL_FIDELITY':
+            from .roof_mask_fidelity import simplify_observed_roof
+            geom,diagnostic=simplify_observed_roof(raw,anchor,max_vertices=self.max_vertices)
+        else:
+            geom,diagnostic=refine_fusion_mask(raw,guidance['point'],self.rgb,self.transform,
+                self.height,self.counts,self.valid,guidance['route'],max_vertices=self.max_vertices)
+        diagnostic['refinement_policy']=refinement_policy
         reasons=[]
+        if invalid_context:reasons.append('NODATA_NEAR_TARGET_COMPLETENESS_UNCONFIRMED')
         if guidance.get('prompt_shift_m',0)>3:
             reasons.append('GUIDANCE_POINT_MOVED_FAR_FROM_REVIEWED_ANCHOR')
         if score<score_threshold:reasons.append('LOW_OPTICAL_SCORE')

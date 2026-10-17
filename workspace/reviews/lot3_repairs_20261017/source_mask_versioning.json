@@ -1,0 +1,9 @@
+{
+  "historical_path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T12_5cm.tif",
+  "historical_sha256": "60b7fbeb91fe0e991a58baa613bd21345b44b152567cfb78b0be74b52bcb6494",
+  "preserved_version_path": "workspace\\reviews\\lot3_repairs_20261017\\covers\\T12_before_mask.tif",
+  "preserved_version_sha256": "60b7fbeb91fe0e991a58baa613bd21345b44b152567cfb78b0be74b52bcb6494",
+  "exact_historical_version_recovered": true,
+  "current_path_has_explicit_cache_mask": true,
+  "rgb_data_unchanged": true
+}
