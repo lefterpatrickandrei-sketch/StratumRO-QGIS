@@ -53,3 +53,22 @@ class FusionRefinementTests(unittest.TestCase):
         geom,diag=self.run_case('LIDAR_GUIDED_REQUIRES_REVIEW')
         self.assertGreater(geom.area,80)
         self.assertNotEqual(diag['method'],'RAW_PRESERVED')
+
+    def test_supported_interior_bridge_closes_courtyard_without_filling_it(self):
+        self.height[32:48,32:48]=0
+        self.counts=(self.height>0).astype(float)
+        raw=box(5,5,15,15).difference(box(8,8,12,12).union(box(4,9,9,11)))
+        geom,diag=refine_fusion_mask(raw,(13,10),self.rgb,self.tr,self.height,self.counts,
+                                   self.valid,'LIDAR_GUIDED_REQUIRES_REVIEW',max_vertices=20)
+        self.assertEqual(len(geom.interiors),1)
+        self.assertTrue(geom.covers(box(6,9.5,7,10.5)))
+        self.assertFalse(geom.covers(box(9,9,11,11)))
+
+    def test_unobserved_interior_gap_is_not_invented(self):
+        self.height[32:48,32:48]=0
+        self.height[36:44,20:36]=0
+        self.counts=(self.height>0).astype(float)
+        raw=box(5,5,15,15).difference(box(8,8,12,12).union(box(4,9,9,11)))
+        geom,diag=refine_fusion_mask(raw,(13,10),self.rgb,self.tr,self.height,self.counts,
+                                   self.valid,'LIDAR_GUIDED_REQUIRES_REVIEW',max_vertices=20)
+        self.assertFalse(geom.covers(box(6,9.5,7,10.5)))

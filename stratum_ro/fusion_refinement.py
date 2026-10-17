@@ -30,7 +30,13 @@ def refine_fusion_mask(raw,anchor,rgb,transform,height,building_counts,valid,
         # Recover omitted roof pixels only from the same LiDAR component,
         # with spectral support. Keep the optical parent as audit evidence.
         nearby=rasterize([(raw.buffer(1.5),1)],out_shape=height.shape,transform=transform,dtype='uint8').astype(bool)
-        envelope=inside|(local_support&nearby)
+        # An internal omission is different from outward growth: a roof bridge
+        # can lie farther than 1.5m from a broken SAM mask. Recover only inside
+        # its convex envelope, within 3m, from the same sensor-supported body.
+        interior=rasterize([(raw.convex_hull.intersection(raw.buffer(3.0)),1)],
+                           out_shape=height.shape,transform=transform,dtype='uint8').astype(bool)
+        recovered_interior=local_support&interior&~inside
+        envelope=inside|(local_support&nearby)|recovered_interior
         # In this explicit compatible route, ground returns are evidence against
         # mask contamination. Unknown pixels remain separate, never fake ground.
         # Do not cut a class-6 supported roof connection merely because its
@@ -81,4 +87,5 @@ def refine_fusion_mask(raw,anchor,rgb,transform,height,building_counts,valid,
         return observed,{'status':'NEEDS_GEOMETRY_REVIEW','method':'EVIDENCE_TRIM_ONLY','lidar_used':lidar_used}
     return result,{'status':'RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW','method':info['method'],
                    'lidar_used':lidar_used,'courtyards':len(retained),'raw_area_m2':raw.area,
-                   'trimmed_area_m2':observed.area,'support':info.get('support'),'coverage':info.get('coverage')}
+                   'trimmed_area_m2':observed.area,'support':info.get('support'),'coverage':info.get('coverage'),
+                   'interior_recovery_m2':float(recovered_interior.sum()*abs(transform.determinant)) if lidar_used else 0.}

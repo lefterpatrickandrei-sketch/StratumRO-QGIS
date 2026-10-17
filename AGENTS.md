@@ -1,5 +1,9 @@
 # AGENTS.md — StratumRO Engineering & Evidence-First Governance Guide
 
+## Latest Lot3 finishing checkpoint — 2026-10-17
+
+Read `docs/STRATUMRO_LOT3_FINISHING_2026-10-17.md`. T17 courtyard connection is now recovered by evidence-bounded interior recovery in `fusion_refinement.py`; the two T17 bodies remain separate. T18 has a simpler revised edge. Three real hypotheses and native QGIS images are in `workspace/reviews/lot3_finishing_20261017/`. They are integrated in the existing shared project under `LOT3_FINISARE_T17_T18_20261017`; older T17/T18 display records are filtered, never deleted. This supersedes the earlier unresolved-courtyard and untouched-main-project statements below. All three hypotheses remain pending owner review; T18 annex identity and conservative search-window flags still require review. Other Lot3 verdicts are unchanged. Relevant suite: 43 passing tests. The review runner now enforces the standard manifest preflight before inference.
+
 ## Owner instructions — useful artifacts in Git and shared QGIS, 2026-10-17
 
 Read `docs/STRATUMRO_GIT_PROGRESS_POLICY.md` and `workspace/reviews/lot3_owner_feedback_20261017.json`. Version every useful artifact created for StratumRO: code, tests, text, configurations, images, QGIS projects, GIS/CAD data, reports, manifests, and owner feedback. Explicitly inspect ignored/untracked files; a code-only commit is insufficient. Preserve unrelated agents' edits and never commit secrets. Large useful artifacts require an explicit storage decision, not silent omission; do not claim Git LFS is configured without checking. Local commit and remote push are separate operations.

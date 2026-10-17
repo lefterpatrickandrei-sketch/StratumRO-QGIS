@@ -1,0 +1,170 @@
+{
+  "scope": "PRODUCT_WORKFLOW_ON_REVIEWED_CANDIDATES_NOT_REGIONAL_DETECTOR",
+  "ground_footprints_created": 0,
+  "owner_verdict": "PENDING_OWNER_REVIEW",
+  "cases": [
+    {
+      "body_id": "T17:C1",
+      "guidance": {
+        "route": "LIDAR_GUIDED_REQUIRES_REVIEW",
+        "point": [
+          390835.275,
+          585477.375
+        ],
+        "source": "LOCAL_CLASS6_AND_HEIGHT",
+        "reason": "LOCAL_SUPPORT_FOUND",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW",
+        "support_cells": 94656,
+        "anchor_gap_m": 0.035355339133413634
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+        "lidar_compatibility": "EXPERIMENTAL_STEREO70_HYPOTHESIS"
+      },
+      "status": "REQUIRES_REVIEW",
+      "review_reasons": [
+        "POSSIBLE_SEARCH_WINDOW_TRUNCATION"
+      ],
+      "sam2_score": 0.6546321511268616,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "SUPPORTED_ORTHOGONAL",
+        "lidar_used": true,
+        "courtyards": 1,
+        "raw_area_m2": 1595.2950000002925,
+        "trimmed_area_m2": 1785.5437500011965,
+        "support": 0.9751368075878797,
+        "coverage": 0.9717548020236799,
+        "interior_recovery_m2": 236.42999999999998
+      },
+      "vertices": 14,
+      "duration_s": 2.132896000010078
+    },
+    {
+      "body_id": "T17:C2",
+      "guidance": {
+        "route": "LIDAR_GUIDED_REQUIRES_REVIEW",
+        "point": [
+          390795.82499999995,
+          585492.075
+        ],
+        "source": "LOCAL_CLASS6_AND_HEIGHT",
+        "reason": "LOCAL_SUPPORT_FOUND",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW",
+        "support_cells": 68804,
+        "anchor_gap_m": 0.0353553390922546
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+        "lidar_compatibility": "EXPERIMENTAL_STEREO70_HYPOTHESIS"
+      },
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "review_reasons": [],
+      "sam2_score": 0.8059276938438416,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "SUPPORTED_ORTHOGONAL",
+        "lidar_used": true,
+        "courtyards": 0,
+        "raw_area_m2": 1647.9674999998608,
+        "trimmed_area_m2": 1619.561250000763,
+        "support": 0.9545673637719511,
+        "coverage": 0.954889530426562,
+        "interior_recovery_m2": 26.572499999999998
+      },
+      "vertices": 14,
+      "duration_s": 1.2033417999919038
+    },
+    {
+      "body_id": "T18:C1",
+      "guidance": {
+        "route": "LIDAR_GUIDED_REQUIRES_REVIEW",
+        "point": [
+          390636.115651,
+          585530.4300469998
+        ],
+        "source": "LOCAL_CLASS6_AND_HEIGHT",
+        "reason": "LOCAL_SUPPORT_FOUND",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW",
+        "support_cells": 65687,
+        "anchor_gap_m": 0.07793122619020312
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_revision_v3_20261016\\covers\\T18_covering_ortho.tif",
+        "lidar_compatibility": "EXPERIMENTAL_STEREO70_HYPOTHESIS"
+      },
+      "status": "REQUIRES_REVIEW",
+      "review_reasons": [
+        "LOW_OPTICAL_SCORE",
+        "POSSIBLE_SEARCH_WINDOW_TRUNCATION"
+      ],
+      "sam2_score": 0.5968093872070312,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "SUPPORTED_ORTHOGONAL",
+        "lidar_used": true,
+        "courtyards": 0,
+        "raw_area_m2": 2111.535000001201,
+        "trimmed_area_m2": 1286.4712500010146,
+        "support": 0.9340486759271673,
+        "coverage": 0.9066589290127729,
+        "interior_recovery_m2": 205.26749999999998
+      },
+      "vertices": 14,
+      "duration_s": 2.253716200008057
+    }
+  ],
+  "source_hashes": {
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lidar_audit_20261017\\relative_surface_1m.tif": "500a6bbee7bc915aef8595803c95d64f35be6bd1a3f8d0d16bbb329e86ffaac6",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lidar_audit_20261017\\class6_density_1m.tif": "da989f3641a5032550ec177b88c1faeb54558778cd45bd847c4876f64d43b135",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif": "7401f866f04a29012145feab39d0eeb17626cc89add7c6148836ba0c9d7aa6bd",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_revision_v3_20261016\\covers\\T18_covering_ortho.tif": "df326beec0718c06d4eb5bc416595aaf6a75c40fc197443a3cca81335242b57d"
+  },
+  "input_manifest_sha256": "7a67a8f5db7e627053e240465d9fc910fe8aa2981746f144007ff8e53d1d374d",
+  "model_checkpoint_sha256": "65b50056e05bcb13694174f51bb6da89c894b57b75ccdf0ba6352c597c5d1125",
+  "model_config": "sam2_hiera_t.yaml",
+  "geometry_max_exterior_vertices": 20,
+  "comparison_to_previous_hypotheses": {
+    "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\fusion_complete_20261017\\fusion_complete.gpkg",
+    "sha256": "9f0444ffc44df58366284541dd12368fbcee7be49246aaa54014d96f4698e403",
+    "is_ground_truth": false,
+    "checks": [
+      {
+        "body_id": "T17:C1",
+        "iou": 0.9458774920248807,
+        "baseline_holes": 1,
+        "current_holes": 1,
+        "topology_changed": false,
+        "automatic_adoption_allowed": false
+      },
+      {
+        "body_id": "T17:C2",
+        "iou": 0.9534289192199085,
+        "baseline_holes": 0,
+        "current_holes": 0,
+        "topology_changed": false,
+        "automatic_adoption_allowed": false
+      },
+      {
+        "body_id": "T18:C1",
+        "iou": 0.6811795028478068,
+        "baseline_holes": 0,
+        "current_holes": 0,
+        "topology_changed": false,
+        "automatic_adoption_allowed": false
+      }
+    ]
+  }
+}

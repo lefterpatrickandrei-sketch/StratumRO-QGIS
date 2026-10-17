@@ -9,6 +9,7 @@ from rasterio.warp import reproject,Resampling
 import geopandas as gpd
 from rasterio.windows import from_bounds,Window
 from stratum_ro.api.service import PlatformService
+from stratum_ro.evaluation_preflight import validate_selection,require_ready
 
 
 def sha256(path):
@@ -24,14 +25,24 @@ def main():
     parser.add_argument('--output-dir',type=Path,required=True)
     parser.add_argument('--max-vertices',type=int,default=20)
     parser.add_argument('--compare-to',type=Path,help='Previous roof hypotheses, for post-run review only; never model prompts')
+    parser.add_argument('--preflight-only',action='store_true')
     args=parser.parse_args();manifest_path=args.manifest.resolve()
     manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
     if manifest.get('schema_version')!=1 or not manifest.get('cases'):raise ValueError('Reviewed workflow manifest required')
     ids=[c['body_id'] for c in manifest['cases']]
     if len(set(ids))!=len(ids):raise ValueError('Duplicate body identities')
+    selection={'schema_version':2,'crs':manifest.get('crs'),'cases':[
+        {'test_id':c['body_id'],'tile':c['ortho'],'search_center':c['anchor'],
+         'search_bbox':c['search_bounds'],'target_extent':c.get('target_extent',c['search_bounds']),
+         'selection_review':c.get('selection_review',{})} for c in manifest['cases']]}
+    preflight=validate_selection(selection,manifest_dir=manifest_path.parent,tile_dir=manifest_path.parent)
+    print(json.dumps(preflight),flush=True)
+    require_ready(preflight)
+    if args.preflight_only:return
     out=args.output_dir.resolve();out.mkdir(parents=True,exist_ok=False)
     (out/'.gitignore').write_text('*.gpkg-wal\n*.gpkg-shm\n*.qgz~\n*.qgs~\n',encoding='utf-8')
     (out/'inputs.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
+    (out/'preflight.json').write_text(json.dumps(preflight,indent=2),encoding='utf-8')
     flow=PlatformService(ROOT).create_cadastral_roof_workflow(max_vertices=args.max_vertices)
     report=[];records=[];raw=[];current=None;sources={}
     def resolve(value):

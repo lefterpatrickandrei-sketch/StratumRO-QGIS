@@ -12,7 +12,10 @@
     "T17": {
       "owner_status": "NEEDS_FINISHING",
       "accepted": false,
-      "body_ids": ["T17:C1", "T17:C2"],
+      "body_ids": [
+        "T17:C1",
+        "T17:C2"
+      ],
       "technical_followup": "Repair roof connection next to the courtyard, keep the courtyard closed and the red/gray body identities separate. This is a technical interpretation, not an additional owner verdict."
     },
     "T18": {
@@ -26,5 +29,13 @@
     }
   },
   "other_lot3_cases": "No new verdict; previous review states remain in force",
-  "version_all_useful_created_artifacts": true
+  "version_all_useful_created_artifacts": true,
+  "technical_progress": {
+    "date": "2026-10-17",
+    "stage": "T17_T18_FINISHING_PENDING_OWNER_REVIEW",
+    "handoff": "docs/STRATUMRO_LOT3_FINISHING_2026-10-17.md",
+    "evidence": "workspace/reviews/lot3_finishing_20261017",
+    "shared_qgis_group": "LOT3_FINISARE_T17_T18_20261017",
+    "owner_verdict_changed": false
+  }
 }

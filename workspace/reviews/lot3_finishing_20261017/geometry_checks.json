@@ -1,0 +1,25 @@
+{
+  "all_valid": true,
+  "bodies": [
+    {
+      "body_id": "T17:C1",
+      "area_m2": 1778.1313245070987,
+      "holes": 1,
+      "vertices": 14
+    },
+    {
+      "body_id": "T17:C2",
+      "area_m2": 1620.107852206505,
+      "holes": 0,
+      "vertices": 14
+    },
+    {
+      "body_id": "T18:C1",
+      "area_m2": 1248.7471753815428,
+      "holes": 0,
+      "vertices": 14
+    }
+  ],
+  "T17_intersection_m2": 0.0,
+  "T17_minimum_gap_m": 0.10908968667784037
+}
