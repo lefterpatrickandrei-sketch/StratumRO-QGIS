@@ -58,7 +58,8 @@ class CadastralRoofWorkflow:
         self.lidar_compatible=bool(lidar_compatible);self.provenance=dict(provenance or {})
         self._ids=set();self._encoded=False
 
-    def extract(self,body_id,anchor,search_bounds,*,reviewed=False,context_m=4.,score_threshold=.60):
+    def extract(self,body_id,anchor,search_bounds,*,reviewed=False,context_m=4.,score_threshold=.60,
+                max_prompt_shift_m=None):
         if self.rgb is None:raise RuntimeError('Set scene before extraction')
         if not body_id or body_id in self._ids:raise ValueError('Unique nonempty body_id required per scene')
         if not reviewed:raise ValueError('Candidate identity and optical anchor must be reviewed')
@@ -83,7 +84,8 @@ class CadastralRoofWorkflow:
         local_region=rasterize([(box(a,b,c,d),1)],out_shape=self.valid.shape,
                                transform=self.transform,dtype='uint8').astype(bool)
         guidance=select_fusion_prompt(anchor,self.transform,self.counts,self.height,
-                                      self.lidar_valid&local_region,lidar_compatible=self.lidar_compatible)
+                                      self.lidar_valid&local_region,lidar_compatible=self.lidar_compatible,
+                                      max_prompt_shift_m=max_prompt_shift_m)
         if not self._encoded:
             self.segmenter.set_image(self.rgb,self.transform);self._encoded=True
         px=inv*tuple(guidance['point'])
@@ -110,12 +112,21 @@ class CadastralRoofWorkflow:
         geom,diagnostic=refine_fusion_mask(raw,guidance['point'],self.rgb,self.transform,
             self.height,self.counts,self.valid,guidance['route'],max_vertices=self.max_vertices)
         reasons=[]
+        if guidance.get('prompt_shift_m',0)>3:
+            reasons.append('GUIDANCE_POINT_MOVED_FAR_FROM_REVIEWED_ANCHOR')
         if score<score_threshold:reasons.append('LOW_OPTICAL_SCORE')
         if diagnostic['status']!='RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW':reasons.append(diagnostic['status'])
         boundary=box(a,b,c,d).boundary
-        if raw.distance(boundary)<.30:reasons.append('POSSIBLE_SEARCH_WINDOW_TRUNCATION')
+        raw_margin=raw.distance(boundary)
+        refined_margin=geom.distance(boundary)
+        if raw_margin<.30:reasons.append('POSSIBLE_SEARCH_WINDOW_TRUNCATION')
         if not self.lidar_compatible:reasons.append('LIDAR_NOT_USED_OR_INCOMPATIBLE')
         result.update(geometry=geom,raw_geometry=raw,sam2_score=score,diagnostic=diagnostic,
+            search_window_check={'bounds':[a,b,c,d],'raw_boundary_distance_m':raw_margin,
+                'refined_boundary_distance_m':refined_margin,
+                'raw_within_search':box(a,b,c,d).covers(raw),
+                'refined_within_search':box(a,b,c,d).covers(geom),
+                'automatic_completeness_claim':False},
             status='REQUIRES_REVIEW' if reasons else 'RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW',
             review_reasons=reasons,vertices=len(geom.exterior.coords)-1+sum(len(r.coords)-1 for r in geom.interiors))
         return result

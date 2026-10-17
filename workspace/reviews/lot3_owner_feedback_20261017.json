@@ -32,10 +32,12 @@
   "version_all_useful_created_artifacts": true,
   "technical_progress": {
     "date": "2026-10-17",
-    "stage": "T17_T18_FINISHING_PENDING_OWNER_REVIEW",
-    "handoff": "docs/STRATUMRO_LOT3_FINISHING_2026-10-17.md",
-    "evidence": "workspace/reviews/lot3_finishing_20261017",
-    "shared_qgis_group": "LOT3_FINISARE_T17_T18_20261017",
-    "owner_verdict_changed": false
+    "stage": "T18_ANNEX_AND_CONTEXT_COMPARISON_PENDING_OWNER_REVIEW",
+    "handoff": "docs/STRATUMRO_LOT3_ANNEX_AND_CONTEXT_2026-10-17.md",
+    "evidence": "workspace\\reviews\\lot3_continuation_20261017",
+    "shared_qgis_group": "LOT3_T18_ANEXA_IPOTEZA_20261017",
+    "owner_verdict_changed": false,
+    "new_body_hypothesis": "T18:C2",
+    "boundary_overlap_m2": 5.781771071492054
   }
 }

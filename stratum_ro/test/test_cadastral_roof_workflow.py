@@ -60,6 +60,18 @@ class CadastralRoofWorkflowTests(unittest.TestCase):
         r=self.extract(score_threshold=.9)
         self.assertIn('LOW_OPTICAL_SCORE',r['review_reasons']);self.assertIsNotNone(r['geometry'])
 
+    def test_raw_boundary_contact_is_reported_even_after_refinement(self):
+        r=self.extract()
+        check=r['search_window_check']
+        self.assertEqual(check['raw_boundary_distance_m'],0)
+        self.assertIn('POSSIBLE_SEARCH_WINDOW_TRUNCATION',r['review_reasons'])
+        self.assertFalse(check['automatic_completeness_claim'])
+
+    def test_wider_search_retains_auditable_positive_raw_margin(self):
+        r=self.flow.extract('wide',(10,10),(4,4,16,16),reviewed=True,context_m=1)
+        self.assertGreater(r['search_window_check']['raw_boundary_distance_m'],.3)
+        self.assertNotIn('POSSIBLE_SEARCH_WINDOW_TRUNCATION',r['review_reasons'])
+
     def test_service_exposes_same_workflow_without_loading_real_model(self):
         from stratum_ro.api.service import PlatformService
         flow=PlatformService().create_cadastral_roof_workflow(self.model)

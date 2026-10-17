@@ -8,7 +8,8 @@ from scipy.ndimage import label, distance_transform_edt
 
 
 def select_fusion_prompt(anchor, transform, building_counts, relative_height,
-                         valid_mask, lidar_compatible=True, max_anchor_gap_m=3.):
+                         valid_mask, lidar_compatible=True, max_anchor_gap_m=3.,
+                         max_prompt_shift_m=None):
     counts=np.asarray(building_counts)
     height=np.asarray(relative_height)
     valid=np.asarray(valid_mask,dtype=bool)
@@ -16,7 +17,10 @@ def select_fusion_prompt(anchor, transform, building_counts, relative_height,
         raise ValueError('Matching 2D evidence grids required')
     if not np.isfinite(transform.determinant) or abs(transform.determinant)<1e-12:
         raise ValueError('Invertible transform required')
-    if len(anchor)!=2 or not np.all(np.isfinite(anchor)) or max_anchor_gap_m<0:
+    if (len(anchor)!=2 or not np.all(np.isfinite(anchor)) or
+        not np.isfinite(max_anchor_gap_m) or max_anchor_gap_m<0 or
+        (max_prompt_shift_m is not None and
+         (not np.isfinite(max_prompt_shift_m) or max_prompt_shift_m<0))):
         raise ValueError('Finite anchor and nonnegative distance required')
     result={'route':'RGB_FALLBACK_REQUIRES_REVIEW','point':list(map(float,anchor)),
             'source':'REVIEWED_RGB_ANCHOR','reason':'LIDAR_UNAVAILABLE_OR_INCOMPATIBLE',
@@ -36,11 +40,24 @@ def select_fusion_prompt(anchor, transform, building_counts, relative_height,
         return result
     labs,_=label(support)
     component=labs==labs[rr[near],cc[near]]
-    # Interior point of this component, not a distant neighboring building.
+    # A connected Class6 component may bridge adjacent roofs. Its global most
+    # interior point must not move the reviewed candidate onto a neighbor.
     interior=distance_transform_edt(np.pad(component,1))[1:-1,1:-1]
-    pr,pc=np.unravel_index(np.argmax(interior),interior.shape)
+    cr,cc=np.nonzero(component)
+    cx,cy=transform*(cc+.5,cr+.5)
+    shifts=np.hypot(cx-anchor[0],cy-anchor[1])
+    # Bounded mode is opt-in: regression runs show that a local point improves
+    # small annexes but may worsen large articulated roofs. Preserve both modes.
+    eligible=shifts<=max_prompt_shift_m if max_prompt_shift_m is not None else np.ones(shifts.shape,dtype=bool)
+    if not eligible.any():
+        result['reason']='NO_SUPPORTED_PROMPT_WITHIN_IDENTITY_RADIUS'
+        return result
+    er,ec=cr[eligible],cc[eligible]
+    best=int(np.argmax(interior[er,ec]));pr,pc=er[best],ec[best]
     gx,gy=transform*(pc+.5,pr+.5)
     result.update(route='LIDAR_GUIDED_REQUIRES_REVIEW',point=[float(gx),float(gy)],
                   source='LOCAL_CLASS6_AND_HEIGHT',reason='LOCAL_SUPPORT_FOUND',
-                  support_cells=int(component.sum()),anchor_gap_m=float(distances[near]))
+                  support_cells=int(component.sum()),anchor_gap_m=float(distances[near]),
+                  prompt_shift_m=float(np.hypot(gx-anchor[0],gy-anchor[1])),
+                  max_prompt_shift_m=float(max_prompt_shift_m) if max_prompt_shift_m is not None else None)
     return result

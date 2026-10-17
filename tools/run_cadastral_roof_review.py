@@ -26,6 +26,7 @@ def main():
     parser.add_argument('--max-vertices',type=int,default=20)
     parser.add_argument('--compare-to',type=Path,help='Previous roof hypotheses, for post-run review only; never model prompts')
     parser.add_argument('--preflight-only',action='store_true')
+    parser.add_argument('--previous-review',type=Path,help='Previous ROOF_HYPOTHESES for explicit identity/topology regression review')
     args=parser.parse_args();manifest_path=args.manifest.resolve()
     manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
     if manifest.get('schema_version')!=1 or not manifest.get('cases'):raise ValueError('Reviewed workflow manifest required')
@@ -91,7 +92,8 @@ def main():
                            provenance={'ortho':str(path),'lidar_compatibility':case.get('lidar_compatibility')},**kwargs)
             current=scene_key
         start=time.perf_counter()
-        result=flow.extract(case['body_id'],case['anchor'],case['search_bounds'],reviewed=True)
+        result=flow.extract(case['body_id'],case['anchor'],case['search_bounds'],reviewed=True,
+                            max_prompt_shift_m=case.get('max_prompt_shift_m'))
         geometry=result.pop('geometry');original=result.pop('raw_geometry')
         result['duration_s']=time.perf_counter()-start
         report.append(result)
@@ -111,6 +113,12 @@ def main():
            'model_checkpoint_sha256':sha256(flow.segmenter.checkpoint_path),
            'model_config':flow.segmenter.model_cfg}
     final['geometry_max_exterior_vertices']=args.max_vertices
+    if args.previous_review:
+        from stratum_ro.roof_revision_review import review_roof_revision
+        previous=gpd.read_file(args.previous_review,layer='ROOF_HYPOTHESES')
+        final['revision_review']=review_roof_revision(dict(zip(previous.body_id,previous.geometry)),
+                                                     {r['body_id']:r['geometry'] for r in records})
+        final['previous_review_sha256']=sha256(args.previous_review)
     if args.compare_to:
         baseline=gpd.read_file(args.compare_to,layer='IPOTEZE_RECTIFICATE')
         checks=[]

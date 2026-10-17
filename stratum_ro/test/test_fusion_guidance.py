@@ -43,3 +43,16 @@ class FusionGuidanceTests(unittest.TestCase):
     def test_shape_mismatch_rejected(self):
         with self.assertRaises(ValueError):
             select_fusion_prompt((1,2),self.tr,self.counts,self.height[:2],self.valid)
+
+    def test_connected_neighbor_cannot_steal_prompt(self):
+        self.counts[:]=0
+        self.counts[8:11,1:4]=3
+        self.counts[9,4:10]=3
+        self.counts[2:18,10:19]=3
+        anchor=(102.5,190.5)
+        r=self.call(anchor=anchor,max_prompt_shift_m=3.)
+        self.assertLessEqual(np.linalg.norm(np.array(r['point'])-anchor),3.)
+        self.assertLess(r['point'][0],106)
+
+    def test_nonfinite_identity_radius_is_rejected(self):
+        with self.assertRaises(ValueError):self.call(max_prompt_shift_m=float('nan'))

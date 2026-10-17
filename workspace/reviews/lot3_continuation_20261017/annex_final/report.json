@@ -1,0 +1,72 @@
+{
+  "scope": "PRODUCT_WORKFLOW_ON_REVIEWED_CANDIDATES_NOT_REGIONAL_DETECTOR",
+  "ground_footprints_created": 0,
+  "owner_verdict": "PENDING_OWNER_REVIEW",
+  "cases": [
+    {
+      "body_id": "T18:C2",
+      "guidance": {
+        "route": "LIDAR_GUIDED_REQUIRES_REVIEW",
+        "point": [
+          390615.37499999994,
+          585528.525
+        ],
+        "source": "LOCAL_CLASS6_AND_HEIGHT",
+        "reason": "LOCAL_SUPPORT_FOUND",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW",
+        "support_cells": 17033,
+        "anchor_gap_m": 0.03535533905109557,
+        "prompt_shift_m": 2.016494482950857,
+        "max_prompt_shift_m": 3.0
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_continuation_20261017\\covers\\T18_expanded_ortho.tif",
+        "lidar_compatibility": "EXPERIMENTAL_STEREO70_HYPOTHESIS"
+      },
+      "status": "REQUIRES_REVIEW",
+      "review_reasons": [
+        "POSSIBLE_SEARCH_WINDOW_TRUNCATION"
+      ],
+      "sam2_score": 0.8407539129257202,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "SUPPORTED_CORE_RECTANGLE",
+        "lidar_used": true,
+        "courtyards": 0,
+        "raw_area_m2": 154.75500000012548,
+        "trimmed_area_m2": 153.45000000014844,
+        "support": 0.9464574974134834,
+        "coverage": 0.9131510752120037,
+        "interior_recovery_m2": 3.1275
+      },
+      "search_window_check": {
+        "bounds": [
+          390603.0,
+          585518.0,
+          390626.0,
+          585545.0
+        ],
+        "raw_boundary_distance_m": 0.1499999999650754,
+        "refined_boundary_distance_m": 2.602872042916715,
+        "raw_within_search": true,
+        "refined_within_search": true,
+        "automatic_completeness_claim": false
+      },
+      "vertices": 4,
+      "duration_s": 0.9375870000076247
+    }
+  ],
+  "source_hashes": {
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lidar_audit_20261017\\relative_surface_1m.tif": "500a6bbee7bc915aef8595803c95d64f35be6bd1a3f8d0d16bbb329e86ffaac6",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lidar_audit_20261017\\class6_density_1m.tif": "da989f3641a5032550ec177b88c1faeb54558778cd45bd847c4876f64d43b135",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_continuation_20261017\\covers\\T18_expanded_ortho.tif": "c2192b24c5e9b12c459473323e2e09226f0ace1aa027bdadb0b12a98f2ced807"
+  },
+  "input_manifest_sha256": "fea343afd034f845f85a8456d11c2c50e760d6d28a6585ff93820f921db21855",
+  "model_checkpoint_sha256": "65b50056e05bcb13694174f51bb6da89c894b57b75ccdf0ba6352c597c5d1125",
+  "model_config": "sam2_hiera_t.yaml",
+  "geometry_max_exterior_vertices": 20
+}
