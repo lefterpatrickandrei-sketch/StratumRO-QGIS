@@ -1,5 +1,9 @@
 # AGENTS.md — StratumRO Engineering & Evidence-First Governance Guide
 
+## Product scope confirmed by owner — 2026-10-17
+
+Read `docs/STRATUMRO_PRODUCT_IDENTITY_AND_DESKTOP_DIRECTION_2026-10-17.md`. StratumRO is the modular geospatial/scientific platform for the surveyor; cadastre is the current priority, not the full product definition. Owner accepted the direction of a standalone desktop application connected to specialist tools. Current instruction is to continue cadastral implementation first. Do not start an unrelated UI rewrite or mark pending roof hypotheses accepted. All new code and evidence must be checkpointed in the shared Git repository.
+
 ## Latest experimental handoff — 2026-10-17, RGB–LiDAR fusion
 
 Read `docs/STRATUMRO_FUSION_DEMO_HANDOFF_2026-10-17.md` before continuing fusion work. Tested modules: `stratum_ro/fusion_guidance.py` and `stratum_ro/fusion_refinement.py`. Isolated inspection project: `workspace/reviews/fusion_complete_20261017/StratumRO_fuziune_inspectie_separata.qgz`. T17:C1/C2, T18:C1 and T20:C1 are **PENDING_OWNER_REVIEW**, never automatically accepted. This is a local experiment using reviewed RGB anchors; it is not a regional automatic detector or the default production entry point. Preserve initial/intermediate evidence and the owner's accepted lots. LiDAR CRS and temporal compatibility remain unverified independently; missing Class 6 must not become an automatic veto or a negative training label. Main QGIS project was left untouched. Commits `02bbde4` and `d99e86b` preserve this implementation and evidence.
