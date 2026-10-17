@@ -50,6 +50,19 @@ class PlatformService:
             segmenter = SAM2BuildingSegmenter()
         return CadastralRoofWorkflow(segmenter, max_vertices=max_vertices)
 
+    def plan_regional_roof_scan(self, orthophotos, parameters=None):
+        """Plan an automatic whole-mosaic scan, without inventing reviewed anchors.
+
+        CLI tools/run_regional_roofs.py executes this same product implementation.
+        Planning does not download models, upload imagery or change QGIS.
+        """
+        from stratum_ro.regional_roofs import OrthoMosaic, RegionalRoofConfig, plan_windows
+        config = RegionalRoofConfig(**(parameters or {}))
+        mosaic = OrthoMosaic(orthophotos, max_pixels=config.max_window_pixels)
+        return {'scope': 'AUTOMATIC_REGIONAL_PROPOSALS_NOT_VALIDATED_INVENTORY',
+                'bounds': list(mosaic.bounds), 'sources': mosaic.sources,
+                'windows': plan_windows(mosaic.bounds, config)}
+
     def query_qgis(self, msg_type: str, params: Optional[Dict[str, Any]] = None, timeout: float = 8.0) -> Dict[str, Any]:
         """Sends a framed JSON command to live QGIS MCP socket and returns decoded response."""
         params = params or {}

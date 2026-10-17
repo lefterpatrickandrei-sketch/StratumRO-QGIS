@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis saveUser="lefpa" version="3.40.0-Bratislava" projectname="StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie" saveUserFull="Patrick Lefter" saveDateTime="2026-10-17T15:08:09">
+<qgis saveUser="lefpa" version="3.40.0-Bratislava" projectname="StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie" saveUserFull="Patrick Lefter" saveDateTime="2026-10-17T17:55:45">
   <homePath path=""/>
   <title>StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie</title>
   <transaction mode="Disabled"/>
@@ -410,60 +410,41 @@
         </customproperties>
       </layer-tree-layer>
     </layer-tree-group>
-    <custom-order enabled="0">
-      <item>Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d</item>
-      <item>Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba</item>
-      <item>Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86</item>
-      <item>REVIZUIRE_COMPLEXA_3ac9d5d1_9f0a_4850_b115_8955bfedfe3f</item>
-      <item>PROPUNERI_SELECTATE_0bb56959_d9ae_4dc3_84f9_2dfbf231ecad</item>
-      <item>REFERINTE_UTILIZATOR_5e655e0d_0041_4683_b16e_5605591087ae</item>
-      <item>SOL_ESTIMAT_NEVERIFICAT_b9f6f6c0_8f05_4898_a452_97c4c9cb9c3f</item>
-      <item>ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f</item>
-      <item>TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6</item>
-      <item>B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145</item>
-      <item>RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4</item>
-      <item>RESPINSE_ANTERIOR_SASE_bd332c36_4829_458b_b374_6f633c63a18d</item>
-      <item>Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551</item>
-      <item>Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c</item>
-      <item>Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17</item>
-      <item>Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b</item>
-      <item>Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4</item>
-      <item>T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d</item>
-      <item>LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92</item>
-      <item>LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990</item>
-      <item>LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a</item>
-      <item>LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a</item>
-      <item>LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732</item>
-      <item>LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b</item>
-      <item>LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d</item>
-      <item>LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212</item>
-      <item>LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f</item>
-      <item>LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e</item>
-      <item>LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce</item>
-      <item>T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472</item>
-      <item>T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c</item>
-      <item>T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd</item>
-      <item>MASTI_BRUTE_FINISARE___mov_06c7364b_82d1_4e48_bfdf_71ebcaafe258</item>
-      <item>T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260</item>
-      <item>T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364</item>
-      <item>T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd</item>
-      <item>T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5</item>
-      <item>T18___DETALIU_SID_5cm_df19f540_3a6b_48ad_a4b6_ce96b75c88bb</item>
-      <item>T18___SURSA_NATIVA___detaliu_muchie_ef0642d3_c4dd_4100_8d69_f70ea59d0c5c</item>
-      <item>LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9</item>
-      <item>T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471</item>
-      <item>T12_5cm_75bd1002_6557_49a3_9fa0_95b2ea4bcd88</item>
-      <item>T13_5cm_11db7616_b226_442f_ab9a_3c4d29d741f6</item>
-      <item>T14_5cm_b012d662_864e_4468_b730_9b65d939af22</item>
-      <item>T15_5cm_9860cb9c_705f_4e04_a486_ca2afb9c88a6</item>
-      <item>T16_5cm_e6257cf3_53e7_4d0a_bc7d_939e1544e46b</item>
-      <item>T18_5cm_25f3e210_9ef7_433b_9d5b_9b2f3ee3201a</item>
-      <item>T19_5cm_2ed3ce64_c9f4_470a_8d34_26540cdcdc4a</item>
-      <item>T20_5cm_c4ba247e_4511_401f_83ad_a7bb8f1bd49c</item>
+    <custom-order enabled="1">
       <item>LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31</item>
       <item>LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43</item>
       <item>LOT4___ferestre_de_cautare___NU_contur_final_00e0d01f_705d_4551_ad86_8b9eae205f49</item>
       <item>LOT4___T22_masca_respinsa_de_agent_c7f4cb6e_73a7_41cf_9637_bd8815e7dcc9</item>
+      <item>LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9</item>
+      <item>T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd</item>
+      <item>T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5</item>
+      <item>T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364</item>
+      <item>T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260</item>
+      <item>T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472</item>
+      <item>T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c</item>
+      <item>T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd</item>
+      <item>MASTI_BRUTE_FINISARE___mov_06c7364b_82d1_4e48_bfdf_71ebcaafe258</item>
+      <item>LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212</item>
+      <item>LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f</item>
+      <item>LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e</item>
+      <item>LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce</item>
+      <item>LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a</item>
+      <item>LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732</item>
+      <item>LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b</item>
+      <item>LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d</item>
+      <item>LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92</item>
+      <item>LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990</item>
+      <item>LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a</item>
+      <item>T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d</item>
+      <item>RESPINSE_ANTERIOR_SASE_bd332c36_4829_458b_b374_6f633c63a18d</item>
+      <item>RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4</item>
+      <item>B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145</item>
+      <item>TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6</item>
+      <item>ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f</item>
+      <item>SOL_ESTIMAT_NEVERIFICAT_b9f6f6c0_8f05_4898_a452_97c4c9cb9c3f</item>
+      <item>REFERINTE_UTILIZATOR_5e655e0d_0041_4683_b16e_5605591087ae</item>
+      <item>PROPUNERI_SELECTATE_0bb56959_d9ae_4dc3_84f9_2dfbf231ecad</item>
+      <item>REVIZUIRE_COMPLEXA_3ac9d5d1_9f0a_4850_b115_8955bfedfe3f</item>
       <item>Lot4___T21_5cm_298db82e_ed7a_4f53_af20_70f196750509</item>
       <item>Lot4___T22_5cm_a59d8b5f_8762_4733_afdc_90e2eebeff93</item>
       <item>Lot4___T23_5cm_d8b73275_c136_4fbf_8285_c3dd6d411a79</item>
@@ -474,6 +455,25 @@
       <item>Lot4___T28_5cm_d635dc6e_6b36_4228_87dc_320a83923852</item>
       <item>Lot4___T29_5cm_f9dfa074_33e7_4d67_a509_b5800235e0b8</item>
       <item>Lot4___T30_5cm_1c50aec5_e092_4883_8976_532b07c1b3c8</item>
+      <item>T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471</item>
+      <item>T12_5cm_75bd1002_6557_49a3_9fa0_95b2ea4bcd88</item>
+      <item>T13_5cm_11db7616_b226_442f_ab9a_3c4d29d741f6</item>
+      <item>T14_5cm_b012d662_864e_4468_b730_9b65d939af22</item>
+      <item>T15_5cm_9860cb9c_705f_4e04_a486_ca2afb9c88a6</item>
+      <item>T16_5cm_e6257cf3_53e7_4d0a_bc7d_939e1544e46b</item>
+      <item>T18_5cm_25f3e210_9ef7_433b_9d5b_9b2f3ee3201a</item>
+      <item>T19_5cm_2ed3ce64_c9f4_470a_8d34_26540cdcdc4a</item>
+      <item>T20_5cm_c4ba247e_4511_401f_83ad_a7bb8f1bd49c</item>
+      <item>T18___DETALIU_SID_5cm_df19f540_3a6b_48ad_a4b6_ce96b75c88bb</item>
+      <item>T18___SURSA_NATIVA___detaliu_muchie_ef0642d3_c4dd_4100_8d69_f70ea59d0c5c</item>
+      <item>Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d</item>
+      <item>Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba</item>
+      <item>Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551</item>
+      <item>Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86</item>
+      <item>Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c</item>
+      <item>Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17</item>
+      <item>Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b</item>
+      <item>Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4</item>
     </custom-order>
   </layer-tree-group>
   <snapping-settings unit="1" minScale="0" enabled="0" scaleDependencyMode="0" mode="2" intersection-snapping="0" self-snapping="0" tolerance="12" type="1" maxScale="0">
@@ -519,10 +519,10 @@
   <mapcanvas name="theMapCanvas" annotationsVisible="1">
     <units>meters</units>
     <extent>
-      <xmin>390615.0327619735035114</xmin>
-      <ymin>585479.71377726295031607</ymin>
-      <xmax>391217.89347802550764754</xmax>
-      <ymax>585769.8954465698916465</ymax>
+      <xmin>390771.98795857914956287</xmin>
+      <ymin>585414.65682888822630048</ymin>
+      <xmax>390790.82735595578560606</xmax>
+      <ymax>585423.72500605415552855</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -542,77 +542,77 @@
     <expressionContextScope/>
   </mapcanvas>
   <projectModels/>
-  <legend updateDrawingOrder="true">
+  <legend updateDrawingOrder="false">
     <legendgroup name="LOT4_T21_T30_IN_REVIZIE" checked="Qt::Checked" open="true">
-      <legendlayer name="LOT4 - 9 contururi / in revizie" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT4 - 9 contururi / in revizie" showFeatureCount="0" checked="Qt::Checked" drawingOrder="0" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT4 - T22 nerezolvat" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT4 - T22 nerezolvat" showFeatureCount="0" checked="Qt::Checked" drawingOrder="1" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
       <legendgroup name="DIAGNOSTIC / ferestre si incercari respinse" checked="Qt::Unchecked" open="false">
-        <legendlayer name="LOT4 - ferestre de cautare / NU contur final" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+        <legendlayer name="LOT4 - ferestre de cautare / NU contur final" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="2" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="LOT4___ferestre_de_cautare___NU_contur_final_00e0d01f_705d_4551_ad86_8b9eae205f49" isInOverview="0" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="LOT4 - T22 masca respinsa de agent" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+        <legendlayer name="LOT4 - T22 masca respinsa de agent" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="3" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="LOT4___T22_masca_respinsa_de_agent_c7f4cb6e_73a7_41cf_9637_bd8815e7dcc9" isInOverview="0" visible="0"/>
           </filegroup>
         </legendlayer>
       </legendgroup>
       <legendgroup name="Lot4 - detalii ortofoto 5cm / CRS interpretat" checked="Qt::Checked" open="false">
-        <legendlayer name="Lot4 / T21_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T21_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="34" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T21_5cm_298db82e_ed7a_4f53_af20_70f196750509" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T22_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T22_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="35" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T22_5cm_a59d8b5f_8762_4733_afdc_90e2eebeff93" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T23_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T23_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="36" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T23_5cm_d8b73275_c136_4fbf_8285_c3dd6d411a79" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T24_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T24_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="37" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T24_5cm_64bad868_2e5d_4dc1_96a5_8ecb886ccfa2" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T25_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T25_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="38" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T25_5cm_fcef8985_b080_4d36_841c_fc38d56b0564" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T26_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T26_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="39" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T26_5cm_af73392a_a1af_48a6_82f6_1ae703c8141b" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T27_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T27_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="40" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T27_5cm_14f491c1_04e4_463c_aa60_60afa89ddeb5" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T28_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T28_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="41" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T28_5cm_d635dc6e_6b36_4228_87dc_320a83923852" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T29_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T29_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="42" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T29_5cm_f9dfa074_33e7_4d67_a509_b5800235e0b8" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="Lot4 / T30_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="Lot4 / T30_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="43" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="Lot4___T30_5cm_1c50aec5_e092_4883_8976_532b07c1b3c8" isInOverview="0" visible="1"/>
           </filegroup>
@@ -620,53 +620,53 @@
       </legendgroup>
     </legendgroup>
     <legendgroup name="LOT3_REPARAT_20261017_NEVALIDAT" checked="Qt::Checked" open="true">
-      <legendlayer name="LOT3 - 20 ipoteze / NECESITA VERDICT" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="false">
+      <legendlayer name="LOT3 - 20 ipoteze / NECESITA VERDICT" showFeatureCount="0" checked="Qt::Checked" drawingOrder="4" open="false">
         <filegroup hidden="false" open="false">
           <legendlayerfile layerid="LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
       <legendgroup name="DETALII SID 5cm / interpretare CRS proiect" checked="Qt::Checked" open="false">
-        <legendlayer name="T11_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T11_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="44" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="T12_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T12_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="45" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T12_5cm_75bd1002_6557_49a3_9fa0_95b2ea4bcd88" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="T13_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T13_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="46" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T13_5cm_11db7616_b226_442f_ab9a_3c4d29d741f6" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="T14_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T14_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="47" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T14_5cm_b012d662_864e_4468_b730_9b65d939af22" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="T15_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T15_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="48" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T15_5cm_9860cb9c_705f_4e04_a486_ca2afb9c88a6" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="T16_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T16_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="49" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T16_5cm_e6257cf3_53e7_4d0a_bc7d_939e1544e46b" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="T18_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T18_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="50" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T18_5cm_25f3e210_9ef7_433b_9d5b_9b2f3ee3201a" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="T19_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T19_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="51" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T19_5cm_2ed3ce64_c9f4_470a_8d34_26540cdcdc4a" isInOverview="0" visible="1"/>
           </filegroup>
         </legendlayer>
-        <legendlayer name="T20_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+        <legendlayer name="T20_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="52" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T20_5cm_c4ba247e_4511_401f_83ad_a7bb8f1bd49c" isInOverview="0" visible="1"/>
           </filegroup>
@@ -674,209 +674,209 @@
       </legendgroup>
     </legendgroup>
     <legendgroup name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" open="true">
-      <legendlayer name="T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="5" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="T18:C2 - MUCHIE OBSERVATA / DE VERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="T18:C2 - MUCHIE OBSERVATA / DE VERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="6" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="T18 - DETALIU SID 5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="T18 - DETALIU SID 5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="53" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18___DETALIU_SID_5cm_df19f540_3a6b_48ad_a4b6_ce96b75c88bb" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="T18 - SURSA NATIVA / detaliu muchie" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="T18 - SURSA NATIVA / detaliu muchie" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="54" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18___SURSA_NATIVA___detaliu_muchie_ef0642d3_c4dd_4100_8d69_f70ea59d0c5c" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup name="LOT3_T18_ANEXA_IPOTEZA_20261017" checked="Qt::Unchecked" open="false">
-      <legendlayer name="T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT" showFeatureCount="0" checked="Qt::Checked" drawingOrder="7" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="T18:C2 - IPOTEZA ANEXA / MUCHIE DE VERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="T18:C2 - IPOTEZA ANEXA / MUCHIE DE VERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="8" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup name="LOT3_FINISARE_T17_T18_20261017" checked="Qt::Unchecked" open="false">
-      <legendlayer name="T17:C1 - FINISARE NEVERIFICATA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="T17:C1 - FINISARE NEVERIFICATA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="9" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="T17:C2 - FINISARE NEVERIFICATA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="T17:C2 - FINISARE NEVERIFICATA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="10" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="T18:C1 - FINISARE NEVERIFICATA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="T18:C1 - FINISARE NEVERIFICATA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="11" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="MASTI_BRUTE_FINISARE - mov" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="MASTI_BRUTE_FINISARE - mov" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="12" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="MASTI_BRUTE_FINISARE___mov_06c7364b_82d1_4e48_bfdf_71ebcaafe258" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup name="LOT3_REVIZIE_V3_T11_T20" checked="Qt::Unchecked" open="false">
-      <legendlayer name="LOT3_V3_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_V3_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="13" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT3_V3_CAZURI_NERECUPERATE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_V3_CAZURI_NERECUPERATE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="14" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT3_V3_FERESTRE_SELECTIE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_V3_FERESTRE_SELECTIE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="15" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT3_V3_MASCA_BRUTA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_V3_MASCA_BRUTA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="16" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup name="LOT3_REVIZIE_20261013_ISTORIC" checked="Qt::Unchecked" open="false">
-      <legendlayer name="LOT3_REV_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_REV_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="17" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT3_REV_CAZURI_NERECUPERATE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_REV_CAZURI_NERECUPERATE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="18" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT3_REV_FERESTRE_SELECTIE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_REV_FERESTRE_SELECTIE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="19" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT3_REV_MASCA_BRUTA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_REV_MASCA_BRUTA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="20" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup name="LOT3_ISTORIC_INITIAL_NEACCEPTAT" checked="Qt::Unchecked" open="false">
-      <legendlayer name="LOT3_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="21" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT3_CAZURI_NERECUPERATE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_CAZURI_NERECUPERATE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="22" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="LOT3_FERESTRE_SELECTIE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+      <legendlayer name="LOT3_FERESTRE_SELECTIE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="23" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a" isInOverview="0" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendlayer name="T10_ISTORIC_PARTIAL (Incomplet anterior)" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+    <legendlayer name="T10_ISTORIC_PARTIAL (Incomplet anterior)" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="24" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d" isInOverview="0" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="RESPINSE_ANTERIOR_SASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+    <legendlayer name="RESPINSE_ANTERIOR_SASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="25" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="RESPINSE_ANTERIOR_SASE_bd332c36_4829_458b_b374_6f633c63a18d" isInOverview="0" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="RECTIFICARI_T05_T06_T07_T10" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+    <legendlayer name="RECTIFICARI_T05_T06_T07_T10" showFeatureCount="0" checked="Qt::Checked" drawingOrder="26" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4" isInOverview="0" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="B5_DOUA_CORPURI" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+    <legendlayer name="B5_DOUA_CORPURI" showFeatureCount="0" checked="Qt::Checked" drawingOrder="27" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145" isInOverview="0" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="TESTE_10_REZULTATE" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+    <legendlayer name="TESTE_10_REZULTATE" showFeatureCount="0" checked="Qt::Checked" drawingOrder="28" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6" isInOverview="0" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="ACOPERISURI_SIMPLE" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+    <legendlayer name="ACOPERISURI_SIMPLE" showFeatureCount="0" checked="Qt::Checked" drawingOrder="29" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f" isInOverview="0" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="SOL_ESTIMAT_NEVERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+    <legendlayer name="SOL_ESTIMAT_NEVERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="30" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="SOL_ESTIMAT_NEVERIFICAT_b9f6f6c0_8f05_4898_a452_97c4c9cb9c3f" isInOverview="0" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="REFERINTE_UTILIZATOR" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+    <legendlayer name="REFERINTE_UTILIZATOR" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="31" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="REFERINTE_UTILIZATOR_5e655e0d_0041_4683_b16e_5605591087ae" isInOverview="0" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="PROPUNERI_SELECTATE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+    <legendlayer name="PROPUNERI_SELECTATE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="32" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="PROPUNERI_SELECTATE_0bb56959_d9ae_4dc3_84f9_2dfbf231ecad" isInOverview="0" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer name="REVIZUIRE_COMPLEXA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
+    <legendlayer name="REVIZUIRE_COMPLEXA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="33" open="true">
       <filegroup hidden="false" open="true">
         <legendlayerfile layerid="REVIZUIRE_COMPLEXA_3ac9d5d1_9f0a_4850_b115_8955bfedfe3f" isInOverview="0" visible="0"/>
       </filegroup>
     </legendlayer>
     <legendgroup name="ORTOFOTO COMPLETE - 8 tile-uri" checked="Qt::Checked" open="true">
-      <legendlayer name="Cluj-0-0" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="Cluj-0-0" showFeatureCount="0" checked="Qt::Checked" drawingOrder="55" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="Cluj-0-1" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="Cluj-0-1" showFeatureCount="0" checked="Qt::Checked" drawingOrder="56" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="Cluj-0-2" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="Cluj-0-2" showFeatureCount="0" checked="Qt::Checked" drawingOrder="57" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="Cluj-1-0" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="Cluj-1-0" showFeatureCount="0" checked="Qt::Checked" drawingOrder="58" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="Cluj-1-1" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="Cluj-1-1" showFeatureCount="0" checked="Qt::Checked" drawingOrder="59" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="Cluj-1-2" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="Cluj-1-2" showFeatureCount="0" checked="Qt::Checked" drawingOrder="60" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="Cluj-2-0" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="Cluj-2-0" showFeatureCount="0" checked="Qt::Checked" drawingOrder="61" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer name="Cluj-2-1" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
+      <legendlayer name="Cluj-2-1" showFeatureCount="0" checked="Qt::Checked" drawingOrder="62" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4" isInOverview="0" visible="1"/>
         </filegroup>
@@ -25138,59 +25138,40 @@
     </maplayer>
   </projectlayers>
   <layerorder>
-    <layer id="Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d"/>
-    <layer id="Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba"/>
-    <layer id="Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86"/>
-    <layer id="REVIZUIRE_COMPLEXA_3ac9d5d1_9f0a_4850_b115_8955bfedfe3f"/>
-    <layer id="PROPUNERI_SELECTATE_0bb56959_d9ae_4dc3_84f9_2dfbf231ecad"/>
-    <layer id="REFERINTE_UTILIZATOR_5e655e0d_0041_4683_b16e_5605591087ae"/>
-    <layer id="SOL_ESTIMAT_NEVERIFICAT_b9f6f6c0_8f05_4898_a452_97c4c9cb9c3f"/>
-    <layer id="ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f"/>
-    <layer id="TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6"/>
-    <layer id="B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145"/>
-    <layer id="RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4"/>
-    <layer id="RESPINSE_ANTERIOR_SASE_bd332c36_4829_458b_b374_6f633c63a18d"/>
-    <layer id="Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551"/>
-    <layer id="Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c"/>
-    <layer id="Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17"/>
-    <layer id="Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b"/>
-    <layer id="Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4"/>
-    <layer id="T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d"/>
-    <layer id="LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92"/>
-    <layer id="LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990"/>
-    <layer id="LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a"/>
-    <layer id="LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a"/>
-    <layer id="LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732"/>
-    <layer id="LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b"/>
-    <layer id="LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d"/>
-    <layer id="LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212"/>
-    <layer id="LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f"/>
-    <layer id="LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e"/>
-    <layer id="LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce"/>
-    <layer id="T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472"/>
-    <layer id="T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c"/>
-    <layer id="T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd"/>
-    <layer id="MASTI_BRUTE_FINISARE___mov_06c7364b_82d1_4e48_bfdf_71ebcaafe258"/>
-    <layer id="T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260"/>
-    <layer id="T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364"/>
-    <layer id="T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd"/>
-    <layer id="T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5"/>
-    <layer id="T18___DETALIU_SID_5cm_df19f540_3a6b_48ad_a4b6_ce96b75c88bb"/>
-    <layer id="T18___SURSA_NATIVA___detaliu_muchie_ef0642d3_c4dd_4100_8d69_f70ea59d0c5c"/>
-    <layer id="LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9"/>
-    <layer id="T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471"/>
-    <layer id="T12_5cm_75bd1002_6557_49a3_9fa0_95b2ea4bcd88"/>
-    <layer id="T13_5cm_11db7616_b226_442f_ab9a_3c4d29d741f6"/>
-    <layer id="T14_5cm_b012d662_864e_4468_b730_9b65d939af22"/>
-    <layer id="T15_5cm_9860cb9c_705f_4e04_a486_ca2afb9c88a6"/>
-    <layer id="T16_5cm_e6257cf3_53e7_4d0a_bc7d_939e1544e46b"/>
-    <layer id="T18_5cm_25f3e210_9ef7_433b_9d5b_9b2f3ee3201a"/>
-    <layer id="T19_5cm_2ed3ce64_c9f4_470a_8d34_26540cdcdc4a"/>
-    <layer id="T20_5cm_c4ba247e_4511_401f_83ad_a7bb8f1bd49c"/>
     <layer id="LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31"/>
     <layer id="LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43"/>
     <layer id="LOT4___ferestre_de_cautare___NU_contur_final_00e0d01f_705d_4551_ad86_8b9eae205f49"/>
     <layer id="LOT4___T22_masca_respinsa_de_agent_c7f4cb6e_73a7_41cf_9637_bd8815e7dcc9"/>
+    <layer id="LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9"/>
+    <layer id="T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd"/>
+    <layer id="T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5"/>
+    <layer id="T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364"/>
+    <layer id="T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260"/>
+    <layer id="T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472"/>
+    <layer id="T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c"/>
+    <layer id="T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd"/>
+    <layer id="MASTI_BRUTE_FINISARE___mov_06c7364b_82d1_4e48_bfdf_71ebcaafe258"/>
+    <layer id="LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212"/>
+    <layer id="LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f"/>
+    <layer id="LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e"/>
+    <layer id="LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce"/>
+    <layer id="LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a"/>
+    <layer id="LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732"/>
+    <layer id="LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b"/>
+    <layer id="LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d"/>
+    <layer id="LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92"/>
+    <layer id="LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990"/>
+    <layer id="LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a"/>
+    <layer id="T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d"/>
+    <layer id="RESPINSE_ANTERIOR_SASE_bd332c36_4829_458b_b374_6f633c63a18d"/>
+    <layer id="RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4"/>
+    <layer id="B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145"/>
+    <layer id="TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6"/>
+    <layer id="ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f"/>
+    <layer id="SOL_ESTIMAT_NEVERIFICAT_b9f6f6c0_8f05_4898_a452_97c4c9cb9c3f"/>
+    <layer id="REFERINTE_UTILIZATOR_5e655e0d_0041_4683_b16e_5605591087ae"/>
+    <layer id="PROPUNERI_SELECTATE_0bb56959_d9ae_4dc3_84f9_2dfbf231ecad"/>
+    <layer id="REVIZUIRE_COMPLEXA_3ac9d5d1_9f0a_4850_b115_8955bfedfe3f"/>
     <layer id="Lot4___T21_5cm_298db82e_ed7a_4f53_af20_70f196750509"/>
     <layer id="Lot4___T22_5cm_a59d8b5f_8762_4733_afdc_90e2eebeff93"/>
     <layer id="Lot4___T23_5cm_d8b73275_c136_4fbf_8285_c3dd6d411a79"/>
@@ -25201,6 +25182,25 @@
     <layer id="Lot4___T28_5cm_d635dc6e_6b36_4228_87dc_320a83923852"/>
     <layer id="Lot4___T29_5cm_f9dfa074_33e7_4d67_a509_b5800235e0b8"/>
     <layer id="Lot4___T30_5cm_1c50aec5_e092_4883_8976_532b07c1b3c8"/>
+    <layer id="T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471"/>
+    <layer id="T12_5cm_75bd1002_6557_49a3_9fa0_95b2ea4bcd88"/>
+    <layer id="T13_5cm_11db7616_b226_442f_ab9a_3c4d29d741f6"/>
+    <layer id="T14_5cm_b012d662_864e_4468_b730_9b65d939af22"/>
+    <layer id="T15_5cm_9860cb9c_705f_4e04_a486_ca2afb9c88a6"/>
+    <layer id="T16_5cm_e6257cf3_53e7_4d0a_bc7d_939e1544e46b"/>
+    <layer id="T18_5cm_25f3e210_9ef7_433b_9d5b_9b2f3ee3201a"/>
+    <layer id="T19_5cm_2ed3ce64_c9f4_470a_8d34_26540cdcdc4a"/>
+    <layer id="T20_5cm_c4ba247e_4511_401f_83ad_a7bb8f1bd49c"/>
+    <layer id="T18___DETALIU_SID_5cm_df19f540_3a6b_48ad_a4b6_ce96b75c88bb"/>
+    <layer id="T18___SURSA_NATIVA___detaliu_muchie_ef0642d3_c4dd_4100_8d69_f70ea59d0c5c"/>
+    <layer id="Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d"/>
+    <layer id="Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba"/>
+    <layer id="Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551"/>
+    <layer id="Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86"/>
+    <layer id="Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c"/>
+    <layer id="Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17"/>
+    <layer id="Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b"/>
+    <layer id="Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4"/>
   </layerorder>
   <labelEngineSettings/>
   <properties>
