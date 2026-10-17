@@ -1,5 +1,9 @@
 # AGENTS.md — StratumRO Engineering & Evidence-First Governance Guide
 
+## Latest experimental handoff — 2026-10-17, RGB–LiDAR fusion
+
+Read `docs/STRATUMRO_FUSION_DEMO_HANDOFF_2026-10-17.md` before continuing fusion work. Tested modules: `stratum_ro/fusion_guidance.py` and `stratum_ro/fusion_refinement.py`. Isolated inspection project: `workspace/reviews/fusion_complete_20261017/StratumRO_fuziune_inspectie_separata.qgz`. T17:C1/C2, T18:C1 and T20:C1 are **PENDING_OWNER_REVIEW**, never automatically accepted. This is a local experiment using reviewed RGB anchors; it is not a regional automatic detector or the default production entry point. Preserve initial/intermediate evidence and the owner's accepted lots. LiDAR CRS and temporal compatibility remain unverified independently; missing Class 6 must not become an automatic veto or a negative training label. Main QGIS project was left untouched. Commits `02bbde4` and `d99e86b` preserve this implementation and evidence.
+
 ## Required shared decision protocol
 
 **Executable evaluation prerequisites (latest correction):** Read `docs/STRATUMRO_EVALUATION_GATES.md` before any new/revised building lot. Use `stratum_ro/evaluation_preflight.py` before inference; `tools/run_lot3_evaluation.py` enforces it. Legacy Lot3 selection is blocked pending documented visual review. Preserve initial evidence. T14/T20 selected the wrong surfaces; T12:C1 includes pavement, T12:C2 needs review, T17 is partial. Historical descriptions of clean extraction and the delivered overview being verified are superseded. All Lot3 remains unaccepted. This is an input/integration gate, not a completed fix of segmentation or a full production evaluation.
