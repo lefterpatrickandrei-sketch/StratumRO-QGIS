@@ -1,2 +1,2 @@
-# Preserve exact evidence bytes and SHA-256 values across Git checkouts.
-* -text
+# Preserve evidence bytes; treat Windows CRLF endings correctly in whitespace checks.
+* -text whitespace=cr-at-eol

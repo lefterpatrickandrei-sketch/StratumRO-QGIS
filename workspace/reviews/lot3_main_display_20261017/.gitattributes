@@ -1,1 +1,2 @@
-* -text
+# Preserve evidence bytes; treat Windows CRLF endings correctly in whitespace checks.
+* -text whitespace=cr-at-eol
