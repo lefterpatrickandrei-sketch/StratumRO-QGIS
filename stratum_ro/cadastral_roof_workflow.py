@@ -1,0 +1,121 @@
+"""Reusable reviewed-candidate roof workflow, independent of QGIS and UI.
+
+This opt-in workflow produces roof hypotheses, never legal parcel boundaries or
+measured ground footprints. It uses actual optical scores and local evidence.
+"""
+import math
+import numpy as np
+from scipy.ndimage import label
+from rasterio.features import shapes
+from shapely.geometry import shape, Point, box
+from .fusion_guidance import select_fusion_prompt
+from .fusion_refinement import refine_fusion_mask
+
+
+def _component(mask,point_px,transform):
+    labs,_=label(mask)
+    col,row=np.floor(point_px).astype(int)
+    if not (0<=row<mask.shape[0] and 0<=col<mask.shape[1]):return None
+    ident=labs[row,col]
+    if ident==0:return None
+    selected=labs==ident
+    polygons=[shape(g) for g,v in shapes(selected.astype('uint8'),mask=selected,transform=transform) if v==1]
+    return max(polygons,key=lambda geom:geom.area) if polygons else None
+
+
+class CadastralRoofWorkflow:
+    """Encode once, process multiple explicitly reviewed candidates in a scene."""
+
+    def __init__(self,segmenter,max_vertices=20):
+        if not isinstance(max_vertices,int) or max_vertices<4:raise ValueError('At least four vertices required')
+        self.segmenter=segmenter
+        self.max_vertices=max_vertices
+        self.rgb=None
+        self._ids=set()
+
+    def set_scene(self,rgb,transform,valid_mask,*,crs,relative_height=None,
+                  building_counts=None,lidar_valid=None,lidar_compatible=False,
+                  provenance=None):
+        rgb=np.asarray(rgb)
+        valid=np.asarray(valid_mask,dtype=bool)
+        if rgb.ndim!=3 or rgb.shape[2]!=3 or valid.shape!=rgb.shape[:2]:
+            raise ValueError('RGB image and aligned explicit valid mask required')
+        if crs!='EPSG:3844':raise ValueError('Projected EPSG:3844 scene required; assigning CRS is not reprojection')
+        if not np.isfinite(transform.determinant) or abs(transform.determinant)<1e-12:
+            raise ValueError('Invertible scene transform required')
+        supplied=[relative_height is not None,building_counts is not None,lidar_valid is not None]
+        if any(supplied) and not all(supplied):raise ValueError('Supply all three LiDAR evidence grids or none')
+        if all(supplied):
+            height=np.asarray(relative_height,dtype=float);counts=np.asarray(building_counts,dtype=float)
+            lv=np.asarray(lidar_valid,dtype=bool)
+            if any(grid.shape!=valid.shape for grid in [height,counts,lv]):
+                raise ValueError('LiDAR grids must already align with the scene')
+        else:
+            height=np.full(valid.shape,np.nan);counts=np.zeros(valid.shape);lv=np.zeros(valid.shape,dtype=bool)
+            lidar_compatible=False
+        self.rgb=rgb;self.transform=transform;self.valid=valid
+        self.height=height;self.counts=counts;self.lidar_valid=lv
+        self.lidar_compatible=bool(lidar_compatible);self.provenance=dict(provenance or {})
+        self._ids=set();self._encoded=False
+
+    def extract(self,body_id,anchor,search_bounds,*,reviewed=False,context_m=4.,score_threshold=.60):
+        if self.rgb is None:raise RuntimeError('Set scene before extraction')
+        if not body_id or body_id in self._ids:raise ValueError('Unique nonempty body_id required per scene')
+        if not reviewed:raise ValueError('Candidate identity and optical anchor must be reviewed')
+        if len(search_bounds)!=4 or not np.all(np.isfinite(search_bounds)):
+            raise ValueError('Finite search bounds required')
+        a,b,c,d=map(float,search_bounds)
+        if a>=c or b>=d:raise ValueError('Ordered nonempty search bounds required')
+        if len(anchor)!=2 or not np.all(np.isfinite(anchor)) or not box(a,b,c,d).covers(Point(*anchor)):
+            raise ValueError('Finite anchor inside search bounds required')
+        if not math.isfinite(context_m) or context_m<0:raise ValueError('Nonnegative context required')
+        if not math.isfinite(score_threshold) or not 0<=score_threshold<=1:raise ValueError('Valid score threshold required')
+        inv=~self.transform
+        corners=[inv*(x,y) for x in [a-context_m,c+context_m] for y in [b-context_m,d+context_m]]
+        h,w=self.valid.shape
+        if any(not (0<=x<=w and 0<=y<=h) for x,y in corners):
+            raise ValueError('NEEDS_COMPLETE_IMAGE_COVERAGE')
+        c0=int(np.floor(min(p[0] for p in corners)));c1=int(np.ceil(max(p[0] for p in corners)))
+        r0=int(np.floor(min(p[1] for p in corners)));r1=int(np.ceil(max(p[1] for p in corners)))
+        if not self.valid[r0:r1,c0:c1].all():raise ValueError('NODATA_IN_REQUIRED_CONTEXT')
+        self._ids.add(body_id)
+        from rasterio.features import rasterize
+        local_region=rasterize([(box(a,b,c,d),1)],out_shape=self.valid.shape,
+                               transform=self.transform,dtype='uint8').astype(bool)
+        guidance=select_fusion_prompt(anchor,self.transform,self.counts,self.height,
+                                      self.lidar_valid&local_region,lidar_compatible=self.lidar_compatible)
+        if not self._encoded:
+            self.segmenter.set_image(self.rgb,self.transform);self._encoded=True
+        px=inv*tuple(guidance['point'])
+        prompt_corners=[inv*(x,y) for x in [a,c] for y in [b,d]]
+        prompt_box=np.array([min(p[0] for p in prompt_corners),min(p[1] for p in prompt_corners),
+                             max(p[0] for p in prompt_corners),max(p[1] for p in prompt_corners)],dtype='float32')
+        # Predictor interface deliberately avoids the old mandatory height veto.
+        import torch
+        with torch.inference_mode():
+            masks,scores,_=self.segmenter.predictor.predict(point_coords=np.array([px],dtype='float32'),
+                point_labels=np.array([1],dtype='int32'),box=prompt_box,multimask_output=True)
+        options=[]
+        for mask,score in zip(masks,scores):
+            if np.asarray(mask).shape!=self.valid.shape:raise ValueError('Predictor mask shape mismatch')
+            raw=_component(np.asarray(mask,dtype=bool)&self.valid,px,self.transform)
+            if raw is not None and raw.is_valid and raw.area>=8 and np.isfinite(score) and raw.covers(Point(*anchor)):
+                options.append((float(score),raw))
+        result={'body_id':body_id,'guidance':guidance,'owner_verdict':'PENDING_OWNER_REVIEW',
+                'geometry_role':'OBSERVED_ROOF_HYPOTHESIS','ground_footprint':None,
+                'provenance':self.provenance,'geometry':None,'raw_geometry':None,
+                'status':'NO_OPTICAL_MASK_FOR_REVIEWED_OBJECT','review_reasons':[]}
+        if not options:return result
+        score,raw=max(options,key=lambda item:item[0])
+        geom,diagnostic=refine_fusion_mask(raw,guidance['point'],self.rgb,self.transform,
+            self.height,self.counts,self.valid,guidance['route'],max_vertices=self.max_vertices)
+        reasons=[]
+        if score<score_threshold:reasons.append('LOW_OPTICAL_SCORE')
+        if diagnostic['status']!='RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW':reasons.append(diagnostic['status'])
+        boundary=box(a,b,c,d).boundary
+        if raw.distance(boundary)<.30:reasons.append('POSSIBLE_SEARCH_WINDOW_TRUNCATION')
+        if not self.lidar_compatible:reasons.append('LIDAR_NOT_USED_OR_INCOMPATIBLE')
+        result.update(geometry=geom,raw_geometry=raw,sam2_score=score,diagnostic=diagnostic,
+            status='REQUIRES_REVIEW' if reasons else 'RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW',
+            review_reasons=reasons,vertices=len(geom.exterior.coords)-1+sum(len(r.coords)-1 for r in geom.interiors))
+        return result

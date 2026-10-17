@@ -7,7 +7,7 @@ from .roof_simple_geometry import simple_roof_geometry
 
 
 def refine_fusion_mask(raw,anchor,rgb,transform,height,building_counts,valid,
-                       route,min_area_m2=8.):
+                       route,min_area_m2=8.,max_vertices=12):
     if raw is None or raw.geom_type!='Polygon' or not raw.is_valid:
         raise ValueError('Valid raw Polygon required')
     if rgb.shape[:2]!=height.shape or height.shape!=building_counts.shape or valid.shape!=height.shape:
@@ -33,7 +33,10 @@ def refine_fusion_mask(raw,anchor,rgb,transform,height,building_counts,valid,
         envelope=inside|(local_support&nearby)
         # In this explicit compatible route, ground returns are evidence against
         # mask contamination. Unknown pixels remain separate, never fake ground.
-        foreground=envelope&valid&observed&(height>=1.8)&~vegetation&(neutral|reddish|brown)
+        # Do not cut a class-6 supported roof connection merely because its
+        # shadow/material fails the neutral/red spectral heuristic.
+        spectral_support=neutral|reddish|brown|((building_counts>0)&(high>=35))
+        foreground=envelope&valid&observed&(height>=1.8)&~vegetation&spectral_support
     else:
         # Optical-only route must not inherit the incompatible height veto.
         foreground=inside&valid&~vegetation&neutral
@@ -61,7 +64,7 @@ def refine_fusion_mask(raw,anchor,rgb,transform,height,building_counts,valid,
     if not observed.is_valid or observed.area<min_area_m2:
         return raw,{'status':'UNRESOLVED_INSUFFICIENT_SURFACE','method':'RAW_PRESERVED'}
     shell=Polygon(observed.exterior)
-    simple,info=simple_roof_geometry(shell)
+    simple,info=simple_roof_geometry(shell,max_vertices=max_vertices)
     if info['method']=='NEEDS_REVIEW':
         return observed,{'status':'NEEDS_GEOMETRY_REVIEW','method':'EVIDENCE_TRIM_ONLY','lidar_used':lidar_used}
     retained=[]

@@ -38,6 +38,18 @@ class PlatformService:
         self.qgis_host = "127.0.0.1"
         self.qgis_port = 9876
 
+    def create_cadastral_roof_workflow(self, segmenter=None, max_vertices=20):
+        """Explicit opt-in product workflow for reviewed roof candidates.
+
+        Desktop/API/CLI callers share this engine. No source, project or output
+        is chosen implicitly and roof hypotheses never become ground footprints.
+        """
+        from stratum_ro.cadastral_roof_workflow import CadastralRoofWorkflow
+        if segmenter is None:
+            from stratum_ro.sam2_engine import SAM2BuildingSegmenter
+            segmenter = SAM2BuildingSegmenter()
+        return CadastralRoofWorkflow(segmenter, max_vertices=max_vertices)
+
     def query_qgis(self, msg_type: str, params: Optional[Dict[str, Any]] = None, timeout: float = 8.0) -> Dict[str, Any]:
         """Sends a framed JSON command to live QGIS MCP socket and returns decoded response."""
         params = params or {}

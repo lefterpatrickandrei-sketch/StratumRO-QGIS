@@ -47,3 +47,9 @@ class FusionRefinementTests(unittest.TestCase):
         self.valid[:]=False
         geom,diag=self.run_case('RGB_FALLBACK_REQUIRES_REVIEW')
         self.assertEqual(diag['status'],'UNRESOLVED_SEED_NOT_COVERED')
+
+    def test_class6_supported_dark_roof_is_not_lost_by_color_threshold(self):
+        self.rgb[20:60,20:60]=[45,44,43]
+        geom,diag=self.run_case('LIDAR_GUIDED_REQUIRES_REVIEW')
+        self.assertGreater(geom.area,80)
+        self.assertNotEqual(diag['method'],'RAW_PRESERVED')
