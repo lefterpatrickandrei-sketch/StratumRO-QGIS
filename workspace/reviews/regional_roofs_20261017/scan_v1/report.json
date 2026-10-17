@@ -1,0 +1,34 @@
+{
+  "status": "SCAN_COMPLETED_UNVALIDATED",
+  "fingerprint": "f0961039c42911de898de17be751e60f8c64c76e9fb7dedd473e0133cd10ec12",
+  "windows_planned": 144,
+  "windows_scanned": 67,
+  "windows_no_valid_rgb": 77,
+  "failed_windows": [],
+  "valid_core_area_m2": 419681.0475,
+  "raw_observations": 3104,
+  "deduplicated_observations": 2081,
+  "routes": {
+    "ROOF_CANDIDATE_REVIEW": 563,
+    "OPTICAL_UNKNOWN_REVIEW": 461,
+    "LIKELY_VEGETATION_REVIEW": 1057
+  },
+  "incomplete_context": 358,
+  "overlap_conflicts": 661,
+  "device": "cuda",
+  "execution_elapsed_s": 443.3940011999948,
+  "scope": "WHOLE_SOURCE_MOSAIC_AUTO_SCAN_NOT_COMPLETE_BUILDING_INVENTORY",
+  "peak_cuda_allocated_bytes": 979785216,
+  "peak_cuda_reserved_bytes": 1352663040,
+  "ground_footprints_generated": false,
+  "accuracy": null,
+  "recall": null,
+  "clean_training_labels": false,
+  "limitations": [
+    "Class-agnostic SAM grid can miss small objects and merge roofs.",
+    "Context LiDAR CRS/acquisition correspondence is not independently certified.",
+    "Roof routing is an experimental heuristic, not a trained semantic classifier.",
+    "One expanded-context retry is attempted; unresolved source/window edges stay flagged.",
+    "Unknown proposals are retained; zero Class6 is not an absence verdict."
+  ]
+}

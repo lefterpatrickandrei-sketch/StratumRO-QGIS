@@ -16,6 +16,12 @@ T29 are un vârf spre pavaj; T21 are retrageri/proiecții suspecte; T24 include 
 
 ## Implementarea regională
 
+Stare executată: scanarea completă este terminată, însă auditul vizual o declară **NEPREGĂTITĂ PENTRU PRODUCȚIE**. 144 ferestre planificate, 67 cu date valide și 77 fără date în nucleu; fără ferestre eșuate. Suprafața validă scanată: 419681,0475 m² (aproximativ 0,420 km²), nu 12 km². Cele opt bucăți sunt o acoperire locală Cluj, nu întregul oraș. 3104 observații brute, 2081 după deduplicare. Timp 443,394 s de la începutul scanării până la export, fără inițializarea modelului/auditul de intrare și fără etapele ulterioare de ambalare/inspecție. Memorie CUDA maximă alocată 979785216 bytes; rezervată 1352663040 bytes. Suma etapelor individuale ale ferestrelor este 244,599 s; restul include deduplicare, reluări și geometrie/export. Acestea nu sunt comparații măsurate cu Rust sau Hugging Face.
+
+Prima rutare avea 563 candidați de acoperiș. Inspecția a găsit arbori de toamnă clasificați greșit din cauza înălțimii; culoarea nu îi separa suficient. Regula produsului a fost corectată: înălțimea singură nu stabilește identitatea clădirii. Reambalarea acelorași observații, fără inferență nouă, mută 183 cazuri în coada incertă. **Selecția activă este `masked_review_v2`, prin `CURRENT_REVIEW.json`: 380 candidați cu sprijin contextual Class6, 644 obiecte optic incerte și 1057 vegetație probabilă.** Lipsa Class6 nu elimină date și nu dovedește absența acoperișului; printre cele 644 pot exista clădiri reale. Numărul 380 nu este număr validat de clădiri.
+
+Geometria celor 380: 19 ipoteze cu formă simplă, 154 ipoteze optice, 148 necesită revizie geometrică, 59 au context incomplet; 196 depășesc 16 vârfuri. Stările se bazează pe reguli tehnice, nu acceptări. 125 au indicator de conflict cu altă observație, inclusiv din alte categorii; indicatorul nu este un număr de perechi independente. Nu există precizie/recall măsurate.
+
 Cod comun: `stratum_ro/regional_roofs.py`. Planificare prin `PlatformService.plan_regional_roof_scan`; execuție locală prin `tools/run_regional_roofs.py`.
 
 1. Validează opt surse RGB byte, CRS proiectat metric, rezoluții, limite, măști și ordinea suprapunerilor. Nu atribuie un CRS lipsă. Pentru această dezvoltare se folosește interpretarea EPSG:3844 a cache-ului existent, fără certificare geodezică nouă.
@@ -26,6 +32,14 @@ Cod comun: `stratum_ro/regional_roofs.py`. Planificare prin `PlatformService.pla
 6. Obiectele la marginea ferestrei primesc o recitire cu context mai larg. Rezultatul trebuie să păstreze ancora automată și majoritatea suprafeței observate anterior. Nu există coordonate de caz în algoritm. Marginea NoData, limita bugetului sau eșecul rămân motive explicite de revizie.
 7. O formă ortogonală simplă este propusă numai cu acord bun față de mască și deplasare limitată. Curțile/aripile nu se umplu cu dreptunghiul învelitor. Măștile încă prea complexe sunt marcate pentru revizie. Această verificare compară cu SAM, nu cu realitatea din teren.
 8. Exportă GeoPackage, acoperirea scanării, proveniența, stările, relațiile dintre duplicate și raportul de timp/VRAM. Suprapunerile sunt semnalate, nu eliminate prin tăiere arbitrară. Fiecare rezultat rămâne neacceptat.
+
+Guardul final `regional_review.py` intersectează formele cu pixelii sursă valizi după simplificare. Pe rezultatele reale a eliminat 19,248 m² de extindere în NoData, fără ștergerea vreunui candidat. Contactele liniare ale intersecției nu sunt tratate ca suprafețe; o regresie reproduce GeometryCollection-ul găsit la prima ambalare. `masked_review_attempt1/failure.json` păstrează eroarea, iar `masked_review/` prima versiune reușită. Niciunul nu este înlocuit de selecția v2.
+
+Inferența reală `scan_v1` a folosit codul din commit `1d9685e`, cu SHA în `input_audit.json`. Codul ulterior schimbă rutarea și adaugă guardul final în runner; acestea sunt verificate pe observațiile reale salvate și printr-un job mic complet cu model de test. Nu afirmați că ultima versiune combinată a fost rulată din nou cu modelul real pe întreaga zonă.
+
+Comenzi executate: `venv/Scripts/python.exe tools/run_regional_roofs.py --config workspace/reviews/regional_roofs_20261017/config.json --output workspace/reviews/regional_roofs_20261017/scan_v1`, apoi `venv/Scripts/python.exe tools/package_regional_roof_review.py --output-name masked_review_v2 --revise-height-only-routing`. Ultima suită nouă: 13 teste produs trecute și un test de orchestrare trecut; suita relevantă anterioară: 71 trecute, cu preflight-ul comis izolat de modificările altui agent.
+
+QGIS comun: grupul `ACOPERISURI_AUTOMAT_REGIONAL_20261017_NEVALIDAT`, șase straturi noi, 69 total. Stratul principal arată ipoteze, nu un rezultat adoptat. Cyan = ipoteză, portocaliu = geometrie de revizuit, roșu = context incomplet. Coada incertă, vegetația probabilă, observațiile brute, grila și scenariile T10 sunt straturi separate. Vectorii vechi și verdictele sunt păstrate. Capturile inițiale și cele cu rutare corectată sunt în `qgis/` și `qgis/revised_routing/`.
 
 Un manifest regional fără etichete nu pretinde `point_on_roof=true` pentru fiecare punct al grilei și nu falsifică manifestul de lot revizuit. Verificările `validate_selection` rămân obligatorii pentru loturile de clădiri alese manual; scanarea regională are propriul audit de intrare și raport distinct. Nu se folosește `reviewed=True` pentru candidați descoperiți automat.
 

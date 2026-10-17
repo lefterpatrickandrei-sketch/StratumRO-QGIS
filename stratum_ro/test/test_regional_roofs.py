@@ -62,7 +62,15 @@ class RegionalRoofTests(unittest.TestCase):
         self.assertEqual(result['route'],'OPTICAL_UNKNOWN_REVIEW')
         self.assertIsNone(result['elevated_fraction'])
         result=route_surface(rgb,mask,np.ones((5,5))*3,np.zeros((5,5)))
-        self.assertEqual(result['route'],'ROOF_CANDIDATE_REVIEW')
+        self.assertEqual(result['route'],'OPTICAL_UNKNOWN_REVIEW')
+
+    def test_autumn_tree_height_is_not_building_identity(self):
+        rgb=np.full((5,5,3),[170,100,40],dtype='uint8');mask=np.ones((5,5),bool)
+        tree=route_surface(rgb,mask,np.full((5,5),12.),np.zeros((5,5)))
+        self.assertEqual(tree['elevated_fraction'],1.)
+        self.assertEqual(tree['route'],'OPTICAL_UNKNOWN_REVIEW')
+        roof=route_surface(rgb,mask,np.full((5,5),12.),np.ones((5,5)))
+        self.assertEqual(roof['route'],'ROOF_CANDIDATE_REVIEW')
 
     def test_invalid_edge_flag_is_retained_after_mask_clip(self):
         rgb=np.full((10,10,3),120,dtype='uint8');valid=np.ones((10,10),bool);valid[:,0]=False

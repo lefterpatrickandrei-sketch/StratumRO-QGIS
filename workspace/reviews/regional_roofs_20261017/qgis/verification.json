@@ -1,0 +1,488 @@
+{
+  "project": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+  "saved": true,
+  "preexisting_dirty_view_preserved": true,
+  "previous_layer_count": 63,
+  "layer_count": 69,
+  "new_layers": [
+    {
+      "id": "AUTO___candidati_acoperis___NEVALIDATI_01914983_c1f9_4273_b7fc_ae1d5dfabc1e",
+      "name": "AUTO - candidati acoperis / NEVALIDATI",
+      "count": 563,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\regional_roofs_20261017\\masked_review\\regional_review.gpkg|layername=ROOF_CANDIDATES"
+    },
+    {
+      "id": "AUTO___obiecte_optice_INCERTE___nu_presupune_cladiri_a3557864_ce7f_422b_9d59_cb25c5e93e4b",
+      "name": "AUTO - obiecte optice INCERTE / nu presupune cladiri",
+      "count": 461,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\regional_roofs_20261017\\masked_review\\regional_review.gpkg|layername=OPTICAL_UNKNOWN"
+    },
+    {
+      "id": "AUTO___vegetatie_probabila___diagnostic_4b760f1c_1d67_43cb_9015_7f50404d66c2",
+      "name": "AUTO - vegetatie probabila / diagnostic",
+      "count": 1057,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\regional_roofs_20261017\\masked_review\\regional_review.gpkg|layername=LIKELY_VEGETATION"
+    },
+    {
+      "id": "AUTO___acoperire_scanare___nu_parcele_e513b9e9_eb4d_4b0a_8f60_b938762de518",
+      "name": "AUTO - acoperire scanare / nu parcele",
+      "count": 144,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\regional_roofs_20261017\\masked_review\\regional_review.gpkg|layername=SCAN_COVERAGE"
+    },
+    {
+      "id": "AUTO___observatii_brute___diagnostic_dfef8d34_0cee_4d77_9d3a_b275f4b8d801",
+      "name": "AUTO - observatii brute / diagnostic",
+      "count": 2081,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\regional_roofs_20261017\\masked_review\\regional_review.gpkg|layername=RAW_SELECTED_OBSERVATIONS"
+    },
+    {
+      "id": "T10_BACKUP___retrageri_PRESUPUSE___NU_masuratori_01589b46_fb61_4776_9786_50f6f3b20f4c",
+      "name": "T10 BACKUP - retrageri PRESUPUSE / NU masuratori",
+      "count": 2,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\regional_roofs_20261017\\ground_backup_T10\\T10_ground_backup.gpkg|layername=ASSUMED_GROUND_SCENARIOS"
+    }
+  ],
+  "all_previous_vector_geometries_and_sources_unchanged": true,
+  "previous_snapshot": {
+    "ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/simple_roofs_rectified_20261013/simple_roofs.gpkg|layername=ACOPERISURI_SIMPLE|subset=\"id\" LIKE 'REF_TIER1_021:%' AND \"id\" <> 'REF_TIER1_021:B00005'",
+      "wkb": {
+        "6": "75345276d305eab00d56bec3ab4fb5d7c36da7ea542a61a8de999128c7be4f85",
+        "7": "5994615b89e495ffe3aaa5e13f7f3ee2f46e7192c1a56adf0a501225855177d1",
+        "8": "a23d6bb7ccbda14a65df256be29a682e193a6dc827c7f5d67372d32b9492d4d2",
+        "9": "8b4065ef05d016b7262b4d0efcad77a2361264c1592f913b82e4d293aaf2b59b",
+        "10": "dd6f07eaf5d2a820a173e0c092a01054ca3ebdf78e7e2c5baa10acb425e72def",
+        "11": "48b7cbf54b4449d1143f419cf4df85e4fa83f690b0afe3fca508b31e79c24b0c",
+        "12": "4d3fb77fb4bd8d0128fe714a5b6021362e0d2e9fc2f2e423c7d8dc6bdaefe336"
+      }
+    },
+    "B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/review18_20261013/review18.gpkg|layername=B5_DOUA_CORPURI",
+      "wkb": {
+        "1": "ee8e22477f9a9a31a81fe10f99a5d76c7f10274625c805e3f97ef031a4952bf8",
+        "2": "797598b3052ee358735a96126720c8e926f402efedad66a06a0ac809301a2c1c"
+      }
+    },
+    "LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "8d4c604590fd2351cadc45c93eeea1f692e7804f8ea6d252f54eaca7435c1734",
+        "2": "4b9a43b9ad6aac967aa94871e5f3b429fc7d552275beadc416fb105473afe1f3",
+        "3": "7afe0eb09327889b084f96125501369808ed108b1fd7433b6a405e934ad7af47",
+        "4": "a553ae6b948c75001f13c6f5fb81459fea9da813ebee3829f08712657f5ae67d",
+        "5": "0ff76fd077f46c250dd084d4f2ea76f5bfd651268de21a135991f96948c80e0c",
+        "7": "1bfff6fa4c0465db42b983f862e2060747053562c157ad41f8d09433977427da",
+        "8": "11d8cf1ef9091623295cd75addc99d80f710d4bc2a494670319a0da194d04fe1"
+      }
+    },
+    "LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "815d3a980a46e468dc2ae2e14ab93b89825e208f1682ea194027108a98d49f14",
+        "2": "a62ab2f902e46b958e6967e17922e8496b3278aee3ed8bcfc9f8d43b973bcbee"
+      }
+    },
+    "LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "b4c9765605f2eb5956c066445d57af254b1958d926919fc3deb9450ac365b2f4",
+        "2": "f6be4dd1f705aa01e7fd383a6fdf84d690715b1195dbfb7527473f1396d5748f",
+        "3": "dc83c386ca1ffe22f1afd099ca3dbe17fc9c07e53ad803d1e18f4ea724ed601d",
+        "4": "b0c5d0f08f0d2589e705ad53a40b61bf951c9f94c6eb481210d3052eedf774ec",
+        "5": "e1946a966be724010d8c8fbfc4f6c8d0b0829215424b9cd63637d40ba2bc756b",
+        "6": "7b42ac824c0798bb52a0c1c62ecf1b0b915201c7396932af36fa45db1758cf93",
+        "9": "a7dc9b9eaf6faf80576feb2b7560e647a8d17306c9c303fbf3523d4bfef935c3",
+        "10": "96b3c84e7b84c9bcc8ff472b65924dde75209b85e7171b0e935ddb83ed3c39d0"
+      }
+    },
+    "LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "ab4449cde386f8711039409dc72d82f23233260e9433890de50d9b6cf8737870",
+        "2": "dbbdb73afa191b583b4a89756109917811a0ad385757b1c6e29147b6a3f01726",
+        "3": "e3bc8672d29a6b2f0921e4a8a5655feab939ae34b75e6745e98efb90ea3ba448",
+        "5": "946421955b410cc689b78eb8832293dcc258ca297b8c40184056143b9146b351",
+        "6": "a0d6e1bf8c490991ac11ab1ac31dc96b132956182ddc4f6de535acb744f45b54"
+      }
+    },
+    "LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "9f68192b68db1daaba13097543b20328570ef63fc465eaeabd46a10b48e12a1d",
+        "2": "6633425235bde8e08980cf87ce935b3c25ead5513a99741777e2d2e090084e61",
+        "3": "e189345df17f517893bc00e177570450bc967fec4a5e03fd92e2845285639d2c",
+        "4": "4d5ba7327242baf24f68232b0811f494fbd79ebfe689a3ab9caf8af297750fee",
+        "5": "9679cbbba01ca3ed4ca5c79bbc96f93faf11900aa018c18965d4df2b3310fb1c"
+      }
+    },
+    "LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "6e7a555cb2a222e9bbc1efd26f3eb87fcaf6c505db5e69a33f5babefd9fe91f2",
+        "2": "7a16b825c2c319fcef2635535a604a59aa006a3a711d47bff8be71834e2f5d96",
+        "3": "a07b5249098228eac95b285eb6865a28df576c2bbd7bf58417c7e86f8d449699",
+        "4": "d8063f1a66558c6160ce9a2f41e08b36270dbb1b29cab605dd637f93cbdecc7a",
+        "5": "bfcdb08f42514d06d5a4ca8af26fbf547e79f8b6cc0d35263d25d01c84b34591",
+        "6": "5ece13c83ee1290abc03f95c22b4f3a83a11c879db6d30aa5299e2c4eaab7d68",
+        "9": "65d9e010b0c189d8d1f9a6806f1c7d9c4a17fd0192b5ba9a9549044de3cf588e",
+        "10": "96c6b2381848b21a57ba613cbf2c6abcba1f095f9f9d81f3fb788a3312bde771"
+      }
+    },
+    "LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=MASCA_BRUTA_SAM2|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "5177249154c09d7b67f168a0cf43502079c4d1b769870f53cb5adb0e83ae1e61",
+        "2": "a8fca4566a7b55511c9b53a5a16a12774f6007518054c4aa88e4dc209c61e130",
+        "3": "b9c4d31e557b9e1ea474e39ad0fee255f95702642c37bfe9a9079343f635e453",
+        "4": "0c489f1ff31250f00547ff31fa73d9363fa40de58fb4fcfc35bdcf83e53ff53f",
+        "5": "4744fb39d7d2912d84a0e6c4cbd7b7fa12e8b865281fcc0bbf9f3437bfb26fb4",
+        "6": "8b0fded864bd200430899620af1c469e981de3862edbd5e3f78ce8703ac267aa",
+        "7": "6aa22e49a5d100cac1092cae1b1e65e34f032711a620c069977f1cc9da9a7624",
+        "10": "20d77f5d93fa130cc63ea32dc121e65d56df19c13ac9bc8895a009e94c641429"
+      }
+    },
+    "LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "b0cc429e7d01ffa32056c3fac8a1bbb0642f0c2dd3e4dbddf33be40f8036707f"
+      }
+    },
+    "LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "d783f322c8d26d7afeef1d9a12eee1c66dcdaa2082196cd6f772940114b2f9bb",
+        "2": "707c6992833f750883c528cb56fb6befe4732c0240aa7772151a94e0b14f35d5",
+        "3": "bfb9887768f021e4627b789b7c3cd5cf1d04b9d7ec87417b5975a1c0d10c2b96",
+        "4": "d3a79e31c4820b62ea05682738aa8206335b67770a24d9b137763be8a8854d60",
+        "5": "1ef5ffda9043ebbc984de6aebf331a86c202215a97dd80ab7498d805aa8ecd2b",
+        "6": "84ce17e370ca1142a8c7599bfba24e69e84b73a6270e4ccb4558c55dfce00b5d",
+        "7": "858a8e3462eb69f458e936f7392ab68a71cccc5b82b33d21fcf6a8630e793a74",
+        "8": "c4b25836dc894d623e8127288ba9ecacd026147f6c84f375f4cc931c7ecd1eac",
+        "9": "5513c80b0c40a2b33c43bfe648817641c582bd358dc2fca3c7bd0e63fa0b0172",
+        "10": "5c1bbcda6a80281b4734228445e61a482e12de8474eec222874b93287d86c567",
+        "18": "b3952e76555f8fa8418a70563bcda90022c5fd9b6b633688efade2cf748056da"
+      }
+    },
+    "LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "6e7a555cb2a222e9bbc1efd26f3eb87fcaf6c505db5e69a33f5babefd9fe91f2",
+        "2": "7dfc901888baf7eaa68080d6a013cf5adc01390a2bbfa3c8dd6b118de4b0cb0d",
+        "3": "4500fb86ff5396d2cd78353fe9aa847b633d7e91a973a684b2bedc13589b886f",
+        "4": "700b5795bc7a52d84fc138a5468c5e02ed9c2da440b069d5f242f5723ea40e9d",
+        "5": "2e1e93a6b43d38d387803b7538e5d56bda9623a264b4607858f2f2fc39cf6902",
+        "6": "aa7204b9c7340dc51298501efb718734ddbf4fb5ac4a0cdf889a3576167e735a",
+        "9": "0d3c2767ffde0cc50fe919bb216235dab9be3443b38aeb8efbeac5c4ca41ddde",
+        "10": "1e76a44badb1ebc8ee6f5283a546af9bff19155c0b4dc7f9178dcdff324a2bfe"
+      }
+    },
+    "LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=MASCA_BRUTA_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "wkb": {
+        "1": "b9229f960d3b78e8b30917b0ce8dff6181a2dbf5ab84c891c1fc5259c8021842",
+        "2": "7bc3285dfdb1b61588a05bf5b101f74a4fd48b1b467c5ff20782367d0764585f",
+        "3": "6fe146a8c900ba0fcd5c1d213b0dc9a8358a9f11a525fb686e4afa3c12bbb7ae",
+        "4": "10d483499a2f0e84d9a0f01d906e99eabd304aea8b77da6c623d0510a33ec7aa",
+        "5": "2cb5d4a05a54193dd5d718d617c183ca77b17eaf1af09ae05787cdedeabf8f26",
+        "6": "299d9ce359ec249e18590f4e52d9b505930f1ac5f29159cc7638c06914604359",
+        "7": "b4128f4d79d8e6d1f1c0b1f160d46d448b5681c5c05c153eae83e3b5f4175273",
+        "8": "0cbccba27bedcb8020130769f51ccd7cc93db400c3772f8c7de83a5e0bc09221",
+        "9": "9e39d9da148e7963ac6cac4cc0100721f4c9952ed1c7caa03f5c7301059322b9",
+        "10": "c547a5fb6f1f33f1c495450c7b4a8bf72ad2a587501fdbb11ac7d5f3dca6cf96",
+        "11": "4397eaf378be31a2a4364055b99aa36715cbf964271de52639657cc84d72c403",
+        "12": "9c211c557ac0208038672345e7eda0712149bc7e8767e4566fa34f9b855a2903",
+        "13": "17cc42d68f2f0899ba694766fd22917d2820384a77544cdcd2bf99d011888728",
+        "14": "1b4cd9057929f6585412ba740c974064a1ec259679b1d500bb6635f9b76f1bf6",
+        "15": "3705723385d1a06e96514c7f821679e755aba2a1b4a296319d0edaaf89f79707",
+        "16": "2f5116db29eaa9a6b11bb1be49c7dd4f14af27810748b79a7036938084bf93a4",
+        "25": "58d478b9c967782269af72934531d246190b04957b647e89ef4aae8fc74c0600",
+        "26": "66cdc90f2d1e3ccf5eb42cbd5b134965292983e14e90a91b7308af6bbcfd4cf1",
+        "27": "1cebb65bc2227e96df6003801611227f39be854264023d424a74d6e027a919df"
+      }
+    },
+    "LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9": {
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\selected_v3\\lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES",
+      "wkb": {
+        "1": "d783f322c8d26d7afeef1d9a12eee1c66dcdaa2082196cd6f772940114b2f9bb",
+        "2": "707c6992833f750883c528cb56fb6befe4732c0240aa7772151a94e0b14f35d5",
+        "3": "b4058a565f90b7eb8fdaaaf42ac00bace37661ceebb55ceb595535b109ab1576",
+        "4": "34ea13acb9dd4c051797de8d694a652a92b88bf6997a5c4ab7bed3e990df6513",
+        "5": "be766c830661946abc781830ff1f6da8c86d75e187b643cedfe2852e00f4d3df",
+        "6": "327fa6d4d9ce727d887d3745bfbd4a0bc8e3fc1655a283895b40e810ccf8bca9",
+        "7": "4ca2e5ef995d02e38d9d383c89b3e430eb21d7d0c0a4762a0ec3fbad071257a6",
+        "8": "9241dc471d8e6e87d19227403c250e514c1b241f8b0e4a78c5eaf556ed25316a",
+        "9": "489fb30e7bd8c656269102221ae6f346216c5a70f915adf129e54a8a66293358",
+        "10": "b008fc0c5b112faee6ba81d42b88a17392f164c26a14453e5f190b46c73ee875",
+        "11": "cfccdcf4cc01155381292c8068af0a2b6a7853199bb391f19c5588715775fe9f",
+        "12": "7f5cd5a54036d9d96e2d924d45250f7d278b24072b2d3f5c30ac6ad1601811ed",
+        "13": "2eea3508a4841dfaf5f77d5166fbd9920601681bb73e6f8397650a8a8b9c4555",
+        "14": "549d342eaab3a70914b13e86b923af285a3f9fad997d55eb52b3b2a3105c5fb1",
+        "15": "84cf97c8b078b98e24bc4be29af270129fad6f375dd41f28806a4b5eca6532a2",
+        "16": "b083657061f98743d3941f657e9702f2b133ce32e1a275e1d95a8fd653f86aa8",
+        "17": "e48cf3ecb0d88d0966c68d989e0e35dce6753d424decaec386241e8374366c4f",
+        "18": "0c0c8805386de6061352d6f6595f79d3b7ba39ca1073bd54d6c24bc11c864b07",
+        "19": "6b893d5560efe707684e0496c685ca2944291087082509cdc618d10ad9e3fb44",
+        "20": "5f26b7b2a08f3789bebe759f688bd3dd46b9eb79f73d52c7a6ef328ae7c200d6"
+      }
+    },
+    "LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31": {
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selected\\lot4_review.gpkg|layername=ROOF_HYPOTHESES",
+      "wkb": {
+        "1": "9717aa3e86080cf74502253f7d95905de0ebf4b346092982c92389656ea1a289",
+        "2": "dfc83cb2fbc33461cd750b7d51e614d3f993db17d1e8810c8687b35e621690e7",
+        "3": "ac7d8b6d0dbefaa305735d50aef313317de75fa6f26c3240503831ada9a02643",
+        "4": "823cd9dec1bb1e4b80a8b0bc074bb60a84358fc95902ce7c970a1afa0aa4c4f2",
+        "5": "00b9d4ad70dab1595602c48d58e928beb121db8f4732f0b90f8a0142e1eebe6b",
+        "6": "b4fdc8c32b50f51760f7d66a3ab52f55865e8f5dbedb2ca91494e08cdb6ecc3f",
+        "7": "dafc7829fcfcc7df05f8601ecbc2a4a16cbc74ae6f6dd763c4b33f01cfc93f98",
+        "8": "32f2f2679f975411e919330d04df36860e8dd42c69e21e3e80f9ed7ebb02d06a",
+        "9": "3fca44daf3ee468d382bad430119faa706e149998576bd0d641f0750ac22a69e"
+      }
+    },
+    "LOT4___T22_masca_respinsa_de_agent_c7f4cb6e_73a7_41cf_9637_bd8815e7dcc9": {
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selected\\lot4_review.gpkg|layername=REJECTED_CANDIDATES",
+      "wkb": {
+        "1": "1e9388b807b3ebfef8251b2297e954180f6d8534b8ebef7c0a3de008fbc6cced"
+      }
+    },
+    "LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43": {
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selected\\lot4_review.gpkg|layername=CASES_REVIEW|subset=\"agent_status\"='UNRESOLVED_AFTER_REVIEW'",
+      "wkb": {
+        "2": "3264ec5a0752b5a8b4a76065da7d26be224a881e8b4053d8a17debacb2f7d04e"
+      }
+    },
+    "LOT4___ferestre_de_cautare___NU_contur_final_00e0d01f_705d_4551_ad86_8b9eae205f49": {
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selected\\lot4_review.gpkg|layername=SEARCH_ENVELOPES",
+      "wkb": {
+        "1": "ab79102354a4b699e061aaadd0db315b868d3816ad2ef83bd95d7904c6b53ea5",
+        "2": "c03a4b830bdeff00d2af3d63c96ed37b9145d203a05062a38f4413eceffb09ea",
+        "3": "96a4913cebe6db655141f8366119ede1cbd38c99c1234296d97cddfd5a943279",
+        "4": "5aec300e8a9b157ef825a6ee1fab592d0fc2e03dca83d3b92eecbe65d4c4bab6",
+        "5": "a48291706c717a98f0a0d51da1432a95c8beec5e9d8956f0c510b1604b8438c0",
+        "6": "98f87fb3538f708d68a0e373d987c8d31b0eefbac0d55721743ed96ec074ff28",
+        "7": "ed4058f20196ca2132839c93a7c687bf6eb095349b36045ca656fa85e626e5ab",
+        "8": "5756dd1e7bc1364939919da50bc0b82fc23b2c65363260ea2a89585a2c2c2e58",
+        "9": "8a029045d561c8f04c6d966a4c33188372d6f64b6e9b37c5cedd7f80cd8ed77c",
+        "10": "d1b0ad1a00623f0496d31942c170d42a0274454fcf994bdf50084506a21ead59"
+      }
+    },
+    "MASTI_BRUTE_FINISARE___mov_06c7364b_82d1_4e48_bfdf_71ebcaafe258": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=RAW_OPTICAL_MASKS",
+      "wkb": {
+        "1": "df953b9475afa73dc15605631625c6055eebdab7cd67a556a1b3b8cbb05653b6",
+        "2": "8da2a1313ed325dc0c25990e945e84f04e3a4552878a8eaecee0035ea0629d9a",
+        "3": "fc96129249753d3525ca85dcd3144eb635108296872b6aaaad2ff5598ebc2d42"
+      }
+    },
+    "PROPUNERI_SELECTATE_0bb56959_d9ae_4dc3_84f9_2dfbf231ecad": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/roof_recovery.gpkg|layername=PROPUNERI_SELECTATE",
+      "wkb": {
+        "1": "fc17bd028bce9b5d62ae804e40faa4a86c9930c565fec4da3421ce05e1b9c974",
+        "2": "b1ac73d605818e14ad0c34d430c06327a4596e387796ecf98750c7b04c6b7e1b",
+        "3": "68cd3224337677a739c6091bc9f081e9b1ac6b03f45928b4df33089749164bd1",
+        "4": "07ade23d228fc4ebc3af9eb031b1251f91073063de8158c325b75e566320cdc1",
+        "5": "796b375ca832f9f99278aa52db34e044c3c358e42098e728b5cd50562f659902",
+        "6": "e878cb8813caf6d7f0b453f1775a2ff630c6a45861979d20589fa9b570dfaf7a",
+        "7": "c2cf2b8bdd95f5009b79ba8df2ec8cdc8ac91d64dfa0cb2e4d0d619476a22d6f",
+        "8": "8992246f98f754fbb8dac8577021f801c1b5628c65bc35090bb6b8ceaa6bf643",
+        "9": "8b4065ef05d016b7262b4d0efcad77a2361264c1592f913b82e4d293aaf2b59b",
+        "10": "472cac4f06081f4b6dc36959fd826fe0eb67e7652ba9ab28c5ccef6c5b0636df",
+        "11": "88c6e612494a0ebbaba3b10e7c8bb6abe56dc9fa10fd8c48a9b7d87a5b51c641",
+        "12": "d058918f580138620ee9beece12f2d9d493c4b8f75d51a1fb4f4ecbe2cd8f827"
+      }
+    },
+    "RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg|layername=CORPURI_RECTIFICATE",
+      "wkb": {
+        "1": "d29749b2f469ae9082b59e1829306c172d39de38a6fd55515f8594a1e34e9571",
+        "2": "39bac137ef0cc8690d2704ebf68db5e2b172654bf2fca8a6ee660d2acfdde554",
+        "3": "1380b7fc9a5d0b36f1d10ed3e1502642b19582c617fe73c77514794e9f2e8cc0",
+        "4": "254a3befbe2a5e40d3d35871758df4b5cb9129ac5b51946aaaa830b6a01fd942",
+        "5": "7b494471c155139345270595ef7219dd1c7e57de6707c09883dfb2d61482055e"
+      }
+    },
+    "REFERINTE_UTILIZATOR_5e655e0d_0041_4683_b16e_5605591087ae": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/roof_recovery.gpkg|layername=REFERINTE_UTILIZATOR",
+      "wkb": {
+        "1": "624201cfb745095088f87e7598d1c8ec76d323facde4820924f39ba8c3aace7b",
+        "2": "6d994aecbf3c2e0929cd5f9e7b1f31908ff28b5d0e1b1a897a50eda758c50a9a",
+        "3": "b9cba107b22149a33ee3de866e27637393933f32feabecd790dc692a20c6f619"
+      }
+    },
+    "RESPINSE_ANTERIOR_SASE_bd332c36_4829_458b_b374_6f633c63a18d": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg|layername=RESPINSE_ANTERIOR",
+      "wkb": {
+        "1": "b64c8df71e74eae95785b5dd6f60ada016e438b0768df3f2a82360157604785c",
+        "2": "df7a38e6818a4b793a8b4eca0ce1b039e32d25d90419519f4906af41d143db2b",
+        "3": "59131338a51e6cea0171262cf6bbd45d98e5340b3ec9a62ca7151193d1558dca",
+        "4": "e2ee8e56de22182e6f460f595df668453ed0f73d4c13a4f298b9895fca8a8740",
+        "5": "c6c0291abb3bbee4c4be9240eb451a9534d1d63f9871f6a2b168b60df9c753de",
+        "6": "62b8a034f62c46541509ffb4903d396dfe90889fab0a1ceb268a655be3528892"
+      }
+    },
+    "REVIZUIRE_COMPLEXA_3ac9d5d1_9f0a_4850_b115_8955bfedfe3f": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/roof_recovery.gpkg|layername=REVIZUIRE_COMPLEXA",
+      "wkb": {
+        "1": "6d1770745bc120234e4d9c396cef3bd211b0bb223f3699448acf959ca6a972d5",
+        "2": "db81fdf1fb9970cbf6dd979f68a9fcafd011073bade31b494574759fdce0ae30",
+        "3": "ee6a46a870274f0fadb804c678c75ff530ce920f71f91bf31cadcc2993c643d6",
+        "4": "e97619f6abba523a72ba84a0566d16b1bd4bb194b29dac171f6912994c411354",
+        "5": "dc909ca846945c1fd5893d7ec3e89942baf4730e58690fe151863fd837678d06",
+        "6": "b64c8df71e74eae95785b5dd6f60ada016e438b0768df3f2a82360157604785c",
+        "7": "df7a38e6818a4b793a8b4eca0ce1b039e32d25d90419519f4906af41d143db2b",
+        "8": "59131338a51e6cea0171262cf6bbd45d98e5340b3ec9a62ca7151193d1558dca",
+        "9": "e2ee8e56de22182e6f460f595df668453ed0f73d4c13a4f298b9895fca8a8740",
+        "10": "c6c0291abb3bbee4c4be9240eb451a9534d1d63f9871f6a2b168b60df9c753de",
+        "11": "62b8a034f62c46541509ffb4903d396dfe90889fab0a1ceb268a655be3528892",
+        "12": "e0ec8d3debe943de4656149abd3db3942301ab96211a2f60a0ad4fb3e22d26e2",
+        "13": "40df0747d7944b19515148140bb110da084f589b16f4ec39427a4ed7121a5042",
+        "14": "b3e0fd57aa149c9b26a0320442f43677a265f46ed08610226742eb588a0bced1",
+        "15": "e7cb827606f4c700277a46d7654f98333f8b353ed3ee694125b647aef161b5f4",
+        "16": "d262be6cfbe6797c2bfa1842374d9e70b2c4bcf7951bdebf292bbf5b54a17568",
+        "17": "dc1270f4e2485295bf3e48b0fe7758abfde7e0030265d4b7ef69a2fd8f9c5b89",
+        "18": "cf60d0f1cdcd8fd1365fb961b32daa4b4beb0c80a5ded361939d8e34a5744a9a",
+        "19": "74075c00d1088f73bcb83fcc0a989fc0d40b47c74d42d567c08871f1c9ae4c74",
+        "20": "32abd9e109242f5082b9020f5a810f83ba893ae451aa92fa49088c591f44f2da",
+        "21": "d43a27f1901bb76d6d110b8d0d3be53d1651d3d221f27d107019c08606749c27",
+        "22": "588fa70f8e0902907d9d845d39ec421bcd496b71da87e3d008e31477e939f2ac",
+        "23": "816f001cbe5fdd724b985cadc84fb6b6bd2ff44fd0a3ae0f7108c7d02d6d39c4",
+        "24": "4393cb2acea7d3a6e393affd515865d63abf991250e68243adb96adcf827bd83",
+        "25": "15b5dab23935a06f2590d1f08d491e7e698855fba49c681f52847be45316e331",
+        "26": "9d7fb9723183581b2193c8958da9d4e4ffe730a94217323028699d37017081ea",
+        "27": "0178d9f83ba2881b20f1438b83490d52fa820462b38504f7afc9f95bf0432e0c",
+        "28": "8a9e5eb7dec616a38e9c9e00c1ade19109c92d26129f3c4298f4b22a46d3f292",
+        "29": "e506df5eaf5ee456e13b26fd3915960e9abf740138693863bb48df476972cb5c",
+        "30": "4a841e6bf2b8a28b4ba4bf4dc79822565c1a5e9c32aa9e1dfaead52a56c3e95b",
+        "31": "767e61542a79f14c7c2d34c950a943b927fdf308c001cc770504a825ed45b3f8",
+        "32": "c7a5d37e07916abb4fccde4a475603cb72ef78a6709525e6f8c40e14529d4451",
+        "33": "090914fa00bd2d91c7634245fad7e5cc9739a699f50323d03ae897f2e209e79f",
+        "34": "de5659a57941eafb65b4c3f842f7cd4f1e1e723ca389ddf9afd23ad105ce08f5",
+        "35": "2590abc92bcd78634f3cd3b9bd07b9a4911ba4da16d134ff442554400fe8b5bb",
+        "36": "a84d3fb7a02b5a7348dc9f1b1518a3633b6c920796ade0a243bfa24f0fbe12e4",
+        "37": "1ac2f9e8af188e2ca4454bd727bb899e5b56ebf588da9c9b4ac305087064b73f",
+        "38": "d9871664f464a418324feedb54ab4d1a13de211a0da1b3c7a531f52944c92e69",
+        "39": "e7d94c1eae1cf2138274d84ba6d3b1e7fceeca6375a4e73affae1ef811c4beef",
+        "40": "73344df0a914c4dd22400cff02dc23c600e0cfe37f2e28f1ebadb84298d6bd67",
+        "41": "86fa39b71a238f7b16ef1dadaec0cbe86729d3e3a8809d74fa545bc2ab0d2e07",
+        "42": "4a16aaca4d31f62e3ba989d359f9a093ed22c41af1e547cd30c37a0162131a55",
+        "43": "5f6d929e7ab2a09b3e59e705f6315d375b2f7fb67ddee0a6f9f34497500a348b",
+        "44": "fa2d7ea605c7f14896fd97cab5564974073e29755f89a741a9cacb1f9723a742",
+        "45": "99ad88b52583a8649d5b2cd175448d71fa8047f164aa0016a58bdad6c7a4e793",
+        "46": "54907b70108776f171df73041d7f7f013ee6d272bfa47eafbc8c02a082cae768",
+        "47": "1326d2229f14ede13857146d0fe9d3e7740458e6dea189b792868ba53d06ff09",
+        "48": "e1307af41282f5cb0c0b96ac9c98eeafd4789828c79430e55111252ad58c657f",
+        "49": "5b7812f12215184dd500221517a1c4ac7f810b1cda56d99229922225ca22a54c",
+        "50": "7590b7e6ac472fccfa4e25fb52867dcab5a2bb5abe6c14090d7c1da7e439dc0c",
+        "51": "18e73848513c85be99c53fb5d12858cfc747ea1a3c5cdcf2b0d62198728d0da9",
+        "52": "4663053eaa8a10f4f00514ba4868d5c6fde1178488a188f2c75c873592b6b24d",
+        "53": "22c3574b7c847bb18b9ef71a05c7ea8fb013aa14e0044ee791c39302ad71c27b",
+        "54": "c373f77e12edf8500f5c4e811ac2eeb6f8099f4971b8046fc45e2c97ccd74ca5",
+        "55": "641cfea03b50aa5cb140ff9fed77b9b2523886f50834458d0fb810f906d875ef",
+        "56": "c39e4f3e08fc0266a2c435f039d26714a513fa068b3fb82ca8fd6cecf82e17ff",
+        "57": "4890b7d04612366e5af2236a24ad05e6831f52de414fbf88468e1f31d6735aac",
+        "58": "490953be2b4922b1849a6a6fe1874cd3237fa62b68da94dbaf7833af47c89de5",
+        "59": "5a0e7aca5b5954fecfa19e5011162104c38d528356bc3f9debfdfeb00f527390",
+        "60": "bc58c926b40c07a9d62575434d292af7d43ba252e412482445176ee62a3b5fa0",
+        "61": "c82447f92d7326190f1d7c8eb9e4c331b3f24b6705f6d6f3eb2099250858f640",
+        "62": "be7bb9638399ff7d207f7ab95c089d8d3f293c490cd4a8b625880c88a48e5281",
+        "63": "fc1fd8b11f1d5f94ff1b35524afd3c44777c070ac878a3d881b32d5b0763c96d",
+        "64": "f99e3d1ec7239540398dd52875af1898b1df05d4b8bf7e3cbac38a3f5211afc8",
+        "65": "f3d33375e7e8d47f7db89fc0bd0b51b20d93517aa6fb4c0e205f106953da5c17",
+        "66": "a5533c2daca2b4801f69685cc22d36f9f922619ea18100112210e6d29026a196",
+        "67": "a19882e275a77c6bbcf542cf6f45a1ff6d493502895b7c6db356b8296c03e33f",
+        "68": "1244ef4548b2dddd25b051089ad454c462bfa1bfcf9f7a3e4a136db661842e87",
+        "69": "266a4fee4757b71d1953b614caa8b3e989672f64e3cfe7b849b5e081ffa4afd5",
+        "70": "7688684ae5e2a5366cb06d30355a3b3c1d8f8af81993950b5832aa1d3a3cd640",
+        "71": "2a11cd47d7a00c1129a502ca3be068020696a048123e2f889f74ed46efc33971"
+      }
+    },
+    "SOL_ESTIMAT_NEVERIFICAT_b9f6f6c0_8f05_4898_a452_97c4c9cb9c3f": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/simple_roofs_rectified_20261013/simple_roofs.gpkg|layername=SOL_ESTIMAT_NEVERIFICAT",
+      "wkb": {
+        "1": "8ba924e4d43c5dd97afb9f8614f309aff8feccd901c75fc0ad8e2582e1c78611",
+        "2": "0b335d8ff63d6a4b4f1b69a3981e1dea9753ffcd7e5c6831bb98d255de94cb2b",
+        "3": "6f156fbada548e6bb065ff616b86fefba8c68fa4bd7fdb6a14af256b5dc18efb",
+        "4": "efb5243dd78adc548f29392d139cc70b66ad1a53d938de69df369e7e20cb134f",
+        "5": "9f6ccf66f2ebfc5fb79f0bc9299b3ddd6215586c07ea29c7a590982f845f98b5",
+        "6": "6d2ee86b10925ffd8ceb92ef65d92273d4702a30e3c7f204a79160dbb9de34a3",
+        "7": "1959307c038f0a9e4395c5d7492bbdd9fda1a63c49d693016b0edbf0438ebcb5",
+        "8": "05ff496b1db175b16963f25effcedfff693912dc71a3735bbb7d14d62722cda7",
+        "9": "760d73ffbfb47565e6eacda2e6345fa28341c32aa92c5686f501f1f9b7470d22",
+        "10": "35ff6cd9c33f2a13e0826a61afe28f42fa82f6dc26d5c5016c3e3c25ce36d4c5",
+        "11": "d97c249735fcce25e837524d27db4aa43a50d57adc9d020ba4aa84917032d4a1",
+        "12": "a482212f11f02a203d33fc5d32b9f591252f3d4efb859e1e907bcb5e2aa4e622"
+      }
+    },
+    "T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg|layername=T10_ISTORIC_PARTIAL_RESPINS",
+      "wkb": {
+        "1": "3ad9076f48ca91892a9dd6a9a3355d2df12415699f67208623647bc907831ff5"
+      }
+    },
+    "T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T17:C1'",
+      "wkb": {
+        "1": "2eea3508a4841dfaf5f77d5166fbd9920601681bb73e6f8397650a8a8b9c4555"
+      }
+    },
+    "T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T17:C2'",
+      "wkb": {
+        "2": "549d342eaab3a70914b13e86b923af285a3f9fad997d55eb52b3b2a3105c5fb1"
+      }
+    },
+    "T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C1'",
+      "wkb": {
+        "3": "f154bcb9e5b3942c62ce88735db9384a0b65d8422ca786c39b032331162f07d3"
+      }
+    },
+    "T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd": {
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_edge_audit_20261017\\observed_edges.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C1'",
+      "wkb": {
+        "3": "57ce1d70691c27322b40e50310eaf61264325933832c68b09cdc75056ab76895"
+      }
+    },
+    "T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_continuation_20261017/annex_review_final.gpkg|layername=CURRENT_ROOFS_AND_ANNEX_HYPOTHESIS|subset=\"body_id\" = 'T18:C2'",
+      "wkb": {
+        "4": "c4657c0a0e1a328970c732075fdb3f4fd3d951616cf7faa894470c76d0834229"
+      }
+    },
+    "T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5": {
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_edge_audit_20261017\\observed_edges.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C2'",
+      "wkb": {
+        "4": "eaeff02b673cd275dc1b27fae2ad47b628d2de77a0fdb10e88501f22c3d24373"
+      }
+    },
+    "T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_continuation_20261017/annex_review_final.gpkg|layername=BOUNDARY_CONFLICT",
+      "wkb": {
+        "1": "9a3b32cdc872e40402185302177b7b72ff00b084d3a53ef9b8a4cf30ea1fe458"
+      }
+    },
+    "TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6": {
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/review18_20261013/review18.gpkg|layername=TESTE_10_REZULTATE|subset=\"test_id\" IN ('T01','T02','T03','T04')",
+      "wkb": {
+        "1": "a7f58575aa5bd9440683b41547c158408ab58012371e375bc4e6a1e884aa6553",
+        "2": "6f388e90033560cda98248ea1e237dbe9ba1d6a39900036a7d7ad537917e1239",
+        "3": "f9e7f487c7b9b35abdf97c0281adc51e8a8b10e2e572e061c8aadbae48961ecc",
+        "4": "62e5c2e01fa210828890b858562ca81a64e16218b805e2aea35ca8625f03b430"
+      }
+    }
+  },
+  "custom_render_order": true,
+  "roof_count": 563,
+  "frames": [
+    "REGIONAL_OVERVIEW",
+    "CAMPUS_NORTH",
+    "CAMPUS_SOUTH",
+    "EAST_RESIDENTIAL",
+    "T14",
+    "T21",
+    "T24",
+    "T29",
+    "T10_BACKUP"
+  ],
+  "owner_verdict_changed": false
+}

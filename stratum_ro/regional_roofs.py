@@ -138,6 +138,17 @@ def sample_evidence(path, transform, grid_shape):
     return values
 
 
+def route_summary(vegetation_fraction,class6_fraction):
+    """Height alone cannot distinguish trees, roofs and elevated platforms.
+
+    Class6 is provisional positive context only. Unsupported objects stay in
+    unknown, including real roofs with no Class6; they are never discarded.
+    """
+    if vegetation_fraction>.40:return 'LIKELY_VEGETATION_REVIEW'
+    if class6_fraction>=.12:return 'ROOF_CANDIDATE_REVIEW'
+    return 'OPTICAL_UNKNOWN_REVIEW'
+
+
 def route_surface(rgb, component, height, counts):
     """Transparent experimental routing, not a trained building classifier.
 
@@ -153,12 +164,7 @@ def route_surface(rgb, component, height, counts):
     elevated=float((vals>=1.8).mean()) if vals.size else None
     red=float(((r-g>14)&(r-b>14)&(r>55)).mean())
     neutral=float(((sat<=.25)&(high>=45)).mean())
-    if vegetation>.40:
-        route='LIKELY_VEGETATION_REVIEW'
-    elif class6>=.12 or (elevated is not None and elevated>=.60):
-        route='ROOF_CANDIDATE_REVIEW'
-    else:
-        route='OPTICAL_UNKNOWN_REVIEW'
+    route=route_summary(vegetation,class6)
     return dict(route=route,vegetation_fraction=vegetation,class6_fraction=class6,
                 height_coverage=float(known.mean()),elevated_fraction=elevated,
                 red_fraction=red,neutral_fraction=neutral,

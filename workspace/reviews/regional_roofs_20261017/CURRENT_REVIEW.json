@@ -1,0 +1,6 @@
+{
+  "gpkg": "workspace\\reviews\\regional_roofs_20261017\\masked_review_v2\\regional_review.gpkg",
+  "report": "workspace\\reviews\\regional_roofs_20261017\\masked_review_v2\\mask_guard_report.json",
+  "scan_report": "workspace\\reviews\\regional_roofs_20261017\\scan_v1\\report.json",
+  "scope": "AUTOMATIC_REGIONAL_REVIEW_NOT_ACCEPTED_INVENTORY"
+}

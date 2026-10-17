@@ -13,6 +13,7 @@ from shapely.geometry import shape,mapping,box
 from stratum_ro.regional_roofs import (RegionalRoofConfig,OrthoMosaic,plan_windows,
     sample_evidence,vectorize_automatic_masks,deduplicate_candidates,
     simplify_regional_roof,sha256_file,expand_edge_candidate)
+from stratum_ro.regional_review import clip_to_valid_mosaic
 
 
 def write_json(path,value):
@@ -44,7 +45,8 @@ def main():
     out.mkdir(parents=True,exist_ok=args.resume)
     windows=plan_windows(mosaic.bounds,config)
     sources=[{**item,'sha256':sha256_file(item['path'])} for item in mosaic.sources]
-    modules=['stratum_ro/regional_roofs.py','stratum_ro/roof_simple_geometry.py','tools/run_regional_roofs.py']
+    modules=['stratum_ro/regional_roofs.py','stratum_ro/regional_review.py',
+             'stratum_ro/roof_simple_geometry.py','tools/run_regional_roofs.py']
     code={p:sha256_file(ROOT/p) for p in modules}
     lidar={name:dict(path=str((ROOT/request[name]).resolve()),sha256=sha256_file(ROOT/request[name]))
            for name in ['height','class6'] if request.get(name)}
@@ -121,8 +123,13 @@ def main():
         write_json(path,dict(audit=audit,candidate=serialize([revised])[0]));selected[index]=revised
     selected,extra_duplicates=deduplicate_candidates(selected)
     duplicates.extend(extra_duplicates)
+    valid_mask_clips=[]
     for item in selected:
         raw=item['geometry']; refined,diag=simplify_regional_roof(raw)
+        if item['touches_nodata']:
+            refined,removed=clip_to_valid_mosaic(refined,mosaic,config.resolution_m)
+            if refined.is_empty:raise ValueError('Final geometry lost valid source coverage: '+item['candidate_id'])
+            if removed>0:valid_mask_clips.append(dict(candidate_id=item['candidate_id'],removed_m2=removed))
         item['raw_geometry']=raw;item['geometry']=refined
         item.update(method=diag['method'],geometry_status=diag['status'],owner_verdict='PENDING_OWNER_REVIEW')
         if item['touches_window'] or item['touches_nodata']:
@@ -148,6 +155,7 @@ def main():
         valid_area_m2=w['valid_core_area_m2'],geometry=box(*w['core'])) for w in coverage],
         crs=3844).to_file(gpkg,layer='SCAN_COVERAGE',driver='GPKG')
     write_json(out/'duplicate_lineage.json',duplicates)
+    write_json(out/'final_valid_mask_clips.json',valid_mask_clips)
     routes={route:sum(r['route']==route for r in selected) for route in
         ['ROOF_CANDIDATE_REVIEW','OPTICAL_UNKNOWN_REVIEW','LIKELY_VEGETATION_REVIEW']}
     failures=[w['window_id'] for w in coverage if w['status'].startswith('FAILED')]
