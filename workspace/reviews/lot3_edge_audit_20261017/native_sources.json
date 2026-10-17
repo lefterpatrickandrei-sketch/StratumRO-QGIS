@@ -1,0 +1,148 @@
+[
+  {
+    "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV\\Orto Cluj-0-0.sid",
+    "size_bytes": 63116953,
+    "transform": [
+      390529.379,
+      0.011651,
+      0.0,
+      585886.34,
+      0.0,
+      -0.011651
+    ],
+    "width": 30000,
+    "height": 30000,
+    "projection": ""
+  },
+  {
+    "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV\\Orto Cluj-0-1.sid",
+    "size_bytes": 100642314,
+    "transform": [
+      390529.379,
+      0.011651,
+      0.0,
+      585536.8099999999,
+      0.0,
+      -0.011651
+    ],
+    "width": 30000,
+    "height": 30000,
+    "projection": ""
+  },
+  {
+    "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV\\Orto Cluj-0-2.sid",
+    "size_bytes": 35864917,
+    "transform": [
+      390529.379,
+      0.011651,
+      0.0,
+      585187.2799999999,
+      0.0,
+      -0.011651
+    ],
+    "width": 30000,
+    "height": 30000,
+    "projection": ""
+  },
+  {
+    "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV\\Orto Cluj-1-0.sid",
+    "size_bytes": 104870814,
+    "transform": [
+      390878.9090000001,
+      0.011651,
+      0.0,
+      585886.34,
+      0.0,
+      -0.011651
+    ],
+    "width": 30000,
+    "height": 30000,
+    "projection": ""
+  },
+  {
+    "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV\\Orto Cluj-1-1.sid",
+    "size_bytes": 115419644,
+    "transform": [
+      390878.9090000001,
+      0.011651,
+      0.0,
+      585536.8099999999,
+      0.0,
+      -0.011651
+    ],
+    "width": 30000,
+    "height": 30000,
+    "projection": ""
+  },
+  {
+    "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV\\Orto Cluj-1-2.sid",
+    "size_bytes": 24783732,
+    "transform": [
+      390878.9090000001,
+      0.011651,
+      0.0,
+      585187.2799999999,
+      0.0,
+      -0.011651
+    ],
+    "width": 30000,
+    "height": 30000,
+    "projection": ""
+  },
+  {
+    "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV\\Orto Cluj-2-0.sid",
+    "size_bytes": 34648204,
+    "transform": [
+      391228.439,
+      0.011651,
+      0.0,
+      585886.34,
+      0.0,
+      -0.011651
+    ],
+    "width": 30000,
+    "height": 30000,
+    "projection": ""
+  },
+  {
+    "path": "C:\\Users\\lefpa\\Desktop\\date\\Z_VladP\\OrtoFoto Cluj USAMV\\Orto Cluj-2-1.sid",
+    "size_bytes": 40703470,
+    "transform": [
+      391228.439,
+      0.011651,
+      0.0,
+      585536.8099999999,
+      0.0,
+      -0.011651
+    ],
+    "width": 30000,
+    "height": 30000,
+    "projection": ""
+  },
+  {
+    "output": "T18_native_seam.tif",
+    "transform": [
+      390599.995711,
+      0.011651,
+      0.0,
+      585546.002639,
+      0.0,
+      -0.011651
+    ],
+    "width": 2403,
+    "height": 2403
+  },
+  {
+    "output": "T18_detail_5cm.tif",
+    "transform": [
+      390590.0,
+      0.05,
+      0.0,
+      585560.0,
+      0.0,
+      -0.05
+    ],
+    "width": 1400,
+    "height": 1200
+  }
+]
