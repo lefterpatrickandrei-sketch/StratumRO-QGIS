@@ -1,0 +1,90 @@
+{
+  "pid": 2372,
+  "project": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/fusion_complete_20261017/StratumRO_fuziune_inspectie_separata.qgz",
+  "layers": [
+    {
+      "name": "MASCA_GRAY_INITIALA",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\fusion_complete_20261017\\fusion_complete.gpkg|layername=MASCA_GRAY_INITIALA",
+      "count": 1
+    },
+    {
+      "name": "MASTI_INITIALE",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\fusion_complete_20261017\\fusion_complete.gpkg|layername=MASTI_INITIALE",
+      "count": 3
+    },
+    {
+      "name": "T17:C1 - NEVERIFICAT",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\fusion_complete_20261017\\fusion_complete.gpkg|layername=IPOTEZE_RECTIFICATE|subset=\"body_id\" = 'T17:C1'",
+      "count": -1
+    },
+    {
+      "name": "T17:C2 - NEVERIFICAT",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\fusion_complete_20261017\\fusion_complete.gpkg|layername=IPOTEZE_RECTIFICATE|subset=\"body_id\" = 'T17:C2'",
+      "count": 1
+    },
+    {
+      "name": "T18:C1 - NEVERIFICAT",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\fusion_complete_20261017\\fusion_complete.gpkg|layername=IPOTEZE_RECTIFICATE|subset=\"body_id\" = 'T18:C1'",
+      "count": 1
+    },
+    {
+      "name": "T20:C1 - NEVERIFICAT",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\fusion_complete_20261017\\fusion_complete.gpkg|layername=IPOTEZE_RECTIFICATE|subset=\"body_id\" = 'T20:C1'",
+      "count": 1
+    },
+    {
+      "name": "cache_tile_Cluj-0-0_halo",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-0_halo.tif",
+      "count": null
+    },
+    {
+      "name": "cache_tile_Cluj-0-1_halo",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+      "count": null
+    },
+    {
+      "name": "cache_tile_Cluj-0-2_halo",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-2_halo.tif",
+      "count": null
+    },
+    {
+      "name": "cache_tile_Cluj-1-0_halo",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+      "count": null
+    },
+    {
+      "name": "cache_tile_Cluj-1-1_halo",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-1_halo.tif",
+      "count": null
+    },
+    {
+      "name": "cache_tile_Cluj-1-2_halo",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-2_halo.tif",
+      "count": null
+    },
+    {
+      "name": "cache_tile_Cluj-2-0_halo",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-0_halo.tif",
+      "count": null
+    },
+    {
+      "name": "cache_tile_Cluj-2-1_halo",
+      "valid": true,
+      "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-1_halo.tif",
+      "count": null
+    }
+  ]
+}
