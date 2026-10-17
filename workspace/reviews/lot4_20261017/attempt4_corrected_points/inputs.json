@@ -1,0 +1,167 @@
+{
+  "cases": [
+    {
+      "body_id": "T22:C1",
+      "anchor": [
+        391120,
+        585633
+      ],
+      "search_bounds": [
+        391073,
+        585589,
+        391169,
+        585656
+      ],
+      "positive_points": [
+        [
+          391091,
+          585604
+        ],
+        [
+          391125,
+          585638
+        ]
+      ],
+      "negative_points": [
+        [
+          391106,
+          585616
+        ],
+        [
+          391129,
+          585622
+        ],
+        [
+          391100,
+          585598
+        ],
+        [
+          391158,
+          585611
+        ]
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T22_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        391073,
+        585589,
+        391169,
+        585656
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_FIDELITY",
+      "selection_observations": "Large red complex with multiple wings and open parking recesses. Inspect the complete east/west ends and keep ground/parked cars outside; tree-covered eastern margins remain uncertain.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Large red complex with multiple wings and open parking recesses. Inspect the complete east/west ends and keep ground/parked cars outside; tree-covered eastern margins remain uncertain.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selection_final\\T22.png",
+        "image_sha256": "d93fb9c0b50e6a6070f7d7c8282c5239bc2fd796b1cdaa21ea34b0dfb80e24ac"
+      },
+      "prompt_revision_reason": "Exact source pixel inspection: removed a T28 negative point on red roof and a T22 positive point on vegetation. Previous hypotheses are preserved; hard consistency gate correctly refused contradictions."
+    },
+    {
+      "body_id": "T28:C1",
+      "anchor": [
+        390710,
+        585647
+      ],
+      "search_bounds": [
+        390699,
+        585635,
+        390717,
+        585662
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T28_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        390699,
+        585635,
+        390717,
+        585662
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_PLANAR_CORE",
+      "positive_points": [],
+      "negative_points": [
+        [
+          390702,
+          585647
+        ],
+        [
+          390705,
+          585658
+        ],
+        [
+          390712,
+          585637
+        ],
+        [
+          390716,
+          585647
+        ]
+      ],
+      "selection_observations": "Narrow red rectangular roof with skylights between neighboring tile roofs and parked vehicles. Prompt moved safely inside roof. Target is primary red roof; neighbors remain separate.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Narrow red rectangular roof with skylights between neighboring tile roofs and parked vehicles. Prompt moved safely inside roof. Target is primary red roof; neighbors remain separate.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selection_final\\T28.png",
+        "image_sha256": "c875d51be9bb954ce5e1def62ef1120f9eb9fb355036015318ad7509d6f04ab6"
+      },
+      "prompt_revision_reason": "Exact source pixel inspection: removed a T28 negative point on red roof and a T22 positive point on vegetation. Previous hypotheses are preserved; hard consistency gate correctly refused contradictions."
+    }
+  ],
+  "schema_version": 1,
+  "crs": "EPSG:3844",
+  "owner_status": "PENDING_OWNER_REVIEW",
+  "scope": "TEN_REVIEWED_ROOF_CASES_NOT_FULL_BUILDING_INVENTORY_OR_UNSEEN_HOLDOUT",
+  "selected_before_inference": true,
+  "duplicate_review": [
+    {
+      "body_id": "T21:C1",
+      "nearest_previous_visible_roof_m": 42.636217326929035
+    },
+    {
+      "body_id": "T22:C1",
+      "nearest_previous_visible_roof_m": 105.69093593834862
+    },
+    {
+      "body_id": "T23:C1",
+      "nearest_previous_visible_roof_m": 32.57079765034172
+    },
+    {
+      "body_id": "T24:C1",
+      "nearest_previous_visible_roof_m": 33.72088825942039
+    },
+    {
+      "body_id": "T25:C1",
+      "nearest_previous_visible_roof_m": 25.94520644621393
+    },
+    {
+      "body_id": "T26:C1",
+      "nearest_previous_visible_roof_m": 118.97499387889661
+    },
+    {
+      "body_id": "T27:C1",
+      "nearest_previous_visible_roof_m": 16.683774186306042
+    },
+    {
+      "body_id": "T28:C1",
+      "nearest_previous_visible_roof_m": 15.920485923738074
+    },
+    {
+      "body_id": "T29:C1",
+      "nearest_previous_visible_roof_m": 36.8668907062991
+    },
+    {
+      "body_id": "T30:C1",
+      "nearest_previous_visible_roof_m": 36.83642637664236
+    }
+  ],
+  "selection_history": "T29 extended; T26 original candidate rejected before inference because of old T08 proximity. Original drafts preserved."
+}

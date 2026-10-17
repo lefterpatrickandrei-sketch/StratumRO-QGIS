@@ -1,0 +1,38 @@
+{
+  "T21:C1": {
+    "method": "SUPPORTED_ORTHOGONAL",
+    "vertices": 10,
+    "support": 0.9818393029817235,
+    "coverage": 0.9787082803333582,
+    "iou": 0.9613059663372501,
+    "angle_deg": 111.80140948748911,
+    "status": "REVIEW_REQUIRED"
+  },
+  "T26:C1": {
+    "method": "SUPPORTED_ORTHOGONAL",
+    "vertices": 6,
+    "support": 0.9936175653900712,
+    "coverage": 0.9643042667879329,
+    "iou": 0.95836799870499,
+    "angle_deg": -59.74356283981499,
+    "status": "REVIEW_REQUIRED"
+  },
+  "T27:C1": {
+    "method": "SUPPORTED_ORTHOGONAL",
+    "vertices": 8,
+    "support": 0.967546601952208,
+    "coverage": 0.9687377498724654,
+    "iou": 0.9382508357013398,
+    "angle_deg": 112.94079347287148,
+    "status": "REVIEW_REQUIRED"
+  },
+  "T29:C1": {
+    "method": "SUPPORTED_ORTHOGONAL",
+    "vertices": 10,
+    "support": 0.950910576503218,
+    "coverage": 0.9578915440068463,
+    "iou": 0.9127559397309577,
+    "angle_deg": -68.47739989265438,
+    "status": "REVIEW_REQUIRED"
+  }
+}

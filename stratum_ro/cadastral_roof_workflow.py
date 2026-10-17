@@ -123,17 +123,29 @@ class CadastralRoofWorkflow:
         with torch.inference_mode():
             masks,scores,_=self.segmenter.predictor.predict(point_coords=np.array(prompt_points,dtype='float32'),
                 point_labels=np.array(prompt_labels,dtype='int32'),box=prompt_box,multimask_output=True)
-        options=[]
+        options=[];rejected=[]
+        def prompt_conflicts(geometry):
+            conflicts=[]
+            if any(not geometry.covers(Point(*p)) for p in (positive_points or [])):
+                conflicts.append('POSITIVE_PROMPT_OUTSIDE_ANCHOR_COMPONENT')
+            if any(geometry.covers(Point(*p)) for p in (negative_points or [])):
+                conflicts.append('NEGATIVE_PROMPT_INSIDE_ROOF')
+            return conflicts
         for mask,score in zip(masks,scores):
             if np.asarray(mask).shape!=self.valid.shape:raise ValueError('Predictor mask shape mismatch')
             raw=_component(np.asarray(mask,dtype=bool)&self.valid,px,self.transform)
             if raw is not None and raw.is_valid and raw.area>=8 and np.isfinite(score) and raw.covers(Point(*anchor)):
-                options.append((float(score),raw))
+                conflicts=prompt_conflicts(raw)
+                if conflicts:rejected.append({'score':float(score),'reasons':conflicts,'area_m2':raw.area})
+                else:options.append((float(score),raw))
         result={'body_id':body_id,'guidance':guidance,'owner_verdict':'PENDING_OWNER_REVIEW',
                 'geometry_role':'OBSERVED_ROOF_HYPOTHESIS','ground_footprint':None,
                 'provenance':self.provenance,'geometry':None,'raw_geometry':None,
-                'status':'NO_OPTICAL_MASK_FOR_REVIEWED_OBJECT','review_reasons':[]}
-        if not options:return result
+                'status':'NO_OPTICAL_MASK_FOR_REVIEWED_OBJECT','review_reasons':[],
+                'prompt_consistency':{'rejected_candidates':rejected,'positive_points':positive_points or [],'negative_points':negative_points or []}}
+        if not options:
+            if rejected:result['review_reasons'].append('NO_PROMPT_CONSISTENT_MASK')
+            return result
         score,raw=max(options,key=lambda item:item[0])
         if refinement_policy=='OPTICAL_PLANAR_CORE':
             from .roof_mask_fidelity import rectangular_roof_core
@@ -149,6 +161,15 @@ class CadastralRoofWorkflow:
             geom=clip_roof_to_valid_grid(geom,self.valid,self.transform,anchor)
             diagnostic['final_validity_mask_applied']=True
         reasons=[]
+        conflicts=prompt_conflicts(geom)
+        if conflicts:
+            # Simplification may fill a reviewed background hole or omit a
+            # confirmed roof wing. Preserve the consistent observation instead.
+            diagnostic={'status':'NEEDS_GEOMETRY_REVIEW','method':'PROMPT_CONSISTENT_RAW_PRESERVED',
+                'rejected_refinement':diagnostic,'prompt_conflicts':conflicts,
+                'refinement_policy':refinement_policy}
+            geom=raw
+            reasons.append('REFINEMENT_VIOLATES_REVIEWED_PROMPTS')
         if invalid_context:reasons.append('NODATA_NEAR_TARGET_COMPLETENESS_UNCONFIRMED')
         if guidance.get('prompt_shift_m',0)>3:
             reasons.append('GUIDANCE_POINT_MOVED_FAR_FROM_REVIEWED_ANCHOR')

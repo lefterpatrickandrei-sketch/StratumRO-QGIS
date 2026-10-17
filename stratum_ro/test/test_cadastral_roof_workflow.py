@@ -95,3 +95,32 @@ class CadastralRoofWorkflowTests(unittest.TestCase):
         result=self.flow.extract('B3',(17,10),(5,5,18,15),reviewed=True,context_m=1)
         self.assertEqual(result['status'],'NO_OPTICAL_MASK_FOR_REVIEWED_OBJECT')
         self.assertIsNone(result['geometry'])
+
+    def test_high_score_cannot_override_reviewed_background(self):
+        good=np.zeros((80,80),dtype=bool);good[20:60,20:60]=True
+        bad=good.copy();bad[20:60,60:70]=True
+        self.model.predict=lambda **kw:(np.array([bad,good]),np.array([.99,.70]),None)
+        r=self.extract(negative_points=[(15.5,10)],refinement_policy='OPTICAL_FIDELITY')
+        self.assertEqual(r['sam2_score'],.70)
+        self.assertEqual(r['prompt_consistency']['rejected_candidates'][0]['reasons'],['NEGATIVE_PROMPT_INSIDE_ROOF'])
+
+    def test_known_wing_cannot_be_dropped_for_higher_score(self):
+        good=np.zeros((80,80),dtype=bool);good[20:60,20:60]=True
+        bad=np.zeros((80,80),dtype=bool);bad[20:50,20:50]=True
+        self.model.predict=lambda **kw:(np.array([bad,good]),np.array([.99,.70]),None)
+        r=self.extract(positive_points=[(13,10)],refinement_policy='OPTICAL_FIDELITY')
+        self.assertEqual(r['sam2_score'],.70)
+
+    def test_no_consistent_mask_does_not_force_geometry(self):
+        r=self.extract(negative_points=[(12,10)])
+        self.assertIsNone(r['geometry'])
+        self.assertIn('NO_PROMPT_CONSISTENT_MASK',r['review_reasons'])
+
+    def test_simplifier_cannot_fill_reviewed_background_hole(self):
+        from shapely.geometry import Point
+        mask=np.zeros((80,80),dtype=bool);mask[20:60,20:60]=True;mask[30,30]=False
+        self.model.predict=lambda **kw:(np.array([mask]),np.array([.9]),None)
+        point=self.tr*(30.5,30.5)
+        r=self.extract(negative_points=[point],refinement_policy='OPTICAL_FIDELITY')
+        self.assertFalse(r['geometry'].covers(Point(*point)))
+        self.assertIn('REFINEMENT_VIOLATES_REVIEWED_PROMPTS',r['review_reasons'])
