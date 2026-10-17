@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis saveUser="lefpa" version="3.40.0-Bratislava" projectname="StratumRO - Lot1/Lot2 si Lot3 in revizie" saveUserFull="Patrick Lefter" saveDateTime="2026-10-17T14:13:43">
+<qgis saveUser="lefpa" version="3.40.0-Bratislava" projectname="StratumRO - Lot1/Lot2 si Lot3 in revizie" saveUserFull="Patrick Lefter" saveDateTime="2026-10-17T14:19:36">
   <homePath path=""/>
   <title>StratumRO - Lot1/Lot2 si Lot3 in revizie</title>
   <transaction mode="Disabled"/>
@@ -95,7 +95,7 @@
         </layer-tree-layer>
       </layer-tree-group>
     </layer-tree-group>
-    <layer-tree-group name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" expanded="0" groupLayer="">
+    <layer-tree-group name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" expanded="1" groupLayer="">
       <customproperties>
         <Option/>
       </customproperties>
@@ -416,10 +416,10 @@
   <mapcanvas name="theMapCanvas" annotationsVisible="1">
     <units>meters</units>
     <extent>
-      <xmin>390554.2981804899754934</xmin>
-      <ymin>585056.19115343317389488</ymin>
-      <xmax>391365.13393760001054034</xmax>
-      <ymax>585787.47414245386607945</ymax>
+      <xmin>390599.87659327872097492</xmin>
+      <ymin>584693.00072571891359985</ymin>
+      <xmax>392221.54810749180614948</xmax>
+      <ymax>586155.56670376914553344</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -494,7 +494,7 @@
         </legendlayer>
       </legendgroup>
     </legendgroup>
-    <legendgroup name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" open="false">
+    <legendgroup name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" open="true">
       <legendlayer name="T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd" isInOverview="0" visible="0"/>

@@ -1,0 +1,14 @@
+[
+  {
+    "body_id": "T26:C1",
+    "crop_crs_before_this_check": "None",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9666621246774336,
+    "whole_window_correlation": 0.9652826943142003,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "body_id": "T21:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9935682286708305,
+    "whole_window_correlation": 0.9898272498712652,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T22:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9875910419958238,
+    "whole_window_correlation": 0.9803634969411122,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T23:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9939931451782972,
+    "whole_window_correlation": 0.9937044448166141,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T24:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9947186979817836,
+    "whole_window_correlation": 0.9892520038085852,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T25:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9951004385635099,
+    "whole_window_correlation": 0.9940606040860182,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T26:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9640680601927006,
+    "whole_window_correlation": 0.9943346035280776,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T27:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9569270115498187,
+    "whole_window_correlation": 0.9647357358000438,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T28:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9845083640257416,
+    "whole_window_correlation": 0.9816657288145115,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T29:C1",
+    "crop_crs_before_this_check": "None",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9154526128124305,
+    "whole_window_correlation": 0.9882973819525491,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T30:C1",
+    "crop_crs_before_this_check": "EPSG:3844",
+    "original_sid_crs_metadata": "EMPTY",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.8132687635073301,
+    "whole_window_correlation": 0.984505198545043,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  }
+]
