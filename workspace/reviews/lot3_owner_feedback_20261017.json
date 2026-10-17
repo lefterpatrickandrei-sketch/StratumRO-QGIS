@@ -32,19 +32,20 @@
   "version_all_useful_created_artifacts": true,
   "technical_progress": {
     "date": "2026-10-17",
-    "stage": "T18_NATIVE_EDGE_CORRECTION_AND_FULL_LOT3_VISUAL_AUDIT",
-    "handoff": "docs/STRATUMRO_LOT3_NATIVE_EDGES_AND_VISUAL_AUDIT_2026-10-17.md",
-    "evidence": "workspace\\reviews\\lot3_edge_audit_20261017",
-    "shared_qgis_group": "LOT3_T18_MUCHII_OBSERVATE_20261017",
+    "stage": "NATIVE_OPTICAL_MAJOR_REPAIRS_SHARED_QGIS",
+    "handoff": "docs/STRATUMRO_LOT3_REPAIRS_HANDOFF_2026-10-17.md",
+    "evidence": "workspace/reviews/lot3_repairs_20261017",
+    "active_selection": "selected_v3",
+    "shared_qgis_group": "LOT3_REPARAT_20261017_NEVALIDAT",
     "owner_verdict_changed": false,
-    "T18_overlap_before_m2": 5.781771071492054,
-    "T18_overlap_after_m2": 0.0,
+    "roof_surface_hypotheses": 20,
+    "case_count": 10,
     "T17_geometries_changed": false,
-    "next_priorities": [
-      "T19",
-      "T20",
-      "T11",
-      "T14"
+    "limitations": [
+      "T12 NoData completeness",
+      "T14 adjoining surfaces and small spikes",
+      "T16/T18/T20 provisional roof surface identities",
+      "No positional/cadastral accuracy claim"
     ]
   }
 }

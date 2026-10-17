@@ -23,6 +23,18 @@ def _component(mask,point_px,transform):
     return max(polygons,key=lambda geom:geom.area) if polygons else None
 
 
+def clip_roof_to_valid_grid(geometry,valid,transform,anchor):
+    """Keep NoData excluded even if a later simplifier filled tiny mask holes."""
+    if valid.all():return geometry
+    from shapely.ops import unary_union
+    invalid=[shape(g) for g,v in shapes((~valid).astype('uint8'),mask=~valid,transform=transform) if v==1]
+    clipped=geometry.difference(unary_union(invalid))
+    parts=list(clipped.geoms) if hasattr(clipped,'geoms') else [clipped]
+    matches=[g for g in parts if g.geom_type=='Polygon' and g.covers(Point(*anchor))]
+    if not matches:raise ValueError('REFINED_ROOF_LOST_VALID_ANCHOR')
+    return max(matches,key=lambda g:g.area)
+
+
 class CadastralRoofWorkflow:
     """Encode once, process multiple explicitly reviewed candidates in a scene."""
 
@@ -133,6 +145,9 @@ class CadastralRoofWorkflow:
             geom,diagnostic=refine_fusion_mask(raw,guidance['point'],self.rgb,self.transform,
                 self.height,self.counts,self.valid,guidance['route'],max_vertices=self.max_vertices)
         diagnostic['refinement_policy']=refinement_policy
+        if not self.valid.all():
+            geom=clip_roof_to_valid_grid(geom,self.valid,self.transform,anchor)
+            diagnostic['final_validity_mask_applied']=True
         reasons=[]
         if invalid_context:reasons.append('NODATA_NEAR_TARGET_COMPLETENESS_UNCONFIRMED')
         if guidance.get('prompt_shift_m',0)>3:

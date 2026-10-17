@@ -1,0 +1,9 @@
+{
+  "file": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+  "layer_id": "LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9",
+  "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\selected_v2\\lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES",
+  "feature_count": 18,
+  "native_detail_layers": 9,
+  "total_layers": 49,
+  "owner_verdict": "PENDING_OWNER_REVIEW"
+}

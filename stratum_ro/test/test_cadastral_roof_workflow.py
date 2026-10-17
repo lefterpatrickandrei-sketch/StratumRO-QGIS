@@ -54,6 +54,13 @@ class CadastralRoofWorkflowTests(unittest.TestCase):
         r=self.extract(allow_invalid_context=True,refinement_policy='OPTICAL_FIDELITY')
         self.assertIn('NODATA_NEAR_TARGET_COMPLETENESS_UNCONFIRMED',r['review_reasons'])
 
+    def test_small_nodata_hole_is_not_refilled_by_optical_cleanup(self):
+        from shapely.geometry import Point
+        self.valid[30,30]=False
+        self.flow.set_scene(self.rgb,self.tr,self.valid,crs='EPSG:3844')
+        r=self.extract(allow_invalid_context=True,refinement_policy='OPTICAL_FIDELITY')
+        self.assertFalse(r['geometry'].covers(Point(*(self.tr*(30.5,30.5)))))
+
     def test_ids_stay_explicit(self):
         self.extract('T17:C1')
         with self.assertRaises(ValueError):self.extract('T17:C1')

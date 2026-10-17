@@ -38,21 +38,23 @@ def simplify_observed_roof(raw,anchor,*,max_vertices=32,min_fidelity=.975,max_bo
               'comparison_role':'RAW_OPTICAL_MASK_NOT_GROUND_TRUTH','courtyards':len(g.interiors)}
 
 
-def rectangular_roof_core(raw,anchor,*,opening_radius_m=1.,max_removed_fraction=.25):
+def rectangular_roof_core(raw,anchor,*,opening_radius_m=1.,max_removed_fraction=.30):
     """Opt-in planar-roof fit removing thin attached equipment/duct masks.
 
     Only use after the target has been reviewed as a rectangular roof plane.
     Detached surfaces and removed areas remain explicit review diagnostics.
     """
     raw=Polygon(raw.exterior,[ring for ring in raw.interiors if Polygon(ring).area>=4.])
-    opened=raw.buffer(-opening_radius_m).buffer(opening_radius_m)
-    parts=list(opened.geoms) if hasattr(opened,'geoms') else [opened]
-    parts=[p for p in parts if p.geom_type=='Polygon' and p.covers(Point(*anchor))]
-    if not parts:return raw,{'status':'NEEDS_GEOMETRY_REVIEW','method':'NO_SUPPORTED_PLANAR_CORE','lidar_used':False}
-    core=max(parts,key=lambda p:p.area);removed=raw.difference(core).area/raw.area
-    if removed>max_removed_fraction:return raw,{'status':'NEEDS_GEOMETRY_REVIEW','method':'EXCESSIVE_CORE_REMOVAL','lidar_used':False}
-    geom,info=simple_roof_geometry(Polygon(core.exterior),min_support=.94,min_coverage=.90,max_vertices=4)
-    if info['method']=='NEEDS_REVIEW':return core,{'status':'NEEDS_GEOMETRY_REVIEW','method':'NO_SUPPORTED_RECTANGLE','lidar_used':False}
-    return geom,{'status':'RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW','method':'REVIEWED_PLANAR_ROOF_CORE',
-        'lidar_used':False,'removed_mask_fraction':removed,'removed_mask_m2':raw.difference(core).area,
-        'coverage':info['coverage'],'support':info['support'],'raw_mask_is_ground_truth':False}
+    for radius in [opening_radius_m,opening_radius_m*1.5,opening_radius_m*2,opening_radius_m*2.5]:
+        opened=raw.buffer(-radius).buffer(radius)
+        parts=list(opened.geoms) if hasattr(opened,'geoms') else [opened]
+        parts=[p for p in parts if p.geom_type=='Polygon' and p.covers(Point(*anchor))]
+        if not parts:continue
+        core=max(parts,key=lambda p:p.area);removed=raw.difference(core).area/raw.area
+        if removed>max_removed_fraction:continue
+        geom,info=simple_roof_geometry(Polygon(core.exterior),min_support=.94,min_coverage=.90,max_vertices=4)
+        if info['method']=='NEEDS_REVIEW':continue
+        return geom,{'status':'RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW','method':'REVIEWED_PLANAR_ROOF_CORE',
+            'lidar_used':False,'removed_mask_fraction':removed,'removed_mask_m2':raw.difference(core).area,
+            'opening_radius_m':radius,'coverage':info['coverage'],'support':info['support'],'raw_mask_is_ground_truth':False}
+    return raw,{'status':'NEEDS_GEOMETRY_REVIEW','method':'NO_SUPPORTED_PLANAR_CORE','lidar_used':False}

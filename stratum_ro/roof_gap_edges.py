@@ -77,13 +77,17 @@ def fit_roof_gap(rgb,transform,valid,start,end,*,search_m=3.,step_m=.03,profiles
             'samples':arr.tolist(),'normal':normal.tolist(),'automatic_acceptance':False}
 
 
-def fit_red_roof_edge(rgb,transform,valid,start,end,inside_point,*,search_m=3.,profiles=51):
+def fit_red_roof_edge(rgb,transform,valid,start,end,inside_point,*,search_m=3.,profiles=51,
+                      signal_kind='RED_CHROMATIC'):
     """Fit a red-roof transition along its full side, independently of its neighbor."""
     p=np.asarray(start,dtype=float);q=np.asarray(end,dtype=float);v=q-p
     length=np.linalg.norm(v);direction=v/length;normal=np.array([direction[1],-direction[0]])
     if np.dot(np.asarray(inside_point)-(p+q)/2,normal)<0:normal=-normal
     dist=np.arange(-search_m,search_m+.025,.05);inv=~transform
-    colors=rgb.astype(float);signal=(colors[:,:,0]-colors[:,:,1])/np.maximum(colors.sum(axis=2),1)
+    colors=rgb.astype(float)
+    if signal_kind=='BRIGHTNESS':signal=colors.mean(axis=2)/255.
+    elif signal_kind=='RED_CHROMATIC':signal=(colors[:,:,0]-colors[:,:,1])/np.maximum(colors.sum(axis=2),1)
+    else:raise ValueError('Unknown edge signal')
     points=[]
     for t in np.linspace(.08,.92,profiles):
         center=p+t*v;xy=center+dist[:,None]*normal

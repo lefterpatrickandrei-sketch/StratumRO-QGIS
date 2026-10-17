@@ -1,0 +1,68 @@
+{
+  "scope": "PRODUCT_WORKFLOW_ON_REVIEWED_CANDIDATES_NOT_REGIONAL_DETECTOR",
+  "ground_footprints_created": 0,
+  "owner_verdict": "PENDING_OWNER_REVIEW",
+  "cases": [
+    {
+      "body_id": "T16:C3",
+      "guidance": {
+        "route": "RGB_FALLBACK_REQUIRES_REVIEW",
+        "point": [
+          390805.8,
+          585317.8
+        ],
+        "source": "REVIEWED_RGB_ANCHOR",
+        "reason": "LIDAR_UNAVAILABLE_OR_INCOMPATIBLE",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW"
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T16_5cm.tif",
+        "lidar_compatibility": "NOT_USED"
+      },
+      "status": "REQUIRES_REVIEW",
+      "review_reasons": [
+        "LIDAR_NOT_USED_OR_INCOMPATIBLE"
+      ],
+      "sam2_score": 0.8569270372390747,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "FAITHFUL_DENOISED_OPTICAL",
+        "lidar_used": false,
+        "coverage": 0.9811949034708037,
+        "support": 0.977173679797795,
+        "boundary_shift_m": 0.26213145169073143,
+        "vertices": 16,
+        "small_holes_removed": 6,
+        "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+        "courtyards": 0,
+        "refinement_policy": "OPTICAL_FIDELITY"
+      },
+      "search_window_check": {
+        "bounds": [
+          390802.0,
+          585313.0,
+          390809.5,
+          585321.5
+        ],
+        "raw_boundary_distance_m": 0.6108539144624956,
+        "refined_boundary_distance_m": 0.6338267881656066,
+        "raw_within_search": true,
+        "refined_within_search": true,
+        "automatic_completeness_claim": false
+      },
+      "vertices": 16,
+      "duration_s": 1.8452146999916295
+    }
+  ],
+  "source_hashes": {
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T16_5cm.tif": "2e74a13ecb291373a428fb77394e1a3d36cb9dd3b462e2efa756ce945bf357db"
+  },
+  "input_manifest_sha256": "445104887f9060b651c39326721a69f7a4913517e236d4fb78c6bc2f79be9ee6",
+  "model_checkpoint_sha256": "65b50056e05bcb13694174f51bb6da89c894b57b75ccdf0ba6352c597c5d1125",
+  "model_config": "sam2_hiera_t.yaml",
+  "geometry_max_exterior_vertices": 24
+}
