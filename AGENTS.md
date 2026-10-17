@@ -1,5 +1,11 @@
 # AGENTS.md — StratumRO Engineering & Evidence-First Governance Guide
 
+## Owner instructions — useful artifacts in Git and shared QGIS, 2026-10-17
+
+Read `docs/STRATUMRO_GIT_PROGRESS_POLICY.md` and `workspace/reviews/lot3_owner_feedback_20261017.json`. Version every useful artifact created for StratumRO: code, tests, text, configurations, images, QGIS projects, GIS/CAD data, reports, manifests, and owner feedback. Explicitly inspect ignored/untracked files; a code-only commit is insufficient. Preserve unrelated agents' edits and never commit secrets. Large useful artifacts require an explicit storage decision, not silent omission; do not claim Git LFS is configured without checking. Local commit and remote push are separate operations.
+
+Latest owner instruction supersedes the earlier separate-project preference: continue in the shared QGIS project `workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs`; do not create additional inspection projects by default. Existing separate projects remain historical evidence. T17 and T18 belong to Lot3 (T11–T20) and need finishing, not automatic acceptance. Preserve T17:C1/C2 identities and the closed courtyard; check T18 wings/annex identities. T20 and the other cases have no new acceptance in this instruction.
+
 ## Product scope confirmed by owner — 2026-10-17
 
 Read `docs/STRATUMRO_PRODUCT_IDENTITY_AND_DESKTOP_DIRECTION_2026-10-17.md`. StratumRO is the modular geospatial/scientific platform for the surveyor; cadastre is the current priority, not the full product definition. Owner accepted the direction of a standalone desktop application connected to specialist tools. Current instruction is to continue cadastral implementation first. Do not start an unrelated UI rewrite or mark pending roof hypotheses accepted. All new code and evidence must be checkpointed in the shared Git repository.

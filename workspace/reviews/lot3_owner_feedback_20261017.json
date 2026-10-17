@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-17",
+  "source": "Direct owner messages in this conversation",
+  "lot": "LOT3_T11_T20",
+  "original_text": "ok nu mai face separat nu uita salveaza in git fiecare progres , t17 t18 are nevoie de o mica ajutare ,finisare , asta e lotul 3 nu ?",
+  "git_instruction_original": "cand ma refer la git ma refer ca fiecare lucru ccreat cod , text , poze ,sau orice tip of file or data util sa fie pus in git",
+  "continue_in_shared_qgis_project": true,
+  "shared_project": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+  "create_additional_inspection_projects": false,
+  "preserve_existing_separate_projects_as_history": true,
+  "cases": {
+    "T17": {
+      "owner_status": "NEEDS_FINISHING",
+      "accepted": false,
+      "body_ids": ["T17:C1", "T17:C2"],
+      "technical_followup": "Repair roof connection next to the courtyard, keep the courtyard closed and the red/gray body identities separate. This is a technical interpretation, not an additional owner verdict."
+    },
+    "T18": {
+      "owner_status": "NEEDS_FINISHING",
+      "accepted": false,
+      "technical_followup": "Finish edges and verify identities and boundaries of wings/annexes. This is a technical interpretation, not an additional owner verdict."
+    },
+    "T20": {
+      "owner_status": "NO_NEW_VERDICT",
+      "accepted": false
+    }
+  },
+  "other_lot3_cases": "No new verdict; previous review states remain in force",
+  "version_all_useful_created_artifacts": true
+}
