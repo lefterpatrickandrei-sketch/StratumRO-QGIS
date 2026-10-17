@@ -2,6 +2,8 @@
 
 ## Latest Lot3 repairs in shared QGIS — 2026-10-17
 
+Main-project display checkpoint: `workspace/reviews/lot3_main_display_20261017/README.md`. Shared QGIS is saved with the full Lot3 overview, cyan active candidates and the earlier accepted green lots visible. Actual main-window/canvas captures and display verification are versioned there. All 218 preceding repair-manifest files were rechecked against SHA-256 and Git tracking. Use existing `Lot3 reparat / Txx` bookmarks for detail; do not create another project just to inspect these results.
+
 Read `docs/STRATUMRO_LOT3_REPAIRS_HANDOFF_2026-10-17.md` and `workspace/reviews/lot3_repairs_20261017/CURRENT_SELECTION.json`. Active package is **selected_v3**, 20 roof-surface hypotheses across T11–T20, in the existing shared QGIS group `LOT3_REPARAT_20261017_NEVALIDAT`. Product policies, reviewed prompts, mask-aware preflight and final NoData clipping are implemented; 67 relevant tests pass, including with committed preflight isolated from another agent's dirty edits. T16 is now three simple roof-surface hypotheses; T19 is recovered with 18 corners; T20 has two four-corner principal roofs. This does not establish independent cadastral identities. T12 NoData, T14 adjoining surfaces/spikes, and T16/T18/T20 identities/junctions remain review items. T17 is preserved exactly. No owner verdict changed; no automatic regional production validation. Preserve failed attempts and source-mask history. The intermediate statements below are historical, superseded by this handoff.
 
 ## Historical intermediate Lot3 repair checkpoint — 2026-10-17

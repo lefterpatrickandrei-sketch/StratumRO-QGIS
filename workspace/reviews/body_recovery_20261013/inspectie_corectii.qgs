@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis saveUser="lefpa" version="3.40.0-Bratislava" projectname="StratumRO - Lot1/Lot2 si Lot3 in revizie" saveUserFull="Patrick Lefter" saveDateTime="2026-10-17T14:02:04">
+<qgis saveUser="lefpa" version="3.40.0-Bratislava" projectname="StratumRO - Lot1/Lot2 si Lot3 in revizie" saveUserFull="Patrick Lefter" saveDateTime="2026-10-17T14:13:43">
   <homePath path=""/>
   <title>StratumRO - Lot1/Lot2 si Lot3 in revizie</title>
   <transaction mode="Disabled"/>
@@ -39,12 +39,12 @@
       <customproperties>
         <Option/>
       </customproperties>
-      <layer-tree-layer name="LOT3 - 20 ipoteze / NECESITA VERDICT" source="../lot3_repairs_20261017/selected_v3/lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES" legend_exp="" providerKey="ogr" patch_size="-1,-1" legend_split_behavior="0" checked="Qt::Checked" id="LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9" expanded="1">
+      <layer-tree-layer name="LOT3 - 20 ipoteze / NECESITA VERDICT" source="../lot3_repairs_20261017/selected_v3/lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES" legend_exp="" providerKey="ogr" patch_size="-1,-1" legend_split_behavior="0" checked="Qt::Checked" id="LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9" expanded="0">
         <customproperties>
           <Option/>
         </customproperties>
       </layer-tree-layer>
-      <layer-tree-group name="DETALII SID 5cm / interpretare CRS proiect" checked="Qt::Checked" expanded="1" groupLayer="">
+      <layer-tree-group name="DETALII SID 5cm / interpretare CRS proiect" checked="Qt::Checked" expanded="0" groupLayer="">
         <customproperties>
           <Option/>
         </customproperties>
@@ -95,7 +95,7 @@
         </layer-tree-layer>
       </layer-tree-group>
     </layer-tree-group>
-    <layer-tree-group name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" expanded="1" groupLayer="">
+    <layer-tree-group name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" expanded="0" groupLayer="">
       <customproperties>
         <Option/>
       </customproperties>
@@ -120,7 +120,7 @@
         </customproperties>
       </layer-tree-layer>
     </layer-tree-group>
-    <layer-tree-group name="LOT3_T18_ANEXA_IPOTEZA_20261017" checked="Qt::Unchecked" expanded="1" groupLayer="">
+    <layer-tree-group name="LOT3_T18_ANEXA_IPOTEZA_20261017" checked="Qt::Unchecked" expanded="0" groupLayer="">
       <customproperties>
         <Option/>
       </customproperties>
@@ -135,7 +135,7 @@
         </customproperties>
       </layer-tree-layer>
     </layer-tree-group>
-    <layer-tree-group name="LOT3_FINISARE_T17_T18_20261017" checked="Qt::Unchecked" expanded="1" groupLayer="">
+    <layer-tree-group name="LOT3_FINISARE_T17_T18_20261017" checked="Qt::Unchecked" expanded="0" groupLayer="">
       <customproperties>
         <Option/>
       </customproperties>
@@ -160,7 +160,7 @@
         </customproperties>
       </layer-tree-layer>
     </layer-tree-group>
-    <layer-tree-group name="LOT3_REVIZIE_V3_T11_T20" checked="Qt::Unchecked" expanded="1" groupLayer="">
+    <layer-tree-group name="LOT3_REVIZIE_V3_T11_T20" checked="Qt::Unchecked" expanded="0" groupLayer="">
       <customproperties>
         <Option/>
       </customproperties>
@@ -185,7 +185,7 @@
         </customproperties>
       </layer-tree-layer>
     </layer-tree-group>
-    <layer-tree-group name="LOT3_REVIZIE_20261013_ISTORIC" checked="Qt::Unchecked" expanded="1" groupLayer="">
+    <layer-tree-group name="LOT3_REVIZIE_20261013_ISTORIC" checked="Qt::Unchecked" expanded="0" groupLayer="">
       <customproperties>
         <Option/>
       </customproperties>
@@ -210,7 +210,7 @@
         </customproperties>
       </layer-tree-layer>
     </layer-tree-group>
-    <layer-tree-group name="LOT3_ISTORIC_INITIAL_NEACCEPTAT" checked="Qt::Unchecked" expanded="1" groupLayer="">
+    <layer-tree-group name="LOT3_ISTORIC_INITIAL_NEACCEPTAT" checked="Qt::Unchecked" expanded="0" groupLayer="">
       <customproperties>
         <Option/>
       </customproperties>
@@ -416,10 +416,10 @@
   <mapcanvas name="theMapCanvas" annotationsVisible="1">
     <units>meters</units>
     <extent>
-      <xmin>390754.48001655284315348</xmin>
-      <ymin>585093.25610412913374603</ymin>
-      <xmax>390814.7336745613720268</xmax>
-      <ymax>585138.50472828303463757</ymax>
+      <xmin>390554.2981804899754934</xmin>
+      <ymin>585056.19115343317389488</ymin>
+      <xmax>391365.13393760001054034</xmax>
+      <ymax>585787.47414245386607945</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -441,12 +441,12 @@
   <projectModels/>
   <legend updateDrawingOrder="true">
     <legendgroup name="LOT3_REPARAT_20261017_NEVALIDAT" checked="Qt::Checked" open="true">
-      <legendlayer name="LOT3 - 20 ipoteze / NECESITA VERDICT" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
-        <filegroup hidden="false" open="true">
+      <legendlayer name="LOT3 - 20 ipoteze / NECESITA VERDICT" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="false">
+        <filegroup hidden="false" open="false">
           <legendlayerfile layerid="LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9" isInOverview="0" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendgroup name="DETALII SID 5cm / interpretare CRS proiect" checked="Qt::Checked" open="true">
+      <legendgroup name="DETALII SID 5cm / interpretare CRS proiect" checked="Qt::Checked" open="false">
         <legendlayer name="T11_5cm" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
           <filegroup hidden="false" open="true">
             <legendlayerfile layerid="T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471" isInOverview="0" visible="1"/>
@@ -494,7 +494,7 @@
         </legendlayer>
       </legendgroup>
     </legendgroup>
-    <legendgroup name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" open="true">
+    <legendgroup name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked" open="false">
       <legendlayer name="T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd" isInOverview="0" visible="0"/>
@@ -516,7 +516,7 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup name="LOT3_T18_ANEXA_IPOTEZA_20261017" checked="Qt::Unchecked" open="true">
+    <legendgroup name="LOT3_T18_ANEXA_IPOTEZA_20261017" checked="Qt::Unchecked" open="false">
       <legendlayer name="T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT" showFeatureCount="0" checked="Qt::Checked" drawingOrder="-1" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364" isInOverview="0" visible="0"/>
@@ -528,7 +528,7 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup name="LOT3_FINISARE_T17_T18_20261017" checked="Qt::Unchecked" open="true">
+    <legendgroup name="LOT3_FINISARE_T17_T18_20261017" checked="Qt::Unchecked" open="false">
       <legendlayer name="T17:C1 - FINISARE NEVERIFICATA" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472" isInOverview="0" visible="0"/>
@@ -550,7 +550,7 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup name="LOT3_REVIZIE_V3_T11_T20" checked="Qt::Unchecked" open="true">
+    <legendgroup name="LOT3_REVIZIE_V3_T11_T20" checked="Qt::Unchecked" open="false">
       <legendlayer name="LOT3_V3_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212" isInOverview="0" visible="0"/>
@@ -572,7 +572,7 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup name="LOT3_REVIZIE_20261013_ISTORIC" checked="Qt::Unchecked" open="true">
+    <legendgroup name="LOT3_REVIZIE_20261013_ISTORIC" checked="Qt::Unchecked" open="false">
       <legendlayer name="LOT3_REV_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a" isInOverview="0" visible="0"/>
@@ -594,7 +594,7 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup name="LOT3_ISTORIC_INITIAL_NEACCEPTAT" checked="Qt::Unchecked" open="true">
+    <legendgroup name="LOT3_ISTORIC_INITIAL_NEACCEPTAT" checked="Qt::Unchecked" open="false">
       <legendlayer name="LOT3_CORPURI_EXTRASE" showFeatureCount="0" checked="Qt::Unchecked" drawingOrder="-1" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile layerid="LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92" isInOverview="0" visible="0"/>
@@ -9348,6 +9348,18 @@
       <mapTip enabled="1"></mapTip>
     </maplayer>
     <maplayer simplifyAlgorithm="0" refreshOnNotifyMessage="" styleCategories="AllStyleCategories" autoRefreshTime="0" minScale="100000000" simplifyLocal="1" legendPlaceholderImage="" simplifyMaxScale="1" simplifyDrawingHints="1" autoRefreshMode="Disabled" wkbType="Polygon" simplifyDrawingTol="1" geometry="Polygon" refreshOnNotifyEnabled="0" hasScaleBasedVisibilityFlag="0" maxScale="0" readOnly="0" symbologyReferenceScale="-1" labelsEnabled="1" type="vector">
+      <extent>
+        <xmin>390600.93917536799563095</xmin>
+        <ymin>585098.25610412901733071</ymin>
+        <xmax>391318.49294272199040279</xmax>
+        <ymax>585745.40919175802264363</ymax>
+      </extent>
+      <wgs84extent>
+        <xmin>23.56602132540767869</xmin>
+        <ymin>46.75652627644458903</ymin>
+        <xmax>23.57556651032735218</xmax>
+        <ymax>46.76246417061218352</ymax>
+      </wgs84extent>
       <id>LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9</id>
       <datasource>../lot3_repairs_20261017/selected_v3/lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES</datasource>
       <keywordList>
@@ -9851,7 +9863,9 @@
         <constraint desc="" field="area_m2" exp=""/>
       </constraintExpressions>
       <expressionfields/>
-      <attributeactions/>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
       <attributetableconfig actionWidgetStyle="dropDown" sortExpression="" sortOrder="0">
         <columns/>
       </attributetableconfig>
@@ -21140,7 +21154,7 @@
       </spatialrefsys>
     </CoordinateCustomCrs>
   </ProjectDisplaySettings>
-  <ProjectGpsSettings destinationFollowsActiveLayer="1" destinationLayerProvider="ogr" destinationLayer="LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212" autoCommitFeatures="0" destinationLayerName="LOT3_V3_CORPURI_EXTRASE" autoAddTrackVertices="0" destinationLayerSource="C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=CORPURI_EXTRASE_LOT3">
+  <ProjectGpsSettings destinationFollowsActiveLayer="1" destinationLayerProvider="ogr" destinationLayer="LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9" autoCommitFeatures="0" destinationLayerName="LOT3 - 20 ipoteze / NECESITA VERDICT" autoAddTrackVertices="0" destinationLayerSource="C:\Users\lefpa\Downloads\QGIS-AI\workspace\reviews\lot3_repairs_20261017\selected_v3\lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES">
     <timeStampFields/>
   </ProjectGpsSettings>
 </qgis>

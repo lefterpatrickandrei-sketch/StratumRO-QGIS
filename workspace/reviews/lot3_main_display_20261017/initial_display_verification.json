@@ -1,0 +1,12 @@
+{
+  "project": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+  "saved": true,
+  "layer_id": "LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9",
+  "layer_name": "LOT3 - 20 ipoteze / NECESITA VERDICT",
+  "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\selected_v3\\lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES",
+  "feature_count": 20,
+  "visible": true,
+  "case_count": 10,
+  "extent": "Polygon ((390193.45866620156448334 585056.19115343317389488, 391725.97345188842155039 585056.19115343317389488, 391725.97345188842155039 585787.47414245386607945, 390193.45866620156448334 585787.47414245386607945, 390193.45866620156448334 585056.19115343317389488))",
+  "owner_verdict_changed": false
+}
