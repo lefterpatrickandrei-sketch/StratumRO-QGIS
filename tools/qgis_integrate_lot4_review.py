@@ -35,8 +35,10 @@ def labels(layer,field,expression=False):
     buf=text.buffer();buf.setEnabled(True);buf.setColor(QColor('black'));buf.setSize(.8);text.setBuffer(buf)
     pal.setFormat(text);layer.setLabeling(QgsVectorLayerSimpleLabeling(pal));layer.setLabelsEnabled(True)
 labels(roofs,'body_id');p.addMapLayer(roofs,False);group.addLayer(roofs)
-missing=QgsVectorLayer(str(gpkg)+'|layername=CASES_REVIEW','LOT4 - T22 nereZolvat','ogr')
-assert missing.isValid();missing.setSubsetString("\"agent_status\"='UNRESOLVED_AFTER_REVIEW'");assert missing.featureCount()==1
+missing=QgsVectorLayer(str(gpkg)+'|layername=CASES_REVIEW','LOT4 - T22 nerezolvat','ogr')
+assert missing.isValid();assert missing.setSubsetString("\"agent_status\"='UNRESOLVED_AFTER_REVIEW'")
+assert len(list(missing.getFeatures()))==1
+missing.updateExtents()
 missing.renderer().setSymbol(QgsMarkerSymbol.createSimple({'name':'cross2','color':'#ff2222','outline_color':'#ff2222','size':'5'}))
 labels(missing,"\"test_id\" || ' / NEREZOLVAT'",True);p.addMapLayer(missing,False);group.addLayer(missing)
 history=group.addGroup('DIAGNOSTIC / ferestre si incercari respinse')

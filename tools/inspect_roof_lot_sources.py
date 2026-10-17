@@ -14,7 +14,7 @@ parser.add_argument('--output-dir',type=Path,required=True)
 parser.add_argument('--selection',default='selection_draft.json')
 parser.add_argument('--evidence-name',default='selection_evidence')
 args=parser.parse_args();out=args.output_dir.resolve()
-selection=json.loads((out/args.selection).read_text());evidence=out/args.evidence_name;evidence.mkdir(exist_ok=True)
+selection=json.loads((out/args.selection).read_text());evidence=out/args.evidence_name;evidence.mkdir(exist_ok=False)
 checks=[]
 for case in selection['cases']:
     name=case['body_id'].split(':')[0];path=out/'covers'/(name+'_5cm.tif')

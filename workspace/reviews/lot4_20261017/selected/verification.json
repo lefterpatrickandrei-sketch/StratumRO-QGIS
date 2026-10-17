@@ -91,5 +91,19 @@
     "duration_s": 7.258
   },
   "regional_production_evaluation": false,
-  "holdout_independence_claimed": false
+  "holdout_independence_claimed": false,
+  "native_qgis_case_images_visually_inspected": 10,
+  "previous_visible_geometries_preserved": 38,
+  "main_project_saved": true,
+  "visual_limit_details": {
+    "T21": "Western tree cover and small eastern/northern projections; not final.",
+    "T24": "Residual pavement/stair platform around bay and northern spike; do not call clean or complete.",
+    "T29": "Small southern spike and terminal-roof boundary offsets; not final.",
+    "T22": "Rejected irregular mask still contains parking fragments; no adopted contour."
+  },
+  "committed_preflight_isolation": {
+    "passed": 71,
+    "duration_s": 7.503,
+    "tool": "tools/verify_lot3_committed_preflight.py"
+  }
 }

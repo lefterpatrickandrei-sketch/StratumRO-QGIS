@@ -4,6 +4,7 @@ import json,hashlib
 from shapely import wkt
 from shapely.geometry import Point
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'workspace/reviews/lot4_20261017'
+if (OUT/'workflow_inputs.json').exists():raise FileExistsError('Preserve the reviewed manifest; create a new revision explicitly')
 m=json.loads((OUT/'selection_review_draft.json').read_text())
 revision=json.loads((OUT/'T26_target_revision.json').read_text())['cases'][0]
 m['cases']=[revision if c['body_id']=='T26:C1' else c for c in m['cases']]

@@ -1,5 +1,9 @@
 # AGENTS.md — StratumRO Engineering & Evidence-First Governance Guide
 
+## Latest Lot4 and Lot3 visual recheck — 2026-10-17
+
+Read `docs/STRATUMRO_LOT4_AND_LOT3_VISUAL_RECHECK_2026-10-17.md` and `workspace/reviews/lot4_20261017/CURRENT_SELECTION.json`. Lot4 T21–T30 is in the same shared QGIS project under `LOT4_T21_T30_IN_REVIZIE`: nine candidates, six visually plausible, three needing finishing (T21/T24/T29), and T22 unresolved with a red marker instead of a bad adopted outline. Cyan/amber are agent review categories, not owner acceptance; all ten remain pending. All 38 previously visible geometries were preserved. New product prompt-consistency checks reject background inclusion and dropped known wings, and prevent simplification from undoing reviewed prompts; 71 tests pass. Source masks, corrected prompts, all attempts, and native images are preserved. Lot3 was rechecked without geometry changes: T14 still needs repair; T17's hole includes a smaller covered structure and is not a proven wholly open courtyard. Do not claim regional automation, cadastral accuracy, complete inventories or clean training labels from these local reviewed roof cases.
+
 ## Latest Lot3 repairs in shared QGIS — 2026-10-17
 
 Main-project display checkpoint: `workspace/reviews/lot3_main_display_20261017/README.md`. Shared QGIS is saved with the full Lot3 overview, cyan active candidates and the earlier accepted green lots visible. Actual main-window/canvas captures and display verification are versioned there. All 218 preceding repair-manifest files were rechecked against SHA-256 and Git tracking. Use existing `Lot3 reparat / Txx` bookmarks for detail; do not create another project just to inspect these results.

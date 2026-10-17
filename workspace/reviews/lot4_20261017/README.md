@@ -1,7 +1,9 @@
-# Lot4 T21-T30, preparation checkpoint
+# Lot4 T21–T30 — current review state
 
-Ten source-reviewed roof cases passed the standard preflight before inference. Native 5 cm crops, masks, source images and corrected selections are preserved. Original SID CRS metadata is empty; coordinate interpretation follows the existing project cache, not independent geodetic certification. No accepted owner verdicts.
+Read `docs/STRATUMRO_LOT4_AND_LOT3_VISUAL_RECHECK_2026-10-17.md` and `CURRENT_SELECTION.json` first. The shared QGIS project contains the new group `LOT4_T21_T30_IN_REVIZIE`, nine roof candidates and an explicit unresolved marker for T22. Agent visual categories: six plausible, three needing finishing, one unresolved. All owner verdicts remain pending.
 
-Lot3 visual recheck findings and ten fresh native QGIS renders are in lot3_recheck/. T14 remains NEEDS_REPAIR; T15/T20 are viable visual hypotheses; other cases need finishing. No Lot3 geometry or owner verdict changed.
+The current GeoPackage is `selected/lot4_review.gpkg`. Individual native QGIS images, source/raw/refined comparisons, whole-lot overview, contact sheet and actual live captures are under `selected/`. Cyan means plausible hypothesis; amber means finishing required; red marks unresolved T22. Neither cyan nor amber means accepted by the owner. All 38 previous visible geometries were preserved.
 
-Shared QGIS project and its prior unsaved user state were preserved. Inference and integration are still pending at this checkpoint.
+Source crops, masks, initial/corrected selections and all four real attempt directories remain useful evidence. `lot3_recheck/findings.json` records the separate Lot3 audit. Original source CRS metadata is empty; project-coordinate interpretation is not independent datum certification. These cases are not a validated regional detector, complete inventory or clean training labels. No videos were created in this stage.
+
+Preparation was checkpointed at 4f97467; product prompt consistency and local outcomes at 0cdd315. Final integration/evidence are committed afterward. Only transient WAL/SHM and automatic editor backups are ignored. No remote push.
