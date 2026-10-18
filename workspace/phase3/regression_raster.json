@@ -1,0 +1,9 @@
+{
+  "subsystem": "raster",
+  "extracted_modules": [
+    "stratum_ro/core/raster/reader.py"
+  ],
+  "tests_run": 1,
+  "tests_passed": 1,
+  "status": "PASS"
+}

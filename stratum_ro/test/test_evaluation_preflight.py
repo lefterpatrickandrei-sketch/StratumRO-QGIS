@@ -70,6 +70,15 @@ class TestEvaluationPreflight(unittest.TestCase):
         self.write_raster(hole=True)
         self.assertIn('NoData', str(self.check()['errors']))
 
+    def test_unmasked_black_pixel_hole_is_rejected_even_when_nodata_is_none(self):
+        data = np.full((3, 100, 100), 120, dtype='uint8')
+        data[:, 45, 45] = 0
+        with rasterio.open(self.root / 'rgb.tif', 'w', driver='GTiff', width=100,
+                           height=100, count=3, dtype='uint8', crs='EPSG:3844',
+                           transform=from_origin(0, 100, 1, 1), nodata=None) as dst:
+            dst.write(data)
+        self.assertIn('NoData', str(self.check()['errors']))
+
     def test_duplicate_ids_blocked(self):
         self.manifest['cases'].append(copy.deepcopy(self.manifest['cases'][0]))
         self.assertIn('duplicate', str(self.check()['errors']))

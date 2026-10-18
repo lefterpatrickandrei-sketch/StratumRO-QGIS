@@ -106,6 +106,7 @@ def main():
     extracted_records = []
     selection_records = []
     unrecovered_records = []
+    raw_mask_records = []
 
     for case in manifest['cases']:
         case_id = case['test_id']
@@ -136,6 +137,17 @@ def main():
         candidates = res.get('candidates', [])
         status = res.get('status', 'UNKNOWN')
         print(f"[LOT3] Result for {case_id}: status={status}, recovered bodies={len(candidates)} ({dur:.2f}s)")
+
+        for att in res.get('attempts', []):
+            raw_opt = att.get('raw_optical')
+            if raw_opt is not None and not raw_opt.is_empty:
+                raw_mask_records.append({
+                    'test_id': case_id,
+                    'attempt_index': int(att.get('index', 0)),
+                    'sam2_score': round(float(att.get('sam2_score', 0.0)), 3),
+                    'status': str(att.get('status', '')),
+                    'geometry': raw_opt,
+                })
 
         case_diag = {
             'test_id': case_id,
@@ -307,6 +319,9 @@ def main():
     if unrecovered_records:
         gdf_unrec = gpd.GeoDataFrame(unrecovered_records, crs=crs)
         gdf_unrec.to_file(gpkg_path, layer='CAZURI_NERECUPERATE_LOT3', driver='GPKG')
+    if raw_mask_records:
+        gdf_raw = gpd.GeoDataFrame(raw_mask_records, crs=crs)
+        gdf_raw.to_file(gpkg_path, layer='MASCA_BRUTA_LOT3', driver='GPKG')
 
     # Save summary report JSON
     total_bodies = len(extracted_records)
@@ -318,7 +333,7 @@ def main():
         'execution_scope': 'LOCAL_RETRY_ONLY_NOT_FULL_PRODUCTION_PIPELINE',
         'selection_manifest_sha256': sha256_file(manifest_path),
         'preflight': preflight,
-        'date': '2026-10-13',
+        'date': manifest.get('date', time.strftime('%Y-%m-%d')),
         'execution_duration_s': round(time.time() - t0, 1),
         'total_cases_evaluated': len(all_case_results),
         'cases_with_extracted_bodies': cases_with_bodies,

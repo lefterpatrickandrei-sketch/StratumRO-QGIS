@@ -1,2 +1,0 @@
-* -text whitespace=cr-at-eol
-owner_evidence/*.txt -text whitespace=-blank-at-eol,cr-at-eol

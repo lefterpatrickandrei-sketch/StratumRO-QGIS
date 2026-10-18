@@ -1,0 +1,11 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="vector" geometry="Point">
+      <id>ancpi_renns_adrese_wfs</id>
+      <datasource>pagingEnabled='true' preferCoordinatesForWfsT11='false' srsname='EPSG:3844' typename='AD:Address' url='https://geoportal.ancpi.ro/arcgis/services/INSPIRE/Addresses/MapServer/WFSServer' version='auto'</datasource>
+      <title>ANCPI - Nomenclator Stradal si Adrese Postale RENNS (WFS)</title>
+      <layername>ANCPI RENNS Adrese (WFS)</layername>
+    </maplayer>
+  </maplayers>
+</qlr>

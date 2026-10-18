@@ -1,0 +1,11 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="vector" geometry="Polygon">
+      <id>igr_geologie_1m</id>
+      <datasource>./Geologie_1M_pr.shp</datasource>
+      <title>Institutul Geologic al Romaniei - Harta Geologica 1:1.000.000</title>
+      <layername>IGR Geologie Romania 1M</layername>
+    </maplayer>
+  </maplayers>
+</qlr>

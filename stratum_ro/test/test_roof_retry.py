@@ -316,6 +316,66 @@ class TestRoofRetryPrompts(unittest.TestCase):
         self.assertLess(captured_kwargs['lidar_area'], 300.0)
         self.assertGreater(captured_kwargs['lidar_area'], 50.0)
 
+    def test_retry_roof_geometry_passes_seed_bounds_not_parcel_bounds(self):
+        """retry_roof_geometry passes locally padded seed bounds to segment_candidate instead of full parcel bounds."""
+        from stratum_ro.roof_retry import retry_roof_geometry
+        rgb = np.full((self.height, self.width, 3), 140, dtype=np.uint8)
+        ndsm = np.zeros((self.height, self.width), dtype=np.float32)
+        ndsm[25:35, 25:35] = 4.5
+        bld = np.zeros((self.height, self.width), dtype=np.float32)
+        bld[25:35, 25:35] = 1.0
+        lidar = self._build_lidar_data(ndsm=ndsm, building=bld)
+
+        large_search = Polygon([(10.0, 50.0), (60.0, 50.0), (60.0, 95.0), (10.0, 95.0)])
+        captured_bounds = []
+
+        class BoundsSpySegmenter:
+            def segment_candidate(self, *bounds, **kwargs):
+                captured_bounds.append(bounds)
+                return {
+                    'geometry': Polygon([(25.0, 65.0), (35.0, 65.0), (35.0, 75.0), (25.0, 75.0)]),
+                    'sam2_score': 0.90,
+                    'status': 'CONFIRMAT_HIBRID',
+                }
+
+        retry_roof_geometry(large_search, rgb, self.transform, lidar, BoundsSpySegmenter())
+        self.assertEqual(len(captured_bounds), 1)
+        bx0, by0, bx1, by1 = captured_bounds[0]
+        self.assertLess(bx1 - bx0, 20.0, "Seed bbox width must be local to the seed (~13m), not parcel width (50m)")
+        self.assertLess(by1 - by0, 20.0, "Seed bbox height must be local to the seed (~13m), not parcel height (45m)")
+
+    def test_elevated_cool_glass_roof_without_class6_produces_fallback_seed(self):
+        """Elevated non-vegetation cool glass/metal roof without Class 6 produces fallback seed."""
+        rgb = np.full((self.height, self.width, 3), 120, dtype=np.uint8)
+        rgb[25:35, 25:35] = [145, 152, 160]  # cool glass/metal (b - r >= 3, g >= r - 2)
+        ndsm = np.zeros((self.height, self.width), dtype=np.float32)
+        ndsm[25:35, 25:35] = 3.2
+        bld = np.zeros((self.height, self.width), dtype=np.float32)
+        lidar = self._build_lidar_data(ndsm=ndsm, building=bld)
+
+        res = roof_retry_prompts(self.child_geom, rgb, self.transform, lidar, min_seed_area_m2=8.0)
+        self.assertEqual(res['status'], 'SUPPORTED_LOCAL_SEED')
+        self.assertEqual(len(res['seeds']), 1)
+        self.assertTrue(res['seeds'][0].get('unclassified_lidar'))
+
+    def test_trim_retry_roof_surface_removes_elevated_skylight_hole(self):
+        """Elevated skylight/fixture spectral gap on roof does not create a false courtyard hole."""
+        from stratum_ro.roof_retry import trim_retry_roof_surface
+        rgb = np.full((self.height, self.width, 3), 140, dtype=np.uint8)
+        rgb[28:32, 28:32] = [30, 80, 150]  # non-neutral skylight spectral anomaly (4x4 = 16 m2)
+        ndsm = np.zeros((self.height, self.width), dtype=np.float32)
+        ndsm[20:40, 20:40] = 6.0  # elevated everywhere including skylight
+        bld = np.zeros((self.height, self.width), dtype=np.float32)
+        bld[20:40, 20:40] = 1.0
+        lidar = self._build_lidar_data(ndsm=ndsm, building=bld)
+
+        seed = {'point': (23.0, 77.0), 'red_fraction': 0.0, 'mean_h': 6.0, 'local_h': 6.0, 'max_h': 6.5}
+        poly = Polygon([(20.0, 60.0), (40.0, 60.0), (40.0, 80.0), (20.0, 80.0)])
+        trimmed, status = trim_retry_roof_surface(poly, rgb, self.transform, lidar, seed)
+        self.assertEqual(status, 'LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE')
+        self.assertEqual(len(trimmed.interiors), 0, "Elevated skylight must not be preserved as a ground courtyard hole")
+
 
 if __name__ == '__main__':
     unittest.main()
+

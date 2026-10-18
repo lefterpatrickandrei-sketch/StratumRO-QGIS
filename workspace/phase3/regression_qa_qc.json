@@ -1,0 +1,12 @@
+{
+  "subsystem": "qa_qc",
+  "extracted_modules": [
+    "stratum_ro/core/qa_qc/validator.py"
+  ],
+  "tests_run": 4,
+  "tests_passed": 4,
+  "rulesets_implemented": [
+    "CORE_GEOMETRY_GATES"
+  ],
+  "status": "PASS"
+}

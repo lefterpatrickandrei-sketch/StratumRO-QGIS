@@ -1,0 +1,17 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="vector" geometry="Line">
+      <id>romania_major_roads</id>
+      <datasource>./MajorRoads_Romania_CNAIR_MMAP.gpkg</datasource>
+      <title>CNAIR / MMAP - Drumuri Principale Romania (Autostrazi, DN, DJ)</title>
+      <layername>CNAIR Drumuri Principale</layername>
+    </maplayer>
+    <maplayer type="vector" geometry="Line">
+      <id>romania_major_railways</id>
+      <datasource>./MajorRailways_Romania_CFR_MMAP.gpkg</datasource>
+      <title>CFR / MMAP - Cai Ferate Principale Romania</title>
+      <layername>CFR Cai Ferate Nationale</layername>
+    </maplayer>
+  </maplayers>
+</qlr>

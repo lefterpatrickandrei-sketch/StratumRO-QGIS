@@ -1,0 +1,11 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="vector" geometry="Polygon">
+      <id>apia_lpis_blocuri_fizice_2025</id>
+      <datasource>/vsizip/./blocuri_fizice_2025_Romania_Complet.zip</datasource>
+      <title>APIA - Parcele de Referinta Blocuri Fizice 2025 (1.54M parcele)</title>
+      <layername>APIA Blocuri Fizice 2025 (VSIZIP)</layername>
+    </maplayer>
+  </maplayers>
+</qlr>

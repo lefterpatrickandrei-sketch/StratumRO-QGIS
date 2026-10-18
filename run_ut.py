@@ -1,0 +1,11 @@
+import unittest
+loader = unittest.TestLoader()
+suite = loader.discover('stratum_ro/test')
+runner = unittest.TextTestRunner(verbosity=2)
+result = runner.run(suite)
+print(f"\n\n=== SUMMARY ===")
+print(f"Tests run: {result.testsRun}")
+print(f"Failures: {len(result.failures)}")
+print(f"Errors: {len(result.errors)}")
+print(f"Skipped: {len(result.skipped)}")
+print(f"Passed: {result.wasSuccessful()}")

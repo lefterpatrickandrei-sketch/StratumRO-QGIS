@@ -35,10 +35,13 @@ def roof_retry_prompts(geometry,image_rgb,transform,lidar_data,min_seed_area_m2=
     search=rasterize([(geometry.buffer(1),1)],out_shape=rgb.shape[:2],transform=tr,dtype='uint8').astype(bool)
     rr,cc=np.indices(rgb.shape[:2]);x,y=tr*(cc+.5,rr+.5);lc,lr=(~lidar_data['transform'])*(x,y)
     ndsm=lidar_data['ndsm'];building=lidar_data['class_evidence']['building']
+    veg_grid=lidar_data['class_evidence'].get('vegetation')
     valid=(lc>=0)&(lr>=0)&(lc<ndsm.shape[1])&(lr<ndsm.shape[0])
-    height=np.zeros(rgb.shape[:2]);support=np.zeros(rgb.shape[:2])
+    height=np.zeros(rgb.shape[:2]);support=np.zeros(rgb.shape[:2]);veg_lidar=np.zeros(rgb.shape[:2])
     ri=np.floor(lr[valid]).astype(int);ci=np.floor(lc[valid]).astype(int)
     height[valid]=ndsm[ri,ci];support[valid]=building[ri,ci]
+    if veg_grid is not None and veg_grid.shape==ndsm.shape:
+        veg_lidar[valid]=veg_grid[ri,ci]
     r,g,b=rgb[...,0],rgb[...,1],rgb[...,2];maximum=rgb.max(axis=2)
     saturation=(maximum-rgb.min(axis=2))/np.maximum(maximum,1)
     red=(r-g>20)&(r-b>15)
@@ -48,29 +51,43 @@ def roof_retry_prompts(geometry,image_rgb,transform,lidar_data,min_seed_area_m2=
     strong=search&valid&np.isfinite(height)&elevated&~vegetation&(red|neutral)
     # Roof-colour islands may have sparse returns; closing only bridges .3m gaps.
     step=math.sqrt(abs(tr.determinant));radius=max(1,int(round(.15/step)))
-    closed=binary_closing(np.pad(strong,radius),structure=np.ones((2*radius+1,2*radius+1)))[radius:-radius,radius:-radius]
-    closed &= search&~vegetation
-    labs,_=label(closed);seeds=[]
-    for i,sl in enumerate(find_objects(labs),1):
-        if sl is None:continue
-        component=labs[sl]==i;area=component.sum()*abs(tr.determinant)
-        core=component&strong[sl]&inside[sl]
-        if area<min_seed_area_m2 or core.sum()*abs(tr.determinant)<min_seed_area_m2/2:continue
-        dist=distance_transform_edt(np.pad(core,1))[1:-1,1:-1]
-        pr,pc=np.unravel_index(np.argmax(dist),dist.shape);pr+=sl[0].start;pc+=sl[1].start
-        point=tuple(float(v) for v in tr*(pc+.5,pr+.5))
-        if not geometry.covers(Point(point)):continue
-        component_heights=height[sl][component&valid[sl]&np.isfinite(height[sl])]
-        reach=max(1,int(round(1./step)))
-        nearby=(slice(max(0,pr-reach),min(height.shape[0],pr+reach+1)),
-                slice(max(0,pc-reach),min(height.shape[1],pc+reach+1)))
-        local=height[nearby][strong[nearby]&np.isfinite(height[nearby])]
-        local_h=float(np.median(local)) if len(local) else float(np.median(component_heights))
-        seeds.append({'point':point,'area_m2':float(area),'mean_h':float(np.mean(component_heights)),
-                      'local_h':local_h,'max_h':float(np.max(component_heights)),
-                      'red_fraction':float(red[sl][component].mean())})
+    def _extract_seeds(active_mask,unclassified=False):
+        closed_mask=binary_closing(np.pad(active_mask,radius),structure=np.ones((2*radius+1,2*radius+1)))[radius:-radius,radius:-radius]
+        closed_mask &= search&~vegetation
+        labs,_=label(closed_mask);found=[]
+        for i,sl in enumerate(find_objects(labs),1):
+            if sl is None:continue
+            component=labs[sl]==i;area=component.sum()*abs(tr.determinant)
+            core=component&active_mask[sl]&inside[sl]
+            if area<min_seed_area_m2 or core.sum()*abs(tr.determinant)<min_seed_area_m2/2:continue
+            dist=distance_transform_edt(np.pad(core,1))[1:-1,1:-1]
+            pr,pc=np.unravel_index(np.argmax(dist),dist.shape);pr+=sl[0].start;pc+=sl[1].start
+            point=tuple(float(v) for v in tr*(pc+.5,pr+.5))
+            if not geometry.covers(Point(point)):continue
+            component_heights=height[sl][component&valid[sl]&np.isfinite(height[sl])]
+            reach=max(1,int(round(1./step)))
+            nearby=(slice(max(0,pr-reach),min(height.shape[0],pr+reach+1)),
+                    slice(max(0,pc-reach),min(height.shape[1],pc+reach+1)))
+            local=height[nearby][active_mask[nearby]&np.isfinite(height[nearby])]
+            local_h=float(np.median(local)) if len(local) else float(np.median(component_heights))
+            scorners=[tr*(c,r) for c in (sl[1].start,sl[1].stop) for r in (sl[0].start,sl[0].stop)]
+            s_bounds=(float(min(p[0] for p in scorners)),float(min(p[1] for p in scorners)),
+                      float(max(p[0] for p in scorners)),float(max(p[1] for p in scorners)))
+            item={'point':point,'area_m2':float(area),'mean_h':float(np.mean(component_heights)),
+                  'local_h':local_h,'max_h':float(np.max(component_heights)),
+                  'red_fraction':float(red[sl][component].mean()),'bounds':s_bounds,'seed_bounds':s_bounds}
+            if unclassified:
+                item['unclassified_lidar']=True
+            found.append(item)
+        return found
+    seeds=_extract_seeds(strong,unclassified=False)
+    if not seeds:
+        cool_roof=neutral&((b-r)>=3.0)&(g>=(r-2.0))&(maximum>=85.0)
+        fallback_strong=search&valid&np.isfinite(height)&(height>=1.8)&~vegetation&(red|cool_roof)
+        if fallback_strong.any():
+            seeds=_extract_seeds(fallback_strong,unclassified=True)
     seeds.sort(key=lambda v:(-v['area_m2'],v['point']))
-    answer.update(seeds=seeds[:4],status='SUPPORTED_LOCAL_SEED' if seeds else 'NO_SUPPORTED_ROOF_SEED',
+    answer.update(seeds=seeds[:8],status='SUPPORTED_LOCAL_SEED' if seeds else 'NO_SUPPORTED_ROOF_SEED',
                   building_color_area_m2=float(strong.sum()*abs(tr.determinant)),
                   vegetation_fraction=float(vegetation[inside].mean()) if inside.any() else 0.)
     return answer
@@ -91,9 +108,13 @@ def trim_retry_roof_surface(geometry,image_rgb,transform,lidar_data,seed):
     inside=rasterize([(geometry,1)],out_shape=rgb.shape[:2],transform=tr,dtype='uint8').astype(bool)
     rr,cc=np.indices(rgb.shape[:2]);x,y=tr*(cc+.5,rr+.5);lc,lr=(~lidar_data['transform'])*(x,y)
     ndsm=lidar_data['ndsm'];building=lidar_data['class_evidence']['building']
+    obs_grid=lidar_data['class_evidence'].get('observed')
     valid=(lc>=0)&(lr>=0)&(lc<ndsm.shape[1])&(lr<ndsm.shape[0])
-    h=np.zeros(rgb.shape[:2]);counts=np.zeros(rgb.shape[:2]);ri=np.floor(lr[valid]).astype(int);ci=np.floor(lc[valid]).astype(int)
+    h=np.zeros(rgb.shape[:2]);counts=np.zeros(rgb.shape[:2]);unobserved=np.zeros(rgb.shape[:2],dtype=bool)
+    ri=np.floor(lr[valid]).astype(int);ci=np.floor(lc[valid]).astype(int)
     h[valid]=ndsm[ri,ci];counts[valid]=building[ri,ci]
+    if obs_grid is not None and obs_grid.shape==ndsm.shape:
+        unobserved[valid]=(obs_grid[ri,ci]==0)
     r,g,b=rgb[...,0],rgb[...,1],rgb[...,2];maximum=rgb.max(axis=2)
     sat=(maximum-rgb.min(axis=2))/np.maximum(maximum,1)
     vegetation=(sat>.25)&(g>=.8*r)&(g>1.12*b)
@@ -101,15 +122,17 @@ def trim_retry_roof_surface(geometry,image_rgb,transform,lidar_data,seed):
     reddish=(r-g>14)&(r-b>14)&(r>55)
     neutral=(sat<=.30)&(maximum>=50)
     local_h=seed.get('local_h',seed['mean_h'])
-    neutral_roof=neutral&((counts>0)|(h>=max(2.5,min(local_h,seed['mean_h'])-1.5)))
-    spectral=(brown|reddish|(neutral&(counts>0))) if seed['red_fraction']>=.50 else (brown|reddish|neutral_roof)
+    unclass=bool(seed.get('unclassified_lidar'))
+    neutral_roof=neutral&((counts>0)|(h>=max(2.5,min(local_h,seed['mean_h'])-1.5))|(unclass&(h>=1.8))|unobserved)
+    spectral=(brown|reddish|(neutral&((counts>0)|unobserved))) if seed['red_fraction']>=.50 else (brown|reddish|neutral_roof)
     # A coherent height component is more reliable than a single locally low
     # return. Local height is needed when a component mixes low and high roofs.
     if seed.get('max_h',float('inf'))-seed['mean_h']<=2.:
         local_h=seed['mean_h']
-    floor=max(2.0,min(local_h,seed['mean_h'])-2.5)
+    min_floor=1.8 if unclass else 2.0
+    floor=max(min_floor,min(local_h,seed['mean_h'])-2.5)
     high_overhang=(seed['red_fraction']>=.50)&(brown|reddish)&~vegetation
-    height_ok=(h>=floor)&((h<=local_h+4.)|high_overhang)
+    height_ok=((h>=floor)&((h<=local_h+4.)|high_overhang))|(unobserved&~vegetation&(brown|reddish|neutral))
     foreground=inside&valid&np.isfinite(h)&height_ok&~vegetation&spectral
     radius=max(1,int(round(.15/math.sqrt(abs(tr.determinant)))))
     foreground=binary_closing(np.pad(foreground,radius),structure=np.ones((2*radius+1,2*radius+1)))[radius:-radius,radius:-radius]&inside
@@ -120,9 +143,18 @@ def trim_retry_roof_surface(geometry,image_rgb,transform,lidar_data,seed):
     polygons=[shape(g) for g,v in shapes(component.astype('uint8'),mask=component,transform=tr) if v==1]
     if not polygons:return geometry,'LOCAL_SURFACE_EMPTY'
     result=max(polygons,key=lambda p:p.area)
-    # Small spectral gaps (e.g. roof fixtures) are not independent courtyards.
-    # Larger holes remain explicit and therefore require complex-shape review.
-    result=Polygon(result.exterior,[ring for ring in result.interiors if Polygon(ring).area>2.])
+    # Small spectral gaps or elevated roof fixtures/skylights are not ground courtyards.
+    ext_area=Polygon(result.exterior).area
+    min_hole_area=max(2.,0.03*ext_area)
+    valid_interiors=[]
+    for ring in result.interiors:
+        ring_poly=Polygon(ring)
+        if ring_poly.area<=min_hole_area:continue
+        ring_mask=rasterize([(ring_poly,1)],out_shape=rgb.shape[:2],transform=tr,dtype='uint8').astype(bool)
+        ring_h=h[ring_mask&valid&np.isfinite(h)&~unobserved]
+        if len(ring_h)>0 and float(np.median(ring_h))>=floor:continue
+        valid_interiors.append(ring)
+    result=Polygon(result.exterior,valid_interiors)
     result=result.simplify(.25,preserve_topology=True)
     if not result.is_valid or result.area<8 or result.area/geometry.area<.10:return geometry,'LOCAL_SURFACE_INSUFFICIENT'
     return result,'LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE'
@@ -152,8 +184,16 @@ def retry_roof_geometry(geometry,image_rgb,transform,lidar_data,segmenter):
     usable=[]
     for index,seed in enumerate(prompts['seeds'],1):
         lidar_area=seed.get('area_m2',geometry.area)
-        result=segmenter.segment_candidate(*bounds,mean_h=seed['mean_h'],max_h=seed['max_h'],
-            lidar_area=lidar_area,internal_pts_geo=[seed['point']],height_min_threshold=2.)
+        seed_box = seed.get('seed_bounds', seed.get('bounds'))
+        if seed_box is not None:
+            sx0,sy0,sx1,sy1=seed_box
+            s_bounds=(max(bounds[0],sx0-1.5),max(bounds[1],sy0-1.5),
+                      min(bounds[2],sx1+1.5),min(bounds[3],sy1+1.5))
+        else:
+            s_bounds=bounds
+        h_thresh=1.8 if seed.get('unclassified_lidar') else 2.
+        result=segmenter.segment_candidate(*s_bounds,mean_h=seed['mean_h'],max_h=seed['max_h'],
+            lidar_area=lidar_area,internal_pts_geo=[seed['point']],height_min_threshold=h_thresh)
         optical=result.get('geometry')
         attempt={'index':index,'point':seed['point'],'sam2_score':result.get('sam2_score',0),
                  'status':result['status'],'raw_optical':optical}
@@ -162,6 +202,11 @@ def retry_roof_geometry(geometry,image_rgb,transform,lidar_data,segmenter):
             if color!='LOCAL_HEIGHT_BROWN_NEUTRAL_SURFACE':
                 trimmed,color=refine_roof_color(optical,image_rgb,transform,lidar_data)
             simple,info=simple_roof_geometry(trimmed)
+            if info['method']=='NEEDS_REVIEW':
+                alt_trimmed,alt_color=refine_roof_color(optical,image_rgb,transform,lidar_data)
+                alt_simple,alt_info=simple_roof_geometry(alt_trimmed)
+                if alt_info['method']!='NEEDS_REVIEW':
+                    trimmed,color,simple,info=alt_trimmed,alt_color,alt_simple,alt_info
             vegetation=vegetation_color_fraction(simple,image_rgb,transform)
             evidence=review_candidates([{'geometry':simple}],lidar_data['class_evidence'],lidar_data['transform'])[0]
             candidate={'geometry':simple,'sam2_score':result.get('sam2_score',0),
@@ -171,7 +216,8 @@ def retry_roof_geometry(geometry,image_rgb,transform,lidar_data,segmenter):
                        'vertices':len(simple.exterior.coords)-1,'vegetation_fraction':vegetation,
                        'building_fraction':evidence['qa_building_fraction']}
             attempt.update(candidate)
-            lidar_confirmed=evidence['qa_building_fraction']>.15 or seed.get('mean_h',0.)>=2.5
+            min_mean_h=1.8 if seed.get('unclassified_lidar') else 2.5
+            lidar_confirmed=evidence['qa_building_fraction']>.15 or seed.get('mean_h',0.)>=min_mean_h
             if info['method']!='NEEDS_REVIEW' and vegetation<.35 and lidar_confirmed:
                 usable.append(candidate)
         answer['attempts'].append(attempt)

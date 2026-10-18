@@ -1,0 +1,11 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="raster">
+      <id>copernicus_forest_wms</id>
+      <datasource>contextualWMSLegend=0&amp;crs=EPSG:3844&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=TCD_2018_10m&amp;styles=&amp;url=https://image.discomap.eea.europa.eu/arcgis/services/GioLandPublic/TreeCoverDensity_2018/ImageServer/WMSServer</datasource>
+      <title>Copernicus - Tree Cover Density / Fond Forestier (WMS)</title>
+      <layername>Copernicus Paduri TCD WMS</layername>
+    </maplayer>
+  </maplayers>
+</qlr>

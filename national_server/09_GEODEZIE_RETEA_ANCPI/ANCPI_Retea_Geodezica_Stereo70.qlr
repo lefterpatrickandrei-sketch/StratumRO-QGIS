@@ -1,0 +1,11 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="raster">
+      <id>ancpi_toprosearch_wms</id>
+      <datasource>contextualWMSLegend=0&amp;crs=EPSG:3844&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Retea_Geodezica&amp;styles=&amp;url=https://geoportal.ancpi.ro/arcgis/services/Geodezie/ReteaGeodezica/MapServer/WMSServer</datasource>
+      <title>ANCPI - Retea Geodezica si Statii Permanente (WMS)</title>
+      <layername>ANCPI Geodezie WMS</layername>
+    </maplayer>
+  </maplayers>
+</qlr>

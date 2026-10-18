@@ -1,0 +1,11 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <maplayers>
+    <maplayer type="raster">
+      <id>copernicus_clc_wms</id>
+      <datasource>contextualWMSLegend=0&amp;crs=EPSG:3844&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=CORINE_Land_Cover_2018&amp;styles=&amp;url=https://image.discomap.eea.europa.eu/arcgis/services/Corine/CLC2018_WM/MapServer/WMSServer</datasource>
+      <title>Copernicus - Corine Land Cover Romania (WMS)</title>
+      <layername>Copernicus CLC 2018 WMS</layername>
+    </maplayer>
+  </maplayers>
+</qlr>

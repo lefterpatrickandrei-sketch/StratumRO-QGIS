@@ -1,0 +1,9 @@
+{
+  "subsystem": "pointcloud",
+  "extracted_modules": [
+    "stratum_ro/core/pointcloud/processor.py"
+  ],
+  "tests_run": 1,
+  "tests_passed": 1,
+  "status": "PASS"
+}

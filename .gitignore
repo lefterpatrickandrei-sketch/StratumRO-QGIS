@@ -130,3 +130,34 @@ symbology-style.db
 opencode/
 .opencode/
 
+
+# ── Geospatial & CAD Heavy Deliverables (Local QGIS Only) ────────
+*.gpkg
+*.gpkg-*
+*.dxf
+*.dwg
+*.tif
+*.tiff
+*.vrt
+*.laz
+*.las
+*.backup
+*.BAK*
+*.qgs
+*.qgs~
+*.qgz
+
+# Workspace runtime outputs and heavy review caches
+workspace/output/
+workspace/reviews/
+workspace/e2e/
+workspace/Subagent_*/
+workspace/subagent_*.md
+
+# Projects heavy data and CAD exports
+projects/**/data/
+projects/**/output/
+projects/**/CAD_Export/
+
+# Preserve verified compact ONNX decoders (<100MB)
+!models/sam2/sam2_decoder.onnx

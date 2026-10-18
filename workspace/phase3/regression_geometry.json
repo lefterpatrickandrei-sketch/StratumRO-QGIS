@@ -1,0 +1,16 @@
+{
+  "subsystem": "geometry",
+  "extracted_modules": [
+    "stratum_ro/core/geometry/regularizer.py",
+    "stratum_ro/core/geometry/metrics.py",
+    "stratum_ro/core/geometry/cleaning.py"
+  ],
+  "tests_run": 4,
+  "tests_passed": 4,
+  "behavioral_equivalence": {
+    "exact_equal": true,
+    "area_diff_m2": 0.0,
+    "tolerance": "1e-9"
+  },
+  "status": "PASS"
+}
