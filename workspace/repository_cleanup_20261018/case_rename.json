@@ -1,0 +1,7 @@
+{
+  "old_git_path": "docs/readme.md",
+  "new_git_path": "docs/README.md",
+  "method": "Two explicit Git moves via a temporary filename on case-insensitive Windows; temporary path does not remain.",
+  "purpose": "Make the documentation index match its actual links on case-sensitive GitHub.",
+  "original_bytes_snapshot": "junk/2026-10-18/source_snapshots/docs_README.original.md"
+}

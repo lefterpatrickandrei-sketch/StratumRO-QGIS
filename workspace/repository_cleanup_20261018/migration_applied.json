@@ -1,0 +1,187 @@
+{
+  "completed_utc": "2026-10-18T10:08:36.1367063Z",
+  "status": "APPLIED_HASH_VERIFIED",
+  "moves": 13,
+  "snapshots": 4,
+  "files": [
+    {
+      "action": "MOVE",
+      "source": "KILO_CONFIGURATION_AUDIT.md",
+      "destination": "junk/2026-10-18/root_reports/KILO_CONFIGURATION_AUDIT.md",
+      "sha256": "e273841fdf9699b0dd129acf9aa32f8a8acc6612fb38627fc1dd46d15e7b1b2d",
+      "bytes": 24636,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "docs/ARTIFACT_MANIFEST.md",
+        "docs/PROJECT_PROGRESS.md",
+        "reports/cluj/KILO_INDEPENDENT_PHASE2_AUDIT.md"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "LOCAL_DATA_AUDIT_REPORT.md",
+      "destination": "junk/2026-10-18/root_reports/LOCAL_DATA_AUDIT_REPORT.md",
+      "sha256": "456c8d63ace5682a3835968cb26d29f655dcd7821e6ed3a77dfcee4d3469b5d8",
+      "bytes": 29717,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "reports/STRATUMRO_RAPORT_2026-10-08.html",
+        "reports/_charts/build_html_report.py",
+        "reports/_charts/make_charts.py"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "MASTER_AUDIT_FINAL_VALIDARE.md",
+      "destination": "junk/2026-10-18/root_reports/MASTER_AUDIT_FINAL_VALIDARE.md",
+      "sha256": "cf3903c1c68ec38615f616e7ddbea2cef847134d9882a97436401e7054ae45ba",
+      "bytes": 11732,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "RAPORT_AUDIT_10_REZOLUTIE.md",
+        "RAPORT_AUDIT_FINAL_CONSOLIDAT.md",
+        "docs/RAPORT_AUDIT_10_REZOLUTIE.md",
+        "docs/RAPORT_AUDIT_FINAL_CONSOLIDAT.md"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_AUDIT_5_REZOLUTIE.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_AUDIT_5_REZOLUTIE.md",
+      "sha256": "9b840d1aa36c3ecea274fb6918a06c8fe2e73baa1081158ba46606b15514c086",
+      "bytes": 16197,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "RAPORT_AUDIT_6_REZOLUTIE.md",
+        "docs/RAPORT_AUDIT_5_REZOLUTIE.md"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_AUDIT_6_REZOLUTIE.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_AUDIT_6_REZOLUTIE.md",
+      "sha256": "7be1301c16d6d4accaee4e33abda4d141b5b09a40bd76802ff4ce6fa78575091",
+      "bytes": 14801,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "data/audit_7_raw.txt",
+        "docs/RAPORT_AUDIT_6_REZOLUTIE.md"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_AUDIT_7_REZOLUTIE.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_AUDIT_7_REZOLUTIE.md",
+      "sha256": "9a5fcbf027b4b1a98b677ed9b222b88e36db141c2552dd8cd3bee33dc6ec6194",
+      "bytes": 16069,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": []
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_AUDIT_8_REZOLUTIE.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_AUDIT_8_REZOLUTIE.md",
+      "sha256": "f6d53194167b8a649eafc71a54533d1c81082b22233fc8da4c9011e93d82b1d9",
+      "bytes": 15534,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": []
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_AUDIT_10_REZOLUTIE.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_AUDIT_10_REZOLUTIE.md",
+      "sha256": "817bfdd8aa359696fe84f90bf8fccf1460fc34ff60ac9169c83368b82519e5b2",
+      "bytes": 22299,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "RAPORT_AUDIT_11_REZOLUTIE.md",
+        "docs/RAPORT_AUDIT_11_REZOLUTIE.md"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_AUDIT_11_REZOLUTIE.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_AUDIT_11_REZOLUTIE.md",
+      "sha256": "47b4fa4bb15efc1dddb492c5acfc6ed3248d5945633444501705b07984a57e8c",
+      "bytes": 18508,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "RAPORT_AUDIT_12_REZOLUTIE.md",
+        "docs/RAPORT_AUDIT_12_REZOLUTIE.md"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_AUDIT_12_REZOLUTIE.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_AUDIT_12_REZOLUTIE.md",
+      "sha256": "6955ac5bdffb9b6e99898fd9804bce1e9389a7ed6b50d9b6c5db6bd0c8d5f724",
+      "bytes": 15749,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "RAPORT_FINAL_CERTIFICARE_CADASTRALA.md",
+        "docs/RAPORT_FINAL_CERTIFICARE_CADASTRALA.md"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_AUDIT_FINAL_CONSOLIDAT.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_AUDIT_FINAL_CONSOLIDAT.md",
+      "sha256": "6f55ccc6b962e928e4bfb400278885e8a0663f11778bfaa1b54914ec1bd7363d",
+      "bytes": 10171,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": []
+    },
+    {
+      "action": "MOVE",
+      "source": "RAPORT_FINAL_CERTIFICARE_CADASTRALA.md",
+      "destination": "junk/2026-10-18/root_reports/RAPORT_FINAL_CERTIFICARE_CADASTRALA.md",
+      "sha256": "da038b0bd05b95252eca02769f9e8cb502f377562ef6ae4e4b26ccfac88ec976",
+      "bytes": 7541,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": [
+        "docs/RAPORT_FINAL_CERTIFICARE_CADASTRALA.md"
+      ]
+    },
+    {
+      "action": "MOVE",
+      "source": "walkthrough.md",
+      "destination": "junk/2026-10-18/root_reports/walkthrough.md",
+      "sha256": "c275d5486008ab656fba0e305dc4fed55b90529e2b8641fe5452383fbe3e77f1",
+      "bytes": 8565,
+      "reason": "Historical report, retained as evidence; not the current project entry point.",
+      "inbound_mentions": []
+    },
+    {
+      "action": "COPY_BEFORE_REPLACE",
+      "source": "README.md",
+      "destination": "junk/2026-10-18/source_snapshots/README.original.md",
+      "sha256": "47a615531ea66324354400912f6ecb4ff731c60283d1383e8e0d8d61fdbd8218",
+      "bytes": 33032,
+      "reason": "Exact snapshot before owner-approved consolidation; .txt prevents discovery as agent instructions."
+    },
+    {
+      "action": "COPY_BEFORE_REPLACE",
+      "source": "AGENTS.md",
+      "destination": "junk/2026-10-18/source_snapshots/AGENTS.original.txt",
+      "sha256": "7c70d72822b5a9f7f377ca7cfe9caeb9ae55b44f0c7fee3ba747075edb5bda6d",
+      "bytes": 40714,
+      "reason": "Exact snapshot before owner-approved consolidation; .txt prevents discovery as agent instructions."
+    },
+    {
+      "action": "COPY_BEFORE_REPLACE",
+      "source": "CLAUDE.md",
+      "destination": "junk/2026-10-18/source_snapshots/CLAUDE.original.txt",
+      "sha256": "fc47d9c1b6d7e5f3140fe899593f6fd31bc145e69031eab5f89b7973b3aa83a9",
+      "bytes": 1993,
+      "reason": "Exact snapshot before owner-approved consolidation; .txt prevents discovery as agent instructions."
+    },
+    {
+      "action": "COPY_BEFORE_REPLACE",
+      "source": "docs/README.md",
+      "destination": "junk/2026-10-18/source_snapshots/docs_README.original.md",
+      "sha256": "3e455ce3ab2f052a0c2b82dda032adbea29b960860b74816aecd22bb0e77d42d",
+      "reason": "Preserve the old documentation landing page before consolidating navigation."
+    }
+  ],
+  "deletion": "No content discarded; original paths of MOVE entries now resolve through the migration table."
+}

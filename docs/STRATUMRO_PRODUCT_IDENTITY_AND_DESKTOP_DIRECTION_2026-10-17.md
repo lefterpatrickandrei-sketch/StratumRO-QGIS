@@ -12,7 +12,9 @@ Codul existent nu se rescrie pentru a obține o interfață nouă. Se consolidea
 
 ## Prioritatea de implementare curentă
 
-Proprietarul a cerut continuarea părții cadastrale, nu începerea interfeței desktop acum. Integrați componentele executabile, validarea datelor și verificarea livrabilelor. Păstrați proiectele și contururile acceptate. Folosiți proiectul separat pentru ipotezele în curs.
+Proprietarul a cerut continuarea părții cadastrale, nu începerea interfeței desktop acum. Integrați componentele executabile, validarea datelor și verificarea livrabilelor. Păstrați proiectele și contururile acceptate. Instrucțiunea ulterioară a proprietarului cere proiectul QGIS comun `workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs`; preferința anterioară pentru un proiect separat este înlocuită, iar proiectele separate existente rămân dovezi istorice.
+
+Clarificare a proprietarului, 2026-10-18: StratumRO conectează programele geodezului și reutilizează instrumentele lor, inclusiv QGIS. Această integrare este parte din produs; o aplicație proprie nu presupune rescrierea instrumentelor sau eliminarea QGIS. Starea verificată și diagramele curente sunt în [PROJECT_STATE.md](PROJECT_STATE.md) și [SYSTEM_MAP.md](SYSTEM_MAP.md).
 
 - Ortofoto poate susține propuneri de contur; LiDAR este suport suplimentar, fără veto universal.
 - Conturul acoperișului nu este automat amprenta la sol sau limita juridică.

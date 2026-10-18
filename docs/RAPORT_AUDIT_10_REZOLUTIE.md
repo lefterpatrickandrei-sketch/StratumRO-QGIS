@@ -7,7 +7,7 @@
 **Data:** 2026-09-10  
 **Statut:** **REZOLUȚIE INTEGRALĂ A CELOR 5 PAȘI METODOLOGICI**  
 **Documentație asociată:**
-- Master de Validare: [`MASTER_AUDIT_FINAL_VALIDARE.md`](../MASTER_AUDIT_FINAL_VALIDARE.md)
+- Master de Validare: [`MASTER_AUDIT_FINAL_VALIDARE.md`](../junk/2026-10-18/root_reports/MASTER_AUDIT_FINAL_VALIDARE.md)
 - GeoJSON Cadastru Teren (Tier 1): [`data/ground_truth/tier1_teren.geojson`](../data/ground_truth/tier1_teren.geojson)
 - GeoPackage Straturi Ablație: [`workspace/output/ablation_layers.gpkg`](../workspace/output/ablation_layers.gpkg)
 - Raport Sumar Evaluare Tier 1: [`reports/tier1_cadastre/tier1_real_summary.json`](../reports/tier1_cadastre/tier1_real_summary.json)

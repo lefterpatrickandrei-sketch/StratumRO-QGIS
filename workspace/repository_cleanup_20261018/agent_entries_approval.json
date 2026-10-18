@@ -1,0 +1,10 @@
+{
+  "approval": "Owner approved Kilo/Gemini instruction consolidation in this chat on 2026-10-18.",
+  "action": "COPY_BEFORE_REPLACE",
+  "source": ".kilorules",
+  "destination": "junk/2026-10-18/source_snapshots/kilorules.original.txt",
+  "sha256": "35d4a059cfe15ab9e2373af4d702d12f8cddb2d02649d0b5a83cf2698b08869d",
+  "bytes": 2225,
+  "new_entry": "GEMINI.md",
+  "scope": "Thin pointers to shared instructions, no external agent messaging or automatic connection."
+}

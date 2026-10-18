@@ -7,7 +7,7 @@
 **Data:** 2026-09-10  
 **Statut:** **VALIDARE OPERAȚIONALĂ FINALIZATĂ — EȘANTION EXTINS DE 29 CLĂDIRI PURE**  
 **Documentație asociată:**
-- Raport Rezoluție Audit #10: [`RAPORT_AUDIT_10_REZOLUTIE.md`](../RAPORT_AUDIT_10_REZOLUTIE.md)
+- Raport Rezoluție Audit #10: [`RAPORT_AUDIT_10_REZOLUTIE.md`](../junk/2026-10-18/root_reports/RAPORT_AUDIT_10_REZOLUTIE.md)
 - GeoJSON Cadastru Teren Extins (29 Clădiri Pure): [`data/ground_truth/tier1_teren.geojson`](../data/ground_truth/tier1_teren.geojson)
 - Raport Evaluare Hibrid (29 Clădiri): [`reports/tier1_cadastre/tier1_29bldg_summary.json`](../reports/tier1_cadastre/tier1_29bldg_summary.json)
 - Raport Evaluare LiDAR Only (29 Clădiri): [`reports/tier1_cadastre/tier1_29bldg_config_A_summary.json`](../reports/tier1_cadastre/tier1_29bldg_config_A_summary.json)

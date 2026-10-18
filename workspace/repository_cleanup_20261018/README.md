@@ -22,6 +22,14 @@ The cleanup is not a runtime validation. Known code concerns remain: parallel ca
 
 No GitHub write is authorized by the choice of `junk/` alone. The separate question about publication through a pull request versus direct main remains pending. The 35 pre-existing local commits also require publication review; a documentation PR based on local main would include them.
 
+## Applied documentation work
+
+The owner approved the exact 13 moves and original entry-document snapshots, then separately approved thin Kilo/Gemini entry points. `migration_applied.json` and `agent_entries_approval.json` record the actions. The existing `docs/readme.md` was preserved, replaced with a concise index and normalized to `docs/README.md` using two explicit Git moves, so links also work on case-sensitive GitHub. `case_rename.json` records this detail. Production source paths were not reorganized.
+
+`update_document_links.py` repaired explicit moved-report links in nine existing documentation files; the archived report bodies were not edited. `link_updates.json` lists the touched paths. The product-identity document now points to the shared QGIS project and reflects the owner's clarification about reusing specialist software.
+
+`verify_cleanup.py` checks the 18 original archive files, protected dirty-file hashes, presence of all 936 pre-existing untracked paths, the shared QGIS project, unchanged product diff and current navigation links. Its first pre-staging run incorrectly omitted this task's two new JSON targets from its link candidate set; that checker issue and its failed record are preserved as `verification_initial.json`. It was corrected before delivery. Diagram syntax was inspected as Markdown/Mermaid; no Mermaid renderer or product test suite was executed in this documentation task.
+
 ## References used
 
 The installed `find-skills` workflow (`C:/Users/lefpa/.agents/skills/find-skills/SKILL.md`) was used for discovery. The official [GitHub awesome-copilot README skill](https://github.com/github/awesome-copilot/blob/main/skills/readme-blueprint-generator/SKILL.md) was read as a reference, not installed. Its template expects Copilot-specific source documents; StratumRO documentation is instead derived from actual local code and dated evidence.

@@ -1,0 +1,288 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "archive_files_sha_verified": 18,
+  "git_archive_bytes_verified": false,
+  "foreign_dirty_paths_sha_verified": 16,
+  "preexisting_untracked_paths_present": 936,
+  "shared_qgis_project_unchanged_from_baseline_head": true,
+  "product_diff_contains_only_preexisting_work": true,
+  "navigation_links_checked": 67,
+  "links": [
+    {
+      "source": "README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/REPOSITORY_GUIDE.md"
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/AGENT_HANDOFF.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/README.md"
+    },
+    {
+      "source": "README.md",
+      "target": "junk/README.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "README.md",
+      "target": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/REPOSITORY_GUIDE.md"
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "LICENSE"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/REPOSITORY_GUIDE.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/AGENT_HANDOFF.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/STRATUMRO_EVALUATION_GATES.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/STRATUMRO_GIT_PROGRESS_POLICY.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "junk/README.md"
+    },
+    {
+      "source": "CLAUDE.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "source": "CLAUDE.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "CLAUDE.md",
+      "target": "docs/AGENT_HANDOFF.md"
+    },
+    {
+      "source": "CLAUDE.md",
+      "target": "junk/README.md"
+    },
+    {
+      "source": "GEMINI.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "source": "GEMINI.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "GEMINI.md",
+      "target": "docs/AGENT_HANDOFF.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "README.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/REPOSITORY_GUIDE.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/AGENT_HANDOFF.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/STRATUMRO_EVALUATION_GATES.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/STRATUMRO_GIT_PROGRESS_POLICY.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/STRATUMRO_REGIONAL_AUTOMATION_AND_HF_2026-10-17.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/STRATUMRO_LOT3_REPAIRS_HANDOFF_2026-10-17.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/STRATUMRO_LOT4_AND_LOT3_VISUAL_RECHECK_2026-10-17.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/STRATUMRO_PRODUCT_IDENTITY_AND_DESKTOP_DIRECTION_2026-10-17.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "workspace/repository_cleanup_20261018/README.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "junk/README.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "workspace/reviews/lot3_repairs_20261017/CURRENT_SELECTION.json"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "docs/STRATUMRO_LOT3_REPAIRS_HANDOFF_2026-10-17.md"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "workspace/reviews/lot4_20261017/CURRENT_SELECTION.json"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "docs/STRATUMRO_LOT4_AND_LOT3_VISUAL_RECHECK_2026-10-17.md"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "docs/STRATUMRO_REGIONAL_AUTOMATION_AND_HF_2026-10-17.md"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "workspace/repository_cleanup_20261018/README.md"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "junk/README.md"
+    },
+    {
+      "source": "docs/REPOSITORY_GUIDE.md",
+      "target": "workspace/repository_cleanup_20261018/migration_manifest.json"
+    },
+    {
+      "source": "docs/REPOSITORY_GUIDE.md",
+      "target": "junk/README.md"
+    },
+    {
+      "source": "docs/REPOSITORY_GUIDE.md",
+      "target": "docs/STRATUMRO_GIT_PROGRESS_POLICY.md"
+    },
+    {
+      "source": "docs/SYSTEM_MAP.md",
+      "target": "workspace/repository_cleanup_20261018/python_structure.json"
+    },
+    {
+      "source": "docs/SYSTEM_MAP.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "docs/AGENT_HANDOFF.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "source": "docs/AGENT_HANDOFF.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "docs/AGENT_HANDOFF.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "source": "docs/AGENT_HANDOFF.md",
+      "target": "workspace/repository_cleanup_20261018/README.md"
+    },
+    {
+      "source": "junk/README.md",
+      "target": "workspace/repository_cleanup_20261018/migration_manifest.json"
+    },
+    {
+      "source": "junk/README.md",
+      "target": "workspace/repository_cleanup_20261018/migration_applied.json"
+    },
+    {
+      "source": "junk/README.md",
+      "target": "workspace/repository_cleanup_20261018/agent_entries_approval.json"
+    },
+    {
+      "source": "junk/README.md",
+      "target": "README.md"
+    },
+    {
+      "source": "junk/README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "source": "junk/README.md",
+      "target": "AGENTS.md"
+    }
+  ],
+  "not_executed": [
+    "product tests",
+    "model inference",
+    "QGIS session mutations",
+    "provider calls",
+    "GitHub publication"
+  ]
+}
