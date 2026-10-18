@@ -71,7 +71,7 @@ Commitul `b4e936d` a scos din urmărire multe rezultate, iar regulile noi ignor�
 
 Am selectat explicit **16 artefacte auditate**, în total aproximativ 5,68 MB: dependențele vizuale/documentare ale README-ului, proiectul QGIS comun și cele două GPKG/rapoarte folosite în verificarea actuală. [Lista exactă și SHA-256](retained_artifacts.json). Acestea se readaugă explicit în Git; nu se publică în masă toate fișierele ignorate. Datele brute, modelele și numeroase alte surse ale celor 85 de straturi nu sunt toate incluse. Proiectul salvat nu reprezintă un pachet portabil complet.
 
-README-ul anterior rămâne în [arhiva byte-identică](../../junk/2026-10-18/readme_before_visual/README.md). Actualizările actuale sunt checkpoint local; autorizarea de merge anterioară a vizat PR #3 deja integrat, fără a reprezenta o nouă publicare implicită a acestor reparații. Cele două unelte neversionate ale Antigravity nu au fost editate sau adoptate.
+README-ul anterior rămâne în [arhiva byte-identică](../../junk/2026-10-18/readme_before_visual/README.md). Checkpointul de reparații este `77c1a0e`. Proprietarul a autorizat apoi explicit publicarea sa într-un **draft PR fără merge**: [PR #4](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/pull/4), branch `fix/stratumro-verification-20261018`. [Autorizarea](publication_authorization.json) și [snapshot-ul publicării](publication_result.json) sunt păstrate. CI-ul pentru HEAD-ul curent se citește pe PR; testele locale de mai sus nu îi anticipează verdictul. Cele două unelte neversionate ale Antigravity nu au fost editate sau adoptate.
 
 ## Ce rămâne de reparat în fluxul geometric
 

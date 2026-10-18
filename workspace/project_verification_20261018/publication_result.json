@@ -1,0 +1,52 @@
+{
+  "baseRefOid": "51251348eb0eac0062a21bb3953c86ad78d44814",
+  "headRefOid": "4f0b6233416447236e5302493849121dcafdf911",
+  "isDraft": true,
+  "number": 4,
+  "state": "OPEN",
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-18T16:27:19Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39144990966/job/117726911832",
+      "name": "Test (ubuntu-latest - Python 3.10)",
+      "startedAt": "2026-10-18T16:26:21Z",
+      "status": "COMPLETED",
+      "workflowName": "StratumRO CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "0001-01-01T00:00:00Z",
+      "conclusion": "",
+      "detailsUrl": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39144990966/job/117726911646",
+      "name": "Test (ubuntu-latest - Python 3.11)",
+      "startedAt": "2026-10-18T16:26:21Z",
+      "status": "IN_PROGRESS",
+      "workflowName": "StratumRO CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "0001-01-01T00:00:00Z",
+      "conclusion": "",
+      "detailsUrl": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39144990966/job/117726911804",
+      "name": "Test (windows-latest - Python 3.10)",
+      "startedAt": "2026-10-18T16:26:22Z",
+      "status": "IN_PROGRESS",
+      "workflowName": "StratumRO CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "0001-01-01T00:00:00Z",
+      "conclusion": "",
+      "detailsUrl": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39144990966/job/117726911892",
+      "name": "Test (windows-latest - Python 3.11)",
+      "startedAt": "2026-10-18T16:26:22Z",
+      "status": "IN_PROGRESS",
+      "workflowName": "StratumRO CI"
+    }
+  ],
+  "url": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/pull/4",
+  "scope": "Snapshot at publication, not a permanent claim about the latest CI status",
+  "owner_restriction": "DRAFT_ONLY_NO_MERGE"
+}
