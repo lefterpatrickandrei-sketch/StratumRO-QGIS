@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-17",
+  "feature_count": 20,
+  "case_count": 10,
+  "all_valid": true,
+  "pairwise_positive_area_intersections": [],
+  "unchanged_vs_v2_except_T16": [
+    "T11:C1",
+    "T11:C2",
+    "T11:C3",
+    "T12:C1",
+    "T12:C2",
+    "T12:C3",
+    "T13:C1",
+    "T14:C1",
+    "T15:C1",
+    "T17:C1",
+    "T17:C2",
+    "T18:C1",
+    "T18:C2",
+    "T18:C3",
+    "T19:C1",
+    "T20:C1",
+    "T20:C2"
+  ],
+  "all_owner_verdicts_pending": true,
+  "visual_review": "All ten selected_v2 native QGIS renders inspected; selected_v3 T16 inspected after replacement; remaining sixteen geometries unchanged exactly from v2.",
+  "visual_findings": {
+    "T11": "C3 orientation repaired; C1/C2 preserved. New outline remains pending owner review.",
+    "T12": "All three targets redelineated; C2 near genuine NoData, completeness unconfirmed. Brown terraces/roof extensions are not inferred as buildings.",
+    "T13": "Optical outline follows visible roof; tree occlusion and curved/oblique sides remain review items.",
+    "T14": "Main roof improved; small optical spikes and adjoining flat surfaces/terraces still need interpretation. Not declared completely repaired.",
+    "T15": "Reviewed flat roof represented by one four-corner hypothesis.",
+    "T16": "Previous jagged combined C1 replaced by three four-corner roof surfaces. Previous C1 -> tiled C1, patched C2 and porch C3. Junction completeness and cadastral identities unconfirmed.",
+    "T17": "Two previous hypotheses and courtyard preserved exactly. Existing completeness warnings remain; no new acceptance.",
+    "T18": "Main roof, western wing and brown annex represented as three hypotheses. C3 is a roof-surface subdivision, not established independent cadastral building.",
+    "T19": "Previously missing articulated roof recovered; 18-corner orthogonal candidate replaces thin mask spikes. Some local edges require owner inspection.",
+    "T20": "Two main roof surfaces recovered with four corners each; narrow pipes/equipment excluded; lower bright roof edges independently fitted."
+  },
+  "tests": {
+    "command": "venv/Scripts/python.exe -m unittest stratum_ro.test.test_roof_mask_fidelity stratum_ro.test.test_roof_masked_preflight stratum_ro.test.test_cadastral_roof_workflow stratum_ro.test.test_roof_gap_edges stratum_ro.test.test_fusion_refinement stratum_ro.test.test_fusion_guidance stratum_ro.test.test_roof_simple_geometry stratum_ro.test.test_roof_body_partition stratum_ro.test.test_roof_body_recovery_partition stratum_ro.test.test_roof_revision_review",
+    "count": 67,
+    "result": "OK",
+    "duration_s": 4.746
+  },
+  "regional_automatic_pipeline_validated": false,
+  "cadastral_accuracy_measured": false,
+  "committed_preflight_isolation": {
+    "result": "OK",
+    "count": 67,
+    "duration_s": 6.117,
+    "committed_reference": "b2bd3ca80d38ccbe34a46b6d2ea95f76f43db236",
+    "method": "load committed standard preflight and fixture into memory; no working file replacement",
+    "reusable_check": "tools/verify_lot3_committed_preflight.py"
+  }
+}

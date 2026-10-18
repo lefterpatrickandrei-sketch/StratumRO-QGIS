@@ -1,0 +1,52 @@
+[
+  {
+    "test_id": "T11",
+    "displayed_hypotheses": 3,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T12",
+    "displayed_hypotheses": 3,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T13",
+    "displayed_hypotheses": 1,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T14",
+    "displayed_hypotheses": 1,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T15",
+    "displayed_hypotheses": 1,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T16",
+    "displayed_hypotheses": 1,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T17",
+    "displayed_hypotheses": 2,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T18",
+    "displayed_hypotheses": 2,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T19",
+    "displayed_hypotheses": 0,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  },
+  {
+    "test_id": "T20",
+    "displayed_hypotheses": 1,
+    "owner_status": "PENDING_OWNER_REVIEW"
+  }
+]

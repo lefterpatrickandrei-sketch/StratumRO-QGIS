@@ -110,7 +110,8 @@ class SAM2BuildingSegmenter:
         lidar_area: float,
         internal_pts_geo: Optional[List[Tuple[float, float]]] = None,
         score_threshold: float = 0.60,
-        height_min_threshold: float = 2.5
+        height_min_threshold: float = 2.5,
+        external_pts_geo: Optional[List[Tuple[float, float]]] = None
     ) -> Dict[str, Any]:
         """
         Segments and validates an individual building candidate using SAM 2 + LiDAR cross-check.
@@ -119,9 +120,10 @@ class SAM2BuildingSegmenter:
         :param mean_h: Mean height from LiDAR nDSM.
         :param max_h: Max peak height from LiDAR nDSM.
         :param lidar_area: Footprint area from LiDAR in m^2.
-        :param internal_pts_geo: Optional list of (x, y) coordinates inside building.
+        :param internal_pts_geo: Optional list of (x, y) coordinates inside building (positive points).
         :param score_threshold: Minimum SAM 2 confidence score for optical acceptance.
         :param height_min_threshold: Minimum LiDAR height required for double confirmation.
+        :param external_pts_geo: Optional list of (x, y) coordinates outside building (negative points).
         """
         if self.current_transform is None:
             raise RuntimeError("Nicio imagine ortofoto nu a fost setată cu set_image().")
@@ -132,13 +134,12 @@ class SAM2BuildingSegmenter:
 
         # 1. Transform bounding box to image pixel space with a 1.2m buffer
         buf = 1.2
-        px1, py1 = inv_tr * (b_xmin - buf, b_ymax + buf)
-        px2, py2 = inv_tr * (b_xmax + buf, b_ymin - buf)
-
-        bx_min = max(0.0, min(px1, px2))
-        by_min = max(0.0, min(py1, py2))
-        bx_max = min(float(img_w - 1), max(px1, px2))
-        by_max = min(float(img_h - 1), max(py1, py2))
+        corners = [inv_tr * (x, y) for x in (b_xmin-buf, b_xmax+buf)
+                   for y in (b_ymin-buf, b_ymax+buf)]
+        bx_min = max(0.0, min(p[0] for p in corners))
+        by_min = max(0.0, min(p[1] for p in corners))
+        bx_max = min(float(img_w - 1), max(p[0] for p in corners))
+        by_max = min(float(img_h - 1), max(p[1] for p in corners))
 
         # Check if box is valid inside image boundaries
         if (bx_max - bx_min) < 3 or (by_max - by_min) < 3:
@@ -146,18 +147,28 @@ class SAM2BuildingSegmenter:
 
         box_prompt = np.array([bx_min, by_min, bx_max, by_max], dtype=np.float32)
 
-        # 2. Build point prompts from internal positive points if available
-        point_coords = None
-        point_labels = None
+        # 2. Build point prompts from internal positive and external negative points
+        pts_px = []
+        labels = []
+        valid_pos_geo = []
+
         if internal_pts_geo:
-            pts_px = []
             for gx, gy in internal_pts_geo:
                 ix, iy = inv_tr * (gx, gy)
                 if 0 <= ix < img_w and 0 <= iy < img_h:
                     pts_px.append([ix, iy])
-            if pts_px:
-                point_coords = np.array(pts_px, dtype=np.float32)
-                point_labels = np.ones(len(pts_px), dtype=np.int32)
+                    labels.append(1)
+                    valid_pos_geo.append((gx, gy))
+
+        if external_pts_geo:
+            for gx, gy in external_pts_geo:
+                ix, iy = inv_tr * (gx, gy)
+                if 0 <= ix < img_w and 0 <= iy < img_h:
+                    pts_px.append([ix, iy])
+                    labels.append(0)
+
+        point_coords = np.array(pts_px, dtype=np.float32) if pts_px else None
+        point_labels = np.array(labels, dtype=np.int32) if labels else None
 
         # 3. Predict optical masks via SAM 2
         with torch.inference_mode():
@@ -169,31 +180,60 @@ class SAM2BuildingSegmenter:
             )
 
         # 4. Multi-mask selection: pick mask with best balance of score & area consistency
-        best_idx = 0
+        # Determinant of the affine transform gives the true pixel area: abs(a*e - b*d)
+        pixel_area = abs(tr.a * tr.e - tr.b * tr.d)
+
+        best_idx = None
         best_metric = -999.0
-        res_m = abs(tr.a)  # pixel resolution in meters
+        best_poly = None
 
         for idx, (m, sc) in enumerate(zip(masks, scores)):
-            m_area = np.sum(m) * (res_m * res_m)
-            if m_area < 5.0:
+            if not np.isfinite(sc):
                 continue
+            m_sum = np.sum(m)
+            if not np.isfinite(m_sum):
+                continue
+            m_area = float(m_sum) * pixel_area
+            if not np.isfinite(m_area) or m_area < 5.0:
+                continue
+            # Rank the prompted component, not unrelated objects elsewhere in a mask.
+            poly = self._mask_to_stereo70_polygon(
+                m, bx_min, by_min, bx_max, by_max, tr,
+                internal_pts_geo=valid_pos_geo or None)
+            if poly is None:
+                continue
+            m_area = poly.area
             # Area ratio with LiDAR footprint
             ratio = min(m_area, lidar_area) / max(m_area, lidar_area) if max(m_area, lidar_area) > 0 else 0.0
             metric = float(sc) * 0.7 + ratio * 0.3
             if metric > best_metric:
                 best_metric = metric
                 best_idx = idx
+                best_poly = poly
+
+        if best_idx is None:
+            return {"status": "RESPINS",
+                    "reason": "Nicio mască validă pentru obiectul indicat", "geometry": None,
+                    "optical_poly": None}
 
         chosen_mask = masks[best_idx]
         chosen_score = float(scores[best_idx])
-        chosen_area = float(np.sum(chosen_mask) * (res_m * res_m))
+        chosen_area = float(best_poly.area)
 
-        # 5. Extract optical polygon from binary mask
-        opt_poly = self._mask_to_stereo70_polygon(chosen_mask, bx_min, by_min, bx_max, by_max, tr)
+        # 5. Extract optical polygon from binary mask, threading valid in-image positive points
+        opt_poly = best_poly
 
         # 6. Double Confirmation Evaluation
-        height_ok = (mean_h >= height_min_threshold) and (max_h >= 3.0)
+        height_ok = (mean_h >= height_min_threshold) and (max_h >= 2.5)
         optical_ok = (chosen_score >= score_threshold) and (opt_poly is not None) and (opt_poly.area >= 8.0)
+
+        # Regula adaptiva pentru sere horticiole si acoperisuri moderne plane:
+        # Forme optice regulate mari (> 150 mp) cu scor optic ridicat (>= 0.65)
+        # sunt confirmate chiar daca nDSM este redus (penetrare LiDAR prin sticla / filtrare la sol)
+        if not height_ok and optical_ok:
+            opt_area = opt_poly.area if opt_poly is not None else 0.0
+            if opt_area >= 150.0 and (max_h >= 0.8 or mean_h >= 0.3):
+                height_ok = True
 
         if height_ok and optical_ok:
             status = "CONFIRMAT_HIBRID"
@@ -224,7 +264,8 @@ class SAM2BuildingSegmenter:
         by_min: float,
         bx_max: float,
         by_max: float,
-        full_transform: rasterio.Affine
+        full_transform: rasterio.Affine,
+        internal_pts_geo: Optional[List[Tuple[float, float]]] = None
     ) -> Optional[Polygon]:
         """Converts SAM 2 sub-window binary mask to a valid Shapely Polygon in Stereo 70."""
         # Slice to bounding box window with margin to accelerate contouring
@@ -247,13 +288,36 @@ class SAM2BuildingSegmenter:
             if val == 1:
                 try:
                     s_geom = shape(geom_dict)
-                    if s_geom.is_valid and s_geom.area > 5.0:
-                        extracted_polys.append(s_geom)
+                    if not s_geom.is_valid:
+                        s_geom = make_valid(s_geom)
+                    largest = _extract_largest_polygon(s_geom)
+                    if largest is not None and largest.is_valid and largest.area > 5.0:
+                        extracted_polys.append(largest)
                 except Exception:
                     pass
 
         if not extracted_polys:
             return None
 
-        merged = max(extracted_polys, key=lambda p: p.area)
-        return _extract_largest_polygon(merged)
+        # If positive points are supplied, select a polygon covering valid positive points
+        if internal_pts_geo:
+            from shapely.geometry import Point
+            pts = [Point(gx, gy) for gx, gy in internal_pts_geo]
+            matching_polys = []
+            for poly in extracted_polys:
+                cov_count = sum(1 for pt in pts if poly.intersects(pt))
+                if cov_count > 0:
+                    matching_polys.append((cov_count, poly.area, poly))
+
+            if matching_polys:
+                # Prefer most covered positive points, then area
+                matching_polys.sort(key=lambda item: (item[0], item[1]), reverse=True)
+                return matching_polys[0][2]
+            else:
+                # Valid in-image positive points were supplied but none covered;
+                # return None rather than selecting another disconnected object
+                return None
+
+        # Fallback when no positive points are supplied (backward compatibility):
+        # Pick the largest polygon by area
+        return max(extracted_polys, key=lambda p: p.area)

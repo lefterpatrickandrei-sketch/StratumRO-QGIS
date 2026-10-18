@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-17",
+  "lot": "LOT4_T21_T30",
+  "instruction": "ok fa verficari vizuale si fa si lotul 4",
+  "source": "Owner direct message",
+  "owner_verdict": "PENDING_OWNER_REVIEW",
+  "owner_acceptances": 0,
+  "agent_visual_status": {
+    "VIABLE_VISUAL_HYPOTHESIS": 6,
+    "NEEDS_FINISHING": 3,
+    "UNRESOLVED_AFTER_REVIEW": 1
+  },
+  "not_training_labels": true,
+  "cases": [
+    {
+      "body_id": "T21:C1",
+      "lineage": "attempt1",
+      "agent_status": "NEEDS_FINISHING",
+      "method": "FAITHFUL_OPTICAL_SIMPLIFICATION",
+      "notes": "Main roof and west wing recovered; tree-obscured western eaves and eastern projections still need finishing."
+    },
+    {
+      "body_id": "T22:C1",
+      "lineage": "attempt4_corrected_points",
+      "agent_status": "UNRESOLVED_AFTER_REVIEW",
+      "method": "OPTICAL_MASK_PRESERVED",
+      "notes": "All attempts preserved. Current complex mask still includes parking/irregular fragments; rejected for final roof display."
+    },
+    {
+      "body_id": "T23:C1",
+      "lineage": "attempt3_prompt_checked",
+      "agent_status": "VIABLE_VISUAL_HYPOTHESIS",
+      "method": "FAITHFUL_OPTICAL_SIMPLIFICATION",
+      "notes": "Primary red roof and entrance projection recovered; pale detached canopy is outside this target scope."
+    },
+    {
+      "body_id": "T24:C1",
+      "lineage": "attempt3_prompt_checked",
+      "agent_status": "NEEDS_FINISHING",
+      "method": "FAITHFUL_DENOISED_OPTICAL",
+      "notes": "Major ground leak removed; rounded bay and minor northern projection still need finishing."
+    },
+    {
+      "body_id": "T25:C1",
+      "lineage": "attempt1",
+      "agent_status": "VIABLE_VISUAL_HYPOTHESIS",
+      "method": "REVIEWED_PLANAR_ROOF_CORE",
+      "notes": "Principal brown roof represented by a four-corner hypothesis."
+    },
+    {
+      "body_id": "T26:C1",
+      "lineage": "attempt1",
+      "agent_status": "VIABLE_VISUAL_HYPOTHESIS",
+      "method": "REVIEWED_SUPPORTED_ORTHOGONAL",
+      "notes": "Six-corner L preserves the open recess; gray attachments outside primary red roof remain unconfirmed."
+    },
+    {
+      "body_id": "T27:C1",
+      "lineage": "attempt1",
+      "agent_status": "VIABLE_VISUAL_HYPOTHESIS",
+      "method": "FAITHFUL_DENOISED_OPTICAL",
+      "notes": "Stepped red roof and small entrance cover recovered; neighbor roof remains separate."
+    },
+    {
+      "body_id": "T28:C1",
+      "lineage": "attempt4_corrected_points",
+      "agent_status": "VIABLE_VISUAL_HYPOTHESIS",
+      "method": "REVIEWED_PLANAR_ROOF_CORE",
+      "notes": "Corrected reviewed prompts remove vehicle/ground leak; primary red roof has four corners."
+    },
+    {
+      "body_id": "T29:C1",
+      "lineage": "attempt1",
+      "agent_status": "NEEDS_FINISHING",
+      "method": "FAITHFUL_DENOISED_OPTICAL",
+      "notes": "Complete L-shaped hall recovered after extending input coverage; terminal roof and minor edge spikes require finishing."
+    },
+    {
+      "body_id": "T30:C1",
+      "lineage": "attempt1",
+      "agent_status": "VIABLE_VISUAL_HYPOTHESIS",
+      "method": "REVIEWED_PLANAR_ROOF_CORE",
+      "notes": "Principal glass greenhouse recovered optically; southern smaller greenhouses are separate and outside target scope."
+    }
+  ]
+}

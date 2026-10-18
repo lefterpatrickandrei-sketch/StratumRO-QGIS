@@ -1,0 +1,16 @@
+{
+  "ready": true,
+  "errors": [],
+  "cases": [
+    {
+      "test_id": "T12:C2",
+      "ready": true,
+      "errors": [],
+      "warnings": [
+        "NODATA_NEAR_TARGET_COMPLETENESS_UNCONFIRMED"
+      ],
+      "valid_context_fraction": 0.9844579397210976,
+      "policy": "MASKED_CONTEXT_REVIEW"
+    }
+  ]
+}

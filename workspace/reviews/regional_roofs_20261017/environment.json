@@ -1,0 +1,13 @@
+{
+  "python": "3.10.10 (tags/v3.10.10:aad5f6a, Feb  7 2023, 17:20:36) [MSC v.1929 64 bit (AMD64)]",
+  "packages": {
+    "torch": "2.6.0+cu124",
+    "rasterio": "1.4.4",
+    "geopandas": "1.1.4",
+    "shapely": "2.1.2",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3"
+  },
+  "gpu_observed": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "observed_after_execution": true
+}

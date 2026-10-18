@@ -1,0 +1,30 @@
+{
+  "stage": "CI_REPAIR",
+  "owner_authorized": true,
+  "local_tests_passed": 62,
+  "original_frozen_manifests_unchanged": true,
+  "production_algorithms_changed": false,
+  "foreign_dirty_paths_verified": 16,
+  "paths": [
+    ".github/workflows/ci.yml",
+    "docs/PROJECT_STATE.md",
+    "docs/README.md",
+    "requirements-ci.txt",
+    "stratum_ro/test/test_dataset_resolver.py",
+    "stratum_ro/test/test_phase1_golden_freeze.py",
+    "stratum_ro/test/test_phase4_orchestration.py",
+    "stratum_ro/test/test_regional_runner.py",
+    "workspace/baseline/approved_module_relocations.json",
+    "workspace/ci_repair_20261018/.gitattributes",
+    "workspace/ci_repair_20261018/README.md",
+    "workspace/ci_repair_20261018/audit_frozen_inputs.py",
+    "workspace/ci_repair_20261018/checkpoint.json",
+    "workspace/ci_repair_20261018/dependency_resolution.json",
+    "workspace/ci_repair_20261018/frozen_input_provenance.json",
+    "workspace/ci_repair_20261018/local_dependency_regressions.txt",
+    "workspace/ci_repair_20261018/local_targeted_tests.txt",
+    "workspace/ci_repair_20261018/volumetric_extraction.diff",
+    "workspace/ci_repair_20261018/volumetric_implementation_provenance.json"
+  ],
+  "remote_matrix_result": "PENDING_PUBLISHED_CHECKS"
+}

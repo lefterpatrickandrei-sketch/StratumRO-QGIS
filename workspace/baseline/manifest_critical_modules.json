@@ -1,8 +1,10 @@
 {
   "stratum_ro/vectorizer.py": {
-    "sha256": "61c7ecbcb5846d0386473a777710ae67b58cdd7fbeea4b730eb000c3481bc2d8",
-    "size_bytes": 42336,
-    "git_status": "tracked_clean"
+    "sha256": "ba7098b38415a1f2d99ec847e03727023588a6b6f97c13abd223fa44a36fd079",
+    "size_bytes": 46258,
+    "git_status": "tracked_modified_authorized_core_recovery",
+    "previous_sha256": "3522ed1fe679e2319a5c34cf7a949c433bb2740fb46b4a5ab590949498244460",
+    "change_reason": "2026-10-13 owner-requested core repair: preserve explicit ground layer, deduplicate aliases, reject conflicting ground IDs before writes, prevent thin-overlap building merges; dedicated regressions pass. Ground-truth and golden geometry baselines unchanged."
   },
   "stratum_ro/cad_exporter.py": {
     "sha256": "160fffed3a37a65f864ac09fca4b1b51a48e4ed40246af43d91c178d0993d086",
@@ -10,9 +12,11 @@
     "git_status": "tracked_clean"
   },
   "stratum_ro/volumetric_3d.py": {
-    "sha256": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
-    "size_bytes": 9350,
-    "git_status": "tracked_clean"
+    "sha256": "238ce1766e6590d6027ff26c25c3a451cd43e29350663f896f64c05b0155795a",
+    "size_bytes": 686,
+    "git_status": "tracked_clean",
+    "previous_manifest_sha256": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
+    "manifest_correction": "2026-10-13 Git checkpoint: pre-existing metadata mismatch corrected after verifying file bytes equal HEAD exactly. No volumetric code change."
   },
   "stratum_ro/onnx_engine.py": {
     "sha256": "de0218022e53a2373ef26d7ca2d491b90a8074a7f622fce416fd379ab7029267",
@@ -40,8 +44,8 @@
     "git_status": "tracked_clean"
   },
   "stratum_ro/geometric_reconstruction_v2.py": {
-    "sha256": "c7a8d30529638669bddce55f4f3a7d6fe3d19ca491beebfce5e1f67585b5bed8",
-    "size_bytes": 19369,
+    "sha256": "37099fe233c84dccef78c42aeaf266e4e538b64506e6169b69bfa5aa35deed6a",
+    "size_bytes": 20829,
     "git_status": "tracked_clean"
   },
   "stratum_ro/stratum_ro_dockwidget.py": {
@@ -100,9 +104,11 @@
     "git_status": "tracked_clean"
   },
   "engine/evaluation.py": {
-    "sha256": "31eb4f4833a76896b1edafe8afe59b366d048bffe4bc8dd1a9681aef245ef893",
-    "size_bytes": 49172,
-    "git_status": "tracked_clean"
+    "sha256": "0029dc2fd49f7af44b96f4bafc7e3bee1a2348dd5c6a77c33dc306ad3905f681",
+    "size_bytes": 52045,
+    "git_status": "tracked_modified_authorized_core_recovery",
+    "previous_sha256": "31eb4f4833a76896b1edafe8afe59b366d048bffe4bc8dd1a9681aef245ef893",
+    "change_reason": "2026-10-13 owner-requested core repair: threshold-qualified one-to-one assignment, conserved TP/FN/unassociated counts and explicit conditional metric status; 18 evaluator tests pass. No reference dataset or benchmark geometry changed."
   },
   "engine/ablation_study.py": {
     "sha256": "182789c74021023c88d293414bb095de15077f4ed81255e69487bbb4f8caf982",

@@ -1,0 +1,1095 @@
+{
+  "files": [
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/.gitattributes",
+      "bytes": 115,
+      "sha256": "43940baf735e14a9268e0e4920213fc32657b48beb302d31ee4ed617d5cfec2f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/.gitignore",
+      "bytes": 41,
+      "sha256": "5d8ebc8be7d16b882186babd52e8f5625e03c152d29688a13031ed34756e9ce4"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/.gitignore",
+      "bytes": 40,
+      "sha256": "e8da2173244540b458262e4425019f80f5f9a60fa78fe10fa7532f1f8edf7f57"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/cadastral_review.gpkg",
+      "bytes": 1257472,
+      "sha256": "796bea96de4f2b1e195d8a94dc07cf031aeda842f19c2412ae151a80bcebed08"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/inputs.json",
+      "bytes": 18166,
+      "sha256": "dbdea302849aa939286285fec8fb8b1290b7308befb074a236714b925e9725c0"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/preflight.json",
+      "bytes": 1077,
+      "sha256": "d37282ae685a18106aac8e6f630b378755f137b166db0abf896dc2d9922ee4d3"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/report.json",
+      "bytes": 21370,
+      "sha256": "61d47be637aa59edccdfff901a53a721d87f34456291b28e12c0ca18ffbc3a8a"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T11_C3_ortho.tif",
+      "bytes": 750803,
+      "sha256": "cbe06db83fef20776a4a2b9361bd0376026612b59f3f2e57433eeeb5b93c9391"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T11_comparison.png",
+      "bytes": 834689,
+      "sha256": "7e7793ffff8b04f845c0e3318276b4e65abf320c6391b2959e576832e4ee930f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T12_C1_ortho.tif",
+      "bytes": 985905,
+      "sha256": "49aeebbb8bb15c3dfae7249498c89a6ae6951694bf40d2d35e5fa391822c0cc4"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T12_C3_ortho.tif",
+      "bytes": 730459,
+      "sha256": "addd4f7ae0c295a556f1863dccc90a3a7f0a662e5255422b8ff2beb09d146a68"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T12_comparison.png",
+      "bytes": 1530012,
+      "sha256": "54693939b276546e64ddc6eb46616a67d29492bffcea4f1d7e98ba7c8da6ebe5"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T13_C1_ortho.tif",
+      "bytes": 702120,
+      "sha256": "7c8aaed088554dd65f4c32817c587c44c1e771a33cf3208a409b6fc06cd4415e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T13_comparison.png",
+      "bytes": 1357741,
+      "sha256": "804e3402dcd20e91ec48568d73acc9f25e7c431b4060a28eee28d29eb27ef2f2"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T14_C1_ortho.tif",
+      "bytes": 1802772,
+      "sha256": "78443a85141c05e9d826ce6688d7c295c74a7aecf84149acf638e44f84a68528"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T14_comparison.png",
+      "bytes": 1730035,
+      "sha256": "a13a268ffea2aab4c6ef22d943e51443d3ccacd6bb2fbb61310aa5339f27965d"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T15_C1_ortho.tif",
+      "bytes": 734004,
+      "sha256": "152a1588ffadd3a66842b74c7bc2ca3116373eac2ca37d5984052b86a1b3fa19"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T15_comparison.png",
+      "bytes": 1080366,
+      "sha256": "739fe1a9601d48417148ca7b0315cdab799c49f6c3fe3abf7903245ab11a93e3"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T16_C1_ortho.tif",
+      "bytes": 1243481,
+      "sha256": "077f747e3fa7a128efb51c81ac807f769ae45041140a62cfe433d772f59dd68b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T16_comparison.png",
+      "bytes": 1633474,
+      "sha256": "572ad286294ab74d09940283873d852c57fd94883f41b00e7284e5935d3814a1"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T18_C1_ortho.tif",
+      "bytes": 3712275,
+      "sha256": "0be0956f14f4377ce8eb0fc18e3e5864b1396b3a747807162dc02f8745d07744"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T18_C2_ortho.tif",
+      "bytes": 839679,
+      "sha256": "b8c2eb1cb274559a621cb88a71a9e32caf0707222654c802eb62dd390241b423"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T18_comparison.png",
+      "bytes": 1552628,
+      "sha256": "06576022908e11380ae74585bebe43a95e44d7bf4b03796a8ed1c20c348243a9"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T19_C1_ortho.tif",
+      "bytes": 2938109,
+      "sha256": "05d056d7efc29fa516c545d1d7387a7e17a8642997da9da8662a8bb1e37b6672"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T19_comparison.png",
+      "bytes": 1428101,
+      "sha256": "442bad254352d869a81b13d99956d8da3deadff08be41154636129839edb2233"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T20_C1_ortho.tif",
+      "bytes": 1320684,
+      "sha256": "3ad2621ad7445691aed0129a47f6aeaaeb63acbfa0e59d60fd805e3c19de194e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T20_C2_ortho.tif",
+      "bytes": 1754540,
+      "sha256": "a9e7c2f59d302954f82826a0e17a8836332f78a86af3f41483597a8537e96eff"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/attempt1/T20_comparison.png",
+      "bytes": 1621247,
+      "sha256": "b1ce882745e05947ec73fee59840bba4f0464b55bdae3ef6e5ca85168484b38f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/batch1_inputs.json",
+      "bytes": 18166,
+      "sha256": "dbdea302849aa939286285fec8fb8b1290b7308befb074a236714b925e9725c0"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/coordinate_checks.json",
+      "bytes": 3854,
+      "sha256": "94ce4abd8494711439dd613a0369220825efb5bef1cb2b102736d81aff62fe29"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T11_5cm.tif",
+      "bytes": 1220032,
+      "sha256": "3628b5106828200dc29f842211b2ef4eabcf4df8aaa5a432fbd90819afc40e49"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T12_5cm.tif",
+      "bytes": 2832643,
+      "sha256": "fde8b6ee4184ccd77248f4c7f3c3c496fa884bb53a012ed7d0b2f6b60b9dcecc"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T12_before_mask.tif",
+      "bytes": 2831026,
+      "sha256": "60b7fbeb91fe0e991a58baa613bd21345b44b152567cfb78b0be74b52bcb6494"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T13_5cm.tif",
+      "bytes": 1162588,
+      "sha256": "75f7fefff30a7c45e7e46d256db53afe990f282d64fbd4d3bda6db04ba2da3b6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T14_5cm.tif",
+      "bytes": 2508222,
+      "sha256": "70190663a496f7e0a643aac18b80b78a96552ba6140fe7e73230622177513bee"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T15_5cm.tif",
+      "bytes": 1185736,
+      "sha256": "c4ed885861fa70ac4ddd168f89ac18d01cb19c37afb254c1f7bd44df653b96b2"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T16_5cm.tif",
+      "bytes": 1844920,
+      "sha256": "2e74a13ecb291373a428fb77394e1a3d36cb9dd3b462e2efa756ce945bf357db"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T18_5cm.tif",
+      "bytes": 4708624,
+      "sha256": "7076a2dc0653c05e1ee831fffb6ae84277f7043631e32bfad80d9784425881ac"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T19_5cm.tif",
+      "bytes": 3825506,
+      "sha256": "41e3e70d85e50e4ffb7b473de3b2586ef00f6fbab2eebb2ee20d647e0a734d4b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/covers/T20_5cm.tif",
+      "bytes": 3474442,
+      "sha256": "ca9c369fadfc4a2734a6564825b4702049c03647cd67bc2f4339e6997e116310"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/CURRENT_SELECTION.json",
+      "bytes": 359,
+      "sha256": "79849b9a1b9cd7f3f5d899c8ad4808153d5ddcb79cb6887acea588b413440814"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/finishing_candidates.gpkg",
+      "bytes": 98304,
+      "sha256": "e959e9f0d49de05ddde208ee88e9f61e357427f1c1e0eb34fd77eb36d74637e6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/finishing_candidates.png",
+      "bytes": 3256226,
+      "sha256": "9fb630acc13e458474a28f7097b4405adcc1930f83e54b95ad6eb4061074f496"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/masked_T12/.gitignore",
+      "bytes": 40,
+      "sha256": "e8da2173244540b458262e4425019f80f5f9a60fa78fe10fa7532f1f8edf7f57"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/masked_T12/cadastral_review.gpkg",
+      "bytes": 131072,
+      "sha256": "fd5fe549672cc1bd29fe2e594bb19e5ef272552491c5adcf7532eed3ad93415b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/masked_T12/inputs.json",
+      "bytes": 2048,
+      "sha256": "cad817cd31b8a0141d151bb8b9b3818b4f680df626e15eed5369d9d1f8ae9451"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/masked_T12/preflight.json",
+      "bytes": 323,
+      "sha256": "b876786f55b52a39d186b11f8b022c7d7cb1c70099ff25257d94c02050e9c6e0"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/masked_T12/report.json",
+      "bytes": 2585,
+      "sha256": "adc34e5d7f7a7b0e7906cefcad39589678a7588735085b5f1ad1794469b47e13"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/masked_T12/T12_C2_ortho.tif",
+      "bytes": 579562,
+      "sha256": "99d5296c608ee5b9617ea774d953bdcbcd447158fc7aeb4f1fc79f771e206952"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/masked_T12/T12_comparison.png",
+      "bytes": 757679,
+      "sha256": "c8196476c441be87c4bfbed335209f9d7fac95a907211dd45e31ddde1b7781f8"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/masked_T12_inputs.json",
+      "bytes": 2048,
+      "sha256": "cad817cd31b8a0141d151bb8b9b3818b4f680df626e15eed5369d9d1f8ae9451"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/prompt_diagnostic.png",
+      "bytes": 2126862,
+      "sha256": "ab3c914d317a965d7a115fedde20dada5e00acf88174c51db05315134ac6852d"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/render_debug.png",
+      "bytes": 203570,
+      "sha256": "73d8fe547ef65a4b4923399cbe8f88cf718839605b6cc8a31d9ffbbf9adcd8bb"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/restore_cover_request.json",
+      "bytes": 89,
+      "sha256": "e68bc87f98dcf655370885d88450ff66c4538d669723f71068e930cd27152e70"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/case_frames.json",
+      "bytes": 1101,
+      "sha256": "9441dfbbd41e0bff65ebc6cf206e12f39055ff9762661f635bca2e57b47f14c2"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/live_qgis.png",
+      "bytes": 1152107,
+      "sha256": "754de2ffbecd9befb6f5d783760a49f8ba9dbd44d5bf31f06ffb9d2ae2f553cd"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/LOT3_OVERVIEW_qgis.png",
+      "bytes": 2495734,
+      "sha256": "b6a70ff0839530079650a8852367313083ec215a98181463eafc81a365c6eaf0"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/lot3_repaired.gpkg",
+      "bytes": 110592,
+      "sha256": "06d57cc76f9a6fed9c6330fd634ac729bcdc0c5083cd311771de95bc62c7fee6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/qgis_after.json",
+      "bytes": 635,
+      "sha256": "09d2437a440d7ee35951c85d388f4b8825a155c1296e47b1b6353782e1c25ff3"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/qgis_before.json",
+      "bytes": 12642,
+      "sha256": "6968ad2b5acb8ef77344b984661e15d60aa90cf0125a104ceb11c439f8bc93f1"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/selection_draft.gpkg",
+      "bytes": 110592,
+      "sha256": "715ccd9ee3eae191d18f38e67a11b9eecd02aabe016d96630b0387776664b27d"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/selection_draft_report.json",
+      "bytes": 8537,
+      "sha256": "a776e62580d709f95f105c1e08d502a53557851702d3bf4522a30a9e4c5e3d2b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/selection_report.json",
+      "bytes": 10183,
+      "sha256": "2d3112696f6fbd7f5f202637ad0a8d08f2e7071463cbf5d6427ec81dadc97ead"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/shared_project_before_repair.qgs.backup",
+      "bytes": 1163047,
+      "sha256": "3a67ee6c71eca0c27f48a6e4eae7fd1e0062f17e46728f99e54f757fada61b37"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T11_before_after.png",
+      "bytes": 1321785,
+      "sha256": "3562b5bed2e1643e68f3bd26928543271c3d6fe1117d1a029514b1bc9683ce95"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T11_qgis.png",
+      "bytes": 1921966,
+      "sha256": "5e39dd4a9e73bda9c4fcef6cb949a30ef14c9ec5f89526065e210e614025f89e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T12_before_after.png",
+      "bytes": 1285503,
+      "sha256": "a9afac4356119ee641f09838aad7c06d56ceb7749ac95012b3ba070689d7ab79"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T12_qgis.png",
+      "bytes": 2347915,
+      "sha256": "aeb0f1723bb12998b4450ba3eaff192f9bef3bc470922fef0dde8add55cbd138"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T13_before_after.png",
+      "bytes": 1315181,
+      "sha256": "999e1deaec8716a76edab48f63adab8748854eb9e06cfb6a8d3aff8e2e214baf"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T13_qgis.png",
+      "bytes": 972292,
+      "sha256": "adb46fdd7a3576045e5fac94eec9664b67f217d174f45d56d0df8349314f80eb"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T14_before_after.png",
+      "bytes": 1619976,
+      "sha256": "1b4bc203f5e2401d070902f1f6f5386a1abd7442c30d5c781df1a7b6a1042543"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T14_qgis.png",
+      "bytes": 2191354,
+      "sha256": "c89e5a587e7e559527c6ec7aa693398d7769f000a255495b3577209083ecd9bb"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T15_before_after.png",
+      "bytes": 968616,
+      "sha256": "b722458b8dbc449c85b12c7cfbc7845c5825abc301041c1b5f7037408f0697f1"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T15_qgis.png",
+      "bytes": 753607,
+      "sha256": "bd85aaba4730a2f64afdd67fe0370d1816b8a041e7182d89c694a0090d95d466"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T16_before_after.png",
+      "bytes": 1529041,
+      "sha256": "8d896e4f236196f402742fe5d67bedd3b83f587ce15477c741175ef028fc6bbf"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T16_qgis.png",
+      "bytes": 1510239,
+      "sha256": "8837378bd5ac29324a3334c95e826067383ddfcec2c26a81b530b5be2d7702aa"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T17_before_after.png",
+      "bytes": 1431022,
+      "sha256": "24c784bc362965f786e1904e28f6a7bcf1055cb5d5763d7b0eac73554507f18f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T17_qgis.png",
+      "bytes": 1690292,
+      "sha256": "e9d902a9a3d9b4380986f6fefc73939485a5f9ae5af9a4185277724a0136d25c"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T18_before_after.png",
+      "bytes": 1461598,
+      "sha256": "39b7c8c154a7a234d86c9bb35dbf96931db9ade824206f6d96a6953d74f34593"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T18_qgis.png",
+      "bytes": 2838228,
+      "sha256": "373bd3e516f667d96e42eebe268577111f654ba406fb26f66e60121086526c0b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T19_before_after.png",
+      "bytes": 1089578,
+      "sha256": "38389301ff0a072252b270b8dae5239934702ed72c6ce1026f22b1a6494d4713"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T19_qgis.png",
+      "bytes": 2360419,
+      "sha256": "125dbb037c07a0c3d95d37024ce64c69d8ecbbe97c5d2d493864a9f1631c41f5"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T20_before_after.png",
+      "bytes": 1675695,
+      "sha256": "eacba3bff4ef285c62b37ddb10af28e5794ad86272e9e231441bf826f83af5b7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected/T20_qgis.png",
+      "bytes": 2452805,
+      "sha256": "1532814dfaf55a232568f4f9b6d3f1a325f310d6ae1d5ce37c6dcae174b126dc"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/case_frames.json",
+      "bytes": 1134,
+      "sha256": "d6a02bf2b39657affd420f7223a2e7489f68cfc5936a9f56d69be58214aacb20"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/live_qgis.png",
+      "bytes": 1079701,
+      "sha256": "741558b2f4bfbc5bbfc6180755208fc80a60cb70148d3c50930a533964f3ddc4"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/LOT3_OVERVIEW_qgis.png",
+      "bytes": 2495725,
+      "sha256": "1c7f0fbf0d97a61e0901e898c95b4b9c0046ed114bde31f03b1f1b6e1b7118c1"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/lot3_repaired.gpkg",
+      "bytes": 110592,
+      "sha256": "bf3d13b0b4709705f07cb4284c9c9a65f9577cf2114db636120bc124a2abe5fa"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/qgis_after.json",
+      "bytes": 491,
+      "sha256": "46375d4f5deffe6db094e06c44f6fc9367b7d0beb9560ae0a3bafd3a4428b5bd"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/qgis_before.json",
+      "bytes": 385,
+      "sha256": "403f43a680dd88f36240df5ba5c9b7231db6fdb1e94e0172466d9e2a7af1803f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/selection_report.json",
+      "bytes": 10496,
+      "sha256": "06100a61273203759a0da9991e7b5d52956b37595b081bced5d24172671586b3"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/shared_project_before_v2.qgs.backup",
+      "bytes": 1345808,
+      "sha256": "42fc6a602712a7ba4629b3a21022e46a02e06d9de80ad021b2c81eeedfaddd2e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T11_before_after.png",
+      "bytes": 1321785,
+      "sha256": "3562b5bed2e1643e68f3bd26928543271c3d6fe1117d1a029514b1bc9683ce95"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T11_qgis.png",
+      "bytes": 1921966,
+      "sha256": "5e39dd4a9e73bda9c4fcef6cb949a30ef14c9ec5f89526065e210e614025f89e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T12_before_after.png",
+      "bytes": 1285503,
+      "sha256": "a9afac4356119ee641f09838aad7c06d56ceb7749ac95012b3ba070689d7ab79"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T12_qgis.png",
+      "bytes": 2347915,
+      "sha256": "aeb0f1723bb12998b4450ba3eaff192f9bef3bc470922fef0dde8add55cbd138"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T13_before_after.png",
+      "bytes": 1315181,
+      "sha256": "999e1deaec8716a76edab48f63adab8748854eb9e06cfb6a8d3aff8e2e214baf"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T13_qgis.png",
+      "bytes": 972292,
+      "sha256": "adb46fdd7a3576045e5fac94eec9664b67f217d174f45d56d0df8349314f80eb"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T14_before_after.png",
+      "bytes": 1619976,
+      "sha256": "1b4bc203f5e2401d070902f1f6f5386a1abd7442c30d5c781df1a7b6a1042543"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T14_qgis.png",
+      "bytes": 2191354,
+      "sha256": "c89e5a587e7e559527c6ec7aa693398d7769f000a255495b3577209083ecd9bb"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T15_before_after.png",
+      "bytes": 968616,
+      "sha256": "b722458b8dbc449c85b12c7cfbc7845c5825abc301041c1b5f7037408f0697f1"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T15_qgis.png",
+      "bytes": 753607,
+      "sha256": "bd85aaba4730a2f64afdd67fe0370d1816b8a041e7182d89c694a0090d95d466"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T16_before_after.png",
+      "bytes": 1529041,
+      "sha256": "8d896e4f236196f402742fe5d67bedd3b83f587ce15477c741175ef028fc6bbf"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T16_qgis.png",
+      "bytes": 1510239,
+      "sha256": "8837378bd5ac29324a3334c95e826067383ddfcec2c26a81b530b5be2d7702aa"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T17_before_after.png",
+      "bytes": 1431022,
+      "sha256": "24c784bc362965f786e1904e28f6a7bcf1055cb5d5763d7b0eac73554507f18f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T17_qgis.png",
+      "bytes": 1690292,
+      "sha256": "e9d902a9a3d9b4380986f6fefc73939485a5f9ae5af9a4185277724a0136d25c"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T18_before_after.png",
+      "bytes": 1461598,
+      "sha256": "39b7c8c154a7a234d86c9bb35dbf96931db9ade824206f6d96a6953d74f34593"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T18_qgis.png",
+      "bytes": 2838228,
+      "sha256": "373bd3e516f667d96e42eebe268577111f654ba406fb26f66e60121086526c0b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T19_before_after.png",
+      "bytes": 1046249,
+      "sha256": "d772049ec6f50f10a4bd5f03d82c0d72493daa9c43a2673ebd22da830f366e7a"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T19_qgis.png",
+      "bytes": 2354386,
+      "sha256": "2bd7243e301b773b4c7d035c4c01c5884ab943ff639fa9f43791fc6ec472aabf"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T20_before_after.png",
+      "bytes": 1675695,
+      "sha256": "eacba3bff4ef285c62b37ddb10af28e5794ad86272e9e231441bf826f83af5b7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v2/T20_qgis.png",
+      "bytes": 2452805,
+      "sha256": "1532814dfaf55a232568f4f9b6d3f1a325f310d6ae1d5ce37c6dcae174b126dc"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/case_frames.json",
+      "bytes": 1132,
+      "sha256": "81924517688403904c42e28a6c37c50998ded3e0a7350a69617374027b9e01be"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/live_qgis.png",
+      "bytes": 1079701,
+      "sha256": "741558b2f4bfbc5bbfc6180755208fc80a60cb70148d3c50930a533964f3ddc4"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/LOT3_OVERVIEW_qgis.png",
+      "bytes": 2496870,
+      "sha256": "8c8e6bb108833dbfe4f4ac1c5719ef179482374b07b66cb748b8c0dd33e3c03f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/lot3_repaired.gpkg",
+      "bytes": 110592,
+      "sha256": "3ab390382770b6ee72a493a17101c5e133b9d34f411b39e91c55708a0d3b7fa7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/qgis_after.json",
+      "bytes": 491,
+      "sha256": "eb88aa668126267f5b8937aa6a3437c44b3755a45f66456b8afe4234a968c1b6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/qgis_before.json",
+      "bytes": 389,
+      "sha256": "340086f199e2b666f48aa1f5086732996f6601387c2b03d828b8873791579495"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/selection_report.json",
+      "bytes": 11780,
+      "sha256": "07b7f363ed5b5139e2efd93a5c79893c1bd08f948ae4a9adf3d8343a67854033"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/shared_project_before_update.qgs.backup",
+      "bytes": 1345813,
+      "sha256": "f17cc8bf3dd2569c00daf448f8b7bc2f08adbe8e17e8849c173e789485b30af9"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T11_before_after.png",
+      "bytes": 1321785,
+      "sha256": "3562b5bed2e1643e68f3bd26928543271c3d6fe1117d1a029514b1bc9683ce95"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T11_qgis.png",
+      "bytes": 1921966,
+      "sha256": "5e39dd4a9e73bda9c4fcef6cb949a30ef14c9ec5f89526065e210e614025f89e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T12_before_after.png",
+      "bytes": 1285503,
+      "sha256": "a9afac4356119ee641f09838aad7c06d56ceb7749ac95012b3ba070689d7ab79"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T12_qgis.png",
+      "bytes": 2347915,
+      "sha256": "aeb0f1723bb12998b4450ba3eaff192f9bef3bc470922fef0dde8add55cbd138"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T13_before_after.png",
+      "bytes": 1315181,
+      "sha256": "999e1deaec8716a76edab48f63adab8748854eb9e06cfb6a8d3aff8e2e214baf"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T13_qgis.png",
+      "bytes": 972292,
+      "sha256": "adb46fdd7a3576045e5fac94eec9664b67f217d174f45d56d0df8349314f80eb"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T14_before_after.png",
+      "bytes": 1619976,
+      "sha256": "1b4bc203f5e2401d070902f1f6f5386a1abd7442c30d5c781df1a7b6a1042543"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T14_qgis.png",
+      "bytes": 2191354,
+      "sha256": "c89e5a587e7e559527c6ec7aa693398d7769f000a255495b3577209083ecd9bb"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T15_before_after.png",
+      "bytes": 968616,
+      "sha256": "b722458b8dbc449c85b12c7cfbc7845c5825abc301041c1b5f7037408f0697f1"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T15_qgis.png",
+      "bytes": 753607,
+      "sha256": "bd85aaba4730a2f64afdd67fe0370d1816b8a041e7182d89c694a0090d95d466"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T16_before_after.png",
+      "bytes": 1517371,
+      "sha256": "c5ecccd018c43160344646d88009af249aaa67aadd5c6c0d88e42988c4a92249"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T16_qgis.png",
+      "bytes": 1521440,
+      "sha256": "7e9dc96d24d98c551f0088bad1d0295502c822de51aab3cb72e00a542fe7d8db"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T17_before_after.png",
+      "bytes": 1431022,
+      "sha256": "24c784bc362965f786e1904e28f6a7bcf1055cb5d5763d7b0eac73554507f18f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T17_qgis.png",
+      "bytes": 1690292,
+      "sha256": "e9d902a9a3d9b4380986f6fefc73939485a5f9ae5af9a4185277724a0136d25c"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T18_before_after.png",
+      "bytes": 1461598,
+      "sha256": "39b7c8c154a7a234d86c9bb35dbf96931db9ade824206f6d96a6953d74f34593"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T18_qgis.png",
+      "bytes": 2838228,
+      "sha256": "373bd3e516f667d96e42eebe268577111f654ba406fb26f66e60121086526c0b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T19_before_after.png",
+      "bytes": 1046249,
+      "sha256": "d772049ec6f50f10a4bd5f03d82c0d72493daa9c43a2673ebd22da830f366e7a"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T19_qgis.png",
+      "bytes": 2354386,
+      "sha256": "2bd7243e301b773b4c7d035c4c01c5884ab943ff639fa9f43791fc6ec472aabf"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T20_before_after.png",
+      "bytes": 1675695,
+      "sha256": "eacba3bff4ef285c62b37ddb10af28e5794ad86272e9e231441bf826f83af5b7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/T20_qgis.png",
+      "bytes": 2452805,
+      "sha256": "1532814dfaf55a232568f4f9b6d3f1a325f310d6ae1d5ce37c6dcae174b126dc"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/selected_v3/verification.json",
+      "bytes": 3093,
+      "sha256": "c75c1c79b50cef25023cf5e30cc55ffe7e28fa04ddb44623f77f014dd92e406a"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/cadastral_review.gpkg",
+      "bytes": 118784,
+      "sha256": "3d42d43a35b8ce1a18f8a4ca3ef7f92218511a7844ffba0a8311e2793825994f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/inputs.json",
+      "bytes": 18166,
+      "sha256": "dbdea302849aa939286285fec8fb8b1290b7308befb074a236714b925e9725c0"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/report.json",
+      "bytes": 5508,
+      "sha256": "f2e9764d66ea66f6890e317c631c6e0f44f6d74f500693e1b752bea410616e0a"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T11_comparison.png",
+      "bytes": 833797,
+      "sha256": "dc05c5f82c17ca3e8d56b8f42a6e82fce068320c47aebc500551ff80dc73f4e9"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T12_comparison.png",
+      "bytes": 1527224,
+      "sha256": "c2d64a8d8e3d1c446f44a414e79421838b33c2296501b3c0c664dc65805046ba"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T13_comparison.png",
+      "bytes": 1365510,
+      "sha256": "73ab8420cbad0a1fd375cd6766b30adce982f1e2051fadd25f0c8244bb6635a8"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T14_comparison.png",
+      "bytes": 1722567,
+      "sha256": "7548513f730e6c414958defbef24d1851b8aa4e78ebfee5ccf9d9b2cf8d828a3"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T15_comparison.png",
+      "bytes": 1076507,
+      "sha256": "6ed5faa5f7dac644bf67412f8f196ba8c67776d47ec93df34815610f54fac2c7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T16_comparison.png",
+      "bytes": 1581739,
+      "sha256": "0d5e7fd6e364af521b7f2f73cc7bdf707fb6fba089a077990826e198def85097"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T18_comparison.png",
+      "bytes": 1546577,
+      "sha256": "23f64b9c9e36dade24e4920b4aec651cb7b8926e6bc77d5f904521c299b4433a"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T19_comparison.png",
+      "bytes": 1411336,
+      "sha256": "cea1c15484d0c60db04e533c44c5b5c3ee3e47a62489af1bd6d33b02b1792d10"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified1/T20_comparison.png",
+      "bytes": 1595017,
+      "sha256": "49a961ea1c3437256ae7b6f43453b9eec7034bbf5465b27470a3b13655942b7a"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/cadastral_review.gpkg",
+      "bytes": 180224,
+      "sha256": "03a652a1bde3f3627cbc348ffd72cb9c0e0fb2402b1277f7357cbcbc3c011a36"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/inputs.json",
+      "bytes": 18166,
+      "sha256": "dbdea302849aa939286285fec8fb8b1290b7308befb074a236714b925e9725c0"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/report.json",
+      "bytes": 5727,
+      "sha256": "085ff83203a7e5a8a5e58edce1b1558afbc7999cc08c0bdf36d85cac8f3ca129"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T11_comparison.png",
+      "bytes": 832617,
+      "sha256": "d5f802e6f404afb9457f948a58aaffae5b6ae4a6a6a18116f8cea22fff20f32d"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T12_comparison.png",
+      "bytes": 1524253,
+      "sha256": "38bb4a463512886e38263d06c7a932961a0b78b151a31038df4f9f3d13fc7f4f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T13_comparison.png",
+      "bytes": 1360398,
+      "sha256": "a36acebe8caa280e546ea660904327e4f1e0f052290320478b0de0c821824dc6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T14_comparison.png",
+      "bytes": 1719475,
+      "sha256": "10e048ad4c68620485c0fd20c85bca1ef3dc4ad18a7f2b071cb3edcc3424277c"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T15_comparison.png",
+      "bytes": 1076507,
+      "sha256": "6ed5faa5f7dac644bf67412f8f196ba8c67776d47ec93df34815610f54fac2c7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T16_comparison.png",
+      "bytes": 1581739,
+      "sha256": "0d5e7fd6e364af521b7f2f73cc7bdf707fb6fba089a077990826e198def85097"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T18_comparison.png",
+      "bytes": 1545761,
+      "sha256": "2192f4c088e283a696e96a85c7e50c1475e7e84317726f3a2b6e33bc051a753d"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T19_comparison.png",
+      "bytes": 1411336,
+      "sha256": "cea1c15484d0c60db04e533c44c5b5c3ee3e47a62489af1bd6d33b02b1792d10"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/simplified2/T20_comparison.png",
+      "bytes": 1601769,
+      "sha256": "4b4ba0018e5dc065ddb4b4e788630035da353ee610e60aa1792406a2a0a5922b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/source_mask_versioning.json",
+      "bytes": 550,
+      "sha256": "8439e4167cc91fd56fcede5ec9fa689b3724c01e521797b516152c4f10ce99b7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T14_coordinate_review.png",
+      "bytes": 2525308,
+      "sha256": "ebf1d1b6d568633369a614faa3c16f238a96e134b57cdc1fd17d80ea7e1675d3"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_coordinate_review.png",
+      "bytes": 2203397,
+      "sha256": "eec8b4485d33519e44c731acad02454a0792b4080afb20e84ce4d94c52f40aab"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/.gitignore",
+      "bytes": 40,
+      "sha256": "e8da2173244540b458262e4425019f80f5f9a60fa78fe10fa7532f1f8edf7f57"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/cadastral_review.gpkg",
+      "bytes": 122880,
+      "sha256": "5ae9f56622d2e7006a73e8b41e0049f6ed2d2b29ae753a9609326fbaa0237c9e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/full_comparison.png",
+      "bytes": 2164804,
+      "sha256": "cd5a4dcd16c1670cde8bc76b7ab202d285484b742c574e91045039c722d6fc94"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/inputs.json",
+      "bytes": 2091,
+      "sha256": "445104887f9060b651c39326721a69f7a4913517e236d4fb78c6bc2f79be9ee6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/planar_candidates.gpkg",
+      "bytes": 98304,
+      "sha256": "ec32b3f99cb29af49e96514535e5aa9da37ed140c38c93012eeb0f9dccf19753"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/planar_candidates.png",
+      "bytes": 209678,
+      "sha256": "38fe2381de5b57df32a04ca9e2c344df0e3945ae305667d2144f07fc225ce3e3"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/preflight.json",
+      "bytes": 142,
+      "sha256": "ef1e04b0ace3a504da54f44296e2d98e48d2d0b51341f07a860eecec3f2312e0"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/report.json",
+      "bytes": 2485,
+      "sha256": "27289d7dc642bfa4ea17490a85e3fb99a6e64024b4183e70517ec76d08f53412"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch/T16_C3_ortho.tif",
+      "bytes": 248084,
+      "sha256": "f7bc9414e2117b2175548c9987f811271be869c1b6ee06b9a8217092349e5ae4"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_porch_inputs.json",
+      "bytes": 2091,
+      "sha256": "445104887f9060b651c39326721a69f7a4913517e236d4fb78c6bc2f79be9ee6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surface_inputs.json",
+      "bytes": 3647,
+      "sha256": "2c94ce1930eff89c79cefbbb26825135be761cb99e1ddb502fd96eafe5945319"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surfaces/.gitignore",
+      "bytes": 40,
+      "sha256": "e8da2173244540b458262e4425019f80f5f9a60fa78fe10fa7532f1f8edf7f57"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surfaces/cadastral_review.gpkg",
+      "bytes": 151552,
+      "sha256": "8c1553eecec74b6df02b3f54f03e374b5815893bd873745de8ea948c8b736e50"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surfaces/comparison.png",
+      "bytes": 2197741,
+      "sha256": "51b4589f7c8f38922c1339d5b662001d9c905d6c2387c03cca6759342471e229"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surfaces/inputs.json",
+      "bytes": 3647,
+      "sha256": "2c94ce1930eff89c79cefbbb26825135be761cb99e1ddb502fd96eafe5945319"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surfaces/preflight.json",
+      "bytes": 227,
+      "sha256": "ea2dd131cbaee8751d5da16c7a6a9ab3301eb2c608c85f5bbc5489e1737c6952"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surfaces/report.json",
+      "bytes": 4279,
+      "sha256": "d3bdae73a32894f8a70f9d6eeb7e15b521c5e19e8dc9630c658a265b50c5716c"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surfaces/T16_C1_ortho.tif",
+      "bytes": 674915,
+      "sha256": "23c274f3a57637f7c0adcb7f8b39198cb5bc57d8adf175280ae50c757452453b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T16_surfaces/T16_C2_ortho.tif",
+      "bytes": 586863,
+      "sha256": "7cf8928ebf3674a7dbf808474abb60917cce111c76c90119ddbc745ffb84fe6d"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surface_revision_inputs.json",
+      "bytes": 3724,
+      "sha256": "10d4502ed6d864ecf61b974a5f55e22683a283a5a6a6718c9f636330ff0d3c67"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surfaces/.gitignore",
+      "bytes": 40,
+      "sha256": "e8da2173244540b458262e4425019f80f5f9a60fa78fe10fa7532f1f8edf7f57"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surfaces/cadastral_review.gpkg",
+      "bytes": 204800,
+      "sha256": "9e9b3c27a95b802118df0f8138fd584501ef70cdd2666141dc44f66bc1cc38b2"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surfaces/inputs.json",
+      "bytes": 3724,
+      "sha256": "10d4502ed6d864ecf61b974a5f55e22683a283a5a6a6718c9f636330ff0d3c67"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surfaces/preflight.json",
+      "bytes": 227,
+      "sha256": "a9905954bf7a345b6e8d3d82f97c05508bdc877edfafb452ff12938b15f50987"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surfaces/report.json",
+      "bytes": 4336,
+      "sha256": "9dd420a7636dd7082b7b20f45a531f24b48b5d039ca92c6ee56693f64361bfe4"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surfaces/T18_C1_ortho.tif",
+      "bytes": 3178494,
+      "sha256": "6a73f81f4ec54582e1587fb2a50520c8152b942294315faee53fcb557b5d3cb7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surfaces/T18_C3_ortho.tif",
+      "bytes": 1502911,
+      "sha256": "bfed2dccf680aa89bf7cc4f75c1721073a5fa33ca96efe38c236a8e92edc830b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T18_surfaces/T18_comparison.png",
+      "bytes": 1476068,
+      "sha256": "c8d7f7b56836eb50c6dd4d92ddc8d23ef87f3a763a593c19e9bace49480dca42"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_edges/cadastral_review.gpkg",
+      "bytes": 98304,
+      "sha256": "306678402bb4a32a2508841315fe3781cdca7a1e3fd416a16883d733ad5ed7f7"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_edges/edge_reports.json",
+      "bytes": 16535,
+      "sha256": "e94f73ec95feccf86a6d9876d71f888b09e862ac9246d37eb614c81409c51fee"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_edges/inputs.json",
+      "bytes": 3272,
+      "sha256": "6553bd483ab9d116fe3064ba0101bc82af5352720b784d642f462b811737faa6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_edges/T20_comparison.png",
+      "bytes": 1559848,
+      "sha256": "f6b96e323f3509a2feb32808c8cae3c55ae2958f3a1ce41097e078e9cb98114b"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_planar_final/cadastral_review.gpkg",
+      "bytes": 151552,
+      "sha256": "d06809c9075e2bcdc50a20e9747f33a3e06de3bec1d26079d35664dd1ae0102a"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_planar_final/inputs.json",
+      "bytes": 3272,
+      "sha256": "6553bd483ab9d116fe3064ba0101bc82af5352720b784d642f462b811737faa6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_planar_final/report.json",
+      "bytes": 475,
+      "sha256": "e43fcdf6d56674afb55be6e6d9c5208c473dc32e45041a8f1e5eae6899878951"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_planar_final/T20_comparison.png",
+      "bytes": 1578901,
+      "sha256": "c0c8ce05622c5c48d3417a4f43be1ae9a72c9040b1e64e8cfd0faae81a1c3e2f"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_planar_v2/cadastral_review.gpkg",
+      "bytes": 98304,
+      "sha256": "8cf664daae0981b7e0863c9e2af3ad00083e49afde29e1dde4b991e7057a4970"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_planar_v2/inputs.json",
+      "bytes": 3272,
+      "sha256": "6553bd483ab9d116fe3064ba0101bc82af5352720b784d642f462b811737faa6"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_planar_v2/report.json",
+      "bytes": 1011,
+      "sha256": "d1a244313fc82409e3b0badab9fb3aebfb7f6a12963965978502c97aa394a57e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_planar_v2/T20_comparison.png",
+      "bytes": 1557336,
+      "sha256": "a2ee42f0732c2697a1eb65bb8cbe73a6aba958149f72bd0d1dc580894f39be08"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision/.gitignore",
+      "bytes": 40,
+      "sha256": "e8da2173244540b458262e4425019f80f5f9a60fa78fe10fa7532f1f8edf7f57"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision/cadastral_review.gpkg",
+      "bytes": 233472,
+      "sha256": "2ae074e151956de80e90753085653c0717540a59ac255f8814446a1a4546ff58"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision/inputs.json",
+      "bytes": 3928,
+      "sha256": "43e553cd51f95b73bafcbc3a0eb63b327200ca8cbbb86d74574304b69a675bc9"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision/preflight.json",
+      "bytes": 227,
+      "sha256": "8c36d7894170406825b56562114fcbf347eeffc9c406286ec7a03a83f6b3c946"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision/report.json",
+      "bytes": 4118,
+      "sha256": "7152566aa97667c1b9a471af022117cda02ebd759eb7bdf67fb09fb15406df07"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision/T20_C1_ortho.tif",
+      "bytes": 1320684,
+      "sha256": "3ad2621ad7445691aed0129a47f6aeaaeb63acbfa0e59d60fd805e3c19de194e"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision/T20_C2_ortho.tif",
+      "bytes": 1754540,
+      "sha256": "a9e7c2f59d302954f82826a0e17a8836332f78a86af3f41483597a8537e96eff"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision/T20_comparison.png",
+      "bytes": 1577077,
+      "sha256": "9bb95fe2e8b131e3b40ad0bf49f9783ea1081e87ced2d8a35dfa4883daef6210"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/T20_prompt_revision_inputs.json",
+      "bytes": 3928,
+      "sha256": "43e553cd51f95b73bafcbc3a0eb63b327200ca8cbbb86d74574304b69a675bc9"
+    },
+    {
+      "path": "workspace/reviews/lot3_repairs_20261017/workflow_inputs.json",
+      "bytes": 19698,
+      "sha256": "b04fc8bd8eac2a91e1e8f86a4716c94abc057b90163926fa8635e51ba3fad83a"
+    }
+  ],
+  "note": "Exact evidence bytes preserved by local .gitattributes; runtime WAL/SHM excluded. Manifest itself is excluded to avoid self-reference."
+}

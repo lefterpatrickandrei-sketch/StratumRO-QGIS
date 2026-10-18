@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "crs": "EPSG:3844",
+  "cases": [
+    {
+      "body_id": "T18:C1",
+      "anchor": [
+        390635.0,
+        585535.0
+      ],
+      "search_bounds": [
+        390610.0,
+        585503.0,
+        390660.0,
+        585558.0
+      ],
+      "positive_points": [
+        [
+          390646.0,
+          585515.0
+        ]
+      ],
+      "negative_points": [
+        [
+          390611.0,
+          585512.0
+        ],
+        [
+          390614.0,
+          585530.0
+        ]
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T18_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        390612.0,
+        585506.0,
+        390657.0,
+        585554.0
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_FIDELITY",
+      "selection_observations": "Main hall with western wing and separate brown annex; previous local edge fix did not validate full shape. Main hall has an explicit negative point on the annex.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Main hall with western wing and separate brown annex; previous local edge fix did not validate full shape. Main hall has an explicit negative point on the annex.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_major_errors_20261017\\T18_unobscured_review.png",
+        "image_sha256": "6aa1d75402ccfe1c42893c533f414704223e30d251eefbc1ff236c16d500df51"
+      }
+    },
+    {
+      "body_id": "T18:C3",
+      "anchor": [
+        390611.0,
+        585512.0
+      ],
+      "search_bounds": [
+        390594.0,
+        585499.0,
+        390634.0,
+        585526.0
+      ],
+      "positive_points": [],
+      "negative_points": [
+        [
+          390636.0,
+          585526.0
+        ]
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T18_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        390596.0,
+        585501.0,
+        390632.0,
+        585524.0
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_FIDELITY",
+      "selection_observations": "Main hall with western wing and separate brown annex; previous local edge fix did not validate full shape. Main hall has an explicit negative point on the annex.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Main hall with western wing and separate brown annex; previous local edge fix did not validate full shape. Main hall has an explicit negative point on the annex.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_major_errors_20261017\\T18_unobscured_review.png",
+        "image_sha256": "6aa1d75402ccfe1c42893c533f414704223e30d251eefbc1ff236c16d500df51"
+      }
+    }
+  ],
+  "owner_status": "PENDING_OWNER_REVIEW",
+  "purpose": "Native-detail optical repair, no automatic owner acceptance; reviewed prompts are not ground truth.",
+  "previous_snapshot": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_edge_audit_20261017\\lot3_display_snapshot.gpkg",
+  "previous_snapshot_sha256": "56b61d21f4c1a9d13570b7c9306f10ecbedf46a1a98579f81f109c225c9f946f",
+  "scope_note": "Split review of main red roof and western attached roof surface, preserving parent T18; independent cadastral identity is unconfirmed."
+}

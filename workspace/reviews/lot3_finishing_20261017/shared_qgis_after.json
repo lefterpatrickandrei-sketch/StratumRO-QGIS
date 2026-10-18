@@ -1,0 +1,22 @@
+{
+  "pid": 13436,
+  "project": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+  "new_layers": [
+    {
+      "id": "T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472",
+      "name": "T17:C1 - FINISARE NEVERIFICATA",
+      "count": 1
+    },
+    {
+      "id": "T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c",
+      "name": "T17:C2 - FINISARE NEVERIFICATA",
+      "count": 1
+    },
+    {
+      "id": "T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd",
+      "name": "T18:C1 - FINISARE NEVERIFICATA",
+      "count": 1
+    }
+  ],
+  "total_layers": 33
+}

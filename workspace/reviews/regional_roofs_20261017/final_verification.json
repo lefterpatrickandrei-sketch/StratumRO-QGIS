@@ -1,0 +1,37 @@
+{
+  "scan_implementation_commit": "1d9685e",
+  "scan_code_hashes_match_git": {
+    "stratum_ro/regional_roofs.py": true,
+    "stratum_ro/roof_simple_geometry.py": true,
+    "tools/run_regional_roofs.py": true
+  },
+  "evidence_and_routing_checkpoint": "94688f5",
+  "active_review": "masked_review_v2",
+  "active_counts": {
+    "ROOF_CANDIDATES": 380,
+    "OPTICAL_UNKNOWN": 644,
+    "LIKELY_VEGETATION": 1057,
+    "RAW_SELECTED_OBSERVATIONS": 2081,
+    "SCAN_COVERAGE": 144
+  },
+  "routing_changes": 183,
+  "all_observations_retained_after_routing": true,
+  "main_qgis_last_verified": {
+    "saved": true,
+    "layer_count": 69,
+    "all_layers_valid": true,
+    "editable_layers": 0,
+    "all_previous_vector_geometries_and_sources_unchanged": true
+  },
+  "model_uploads_or_remote_gpu_jobs": false,
+  "raw_model_predictions_are_clean_training_labels": false,
+  "visual_quality": "NOT_PRODUCTION_READY",
+  "tests": {
+    "latest_product": 13,
+    "runner_with_test_double": 1,
+    "existing_relevant_suite": 71,
+    "all_passed": true
+  },
+  "latest_combined_runner_real_whole_area_rerun": false,
+  "latest_routing_and_mask_guard_tested_on_real_saved_observations": true
+}

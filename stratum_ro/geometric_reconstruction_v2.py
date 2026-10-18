@@ -25,6 +25,39 @@ from shapely.ops import unary_union
 from scipy.ndimage import binary_closing, binary_opening, binary_fill_holes, generate_binary_structure
 
 
+def suppress_collinear_nodes(poly: Polygon, tol_deg: float = 12.0, min_dist: float = 0.35) -> Polygon:
+    """Suprima nodurile coliniare intermediare sau micro-treptele de pixel de-a lungul peretilor drepti."""
+    if poly is None or poly.is_empty:
+        return poly
+    coords = list(poly.exterior.coords)[:-1]
+    n = len(coords)
+    if n <= 4:
+        return poly
+    clean = []
+    for i in range(n):
+        p_prev = np.array(coords[(i - 1) % n])
+        p_curr = np.array(coords[i])
+        p_next = np.array(coords[(i + 1) % n])
+        v1 = p_curr - p_prev
+        v2 = p_next - p_curr
+        d1 = np.linalg.norm(v1)
+        d2 = np.linalg.norm(v2)
+        if d1 < min_dist and d2 < min_dist:
+            continue
+        cross = v1[0] * v2[1] - v1[1] * v2[0]
+        dot = np.dot(v1, v2)
+        ang = abs(np.degrees(np.arctan2(cross, dot)))
+        if ang < tol_deg:
+            continue  # Nod coliniar pe fatada dreapta
+        clean.append(coords[i])
+    if len(clean) >= 3:
+        clean.append(clean[0])
+        p_res = Polygon(clean)
+        if p_res.is_valid and p_res.area > 5.0:
+            return p_res
+    return poly
+
+
 class AdaptiveContourReconstructor:
     """
     Cadastral-grade geometric contour reconstructor using support-line
@@ -355,9 +388,13 @@ class AdaptiveContourReconstructor:
         # 1. CLASA A: Dreptunghi Canonic Simplu (OBB - 4 noduri la 90°)
         # -------------------------------------------------------------
         h_dist = poly.exterior.hausdorff_distance(mrr.exterior)
+        curv_alt = self.count_curvature_alternations(poly)
         is_rect = False
         if num_v == 4:
             is_rect = (solidity >= 0.88 and rect_ratio >= 0.85 and ortho_ratio >= 0.70)
+        elif curv_alt == 0 and ((solidity >= 0.84 and rect_ratio >= 0.78) or
+                                (solidity >= 0.82 and rect_ratio >= 0.75 and h_dist <= 2.5)):
+            is_rect = True
         elif (solidity >= 0.88 and rect_ratio >= 0.85) or \
              (solidity >= 0.86 and rect_ratio >= 0.82 and (ortho_ratio >= 0.40 or num_v <= 8)) or \
              (rect_ratio >= 0.82 and solidity >= 0.88 and h_dist <= 1.5) or \
@@ -375,7 +412,8 @@ class AdaptiveContourReconstructor:
             }
 
         # Simplificare prealabilă la nivel cadastral macro pentru decuplarea de zimții de pixel
-        poly_cad = poly.simplify(0.60, preserve_topology=True)
+        poly_cad = poly.simplify(0.50, preserve_topology=True)
+        poly_cad = suppress_collinear_nodes(poly_cad, tol_deg=14.0, min_dist=0.35)
         cad_coords = list(poly_cad.exterior.coords)[:-1] if poly_cad.is_valid and not poly_cad.is_empty else coords
         cad_v = len(cad_coords)
 
@@ -389,7 +427,7 @@ class AdaptiveContourReconstructor:
             # Attempt exact support-line intersection reconstruction
             rec_poly = self.reconstruct_from_support_lines(poly)
             if rec_poly is not None and rec_poly.is_valid and rec_poly.area >= 6.0:
-                final_poly = rec_poly
+                final_poly = suppress_collinear_nodes(rec_poly)
             else:
                 # Cadastral Manhattan simplification (removes pixel stair-steps)
                 final_poly = poly_cad
@@ -409,9 +447,9 @@ class AdaptiveContourReconstructor:
         if poly.area >= 250.0 and (cad_v > 8 or num_v >= 8):
             rec_poly = self.reconstruct_from_support_lines(poly, max_angular_dev_deg=10.0)
             if rec_poly is not None and rec_poly.is_valid and rec_poly.area >= 6.0:
-                final_poly = rec_poly
+                final_poly = suppress_collinear_nodes(rec_poly)
             else:
-                final_poly = poly.simplify(0.65, preserve_topology=True)
+                final_poly = poly_cad
 
             return {
                 "geometry": final_poly if (final_poly.is_valid and final_poly.area >= 6.0) else poly,
@@ -425,9 +463,8 @@ class AdaptiveContourReconstructor:
         # -------------------------------------------------------------
         # 4. CLASA D: Forme Atipice / Oblice / Curbate (Non-destructive)
         # -------------------------------------------------------------
-        # Simplificare conformă toleranței cadastrale ANCPI 0.45m pentru eliminarea zimților de pixel
-        # fără distorsiunea curburii autentice a fațadelor
-        smooth_poly = poly.simplify(0.45, preserve_topology=True)
+        smooth_poly = poly.simplify(0.40, preserve_topology=True)
+        smooth_poly = suppress_collinear_nodes(smooth_poly, tol_deg=10.0, min_dist=0.35)
         if not smooth_poly.is_valid or smooth_poly.is_empty:
             smooth_poly = poly
         return {

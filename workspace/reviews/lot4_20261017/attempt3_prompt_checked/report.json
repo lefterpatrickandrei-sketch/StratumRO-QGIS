@@ -1,0 +1,327 @@
+{
+  "scope": "PRODUCT_WORKFLOW_ON_REVIEWED_CANDIDATES_NOT_REGIONAL_DETECTOR",
+  "ground_footprints_created": 0,
+  "owner_verdict": "PENDING_OWNER_REVIEW",
+  "cases": [
+    {
+      "body_id": "T22:C1",
+      "guidance": {
+        "route": "RGB_FALLBACK_REQUIRES_REVIEW",
+        "point": [
+          391120.0,
+          585633.0
+        ],
+        "source": "REVIEWED_RGB_ANCHOR",
+        "reason": "LIDAR_UNAVAILABLE_OR_INCOMPATIBLE",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW"
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T22_5cm.tif",
+        "lidar_compatibility": "NOT_USED"
+      },
+      "status": "NO_OPTICAL_MASK_FOR_REVIEWED_OBJECT",
+      "review_reasons": [
+        "NO_PROMPT_CONSISTENT_MASK"
+      ],
+      "prompt_consistency": {
+        "rejected_candidates": [
+          {
+            "score": 0.5653050541877747,
+            "reasons": [
+              "POSITIVE_PROMPT_OUTSIDE_ANCHOR_COMPONENT"
+            ],
+            "area_m2": 2203.0300000000757
+          },
+          {
+            "score": 0.5919831991195679,
+            "reasons": [
+              "POSITIVE_PROMPT_OUTSIDE_ANCHOR_COMPONENT"
+            ],
+            "area_m2": 672.4600000002648
+          },
+          {
+            "score": 0.785606324672699,
+            "reasons": [
+              "POSITIVE_PROMPT_OUTSIDE_ANCHOR_COMPONENT",
+              "NEGATIVE_PROMPT_INSIDE_ROOF"
+            ],
+            "area_m2": 2012.280000000049
+          }
+        ],
+        "positive_points": [
+          [
+            391091,
+            585604
+          ],
+          [
+            391151,
+            585620
+          ],
+          [
+            391125,
+            585638
+          ]
+        ],
+        "negative_points": [
+          [
+            391106,
+            585616
+          ],
+          [
+            391129,
+            585622
+          ],
+          [
+            391100,
+            585598
+          ],
+          [
+            391158,
+            585611
+          ]
+        ]
+      },
+      "duration_s": 1.249801900004968
+    },
+    {
+      "body_id": "T23:C1",
+      "guidance": {
+        "route": "RGB_FALLBACK_REQUIRES_REVIEW",
+        "point": [
+          391039.0,
+          585739.0
+        ],
+        "source": "REVIEWED_RGB_ANCHOR",
+        "reason": "LIDAR_UNAVAILABLE_OR_INCOMPATIBLE",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW"
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T23_5cm.tif",
+        "lidar_compatibility": "NOT_USED"
+      },
+      "status": "REQUIRES_REVIEW",
+      "review_reasons": [
+        "LIDAR_NOT_USED_OR_INCOMPATIBLE"
+      ],
+      "prompt_consistency": {
+        "rejected_candidates": [],
+        "positive_points": [
+          [
+            391049,
+            585746
+          ],
+          [
+            391034,
+            585741
+          ]
+        ],
+        "negative_points": [
+          [
+            391027,
+            585737
+          ],
+          [
+            391038,
+            585729
+          ],
+          [
+            391055,
+            585734
+          ]
+        ]
+      },
+      "sam2_score": 0.9434493184089661,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "FAITHFUL_OPTICAL_SIMPLIFICATION",
+        "lidar_used": false,
+        "coverage": 0.9876743229978725,
+        "support": 0.9840552966404061,
+        "boundary_shift_m": 0.5394776263272494,
+        "vertices": 11,
+        "small_holes_removed": 4,
+        "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+        "courtyards": 0,
+        "refinement_policy": "OPTICAL_FIDELITY"
+      },
+      "search_window_check": {
+        "bounds": [
+          391020.0,
+          585725.0,
+          391057.0,
+          585757.0
+        ],
+        "raw_boundary_distance_m": 2.6500000000232835,
+        "refined_boundary_distance_m": 2.6500000000232835,
+        "raw_within_search": true,
+        "refined_within_search": true,
+        "automatic_completeness_claim": false
+      },
+      "vertices": 11,
+      "duration_s": 3.4855447000009008
+    },
+    {
+      "body_id": "T24:C1",
+      "guidance": {
+        "route": "RGB_FALLBACK_REQUIRES_REVIEW",
+        "point": [
+          391031.0,
+          585708.0
+        ],
+        "source": "REVIEWED_RGB_ANCHOR",
+        "reason": "LIDAR_UNAVAILABLE_OR_INCOMPATIBLE",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW"
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T24_5cm.tif",
+        "lidar_compatibility": "NOT_USED"
+      },
+      "status": "REQUIRES_REVIEW",
+      "review_reasons": [
+        "LIDAR_NOT_USED_OR_INCOMPATIBLE"
+      ],
+      "prompt_consistency": {
+        "rejected_candidates": [
+          {
+            "score": 0.43869563937187195,
+            "reasons": [
+              "POSITIVE_PROMPT_OUTSIDE_ANCHOR_COMPONENT"
+            ],
+            "area_m2": 42.78250000045051
+          }
+        ],
+        "positive_points": [
+          [
+            391028,
+            585701
+          ],
+          [
+            391018,
+            585706
+          ],
+          [
+            391038,
+            585711
+          ]
+        ],
+        "negative_points": [
+          [
+            391032,
+            585697
+          ],
+          [
+            391042,
+            585701
+          ]
+        ]
+      },
+      "sam2_score": 0.8207230567932129,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "FAITHFUL_DENOISED_OPTICAL",
+        "lidar_used": false,
+        "coverage": 0.9804344328170617,
+        "support": 0.9918790352543891,
+        "boundary_shift_m": 0.7108330901324308,
+        "vertices": 22,
+        "small_holes_removed": 2,
+        "comparison_role": "RAW_OPTICAL_MASK_NOT_GROUND_TRUTH",
+        "courtyards": 0,
+        "refinement_policy": "OPTICAL_FIDELITY"
+      },
+      "search_window_check": {
+        "bounds": [
+          391008.0,
+          585689.0,
+          391060.0,
+          585728.0
+        ],
+        "raw_boundary_distance_m": 5.599999999976717,
+        "refined_boundary_distance_m": 5.704522789805196,
+        "raw_within_search": true,
+        "refined_within_search": true,
+        "automatic_completeness_claim": false
+      },
+      "vertices": 22,
+      "duration_s": 4.359821899997769
+    },
+    {
+      "body_id": "T28:C1",
+      "guidance": {
+        "route": "RGB_FALLBACK_REQUIRES_REVIEW",
+        "point": [
+          390710.0,
+          585647.0
+        ],
+        "source": "REVIEWED_RGB_ANCHOR",
+        "reason": "LIDAR_UNAVAILABLE_OR_INCOMPATIBLE",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW"
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T28_5cm.tif",
+        "lidar_compatibility": "NOT_USED"
+      },
+      "status": "NO_OPTICAL_MASK_FOR_REVIEWED_OBJECT",
+      "review_reasons": [
+        "NO_PROMPT_CONSISTENT_MASK"
+      ],
+      "prompt_consistency": {
+        "rejected_candidates": [
+          {
+            "score": 0.4873564839363098,
+            "reasons": [
+              "NEGATIVE_PROMPT_INSIDE_ROOF"
+            ],
+            "area_m2": 116.66749999997445
+          }
+        ],
+        "positive_points": [],
+        "negative_points": [
+          [
+            390704,
+            585649
+          ],
+          [
+            390706,
+            585658
+          ],
+          [
+            390711,
+            585637
+          ],
+          [
+            390714,
+            585653
+          ]
+        ]
+      },
+      "duration_s": 0.394661600003019
+    }
+  ],
+  "source_hashes": {
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T22_5cm.tif": "1e0db835af46eeecfb1f32a6e002c23b84aff2605e1244aacfdec721e5992976",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T23_5cm.tif": "19d32536d5fb15b80979dd4cf0b6cc195726d03430f153c1c6a8fee1cd80fcc9",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T24_5cm.tif": "7244f3cf70a27add947edad7be6472c20c6281e7a0271aa3c637a2d89b94a901",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T28_5cm.tif": "958ec98539ec52a024f03e5ce1027e3af8c3a36faaada6040deeb2bc8b9c499d"
+  },
+  "input_manifest_sha256": "fd7f4cde5eae46bb60055b6574e7ff479e348e5a11d1470551c4d971388e97dc",
+  "model_checkpoint_sha256": "65b50056e05bcb13694174f51bb6da89c894b57b75ccdf0ba6352c597c5d1125",
+  "model_config": "sam2_hiera_t.yaml",
+  "geometry_max_exterior_vertices": 32
+}

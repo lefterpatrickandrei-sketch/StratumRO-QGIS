@@ -1,0 +1,287 @@
+{
+  "cases": [
+    {
+      "body_id": "T22:C1",
+      "anchor": [
+        391120,
+        585633
+      ],
+      "search_bounds": [
+        391073,
+        585589,
+        391169,
+        585656
+      ],
+      "positive_points": [
+        [
+          391091,
+          585604
+        ],
+        [
+          391151,
+          585620
+        ],
+        [
+          391125,
+          585638
+        ]
+      ],
+      "negative_points": [
+        [
+          391106,
+          585616
+        ],
+        [
+          391129,
+          585622
+        ],
+        [
+          391100,
+          585598
+        ],
+        [
+          391158,
+          585611
+        ]
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T22_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        391073,
+        585589,
+        391169,
+        585656
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_FIDELITY",
+      "selection_observations": "Large red complex with multiple wings and open parking recesses. Inspect the complete east/west ends and keep ground/parked cars outside; tree-covered eastern margins remain uncertain.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Large red complex with multiple wings and open parking recesses. Inspect the complete east/west ends and keep ground/parked cars outside; tree-covered eastern margins remain uncertain.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selection_final\\T22.png",
+        "image_sha256": "d93fb9c0b50e6a6070f7d7c8282c5239bc2fd796b1cdaa21ea34b0dfb80e24ac"
+      },
+      "prompt_revision_reason": "Observed first mask leaks onto paving, vehicles, canopy or vegetation; add source-reviewed negative prompts before simplification."
+    },
+    {
+      "body_id": "T23:C1",
+      "anchor": [
+        391039,
+        585739
+      ],
+      "search_bounds": [
+        391020,
+        585725,
+        391057,
+        585757
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T23_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        391020,
+        585725,
+        391057,
+        585757
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_FIDELITY",
+      "positive_points": [
+        [
+          391049,
+          585746
+        ],
+        [
+          391034,
+          585741
+        ]
+      ],
+      "negative_points": [
+        [
+          391027,
+          585737
+        ],
+        [
+          391038,
+          585729
+        ],
+        [
+          391055,
+          585734
+        ]
+      ],
+      "selection_observations": "Red hip roof with a small entrance projection, next to a detached pale canopy at west. Primary red roof is the target; canopy is not silently claimed recovered. Small NoData patch is outside target.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Red hip roof with a small entrance projection, next to a detached pale canopy at west. Primary red roof is the target; canopy is not silently claimed recovered. Small NoData patch is outside target.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selection_final\\T23.png",
+        "image_sha256": "efbceac792e659ee3e302517ec7e774bee748e72885bd2039d945c21b06f30f4"
+      },
+      "prompt_revision_reason": "Observed first mask leaks onto paving, vehicles, canopy or vegetation; add source-reviewed negative prompts before simplification."
+    },
+    {
+      "body_id": "T24:C1",
+      "anchor": [
+        391031,
+        585708
+      ],
+      "search_bounds": [
+        391008,
+        585689,
+        391060,
+        585728
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T24_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        391008,
+        585689,
+        391060,
+        585728
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_FIDELITY",
+      "positive_points": [
+        [
+          391028,
+          585701
+        ],
+        [
+          391018,
+          585706
+        ],
+        [
+          391038,
+          585711
+        ]
+      ],
+      "negative_points": [
+        [
+          391032,
+          585697
+        ],
+        [
+          391042,
+          585701
+        ]
+      ],
+      "selection_observations": "Elongated red roof with a rounded entrance/bay projection, partially occluded at west by a tree. Preserve the observed bay; occluded boundary is uncertain.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Elongated red roof with a rounded entrance/bay projection, partially occluded at west by a tree. Preserve the observed bay; occluded boundary is uncertain.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selection_final\\T24.png",
+        "image_sha256": "c2fc651cb141fed11cf431a7e01d987b598a2c35c2e3e8836a9ab494b955f0dd"
+      },
+      "prompt_revision_reason": "Observed first mask leaks onto paving, vehicles, canopy or vegetation; add source-reviewed negative prompts before simplification."
+    },
+    {
+      "body_id": "T28:C1",
+      "anchor": [
+        390710,
+        585647
+      ],
+      "search_bounds": [
+        390699,
+        585635,
+        390717,
+        585662
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\covers\\T28_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        390699,
+        585635,
+        390717,
+        585662
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_PLANAR_CORE",
+      "positive_points": [],
+      "negative_points": [
+        [
+          390704,
+          585649
+        ],
+        [
+          390706,
+          585658
+        ],
+        [
+          390711,
+          585637
+        ],
+        [
+          390714,
+          585653
+        ]
+      ],
+      "selection_observations": "Narrow red rectangular roof with skylights between neighboring tile roofs and parked vehicles. Prompt moved safely inside roof. Target is primary red roof; neighbors remain separate.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Narrow red rectangular roof with skylights between neighboring tile roofs and parked vehicles. Prompt moved safely inside roof. Target is primary red roof; neighbors remain separate.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selection_final\\T28.png",
+        "image_sha256": "c875d51be9bb954ce5e1def62ef1120f9eb9fb355036015318ad7509d6f04ab6"
+      },
+      "prompt_revision_reason": "Observed first mask leaks onto paving, vehicles, canopy or vegetation; add source-reviewed negative prompts before simplification."
+    }
+  ],
+  "schema_version": 1,
+  "crs": "EPSG:3844",
+  "owner_status": "PENDING_OWNER_REVIEW",
+  "scope": "TEN_REVIEWED_ROOF_CASES_NOT_FULL_BUILDING_INVENTORY_OR_UNSEEN_HOLDOUT",
+  "selected_before_inference": true,
+  "duplicate_review": [
+    {
+      "body_id": "T21:C1",
+      "nearest_previous_visible_roof_m": 42.636217326929035
+    },
+    {
+      "body_id": "T22:C1",
+      "nearest_previous_visible_roof_m": 105.69093593834862
+    },
+    {
+      "body_id": "T23:C1",
+      "nearest_previous_visible_roof_m": 32.57079765034172
+    },
+    {
+      "body_id": "T24:C1",
+      "nearest_previous_visible_roof_m": 33.72088825942039
+    },
+    {
+      "body_id": "T25:C1",
+      "nearest_previous_visible_roof_m": 25.94520644621393
+    },
+    {
+      "body_id": "T26:C1",
+      "nearest_previous_visible_roof_m": 118.97499387889661
+    },
+    {
+      "body_id": "T27:C1",
+      "nearest_previous_visible_roof_m": 16.683774186306042
+    },
+    {
+      "body_id": "T28:C1",
+      "nearest_previous_visible_roof_m": 15.920485923738074
+    },
+    {
+      "body_id": "T29:C1",
+      "nearest_previous_visible_roof_m": 36.8668907062991
+    },
+    {
+      "body_id": "T30:C1",
+      "nearest_previous_visible_roof_m": 36.83642637664236
+    }
+  ],
+  "selection_history": "T29 extended; T26 original candidate rejected before inference because of old T08 proximity. Original drafts preserved."
+}

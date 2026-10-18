@@ -1,3 +1,5 @@
+> Historical progress log. For current status and actual local/remote Git differences, read [PROJECT_STATE.md](PROJECT_STATE.md). Claims below retain their original date/context; the 2026-10-18 audit does not confirm them as current.
+
 # STRATUMRO — PROJECT PROGRESS
 
 > **Canonical Progress, Quality Gate & State Synchronization Document**  
@@ -162,7 +164,7 @@ The repository contains an empirical, smoke-tested provider/model inventory ([`d
 The repository preserves shared instructions for external AI models:
 * [`.kilorules`](file:///c:/Users/lefpa/Downloads/QGIS-AI/.kilorules) — Model routing, Stereo 70 local math restrictions, and subagent settings.
 * [`CLAUDE.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/CLAUDE.md) — Claude Code guidelines and deterministic testing commands.
-* [`KILO_CONFIGURATION_AUDIT.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/KILO_CONFIGURATION_AUDIT.md) — System and VS Code extension audit report.
+* [`KILO_CONFIGURATION_AUDIT.md`](../junk/2026-10-18/root_reports/KILO_CONFIGURATION_AUDIT.md) — System and VS Code extension audit report.
 
 ---
 

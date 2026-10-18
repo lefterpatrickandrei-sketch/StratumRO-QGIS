@@ -1,0 +1,112 @@
+[
+  {
+    "body_id": "T21:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9935682286708305,
+    "whole_window_correlation": 0.9903932794605684,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T22:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9875910419958238,
+    "whole_window_correlation": 0.9805786066566927,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T23:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9939931451782972,
+    "whole_window_correlation": 0.9926551346305923,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 0.9994393329499712
+  },
+  {
+    "body_id": "T24:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9947186979817836,
+    "whole_window_correlation": 0.9892520038085852,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T25:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9951004385635099,
+    "whole_window_correlation": 0.9940606040860182,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T26:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9640680601927006,
+    "whole_window_correlation": 0.9943346035280776,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T27:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9448981579628217,
+    "whole_window_correlation": 0.9677260501515208,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T28:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9881057713252124,
+    "whole_window_correlation": 0.9837462121927901,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T29:C1",
+    "native_crs_before": "EPSG:3844",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.9328698286168073,
+    "whole_window_correlation": 0.977329933549337,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  },
+  {
+    "body_id": "T30:C1",
+    "native_crs_before": "None",
+    "interpreted_crs": "EPSG:3844",
+    "local_patch_correlation": 0.8132687635073301,
+    "whole_window_correlation": 0.984505198545043,
+    "transform_unchanged": true,
+    "datum_independently_validated": false,
+    "mask_source": "Existing project cache masks, nearest-neighbor transfer; not RGB-darkness threshold",
+    "valid_search_fraction": 1.0
+  }
+]

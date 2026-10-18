@@ -1,0 +1,22 @@
+{
+  "test_command": "venv/Scripts/python.exe -m unittest stratum_ro.test.test_fusion_refinement stratum_ro.test.test_cadastral_roof_workflow stratum_ro.test.test_fusion_guidance stratum_ro.test.test_roof_simple_geometry stratum_ro.test.test_roof_body_partition stratum_ro.test.test_roof_body_recovery_partition",
+  "observed_test_result": {
+    "tests": 43,
+    "failures": 0,
+    "errors": 0,
+    "duration_seconds": 4.765
+  },
+  "preflight_dependency": {
+    "path": "stratum_ro\\evaluation_preflight.py",
+    "sha256": "4c75ef6751c855842c8d625e283673406c4593ea3c6c1d98fb32b2f0aeccd601",
+    "state": "PREEXISTING_UNCOMMITTED_EDITS_PRESERVED_NOT_STAGED_DIRECTLY",
+    "snapshot_patch": "preexisting_preflight_dependency.patch"
+  },
+  "qgis": {
+    "same_shared_project": true,
+    "new_body_features": 3,
+    "native_renders_inspected": true,
+    "live_canvas_inspected": true
+  },
+  "owner_accepted": false
+}

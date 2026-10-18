@@ -1,0 +1,7 @@
+{
+  "stage": "final valid-mask package",
+  "error": "AttributeError: GeometryCollection has no attribute exterior",
+  "cause": "Intersection also returned boundary-only line contacts.",
+  "resolution": "Product guard now retains every polygonal part and discards zero-area contacts; added regression test.",
+  "inference_rerun": false
+}

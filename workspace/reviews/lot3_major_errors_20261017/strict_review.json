@@ -1,0 +1,27 @@
+{
+  "request": "Verifica că sunt unele cu greșeli majore",
+  "read_only_geometry_review": true,
+  "cases_inspected": [
+    "T11",
+    "T12",
+    "T13",
+    "T14",
+    "T15",
+    "T16",
+    "T17",
+    "T18",
+    "T19",
+    "T20"
+  ],
+  "major_priorities": [
+    "T19",
+    "T20:C1",
+    "T11:C3",
+    "T12",
+    "T14:C1"
+  ],
+  "T18_entire_case_validated": false,
+  "owner_verdict_changed": false,
+  "handoff": "docs/STRATUMRO_LOT3_MAJOR_ERRORS_RECHECK_2026-10-17.md",
+  "no_new_inference": true
+}

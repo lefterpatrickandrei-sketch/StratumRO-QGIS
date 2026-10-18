@@ -1,0 +1,1949 @@
+{
+  "method": "Static AST, no imports executed; definitions do not prove runtime integration.",
+  "definitions": {
+    "stratum_ro/__init__.py": [
+      "classFactory"
+    ],
+    "stratum_ro/ai/__init__.py": [],
+    "stratum_ro/ai/closed_loop.py": [
+      "TestResults",
+      "QGISLiveStatus",
+      "ProviderVerification",
+      "KiloAuditResult",
+      "ClosedLoopReport",
+      "ClosedLoopOrchestrator"
+    ],
+    "stratum_ro/ai/context.py": [
+      "_detect_system_ram_mb",
+      "detect_hardware_context",
+      "check_qgis_mcp_socket",
+      "detect_qgis_context",
+      "ResourceSnapshot",
+      "ProjectContext",
+      "ContextEngine",
+      "get_default_context_engine",
+      "get_resource_snapshot",
+      "get_context_snapshot",
+      "invalidate_context_cache",
+      "get_agent_context_package"
+    ],
+    "stratum_ro/ai/data_profiler.py": [
+      "ValidationLevel",
+      "ValidationReport",
+      "DataProfiler"
+    ],
+    "stratum_ro/ai/events.py": [
+      "EventType",
+      "Event",
+      "EventBus"
+    ],
+    "stratum_ro/ai/executor.py": [
+      "TaskExecutor"
+    ],
+    "stratum_ro/ai/memory/__init__.py": [],
+    "stratum_ro/ai/memory/listener.py": [
+      "MemoryEventSubscriber",
+      "attach_memory_to_event_bus"
+    ],
+    "stratum_ro/ai/memory/session.py": [
+      "sanitize_secrets",
+      "SessionMemory"
+    ],
+    "stratum_ro/ai/provenance.py": [
+      "EvidenceClass",
+      "ProvenanceRecord",
+      "ProvenanceChain"
+    ],
+    "stratum_ro/ai/providers/__init__.py": [],
+    "stratum_ro/ai/providers/anthropic_provider.py": [
+      "AnthropicProvider"
+    ],
+    "stratum_ro/ai/providers/base.py": [
+      "ProviderCapability",
+      "ProviderResponse",
+      "extract_json",
+      "read_env_file_key",
+      "BaseAIProvider"
+    ],
+    "stratum_ro/ai/providers/gemini_provider.py": [
+      "_strip_data_url",
+      "GeminiProvider"
+    ],
+    "stratum_ro/ai/providers/local_provider.py": [
+      "LocalProvider"
+    ],
+    "stratum_ro/ai/providers/nvidia_nim_provider.py": [
+      "NvidiaNIMProvider"
+    ],
+    "stratum_ro/ai/providers/ollama_provider.py": [
+      "OllamaProvider"
+    ],
+    "stratum_ro/ai/providers/openai_provider.py": [
+      "OpenAIProvider"
+    ],
+    "stratum_ro/ai/providers/union_alpha_provider.py": [
+      "UnionAlphaProvider"
+    ],
+    "stratum_ro/ai/registry.py": [
+      "CapabilityMatch",
+      "ProviderRegistry",
+      "CapabilityRegistry"
+    ],
+    "stratum_ro/ai/risk.py": [
+      "ActionRiskLevel",
+      "RiskDecisionType",
+      "RiskDecision",
+      "RiskEngine"
+    ],
+    "stratum_ro/ai/router.py": [
+      "TaskType",
+      "ExecutionMode",
+      "RoutingDecision",
+      "AIRouter"
+    ],
+    "stratum_ro/ai/task_graph.py": [
+      "TaskStatus",
+      "TaskNode",
+      "TaskGraph"
+    ],
+    "stratum_ro/ai/task_spec.py": [
+      "RiskTolerance",
+      "WorkflowMode",
+      "DeliverableType",
+      "TaskSpec"
+    ],
+    "stratum_ro/ai/tools/__init__.py": [],
+    "stratum_ro/ai/tools/cadastral_tools.py": [
+      "validate_topology",
+      "validate_ancpi",
+      "create_preview",
+      "commit_to_project",
+      "export_topolt_cad",
+      "export_cp_file"
+    ],
+    "stratum_ro/ai/tools/evaluation_tools.py": [
+      "compare_ground_truth"
+    ],
+    "stratum_ro/ai/tools/lidar_tools.py": [
+      "inspect_lidar",
+      "generate_ndsm"
+    ],
+    "stratum_ro/ai/tools/project_tools.py": [
+      "get_workspace_context",
+      "get_aoi",
+      "list_layers",
+      "inspect_layer"
+    ],
+    "stratum_ro/ai/tools/raster_tools.py": [
+      "inspect_raster",
+      "extract_ortho_chip"
+    ],
+    "stratum_ro/ai/tools/security.py": [
+      "PermissionClass",
+      "resolve_sandboxed_path",
+      "check_permission"
+    ],
+    "stratum_ro/ai/tools/segmentation_tools.py": [
+      "run_sam2_segmentation",
+      "inspect_mask"
+    ],
+    "stratum_ro/ai/tools/vector_tools.py": [
+      "regularize_footprints",
+      "apply_eave_offset",
+      "create_planar_partition",
+      "export_gpkg_layer",
+      "export_cityjson_lod1"
+    ],
+    "stratum_ro/ai/tools/vlm_tools.py": [
+      "vlm_verify_single_building_tool",
+      "vlm_batch_audit_layer_tool",
+      "vlm_filter_false_positives_tool"
+    ],
+    "stratum_ro/ai/vlm_verifier.py": [
+      "VLMVerificationResult",
+      "crop_building_chip",
+      "encode_chip_base64",
+      "build_cadastral_prompt",
+      "VLMVerifier"
+    ],
+    "stratum_ro/ai/worker.py": [
+      "AITaskGraphWorker"
+    ],
+    "stratum_ro/api/__init__.py": [],
+    "stratum_ro/api/app.py": [
+      "WorkflowRunRequest",
+      "ZoomRequest",
+      "KiloReviewRequest",
+      "get_health",
+      "get_qgis_layers",
+      "get_qgis_canvas",
+      "zoom_qgis",
+      "get_geojson_layer",
+      "get_workflow_modes",
+      "run_workflow",
+      "trigger_kilo_audit",
+      "export_deliverable"
+    ],
+    "stratum_ro/api/service.py": [
+      "PlatformService"
+    ],
+    "stratum_ro/building_proposals.py": [
+      "building_proposals"
+    ],
+    "stratum_ro/cad_exporter.py": [
+      "_extract_polygons",
+      "CadastralDxfExporter"
+    ],
+    "stratum_ro/cadastral_algorithm.py": [
+      "StratumROCadastralAlgorithm"
+    ],
+    "stratum_ro/cadastral_product.py": [
+      "CadastralProductGenerator"
+    ],
+    "stratum_ro/cadastral_roof_workflow.py": [
+      "_component",
+      "clip_roof_to_valid_grid",
+      "CadastralRoofWorkflow"
+    ],
+    "stratum_ro/candidate_generator.py": [
+      "CandidateGenerator"
+    ],
+    "stratum_ro/contracts/__init__.py": [],
+    "stratum_ro/contracts/adapter.py": [
+      "IQgisAdapter",
+      "ILegacyAdapter"
+    ],
+    "stratum_ro/contracts/cadastre.py": [
+      "TopoLTLayer",
+      "CadastralPoint",
+      "PADTableSpec",
+      "CPInterchangeSpec",
+      "ICadastralExporter"
+    ],
+    "stratum_ro/contracts/domain.py": [
+      "DomainMaturity",
+      "DomainCapability",
+      "BaseDomainPack"
+    ],
+    "stratum_ro/contracts/geo.py": [
+      "Coordinate2D",
+      "Coordinate3D",
+      "BoundingBox",
+      "CommonGeoObject",
+      "IGeoProcessor"
+    ],
+    "stratum_ro/contracts/geodesy.py": [
+      "AxisOrder",
+      "CRSMetadata",
+      "ICRSManager",
+      "ITransformer"
+    ],
+    "stratum_ro/contracts/geometry.py": [
+      "IGeometryEngine"
+    ],
+    "stratum_ro/contracts/provenance.py": [
+      "ProvenanceRecordContract",
+      "IProvenanceRecorder"
+    ],
+    "stratum_ro/contracts/validation.py": [
+      "ValidationSeverity",
+      "ValidationIssue",
+      "ValidationReport",
+      "IValidator"
+    ],
+    "stratum_ro/contracts/vision.py": [
+      "VisionPromptType",
+      "VisionPrompt",
+      "VisionMaskResult",
+      "IVisionEngine"
+    ],
+    "stratum_ro/contracts/workflow.py": [
+      "WorkflowStatus",
+      "ApprovalState",
+      "ApprovalRequest",
+      "ApprovalDecision",
+      "IWorkflowRunner"
+    ],
+    "stratum_ro/core/__init__.py": [],
+    "stratum_ro/core/geodesy/__init__.py": [],
+    "stratum_ro/core/geodesy/crs.py": [
+      "CoreCRSManager"
+    ],
+    "stratum_ro/core/geodesy/transformer.py": [
+      "CoreTransformer"
+    ],
+    "stratum_ro/core/geometry/__init__.py": [],
+    "stratum_ro/core/geometry/cleaning.py": [
+      "CoreGeometryEngine"
+    ],
+    "stratum_ro/core/geometry/metrics.py": [
+      "ensure_valid_polygon",
+      "compute_iou",
+      "compute_hausdorff",
+      "sample_points_along_boundary",
+      "compute_boundary_rmse",
+      "compute_centroid_shift",
+      "compute_angular_deviation"
+    ],
+    "stratum_ro/core/geometry/regularizer.py": [
+      "_extract_largest_polygon",
+      "remove_acute_spikes",
+      "count_macro_reflex_corners",
+      "compute_orthogonality_ratio",
+      "orthogonalize_cad"
+    ],
+    "stratum_ro/core/pointcloud/__init__.py": [],
+    "stratum_ro/core/pointcloud/processor.py": [
+      "PointCloudMetadata",
+      "CorePointCloudReader"
+    ],
+    "stratum_ro/core/qa_qc/__init__.py": [],
+    "stratum_ro/core/qa_qc/validator.py": [
+      "CoreGeometryValidator"
+    ],
+    "stratum_ro/core/raster/__init__.py": [],
+    "stratum_ro/core/raster/reader.py": [
+      "RasterMetadata",
+      "CoreRasterReader"
+    ],
+    "stratum_ro/dataset_resolver.py": [
+      "DatasetMetadata",
+      "CanonicalDatasetResolver"
+    ],
+    "stratum_ro/domain/__init__.py": [],
+    "stratum_ro/domain/bim/__init__.py": [],
+    "stratum_ro/domain/bim/ifc_exporter.py": [
+      "_create_guid",
+      "IfcCadastralExporter"
+    ],
+    "stratum_ro/domain/cadastre_ro/__init__.py": [],
+    "stratum_ro/domain/cadastre_ro/exporter.py": [
+      "_extract_polygons",
+      "CadastralDxfExporter"
+    ],
+    "stratum_ro/domain/cadastre_ro/product.py": [
+      "CadastralProductGenerator"
+    ],
+    "stratum_ro/domain/city_3d/__init__.py": [],
+    "stratum_ro/domain/city_3d/builder.py": [
+      "_extract_polygons",
+      "Volumetric3DBuilder"
+    ],
+    "stratum_ro/domain/lidar/__init__.py": [],
+    "stratum_ro/domain/lidar/processor.py": [
+      "LidarProcessor"
+    ],
+    "stratum_ro/domain/lidar/quality_gate.py": [
+      "LidarQualityGate"
+    ],
+    "stratum_ro/domain/topography/__init__.py": [],
+    "stratum_ro/domain/topography/adapter.py": [
+      "TopographyAdapter"
+    ],
+    "stratum_ro/domain/vision/__init__.py": [],
+    "stratum_ro/domain/vision/candidates.py": [
+      "CandidateGenerator"
+    ],
+    "stratum_ro/domain/vision/engine.py": [
+      "get_available_onnx_providers",
+      "get_preferred_provider",
+      "ONNXSegmentationEngine"
+    ],
+    "stratum_ro/domain/vision/fusion.py": [
+      "MaskFusionEngine"
+    ],
+    "stratum_ro/domain/vision/vegetation.py": [
+      "MultimodalVegetationFilter"
+    ],
+    "stratum_ro/evaluation_preflight.py": [
+      "EvaluationBlocked",
+      "sha256_file",
+      "_bounds",
+      "validate_selection",
+      "require_ready",
+      "checked_qgis_result"
+    ],
+    "stratum_ro/fusion_guidance.py": [
+      "select_fusion_prompt"
+    ],
+    "stratum_ro/fusion_refinement.py": [
+      "refine_fusion_mask"
+    ],
+    "stratum_ro/geometric_reconstruction_v2.py": [
+      "suppress_collinear_nodes",
+      "AdaptiveContourReconstructor"
+    ],
+    "stratum_ro/geometry_utils.py": [
+      "resolve_multipart_geometry",
+      "extract_largest_polygon_fallback",
+      "_get_reflex_vertices",
+      "split_at_calcan",
+      "offset_polygon_per_edge",
+      "apply_calcan_aware_eave_retraction"
+    ],
+    "stratum_ro/landuse_ancpi.py": [
+      "get_ancpi_landuse"
+    ],
+    "stratum_ro/lidar_processor.py": [
+      "complete_building_grid",
+      "compute_3d_structural_features",
+      "LidarProcessor"
+    ],
+    "stratum_ro/lidar_quality_gate.py": [
+      "LidarQualityGate"
+    ],
+    "stratum_ro/logic_handler.py": [
+      "extract_json_from_llm",
+      "StratumOrchestrator"
+    ],
+    "stratum_ro/mask_fusion.py": [
+      "MaskFusionEngine"
+    ],
+    "stratum_ro/onnx_engine.py": [
+      "get_available_onnx_providers",
+      "get_preferred_provider",
+      "ONNXSegmentationEngine"
+    ],
+    "stratum_ro/optical_roof_edges.py": [
+      "refine_roof_color"
+    ],
+    "stratum_ro/orchestrator.py": [
+      "_get_api_key",
+      "request_segmentation_plan",
+      "get_mock_segmentation_plan"
+    ],
+    "stratum_ro/orientation_regularizer.py": [
+      "OrientationAwareRegularizer"
+    ],
+    "stratum_ro/ortho_extractor.py": [
+      "generate_hann_window_2d",
+      "sliding_window_inference_mosaic",
+      "OrthoExtractor"
+    ],
+    "stratum_ro/processing_provider.py": [
+      "StratumROProcessingProvider"
+    ],
+    "stratum_ro/prompt_generator.py": [
+      "PromptGenerator"
+    ],
+    "stratum_ro/pug_product.py": [
+      "PugProductGenerator"
+    ],
+    "stratum_ro/qgis_render_order.py": [
+      "vectors_above_rasters"
+    ],
+    "stratum_ro/regional_review.py": [
+      "clip_to_valid_mosaic"
+    ],
+    "stratum_ro/regional_roofs.py": [
+      "RegionalRoofConfig",
+      "sha256_file",
+      "OrthoMosaic",
+      "plan_windows",
+      "sample_evidence",
+      "route_summary",
+      "route_surface",
+      "vectorize_automatic_masks",
+      "deduplicate_candidates",
+      "simplify_regional_roof",
+      "expand_edge_candidate",
+      "ground_footprint_scenarios"
+    ],
+    "stratum_ro/regulatory_consensus.py": [
+      "_get_nvidia_api_key",
+      "RegulatoryConsensusEngine"
+    ],
+    "stratum_ro/roof_body_partition.py": [
+      "split_color_roof_bodies"
+    ],
+    "stratum_ro/roof_body_proposals.py": [
+      "color_body_proposals"
+    ],
+    "stratum_ro/roof_body_recovery.py": [
+      "_replace_roof_geometry",
+      "recover_roof_bodies"
+    ],
+    "stratum_ro/roof_candidate_routing.py": [
+      "vegetation_color_fraction",
+      "route_roof_candidate",
+      "prioritize_roof_candidates"
+    ],
+    "stratum_ro/roof_gap_edges.py": [
+      "replace_observed_edge",
+      "fit_roof_gap",
+      "fit_red_roof_edge"
+    ],
+    "stratum_ro/roof_mask_fidelity.py": [
+      "simplify_observed_roof",
+      "rectangular_roof_core"
+    ],
+    "stratum_ro/roof_masked_preflight.py": [
+      "validate_masked_selection"
+    ],
+    "stratum_ro/roof_rectangle_core.py": [
+      "rectangle_core"
+    ],
+    "stratum_ro/roof_refinement_prompts.py": [
+      "_ensure_affine",
+      "_validate_inputs",
+      "_rasterize_polygon_mask",
+      "_compute_distance_transform_to_background",
+      "_window",
+      "refinement_prompts"
+    ],
+    "stratum_ro/roof_retry.py": [
+      "roof_retry_prompts",
+      "trim_retry_roof_surface",
+      "retry_roof_geometry"
+    ],
+    "stratum_ro/roof_revision_review.py": [
+      "review_roof_revision"
+    ],
+    "stratum_ro/roof_simple_geometry.py": [
+      "_axis_angle",
+      "_orthogonal_ring",
+      "simple_roof_geometry"
+    ],
+    "stratum_ro/sam2_engine.py": [
+      "_extract_largest_polygon",
+      "SAM2BuildingSegmenter"
+    ],
+    "stratum_ro/sensor_review.py": [
+      "build_class_evidence",
+      "review_candidates"
+    ],
+    "stratum_ro/simulation/__init__.py": [],
+    "stratum_ro/simulation/perturbation.py": [
+      "PerturbationConfig",
+      "PerturbationEngine"
+    ],
+    "stratum_ro/stratum_ro.py": [
+      "StratumRO"
+    ],
+    "stratum_ro/stratum_ro_dockwidget.py": [
+      "SegmentationWorker",
+      "StratumRODockWidget"
+    ],
+    "stratum_ro/stratum_ro_dockwidget_base.py": [
+      "Ui_StratumRODockWidgetBase"
+    ],
+    "stratum_ro/test/__init__.py": [],
+    "stratum_ro/test/qgis_interface.py": [
+      "QgisInterface"
+    ],
+    "stratum_ro/test/test_ai_assistant_ui.py": [
+      "TestAITaskGraphWorkerExecution",
+      "TestAIAssistantUIComponents",
+      "TestStratumRODockWidgetUIIntegration"
+    ],
+    "stratum_ro/test/test_ai_context.py": [
+      "TestAIContextAndSession"
+    ],
+    "stratum_ro/test/test_ai_context_engine.py": [
+      "TestAIContextEngine"
+    ],
+    "stratum_ro/test/test_ai_providers.py": [
+      "TestAIProviders"
+    ],
+    "stratum_ro/test/test_ai_router.py": [
+      "TestAIRouterAndRegistry"
+    ],
+    "stratum_ro/test/test_ai_session_memory.py": [
+      "TestAISessionMemory"
+    ],
+    "stratum_ro/test/test_ai_task_graph.py": [
+      "TestAITaskGraphAndExecutor"
+    ],
+    "stratum_ro/test/test_ai_tools.py": [
+      "TestAITools"
+    ],
+    "stratum_ro/test/test_bim_ifc_exporter.py": [
+      "TestIfcCadastralExporter"
+    ],
+    "stratum_ro/test/test_building_proposals.py": [
+      "ProposalTests"
+    ],
+    "stratum_ro/test/test_cad_exporter.py": [
+      "TestCadastralDxfExporter"
+    ],
+    "stratum_ro/test/test_cadastral_roof_workflow.py": [
+      "FakeSegmenter",
+      "CadastralRoofWorkflowTests"
+    ],
+    "stratum_ro/test/test_context_memory_integration.py": [
+      "TestContextMemoryIntegration"
+    ],
+    "stratum_ro/test/test_contracts.py": [
+      "TestArchitectureContracts"
+    ],
+    "stratum_ro/test/test_core_geodesy.py": [
+      "TestCoreGeodesy"
+    ],
+    "stratum_ro/test/test_core_geometry.py": [
+      "TestCoreGeometry"
+    ],
+    "stratum_ro/test/test_core_integration.py": [
+      "TestCoreIntegration"
+    ],
+    "stratum_ro/test/test_core_qa_qc.py": [
+      "TestCoreQAQC"
+    ],
+    "stratum_ro/test/test_cp_export_real_coords.py": [
+      "TestCpExportRealCoords"
+    ],
+    "stratum_ro/test/test_dataset_resolver.py": [
+      "TestCanonicalDatasetResolver"
+    ],
+    "stratum_ro/test/test_desktop_operator.py": [
+      "TestDesktopOperator"
+    ],
+    "stratum_ro/test/test_evaluation.py": [
+      "TestEvaluationEngine"
+    ],
+    "stratum_ro/test/test_evaluation_assignment.py": [
+      "frame",
+      "TestEvaluationAssignment"
+    ],
+    "stratum_ro/test/test_evaluation_preflight.py": [
+      "TestEvaluationPreflight"
+    ],
+    "stratum_ro/test/test_fusion_guidance.py": [
+      "FusionGuidanceTests"
+    ],
+    "stratum_ro/test/test_fusion_refinement.py": [
+      "FusionRefinementTests"
+    ],
+    "stratum_ro/test/test_geometric_reconstruction_v2.py": [
+      "TestGeometricReconstructionV2"
+    ],
+    "stratum_ro/test/test_geometry_golden.py": [
+      "count_reflex_corners",
+      "has_diagonal_edges",
+      "TestGeometryGolden"
+    ],
+    "stratum_ro/test/test_geopackage_ground_export.py": [
+      "TestGeopackageGroundExport"
+    ],
+    "stratum_ro/test/test_init.py": [
+      "TestInit"
+    ],
+    "stratum_ro/test/test_lidar_completion.py": [
+      "TestLidarCompletion"
+    ],
+    "stratum_ro/test/test_logic_handler.py": [
+      "TestStratumROLogicHandler"
+    ],
+    "stratum_ro/test/test_mcp_tools.py": [
+      "TestMCPToolsAndSecurity"
+    ],
+    "stratum_ro/test/test_onnx_engine.py": [
+      "TestONNXEngine"
+    ],
+    "stratum_ro/test/test_optical_roof_edges.py": [
+      "OpticalRoofEdgesTests"
+    ],
+    "stratum_ro/test/test_phase1_golden_freeze.py": [
+      "TestPhase1GoldenFreeze"
+    ],
+    "stratum_ro/test/test_phase2_sensor_fusion.py": [
+      "TestPhase2SensorFusion"
+    ],
+    "stratum_ro/test/test_phase3_modules.py": [
+      "TestPhase3Modules"
+    ],
+    "stratum_ro/test/test_phase4_orchestration.py": [
+      "TestPhase4Orchestration"
+    ],
+    "stratum_ro/test/test_platform_api.py": [
+      "TestPlatformAPI"
+    ],
+    "stratum_ro/test/test_processing_provider.py": [
+      "TestProcessingProvider"
+    ],
+    "stratum_ro/test/test_qgis_environment.py": [
+      "QGISTest"
+    ],
+    "stratum_ro/test/test_regional_review.py": [
+      "MaskBoundaryTests"
+    ],
+    "stratum_ro/test/test_regional_roofs.py": [
+      "RegionalRoofTests"
+    ],
+    "stratum_ro/test/test_regional_runner.py": [
+      "RegionalRunnerTests"
+    ],
+    "stratum_ro/test/test_resources.py": [
+      "StratumRODialogTest"
+    ],
+    "stratum_ro/test/test_roof_body_partition.py": [
+      "RoofBodyPartitionTests"
+    ],
+    "stratum_ro/test/test_roof_body_proposals.py": [
+      "TestRoofBodyProposals"
+    ],
+    "stratum_ro/test/test_roof_body_recovery_partition.py": [
+      "PartitionRecoveryIntegrationTests"
+    ],
+    "stratum_ro/test/test_roof_candidate_routing.py": [
+      "RoofRoutingTests"
+    ],
+    "stratum_ro/test/test_roof_gap_edges.py": [
+      "RoofGapEdgesTests"
+    ],
+    "stratum_ro/test/test_roof_mask_fidelity.py": [
+      "MaskFidelityTests"
+    ],
+    "stratum_ro/test/test_roof_masked_preflight.py": [
+      "MaskedPreflightTests"
+    ],
+    "stratum_ro/test/test_roof_rectangle_core.py": [
+      "RectangleCoreTests"
+    ],
+    "stratum_ro/test/test_roof_refinement_prompts.py": [
+      "TestRoofRefinementPrompts"
+    ],
+    "stratum_ro/test/test_roof_retry.py": [
+      "TestRoofRetryPrompts"
+    ],
+    "stratum_ro/test/test_roof_retry_integration.py": [
+      "LocalRetryTests"
+    ],
+    "stratum_ro/test/test_roof_retry_surface.py": [
+      "RetrySurfaceTests"
+    ],
+    "stratum_ro/test/test_roof_revision_review.py": [
+      "RoofRevisionReviewTests"
+    ],
+    "stratum_ro/test/test_roof_simple_geometry.py": [
+      "SimpleRoofGeometryTests"
+    ],
+    "stratum_ro/test/test_sam2_prompt_integrity.py": [
+      "TestSAM2PromptIntegrity"
+    ],
+    "stratum_ro/test/test_sensor_review.py": [
+      "SensorReviewTests"
+    ],
+    "stratum_ro/test/test_stratum_ro_dockwidget.py": [
+      "StratumRODockWidgetTest"
+    ],
+    "stratum_ro/test/test_task_spec.py": [
+      "TestTaskSpec",
+      "TestCapabilityResolution"
+    ],
+    "stratum_ro/test/test_translations.py": [
+      "SafeTranslationsTest"
+    ],
+    "stratum_ro/test/test_vectorizer.py": [
+      "TestCadastralVectorizer"
+    ],
+    "stratum_ro/test/test_vectorizer_overlap_identity.py": [
+      "TestOverlapIdentity"
+    ],
+    "stratum_ro/test/test_vlm_verifier.py": [
+      "MockMultimodalProvider",
+      "TestVLMVerifier"
+    ],
+    "stratum_ro/test/test_volumetric_3d.py": [
+      "TestVolumetric3D"
+    ],
+    "stratum_ro/test/utilities.py": [
+      "get_qgis_app"
+    ],
+    "stratum_ro/vectorizer.py": [
+      "_extract_largest_polygon",
+      "remove_acute_spikes",
+      "count_macro_reflex_corners",
+      "compute_orthogonality_ratio",
+      "orthogonalize_cad",
+      "check_is_likely_container_or_shed",
+      "compute_adaptive_eave_offset",
+      "CadastralVectorizer"
+    ],
+    "stratum_ro/vegetation_filter.py": [
+      "MultimodalVegetationFilter"
+    ],
+    "stratum_ro/volumetric_3d.py": []
+  },
+  "from_imports": {
+    "stratum_ro/__init__.py": [
+      "stratum_ro"
+    ],
+    "stratum_ro/ai/__init__.py": [
+      "providers.base",
+      "registry",
+      "router",
+      "task_spec"
+    ],
+    "stratum_ro/ai/closed_loop.py": [
+      "dataclasses",
+      "pathlib",
+      "providers.base",
+      "providers.nvidia_nim_provider",
+      "providers.union_alpha_provider",
+      "typing"
+    ],
+    "stratum_ro/ai/context.py": [
+      "dataclasses",
+      "pathlib",
+      "qgis.core",
+      "qgis.utils",
+      "stratum_ro.ai.memory.session",
+      "stratum_ro.ai.registry",
+      "stratum_ro.ai.tools.security",
+      "typing"
+    ],
+    "stratum_ro/ai/data_profiler.py": [
+      "dataclasses",
+      "enum",
+      "pathlib",
+      "typing"
+    ],
+    "stratum_ro/ai/events.py": [
+      "dataclasses",
+      "datetime",
+      "enum",
+      "typing"
+    ],
+    "stratum_ro/ai/executor.py": [
+      "events",
+      "router",
+      "task_graph",
+      "typing"
+    ],
+    "stratum_ro/ai/memory/__init__.py": [
+      "listener",
+      "session"
+    ],
+    "stratum_ro/ai/memory/listener.py": [
+      "stratum_ro.ai.events",
+      "stratum_ro.ai.memory.session",
+      "typing"
+    ],
+    "stratum_ro/ai/memory/session.py": [
+      "datetime",
+      "pathlib",
+      "typing"
+    ],
+    "stratum_ro/ai/provenance.py": [
+      "dataclasses",
+      "datetime",
+      "enum",
+      "pathlib",
+      "typing"
+    ],
+    "stratum_ro/ai/providers/__init__.py": [
+      "anthropic_provider",
+      "base",
+      "gemini_provider",
+      "local_provider",
+      "nvidia_nim_provider",
+      "ollama_provider",
+      "openai_provider",
+      "union_alpha_provider"
+    ],
+    "stratum_ro/ai/providers/anthropic_provider.py": [
+      "base",
+      "typing"
+    ],
+    "stratum_ro/ai/providers/base.py": [
+      "abc",
+      "dataclasses",
+      "enum",
+      "pathlib",
+      "typing"
+    ],
+    "stratum_ro/ai/providers/gemini_provider.py": [
+      "base",
+      "typing"
+    ],
+    "stratum_ro/ai/providers/local_provider.py": [
+      "base",
+      "typing"
+    ],
+    "stratum_ro/ai/providers/nvidia_nim_provider.py": [
+      "base",
+      "openai",
+      "typing"
+    ],
+    "stratum_ro/ai/providers/ollama_provider.py": [
+      "base",
+      "typing"
+    ],
+    "stratum_ro/ai/providers/openai_provider.py": [
+      "base",
+      "openai",
+      "typing"
+    ],
+    "stratum_ro/ai/providers/union_alpha_provider.py": [
+      "base",
+      "typing"
+    ],
+    "stratum_ro/ai/registry.py": [
+      "dataclasses",
+      "providers.anthropic_provider",
+      "providers.base",
+      "providers.gemini_provider",
+      "providers.local_provider",
+      "providers.nvidia_nim_provider",
+      "providers.ollama_provider",
+      "providers.openai_provider",
+      "providers.union_alpha_provider",
+      "typing"
+    ],
+    "stratum_ro/ai/risk.py": [
+      "dataclasses",
+      "enum",
+      "pathlib",
+      "task_graph",
+      "typing"
+    ],
+    "stratum_ro/ai/router.py": [
+      "dataclasses",
+      "enum",
+      "providers.base",
+      "registry",
+      "typing"
+    ],
+    "stratum_ro/ai/task_graph.py": [
+      "dataclasses",
+      "datetime",
+      "enum",
+      "task_spec",
+      "typing"
+    ],
+    "stratum_ro/ai/task_spec.py": [
+      "dataclasses",
+      "enum",
+      "pathlib",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/__init__.py": [
+      "cadastral_tools",
+      "evaluation_tools",
+      "lidar_tools",
+      "project_tools",
+      "raster_tools",
+      "security",
+      "segmentation_tools",
+      "vector_tools",
+      "vlm_tools"
+    ],
+    "stratum_ro/ai/tools/cadastral_tools.py": [
+      "security",
+      "shapely.geometry",
+      "shapely.validation",
+      "stratum_ro.cad_exporter",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/evaluation_tools.py": [
+      "engine.evaluation",
+      "pathlib",
+      "security",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/lidar_tools.py": [
+      "pathlib",
+      "scipy.ndimage",
+      "security",
+      "stratum_ro.lidar_processor",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/project_tools.py": [
+      "lidar_tools",
+      "pathlib",
+      "raster_tools",
+      "security",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/raster_tools.py": [
+      "pathlib",
+      "rasterio.windows",
+      "security",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/security.py": [
+      "enum",
+      "pathlib",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/segmentation_tools.py": [
+      "pathlib",
+      "security",
+      "shapely.geometry",
+      "stratum_ro.sam2_engine",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/vector_tools.py": [
+      "security",
+      "shapely.geometry",
+      "shapely.ops",
+      "stratum_ro.vectorizer",
+      "stratum_ro.volumetric_3d",
+      "typing"
+    ],
+    "stratum_ro/ai/tools/vlm_tools.py": [
+      "shapely",
+      "shapely.geometry",
+      "stratum_ro.ai.vlm_verifier",
+      "typing"
+    ],
+    "stratum_ro/ai/vlm_verifier.py": [
+      "PIL",
+      "dataclasses",
+      "rasterio.windows",
+      "shapely.geometry",
+      "stratum_ro.ai.providers.base",
+      "stratum_ro.ai.providers.nvidia_nim_provider",
+      "typing"
+    ],
+    "stratum_ro/ai/worker.py": [
+      "PyQt5",
+      "PyQt5.QtCore",
+      "events",
+      "executor",
+      "task_graph",
+      "typing"
+    ],
+    "stratum_ro/api/__init__.py": [
+      "app"
+    ],
+    "stratum_ro/api/app.py": [
+      "fastapi",
+      "fastapi.middleware.cors",
+      "fastapi.responses",
+      "fastapi.staticfiles",
+      "pathlib",
+      "pydantic",
+      "service",
+      "stratum_ro.ai.closed_loop",
+      "stratum_ro.ai.providers.base",
+      "stratum_ro.ai.providers.nvidia_nim_provider",
+      "stratum_ro.ai.providers.union_alpha_provider",
+      "stratum_ro.cad_exporter",
+      "stratum_ro.simulation.perturbation",
+      "typing"
+    ],
+    "stratum_ro/api/service.py": [
+      "pathlib",
+      "pyproj",
+      "shapely.geometry",
+      "shapely.ops",
+      "stratum_ro.cadastral_roof_workflow",
+      "stratum_ro.regional_roofs",
+      "stratum_ro.sam2_engine",
+      "typing"
+    ],
+    "stratum_ro/building_proposals.py": [
+      "rasterio",
+      "rasterio.features",
+      "scipy.ndimage",
+      "shapely.geometry"
+    ],
+    "stratum_ro/cad_exporter.py": [
+      "ezdxf",
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/cadastral_algorithm.py": [
+      "cadastral_product",
+      "qgis.core"
+    ],
+    "stratum_ro/cadastral_product.py": [
+      "cad_exporter",
+      "shapely.geometry",
+      "shapely.ops",
+      "typing",
+      "vectorizer"
+    ],
+    "stratum_ro/cadastral_roof_workflow.py": [
+      "fusion_guidance",
+      "fusion_refinement",
+      "rasterio.features",
+      "roof_mask_fidelity",
+      "scipy.ndimage",
+      "shapely.geometry",
+      "shapely.ops"
+    ],
+    "stratum_ro/candidate_generator.py": [
+      "rasterio.features",
+      "scipy.ndimage",
+      "shapely.geometry",
+      "shapely.validation"
+    ],
+    "stratum_ro/contracts/__init__.py": [
+      "stratum_ro.contracts.adapter",
+      "stratum_ro.contracts.cadastre",
+      "stratum_ro.contracts.domain",
+      "stratum_ro.contracts.geo",
+      "stratum_ro.contracts.geodesy",
+      "stratum_ro.contracts.geometry",
+      "stratum_ro.contracts.provenance",
+      "stratum_ro.contracts.validation",
+      "stratum_ro.contracts.vision",
+      "stratum_ro.contracts.workflow"
+    ],
+    "stratum_ro/contracts/adapter.py": [
+      "stratum_ro.contracts.geo",
+      "typing"
+    ],
+    "stratum_ro/contracts/cadastre.py": [
+      "dataclasses",
+      "enum",
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/contracts/domain.py": [
+      "abc",
+      "dataclasses",
+      "enum",
+      "stratum_ro.contracts.geo",
+      "typing"
+    ],
+    "stratum_ro/contracts/geo.py": [
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "stratum_ro/contracts/geodesy.py": [
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "stratum_ro/contracts/geometry.py": [
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/contracts/provenance.py": [
+      "dataclasses",
+      "datetime",
+      "typing"
+    ],
+    "stratum_ro/contracts/validation.py": [
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "stratum_ro/contracts/vision.py": [
+      "dataclasses",
+      "enum",
+      "typing"
+    ],
+    "stratum_ro/contracts/workflow.py": [
+      "dataclasses",
+      "datetime",
+      "enum",
+      "typing"
+    ],
+    "stratum_ro/core/__init__.py": [
+      "stratum_ro.core.geodesy",
+      "stratum_ro.core.geometry",
+      "stratum_ro.core.pointcloud",
+      "stratum_ro.core.qa_qc",
+      "stratum_ro.core.raster"
+    ],
+    "stratum_ro/core/geodesy/__init__.py": [
+      "stratum_ro.core.geodesy.crs",
+      "stratum_ro.core.geodesy.transformer"
+    ],
+    "stratum_ro/core/geodesy/crs.py": [
+      "stratum_ro.contracts.geodesy",
+      "typing"
+    ],
+    "stratum_ro/core/geodesy/transformer.py": [
+      "stratum_ro.contracts.geodesy",
+      "typing"
+    ],
+    "stratum_ro/core/geometry/__init__.py": [
+      "stratum_ro.core.geometry.cleaning",
+      "stratum_ro.core.geometry.metrics",
+      "stratum_ro.core.geometry.regularizer"
+    ],
+    "stratum_ro/core/geometry/cleaning.py": [
+      "shapely.geometry",
+      "shapely.ops",
+      "shapely.validation",
+      "stratum_ro.contracts.geometry",
+      "stratum_ro.core.geometry.metrics",
+      "stratum_ro.core.geometry.regularizer",
+      "typing"
+    ],
+    "stratum_ro/core/geometry/metrics.py": [
+      "shapely.geometry",
+      "shapely.validation",
+      "typing"
+    ],
+    "stratum_ro/core/geometry/regularizer.py": [
+      "buildingregulariser",
+      "shapely.affinity",
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/core/pointcloud/__init__.py": [
+      "stratum_ro.core.pointcloud.processor"
+    ],
+    "stratum_ro/core/pointcloud/processor.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "stratum_ro/core/qa_qc/__init__.py": [
+      "stratum_ro.core.qa_qc.validator"
+    ],
+    "stratum_ro/core/qa_qc/validator.py": [
+      "shapely.geometry",
+      "shapely.validation",
+      "stratum_ro.contracts.validation",
+      "typing"
+    ],
+    "stratum_ro/core/raster/__init__.py": [
+      "stratum_ro.core.raster.reader"
+    ],
+    "stratum_ro/core/raster/reader.py": [
+      "dataclasses",
+      "rasterio.windows",
+      "typing"
+    ],
+    "stratum_ro/dataset_resolver.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "stratum_ro/domain/__init__.py": [],
+    "stratum_ro/domain/bim/__init__.py": [
+      "ifc_exporter"
+    ],
+    "stratum_ro/domain/bim/ifc_exporter.py": [
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/domain/cadastre_ro/__init__.py": [
+      "exporter",
+      "product"
+    ],
+    "stratum_ro/domain/cadastre_ro/exporter.py": [
+      "ezdxf",
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/domain/cadastre_ro/product.py": [
+      "exporter",
+      "shapely.geometry",
+      "shapely.ops",
+      "stratum_ro.vectorizer",
+      "typing"
+    ],
+    "stratum_ro/domain/city_3d/__init__.py": [
+      "builder"
+    ],
+    "stratum_ro/domain/city_3d/builder.py": [
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/domain/lidar/__init__.py": [
+      "processor",
+      "quality_gate"
+    ],
+    "stratum_ro/domain/lidar/processor.py": [
+      "rasterio.transform",
+      "scipy.ndimage"
+    ],
+    "stratum_ro/domain/lidar/quality_gate.py": [
+      "rasterio.features",
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/domain/topography/__init__.py": [
+      "adapter"
+    ],
+    "stratum_ro/domain/topography/adapter.py": [
+      "typing"
+    ],
+    "stratum_ro/domain/vision/__init__.py": [
+      "candidates",
+      "engine",
+      "fusion",
+      "vegetation"
+    ],
+    "stratum_ro/domain/vision/candidates.py": [
+      "rasterio.features",
+      "scipy.ndimage",
+      "shapely.geometry",
+      "shapely.validation"
+    ],
+    "stratum_ro/domain/vision/engine.py": [
+      "PIL",
+      "shapely.geometry",
+      "shapely.validation",
+      "typing"
+    ],
+    "stratum_ro/domain/vision/fusion.py": [
+      "shapely.geometry",
+      "shapely.ops",
+      "shapely.validation"
+    ],
+    "stratum_ro/domain/vision/vegetation.py": [],
+    "stratum_ro/evaluation_preflight.py": [
+      "PIL",
+      "pathlib",
+      "rasterio.windows",
+      "shapely.geometry"
+    ],
+    "stratum_ro/fusion_guidance.py": [
+      "scipy.ndimage"
+    ],
+    "stratum_ro/fusion_refinement.py": [
+      "rasterio.features",
+      "roof_simple_geometry",
+      "scipy.ndimage",
+      "shapely.geometry"
+    ],
+    "stratum_ro/geometric_reconstruction_v2.py": [
+      "scipy.ndimage",
+      "shapely.affinity",
+      "shapely.geometry",
+      "shapely.ops",
+      "typing"
+    ],
+    "stratum_ro/geometry_utils.py": [
+      "shapely.geometry",
+      "shapely.ops",
+      "shapely.validation",
+      "typing"
+    ],
+    "stratum_ro/landuse_ancpi.py": [
+      "shapely.geometry",
+      "shapely.ops"
+    ],
+    "stratum_ro/lidar_processor.py": [
+      "rasterio.transform",
+      "scipy.ndimage",
+      "scipy.spatial",
+      "sensor_review",
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/lidar_quality_gate.py": [
+      "rasterio.features",
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/logic_handler.py": [
+      "qgis.core"
+    ],
+    "stratum_ro/mask_fusion.py": [
+      "shapely.geometry",
+      "shapely.ops",
+      "shapely.strtree",
+      "shapely.validation"
+    ],
+    "stratum_ro/onnx_engine.py": [
+      "PIL",
+      "shapely.geometry",
+      "shapely.validation",
+      "typing"
+    ],
+    "stratum_ro/optical_roof_edges.py": [
+      "rasterio",
+      "rasterio.features",
+      "scipy.ndimage",
+      "shapely",
+      "shapely.geometry"
+    ],
+    "stratum_ro/orchestrator.py": [
+      "logic_handler",
+      "openai",
+      "pathlib"
+    ],
+    "stratum_ro/orientation_regularizer.py": [
+      "shapely.affinity",
+      "shapely.geometry",
+      "shapely.validation",
+      "stratum_ro.vectorizer"
+    ],
+    "stratum_ro/ortho_extractor.py": [
+      "typing"
+    ],
+    "stratum_ro/processing_provider.py": [
+      "cadastral_algorithm",
+      "qgis.PyQt.QtGui",
+      "qgis.core"
+    ],
+    "stratum_ro/prompt_generator.py": [
+      "scipy.ndimage"
+    ],
+    "stratum_ro/pug_product.py": [
+      "shapely.geometry",
+      "shapely.ops",
+      "typing",
+      "vectorizer",
+      "volumetric_3d"
+    ],
+    "stratum_ro/qgis_render_order.py": [
+      "qgis.core"
+    ],
+    "stratum_ro/regional_review.py": [
+      "rasterio.features",
+      "shapely.geometry",
+      "shapely.ops"
+    ],
+    "stratum_ro/regional_roofs.py": [
+      "contextlib",
+      "dataclasses",
+      "pathlib",
+      "rasterio.enums",
+      "rasterio.features",
+      "rasterio.transform",
+      "rasterio.vrt",
+      "roof_simple_geometry",
+      "scipy.ndimage",
+      "shapely.geometry",
+      "shapely.strtree"
+    ],
+    "stratum_ro/regulatory_consensus.py": [
+      "pathlib",
+      "typing"
+    ],
+    "stratum_ro/roof_body_partition.py": [
+      "rasterio",
+      "rasterio.features",
+      "roof_simple_geometry",
+      "shapely",
+      "shapely.geometry"
+    ],
+    "stratum_ro/roof_body_proposals.py": [
+      "rasterio.features",
+      "scipy.ndimage",
+      "shapely.geometry",
+      "shapely.ops",
+      "typing"
+    ],
+    "stratum_ro/roof_body_recovery.py": [
+      "building_proposals",
+      "optical_roof_edges",
+      "roof_body_partition",
+      "roof_body_proposals",
+      "roof_candidate_routing",
+      "roof_rectangle_core",
+      "roof_retry",
+      "roof_simple_geometry",
+      "scipy.ndimage",
+      "sensor_review",
+      "shapely.geometry",
+      "vectorizer"
+    ],
+    "stratum_ro/roof_candidate_routing.py": [
+      "rasterio",
+      "rasterio.features"
+    ],
+    "stratum_ro/roof_gap_edges.py": [
+      "scipy.ndimage",
+      "shapely.geometry"
+    ],
+    "stratum_ro/roof_mask_fidelity.py": [
+      "roof_simple_geometry",
+      "shapely.geometry"
+    ],
+    "stratum_ro/roof_masked_preflight.py": [
+      "evaluation_preflight",
+      "pathlib",
+      "rasterio.windows"
+    ],
+    "stratum_ro/roof_rectangle_core.py": [
+      "rasterio.features",
+      "rasterio.transform",
+      "shapely",
+      "shapely.geometry"
+    ],
+    "stratum_ro/roof_refinement_prompts.py": [
+      "affine",
+      "collections",
+      "rasterio.features",
+      "scipy.ndimage",
+      "shapely.affinity",
+      "shapely.geometry",
+      "typing"
+    ],
+    "stratum_ro/roof_retry.py": [
+      "optical_roof_edges",
+      "rasterio",
+      "rasterio.features",
+      "roof_candidate_routing",
+      "roof_simple_geometry",
+      "scipy.ndimage",
+      "sensor_review",
+      "shapely.geometry"
+    ],
+    "stratum_ro/roof_revision_review.py": [],
+    "stratum_ro/roof_simple_geometry.py": [
+      "rasterio.features",
+      "rasterio.transform",
+      "shapely",
+      "shapely.geometry"
+    ],
+    "stratum_ro/sam2_engine.py": [
+      "rasterio.features",
+      "sam2.build_sam",
+      "sam2.sam2_image_predictor",
+      "scipy.ndimage",
+      "shapely.geometry",
+      "shapely.validation",
+      "typing"
+    ],
+    "stratum_ro/sensor_review.py": [
+      "rasterio.features",
+      "rasterio.windows"
+    ],
+    "stratum_ro/simulation/__init__.py": [
+      "perturbation"
+    ],
+    "stratum_ro/simulation/perturbation.py": [
+      "dataclasses",
+      "typing"
+    ],
+    "stratum_ro/stratum_ro.py": [
+      "processing_provider",
+      "qgis.PyQt.QtCore",
+      "qgis.PyQt.QtGui",
+      "qgis.PyQt.QtWidgets",
+      "qgis.core",
+      "stratum_ro_dockwidget"
+    ],
+    "stratum_ro/stratum_ro_dockwidget.py": [
+      "PyQt5",
+      "PyQt5.QtCore",
+      "ai.context",
+      "ai.executor",
+      "ai.memory.listener",
+      "ai.memory.session",
+      "ai.registry",
+      "ai.router",
+      "ai.task_graph",
+      "ai.tools.cadastral_tools",
+      "ai.tools.project_tools",
+      "ai.tools.vector_tools",
+      "ai.worker",
+      "cad_exporter",
+      "dataset_resolver",
+      "lidar_processor",
+      "orchestrator",
+      "ortho_extractor",
+      "qgis.core",
+      "qgis.gui",
+      "sam2_engine",
+      "scipy.ndimage",
+      "shapely.geometry",
+      "stratum_ro_dockwidget_base",
+      "vectorizer"
+    ],
+    "stratum_ro/stratum_ro_dockwidget_base.py": [
+      "PyQt5"
+    ],
+    "stratum_ro/test/__init__.py": [],
+    "stratum_ro/test/qgis_interface.py": [
+      "qgis.PyQt.QtCore",
+      "qgis.core"
+    ],
+    "stratum_ro/test/test_ai_assistant_ui.py": [
+      "qgis.PyQt.QtWidgets",
+      "shapely.geometry",
+      "stratum_ro.ai.context",
+      "stratum_ro.ai.events",
+      "stratum_ro.ai.executor",
+      "stratum_ro.ai.memory.session",
+      "stratum_ro.ai.registry",
+      "stratum_ro.ai.task_graph",
+      "stratum_ro.ai.tools.cadastral_tools",
+      "stratum_ro.ai.worker",
+      "stratum_ro.stratum_ro_dockwidget",
+      "typing",
+      "utilities"
+    ],
+    "stratum_ro/test/test_ai_context.py": [
+      "stratum_ro.ai.context",
+      "stratum_ro.ai.memory.session"
+    ],
+    "stratum_ro/test/test_ai_context_engine.py": [
+      "stratum_ro.ai.context"
+    ],
+    "stratum_ro/test/test_ai_providers.py": [
+      "stratum_ro.ai.providers.anthropic_provider",
+      "stratum_ro.ai.providers.base",
+      "stratum_ro.ai.providers.local_provider",
+      "stratum_ro.ai.providers.nvidia_nim_provider",
+      "stratum_ro.ai.providers.ollama_provider",
+      "stratum_ro.ai.providers.openai_provider",
+      "stratum_ro.ai.providers.union_alpha_provider",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_ai_router.py": [
+      "stratum_ro.ai.providers.base",
+      "stratum_ro.ai.providers.local_provider",
+      "stratum_ro.ai.registry",
+      "stratum_ro.ai.router",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_ai_session_memory.py": [
+      "stratum_ro.ai.memory.session"
+    ],
+    "stratum_ro/test/test_ai_task_graph.py": [
+      "stratum_ro.ai.events",
+      "stratum_ro.ai.executor",
+      "stratum_ro.ai.registry",
+      "stratum_ro.ai.router",
+      "stratum_ro.ai.task_graph"
+    ],
+    "stratum_ro/test/test_ai_tools.py": [
+      "shapely.geometry",
+      "stratum_ro.ai.tools.cadastral_tools",
+      "stratum_ro.ai.tools.project_tools",
+      "stratum_ro.ai.tools.segmentation_tools",
+      "stratum_ro.ai.tools.vector_tools"
+    ],
+    "stratum_ro/test/test_bim_ifc_exporter.py": [
+      "shapely.geometry",
+      "stratum_ro.domain.bim.ifc_exporter"
+    ],
+    "stratum_ro/test/test_building_proposals.py": [
+      "rasterio.transform",
+      "stratum_ro.building_proposals"
+    ],
+    "stratum_ro/test/test_cad_exporter.py": [
+      "shapely.geometry",
+      "stratum_ro.cad_exporter"
+    ],
+    "stratum_ro/test/test_cadastral_roof_workflow.py": [
+      "rasterio",
+      "shapely.geometry",
+      "stratum_ro.api.service",
+      "stratum_ro.cadastral_roof_workflow"
+    ],
+    "stratum_ro/test/test_context_memory_integration.py": [
+      "pathlib",
+      "stratum_ro.ai.context",
+      "stratum_ro.ai.events",
+      "stratum_ro.ai.executor",
+      "stratum_ro.ai.memory",
+      "stratum_ro.ai.task_graph"
+    ],
+    "stratum_ro/test/test_contracts.py": [
+      "shapely.geometry",
+      "stratum_ro.contracts"
+    ],
+    "stratum_ro/test/test_core_geodesy.py": [
+      "stratum_ro.contracts.geodesy",
+      "stratum_ro.core.geodesy"
+    ],
+    "stratum_ro/test/test_core_geometry.py": [
+      "shapely.geometry",
+      "stratum_ro.contracts.geometry",
+      "stratum_ro.core.geometry"
+    ],
+    "stratum_ro/test/test_core_integration.py": [
+      "shapely.geometry"
+    ],
+    "stratum_ro/test/test_core_qa_qc.py": [
+      "shapely.geometry",
+      "stratum_ro.contracts.validation",
+      "stratum_ro.core.qa_qc"
+    ],
+    "stratum_ro/test/test_cp_export_real_coords.py": [
+      "shapely.geometry",
+      "stratum_ro.ai.tools.cadastral_tools"
+    ],
+    "stratum_ro/test/test_dataset_resolver.py": [
+      "stratum_ro.dataset_resolver"
+    ],
+    "stratum_ro/test/test_desktop_operator.py": [
+      "tools.desktop_operator"
+    ],
+    "stratum_ro/test/test_evaluation.py": [
+      "engine.evaluation",
+      "shapely.affinity",
+      "shapely.geometry"
+    ],
+    "stratum_ro/test/test_evaluation_assignment.py": [
+      "engine.evaluation",
+      "shapely.geometry",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_evaluation_preflight.py": [
+      "PIL",
+      "pathlib",
+      "rasterio.transform",
+      "stratum_ro.evaluation_preflight"
+    ],
+    "stratum_ro/test/test_fusion_guidance.py": [
+      "rasterio",
+      "stratum_ro.fusion_guidance"
+    ],
+    "stratum_ro/test/test_fusion_refinement.py": [
+      "rasterio",
+      "shapely.geometry",
+      "stratum_ro.fusion_refinement"
+    ],
+    "stratum_ro/test/test_geometric_reconstruction_v2.py": [
+      "rasterio.transform",
+      "shapely.geometry",
+      "stratum_ro.geometric_reconstruction_v2",
+      "stratum_ro.lidar_quality_gate",
+      "stratum_ro.vectorizer"
+    ],
+    "stratum_ro/test/test_geometry_golden.py": [
+      "rasterio.features",
+      "rasterio.transform",
+      "shapely.affinity",
+      "shapely.geometry",
+      "shapely.ops",
+      "shapely.validation",
+      "stratum_ro.geometric_reconstruction_v2",
+      "stratum_ro.vectorizer"
+    ],
+    "stratum_ro/test/test_geopackage_ground_export.py": [
+      "shapely.geometry",
+      "stratum_ro.vectorizer"
+    ],
+    "stratum_ro/test/test_init.py": [],
+    "stratum_ro/test/test_lidar_completion.py": [
+      "pathlib",
+      "stratum_ro.lidar_processor"
+    ],
+    "stratum_ro/test/test_logic_handler.py": [
+      "stratum_ro.logic_handler",
+      "stratum_ro.orchestrator"
+    ],
+    "stratum_ro/test/test_mcp_tools.py": [
+      "pathlib",
+      "shapely.geometry",
+      "stratum_ro.ai.tools.cadastral_tools",
+      "stratum_ro.ai.tools.evaluation_tools",
+      "stratum_ro.ai.tools.project_tools",
+      "stratum_ro.ai.tools.raster_tools",
+      "stratum_ro.ai.tools.security",
+      "stratum_ro.ai.tools.segmentation_tools",
+      "stratum_ro.ai.tools.vector_tools"
+    ],
+    "stratum_ro/test/test_onnx_engine.py": [
+      "stratum_ro.onnx_engine"
+    ],
+    "stratum_ro/test/test_optical_roof_edges.py": [
+      "rasterio.transform",
+      "shapely.geometry",
+      "stratum_ro.optical_roof_edges"
+    ],
+    "stratum_ro/test/test_phase1_golden_freeze.py": [
+      "shapely.geometry",
+      "stratum_ro.vectorizer"
+    ],
+    "stratum_ro/test/test_phase2_sensor_fusion.py": [
+      "shapely.geometry",
+      "stratum_ro.geometry_utils",
+      "stratum_ro.lidar_processor",
+      "stratum_ro.ortho_extractor"
+    ],
+    "stratum_ro/test/test_phase3_modules.py": [
+      "shapely.affinity",
+      "shapely.geometry",
+      "stratum_ro.candidate_generator",
+      "stratum_ro.mask_fusion",
+      "stratum_ro.orientation_regularizer",
+      "stratum_ro.prompt_generator",
+      "stratum_ro.vegetation_filter"
+    ],
+    "stratum_ro/test/test_phase4_orchestration.py": [
+      "stratum_ro.ai.context",
+      "stratum_ro.ai.data_profiler",
+      "stratum_ro.ai.provenance",
+      "stratum_ro.ai.registry",
+      "stratum_ro.ai.risk",
+      "stratum_ro.ai.router",
+      "stratum_ro.ai.task_graph",
+      "stratum_ro.simulation.perturbation"
+    ],
+    "stratum_ro/test/test_platform_api.py": [
+      "fastapi.testclient",
+      "pathlib",
+      "shapely.geometry",
+      "stratum_ro.ai.closed_loop",
+      "stratum_ro.api.app",
+      "stratum_ro.api.service",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_processing_provider.py": [
+      "stratum_ro.cadastral_algorithm",
+      "stratum_ro.processing_provider"
+    ],
+    "stratum_ro/test/test_qgis_environment.py": [
+      "qgis.core",
+      "utilities"
+    ],
+    "stratum_ro/test/test_regional_review.py": [
+      "pathlib",
+      "rasterio.transform",
+      "shapely.geometry",
+      "stratum_ro.regional_review",
+      "stratum_ro.regional_roofs"
+    ],
+    "stratum_ro/test/test_regional_roofs.py": [
+      "pathlib",
+      "rasterio.transform",
+      "shapely.geometry",
+      "shapely.ops",
+      "stratum_ro.regional_roofs"
+    ],
+    "stratum_ro/test/test_regional_runner.py": [
+      "pathlib",
+      "rasterio.transform",
+      "shapely.geometry",
+      "tools.run_regional_roofs",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_resources.py": [
+      "qgis.PyQt.QtGui"
+    ],
+    "stratum_ro/test/test_roof_body_partition.py": [
+      "rasterio",
+      "shapely",
+      "shapely.geometry",
+      "stratum_ro.roof_body_partition"
+    ],
+    "stratum_ro/test/test_roof_body_proposals.py": [
+      "shapely.geometry",
+      "stratum_ro.roof_body_proposals"
+    ],
+    "stratum_ro/test/test_roof_body_recovery_partition.py": [
+      "rasterio.transform",
+      "shapely.geometry",
+      "stratum_ro.roof_body_recovery",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_roof_candidate_routing.py": [
+      "rasterio.transform",
+      "shapely.geometry",
+      "stratum_ro.roof_candidate_routing"
+    ],
+    "stratum_ro/test/test_roof_gap_edges.py": [
+      "rasterio",
+      "shapely.geometry",
+      "stratum_ro.roof_gap_edges"
+    ],
+    "stratum_ro/test/test_roof_mask_fidelity.py": [
+      "shapely.affinity",
+      "shapely.geometry",
+      "stratum_ro.roof_mask_fidelity"
+    ],
+    "stratum_ro/test/test_roof_masked_preflight.py": [
+      "stratum_ro.roof_masked_preflight",
+      "stratum_ro.test"
+    ],
+    "stratum_ro/test/test_roof_rectangle_core.py": [
+      "shapely",
+      "shapely.geometry",
+      "stratum_ro.roof_candidate_routing",
+      "stratum_ro.roof_rectangle_core"
+    ],
+    "stratum_ro/test/test_roof_refinement_prompts.py": [
+      "affine",
+      "shapely.geometry",
+      "stratum_ro.roof_refinement_prompts"
+    ],
+    "stratum_ro/test/test_roof_retry.py": [
+      "rasterio",
+      "shapely.geometry",
+      "stratum_ro.roof_retry"
+    ],
+    "stratum_ro/test/test_roof_retry_integration.py": [
+      "rasterio.transform",
+      "shapely.geometry",
+      "stratum_ro.roof_retry",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_roof_retry_surface.py": [
+      "rasterio.transform",
+      "shapely.geometry",
+      "stratum_ro.roof_retry",
+      "stratum_ro.roof_simple_geometry"
+    ],
+    "stratum_ro/test/test_roof_revision_review.py": [
+      "shapely.geometry",
+      "stratum_ro.roof_revision_review"
+    ],
+    "stratum_ro/test/test_roof_simple_geometry.py": [
+      "shapely",
+      "shapely.geometry",
+      "stratum_ro.roof_simple_geometry"
+    ],
+    "stratum_ro/test/test_sam2_prompt_integrity.py": [
+      "shapely.geometry",
+      "stratum_ro.sam2_engine",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_sensor_review.py": [
+      "rasterio.transform",
+      "shapely.geometry",
+      "shapely.ops",
+      "stratum_ro.sensor_review"
+    ],
+    "stratum_ro/test/test_stratum_ro_dockwidget.py": [
+      "qgis.PyQt.QtWidgets",
+      "stratum_ro.stratum_ro_dockwidget",
+      "utilities"
+    ],
+    "stratum_ro/test/test_task_spec.py": [
+      "pathlib",
+      "stratum_ro.ai.providers.base",
+      "stratum_ro.ai.providers.local_provider",
+      "stratum_ro.ai.registry",
+      "stratum_ro.ai.task_spec"
+    ],
+    "stratum_ro/test/test_translations.py": [
+      "qgis.PyQt.QtCore",
+      "utilities"
+    ],
+    "stratum_ro/test/test_vectorizer.py": [
+      "shapely.geometry",
+      "shapely.ops",
+      "stratum_ro.geometry_utils",
+      "stratum_ro.vectorizer"
+    ],
+    "stratum_ro/test/test_vectorizer_overlap_identity.py": [
+      "shapely.geometry",
+      "stratum_ro.vectorizer"
+    ],
+    "stratum_ro/test/test_vlm_verifier.py": [
+      "PIL",
+      "shapely.geometry",
+      "stratum_ro.ai.providers.base",
+      "stratum_ro.ai.tools.vlm_tools",
+      "stratum_ro.ai.vlm_verifier",
+      "unittest.mock"
+    ],
+    "stratum_ro/test/test_volumetric_3d.py": [
+      "shapely.geometry",
+      "stratum_ro.domain.city_3d",
+      "stratum_ro.domain.city_3d.builder",
+      "stratum_ro.volumetric_3d"
+    ],
+    "stratum_ro/test/utilities.py": [
+      "qgis.PyQt",
+      "qgis.core",
+      "qgis.gui",
+      "qgis_interface"
+    ],
+    "stratum_ro/vectorizer.py": [
+      "buildingregulariser",
+      "rasterio.features",
+      "scipy.sparse.csgraph",
+      "shapely.affinity",
+      "shapely.geometry",
+      "shapely.geometry.polygon",
+      "shapely.ops",
+      "shapely.validation",
+      "stratum_ro.geometric_reconstruction_v2",
+      "stratum_ro.geometry_utils",
+      "stratum_ro.lidar_quality_gate",
+      "typing"
+    ],
+    "stratum_ro/vegetation_filter.py": [],
+    "stratum_ro/volumetric_3d.py": [
+      "stratum_ro.domain.city_3d.builder"
+    ]
+  }
+}

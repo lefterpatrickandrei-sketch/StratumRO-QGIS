@@ -1,0 +1,178 @@
+{
+  "scope": "PRODUCT_WORKFLOW_ON_REVIEWED_CANDIDATES_NOT_REGIONAL_DETECTOR",
+  "ground_footprints_created": 0,
+  "owner_verdict": "PENDING_OWNER_REVIEW",
+  "cases": [
+    {
+      "body_id": "T17:C1",
+      "guidance": {
+        "route": "LIDAR_GUIDED_REQUIRES_REVIEW",
+        "point": [
+          390829.275,
+          585486.0750000001
+        ],
+        "source": "LOCAL_CLASS6_AND_HEIGHT",
+        "reason": "LOCAL_SUPPORT_FOUND",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW",
+        "support_cells": 94656,
+        "anchor_gap_m": 0.035355339133413634,
+        "prompt_shift_m": 0.17677669521431882,
+        "max_prompt_shift_m": 3.0
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+        "lidar_compatibility": "EXPERIMENTAL_STEREO70_HYPOTHESIS"
+      },
+      "status": "REQUIRES_REVIEW",
+      "review_reasons": [
+        "NEEDS_COURTYARD_REVIEW",
+        "POSSIBLE_SEARCH_WINDOW_TRUNCATION"
+      ],
+      "sam2_score": 0.7032220363616943,
+      "diagnostic": {
+        "status": "NEEDS_COURTYARD_REVIEW",
+        "method": "EVIDENCE_TRIM_ONLY",
+        "lidar_used": true
+      },
+      "search_window_check": {
+        "bounds": [
+          390765.0,
+          585438.0,
+          390870.0,
+          585528.0
+        ],
+        "raw_boundary_distance_m": 0.0,
+        "refined_boundary_distance_m": 0.0,
+        "raw_within_search": false,
+        "refined_within_search": false,
+        "automatic_completeness_claim": false
+      },
+      "vertices": 161,
+      "duration_s": 2.250925799991819
+    },
+    {
+      "body_id": "T17:C2",
+      "guidance": {
+        "route": "LIDAR_GUIDED_REQUIRES_REVIEW",
+        "point": [
+          390822.37499999994,
+          585501.525
+        ],
+        "source": "LOCAL_CLASS6_AND_HEIGHT",
+        "reason": "LOCAL_SUPPORT_FOUND",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW",
+        "support_cells": 68804,
+        "anchor_gap_m": 0.0353553390922546,
+        "prompt_shift_m": 2.8224546054444395,
+        "max_prompt_shift_m": 3.0
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+        "lidar_compatibility": "EXPERIMENTAL_STEREO70_HYPOTHESIS"
+      },
+      "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+      "review_reasons": [],
+      "sam2_score": 0.8283904194831848,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "SUPPORTED_CORE_RECTANGLE",
+        "lidar_used": true,
+        "courtyards": 0,
+        "raw_area_m2": 1588.9499999998436,
+        "trimmed_area_m2": 1578.4762499998915,
+        "support": 0.9500587836706311,
+        "coverage": 0.9089915212486597,
+        "interior_recovery_m2": 35.324999999999996
+      },
+      "search_window_check": {
+        "bounds": [
+          390770.0,
+          585475.0,
+          390899.0,
+          585550.0
+        ],
+        "raw_boundary_distance_m": 6.049999999930151,
+        "refined_boundary_distance_m": 7.457768355961889,
+        "raw_within_search": true,
+        "refined_within_search": true,
+        "automatic_completeness_claim": false
+      },
+      "vertices": 4,
+      "duration_s": 1.046730000001844
+    },
+    {
+      "body_id": "T18:C1",
+      "guidance": {
+        "route": "LIDAR_GUIDED_REQUIRES_REVIEW",
+        "point": [
+          390625.765651,
+          585539.7300469999
+        ],
+        "source": "LOCAL_CLASS6_AND_HEIGHT",
+        "reason": "LOCAL_SUPPORT_FOUND",
+        "negative_points": [],
+        "owner_verdict": "PENDING_OWNER_REVIEW",
+        "support_cells": 65687,
+        "anchor_gap_m": 0.07793122619020312,
+        "prompt_shift_m": 1.1784716694709914,
+        "max_prompt_shift_m": 3.0
+      },
+      "owner_verdict": "PENDING_OWNER_REVIEW",
+      "geometry_role": "OBSERVED_ROOF_HYPOTHESIS",
+      "ground_footprint": null,
+      "provenance": {
+        "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_revision_v3_20261016\\covers\\T18_covering_ortho.tif",
+        "lidar_compatibility": "EXPERIMENTAL_STEREO70_HYPOTHESIS"
+      },
+      "status": "REQUIRES_REVIEW",
+      "review_reasons": [
+        "POSSIBLE_SEARCH_WINDOW_TRUNCATION"
+      ],
+      "sam2_score": 0.6260253190994263,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "SUPPORTED_ORTHOGONAL",
+        "lidar_used": true,
+        "courtyards": 0,
+        "raw_area_m2": 1908.0225000008436,
+        "trimmed_area_m2": 1290.195000000334,
+        "support": 0.9392610625390807,
+        "coverage": 0.9067851962629877,
+        "interior_recovery_m2": 142.17749999999998
+      },
+      "search_window_check": {
+        "bounds": [
+          390592.0,
+          585488.0,
+          390666.0,
+          585584.0
+        ],
+        "raw_boundary_distance_m": 0.0,
+        "refined_boundary_distance_m": 8.363150999997742,
+        "raw_within_search": false,
+        "refined_within_search": true,
+        "automatic_completeness_claim": false
+      },
+      "vertices": 16,
+      "duration_s": 1.8293553000112297
+    }
+  ],
+  "source_hashes": {
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lidar_audit_20261017\\relative_surface_1m.tif": "500a6bbee7bc915aef8595803c95d64f35be6bd1a3f8d0d16bbb329e86ffaac6",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lidar_audit_20261017\\class6_density_1m.tif": "da989f3641a5032550ec177b88c1faeb54558778cd45bd847c4876f64d43b135",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif": "7401f866f04a29012145feab39d0eeb17626cc89add7c6148836ba0c9d7aa6bd",
+    "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_revision_v3_20261016\\covers\\T18_covering_ortho.tif": "df326beec0718c06d4eb5bc416595aaf6a75c40fc197443a3cca81335242b57d"
+  },
+  "input_manifest_sha256": "7a67a8f5db7e627053e240465d9fc910fe8aa2981746f144007ff8e53d1d374d",
+  "model_checkpoint_sha256": "65b50056e05bcb13694174f51bb6da89c894b57b75ccdf0ba6352c597c5d1125",
+  "model_config": "sam2_hiera_t.yaml",
+  "geometry_max_exterior_vertices": 20
+}

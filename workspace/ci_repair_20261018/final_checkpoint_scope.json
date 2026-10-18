@@ -1,0 +1,39 @@
+{
+  "stage": "CI_EVIDENCE_AND_SHARED_HANDOFF",
+  "code_commit_verified": "85a51efa0f0ca8806ae703265f9d0d7feb909738",
+  "verified_run_id": 39119653317,
+  "matrix_result": "SUCCESS_4_OF_4",
+  "full_suite_per_job": {
+    "run": 459,
+    "passed": 450,
+    "skipped_qgis_context": 9
+  },
+  "foreign_dirty_paths_sha_verified": 16,
+  "paths": [
+    "docs/AGENT_HANDOFF.md",
+    "docs/PROJECT_STATE.md",
+    "workspace/ci_repair_20261018/.gitattributes",
+    "workspace/ci_repair_20261018/README.md",
+    "workspace/ci_repair_20261018/artifact_manifest.json",
+    "workspace/ci_repair_20261018/audit_frozen_inputs.py",
+    "workspace/ci_repair_20261018/checkpoint.json",
+    "workspace/ci_repair_20261018/collect_ci_evidence.py",
+    "workspace/ci_repair_20261018/dependency_resolution.json",
+    "workspace/ci_repair_20261018/final_checkpoint_scope.json",
+    "workspace/ci_repair_20261018/frozen_input_provenance.json",
+    "workspace/ci_repair_20261018/github_job_117652463147.txt",
+    "workspace/ci_repair_20261018/github_job_117652463255.txt",
+    "workspace/ci_repair_20261018/github_job_117652463362.txt",
+    "workspace/ci_repair_20261018/github_job_117652463383.txt",
+    "workspace/ci_repair_20261018/local_dependency_regressions.txt",
+    "workspace/ci_repair_20261018/local_targeted_tests.txt",
+    "workspace/ci_repair_20261018/run_39119653317_attempt1.json",
+    "workspace/ci_repair_20261018/volumetric_extraction.diff",
+    "workspace/ci_repair_20261018/volumetric_implementation_provenance.json",
+    "workspace/repository_cleanup_20261018/PR_BODY.md",
+    "workspace/repository_cleanup_20261018/README.md",
+    "workspace/repository_cleanup_20261018/verification_staged.json",
+    "workspace/repository_cleanup_20261018/verify_cleanup.py"
+  ],
+  "note": "This follow-up adds evidence and documentation, plus the bounded cleanup verifier allowlist for the separately approved four test changes. No production/test behavior or workflow change after the passing code commit."
+}

@@ -1,0 +1,6 @@
+{
+  "first_inspection": "T21-T29 crops were assigned project CRS after local pixel checks; T30 stopped at local correlation 0.813 on a uniform glass patch.",
+  "subsequent_check": "T30 whole-window correlation 0.9845; local result retained, no threshold lowered. All source SID projection metadata is empty, with project-coordinate interpretation only.",
+  "T29": "Initial crop cut southern continuation; original preserved as T29_initial_window.tif and full context re-extracted before inference.",
+  "selection_changes": "T21/T22 search envelopes enlarged at west edge; T27/T28 prompts moved from near gutters into roofs. No predictions drawn manually."
+}

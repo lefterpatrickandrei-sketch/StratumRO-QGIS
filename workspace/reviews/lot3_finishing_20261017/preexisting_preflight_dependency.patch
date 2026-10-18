@@ -1,0 +1,22 @@
+diff --git a/stratum_ro/evaluation_preflight.py b/stratum_ro/evaluation_preflight.py
+index 4768c40..b760f74 100644
+--- a/stratum_ro/evaluation_preflight.py
++++ b/stratum_ro/evaluation_preflight.py
+@@ -99,11 +99,14 @@ def validate_selection(manifest, *, manifest_dir, tile_dir):
+                 window = from_bounds(*required.bounds, src.transform)
+                 c0, r0 = math.floor(window.col_off), math.floor(window.row_off)
+                 c1, r1 = math.ceil(window.col_off+window.width), math.ceil(window.row_off+window.height)
+-                mask = src.read_masks([1, 2, 3], window=Window(c0, r0, c1-c0, r1-r0))
+-                if not np.all(mask > 0):
++                win = Window(c0, r0, c1-c0, r1-r0)
++                mask = src.read_masks([1, 2, 3], window=win)
++                rgb_win = src.read([1, 2, 3], window=win)
++                if not np.all(mask > 0) or np.any(np.all(rgb_win == 0, axis=0)):
+                     raise EvaluationBlocked('RGB search contains NoData; repair input coverage')
+                 row, col = src.index(*point)
+-                if not np.all(src.read_masks([1, 2, 3], window=Window(col, row, 1, 1)) > 0):
++                pt_win = Window(col, row, 1, 1)
++                if not np.all(src.read_masks([1, 2, 3], window=pt_win) > 0) or np.all(src.read([1, 2, 3], window=pt_win) == 0):
+                     raise EvaluationBlocked('roof point falls on NoData')
+         except (ValueError, TypeError, OSError, rasterio.errors.RasterioError) as exc:
+             reasons.append(str(exc))

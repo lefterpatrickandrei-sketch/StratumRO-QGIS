@@ -42,6 +42,7 @@ from shapely.validation import make_valid
 import geopandas as gpd
 import yaml
 import scipy.stats
+from scipy.optimize import linear_sum_assignment
 
 
 # =====================================================================
@@ -72,7 +73,16 @@ class BuildingEvaluationResult:
 
 @dataclass
 class DatasetEvaluationSummary:
-    """Sinteză statistică globală pe întregul dataset evaluat."""
+    """
+    Sinteză statistică globală pe întregul dataset evaluat.
+
+    Notă metodologică privind acoperirea de referință (Ground Truth):
+    Metricile precision, recall și f1_score sunt indicatori condiționali closed-world
+    calculați strict în raport cu setul de referință furnizat. Dacă setul de referință
+    nu este exhaustiv și verificat în teren, predicțiile neasociate (FP) nu trebuie
+    echivalate arbitrar cu artefacte fizice, ci reprezintă candidați neasociați în
+    cadrul comparației cu stratul de referință.
+    """
     timestamp: str
     crs: str
     elapsed_time_s: float
@@ -97,6 +107,7 @@ class DatasetEvaluationSummary:
     precision_aoi: float = 0.0
     recall_aoi: float = 0.0
     f1_score_aoi: float = 0.0
+    reference_coverage_status: str = "UNVERIFIED_CONDITIONAL_METRICS"
     # Profiling tehnic al motorului
     spatial_filter_time_ms: float = 0.0
     detailed_metrics_time_ms: float = 0.0
@@ -433,16 +444,25 @@ def evaluate_dataset(
             else:
                 refs_outside_aoi_count += 1
             rid = str(row.get("id", row.get("id_cladire", f"REF_{idx+1:03d}")))
-            valid_refs.append({"id": rid, "geometry": p, "row": row, "in_aoi": in_aoi})
+            valid_refs.append({"id": rid, "geometry": p, "row": row, "in_aoi": in_aoi, "orig_idx": idx})
 
     valid_preds = []
     for idx, row in gdf_pred.iterrows():
         p = ensure_valid_polygon(row.geometry)
         if p is not None and p.area >= 5.0:
             pid = str(row.get("id", row.get("cod_cladire", f"PRED_{idx+1:03d}")))
-            valid_preds.append({"id": pid, "geometry": p, "row": row})
+            valid_preds.append({"id": pid, "geometry": p, "row": row, "orig_idx": idx})
+
+    # Ordonare stabilă și deterministă după ID și centroid (Permutation Stability)
+    valid_refs.sort(key=lambda r: (str(r["id"]), r["geometry"].wkb_hex))
+    valid_preds.sort(key=lambda p: (str(p["id"]), p["geometry"].wkb_hex))
+
+    # Recalculare contoare AOI după validare
+    refs_in_aoi_count = sum(1 for r in valid_refs if r["in_aoi"])
+    refs_outside_aoi_count = sum(1 for r in valid_refs if not r["in_aoi"])
 
     # Analiză de topologie a segmentării (Matching Matrix) cu profiling
+    # Se păstrează diagnosticele pentru supra/sub-segmentare separat de alocarea acceptată.
     t_start_spatial = time.perf_counter()
     pred_candidates_per_ref = {r_idx: [] for r_idx in range(len(valid_refs))}
     ref_candidates_per_pred = {p_idx: [] for p_idx in range(len(valid_preds))}
@@ -467,20 +487,117 @@ def evaluate_dataset(
         if len(preds) == 1 and len(ref_candidates_per_pred[preds[0][0]]) == 1 and preds[0][1] >= matching_iou_min
     )
 
-    # Spatial matching & calcul metrici detaliate
+    # Alocare 1:1 explicită bazată pe prag (thresholded one-to-one assignment)
+    # Maximizează numărul de perechi valide calificate (cardinalitate), apoi IoU-ul total.
     t_start_metrics = time.perf_counter()
-    used_preds = set()
+    n_refs = len(valid_refs)
+    n_preds = len(valid_preds)
+    ref_to_pred_match: Dict[int, int] = {}
+    pred_to_ref_match: Dict[int, int] = {}
+
+    if n_refs > 0 and n_preds > 0:
+        # Ponderile W(r, p) = M + IoU(r, p) dacă IoU >= matching_iou_min, altfel 0.0.
+        # M > max(n_refs, n_preds) garantează că orice soluție cu mai multe perechi valide
+        # domină strict orice soluție cu mai puține perechi, indiferent de scorurile IoU individuale.
+        M = float(max(n_refs, n_preds) + 100.0)
+        weight_matrix = np.zeros((n_refs, n_preds), dtype=np.float64)
+
+        for r_idx, ref in enumerate(valid_refs):
+            r_geom = ref["geometry"]
+            for p_idx, pred in enumerate(valid_preds):
+                p_geom = pred["geometry"]
+                if r_geom.intersects(p_geom):
+                    iou_val = compute_iou(p_geom, r_geom)
+                    if iou_val >= matching_iou_min:
+                        weight_matrix[r_idx, p_idx] = M + iou_val
+
+        # Minimizare cost negativ = maximizare pondere
+        row_ind, col_ind = linear_sum_assignment(-weight_matrix)
+
+        for r_idx, p_idx in zip(row_ind, col_ind):
+            if weight_matrix[r_idx, p_idx] > 0.0:
+                ref_to_pred_match[r_idx] = p_idx
+                pred_to_ref_match[p_idx] = r_idx
+
     building_results: List[BuildingEvaluationResult] = []
     suspect_unmapped_merge_count = 0
 
+    # 1. Evaluare referințe: fie împerechere acceptată (TP), fie ratată/în afara AOI (FN)
     for r_idx, ref in enumerate(valid_refs):
         r_id = ref["id"]
         r_geom = ref["geometry"]
         in_aoi = ref["in_aoi"]
-        candidates = pred_candidates_per_ref[r_idx]
 
-        if not candidates:
-            # False Negative (Clădire de referință complet ratată sau în afara AOI)
+        if r_idx in ref_to_pred_match:
+            p_idx = ref_to_pred_match[r_idx]
+            best_pred = valid_preds[p_idx]
+            best_p_id = best_pred["id"]
+            best_p_geom = best_pred["geometry"]
+
+            best_iou = compute_iou(best_p_geom, r_geom)
+            inter_geom = r_geom.intersection(best_p_geom)
+            best_inter_area = inter_geom.area if not inter_geom.is_empty else 0.0
+
+            error_flags = []
+            if len(pred_candidates_per_ref[r_idx]) > 1:
+                error_flags.append("SUPRA_SEGMENTARE_SPLIT")
+            if len(ref_candidates_per_pred[p_idx]) > 1:
+                error_flags.append("SUB_SEGMENTARE_MERGED")
+            elif best_p_geom.area > 1.8 * r_geom.area and best_iou < matching_iou_min and (best_inter_area / r_geom.area) > 0.50:
+                error_flags.append("SUSPECT_UNMAPPED_MERGE")
+                suspect_unmapped_merge_count += 1
+
+            # Calcul metrici geometrice detaliate
+            h_dist = compute_hausdorff(best_p_geom, r_geom, densify=hausdorff_densify)
+            b_rmse = compute_boundary_rmse(best_p_geom, r_geom, sample_step_m=boundary_sample_step)
+            shape_stats = compute_shape_metrics(best_p_geom, r_geom)
+            svg_preview = generate_building_svg(best_p_geom, r_geom)
+
+            # Clasificare decizională
+            is_ancpi = (
+                b_rmse <= ancpi_tol["max_boundary_rmse_m"] and
+                best_iou >= ancpi_tol["min_iou"] and
+                abs(shape_stats["area_error_pct"]) <= ancpi_tol["max_area_error_pct"]
+            )
+            is_pug = (
+                b_rmse <= pug_tol["max_boundary_rmse_m"] and
+                best_iou >= pug_tol["min_iou"] and
+                abs(shape_stats["area_error_pct"]) <= pug_tol["max_area_error_pct"]
+            )
+
+            if is_ancpi:
+                tier = "CONFORM_ANCPI"
+            elif is_pug:
+                tier = "ACCEPTABIL_PUG"
+            else:
+                tier = "REJECT"
+                if b_rmse > pug_tol["max_boundary_rmse_m"]:
+                    error_flags.append("ERORE_CONTUR_MARE")
+                if abs(shape_stats["area_error_pct"]) > pug_tol["max_area_error_pct"]:
+                    error_flags.append("ERORE_ARIE_MARE")
+
+            res = BuildingEvaluationResult(
+                ref_id=r_id,
+                pred_id=best_p_id,
+                matched=True,
+                iou=round(best_iou, 4),
+                hausdorff_m=round(h_dist, 3),
+                boundary_rmse_m=round(b_rmse, 3),
+                centroid_disp_m=shape_stats["centroid_disp_m"],
+                area_ref_m2=shape_stats["area_ref_m2"],
+                area_pred_m2=shape_stats["area_pred_m2"],
+                area_error_m2=shape_stats["area_error_m2"],
+                area_error_pct=shape_stats["area_error_pct"],
+                perimeter_ref_m=shape_stats["perimeter_ref_m"],
+                perimeter_pred_m=shape_stats["perimeter_pred_m"],
+                mean_angle_dev_deg=shape_stats["mean_angle_dev_deg"],
+                compliance_tier=tier,
+                error_flags=error_flags,
+                svg_data=svg_preview
+            )
+            building_results.append(res)
+        else:
+            # False Negative (Clădire de referință complet neasociată sau în afara AOI)
             err_flags = ["FALSE_NEGATIVE_OUTSIDE_AOI"] if not in_aoi else ["FALSE_NEGATIVE_RATATA"]
             res = BuildingEvaluationResult(
                 ref_id=r_id,
@@ -491,96 +608,30 @@ def evaluate_dataset(
                 error_flags=err_flags
             )
             building_results.append(res)
-            continue
-
-        # Sortare descrescătoare după IoU
-        candidates.sort(key=lambda x: x[1], reverse=True)
-        best_p_idx, best_iou, best_inter_area = candidates[0]
-        best_pred = valid_preds[best_p_idx]
-        best_p_id = best_pred["id"]
-        best_p_geom = best_pred["geometry"]
-        used_preds.add(best_p_idx)
-
-        error_flags = []
-        if len(candidates) > 1:
-            error_flags.append("SUPRA_SEGMENTARE_SPLIT")
-        if len(ref_candidates_per_pred[best_p_idx]) > 1:
-            error_flags.append("SUB_SEGMENTARE_MERGED")
-        elif best_p_geom.area > 1.8 * r_geom.area and best_iou < matching_iou_min and (best_inter_area / r_geom.area) > 0.50:
-            error_flags.append("SUSPECT_UNMAPPED_MERGE")
-            suspect_unmapped_merge_count += 1
-
-        # Calcul metrici geometrice detaliate
-        h_dist = compute_hausdorff(best_p_geom, r_geom, densify=hausdorff_densify)
-        b_rmse = compute_boundary_rmse(best_p_geom, r_geom, sample_step_m=boundary_sample_step)
-        shape_stats = compute_shape_metrics(best_p_geom, r_geom)
-        svg_preview = generate_building_svg(best_p_geom, r_geom)
-
-        # Clasificare decizională
-        is_ancpi = (
-            b_rmse <= ancpi_tol["max_boundary_rmse_m"] and
-            best_iou >= ancpi_tol["min_iou"] and
-            abs(shape_stats["area_error_pct"]) <= ancpi_tol["max_area_error_pct"]
-        )
-        is_pug = (
-            b_rmse <= pug_tol["max_boundary_rmse_m"] and
-            best_iou >= pug_tol["min_iou"] and
-            abs(shape_stats["area_error_pct"]) <= pug_tol["max_area_error_pct"]
-        )
-
-        if is_ancpi:
-            tier = "CONFORM_ANCPI"
-        elif is_pug:
-            tier = "ACCEPTABIL_PUG"
-        else:
-            tier = "REJECT"
-            if b_rmse > pug_tol["max_boundary_rmse_m"]:
-                error_flags.append("ERORE_CONTUR_MARE")
-            if abs(shape_stats["area_error_pct"]) > pug_tol["max_area_error_pct"]:
-                error_flags.append("ERORE_ARIE_MARE")
-
-        res = BuildingEvaluationResult(
-            ref_id=r_id,
-            pred_id=best_p_id,
-            matched=True,
-            iou=round(best_iou, 4),
-            hausdorff_m=round(h_dist, 3),
-            boundary_rmse_m=round(b_rmse, 3),
-            centroid_disp_m=shape_stats["centroid_disp_m"],
-            area_ref_m2=shape_stats["area_ref_m2"],
-            area_pred_m2=shape_stats["area_pred_m2"],
-            area_error_m2=shape_stats["area_error_m2"],
-            area_error_pct=shape_stats["area_error_pct"],
-            perimeter_ref_m=shape_stats["perimeter_ref_m"],
-            perimeter_pred_m=shape_stats["perimeter_pred_m"],
-            mean_angle_dev_deg=shape_stats["mean_angle_dev_deg"],
-            compliance_tier=tier,
-            error_flags=error_flags,
-            svg_data=svg_preview
-        )
-        building_results.append(res)
 
     detailed_metrics_time_ms = round((time.perf_counter() - t_start_metrics) * 1000.0, 2)
 
-    # Identificare False Positives (Predicții fără referință corespondentă)
+    # 2. Identificare predicții neasociate (False Positives în evaluare closed-world)
     unmatched_preds_count = 0
     for p_idx, pred in enumerate(valid_preds):
-        if p_idx not in used_preds:
+        if p_idx not in pred_to_ref_match:
             unmatched_preds_count += 1
             p_geom = pred["geometry"]
             res = BuildingEvaluationResult(
-                ref_id="NONE (ARTEFACT)",
+                ref_id="NONE (NEASOCIAT)",
                 pred_id=pred["id"],
                 matched=False,
                 area_pred_m2=round(float(p_geom.area), 2),
                 compliance_tier="REJECT",
-                error_flags=["FALSE_POSITIVE_ARTEFACT"]
+                error_flags=["FALSE_POSITIVE_NEASOCIAT"]
             )
             building_results.append(res)
 
-    # Agregare metrici globale și detecție
-    tp = sum(1 for r in building_results if r.matched and r.iou >= matching_iou_min)
-    fn = sum(1 for r in building_results if not r.matched and not r.ref_id.startswith("NONE"))
+    # Agregare metrici globale cu conservare strictă
+    # TP + FN = total_references
+    # TP + unmatched_preds_count = total_predictions
+    tp = len(ref_to_pred_match)
+    fn = len(valid_refs) - tp
     fp = unmatched_preds_count
 
     precision = round(tp / (tp + fp), 4) if (tp + fp) > 0 else 0.0
@@ -625,7 +676,7 @@ def evaluate_dataset(
     # Indicatori statistici exclusiv pe subsetul curat 1:1 (fără anomalii de split/merge/asimetrie)
     clean_results = [
         r for r in building_results
-        if r.matched and r.iou >= matching_iou_min and not (
+        if r.matched and not (
             "SUPRA_SEGMENTARE_SPLIT" in r.error_flags or
             "SUB_SEGMENTARE_MERGED" in r.error_flags or
             "SUSPECT_UNMAPPED_MERGE" in r.error_flags

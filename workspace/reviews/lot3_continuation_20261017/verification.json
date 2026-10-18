@@ -1,0 +1,21 @@
+{
+  "test_result": {
+    "tests": 51,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 5.128
+  },
+  "module_hashes": {
+    "stratum_ro/fusion_guidance.py": "bf119f895b1d5756219bebb0c123d99c9c9af0d79c63e4718a5f5e8b3525c161",
+    "stratum_ro/cadastral_roof_workflow.py": "57919774e58ef1bb6c3c7f252546804001aa7f573e029c4eb459ec3352cc0d60",
+    "stratum_ro/roof_revision_review.py": "1078fd7721e71a154c641cd70dcaeb4cc48fc51788a074f8a10d5fbe06a95307",
+    "stratum_ro/evaluation_preflight.py": "4c75ef6751c855842c8d625e283673406c4593ea3c6c1d98fb32b2f0aeccd601",
+    "tools/run_cadastral_roof_review.py": "8fff49a7108d5f9799e97a46211d7d3cc6917d5500e7eda020662183a5941690"
+  },
+  "qgis_native_render_inspected": true,
+  "live_canvas_inspected": true,
+  "old_visible_finishing_features_preserved": 3,
+  "new_annex_hypothesis": 1,
+  "owner_verdict_changed": false,
+  "readme": "docs/STRATUMRO_LOT3_ANNEX_AND_CONTEXT_2026-10-17.md"
+}

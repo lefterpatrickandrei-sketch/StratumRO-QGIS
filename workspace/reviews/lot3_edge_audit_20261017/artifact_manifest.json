@@ -1,0 +1,177 @@
+[
+  {
+    "path": ".gitignore",
+    "bytes": 41,
+    "sha256": "5d8ebc8be7d16b882186babd52e8f5625e03c152d29688a13031ed34756e9ce4"
+  },
+  {
+    "path": "audit_crops\\T11_display_ortho.tif",
+    "bytes": 191332,
+    "sha256": "0bbfd488518e5deddb01f1b52149ee78d36aeec6a21a4776ba034806c3dbc93d"
+  },
+  {
+    "path": "audit_crops\\T12_display_ortho.tif",
+    "bytes": 294221,
+    "sha256": "19a5786b53d86c59970e6c77de3e5154d1056f402bccd995ea54bd0b29675e6c"
+  },
+  {
+    "path": "audit_crops\\T13_display_ortho.tif",
+    "bytes": 296778,
+    "sha256": "6d94294bd300e019a853f42d16ae62abf1626d9d83ea18470c90ed4c6bdffd3a"
+  },
+  {
+    "path": "audit_crops\\T14_display_ortho.tif",
+    "bytes": 347289,
+    "sha256": "505330c12ac94df04ad2143afa914b7d0338f1d2cb35b0558b30fae2c54d2271"
+  },
+  {
+    "path": "audit_crops\\T15_display_ortho.tif",
+    "bytes": 238956,
+    "sha256": "85872755a148c4bd6ae9939ba51496d125930841d8e17b3082f3ae44555c440d"
+  },
+  {
+    "path": "audit_crops\\T16_display_ortho.tif",
+    "bytes": 375937,
+    "sha256": "b1eec9659a01e45e1d44e05a10a665b2aaa6b9d0ea176f553f783bb233a22658"
+  },
+  {
+    "path": "audit_crops\\T17_display_ortho.tif",
+    "bytes": 2196707,
+    "sha256": "8797179ac99527f9ed5c10599728ff0b470c52ad8621788b194b9c9e0f94045b"
+  },
+  {
+    "path": "audit_crops\\T18_display_ortho.tif",
+    "bytes": 890203,
+    "sha256": "63f3781377c18a0908a06c2338b6595b089aafcf0301b316ddb57a18c7b42cfd"
+  },
+  {
+    "path": "audit_crops\\T19_display_ortho.tif",
+    "bytes": 415550,
+    "sha256": "8471a62156fdaa6a28bcef7248cb364b0160e8f61d9959d0e0e6c84f1b1864d7"
+  },
+  {
+    "path": "audit_crops\\T20_display_ortho.tif",
+    "bytes": 578975,
+    "sha256": "d4a6251967aad7e70d150d4dda74d5cdbdb2c4c562370e3f45e670069d019f56"
+  },
+  {
+    "path": "derived_source_hashes.json",
+    "bytes": 547,
+    "sha256": "18401c514615af75ebaad96a82ed5c5d72edb2e7745d1a8ef078b94f35cdd01f"
+  },
+  {
+    "path": "edge_correction_report.json",
+    "bytes": 1137,
+    "sha256": "309e96851b9ca991a97138ed49642ef7dc1eaf7590d5c0f9a06604feacc3a11c"
+  },
+  {
+    "path": "live_current.png",
+    "bytes": 1156565,
+    "sha256": "53ff7779dd398894ab28797208712a92f5c6098e9a70b79680ad328d4af83c1b"
+  },
+  {
+    "path": "lot3_case_inventory.json",
+    "bytes": 1103,
+    "sha256": "a7c2ec79e9aec4dd8e45d4398bf1cafd88866209d1761da9924554acf5680025"
+  },
+  {
+    "path": "lot3_display_snapshot.gpkg",
+    "bytes": 106496,
+    "sha256": "56b61d21f4c1a9d13570b7c9306f10ecbedf46a1a98579f81f109c225c9f946f"
+  },
+  {
+    "path": "Lot3_qgis_overview.png",
+    "bytes": 2493284,
+    "sha256": "15b8765e69558d6543fa06d5812fa09178ae0c7150bda0b23fd68177d7584cf6"
+  },
+  {
+    "path": "Lot3_review_page_1.png",
+    "bytes": 4397917,
+    "sha256": "8867fb933669e1283818a4da90c992ab5ac383041f1fb0f8450349860ab07da5"
+  },
+  {
+    "path": "Lot3_review_page_2.png",
+    "bytes": 5247015,
+    "sha256": "5a7b7a93d713fd806626bc18f3b1ed489dd03c83c5eeb11da9c5378a540f4e6f"
+  },
+  {
+    "path": "native_sources.json",
+    "bytes": 3086,
+    "sha256": "3552c5aeef9de4c211551d7c0604372a442b5dcfc4abe66828e1656abf68f2ab"
+  },
+  {
+    "path": "native_sources.vrt",
+    "bytes": 11509,
+    "sha256": "83aac1a69e343df5addc68f98584474acf91b47eea880f3782773a2fea9c49da"
+  },
+  {
+    "path": "observed_edges.gpkg",
+    "bytes": 98304,
+    "sha256": "0e57374316339067dca70664d51bb0e29bb4f3b377c5c551e72eca9028541a4b"
+  },
+  {
+    "path": "qgis_after.json",
+    "bytes": 429,
+    "sha256": "2f3e96e6975e7d6c7b10e6cada0eb4c78edce34a22a51cbf5677800428ca5324"
+  },
+  {
+    "path": "qgis_before.json",
+    "bytes": 11315,
+    "sha256": "dfeeabb2c712d5dfb249258e056f098fdac758d2687c74fc59a6652c7afa1097"
+  },
+  {
+    "path": "shared_project_before_edges.qgs.backup",
+    "bytes": 1063288,
+    "sha256": "aaec453d75de8fe01ddc057db11049a06fab97bfd4ea0a8b5e89cfd25ab57216"
+  },
+  {
+    "path": "T17_qgis_checked.png",
+    "bytes": 2130341,
+    "sha256": "ad464d1649c0743b053f2e875b4dd559c76caca11dd2b23719e97210546982a7"
+  },
+  {
+    "path": "T18_detail_5cm.tif",
+    "bytes": 3676553,
+    "sha256": "4dbaaad62b05dce74de04d526479f8d55e382869667752355258ba5b39870693"
+  },
+  {
+    "path": "T18_main_edge.json",
+    "bytes": 5213,
+    "sha256": "6f254599b065b32ad3b911318fa76b457d3bad413e6c47f7555d91e8d9cae1ff"
+  },
+  {
+    "path": "T18_native_before_after.png",
+    "bytes": 2621961,
+    "sha256": "2eb5a05d387735fc87eeea35e8a45813d5ae8710766049f78eb53f5f1bdc44ef"
+  },
+  {
+    "path": "T18_native_seam.tif",
+    "bytes": 11161210,
+    "sha256": "f388b53e7d92681ae52049d0a529e66528b6f4517a3c55b7e282df97f8dbd653"
+  },
+  {
+    "path": "T18_native_seam_review.png",
+    "bytes": 1888793,
+    "sha256": "05704ceec31727c14ee706ce662d7631c85988d3bede3fa5d26cbd41dea167e5"
+  },
+  {
+    "path": "T18_observed_gap.json",
+    "bytes": 5790,
+    "sha256": "b5edb6f22af04c2325a56934fabd9b2b9cb6691a6cb1e02ffee1515aec625bda"
+  },
+  {
+    "path": "T18_qgis_current.png",
+    "bytes": 2174635,
+    "sha256": "7d9283b71f69b9ef57ea2f9e6df8cea5872f26cc1e79b10bbdf15a0985dc1ef8"
+  },
+  {
+    "path": "verification.json",
+    "bytes": 593,
+    "sha256": "7fb26e49110341b2a9786a5e319efd1a3e6a202ff8224cc79d9a8eaf57164ca0"
+  },
+  {
+    "path": "visual_findings.json",
+    "bytes": 2728,
+    "sha256": "aea1b4ca9827f0be51bca14029b8546718092ff0ce2e5fd4d55e2c99dc9f246e"
+  }
+]

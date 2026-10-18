@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "crs": "EPSG:3844",
+  "cases": [
+    {
+      "body_id": "T16:C1",
+      "anchor": [
+        390810,
+        585323
+      ],
+      "search_bounds": [
+        390800,
+        585313,
+        390818,
+        585332
+      ],
+      "positive_points": [],
+      "negative_points": [
+        [
+          390802,
+          585331
+        ],
+        [
+          390806,
+          585317
+        ]
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T16_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        390801,
+        585314,
+        390817,
+        585331
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_PLANAR_CORE",
+      "selection_observations": "Native visual review: distinguish patched northern roof and tiled southern roof with negative prompts. This is a roof-surface split hypothesis, not independent cadastral identity.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Native visual review: distinguish patched northern roof and tiled southern roof with negative prompts. This is a roof-surface split hypothesis, not independent cadastral identity.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_major_errors_20261017\\T16_unobscured_review.png",
+        "image_sha256": "3051e58e655d4c5f7a26aba05309e08d7a328e895379095abdbb701de2bf17cd"
+      }
+    },
+    {
+      "body_id": "T16:C2",
+      "anchor": [
+        390802,
+        585331
+      ],
+      "search_bounds": [
+        390794,
+        585323,
+        390811,
+        585339
+      ],
+      "positive_points": [],
+      "negative_points": [
+        [
+          390810,
+          585323
+        ]
+      ],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T16_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        390795,
+        585324,
+        390810,
+        585338
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_PLANAR_CORE",
+      "selection_observations": "Native visual review: distinguish patched northern roof and tiled southern roof with negative prompts. This is a roof-surface split hypothesis, not independent cadastral identity.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Native visual review: distinguish patched northern roof and tiled southern roof with negative prompts. This is a roof-surface split hypothesis, not independent cadastral identity.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_major_errors_20261017\\T16_unobscured_review.png",
+        "image_sha256": "3051e58e655d4c5f7a26aba05309e08d7a328e895379095abdbb701de2bf17cd"
+      }
+    }
+  ],
+  "owner_status": "PENDING_OWNER_REVIEW",
+  "purpose": "Native-detail optical repair, no automatic owner acceptance; reviewed prompts are not ground truth.",
+  "previous_snapshot": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_edge_audit_20261017\\lot3_display_snapshot.gpkg",
+  "previous_snapshot_sha256": "56b61d21f4c1a9d13570b7c9306f10ecbedf46a1a98579f81f109c225c9f946f",
+  "scope_note": "Experimental planar surface separation of T16; keep parent T16 explicit; no legal identity acceptance."
+}

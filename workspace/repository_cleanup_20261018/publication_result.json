@@ -1,0 +1,65 @@
+{
+  "owner_authorization": "Publish as a draft PR, without merge; explicit chat reply on 2026-10-18.",
+  "published_pr_at_initial_verification": {
+    "baseRefName": "main",
+    "headRefName": "chore/stratumro-shared-checkpoint-20261018",
+    "headRefOid": "728cf7e8562da9d9e159dbf3b65f49e3b09defef",
+    "isDraft": true,
+    "mergedAt": null,
+    "state": "OPEN",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39118760766/job/117649859914",
+        "name": "Test (ubuntu-latest - Python 3.10)",
+        "startedAt": "2026-10-18T10:19:03Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "StratumRO CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39118760766/job/117649859975",
+        "name": "Test (ubuntu-latest - Python 3.11)",
+        "startedAt": "2026-10-18T10:19:03Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "StratumRO CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39118760766/job/117649859810",
+        "name": "Test (windows-latest - Python 3.10)",
+        "startedAt": "2026-10-18T10:19:02Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "StratumRO CI"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "0001-01-01T00:00:00Z",
+        "conclusion": "",
+        "detailsUrl": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39118760766/job/117649859942",
+        "name": "Test (windows-latest - Python 3.11)",
+        "startedAt": "2026-10-18T10:19:03Z",
+        "status": "IN_PROGRESS",
+        "workflowName": "StratumRO CI"
+      }
+    ],
+    "url": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/pull/3"
+  },
+  "remote_refs_at_initial_verification": {
+    "refs/heads/chore/stratumro-shared-checkpoint-20261018": "728cf7e8562da9d9e159dbf3b65f49e3b09defef",
+    "refs/heads/main": "08524dfa5c45c70e056c69776e88852f558e98e7"
+  },
+  "git_push_completed": true,
+  "created_through": "Existing authenticated GitHub CLI after connector create-PR returned integration permission 403. No credentials changed.",
+  "attached_to_codex_task": true,
+  "main_updated": false,
+  "merge_performed": false,
+  "ci_note": "Snapshot only. CI was still running; no green-CI claim. Follow current checks on the PR.",
+  "followup_scope": "This record, publication preflight, remaining inventory and current documentation status are saved in the next scoped commit and pushed to the same PR branch."
+}

@@ -1,0 +1,47 @@
+test_anthropic_provider_availability_and_caps (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_anthropic_provider_mock_generate (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_extract_json_clean (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_extract_json_invalid (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_extract_json_markdown_wrapped (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_local_provider_always_available (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_nvidia_nim_provider_availability (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_nvidia_nim_provider_mock_generate (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_ollama_provider_detection (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_openai_provider_availability (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_union_alpha_provider_availability (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_union_alpha_provider_mock_generate (stratum_ro.test.test_ai_providers.TestAIProviders) ... ok
+test_anchor_must_match_segmented_object (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_geographic_crs_is_not_relabelled (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_high_score_cannot_override_reviewed_background (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_ids_stay_explicit (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_incomplete_context_is_blocked (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_known_wing_cannot_be_dropped_for_higher_score (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_low_score_is_retained_for_review (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_masked_context_is_opt_in_and_invalid_pixels_stay_out (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_no_consistent_mask_does_not_force_geometry (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_nodata_context_blocks_inference_but_valid_black_does_not (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_ortho_only_does_not_invent_ground_footprint (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_raw_boundary_contact_is_reported_even_after_refinement (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_reuses_image_encoding (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_service_exposes_same_workflow_without_loading_real_model (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_simplifier_cannot_fill_reviewed_background_hole (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_small_nodata_hole_is_not_refilled_by_optical_cleanup (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_unreviewed_candidate_is_blocked_before_inference (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_wider_search_retains_auditable_positive_raw_margin (stratum_ro.test.test_cadastral_roof_workflow.CadastralRoofWorkflowTests) ... ok
+test_affine_non_square_pixel_area_calculation (stratum_ro.test.test_sam2_prompt_integrity.TestSAM2PromptIntegrity)
+Ensures pixel area calculation uses abs(a*e - b*d) rather than a*a. ... ok
+test_high_score_unprompted_mask_does_not_hide_valid_alternative (stratum_ro.test.test_sam2_prompt_integrity.TestSAM2PromptIntegrity) ... ok
+test_mask_to_stereo70_polygon_largest_unprompted_vs_small_prompted (stratum_ro.test.test_sam2_prompt_integrity.TestSAM2PromptIntegrity)
+When positive points are supplied, ensure the polygon containing the positive point ... ok
+test_mask_to_stereo70_polygon_no_positive_polygon (stratum_ro.test.test_sam2_prompt_integrity.TestSAM2PromptIntegrity)
+If valid positive points are supplied but none are covered by any polygon in the mask, ... ok
+test_segment_candidate_empty_or_undersized_masks_rejected (stratum_ro.test.test_sam2_prompt_integrity.TestSAM2PromptIntegrity)
+When all candidate masks are under 5 m2 or non-finite, ... ok
+test_segment_candidate_negatives_labels_and_out_of_image_filtering (stratum_ro.test.test_sam2_prompt_integrity.TestSAM2PromptIntegrity)
+Validate that positive points get label 1 and negative points get label 0, ... ok
+test_whole_job_preserves_unknown_roof_and_invalid_hole_without_reviewed_anchor (stratum_ro.test.test_regional_runner.RegionalRunnerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 8.625s
+
+OK

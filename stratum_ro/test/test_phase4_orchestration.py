@@ -13,6 +13,7 @@ Verifies:
 
 import json
 import os
+import sys
 import tempfile
 import unittest
 
@@ -53,9 +54,14 @@ class TestPhase4Orchestration(unittest.TestCase):
     def test_resource_snapshot(self):
         snapshot = get_resource_snapshot()
         self.assertIsInstance(snapshot, ResourceSnapshot)
-        self.assertIn("windows", snapshot.os_platform.lower())
+        self.assertEqual(snapshot.os, sys.platform)
+        expected_platform = "windows" if sys.platform.startswith("win") else sys.platform
+        self.assertEqual(snapshot.os_platform, expected_platform)
         self.assertGreater(snapshot.cpu_logical_cores, 0)
-        self.assertGreater(snapshot.ram_total_gb, 0.0)
+        # RAM detection is explicitly optional in ResourceSnapshot. A headless
+        # platform must report missing evidence rather than require Windows RAM APIs.
+        if snapshot.ram_total_mb is not None:
+            self.assertGreater(snapshot.ram_total_mb, 0)
         # Verify JSON serializability
         d = snapshot.to_dict()
         self.assertIn("gpu_available", d)

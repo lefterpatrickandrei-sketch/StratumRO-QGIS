@@ -1,0 +1,10 @@
+{
+  "preparation_commit": "4f97467",
+  "prompt_consistency_implementation_commit": "0cdd315",
+  "attempt1_and_2": "Before prompt consistency implementation; retained as historical failures/diagnostics.",
+  "attempt3_and_4": "Executed with prompt consistency checks; 71 regression tests passed.",
+  "current_workflow_sha256": "90717a0284ca8956d1115c13801e6579b4536e77e1102169956d6d6717b2b969",
+  "selected_earlier_attempts": "T21/T25/T26/T27/T29/T30 derive from attempt1; selected geometries explicitly rechecked against all their reviewed positive/negative points at packaging.",
+  "T26_orthogonal_fit": "Only reviewed six-corner L adopted; other simpler candidates rejected for possible loss of real projections.",
+  "T22": "Retained as failed candidate in GPKG diagnostic layer; no accepted outline."
+}

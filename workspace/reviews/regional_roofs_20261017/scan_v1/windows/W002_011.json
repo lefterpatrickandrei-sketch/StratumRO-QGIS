@@ -1,0 +1,27 @@
+{
+  "coverage": {
+    "window_id": "W002_011",
+    "core": [
+      391560.3,
+      585623.4,
+      391602.89999999997,
+      585719.4
+    ],
+    "context": [
+      391536.3,
+      585599.4,
+      391626.89999999997,
+      585743.4
+    ],
+    "core_pixels": 181760,
+    "valid_core_pixels": 0,
+    "valid_core_area_m2": 0.0,
+    "source_count": 0,
+    "model_ran": false,
+    "mask_count": 0,
+    "status": "NO_VALID_RGB_IN_CORE",
+    "elapsed_s": 0.04172910000488628
+  },
+  "excluded_component_counts": {},
+  "candidates": []
+}

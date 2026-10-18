@@ -1,0 +1,6 @@
+{
+  "results": "Legacy unrestricted component-interior prompt; wider windows. Rejected for display.",
+  "results_local_prompt": "All four prompts used a 3m identity radius during this experiment. Default was made opt-in after large-roof regressions.",
+  "original_windows_local_prompt": "All three prompts used a 3m identity radius; old windows. Not adopted.",
+  "annex_final": "Explicit per-case max_prompt_shift_m=3 in annex_inputs.json; current implementation. Hypothesis only."
+}

@@ -1,0 +1,46 @@
+{
+  "scope": "LOCAL_EXPERIMENT_NOT_FULL_PRODUCTION",
+  "owner_verdict": "PENDING_OWNER_REVIEW",
+  "cases": [
+    {
+      "test_id": "T17",
+      "vertices": 158,
+      "area_m2": 1510.3799999989285,
+      "diagnostic": {
+        "status": "NEEDS_GEOMETRY_REVIEW",
+        "method": "EVIDENCE_TRIM_ONLY",
+        "lidar_used": true
+      }
+    },
+    {
+      "test_id": "T18",
+      "vertices": 8,
+      "area_m2": 888.7147888443185,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "SUPPORTED_ORTHOGONAL",
+        "lidar_used": true,
+        "courtyards": 0,
+        "raw_area_m2": 1784.9925000001442,
+        "trimmed_area_m2": 912.1162499998544,
+        "support": 0.9584533194551047,
+        "coverage": 0.9338630239471482
+      }
+    },
+    {
+      "test_id": "T20",
+      "vertices": 8,
+      "area_m2": 855.8396464856779,
+      "diagnostic": {
+        "status": "RECTIFIED_HYPOTHESIS_PENDING_OWNER_REVIEW",
+        "method": "SUPPORTED_ORTHOGONAL",
+        "lidar_used": false,
+        "courtyards": 0,
+        "raw_area_m2": 975.7124999996832,
+        "trimmed_area_m2": 875.8575000007564,
+        "support": 0.9639027707487567,
+        "coverage": 0.9418726294730321
+      }
+    }
+  ]
+}

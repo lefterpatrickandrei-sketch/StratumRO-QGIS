@@ -1,0 +1,109 @@
+{
+  "lot": 3,
+  "date": "2026-10-13",
+  "selection_timestamp": "2026-10-13T17:45:00+03:00",
+  "status": "FROZEN_BEFORE_EXTRACTION",
+  "governance": "Selection established prior to running extraction pipeline. No post-hoc replacement of failed cases allowed.",
+  "cases": [
+    {
+      "test_id": "T11",
+      "tile": "cache_tile_Cluj-2-0_halo.tif",
+      "search_center": [391271.5, 585615.4],
+      "search_bbox": [391255.0, 585600.0, 391290.0, 585630.0],
+      "archetype": "SIMPLE_RECTANGULAR_ROOF",
+      "reason": "Acoperis simplu rezidential rectangular/in doua ape pe latura estica; serveste ca etalon de baza pentru geometrie de 4 varfuri in sectorul rezidential.",
+      "difficulty": "Gard de proprietate si mica anexa secundara in curte; contrast moderat pe ortofotoplan.",
+      "body_uncertainty": "Corp unic izolat; incertitudine minima."
+    },
+    {
+      "test_id": "T12",
+      "tile": "cache_tile_Cluj-2-0_halo.tif",
+      "search_center": [391294.6, 585609.3],
+      "search_bbox": [391280.0, 585595.0, 391310.0, 585625.0],
+      "archetype": "RESIDENTIAL_WITH_ATTACHED_ANNEX",
+      "reason": "Cladire rezidentiala cu anexa alipita/terasa; testeaza capacitatea de a distinge casa principala de anexa din curte.",
+      "difficulty": "Coroane de arbori pe latura sudica si structura alipita cu regim de inaltime inferior.",
+      "body_uncertainty": "Posibile 2 corpuri (casa principala + anexa spate) sau un singur corp agregat."
+    },
+    {
+      "test_id": "T13",
+      "tile": "cache_tile_Cluj-2-1_halo.tif",
+      "search_center": [391307.0, 585503.1],
+      "search_bbox": [391290.0, 585485.0, 391325.0, 585520.0],
+      "archetype": "CLOSE_NEIGHBOR_SEPARATION",
+      "reason": "Cladiri rezidentiale apropiate (distanta 5-8 m fata de parcelele vecine); testeaza separarea contururilor fara fuzionare parazitara.",
+      "difficulty": "Culoar ingust intre cladiri, texturi similare de tigla, risc de extindere a mastii peste limita de proprietate.",
+      "body_uncertainty": "Corp principal unic, dar risc de punte (bridge) spre corpul vecin."
+    },
+    {
+      "test_id": "T14",
+      "tile": "cache_tile_Cluj-1-1_halo.tif",
+      "search_center": [391109.3, 585477.8],
+      "search_bbox": [391085.0, 585455.0, 391135.0, 585500.0],
+      "archetype": "GRAY_METAL_ROOF",
+      "reason": "Hala / pavilion alungit cu acoperis din tabla gri/zincata; testeaza extractia materialelor non-ceramice (spectru neutru/gri).",
+      "difficulty": "Lipsa tonului roscat/maroniu; risc de confuzie cu aleile betonate adiacente si contrast redus la streasina.",
+      "body_uncertainty": "Posibile trepte de inaltime de-a lungul coamei alungite."
+    },
+    {
+      "test_id": "T15",
+      "tile": "cache_tile_Cluj-1-1_halo.tif",
+      "search_center": [390999.7, 585287.7],
+      "search_bbox": [390980.0, 585265.0, 391020.0, 585310.0],
+      "archetype": "CANOPY_OVERHANG_AND_DEEP_SHADOW",
+      "reason": "Pavilion de campus puternic umbrit si acoperit partial de coroane mature de arbori foiosi.",
+      "difficulty": "Umbre accentuate pe versantul nordic si vegetatie densa peste streasina estica; testeaza eliminarea treptelor false de vegetatie.",
+      "body_uncertainty": "Corp principal unic; colturile reale de zid sunt mascate de crengi."
+    },
+    {
+      "test_id": "T16",
+      "tile": "cache_tile_Cluj-0-1_halo.tif",
+      "search_center": [390842.4, 585339.5],
+      "search_bbox": [390820.0, 585315.0, 390865.0, 585360.0],
+      "archetype": "DENSE_CLUSTER_MULTIPLE_NEIGHBORS",
+      "reason": "Cluster dens de corpuri agricole/veterinare cu 6 vecini alipiti sau foarte apropiati; testeaza partitionarea spatiala.",
+      "difficulty": "Acoperisuri la inaltimi diferite, culoare heterogena, ganguri inguste de trecere.",
+      "body_uncertainty": "Incertitudine ridicata: poate contine 2 sau 3 corpuri distincte (T16:C1, T16:C2)."
+    },
+    {
+      "test_id": "T17",
+      "tile": "cache_tile_Cluj-0-1_halo.tif",
+      "search_center": [390801.5, 585494.5],
+      "search_bbox": [390775.0, 585470.0, 390825.0, 585520.0],
+      "archetype": "ARTICULATED_L_T_SHAPE",
+      "reason": "Cladire academica articulata cu aripi in forma de L/T; testeaza pastrarea unghiurilor reintrande reale fara fortarea unui dreptunghi.",
+      "difficulty": "Retrageri arhitecturale, trepte de inaltime intre corpuri si curte interioara partiala.",
+      "body_uncertainty": "Poate fi un corp articulat multi-nod (8-12 noduri) sau partitionat pe inaltimi."
+    },
+    {
+      "test_id": "T18",
+      "tile": "cache_tile_Cluj-0-0_halo.tif",
+      "search_center": [390632.2, 585534.8],
+      "search_bbox": [390610.0, 585510.0, 390655.0, 585560.0],
+      "archetype": "L_SHAPED_WAREHOUSE_OPEN_YARD",
+      "reason": "Hala/depozit agronomic in forma de L in sectorul de nord-vest; acoperis rosu ceramic cu curte deschisa.",
+      "difficulty": "Unghi interior de 90 de grade si anexa deschisa / copertina agricola adiacenta.",
+      "body_uncertainty": "Corp principal in L; incertitudine daca copertina deschisa trebuie inclusa sau decupata."
+    },
+    {
+      "test_id": "T19",
+      "tile": "cache_tile_Cluj-0-2_halo.tif",
+      "search_center": [390798.6, 585113.1],
+      "search_bbox": [390780.0, 585095.0, 390820.0, 585135.0],
+      "archetype": "LOW_UTILITY_MIXED_MATERIAL",
+      "reason": "Pavilion utilitar/anexa sere in sectorul sudic extrem (tile Cluj-0-2); regim de inaltime redus (3.5-5.0 m).",
+      "difficulty": "Material mixt (panouri metalice si suprafete vitrate/policarbonat), semnatura spectrala atipica.",
+      "body_uncertainty": "Posibila impartire intre corpul opac si corpul vitrat."
+    },
+    {
+      "test_id": "T20",
+      "tile": "cache_tile_Cluj-1-2_halo.tif",
+      "search_center": [390997.5, 585178.5],
+      "search_bbox": [390960.0, 585140.0, 391035.0, 585215.0],
+      "archetype": "LARGE_MULTIVOLUME_COMPLEX",
+      "reason": "Complex pavilionar de mari dimensiuni (sport / expozitional, ~1700 m2) in extremitatea sudica a campusului (tile Cluj-1-2).",
+      "difficulty": "Anvergura spatiala mare, multiple coame si terase plate la cote diferite, vegetatie marginala.",
+      "body_uncertainty": "Foarte probabil compus din 2-3 volume arhitecturale distincte (T20:C1, T20:C2, T20:C3)."
+    }
+  ]
+}

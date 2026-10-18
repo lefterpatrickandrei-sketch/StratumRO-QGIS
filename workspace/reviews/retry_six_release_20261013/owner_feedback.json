@@ -1,0 +1,50 @@
+{
+  "source": "Owner message after reviewing B5 split and10 additional images",
+  "original_eight": {
+    "passed": 8,
+    "failed": 0,
+    "includes_B5_split": true
+  },
+  "additional_ten": {
+    "passed": [
+      "T01",
+      "T02",
+      "T03",
+      "T04"
+    ],
+    "failed": [
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10"
+    ]
+  },
+  "retry_owner_verdict": "OWNER_REVIEWED",
+  "scope": "Owner visual development acceptance, not positional accuracy or cadastral approval",
+  "latest_retry_review": {
+    "sheet": "six_before_after.png",
+    "human_clarification": "six_before_after_png",
+    "passed": [
+      "T05",
+      "T06",
+      "T07",
+      "T10"
+    ],
+    "rejected": [
+      "T08",
+      "T09"
+    ],
+    "partial": [],
+    "status": "OWNER_REVIEWED",
+    "original_text": "1,2,3 sunt bune la alea verzi, restul nu si ultima partial -> rectificat: Conturul nou este bun; cele două clădiri trebuie păstrate ca obiecte separate.",
+    "partial_meaning": "T10_RECTIFIED_AND_ACCEPTED",
+    "not_accepted_as_final": [
+      "T08",
+      "T09"
+    ],
+    "owner_t10_verdict": "Conturul nou este bun; cele două clădiri trebuie păstrate ca obiecte separate.",
+    "building_separation_invariant": "T10 (acoperiș ceramic) și corpul vestic alăturat (hală joasă gri) sunt obiecte cadastrale distincte; este interzisă unirea lor."
+  }
+}

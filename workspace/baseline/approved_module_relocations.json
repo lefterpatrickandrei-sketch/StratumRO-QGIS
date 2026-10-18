@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "reason": "Frozen manifest already hashes the legacy forwarder; bind its relocated implementation to byte-identical historical source as an additional integrity check.",
+  "relocations": [
+    {
+      "legacy_path": "stratum_ro/volumetric_3d.py",
+      "canonical_path": "stratum_ro/domain/city_3d/builder.py",
+      "canonical_sha256": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
+      "historical_implementation_commit": "0f9078257cb9304ef32ca83be0e6deb0556cdbb7",
+      "historical_implementation_path": "stratum_ro/volumetric_3d.py",
+      "evidence": "The 9350 implementation bytes match the historical pre-relocation file exactly; the existing frozen manifests are unchanged."
+    }
+  ]
+}

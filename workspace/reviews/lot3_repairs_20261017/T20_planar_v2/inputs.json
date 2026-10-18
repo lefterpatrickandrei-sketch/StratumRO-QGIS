@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "crs": "EPSG:3844",
+  "cases": [
+    {
+      "body_id": "T20:C1",
+      "anchor": [
+        390971.0,
+        585254.0
+      ],
+      "search_bounds": [
+        390951.0,
+        585240.0,
+        390988.0,
+        585267.0
+      ],
+      "positive_points": [],
+      "negative_points": [],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T20_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        390951.0,
+        585240.0,
+        390988.0,
+        585267.0
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_FIDELITY",
+      "selection_observations": "Separate upper gray roof and lower white roof surface hypotheses. Previous upper contour was a small arbitrary fragment. Body identities remain provisional.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Separate upper gray roof and lower white roof surface hypotheses. Previous upper contour was a small arbitrary fragment. Body identities remain provisional.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_major_errors_20261017\\T20_unobscured_review.png",
+        "image_sha256": "b423fe78da7c9b4c42dd83fc39d06f9c2e280ccd83faaf02f84809fa034a949d"
+      }
+    },
+    {
+      "body_id": "T20:C2",
+      "anchor": [
+        390969.0,
+        585226.0
+      ],
+      "search_bounds": [
+        390953.0,
+        585208.0,
+        390988.0,
+        585245.0
+      ],
+      "positive_points": [],
+      "negative_points": [],
+      "ortho": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\covers\\T20_5cm.tif",
+      "reviewed": true,
+      "target_extent": [
+        390953.0,
+        585208.0,
+        390988.0,
+        585245.0
+      ],
+      "lidar_compatibility": "NOT_USED",
+      "refinement_policy": "OPTICAL_FIDELITY",
+      "selection_observations": "Separate upper gray roof and lower white roof surface hypotheses. Previous upper contour was a small arbitrary fragment. Body identities remain provisional.",
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex",
+        "observations": "Separate upper gray roof and lower white roof surface hypotheses. Previous upper contour was a small arbitrary fragment. Body identities remain provisional.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_major_errors_20261017\\T20_unobscured_review.png",
+        "image_sha256": "b423fe78da7c9b4c42dd83fc39d06f9c2e280ccd83faaf02f84809fa034a949d"
+      }
+    }
+  ],
+  "owner_status": "PENDING_OWNER_REVIEW",
+  "purpose": "Native-detail optical repair, no automatic owner acceptance; reviewed prompts are not ground truth.",
+  "previous_snapshot": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_edge_audit_20261017\\lot3_display_snapshot.gpkg",
+  "previous_snapshot_sha256": "56b61d21f4c1a9d13570b7c9306f10ecbedf46a1a98579f81f109c225c9f946f"
+}

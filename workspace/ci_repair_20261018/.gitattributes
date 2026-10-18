@@ -1,0 +1,4 @@
+# Unified-diff context lines are evidence, including their required leading space.
+*.diff -text whitespace=-blank-at-eol
+# Preserve complete public runner output, including timestamp formatting.
+github_job_*.txt -text whitespace=-blank-at-eol

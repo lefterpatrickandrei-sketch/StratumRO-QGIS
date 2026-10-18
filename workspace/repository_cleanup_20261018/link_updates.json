@@ -1,0 +1,14 @@
+{
+  "changed_paths": [
+    "docs/ARTIFACT_MANIFEST.md",
+    "docs/PROJECT_PROGRESS.md",
+    "docs/RAPORT_AUDIT_10_REZOLUTIE.md",
+    "docs/RAPORT_AUDIT_11_REZOLUTIE.md",
+    "docs/RAPORT_AUDIT_12_REZOLUTIE.md",
+    "docs/RAPORT_AUDIT_5_REZOLUTIE.md",
+    "docs/RAPORT_AUDIT_6_REZOLUTIE.md",
+    "docs/RAPORT_AUDIT_FINAL_CONSOLIDAT.md",
+    "docs/RAPORT_FINAL_CERTIFICARE_CADASTRALA.md"
+  ],
+  "scope": "Documentation only; old report bodies in junk remain byte-identical."
+}
