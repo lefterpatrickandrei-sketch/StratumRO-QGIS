@@ -47,7 +47,8 @@ def _orthogonal_ring(polygon):
 
 def simple_roof_geometry(optical, orientation_hint=None, min_support=.92,
                          min_coverage=.90, max_vertices=12, min_edge=.8,
-                         angle_search_degrees=4):
+                         angle_search_degrees=4, *, max_boundary_distance=None,
+                         max_area_change=None):
     """Return (geometry, diagnostics), preferring the fewest supported corners.
 
     Simplification tolerances are physical metres. Orthogonal fits must retain
@@ -62,6 +63,9 @@ def simple_roof_geometry(optical, orientation_hint=None, min_support=.92,
     if not (0<min_support<=1 and 0<min_coverage<=1 and max_vertices>=4 and min_edge>0
             and 0<=angle_search_degrees<=8):
         raise ValueError('Invalid geometry constraints')
+    for limit in (max_boundary_distance, max_area_change):
+        if limit is not None and (not math.isfinite(limit) or limit < 0):
+            raise ValueError('Finite nonnegative optional change limits required')
     angle=_axis_angle(orientation_hint if orientation_hint is not None else optical)
     origin=optical.centroid.coords[0]
     aligned=affinity.rotate(optical,-angle,origin=origin)
@@ -95,6 +99,12 @@ def simple_roof_geometry(optical, orientation_hint=None, min_support=.92,
         vertices=len(candidate.exterior.coords)-1
         lengths=np.linalg.norm(np.diff(np.asarray(candidate.exterior.coords),axis=0),axis=1)
         if vertices>max_vertices or lengths.min()<min_edge:continue
+        # Physical guards apply to every candidate, including rectangles, before
+        # selecting the fewest vertices. Mask agreement is not ground truth.
+        if max_boundary_distance is not None and candidate.boundary.hausdorff_distance(aligned.boundary)>max_boundary_distance:
+            continue
+        if max_area_change is not None and abs(candidate.area-aligned.area)/aligned.area>max_area_change:
+            continue
         intersection=candidate.intersection(aligned).area
         support=intersection/candidate.area
         coverage=intersection/aligned.area
@@ -107,7 +117,8 @@ def simple_roof_geometry(optical, orientation_hint=None, min_support=.92,
         for delta in range(-int(angle_search_degrees),int(angle_search_degrees)+1):
             if delta==0:continue
             fitted,info=simple_roof_geometry(optical,affinity.rotate(hint,delta),
-                min_support,min_coverage,max_vertices,min_edge,angle_search_degrees=0)
+                min_support,min_coverage,max_vertices,min_edge,angle_search_degrees=0,
+                max_boundary_distance=max_boundary_distance,max_area_change=max_area_change)
             if info['method']!='NEEDS_REVIEW':
                 info['orientation_search_delta_deg']=delta
                 alternatives.append((fitted,info))

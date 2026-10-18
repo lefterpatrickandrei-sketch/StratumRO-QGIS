@@ -63,6 +63,13 @@ class PlatformService:
                 'bounds': list(mosaic.bounds), 'sources': mosaic.sources,
                 'windows': plan_windows(mosaic.bounds, config)}
 
+    def create_regional_roof_refiner(self, orthophotos, parameters=None, height_path=None, counts_path=None):
+        """Shared opt-in refinement engine; does not change QGIS or accept roofs."""
+        from stratum_ro.regional_roofs import OrthoMosaic
+        from stratum_ro.regional_refinement import RegionalRoofRefiner, RegionalRefinementConfig
+        return RegionalRoofRefiner(OrthoMosaic(orthophotos),
+            RegionalRefinementConfig(**(parameters or {})), height_path, counts_path)
+
     def query_qgis(self, msg_type: str, params: Optional[Dict[str, Any]] = None, timeout: float = 8.0) -> Dict[str, Any]:
         """Sends a framed JSON command to live QGIS MCP socket and returns decoded response."""
         params = params or {}

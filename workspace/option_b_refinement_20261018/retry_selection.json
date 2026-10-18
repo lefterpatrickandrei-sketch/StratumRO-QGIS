@@ -1,0 +1,116 @@
+{
+  "schema_version": 2,
+  "crs": "EPSG:3844",
+  "cases": [
+    {
+      "test_id": "OPT_B_006_C1",
+      "source_body_ids": [
+        "OPT_B_006:C1"
+      ],
+      "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_006_C1.tif",
+      "search_center": [
+        390733.00247427495,
+        585582.7352310272
+      ],
+      "target_extent": [
+        390703.3802781652,
+        585552.3931321612,
+        390762.6246703846,
+        585613.0773298932
+      ],
+      "search_bbox": [
+        390698.3802781652,
+        585547.3931321612,
+        390767.6246703846,
+        585618.0773298932
+      ],
+      "valid_fraction": 1.0,
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex visual inspection of actual RGB crop on 2026-10-18; not owner acceptance",
+        "observations": "Large rectangular pale grid-pattern roof; cyan point lies on the roof. Distinct long green roof to east and neighboring buildings remain separate. Entire visible target roof fits the loose target envelope.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_006_C1.png",
+        "image_sha256": "748026a4ef4811538592e2c12041174da0fa9a2a091c42d83e29ecb1e0c74130"
+      }
+    },
+    {
+      "test_id": "OPT_B_046_C1",
+      "source_body_ids": [
+        "OPT_B_046:C1"
+      ],
+      "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_046_C1.tif",
+      "search_center": [
+        391282.4894596725,
+        585554.2830431457
+      ],
+      "target_extent": [
+        391267.92797786917,
+        585539.4214814379,
+        391298.0547319948,
+        585568.9606415693
+      ],
+      "search_bbox": [
+        391262.92797786917,
+        585534.4214814379,
+        391303.0547319948,
+        585573.9606415693
+      ],
+      "valid_fraction": 0.999933118608867,
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex visual inspection of actual RGB crop on 2026-10-18; not owner acceptance",
+        "observations": "Brown tiled roof between separate houses, next to road. Cyan point lies on brown roof. Small boundary jogs require inference; no manual prediction coordinates supplied. Entire visible roof fits target envelope.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_046_C1.png",
+        "image_sha256": "944c112be1dbc3e716d04c6ecc560c228f0fde59be99420a415099dc954d7c14"
+      }
+    },
+    {
+      "test_id": "OPT_B_154_C1",
+      "source_body_ids": [
+        "OPT_B_154:C1",
+        "OPT_B_169:C1"
+      ],
+      "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_154_C1.tif",
+      "search_center": [
+        390760.4360903215,
+        585408.0694328337
+      ],
+      "target_extent": [
+        390730.3147222429,
+        585386.5892340569,
+        390803.9588497375,
+        585429.2098244918
+      ],
+      "search_bbox": [
+        390725.3147222429,
+        585381.5892340569,
+        390808.9588497375,
+        585434.2098244918
+      ],
+      "valid_fraction": 1.0,
+      "selection_review": {
+        "object_kind": "BUILDING",
+        "point_on_roof": true,
+        "full_target_visible": true,
+        "reviewer": "Codex visual inspection of actual RGB crop on 2026-10-18; not owner acceptance",
+        "observations": "One continuous long red roof wing, adjacent to a higher gray/white wing. Existing orange proposals overlap on the red wing. Both seeds lie on red roofing. Target envelope covers visible red wing; gray wing is a separate roof surface.",
+        "image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_154_C1.png",
+        "image_sha256": "dce52b3e589224d68198208fa483bf131209b332ab060192cb57df95950bc7f8"
+      }
+    }
+  ],
+  "excluded_diagnostic_cases": [
+    {
+      "test_id": "OPT_B_080_C1",
+      "reason": "Body identity or complete target envelope not sufficiently confirmed; diagnostic only; no inference."
+    },
+    {
+      "test_id": "OPT_B_120_C1",
+      "reason": "Body identity or complete target envelope not sufficiently confirmed; diagnostic only; no inference."
+    }
+  ]
+}

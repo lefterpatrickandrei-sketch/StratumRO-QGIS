@@ -3,12 +3,41 @@ from shapely.geometry import Point,Polygon
 from .roof_simple_geometry import simple_roof_geometry
 
 
-def simplify_observed_roof(raw,anchor,*,max_vertices=32,min_fidelity=.975,max_boundary_shift_m=.8):
+def normalize_height_supported_pinholes(raw, valid, transform, height, *, max_hole_area_m2=2., max_height_difference_m=.75):
+    """Remove only tiny mask holes supported as elevated roof by local height.
+
+    This cannot establish the absence of a small lightwell at coarse LiDAR
+    resolution. Callers must disclose cleanup and retain the raw mask for review.
+    Missing height or invalid RGB never supplies positive evidence to fill holes.
+    """
+    import numpy as np
+    from rasterio.features import rasterize
+    kept=[];removed=[]
+    for ring in raw.interiors:
+        hole=Polygon(ring)
+        if hole.area>max_hole_area_m2:
+            kept.append(ring);continue
+        mask=rasterize([(hole,1)],out_shape=valid.shape,transform=transform,dtype='uint8').astype(bool)
+        surround=rasterize([(hole.buffer(.75).intersection(raw),1)],out_shape=valid.shape,
+                           transform=transform,dtype='uint8').astype(bool)
+        a=height[mask&valid&np.isfinite(height)];b=height[surround&valid&np.isfinite(height)]
+        enough=mask.any() and valid[mask].all() and len(a)>=max(1,mask.sum()*.5) and len(b)>0
+        if enough and float(np.median(a))>=1.8 and abs(float(np.median(a)-np.median(b)))<=max_height_difference_m:
+            removed.append(float(hole.area))
+        else:kept.append(ring)
+    result=Polygon(raw.exterior,kept)
+    return result,dict(removed_hole_areas_m2=removed,removed_hole_count=len(removed),
+        role='TINY_MASK_HOLE_HYPOTHESIS_NOT_CONFIRMED_LIGHTWELL_ABSENCE')
+
+
+def simplify_observed_roof(raw,anchor,*,max_vertices=32,min_fidelity=.975,max_boundary_shift_m=.8,
+                           min_hole_area_m2=4.):
     if raw.geom_type!='Polygon' or not raw.is_valid:raise ValueError('Valid optical polygon required')
     # Pixel pinholes/skylight texture are not courtyard boundaries. Preserve
     # all substantial holes and disclose any small-hole cleanup in diagnostics.
     original=raw
-    raw=Polygon(raw.exterior,[ring for ring in raw.interiors if Polygon(ring).area>=4.])
+    if min_hole_area_m2<0:raise ValueError('Nonnegative hole cleanup area required')
+    raw=Polygon(raw.exterior,[ring for ring in raw.interiors if Polygon(ring).area>=min_hole_area_m2])
     small_holes_removed=len(original.interiors)-len(raw.interiors)
     candidates=[]
     if not raw.interiors:

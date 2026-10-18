@@ -1,0 +1,10 @@
+{
+  "full_suite_total": 502,
+  "passed": 493,
+  "skipped": 9,
+  "failures": 0,
+  "elapsed_seconds": 63.137,
+  "raw_log_sha256": "0a2afe5ce9f784529f1b7c2ccf1a34750492e9b3a7e988be8572951c5f6e8fb1",
+  "legacy_existing_lot_loader_count": 48,
+  "production_inference_used_for_tests": false
+}

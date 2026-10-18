@@ -1,0 +1,38 @@
+test_black_roof_and_zero_height_remain_valid (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_courtyard_and_L_wing_survive (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_duplicate_observations_keep_lineage_and_distinct_nested_body (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_fidelity_option_preserves_even_small_courtyard (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_overlap_is_flagged_not_cut_or_union (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_pinhole_requires_height_support_and_never_fills_nodata (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_retry_can_recover_beyond_old_mask_without_class6 (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_service_exposes_shared_engine (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_source_identifiers_must_be_unique (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_strict_limits_apply_before_selecting_rectangle (stratum_ro.test.test_regional_refinement.RefinementTests) ... ok
+test_autumn_tree_height_is_not_building_identity (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_cross_source_read_keeps_black_valid_and_does_not_fill_nodata (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_dedupe_suppresses_same_view_but_preserves_adjacent_and_small_nested_body (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_full_extent_covered_once_by_cores_and_context_crosses_seams (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_ground_footprint_requires_explicit_assumptions_and_labels_them (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_invalid_edge_flag_is_retained_after_mask_clip (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_invalid_overlap_falls_back_to_valid_second_source (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_missing_class6_and_missing_lidar_never_drop_optical_candidate (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_read_memory_budget_and_missing_crs_are_errors (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_real_L_wing_and_courtyard_not_replaced_by_rectangle (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_unknown_evidence_outside_coverage_stays_unknown (stratum_ro.test.test_regional_roofs.RegionalRoofTests) ... ok
+test_holes_retained_for_review (stratum_ro.test.test_roof_simple_geometry.SimpleRoofGeometryTests) ... ok
+test_invalid_rejected (stratum_ro.test.test_roof_simple_geometry.SimpleRoofGeometryTests) ... ok
+test_l_roof_preserves_real_extension (stratum_ro.test.test_roof_simple_geometry.SimpleRoofGeometryTests) ... ok
+test_output_edges_orthogonal_and_input_immutable (stratum_ro.test.test_roof_simple_geometry.SimpleRoofGeometryTests) ... ok
+test_rotated_rectangle_preserved (stratum_ro.test.test_roof_simple_geometry.SimpleRoofGeometryTests) ... ok
+test_steps_removed_without_terrace_regrowth (stratum_ro.test.test_roof_simple_geometry.SimpleRoofGeometryTests) ... ok
+test_triangle_not_forced_to_rectangle (stratum_ro.test.test_roof_simple_geometry.SimpleRoofGeometryTests) ... ok
+test_courtyard_is_not_filled (stratum_ro.test.test_roof_mask_fidelity.MaskFidelityTests) ... ok
+test_rectangle_not_rotated_to_world_axes (stratum_ro.test.test_roof_mask_fidelity.MaskFidelityTests) ... ok
+test_reviewed_plane_removes_narrow_attached_duct (stratum_ro.test.test_roof_mask_fidelity.MaskFidelityTests) ... ok
+test_small_mask_pinholes_do_not_destroy_planar_core (stratum_ro.test.test_roof_mask_fidelity.MaskFidelityTests) ... ok
+test_small_real_wing_is_not_erased_by_rectangle (stratum_ro.test.test_roof_mask_fidelity.MaskFidelityTests) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 3.272s
+
+OK

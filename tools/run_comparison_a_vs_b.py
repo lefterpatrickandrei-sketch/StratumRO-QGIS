@@ -2,12 +2,12 @@
 """
 StratumRO — Comparative Benchmark: Option A (Lot 5 Target-Based) vs Option B (Calibrated Filtering)
 ===================================================================================================
-1. Ingests Lots 1–4 as immutable reference ground truth.
-2. Option A (1/4): Extracts and regularizes Lot 5 (T31..T40) — 10 target buildings with verified LiDAR and optical presence.
-3. Option B (2/4 & rest): Calibrates multi-sensor filters from Lots 1–4 (nDSM height, compactness, area bounds)
-   and applies them to the remaining regional candidate pool:
-   - Validated real buildings are regularized to 100% 90° Manhattan and given -0.40m eave offset.
-   - False positives (pavement, parcel boundaries like REST_260, flat ground) are filtered out and tagged with reasons.
+1. Ingests existing lot hypotheses for overlap avoidance, not ground truth.
+2. Option A selects ten existing regional candidates by a fixed score.
+3. Option B applies fixed, untrained height/compactness/area filters to the same
+   cached regional pool. No quarter-area split, new SAM inference or measured
+   false-positive rate is implemented. REST_260 from COMPLEX_REVIEW is not input.
+   Roof-to-ground -0.40m buffers are illustrative assumptions only.
 4. Generates comprehensive comparison metrics and exports to GeoPackage.
 5. Injects layers live into QGIS Desktop via MCP socket (127.0.0.1:9876) with professional styling.
 """
@@ -44,23 +44,24 @@ NDSM_PATH = ROOT / "workspace" / "derived" / "cluj_ndsm_1m.tif"
 
 def load_all_reference_lots():
     lots_sources = [
-        (ROOT / "workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg", "ROOF_HYPOTHESES_ORTHO90"),
-        (ROOT / "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg", "ROOF_HYPOTHESES_ORTHO90"),
-        (ROOT / "workspace/reviews/body_recovery_20261013/review18.gpkg", "PROPOSED_HYPOTHESES_20261013"),
-        (ROOT / "workspace/reviews/body_recovery_20261013/review18.gpkg", "SIMPLE_ROOFS_20261013"),
-        (ROOT / "workspace/reviews/body_recovery_20261013/review18.gpkg", "TESTE10_ACCEPTED"),
-        (ROOT / "workspace/reviews/body_recovery_20261013/review18.gpkg", "B5_DOUA_CORPURI")
+        (ROOT / "workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg", "ROOF_HYPOTHESES_ORTHO90", None),
+        (ROOT / "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg", "ROOF_HYPOTHESES_ORTHO90", None),
+        (ROOT / "workspace/reviews/retry_six_release_20261013/retry_six.gpkg", "CORPURI_RECTIFICATE", None),
+        (ROOT / "workspace/reviews/simple_roofs_rectified_20261013/simple_roofs.gpkg", "ACOPERISURI_SIMPLE", 'simple'),
+        (ROOT / "workspace/reviews/review18_20261013/review18.gpkg", "TESTE_10_REZULTATE", 'ten'),
+        (ROOT / "workspace/reviews/review18_20261013/review18.gpkg", "B5_DOUA_CORPURI", None)
     ]
     ref_geoms = []
-    for gpkg_p, layer in lots_sources:
-        if gpkg_p.exists():
-            try:
-                gdf = gpd.read_file(gpkg_p, layer=layer)
-                for g in gdf.geometry:
-                    if g is not None and not g.is_empty:
-                        ref_geoms.append(make_valid(g) if not g.is_valid else g)
-            except Exception:
-                pass
+    for gpkg_p, layer, subset in lots_sources:
+        if not gpkg_p.exists():
+            raise FileNotFoundError('Required existing lot is absent: '+str(gpkg_p))
+        gdf = gpd.read_file(gpkg_p, layer=layer)  # missing layers must fail visibly
+        if subset=='simple':
+            gdf=gdf[gdf['id'].str.startswith('REF_TIER1_021:') & (gdf['id']!='REF_TIER1_021:B00005')]
+        if subset=='ten':gdf=gdf[gdf['test_id'].isin(['T01','T02','T03','T04'])]
+        for g in gdf.geometry:
+            if g is not None and not g.is_empty:
+                ref_geoms.append(make_valid(g) if not g.is_valid else g)
     return ref_geoms
 
 
@@ -262,7 +263,7 @@ def main():
         h90, med, pct_elev = extract_ndsm_profile(src_ndsm, g)
 
         # CALIBRATED FILTER CRITERIA:
-        # 1. Reject massive parcel boundaries (like REST_260)
+        # Fixed experimental size heuristic; large roofs can also exceed it.
         if area > 2000.0:
             opt_b_rejected.append({
                 'rej_id': f"REJ_{rej_idx:03d}",
@@ -410,8 +411,9 @@ def main():
             'ms_per_building': round((time_a / len(lot5_roofs)) * 1000.0, 1),
             'mean_orthogonality': round(mean_ortho_a, 3),
             'mean_height_h90_m': round(float(np.mean([r['h90_m'] for r in lot5_roofs])), 2),
-            'false_positive_rate_pct': 0.0,
-            'method_description': 'Target-Based Canonical (Search Windows + Visual/LiDAR confirmation)'
+            'false_positive_rate_pct': None,
+            'false_positive_rate_status': 'NOT_MEASURED_NO_INDEPENDENT_LABELS',
+            'method_description': 'Fixed-score selection from cached regional candidates; no new optical confirmation'
         },
         'option_b_calibrated_filter': {
             'validated_buildings_count': len(opt_b_valid_roofs),
