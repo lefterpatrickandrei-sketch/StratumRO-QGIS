@@ -1,0 +1,12 @@
+{
+  "date_local": "2026-10-18",
+  "checkpoint_authorized": "77c1a0e",
+  "owner_response": "Da, publică draft PR fără merge",
+  "scope": "Publish the audited checkpoint and its publication evidence in a new draft PR; do not merge",
+  "base": "main",
+  "head_branch": "fix/stratumro-verification-20261018",
+  "excluded_untracked_tools": [
+    "tools/print_qgis_audit_summary.py",
+    "tools/qgis_deep_metacognitive_audit.py"
+  ]
+}
