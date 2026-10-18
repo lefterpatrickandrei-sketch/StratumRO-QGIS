@@ -8,150 +8,15 @@ separates categories based on ASPRS classes & geometric morphology:
   3. Trees / High Vegetation (Points)
   4. Towers / Utility Poles (Points)
 Discards transient ground noise and vehicles.
-Features:
-  - 3D Structural Feature Tensors (planarity, sphericity, linearity via cKDTree)
-  - Vertical Datum Normalization (TransDatRO geoid offset / WGS84 ellipsoid to MN75 normal height)
 """
 
 import os
-from typing import Optional, Dict, Any, List, Tuple
 import numpy as np
 import rasterio
 from rasterio.transform import from_origin
 from scipy.ndimage import label, find_objects, map_coordinates, maximum_filter
-from scipy.spatial import cKDTree
 import laspy
-from shapely.geometry import Point, Polygon
-
-
-def complete_building_grid(
-    base_grid: np.ndarray,
-    ndsm: np.ndarray,
-    vegetation_grid: np.ndarray,
-    resolution: float,
-    min_area_m2: float = 35.0
-) -> np.ndarray:
-    """
-    Pure deterministic helper to complete building candidate grids from nDSM.
-    - Preserves existing base building cells.
-    - nDSM completion candidates are finite heights >= 0.8 AND NOT known class 4/5 vegetation-only cells.
-    - Components are formed AFTER vegetation exclusion, then filtered by physical area
-      (pixel_count * resolution^2 >= min_area_m2).
-    - If a cell has explicit building support in base_grid, it is preserved even if vegetation occurs in the same cell.
-    - Returns a new uint8 grid without mutating inputs.
-    - Validates positive finite resolution and matching 2D shapes.
-    """
-    if not isinstance(resolution, (int, float, np.floating, np.integer)):
-        raise ValueError("Resolution must be a positive finite number.")
-    res = float(resolution)
-    if not np.isfinite(res) or res <= 0.0:
-        raise ValueError("Resolution must be a positive finite number.")
-
-    if not isinstance(min_area_m2, (int, float, np.floating, np.integer)):
-        raise ValueError("min_area_m2 must be a finite number.")
-    min_area = float(min_area_m2)
-    if not np.isfinite(min_area) or min_area < 0.0:
-        raise ValueError("min_area_m2 must be non-negative and finite.")
-
-    if base_grid.ndim != 2 or ndsm.ndim != 2 or vegetation_grid.ndim != 2:
-        raise ValueError("Inputs base_grid, ndsm, and vegetation_grid must all be 2D arrays.")
-
-    if base_grid.shape != ndsm.shape or base_grid.shape != vegetation_grid.shape:
-        raise ValueError("Input arrays must have matching 2D shapes.")
-
-    out_grid = (base_grid > 0).astype(np.uint8)
-
-    finite_ndsm = np.isfinite(ndsm)
-    elev_candidate = finite_ndsm & (ndsm >= 0.8) & (vegetation_grid == 0)
-
-    lbl_e, num_e = label(elev_candidate)
-    pixel_area = res * res
-    if num_e > 0:
-        objs_e = find_objects(lbl_e)
-        for e_idx, sl in enumerate(objs_e, start=1):
-            if sl is None:
-                continue
-            comp = (lbl_e[sl] == e_idx)
-            area = float(np.sum(comp)) * pixel_area
-            if area >= min_area:
-                out_grid[sl][comp] = 1
-
-    return out_grid
-
-
-def compute_3d_structural_features(
-    points_xyz: np.ndarray,
-    radius_m: float = 1.5,
-    min_neighbors: int = 5,
-    subsample_max: Optional[int] = None
-) -> Dict[str, np.ndarray]:
-    """
-    Calculează planaritatea, sfericitatea și liniaritatea din tensorul de covarianță geometrică locală.
-    Implementat cu scipy.spatial.cKDTree și descompunere spectrală optimizată.
-
-    Indicatori geometrici:
-      - Planaritate (c_p): (lambda_2 - lambda_3) / lambda_1 (specifică acoperișurilor plane/în 2 ape > 0.60)
-      - Sfericitate (c_s): lambda_3 / lambda_1 (specifică coroanelor de arbori/volumelor 3D difuze > 0.25)
-      - Liniaritate (c_l): (lambda_1 - lambda_2) / lambda_1 (specifică cablurilor LEA și stâlpilor zvelți > 0.75)
-    """
-    n = len(points_xyz)
-    if n == 0:
-        return {
-            "planarity": np.zeros(0, dtype=np.float32),
-            "sphericity": np.zeros(0, dtype=np.float32),
-            "linearity": np.zeros(0, dtype=np.float32)
-        }
-
-    tree = cKDTree(points_xyz)
-
-    # Dacă numărul de puncte depășește subsample_max, procesăm pe un subset de eșantioane
-    query_indices = np.arange(n)
-    if subsample_max is not None and n > subsample_max:
-        query_indices = np.linspace(0, n - 1, subsample_max, dtype=int)
-        query_points = points_xyz[query_indices]
-    else:
-        query_points = points_xyz
-
-    neighbors = tree.query_ball_point(query_points, r=radius_m)
-
-    m = len(query_points)
-    planarity = np.zeros(m, dtype=np.float32)
-    sphericity = np.zeros(m, dtype=np.float32)
-    linearity = np.zeros(m, dtype=np.float32)
-
-    for i, idxs in enumerate(neighbors):
-        if len(idxs) < min_neighbors:
-            continue
-        cluster = points_xyz[idxs]
-        centered = cluster - np.mean(cluster, axis=0)
-        cov = np.dot(centered.T, centered) / len(idxs)
-        evals = np.linalg.eigvalsh(cov)  # Sortat crescător: evals[0] <= evals[1] <= evals[2]
-
-        l3, l2, l1 = evals[0], evals[1], evals[2]
-        if l1 > 1e-6:
-            planarity[i] = max(0.0, float((l2 - l3) / l1))
-            sphericity[i] = max(0.0, float(l3 / l1))
-            linearity[i] = max(0.0, float((l1 - l2) / l1))
-
-    # Dacă a fost subsample, împrăștiem rezultatele pe întregul vector de dimensiune n
-    if subsample_max is not None and n > subsample_max:
-        full_planarity = np.zeros(n, dtype=np.float32)
-        full_sphericity = np.zeros(n, dtype=np.float32)
-        full_linearity = np.zeros(n, dtype=np.float32)
-        full_planarity[query_indices] = planarity
-        full_sphericity[query_indices] = sphericity
-        full_linearity[query_indices] = linearity
-        return {
-            "planarity": full_planarity,
-            "sphericity": full_sphericity,
-            "linearity": full_linearity
-        }
-
-    return {
-        "planarity": planarity,
-        "sphericity": sphericity,
-        "linearity": linearity
-    }
+from shapely.geometry import box
 
 
 class LidarProcessor:
@@ -163,35 +28,77 @@ class LidarProcessor:
         self.laz_path = laz_path
         self.dtm_path = dtm_path
 
-    def compute_structural_features(
-        self,
-        points_xyz: Optional[np.ndarray] = None,
-        radius_m: float = 1.5,
-        min_neighbors: int = 5,
-        subsample_max: Optional[int] = None
-    ) -> Dict[str, np.ndarray]:
-        """Calculează tensorii structurali 3D (planaritate, sfericitate, liniaritate)."""
-        if points_xyz is None:
-            las = laspy.read(self.laz_path)
-            points_xyz = np.vstack([las.x, las.y, las.z]).T
-        return compute_3d_structural_features(points_xyz, radius_m=radius_m, min_neighbors=min_neighbors, subsample_max=subsample_max)
+    def validate_extent_against_aoi(self, aoi, aoi_crs="EPSG:3844"):
+        """Validate this LAS/LAZ header CRS and compare its extent with an AOI.
+
+        This is read-only: it inspects only the point-cloud header and never
+        rewrites or otherwise modifies the source file. CRS is determined only
+        from embedded LAS/LAZ metadata; coordinate values are not used to infer it.
+
+        Returns a dictionary with ``relation``, the required ``crs``, and the
+        point-cloud ``extent`` as a Shapely polygon.
+        """
+        from shapely.geometry.base import BaseGeometry
+        from pyproj import CRS
+
+        try:
+            normalized_aoi_crs = CRS.from_user_input(aoi_crs).to_epsg()
+        except Exception as exc:
+            raise ValueError("AOI CRS metadata is missing or invalid") from exc
+        if normalized_aoi_crs != 3844:
+            raise ValueError(
+                f"AOI CRS must be EPSG:3844; found EPSG:{normalized_aoi_crs}"
+            )
+
+        if not isinstance(aoi, BaseGeometry):
+            raise ValueError("AOI must be a Shapely geometry")
+        if aoi.is_empty or not aoi.is_valid or aoi.geom_type not in (
+            "Polygon", "MultiPolygon"
+        ):
+            raise ValueError("AOI must be a non-empty, valid polygon geometry")
+
+        with laspy.open(self.laz_path) as reader:
+            declared_crs = reader.header.parse_crs()
+            if declared_crs is None:
+                raise ValueError("LAS/LAZ CRS metadata is missing")
+            try:
+                epsg = declared_crs.to_epsg()
+            except Exception as exc:
+                raise ValueError("LAS/LAZ CRS metadata is not a recognized EPSG CRS") from exc
+            if epsg != 3844:
+                raise ValueError(
+                    f"LAS/LAZ CRS must be EPSG:3844; found EPSG:{epsg}"
+                )
+
+            min_x, min_y = reader.header.mins[:2]
+            max_x, max_y = reader.header.maxs[:2]
+
+        if min_x > max_x or min_y > max_y:
+            raise ValueError("LAS/LAZ header contains invalid extent bounds")
+        extent = box(float(min_x), float(min_y), float(max_x), float(max_y))
+
+        # Covers takes precedence so equal/contained footprints are not
+        # mislabeled as edge-touching merely because their boundaries coincide.
+        if aoi.covers(extent):
+            relation = "contained"
+        elif not aoi.intersects(extent):
+            relation = "disjoint"
+        elif aoi.intersection(extent).area == 0:
+            relation = "edge_touching"
+        else:
+            relation = "partial_overlap"
+
+        return {"relation": relation, "crs": "EPSG:3844", "extent": extent}
 
     def process_multicategory(
         self,
         output_ndsm_path: str = None,
-        resolution: float = 1.0,
-        geoid_offset_m: Optional[float] = None,
-        auto_datum_adjust: bool = True,
-        completion_policy: str = 'legacy'
+        resolution: float = 1.0
     ) -> dict:
         """
         Executes multi-category extraction from LiDAR.
         Returns separated structures: main buildings, outbuildings, trees, poles.
-        Handles vertical datum normalization (TransDatRO) between ellipsoidal heights and MN75 normal heights.
         """
-        if completion_policy not in ('legacy', 'exclude_known_vegetation'):
-            raise ValueError(f"Invalid completion_policy: {completion_policy}. Must be 'legacy' or 'exclude_known_vegetation'.")
-
         las = laspy.read(self.laz_path)
         x_all = np.array(las.x)
         y_all = np.array(las.y)
@@ -229,25 +136,6 @@ class LidarProcessor:
             else:
                 dtm[:] = float(np.percentile(z_all, 5))
 
-        # 1.1 Verificare și normalizare datum vertical (TransDatRO / Elipsoid WGS84 vs MN75)
-        detected_datum_offset = 0.0
-        if geoid_offset_m is not None:
-            detected_datum_offset = float(geoid_offset_m)
-            z_all = z_all - detected_datum_offset
-        elif auto_datum_adjust and self.dtm_path and os.path.exists(self.dtm_path):
-            ground_mask = (cls_all == 2)
-            if not np.any(ground_mask):
-                ground_mask = np.ones(len(z_all), dtype=bool)
-            sampled_dtm = dtm[row_indices[ground_mask], col_indices[ground_mask]]
-            valid = (sampled_dtm > -9000)
-            if np.sum(valid) > 20:
-                med_diff = float(np.median(z_all[ground_mask][valid] - sampled_dtm[valid]))
-                # Dacă diferența este în plaja tipică elipsoid-geoid pentru România (> 15m), aplicăm corecția
-                if abs(med_diff) > 15.0:
-                    detected_datum_offset = med_diff
-                    z_all = z_all - detected_datum_offset
-                    print(f"[LidarProcessor] Corectie datum vertical aplicata (TransDatRO offset: {detected_datum_offset:.2f} m).")
-
         # 2. Extract Complete nDSM (for raster preview)
         flat_indices = row_indices * cols + col_indices
         unique_indices, inv_indices = np.unique(flat_indices, return_inverse=True)
@@ -263,49 +151,18 @@ class LidarProcessor:
         ndsm = np.clip(dsm - dtm, 0.0, None)
 
         # 3. CATEGORIA 1 & 2: CLĂDIRI (Principale vs Anexe) din Clasa 6
-        pts_h = z_all - dtm[row_indices, col_indices]
+        # Dacă clasa 6 este prezentă în fișier, o folosim exclusiv
         has_class_6 = np.any(cls_all == 6)
         if has_class_6:
-            # Clasa 6 completata cu structuri elevate din clasa 3 (sere/acoperisuri plate) sau clasa 0 (neclasificate)
-            building_pts_mask = (cls_all == 6) | ((pts_h >= 1.0) & (cls_all == 3)) | ((pts_h >= 1.2) & (cls_all == 0))
+            building_pts_mask = (cls_all == 6)
         else:
-            # Fallback: non-ground cu înălțime >= 2.0m excluzând solul și vegetația înaltă
-            building_pts_mask = (pts_h >= 2.0) & (~np.isin(cls_all, [2, 4, 5]))
+            # Fallback: non-ground cu înălțime > 2.5m excluzând vegetația
+            building_pts_mask = (ndsm >= 2.5) & (~np.isin(cls_all, [3, 4, 5]))
 
         b_grid = np.zeros((rows, cols), dtype=np.uint8)
         b_c = col_indices[building_pts_mask]
         b_r = row_indices[building_pts_mask]
         b_grid[b_r, b_c] = 1
-
-        # Completare deterministă cu regiuni compacte din nDSM
-        if completion_policy == 'exclude_known_vegetation':
-            # Vegetatie medie si inalta (Clasa 4 si 5 ASPRS) pentru excludere la completare
-            veg_mask = np.isin(cls_all, [4, 5])
-            veg_grid = np.zeros((rows, cols), dtype=np.uint8)
-            if np.any(veg_mask):
-                veg_c = col_indices[veg_mask]
-                veg_r = row_indices[veg_mask]
-                veg_grid[veg_r, veg_c] = 1
-
-            b_grid = complete_building_grid(
-                base_grid=b_grid,
-                ndsm=ndsm,
-                vegetation_grid=veg_grid,
-                resolution=resolution,
-                min_area_m2=35.0
-            )
-        else:
-            # Legacy default: components of ndsm >= 0.8, >= 35 PIXELS, no vegetation exclusion
-            elev_candidate = (ndsm >= 0.8)
-            lbl_e, num_e = label(elev_candidate)
-            if num_e > 0:
-                objs_e = find_objects(lbl_e)
-                for e_idx, sl in enumerate(objs_e, start=1):
-                    if sl is None:
-                        continue
-                    comp = (lbl_e[sl] == e_idx)
-                    if int(np.sum(comp)) >= 35:
-                        b_grid[sl][comp] = 1
 
         lbl_b, num_b = label(b_grid)
         objs_b = find_objects(lbl_b)
@@ -336,9 +193,6 @@ class LidarProcessor:
                 outbuildings_grid[sl][comp_mask] = 1
                 outb_count += 1
 
-        # Mască globală combinată a clădirilor (inițializată necondiționat pentru arbori și stâlpi)
-        building_mask = (main_buildings_grid > 0) | (outbuildings_grid > 0) | (b_grid > 0)
-
         # 4. CATEGORIA 3: ARBORI (Puncte din Clasa 5 / Vegetatie Inalta)
         tree_pts_mask = np.isin(cls_all, [4, 5])
         tree_points = []
@@ -357,6 +211,7 @@ class LidarProcessor:
 
             # Excludem strict amprenta clădirilor și un tampon de 1 metru pentru a elimina copacii falși pe acoperișuri
             from scipy.ndimage import binary_dilation
+            building_mask = (main_buildings_grid > 0) | (outbuildings_grid > 0) | (b_grid > 0)
             building_exclusion = binary_dilation(building_mask, iterations=1)
             tree_grid[building_exclusion] = 0.0
 
@@ -366,32 +221,15 @@ class LidarProcessor:
 
             for pr, pc in zip(peak_rows, peak_cols):
                 h = float(tree_grid[pr, pc])
-                if h > 45.0:
-                    continue  # Filtrare zgomot altimetric / turnuri / cabluri electrice (>45m)
                 gx = float(round(x_min + (pc + 0.5) * resolution, 2))
                 gy = float(round(y_max - (pr + 0.5) * resolution, 2))
-                r_crown = round(min(max(h * 0.3, 1.5), 6.0), 1)
                 tree_points.append({
                     "x": gx,
                     "y": gy,
                     "height_m": round(h, 1),
-                    "crown_radius_m": r_crown,
+                    "crown_radius_m": round(min(max(h * 0.3, 1.5), 6.0), 1),
                     "type": "Arbore"
                 })
-
-        tree_canopies = []
-        for tp in tree_points:
-            r_cr = tp["crown_radius_m"]
-            poly_crown = Point(tp["x"], tp["y"]).buffer(r_cr, resolution=4)
-            tree_canopies.append({
-                "x": tp["x"],
-                "y": tp["y"],
-                "height_m": tp["height_m"],
-                "crown_radius_m": r_cr,
-                "crown_area_m2": round(float(poly_crown.area), 2),
-                "geometry": poly_crown,
-                "type": "Coronament_Arbore"
-            })
 
         # 5. CATEGORIA 4: STALPI & TURNURI (Structuri inalte si zvelte)
         pole_pts_mask = (cls_all == 0) | (cls_all == 7)
@@ -435,26 +273,19 @@ class LidarProcessor:
             except Exception as e_tif:
                 print(f"[LidarProcessor] Nota: nDSM GeoTIFF nu a putut fi suprascris (posibil deschis in QGIS: {e_tif}). Continuam procesarea.")
 
-        from .sensor_review import build_class_evidence
-        class_evidence = build_class_evidence(x_all, y_all, cls_all, ndsm.shape, transform)
-
         return {
             "ndsm": ndsm,
-            "class_evidence": class_evidence,
             "transform": transform,
             "crs": "EPSG:3844",
             "resolution": resolution,
             "main_buildings_grid": main_buildings_grid,
             "outbuildings_grid": outbuildings_grid,
             "tree_points": tree_points,
-            "tree_canopies": tree_canopies,
             "pole_points": pole_points,
-            "detected_datum_offset": detected_datum_offset,
             "counts": {
                 "main_buildings": main_count,
                 "outbuildings": outb_count,
                 "trees": len(tree_points),
                 "poles": len(pole_points)
-            },
-            "completion_policy": completion_policy
+            }
         }

@@ -161,3 +161,19 @@ projects/**/CAD_Export/
 
 # Preserve verified compact ONNX decoders (<100MB)
 !models/sam2/sam2_decoder.onnx
+
+# Local screenshots and intermediate runtime caches
+StratumRO_29_Cladiri_Screenshots/
+workspace/UAT_Giurgiu/
+workspace/evaluation_results/
+workspace/notebooklm_sources/
+workspace/all_available_models.json
+workspace/dev_benchmark_report.json
+workspace/hermes/probe_results*.json
+projects/**/provenance/
+projects/**/state/
+projects/**/workspace/
+projects/**/qa/*.json
+
+projects/**/*.zip
+projects/**/opencode.json
