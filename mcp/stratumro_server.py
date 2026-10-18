@@ -29,6 +29,7 @@ from stratum_ro.ai.tools.lidar_tools import inspect_lidar, generate_ndsm
 from stratum_ro.ai.tools.raster_tools import inspect_raster, extract_ortho_chip
 from stratum_ro.ai.tools.segmentation_tools import run_sam2_segmentation, inspect_mask
 from stratum_ro.ai.tools.vector_tools import (
+    refine_regional_roof_observations,
     regularize_footprints,
     apply_eave_offset,
     create_planar_partition,
@@ -160,6 +161,19 @@ def tool_regularize(
 ) -> Dict[str, Any]:
     """Applies 90° orthogonal regularization: canonical 4-vertex rectangle fitting or adaptive regularization."""
     return regularize_footprints(polygons=polygons, tolerance=tolerance, mrr_trigger=mrr_trigger)
+
+
+@mcp.tool(name="vector.refine_regional_roofs")
+def tool_refine_regional_roofs(polygons: List[Dict[str, Any]], orthophotos: List[str],
+    crs: str = 'EPSG:3844', parameters: Optional[Dict[str, Any]] = None,
+    height_path: Optional[str] = None, existing_polygons: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
+    """Refine existing roof GeoJSON Features using local RGB/height; retain review reasons.
+
+    Read-only: no model download, inference, project write or automatic acceptance.
+    Supply stable candidate_id properties and already projected EPSG:3844 geometries.
+    """
+    return refine_regional_roof_observations(polygons,orthophotos,crs=crs,parameters=parameters,
+        height_path=height_path,existing_polygons=existing_polygons)
 
 
 @mcp.tool(name="vector.apply_eave_offset")

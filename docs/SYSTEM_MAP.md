@@ -24,6 +24,8 @@ Dovezi: `start_platform.py`, `stratum_ro/api/service.py`, `tools/run_regional_ro
 
 ## Structură existentă, cu migrare incompletă
 
+Integrare ulterioară verificată la 2026-10-18: `vector.refine_regional_roofs` → wrapperul din `ai/tools/vector_tools.py` → `PlatformService.create_regional_roof_refiner` → `regional_refinement.RegionalRoofRefiner`, același motor apelat de `tools/refine_regional_roofs.py`. Reutilizează mozaicul, deduplicarea și fitterele existente. Rafinarea SAM2 este opt-in și verificată pe patru propuneri, nu o nouă inferență pe întreaga zonă. [Dovezi, limite și diagramă](../workspace/option_b_refinement_20261018/README.md). Înregistrarea uneltei a fost verificată; procesele MCP active necesită reîncărcare pentru a descoperi intrarea nouă.
+
 ```mermaid
 flowchart LR
     root["stratum_ro / module istorice"]

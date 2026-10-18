@@ -14,6 +14,7 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 
 ## Reguli și dovezi specializate
 
+- [Rafinarea B implementată: motor comun, QA, SAM2 și toate etapele vizuale](../workspace/option_b_refinement_20261018/README.md).
 - [Reverificarea conversației Antigravity: workspace comun, Lot4/T22, full-auto și Lot5/A–B](../workspace/conversation_recheck_20261018/README.md).
 - [Protocolul comun de decizie pentru clădiri](STRATUMRO_AGENT_DECISION_PROTOCOL.md).
 - [Porți de evaluare înainte de inferență](STRATUMRO_EVALUATION_GATES.md).

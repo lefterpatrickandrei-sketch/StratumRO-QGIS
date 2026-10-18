@@ -103,6 +103,8 @@ def run(request, output):
         cached=gpd.read_file(package,layer=request.get('replay_retry_layer','B4_RETRY_OBSERVATIONS')).set_index('candidate_id')
         prior_report=json.loads(package.with_name('report.json').read_text(encoding='utf-8'))
         retry_audits=prior_report['retry_audits']
+        cached_attempts=gpd.read_file(package,layer='SAM2_ALL_ATTEMPTS')
+        retry_attempts=[row.to_dict() for _,row in cached_attempts.iterrows()]
         audited={r['candidate_id'] for r in retry_audits}
         if set(cached.index)!=audited:raise ValueError('Cached retry audit IDs differ from geometries')
         updated=[]

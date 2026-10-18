@@ -135,5 +135,21 @@ class RefinementTests(unittest.TestCase):
         self.assertIn('ALREADY_OBSERVED_OTHER_LOT',result['final'][0]['review_reasons'])
         self.assertEqual(existing.wkb,before)
 
+    def test_agent_tool_uses_shared_engine_and_sandbox_without_writes(self):
+        from shapely.geometry import mapping
+        from stratum_ro.ai.tools.vector_tools import refine_regional_roof_observations
+        with tempfile.TemporaryDirectory() as folder:
+            tile=Path(folder)/'rgb.tif'
+            with rasterio.open(tile,'w',driver='GTiff',height=10,width=10,count=3,dtype='uint8',
+                crs='EPSG:3844',transform=from_origin(0,10,1,1)) as dst:
+                dst.write(np.full((3,10,10),120,dtype='uint8'))
+            feature=dict(type='Feature',properties={'candidate_id':'roof'},geometry=mapping(box(2,2,8,8)))
+            before=set(Path(folder).iterdir())
+            result=refine_regional_roof_observations([feature],[str(tile)])
+            self.assertEqual(result['features'][0]['properties']['owner_verdict'],'PENDING_OWNER_REVIEW')
+            self.assertEqual(set(Path(folder).iterdir()),before)
+            with self.assertRaises(ValueError):
+                refine_regional_roof_observations([feature],[str(tile)],crs='EPSG:4326')
+
 
 if __name__=='__main__':unittest.main()

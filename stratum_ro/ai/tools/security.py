@@ -62,6 +62,7 @@ TOOL_PERMISSIONS = {
 
     # Vector
     "vector.regularize": PermissionClass.SAFE_WRITE,
+    "vector.refine_regional_roofs": PermissionClass.ALLOW,
     "vector.apply_eave_offset": PermissionClass.SAFE_WRITE,
     "vector.planar_partition": PermissionClass.SAFE_WRITE,
 

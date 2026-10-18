@@ -1,0 +1,31 @@
+{
+  "input_count": 216,
+  "output_count": 216,
+  "invalid_polygons": 0,
+  "stable_ids_preserved": true,
+  "all_owner_verdicts_pending": true,
+  "recomputed_overlap_pairs_above_005m2": 68,
+  "visual_image_hashes_verified": 216,
+  "stage_figures": 6,
+  "sam2_vector_components_preserved": 16,
+  "final_status_counts": {
+    "NEEDS_REVIEW": 135,
+    "SIMPLE_ROOF_HYPOTHESIS": 81
+  },
+  "tests_total": 503,
+  "tests_passed": 494,
+  "tests_skipped": 9,
+  "full_suite_exit_code": 0,
+  "full_suite_seconds": 38.149,
+  "local_only_no_push": true,
+  "browser_report_verified": true,
+  "browser_stage_link_verified": true,
+  "live_mcp_server_restarted": false,
+  "dataset_pipeline_scope": "REFINEMENT_OF_EXISTING_PROPOSALS_NOT_FULL_AOI_DETECTION",
+  "artifact_versioning": "GIS and images retained locally per owner policy; code/text/JSON versioned",
+  "code_checkpoint": "f0d44b4",
+  "local_doc_links_checked": 54,
+  "original_project_layers_preserved": 85,
+  "saved_project_layer_count": 96,
+  "added_stage_layers": 11
+}

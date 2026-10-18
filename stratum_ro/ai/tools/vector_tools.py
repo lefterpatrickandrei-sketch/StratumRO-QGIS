@@ -9,6 +9,38 @@ from typing import Any, Dict, List
 from shapely.geometry import Polygon, shape, mapping
 
 
+def refine_regional_roof_observations(polygons, orthophotos, *, crs='EPSG:3844',
+                                      parameters=None, height_path=None, existing_polygons=None):
+    """Read-only, sensor-aware refinement of explicit GeoJSON roof features.
+
+    Uses the same product engine as the CLI, no downloads, GPU inference or QGIS
+    changes. IDs and uncertainty survive. This is not a general-area detector.
+    """
+    from .security import resolve_sandboxed_path
+    from stratum_ro.api.service import PlatformService
+    if crs!='EPSG:3844':raise ValueError('Already projected EPSG:3844 inputs required')
+    if not polygons or len(polygons)>1000:raise ValueError('Supply 1..1000 explicit roof features')
+    def decode(items):
+        records=[]
+        for item in items:
+            if item.get('type')!='Feature':raise ValueError('GeoJSON Features with stable candidate_id required')
+            ident=item.get('properties',{}).get('candidate_id')
+            if not isinstance(ident,str) or not ident:raise ValueError('Stable candidate_id required')
+            records.append(dict(candidate_id=ident,geometry=shape(item['geometry'])))
+        return records
+    paths=[resolve_sandboxed_path(p,must_exist=True) for p in orthophotos]
+    height=resolve_sandboxed_path(height_path,must_exist=True) if height_path else None
+    result=PlatformService().create_regional_roof_refiner(paths,parameters,height).refine(
+        decode(polygons),existing_roofs=decode(existing_polygons or []))
+    features=[dict(type='Feature',geometry=mapping(r['geometry']),properties={
+        'candidate_id':r['candidate_id'],'qa_status':r['qa_status'],
+        'owner_verdict':r['owner_verdict'],'review_reasons':r['review_reasons']}) for r in result['final']]
+    return dict(status='success',scope=result['scope'],crs=crs,features=features,
+        duplicate_links=result['duplicate_links'],conflicts=result['conflicts'],
+        existing_lot_conflicts=result['existing_lot_conflicts'],decisions=result['decisions'],
+        measured_accuracy=None,measured_recall=None)
+
+
 def regularize_footprints(
     polygons: List[Dict[str, Any]],
     tolerance: float = 0.5,

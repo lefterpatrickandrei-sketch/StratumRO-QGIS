@@ -17,8 +17,14 @@ gpkg=out/'refinement.gpkg'
 before_state=(QgsProject.instance().isDirty(),[l.id() for l in iface.mapCanvas().layers()])
 basemaps=[l for l in iface.mapCanvas().layers() if l.name().startswith('Cluj-')]
 layers={name:QgsVectorLayer(str(gpkg)+'|layername='+name,name,'ogr') for name in [
-    'B0_BASELINE','B1_OBSERVATIONS','B3_SIMPLE_FIT','B3_BEFORE_RETRY_QA','B4_RETRY_OBSERVATIONS','B4_FINAL_REVIEW']}
+    'B0_BASELINE','B1_OBSERVATIONS','B3_SIMPLE_FIT','B3_BEFORE_RETRY_QA','B4_RETRY_OBSERVATIONS','B4_FINAL_REVIEW','SAM2_ALL_ATTEMPTS']}
 features={name:{f['candidate_id']:f for f in layer.getFeatures()} for name,layer in layers.items() if layer.isValid()}
+if layers['SAM2_ALL_ATTEMPTS'].isValid():
+    best={}
+    for f in layers['SAM2_ALL_ATTEMPTS'].getFeatures():
+        ident=f['candidate_id'];previous=best.get(ident)
+        if previous is None or (f['score'],f.geometry().area())>(previous['score'],previous.geometry().area()):best[ident]=f
+    features['SAM2_ALL_ATTEMPTS']=best
 ids=sorted(features['B0_BASELINE'])
 report=json.loads((out/'report.json').read_text())
 aliases={r['suppressed']:r['retained'] for r in report['duplicate_links']}
@@ -61,7 +67,7 @@ if START_INDEX==0:
         sheet=QImage(1650,930,QImage.Format_ARGB32);sheet.fill(QColor('white'))
         painter=QPainter(sheet);painter.setFont(QFont('Arial',11))
         stages=[('B0_BASELINE','1. B initial'),('B1_OBSERVATIONS','2. Observatia optica originala'),
-                ('B3_SIMPLE_FIT','3. Forma cu garduri'),('B4_RETRY_OBSERVATIONS','4. Incercare SAM2 (diagnostic)'),
+                ('B3_SIMPLE_FIT','3. Forma cu garduri'),('SAM2_ALL_ATTEMPTS','4. Incercare SAM2 (diagnostic)'),
                 ('B3_BEFORE_RETRY_QA','5. QA inainte de SAM2'),('B4_FINAL_REVIEW','6. Rezultat propus / revizie')]
         for n,(name,title) in enumerate(stages):
             key=final_id if name=='B4_FINAL_REVIEW' else ident
