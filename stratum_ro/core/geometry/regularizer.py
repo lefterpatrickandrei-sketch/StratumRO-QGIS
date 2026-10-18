@@ -163,9 +163,9 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     if not poly.is_valid or poly.is_empty or poly.area < 6.0:
         return poly
 
-    # 0. Dacă poligonul este deja ortogonal (>= 0.95), îl păstrăm neatins
+    # 0. Dacă poligonul este deja ortogonal (>= 0.95) și are o complexitate rezonabilă, îl păstrăm neatins
     current_ortho = compute_orthogonality_ratio(poly, min_edge_len=0.20)
-    if current_ortho >= 0.95:
+    if current_ortho >= 0.95 and len(poly.exterior.coords) <= 24:
         return poly
 
     # 1. Pre-curățare trepte de pixeli și colți ascuțiți
@@ -186,7 +186,7 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
 
     # 3. Utilizare Building-Regulariser pe contururi complexe (L, U, T, decroșuri)
     if HAS_REGULARISER:
-        for p_thresh in (1.0, 1.5, 2.0):
+        for p_thresh in (0.5, 1.0, 1.5, 2.0):
             try:
                 temp_gdf = gpd.GeoDataFrame([{"geometry": simp}], crs="EPSG:3844")
                 reg_gdf = regularize_geodataframe(
