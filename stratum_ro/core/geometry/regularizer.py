@@ -96,6 +96,7 @@ def count_macro_reflex_corners(poly: Polygon, min_edge_len: float = 0.35, tol_de
     Numără unghiurile interioare apropiate de 270° (colțuri reflex/concave)
     formate de laturi cu lungimea >= min_edge_len.
     """
+    poly = _extract_largest_polygon(poly)
     if poly is None or poly.is_empty:
         return 0
     coords = list(poly.exterior.coords)[:-1]
@@ -127,6 +128,7 @@ def compute_orthogonality_ratio(poly: Polygon, min_edge_len: float = 0.20, tol_d
     """
     Calculează fracțiunea de noduri cu unghiuri interioare de 90° sau 270° (+/- tol_deg).
     """
+    poly = _extract_largest_polygon(poly)
     if poly is None or poly.is_empty:
         return 0.0
     coords = list(poly.exterior.coords)[:-1]
@@ -160,7 +162,8 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     Garantează unghiuri stricte de 90° fără teșituri diagonale de tip Douglas-Peucker.
     Protejează formele curbate autentice și decroșurile reale de fațadă (L, U, T).
     """
-    if not poly.is_valid or poly.is_empty or poly.area < 6.0:
+    poly = _extract_largest_polygon(poly)
+    if poly is None or not poly.is_valid or poly.is_empty or poly.area < 6.0:
         return poly
 
     # 0. Dacă poligonul este deja ortogonal (>= 0.95) și are o complexitate rezonabilă, îl păstrăm neatins
@@ -174,14 +177,18 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     if not simp.is_valid or simp.is_empty or simp.area < 6.0:
         simp = clean_poly if clean_poly.is_valid else poly
 
-    # 2. Gardă strictă pentru dreptunghi canonic OBB (4 noduri la 90°)
-    # Acceptăm MRR DOAR dacă nu există decroșuri reflex macro și abaterea e minimă
+    # 2. Gardă canonică pentru dreptunghi OBB (4 noduri la 90°)
+    # Acceptăm MRR dacă nu există decroșuri reflex macro și abaterea sau IoU susține dreptunghiul
     mrr = simp.minimum_rotated_rectangle
+    reflex_corners = count_macro_reflex_corners(simp, min_edge_len=0.60)
     if mrr.area > 0 and simp.convex_hull.area > 0:
-        reflex_corners = count_macro_reflex_corners(simp, min_edge_len=0.60)
         h_dist_mrr = simp.hausdorff_distance(mrr)
         a_diff_mrr = abs(mrr.area - simp.area) / (simp.area + 1e-6)
-        if reflex_corners == 0 and h_dist_mrr <= 0.50 and a_diff_mrr <= 0.04:
+        iou_mrr = simp.intersection(mrr).area / max(simp.union(mrr).area, 1e-6)
+        if reflex_corners == 0 and (
+            (h_dist_mrr <= 0.60 and a_diff_mrr <= 0.15) or
+            (iou_mrr >= 0.75 and h_dist_mrr <= 1.50)
+        ):
             return mrr
 
     # 3. Utilizare Building-Regulariser pe contururi complexe (L, U, T, decroșuri)
@@ -200,10 +207,16 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
                     o_r = compute_orthogonality_ratio(reg_poly)
                     h_r = simp.hausdorff_distance(reg_poly)
                     a_diff_r = abs(reg_poly.area - simp.area) / (simp.area + 1e-6)
-                    if o_r >= 0.85 and a_diff_r <= 0.12 and h_r <= 1.50:
+                    if o_r >= 0.85 and a_diff_r <= 0.15 and h_r <= 1.80:
                         return reg_poly
             except Exception:
                 pass
+
+    # 3b. Fallback convex pentru anexe simple fără decroșuri reflex
+    if reflex_corners == 0 and mrr.area > 0:
+        iou_mrr = simp.intersection(mrr).area / max(simp.union(mrr).area, 1e-6)
+        if iou_mrr >= 0.60:
+            return mrr
 
     # 4. Fallback ortogonal pe unghi dominant
     coords = list(simp.exterior.coords)[:-1]
