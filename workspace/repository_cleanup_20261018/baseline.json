@@ -1,0 +1,113 @@
+{
+  "captured_utc": "2026-10-18T10:06:22.265558+00:00",
+  "head": "170407cb789909ae110939ca704f89ecba5d327d",
+  "origin_main_cached": "08524dfa5c45c70e056c69776e88852f558e98e7",
+  "ahead_behind_cached": "0\t35",
+  "tracked_count": 2015,
+  "untracked_count_excluding_this_audit": 936,
+  "tracked_by_top_level": {
+    ".agents": 17,
+    "(root)": 37,
+    ".github": 2,
+    "data": 17,
+    "datasets": 2,
+    "docs": 90,
+    "engine": 6,
+    "mcp": 7,
+    "models": 1,
+    "national_server": 36,
+    "reports": 120,
+    "scripts": 17,
+    "stratum_ro": 227,
+    "tools": 155,
+    "workspace": 1281
+  },
+  "foreign_dirty_tracked": [
+    {
+      "status": " D",
+      "path": "STRATUMRO_CURRENT_VS_TARGET_AUDIT.md",
+      "sha256": null
+    },
+    {
+      "status": " M",
+      "path": "stratum_ro/evaluation_preflight.py",
+      "sha256": "4c75ef6751c855842c8d625e283673406c4593ea3c6c1d98fb32b2f0aeccd601"
+    },
+    {
+      "status": " M",
+      "path": "stratum_ro/roof_retry.py",
+      "sha256": "79491a6d87be6c2aff5f5d539db31345f37d8e9681b39375f0ea6cc4ea5207ce"
+    },
+    {
+      "status": " M",
+      "path": "stratum_ro/test/test_evaluation_preflight.py",
+      "sha256": "9e0ce340c6c6fee43dbd5cd12a7f05a0f6761438036edd760e91102a85be141d"
+    },
+    {
+      "status": " M",
+      "path": "stratum_ro/test/test_roof_retry.py",
+      "sha256": "84648b4e8234c7b4d7ba04f0c0324f04292338e908b9e679dd39af494351c198"
+    },
+    {
+      "status": " M",
+      "path": "tools/profile_lot3_candidates.py",
+      "sha256": "1ec71f80d409548445f808c882df0820beb2f2c4c35eceaaa74ea7543ef4e139"
+    },
+    {
+      "status": " M",
+      "path": "tools/run_lot3_evaluation.py",
+      "sha256": "dc029445916619c373f3e52a9172b40f9e8ce3d863851aca780d257a4ecf9f26"
+    },
+    {
+      "status": " M",
+      "path": "workspace/output/cadastru_ancpi.dxf",
+      "sha256": "12777658622b0ef138254f7308cf8f8f40335c6ea6cb51b2a9deec438b692fe8"
+    },
+    {
+      "status": " M",
+      "path": "workspace/output/cladiri_stereo70.gpkg",
+      "sha256": "338feb17dc8220abd34513cf4c2b7ac709ff3adb2b7f31d956c2d4f4aaa69e39"
+    },
+    {
+      "status": " M",
+      "path": "workspace/reviews/fusion_complete_20261017/fusion_complete.gpkg",
+      "sha256": "1be83d376c501bed44ec803288f6a2eb33ab72d329acd5b32edaabdd4a52a240"
+    },
+    {
+      "status": " M",
+      "path": "workspace/reviews/lot3_20261013/lot3_results.gpkg",
+      "sha256": "75c33f17f3d3fde334c8071e50599de31c1491e90e6031447d1cd4f506c6cb8a"
+    },
+    {
+      "status": " M",
+      "path": "workspace/reviews/lot3_edge_audit_20261017/observed_edges.gpkg",
+      "sha256": "e1ade5ca3a592ea4c34af47d5c227705a12f7b6d12e71cdb13b659cdd742f663"
+    },
+    {
+      "status": " M",
+      "path": "workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg",
+      "sha256": "8be72c1e5bd175fe77ed794ca00cb5a55fcdd5797fb37639c13cfbccf8c4b8b5"
+    },
+    {
+      "status": " M",
+      "path": "workspace/reviews/retry_six_release_20261013/inspectie_completa_8_orto_loturi.qgs",
+      "sha256": "23d7b880c0457c74887b411273d38b012b7a6e75d9fb8c3975984218c1b3aa74"
+    },
+    {
+      "status": " M",
+      "path": "workspace/reviews/review18_20261013/review18.gpkg",
+      "sha256": "59e26fb98a53cec140a99bdbfe8254fb2f97359011fda15458e4b50ec4cb11bc"
+    },
+    {
+      "status": " M",
+      "path": "workspace/reviews/simple_roofs_rectified_20261013/simple_roofs.gpkg",
+      "sha256": "1abbf86cc477c46b473052886800b124e4a63d8fe18b0d975073f389ec24fc9d"
+    }
+  ],
+  "worktrees_porcelain": "worktree C:/Users/lefpa/Downloads/QGIS-AI\nHEAD 170407cb789909ae110939ca704f89ecba5d327d\nbranch refs/heads/main\n\nworktree C:/Users/lefpa/.cline/worktrees/81d96/QGIS-AI\nHEAD 96c427803012a2284accbc8a593f3c52929f98fc\nbranch refs/heads/test/crs-lidar-extent-review\n\nworktree C:/Users/lefpa/.cline/worktrees/ancpi-footprint-validation\nHEAD 1dace8c11d7c10706c1a923d8e5195ad2c7d2270\nbranch refs/heads/feature/ancpi-footprint-validation\n\nworktree C:/Users/lefpa/.cline/worktrees/c5a50/ancpi-footprint-validation\nHEAD ccf8fbe4602dae4cd8d87459bb87b6827c468da9\ndetached\n\nworktree C:/Users/lefpa/.cline/worktrees/d3dd9/QGIS-AI\nHEAD ccf8fbe4602dae4cd8d87459bb87b6827c468da9\nbranch refs/heads/feature/lidar-extent-validation\n\nworktree C:/Users/lefpa/.cline/worktrees/d5d8d/QGIS-AI\nHEAD 96c427803012a2284accbc8a593f3c52929f98fc\ndetached\n\nworktree C:/Users/lefpa/.gemini/antigravity/worktrees/QGIS-AI/mlops_qgis_pipeline_integration\nHEAD c193e6ab0b74efeb8835e0b6801f580e1385c004\nbranch refs/heads/mlops_qgis_pipeline_integration\n\nworktree C:/Users/lefpa/Downloads/QGIS-AI/.kilo/worktrees/geode-barber\nHEAD c9768641acb0bef0806593c84f549acba5960703\ndetached\n\nworktree C:/Users/lefpa/Downloads/QGIS-AI/.kilo/worktrees/lowly-vanilla\nHEAD 0c840d3f1bfcae35cbe1fc617f9b6dba5e279e32\nbranch refs/heads/lowly-vanilla\n\n",
+  "object_storage": "count: 0\nsize: 0 bytes\nin-pack: 3454\npacks: 2\nsize-pack: 834.06 MiB\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0 bytes\n",
+  "unpublished_blobs_above_20_mib": [],
+  "lfs_version": "git-lfs/3.7.1 (GitHub; windows amd64; go 1.25.1; git b84b3384)",
+  "lfs_files": [],
+  "verification_scope": "Read-only file/Git/AST inspection. No model, tests, QGIS changes, or publication."
+}
