@@ -21,3 +21,7 @@ Legăturile și afirmațiile din interiorul rapoartelor păstrează contextul is
 Nu depozita aici chei, fișiere `.env`, cache-uri, medii Python, worktree-uri sau date active. Mutarea în acest folder nu reduce istoricul ori dimensiunea obiectelor Git.
 
 Intrarea actuală a proiectului: [README](../README.md), [stare verificată](../docs/PROJECT_STATE.md), [reguli comune](../AGENTS.md).
+
+## README anterior prezentării vizuale
+
+La cererea proprietarului, [README-ul de la e6011fa](2026-10-18/readme_before_visual/README.md) este păstrat integral înaintea înlocuirii versiunii principale. [Manifestul](../workspace/readme_publication_20261018/archive_manifest.json) include hash-ul, originea și restaurarea. Originalele arhivate anterior rămân pe loc.

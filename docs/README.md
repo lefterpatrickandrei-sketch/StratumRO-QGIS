@@ -8,6 +8,7 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 | [AGENTS.md](../AGENTS.md) | Reguli comune, fără roluri exclusive impuse unui furnizor |
 | [PROJECT_STATE.md](PROJECT_STATE.md) | Stare verificată, selecții active, limite și lucrări rămase |
 | [SYSTEM_MAP.md](SYSTEM_MAP.md) | Diagrame ale implementării și ale direcției propuse |
+| [METHODS_AND_SOURCES.md](METHODS_AND_SOURCES.md) | Formule explicate, convenții raster/geometrie și legături la cod și surse oficiale |
 | [REPOSITORY_GUIDE.md](REPOSITORY_GUIDE.md) | Structură, responsabilități, Git și arhivare |
 | [AGENT_HANDOFF.md](AGENT_HANDOFF.md) | Cum preia și predă un agent o sarcină |
 
@@ -22,6 +23,7 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 - [Identitatea produsului și direcția desktop](STRATUMRO_PRODUCT_IDENTITY_AND_DESKTOP_DIRECTION_2026-10-17.md).
 - [Auditul și aprobările reorganizării din 2026-10-18](../workspace/repository_cleanup_20261018/README.md).
 - [Repararea CI și proveniența referințelor, 2026-10-18](../workspace/ci_repair_20261018/README.md).
+- [README vizual, arhiva versiunii anterioare și autorizarea integrării](../workspace/readme_publication_20261018/README.md).
 - [Arhiva și restaurarea](../junk/README.md).
 
 ## Documentație istorică și de arhitectură

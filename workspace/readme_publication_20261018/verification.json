@@ -1,0 +1,491 @@
+{
+  "status": "PASS",
+  "head_at_check": "e6011fa8872aed27db1d988ce52516cfaff95f64",
+  "documents_checked": [
+    "README.md",
+    "docs/METHODS_AND_SOURCES.md",
+    "docs/README.md",
+    "docs/PROJECT_STATE.md",
+    "docs/AGENT_HANDOFF.md",
+    "workspace/readme_publication_20261018/README.md"
+  ],
+  "local_link_count": 118,
+  "foreign_tracked_paths_preserved": 16,
+  "original_readme_archived_byte_identically": true,
+  "links": [
+    {
+      "from": "README.md",
+      "target": "docs/assets/readme/system_flow.svg"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/regional_roofs.py"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/core/raster/reader.py"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/regional_roofs.py"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/cadastral_roof_workflow.py"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/vectorizer.py"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/core/geometry/metrics.py"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/regional_review.py"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/cadastral_product.py"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/pug_product.py"
+    },
+    {
+      "from": "README.md",
+      "target": "tools/build_dual_products.py"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/api/service.py"
+    },
+    {
+      "from": "README.md",
+      "target": "start_platform.py"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/t10_antigravity_20261013/t10_before_after.png"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/t10_antigravity_20261013/t10_report.json"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/regional_roofs_20261017/qgis/revised_routing/REGIONAL_OVERVIEW.png"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/assets/readme/regional_evidence.svg"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/regional_roofs_20261017/scan_v1/report.json"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/regional_roofs_20261017/masked_review_v2/mask_guard_report.json"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/STRATUMRO_REGIONAL_AUTOMATION_AND_HF_2026-10-17.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/METHODS_AND_SOURCES.md"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/core/raster/reader.py"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/assets/readme/iou_example.svg"
+    },
+    {
+      "from": "README.md",
+      "target": "stratum_ro/core/geometry/metrics.py"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/STRATUMRO_PRODUCT_IDENTITY_AND_DESKTOP_DIRECTION_2026-10-17.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/REPOSITORY_GUIDE.md"
+    },
+    {
+      "from": "README.md",
+      "target": "start_platform.py"
+    },
+    {
+      "from": "README.md",
+      "target": "requirements-ci.txt"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/ci_repair_20261018/README.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/METHODS_AND_SOURCES.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/REPOSITORY_GUIDE.md"
+    },
+    {
+      "from": "README.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/AGENT_HANDOFF.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/STRATUMRO_EVALUATION_GATES.md"
+    },
+    {
+      "from": "README.md",
+      "target": "junk/README.md"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/repository_cleanup_20261018/migration_manifest.json"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/readme_publication_20261018/build_figures.py"
+    },
+    {
+      "from": "README.md",
+      "target": "workspace/readme_publication_20261018/figure_manifest.json"
+    },
+    {
+      "from": "README.md",
+      "target": "docs/README.md"
+    },
+    {
+      "from": "README.md",
+      "target": "LICENSE"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "README.md"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "stratum_ro/core/raster/reader.py"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "stratum_ro/regional_roofs.py"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "stratum_ro/core/geometry/metrics.py"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "stratum_ro/vectorizer.py"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "docs/STRATUMRO_EVALUATION_GATES.md"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "workspace/reviews/t10_antigravity_20261013/t10_before_after.png"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "workspace/reviews/t10_antigravity_20261013/t10_report.json"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "workspace/reviews/regional_roofs_20261017/scan_v1/report.json"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "workspace/reviews/regional_roofs_20261017/masked_review_v2/mask_guard_report.json"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "workspace/readme_publication_20261018/build_figures.py"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "workspace/readme_publication_20261018/figure_manifest.json"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": ".github/workflows/ci.yml"
+    },
+    {
+      "from": "docs/METHODS_AND_SOURCES.md",
+      "target": "workspace/ci_repair_20261018/README.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "README.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/METHODS_AND_SOURCES.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/REPOSITORY_GUIDE.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/AGENT_HANDOFF.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/STRATUMRO_EVALUATION_GATES.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/STRATUMRO_GIT_PROGRESS_POLICY.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/STRATUMRO_REGIONAL_AUTOMATION_AND_HF_2026-10-17.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/STRATUMRO_LOT3_REPAIRS_HANDOFF_2026-10-17.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/STRATUMRO_LOT4_AND_LOT3_VISUAL_RECHECK_2026-10-17.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/STRATUMRO_PRODUCT_IDENTITY_AND_DESKTOP_DIRECTION_2026-10-17.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "workspace/repository_cleanup_20261018/README.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "workspace/ci_repair_20261018/README.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "workspace/readme_publication_20261018/README.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "junk/README.md"
+    },
+    {
+      "from": "docs/README.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/reviews/lot3_repairs_20261017/CURRENT_SELECTION.json"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "docs/STRATUMRO_LOT3_REPAIRS_HANDOFF_2026-10-17.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/reviews/lot4_20261017/CURRENT_SELECTION.json"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "docs/STRATUMRO_LOT4_AND_LOT3_VISUAL_RECHECK_2026-10-17.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "docs/STRATUMRO_REGIONAL_AUTOMATION_AND_HF_2026-10-17.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/repository_cleanup_20261018/README.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "junk/README.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/readme_publication_20261018/README.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/repository_cleanup_20261018/publication_result.json"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/repository_cleanup_20261018/remaining_inventory.json"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/repository_cleanup_20261018/ci_initial_failure_summary.json"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/ci_repair_20261018/README.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "README.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "docs/METHODS_AND_SOURCES.md"
+    },
+    {
+      "from": "docs/PROJECT_STATE.md",
+      "target": "workspace/readme_publication_20261018/archive_manifest.json"
+    },
+    {
+      "from": "docs/AGENT_HANDOFF.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "from": "docs/AGENT_HANDOFF.md",
+      "target": "docs/PROJECT_STATE.md"
+    },
+    {
+      "from": "docs/AGENT_HANDOFF.md",
+      "target": "docs/SYSTEM_MAP.md"
+    },
+    {
+      "from": "docs/AGENT_HANDOFF.md",
+      "target": "workspace/repository_cleanup_20261018/README.md"
+    },
+    {
+      "from": "docs/AGENT_HANDOFF.md",
+      "target": "workspace/repository_cleanup_20261018/publication_result.json"
+    },
+    {
+      "from": "docs/AGENT_HANDOFF.md",
+      "target": "workspace/repository_cleanup_20261018/remaining_inventory.json"
+    },
+    {
+      "from": "docs/AGENT_HANDOFF.md",
+      "target": "workspace/readme_publication_20261018/README.md"
+    },
+    {
+      "from": "docs/AGENT_HANDOFF.md",
+      "target": "workspace/ci_repair_20261018/README.md"
+    },
+    {
+      "from": "workspace/readme_publication_20261018/README.md",
+      "target": "junk/2026-10-18/readme_before_visual/README.md"
+    },
+    {
+      "from": "workspace/readme_publication_20261018/README.md",
+      "target": "workspace/readme_publication_20261018/archive_manifest.json"
+    },
+    {
+      "from": "workspace/readme_publication_20261018/README.md",
+      "target": "docs/METHODS_AND_SOURCES.md"
+    },
+    {
+      "from": "workspace/readme_publication_20261018/README.md",
+      "target": "workspace/readme_publication_20261018/build_figures.py"
+    },
+    {
+      "from": "workspace/readme_publication_20261018/README.md",
+      "target": "workspace/readme_publication_20261018/figure_manifest.json"
+    },
+    {
+      "from": "workspace/readme_publication_20261018/README.md",
+      "target": "workspace/readme_publication_20261018/verification.json"
+    },
+    {
+      "from": "workspace/readme_publication_20261018/README.md",
+      "target": "workspace/readme_publication_20261018/verify_publication.py"
+    }
+  ],
+  "errors": [],
+  "scope": "Documentation and artifact integrity; browser rendering and exact-head CI checked separately"
+}

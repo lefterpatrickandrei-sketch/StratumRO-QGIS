@@ -1,0 +1,8 @@
+{
+  "original_path": "README.md",
+  "source_commit": "e6011fa8872aed27db1d988ce52516cfaff95f64",
+  "archive_path": "junk/2026-10-18/readme_before_visual/README.md",
+  "sha256": "68673e912f6d562677d8e40432427b8a82467e06569dae8d037c14e2d3e3030a",
+  "reason": "Owner requested exact preservation of previous README before visual replacement",
+  "restore": "Copy this file to README.md only after preserving the newer version; this restores the Git blob from e6011fa."
+}

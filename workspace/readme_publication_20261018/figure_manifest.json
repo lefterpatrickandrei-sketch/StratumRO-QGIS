@@ -1,0 +1,34 @@
+{
+  "purpose": "README evidence and illustrative figures; no product execution",
+  "source_files": {
+    "workspace/reviews/regional_roofs_20261017/scan_v1/report.json": "3ddfea1eb4a7b2a65e6fbd2d805cd8aeb789ca56452491352a8936427be21d00",
+    "workspace/reviews/regional_roofs_20261017/masked_review_v2/mask_guard_report.json": "db583fef76b316af88e7b38fe35571ab0896b19fba9542f422edb19b57e72076"
+  },
+  "measured": {
+    "windows": 144,
+    "valid_windows": 67,
+    "empty_windows": 77,
+    "valid_area_m2": 419681.0475,
+    "revised_routes": [
+      380,
+      644,
+      1057
+    ]
+  },
+  "illustrative": {
+    "reference_rectangle_m": [
+      10,
+      6
+    ],
+    "shift_m": 1,
+    "iou": 0.8181818181818182
+  },
+  "figures": {
+    "docs/assets/readme/iou_example.png": "b613aba4f3932de7c22aabadf11962b9fa9f762d097cb3f2fea2122bf1523387",
+    "docs/assets/readme/iou_example.svg": "3049cacf82a1868f84986fb41b2be5e79c97b0e3026758b6bd2a846480382d7a",
+    "docs/assets/readme/regional_evidence.png": "0d7ea20669f038a5d024b7b982263c367505a190b8941468eafb6b7b70e52b42",
+    "docs/assets/readme/regional_evidence.svg": "85adbaca679e961dac82322638849f1e56eb529bac56cdd590b53b4306960eee",
+    "docs/assets/readme/system_flow.png": "a8ed4db755181e71dde6477e4dda7e67b7556888057f149fb4a4a06e9229a1aa",
+    "docs/assets/readme/system_flow.svg": "afbad085a11d936677b4c08eae8f7ebb02bfcf4170d9584d8235dcbb8414d5d4"
+  }
+}

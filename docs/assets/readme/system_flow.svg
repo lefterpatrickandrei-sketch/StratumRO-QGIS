@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="767.7pt" height="352.584pt" viewBox="0 0 767.7 352.584" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>StratumRO documentation</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 352.584
+L 767.7 352.584
+L 767.7 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 21.15 190.7064
+L 177.39 190.7064
+Q 180.738 190.7064 180.738 187.38
+L 180.738 90.36
+Q 180.738 87.0336 177.39 87.0336
+L 21.15 87.0336
+Q 17.802 87.0336 17.802 90.36
+L 17.802 187.38
+Q 17.802 190.7064 21.15 190.7064
+z
+" clip-path="url(#p9f8f9d82a6)" style="fill: #edf6f6; stroke: #007f86; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 210.87 190.7064
+L 367.11 190.7064
+Q 370.458 190.7064 370.458 187.38
+L 370.458 90.36
+Q 370.458 87.0336 367.11 87.0336
+L 210.87 87.0336
+Q 207.522 87.0336 207.522 90.36
+L 207.522 187.38
+Q 207.522 190.7064 210.87 190.7064
+z
+" clip-path="url(#p9f8f9d82a6)" style="fill: #edf6f6; stroke: #007f86; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 400.59 190.7064
+L 556.83 190.7064
+Q 560.178 190.7064 560.178 187.38
+L 560.178 90.36
+Q 560.178 87.0336 556.83 87.0336
+L 400.59 87.0336
+Q 397.242 87.0336 397.242 90.36
+L 397.242 187.38
+Q 397.242 190.7064 400.59 190.7064
+z
+" clip-path="url(#p9f8f9d82a6)" style="fill: #edf6f6; stroke: #007f86; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 590.31 190.7064
+L 746.55 190.7064
+Q 749.898 190.7064 749.898 187.38
+L 749.898 90.36
+Q 749.898 87.0336 746.55 87.0336
+L 590.31 87.0336
+Q 586.962 87.0336 586.962 90.36
+L 586.962 187.38
+Q 586.962 190.7064 590.31 190.7064
+z
+" clip-path="url(#p9f8f9d82a6)" style="fill: #edf6f6; stroke: #007f86; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 182.179182 140.256
+Q 194.128906 140.256 204.960597 140.256
+" clip-path="url(#p9f8f9d82a6)" style="fill: none; stroke: #007f86; stroke-linecap: round"/>
+    <path d="M 197.760597 136.656
+L 204.960597 140.256
+L 197.760597 143.856
+z
+" clip-path="url(#p9f8f9d82a6)" style="fill: #007f86; stroke: #007f86; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 371.899182 140.256
+Q 383.848906 140.256 394.680597 140.256
+" clip-path="url(#p9f8f9d82a6)" style="fill: none; stroke: #007f86; stroke-linecap: round"/>
+    <path d="M 387.480597 136.656
+L 394.680597 140.256
+L 387.480597 143.856
+z
+" clip-path="url(#p9f8f9d82a6)" style="fill: #007f86; stroke: #007f86; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 561.619182 140.256
+Q 573.568906 140.256 584.400597 140.256
+" clip-path="url(#p9f8f9d82a6)" style="fill: none; stroke: #007f86; stroke-linecap: round"/>
+    <path d="M 577.200597 136.656
+L 584.400597 140.256
+L 577.200597 143.856
+z
+" clip-path="url(#p9f8f9d82a6)" style="fill: #007f86; stroke: #007f86; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 23.94 312.6744
+L 743.76 312.6744
+Q 747.108 312.6744 747.108 309.348
+L 747.108 231.732
+Q 747.108 228.4056 743.76 228.4056
+L 23.94 228.4056
+Q 20.592 228.4056 20.592 231.732
+L 20.592 309.348
+Q 20.592 312.6744 23.94 312.6744
+z
+" clip-path="url(#p9f8f9d82a6)" style="fill: #f7f8fa; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #617181; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #123047" x="21.15" y="29.376" transform="rotate(-0 21.15 29.376)">STRATUMRO / de la date la livrabile</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #617181" x="21.15" y="55.9872" transform="rotate(-0 21.15 55.9872)">Componente existente în fluxul experimental de acoperișuri</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #007f86" x="31.194" y="116.9712" transform="rotate(-0 31.194 116.9712)">DATE</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #123047" transform="translate(31.194 137.346294)">Ortofoto + mască validă</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #123047" transform="translate(31.194 153.0072)">LiDAR / teren, opțional</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #007f86" x="220.914" y="116.9712" transform="rotate(-0 220.914 116.9712)">PROCESARE</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #123047" transform="translate(220.914 137.346294)">Citire pe ferestre + SAM2</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #123047" transform="translate(220.914 153.0072)">Geometrie + context</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #007f86" x="410.634" y="116.9712" transform="rotate(-0 410.634 116.9712)">REVIZIE</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #123047" transform="translate(410.634 137.346294)">QGIS + identificatori</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #123047" transform="translate(410.634 153.0072)">Dovezi + verdict</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #007f86" x="600.354" y="116.9712" transform="rotate(-0 600.354 116.9712)">LIVRARE</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #123047" transform="translate(600.354 137.252794)">GIS / CAD</text>
+    <text style="font-size: 11px; font-family: 'DejaVu Sans'; fill: #123047" transform="translate(600.354 153.0072)">Rapoarte + proveniență</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #617181" x="37.89" y="257.7888" transform="rotate(-0 37.89 257.7888)">DIRECȚIA PRODUSULUI</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #123047" x="37.89" y="287.7264" transform="rotate(-0 37.89 287.7264)">Aplicație desktop proprie • cerere prin prompt • adaptoare către instrumentele geodezului</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 10px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #617181" x="23.94" y="338.7312" transform="rotate(-0 23.94 338.7312)">Fluxul de mai sus există experimental; automatizarea generală și instalatorul desktop sunt obiective.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9f8f9d82a6">
+   <rect x="7.2" y="7.2" width="753.3" height="338.184"/>
+  </clipPath>
+ </defs>
+</svg>

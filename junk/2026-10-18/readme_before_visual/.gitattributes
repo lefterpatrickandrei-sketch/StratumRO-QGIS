@@ -1,0 +1,2 @@
+# Preserve archived Git blob bytes on Windows and Unix checkouts.
+README.md -text
