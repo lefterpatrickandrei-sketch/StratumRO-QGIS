@@ -20,7 +20,13 @@ The cleanup is not a runtime validation. Known code concerns remain: parallel ca
 
 ## Publication
 
-No GitHub write is authorized by the choice of `junk/` alone. The separate question about publication through a pull request versus direct main remains pending. The 35 pre-existing local commits also require publication review; a documentation PR based on local main would include them.
+The choice of `junk/` did not authorize GitHub writes by itself. After reviewing the concrete publication scope, the owner subsequently selected a draft PR without merge, including all 35 preceding local commits and the two cleanup checkpoints. [PR #3](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/pull/3) is open as a draft. `publication_result.json` records the initial verification; main was not updated. `remote_snapshot.json` remains the immutable earlier observation, including the decision that was pending at that time. Current CI must be read on the PR, not inferred from this snapshot.
+
+`publication_preflight.json` records a limited pattern check of 833 outgoing text blobs and a file-size check, with no findings. This was not a comprehensive security audit. The GitHub connector lacked integration permission to create the PR; the existing authenticated GitHub CLI completed the authorized operation. No credentials or repository settings changed.
+
+Initial Linux CI subsequently failed. [The diagnostic summary](ci_initial_failure_summary.json) and `ci_initial_ubuntu310_job.txt` preserve 443 tests, 4 failures, 19 errors and 9 skips in the Ubuntu/Python 3.10 job. Missing `anthropic`, `fastapi` and `torch` are among the causes; hash invariants and a Windows-specific assertion also fail. These are not repaired by this cleanup. The owner subsequently authorized a separate CI repair stage, with provenance investigation before any reference-data change; that stage is distinct from this cleanup checkpoint. The initial publication snapshot deliberately retains the earlier running status.
+
+`remaining_inventory.json` groups the 936 pre-existing untracked files into 107 metadata groups (849250877 bytes). They include projects, prior review evidence and architecture drafts. They remain in place, uncommitted; no classification as junk is inferred.
 
 ## Applied documentation work
 

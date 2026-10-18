@@ -1,4 +1,6 @@
-# Propunere de publicare — necesită alegerea proprietarului
+# Propunere de publicare — aprobată ca draft PR
+
+Proprietarul a ales publicarea întregului progres local într-un draft PR, fără merge. Propunerea de mai jos a fost concretizată în [PR #3](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/pull/3); dovada este în `publication_result.json`. Titlul și descrierea rămân textul propunerii inițiale; `PR_BODY.md` păstrează corpul trimis efectiv prin CLI.
 
 Repository public: `lefterpatrickandrei-sketch/StratumRO-QGIS`.
 Remote main citit: `08524dfa5c45c70e056c69776e88852f558e98e7`.

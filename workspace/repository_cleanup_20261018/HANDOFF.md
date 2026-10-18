@@ -4,7 +4,7 @@
 
 Proprietarul a clarificat StratumRO ca platformă ce coordonează programe specializate, inclusiv QGIS. A cerut curățenie locală și GitHub, păstrarea materialelor retrase în Git, documentație reală și diagrame, precum și întrebări înainte de extinderea implementării.
 
-A aprobat explicit `junk/` în repository, apoi cele 13 rapoarte nominalizate și snapshot-urile intrărilor. Separat, a aprobat unificarea `.kilorules` și adăugarea `GEMINI.md`. Publicarea nu a primit încă un răspuns și nu a fost executată.
+A aprobat explicit `junk/` în repository, apoi cele 13 rapoarte nominalizate și snapshot-urile intrărilor. Separat, a aprobat unificarea `.kilorules` și adăugarea `GEMINI.md`. După prezentarea propunerii concrete a ales publicarea tuturor commiturilor locale în draft PR, fără merge. [PR #3](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/pull/3) este creat și atașat sarcinii; snapshot-ul este în `publication_result.json`.
 
 ## Rezultat
 
@@ -25,8 +25,10 @@ Nu s-au executat teste de produs, inferență, conexiuni la furnizori sau opera�
 
 ## Checkpoint și continuare
 
-`055d236` păstrează inventarul inițial. Checkpointul următor al acestei etape include arhiva, documentația și toate dovezile/utilitarele noi din dosar. Nu include lucrările preexistente ale altor agenți.
+`055d236` păstrează inventarul inițial. `728cf7e` include arhiva, documentația și verificările. Checkpointul de publicare ulterior salvează rezultatul PR-ului, inventarul rămas și starea documentației. Nu include lucrările preexistente ale altor agenți.
 
-Pentru publicare: GitHub main verificat prin citire la `08524df`; înaintea etapei existau 35 commituri locale suplimentare. Un PR bazat pe local main include acel progres și checkpointurile curățeniei. Prezintă acest domeniu explicit și primește alegerea proprietarului înainte de publicare. Nu modifica main, protecții, branches sau istoricul în locul acelei decizii.
+Publicarea aprobată: GitHub main verificat prin citire la `08524df`; înaintea etapei existau 35 commituri locale suplimentare. Branch-ul `chore/stratumro-shared-checkpoint-20261018` și draft PR #3 includ acel progres și checkpointurile curățeniei. Verificările CI erau în curs la crearea PR-ului; nu declara succes fără rezultat. Nu face merge și nu modifica main, protecții sau istoricul. Cele 936 fișiere neversionate rămân în afara PR-ului; `remaining_inventory.json` păstrează gruparea și dimensiunile lor.
+
+Actualizare după crearea PR-ului: Linux CI a eșuat. Jurnalul Ubuntu/Python 3.10 și sumarul sunt păstrate în acest dosar: 443 teste, 4 failures, 19 errors, 9 skipped. Sunt dependențe lipsă, diferențe de hash și o presupunere Windows. Proprietarul a autorizat separat repararea CI, cu investigarea provenienței înainte de schimbarea referințelor. Nu declara că reorganizarea a reparat aceste probleme.
 
 Problemele de cod confirmate sunt în `docs/PROJECT_STATE.md`; ele nu sunt reparate prin aceste MD-uri. Prioritizează integrarea implementării existente, stările livrabilelor și evaluarea reală, apoi discută separat UI/exe/Rust/Hugging Face dacă sarcina o cere.

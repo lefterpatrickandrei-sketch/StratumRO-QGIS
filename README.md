@@ -6,6 +6,8 @@ Reutilizarea instrumentelor QGIS și a bibliotecilor existente este intenționat
 
 ## Începe de aici
 
+Progresul local și reorganizarea sunt publicate pentru revizie în [draft PR #3](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/pull/3), fără merge în `main`. Starea CI se verifică pe PR; documentația nu declară anticipat că verificările au trecut.
+
 | Pentru | Document |
 |---|---|
 | Ce funcționează, ce este experimental și ce lipsește | [Starea proiectului](docs/PROJECT_STATE.md) |

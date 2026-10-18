@@ -107,7 +107,8 @@ def main() -> None:
               'shared_qgis_project_unchanged_from_baseline_head': not bool(project_changed),
               'product_diff_contains_only_preexisting_work': set(changed_product) == expected_product,
               'navigation_links_checked': len(links), 'links': links,
-              'not_executed': ['product tests', 'model inference', 'QGIS session mutations', 'provider calls', 'GitHub publication']}
+              'publication_snapshot_available': (OUT / 'publication_result.json').is_file(),
+              'not_executed_by_this_check': ['product tests', 'model inference', 'QGIS session mutations', 'provider calls', 'GitHub publication']}
     name = 'verification_staged.json' if args.git_archives else 'verification_worktree.json'
     (OUT / name).write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: v for k, v in result.items() if k != 'links'}, ensure_ascii=True))

@@ -1,0 +1,1806 @@
+{
+  "scope": "Metadata classification only; no file contents changed or adopted into Git.",
+  "count": 936,
+  "total_bytes": 849250877,
+  "groups": [
+    {
+      "group": "(root)",
+      "count": 1,
+      "bytes": 397,
+      "paths": [
+        "run_ut.py"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": ".agents",
+      "count": 11,
+      "bytes": 95191,
+      "paths": [
+        ".agents/agents/romanian-opendata-specialist.md",
+        ".agents/agents/romanian-urbanism-pug-specialist.md",
+        ".agents/agents/stratumro-architect.md",
+        ".agents/agents/stratumro-cad-builder.md",
+        ".agents/agents/stratumro-coder.md",
+        ".agents/agents/stratumro-geospatial.md",
+        ".agents/agents/stratumro-orchestrator.md",
+        ".agents/agents/stratumro-qgis.md",
+        ".agents/agents/stratumro-researcher.md",
+        ".agents/agents/stratumro-reviewer.md",
+        ".agents/skills/huashu-design/SKILL.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "StratumRO_29_Cladiri_Screenshots",
+      "count": 30,
+      "bytes": 49168751,
+      "paths": [
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_01_REF_TIER1_001.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_02_REF_TIER1_002.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_03_REF_TIER1_003.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_04_REF_TIER1_004.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_05_REF_TIER1_005.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_06_REF_TIER1_006.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_07_REF_TIER1_007.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_08_REF_TIER1_008.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_09_REF_TIER1_009.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_10_REF_TIER1_010.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_11_REF_TIER1_011.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_12_REF_TIER1_012.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_13_REF_TIER1_013.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_14_REF_TIER1_014.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_15_REF_TIER1_015.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_16_REF_TIER1_016.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_17_REF_TIER1_017.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_18_REF_TIER1_018.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_19_REF_TIER1_019.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_20_REF_TIER1_020.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_21_REF_TIER1_021.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_22_REF_TIER1_022.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_23_REF_TIER1_023.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_24_REF_TIER1_024.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_25_REF_TIER1_025.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_26_REF_TIER1_026.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_27_REF_TIER1_027.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_28_REF_TIER1_028.png",
+        "StratumRO_29_Cladiri_Screenshots/Cladirea_29_REF_TIER1_029.png",
+        "StratumRO_29_Cladiri_Screenshots/INDEX_29_CLADIRI.html"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "docs",
+      "count": 19,
+      "bytes": 444408,
+      "paths": [
+        "docs/INSPECTIE_29_CERCETARE_SI_PLAN_2026-10-13.md",
+        "docs/architecture/STRATUMRO_AI_ARCHITECTURE_REVIEW.md",
+        "docs/architecture/STRATUMRO_CURRENT_VS_TARGET_ARCHITECTURE.md",
+        "docs/architecture/STRATUMRO_CURRENT_VS_TARGET_AUDIT.md",
+        "docs/architecture/STRATUMRO_DEPENDENCY_MAP.md",
+        "docs/architecture/STRATUMRO_FINAL_ARCHITECTURE_SYNTHESIS.md",
+        "docs/architecture/STRATUMRO_GIT_TOPOLOGY_AND_REPOSITORY_DECISION.md",
+        "docs/architecture/STRATUMRO_MIGRATION_RISK_REGISTER.md",
+        "docs/architecture/STRATUMRO_MULTI_PROVIDER_SCIENTIFIC_ARCHITECTURE_REVIEW.md",
+        "docs/architecture/STRATUMRO_OPENCODE_FULL_TEAM_AND_GIURGIU_PRODUCTION.md",
+        "docs/architecture/STRATUMRO_PHASE1_GOLDEN_BASELINE.md",
+        "docs/architecture/STRATUMRO_PHASE2_CONTRACTS_AND_BOUNDARIES.md",
+        "docs/architecture/STRATUMRO_PHASE3_CORE_EXTRACTION.md",
+        "docs/architecture/STRATUMRO_PHASE4_2_CHANGE_AND_OWNERSHIP_AUDIT.md",
+        "docs/architecture/STRATUMRO_PRODUCT_ARCHITECTURE.md",
+        "docs/architecture/STRATUMRO_REPOSITORY_ARCHITECTURE_MAP.md",
+        "docs/architecture/STRATUMRO_SCIENTIFIC_GEOSPATIAL_ARCHITECTURE_REVIEW.md",
+        "docs/architecture/STRATUMRO_SOFTWARE_ARCHITECTURE_REVIEW.md",
+        "docs/architecture/STRATUMRO_UAT_GIURGIU_MISSION_v9.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "national_server",
+      "count": 29,
+      "bytes": 887876,
+      "paths": [
+        "national_server/01_ADMINISTRATIV_ANCPI/ANCPI_Geoportal_Catalog_Download.url",
+        "national_server/01_ADMINISTRATIV_ANCPI/ANCPI_UAT_National.qlr",
+        "national_server/01_ADMINISTRATIV_ANCPI/Unitate_administrativa_UAT.qpj",
+        "national_server/03_AGRICOL_APIA_LPIS_2025/APIA_LPIS_Blocuri_Fizice_2025.qlr",
+        "national_server/05_MEDIU_NATURA2000_EEA/ANANP_Arii_Protejate_Romania.url",
+        "national_server/06_SILVIC_ROMSILVA_MMAP/Copernicus_Forest_Density_WMS.qlr",
+        "national_server/06_SILVIC_ROMSILVA_MMAP/Inspectorul_Padurii_SUMAL2.url",
+        "national_server/06_SILVIC_ROMSILVA_MMAP/Portal_Date_Deschise_MMAP.url",
+        "national_server/06_SILVIC_ROMSILVA_MMAP/README_FOND_FORESTIER.txt",
+        "national_server/07_NOMENCLATOR_RENNS_ANCPI/ANCPI_RENNS_Adrese_WFS.qlr",
+        "national_server/08_TRANSPORT_CNAIR_CFR/CFR_DataGovRo_Cai_Ferate.url",
+        "national_server/08_TRANSPORT_CNAIR_CFR/CNAIR_DataGovRo_Drumuri_Majore.url",
+        "national_server/08_TRANSPORT_CNAIR_CFR/Retea_Transport_National.qlr",
+        "national_server/09_GEODEZIE_RETEA_ANCPI/ANCPI_Retea_Geodezica_Stereo70.qlr",
+        "national_server/09_GEODEZIE_RETEA_ANCPI/ANCPI_TopRoSearch_Retea_Geodezica.url",
+        "national_server/09_GEODEZIE_RETEA_ANCPI/README_GEODEZIE_STEREO70.txt",
+        "national_server/09_GEODEZIE_RETEA_ANCPI/ROPOS_Statii_Permanente_GNSS.url",
+        "national_server/10_COPERNICUS_LAND_COVER/Copernicus_Corine_Land_Cover_WMS.qlr",
+        "national_server/10_COPERNICUS_LAND_COVER/Copernicus_Land_Monitoring_Service.url",
+        "national_server/11_GEOLOGIE_IGR/Geologie_1M_pr.cpg",
+        "national_server/11_GEOLOGIE_IGR/Geologie_1M_pr.prj",
+        "national_server/11_GEOLOGIE_IGR/Geologie_1M_pr.shp.xml",
+        "national_server/11_GEOLOGIE_IGR/Geologie_1M_pr.shx",
+        "national_server/11_GEOLOGIE_IGR/Geologie_Romania_1M.qlr",
+        "national_server/11_GEOLOGIE_IGR/IGR_DataGovRo_Harta_Geologica.url",
+        "national_server/CATALOG_SURSE_OFICIALE_NATIONALE.md",
+        "national_server/DESCHIDE_BROWSER_NATIONAL_QGIS.bat",
+        "national_server/ROMANIA_NATIONAL_OFICIAL_BROWSER.qgs",
+        "national_server/ROMANIA_NATIONAL_OFICIAL_BROWSER.qgs~"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "projects",
+      "count": 95,
+      "bytes": 270330288,
+      "paths": [
+        "projects/UAT_Iepuresti/CAD_Export/UAT_Iepuresti_CAD_Attributes_Manifest.csv",
+        "projects/UAT_Iepuresti/CAD_Export/UAT_Iepuresti_PUG_Cadastru.dxf",
+        "projects/UAT_Iepuresti/CAD_Export/UAT_Iepuresti_Puncte_Stereo70.cp",
+        "projects/UAT_Iepuresti/UAT_Iepuresti_Cadastru_si_PUG_Oficial.qgs",
+        "projects/UAT_Iepuresti/UAT_Iepuresti_Cadastru_si_PUG_Oficial_attachments.zip",
+        "projects/UAT_Iepuresti/UAT_Iepuresti_PUG_Master.gpkg",
+        "projects/UAT_Iepuresti/data/processed/ancpi/limita_UAT.geojson",
+        "projects/UAT_Iepuresti/data/processed/ancpi/limita_UAT_raw.geojson",
+        "projects/UAT_Iepuresti/data/processed/osm/bridges.geojson",
+        "projects/UAT_Iepuresti/data/processed/osm/buildings.geojson",
+        "projects/UAT_Iepuresti/data/processed/osm/forests.geojson",
+        "projects/UAT_Iepuresti/data/processed/osm/roads.geojson",
+        "projects/UAT_Iepuresti/data/processed/osm/waterways.geojson",
+        "projects/UAT_Iepuresti/opencode.json",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti.qgz",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Clean.qgz",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Complet.qgz",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Master.gpkg",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Plansa_Finala_A3.pdf",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Reglementari.pdf",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Urban.qgz",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Vatra_Finala.gpkg",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Vatra_Finala.qgz",
+        "projects/UAT_Iepuresti/output/PUG_Iepuresti_Zonificare_Totala.pdf",
+        "projects/UAT_Iepuresti/output/UAT_Iepuresti.gpkg",
+        "projects/UAT_Iepuresti/output/UAT_Iepuresti.qgz",
+        "projects/UAT_Iepuresti/output/UAT_Iepuresti_Master.gpkg",
+        "projects/UAT_Iepuresti/output/UAT_Iepuresti_Oficial.gpkg",
+        "projects/UAT_Iepuresti/output/UAT_Iepuresti_PUG_A3_Final.pdf",
+        "projects/UAT_Iepuresti/output/UAT_Iepuresti_PUG_A3_v11.pdf",
+        "projects/UAT_Iepuresti/output/UAT_Iepuresti_PUG_Final.qgz",
+        "projects/UAT_Iepuresti/output/UAT_Iepuresti_PUG_Final_v11.qgz",
+        "projects/UAT_Iepuresti/output/_old_versions/PUG_Iepuresti.gpkg",
+        "projects/UAT_Iepuresti/output/_old_versions/PUG_Iepuresti_Clean.gpkg",
+        "projects/UAT_Iepuresti/output/_old_versions/PUG_Iepuresti_Complet.gpkg",
+        "projects/UAT_Iepuresti/output/_old_versions/PUG_Iepuresti_Curat.gpkg",
+        "projects/UAT_Iepuresti/output/_old_versions/PUG_Iepuresti_Urban.gpkg",
+        "projects/UAT_Iepuresti/output/_old_versions/PUG_Iepuresti_V3_Direct.gpkg",
+        "projects/UAT_Iepuresti/output/_old_versions/PUG_Iepuresti_VatraReala.gpkg",
+        "projects/UAT_Iepuresti/output/audit_tabele_atribute_oficiale.json",
+        "projects/UAT_Iepuresti/output/data_manifest.json",
+        "projects/UAT_Iepuresti/output/harta_Iepuresti.pdf",
+        "projects/UAT_Iepuresti/output/harta_Iepuresti_StratumRO.pdf",
+        "projects/UAT_Iepuresti/output/harta_Iepuresti_analiza_avansata.pdf",
+        "projects/UAT_Iepuresti/output/harta_Iepuresti_final.pdf",
+        "projects/UAT_Iepuresti/output/provenance.json",
+        "projects/UAT_Iepuresti/output/sentinel2_rgb_iepuresti.tif",
+        "projects/UAT_Iepuresti/output/sentinel2_stereo70_rgb.tif",
+        "projects/UAT_Iepuresti/output/sentinel2_uat_masked.tif",
+        "projects/UAT_Iepuresti/provenance/03_sentinel2_candidates.json",
+        "projects/UAT_Iepuresti/provenance/03_sentinel2_collection.json",
+        "projects/UAT_Iepuresti/provenance/03_sentinel2_selected_item.json",
+        "projects/UAT_Iepuresti/qa/03_independent_checks.json",
+        "projects/UAT_Iepuresti/qa/03_raster_validation.json",
+        "projects/UAT_Iepuresti/qa/03_raster_validation.md",
+        "projects/UAT_Iepuresti/qa/05_qa_report.json",
+        "projects/UAT_Iepuresti/qa/05_qa_report.md",
+        "projects/UAT_Iepuresti/qa/06_adversarial_review.md",
+        "projects/UAT_Iepuresti/scripts/00_init.py",
+        "projects/UAT_Iepuresti/scripts/01_verify_schema.py",
+        "projects/UAT_Iepuresti/scripts/02_extract_uat.py",
+        "projects/UAT_Iepuresti/scripts/03_counts.py",
+        "projects/UAT_Iepuresti/scripts/03_raster_validation.py",
+        "projects/UAT_Iepuresti/scripts/03_verify_local.py",
+        "projects/UAT_Iepuresti/scripts/04_production.py",
+        "projects/UAT_Iepuresti/scripts/05_qa_qc.py",
+        "projects/UAT_Iepuresti/scripts/06_adversarial_review.py",
+        "projects/UAT_Iepuresti/scripts/07_final_export.py",
+        "projects/UAT_Iepuresti/scripts/08_refine_cartography.py",
+        "projects/UAT_Iepuresti/scripts/09_fix_fonts_final.py",
+        "projects/UAT_Iepuresti/scripts/10_final_layout_automation.py",
+        "projects/UAT_Iepuresti/scripts/11_engine_pug_iepuresti.py",
+        "projects/UAT_Iepuresti/scripts/12_zonificare_totala_pug.py",
+        "projects/UAT_Iepuresti/scripts/15_bilant_teritorial_pug.py",
+        "projects/UAT_Iepuresti/scripts/16_run_building_regularization.py",
+        "projects/UAT_Iepuresti/scripts/17_export_pug_final_a3.py",
+        "projects/UAT_Iepuresti/scripts/18_qgis_tools_ortho_pug.py",
+        "projects/UAT_Iepuresti/scripts/19_pug_ortho_clean_engine.py",
+        "projects/UAT_Iepuresti/scripts/20_pug_powershell_a3_perfect.py",
+        "projects/UAT_Iepuresti/scripts/22_patch_poduri_2d.py",
+        "projects/UAT_Iepuresti/scripts/23_layout_final.py",
+        "projects/UAT_Iepuresti/scripts/24_fix_vizibilitate.py",
+        "projects/UAT_Iepuresti/scripts/26_pug_complet_v9.py",
+        "projects/UAT_Iepuresti/scripts/27_pug_complet_v10.py",
+        "projects/UAT_Iepuresti/scripts/28_pug_complet_v11.py",
+        "projects/UAT_Iepuresti/scripts/add_sentinel_rgb.py",
+        "projects/UAT_Iepuresti/scripts/advanced_spatial_engine.py",
+        "projects/UAT_Iepuresti/scripts/automation_layout.py",
+        "projects/UAT_Iepuresti/scripts/reproject_sentinel.py",
+        "projects/UAT_Iepuresti/scripts/stratumro_iepuresti_production.py",
+        "projects/UAT_Iepuresti/state/state.before_G3.json",
+        "projects/UAT_Iepuresti/state/state.json",
+        "projects/UAT_Iepuresti/test_kimi.py",
+        "projects/UAT_Iepuresti/test_multilateral.gpkg",
+        "projects/UAT_Iepuresti/workspace/UAT_Iepuresti/01_system_inventory.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "scripts",
+      "count": 19,
+      "bytes": 96469,
+      "paths": [
+        "scripts/check_gpkg.py",
+        "scripts/discover_giurgiu_data.py",
+        "scripts/discover_sources.py",
+        "scripts/g4_aoi.py",
+        "scripts/g4_clip.py",
+        "scripts/g4_constructii.py",
+        "scripts/g4_drumuri_poligon.py",
+        "scripts/g4_final.py",
+        "scripts/g4_final_constructii.py",
+        "scripts/g4_gap.py",
+        "scripts/g4_hydro_forest.py",
+        "scripts/g4_vectors.py",
+        "scripts/generate_giurgiu_product.py",
+        "scripts/inspect_local_aoi.py",
+        "scripts/launch_mission.ps1",
+        "scripts/preflight.ps1",
+        "scripts/qgis_env.ps1",
+        "scripts/run_agent_with_custom_api.py",
+        "scripts/test_giurgiu_query.py"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "stratum_ro",
+      "count": 2,
+      "bytes": 16152,
+      "paths": [
+        "stratum_ro/sparse_dataset_builder.py",
+        "stratum_ro/test/test_sparse_dataset_builder.py"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "tools",
+      "count": 31,
+      "bytes": 245321,
+      "paths": [
+        "tools/apply_safe_margin_full_ortho.py",
+        "tools/apply_user_requested_updates.py",
+        "tools/benchmark_transdat_vs_proj.py",
+        "tools/benchmark_vram_rtx4050.py",
+        "tools/build_lot3_clean_selection.py",
+        "tools/build_lot3_v3_selection.py",
+        "tools/build_master_pug_gpkg.py",
+        "tools/build_national_qgis_project.py",
+        "tools/build_sparse_labels_dataset.py",
+        "tools/check_geodesy_environment.py",
+        "tools/check_transform_context.py",
+        "tools/diagnose_lot3_cases.py",
+        "tools/diagnose_safe_margin.py",
+        "tools/explore_lot3_candidates.py",
+        "tools/export_gis_to_cad_with_attributes.py",
+        "tools/export_pug_master_gpkg.py",
+        "tools/find_transdat.py",
+        "tools/generate_visual_validation_pack.py",
+        "tools/harvest_national_geodata.py",
+        "tools/inspect_gpkg_counts.py",
+        "tools/integrate_lot3_v3_qgis.py",
+        "tools/launch_desktop_qgis.ps1",
+        "tools/local_vlm_cadastral_inspector.py",
+        "tools/multi_model_cadastral_repair.py",
+        "tools/package_deliverables_to_downloads.py",
+        "tools/render_full_campus_map.py",
+        "tools/resolve_shortcut.py",
+        "tools/stratumro_cad_compiler.py",
+        "tools/stratumro_daemon.py",
+        "tools/test_national_browser.py",
+        "tools/test_seeds_diagnostic.py"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/STRATUMRO_RESEARCH_NOTEBOOK_PACK.md",
+      "count": 1,
+      "bytes": 5006,
+      "paths": [
+        "workspace/STRATUMRO_RESEARCH_NOTEBOOK_PACK.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/UAT_Giurgiu/data",
+      "count": 4,
+      "bytes": 13117580,
+      "paths": [
+        "workspace/UAT_Giurgiu/data/intermediate/aoi_nominatim_wgs84.geojson",
+        "workspace/UAT_Giurgiu/data/intermediate/overpass_highway_lines.json",
+        "workspace/UAT_Giurgiu/data/output/UAT_Giurgiu.gpkg",
+        "workspace/UAT_Giurgiu/data/output/UAT_Iepuresti_Oficial.gpkg"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/UAT_Giurgiu/provenance",
+      "count": 3,
+      "bytes": 17004,
+      "paths": [
+        "workspace/UAT_Giurgiu/provenance/aoi_acquisition_v01.json",
+        "workspace/UAT_Giurgiu/provenance/local_aoi_inspection_v01.json",
+        "workspace/UAT_Giurgiu/provenance/source_discovery_v01.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/UAT_Giurgiu/reports",
+      "count": 1,
+      "bytes": 1089,
+      "paths": [
+        "workspace/UAT_Giurgiu/reports/preflight_report.txt"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/UAT_Giurgiu/state",
+      "count": 3,
+      "bytes": 4008,
+      "paths": [
+        "workspace/UAT_Giurgiu/state/protected_assets.txt",
+        "workspace/UAT_Giurgiu/state/protected_sha256.txt",
+        "workspace/UAT_Giurgiu/state/state.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/all_available_models.json",
+      "count": 1,
+      "bytes": 19323,
+      "paths": [
+        "workspace/all_available_models.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/architecture/reorientation_report.md",
+      "count": 1,
+      "bytes": 12317,
+      "paths": [
+        "workspace/architecture/reorientation_report.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/dev_benchmark_report.json",
+      "count": 1,
+      "bytes": 4321,
+      "paths": [
+        "workspace/dev_benchmark_report.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/evaluation_results/eval_buildings.csv",
+      "count": 1,
+      "bytes": 17023,
+      "paths": [
+        "workspace/evaluation_results/eval_buildings.csv"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/evaluation_results/eval_report.html",
+      "count": 1,
+      "bytes": 331328,
+      "paths": [
+        "workspace/evaluation_results/eval_report.html"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/evaluation_results/eval_summary.json",
+      "count": 1,
+      "bytes": 157175,
+      "paths": [
+        "workspace/evaluation_results/eval_summary.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/STRATUMRO_BOT_PROVIDER_MATRIX.md",
+      "count": 1,
+      "bytes": 5865,
+      "paths": [
+        "workspace/hermes/STRATUMRO_BOT_PROVIDER_MATRIX.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/STRATUMRO_CURRENT_PROJECT_MAP.md",
+      "count": 1,
+      "bytes": 20398,
+      "paths": [
+        "workspace/hermes/STRATUMRO_CURRENT_PROJECT_MAP.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/STRATUMRO_DEFAULT_MODEL_DECISION.md",
+      "count": 1,
+      "bytes": 4513,
+      "paths": [
+        "workspace/hermes/STRATUMRO_DEFAULT_MODEL_DECISION.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/STRATUMRO_HERMES_INTEGRATION.md",
+      "count": 1,
+      "bytes": 5207,
+      "paths": [
+        "workspace/hermes/STRATUMRO_HERMES_INTEGRATION.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/STRATUMRO_HERMES_TEAM_SETUP_REPORT.md",
+      "count": 1,
+      "bytes": 4383,
+      "paths": [
+        "workspace/hermes/STRATUMRO_HERMES_TEAM_SETUP_REPORT.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/STRATUMRO_SKILL_MATRIX.md",
+      "count": 1,
+      "bytes": 7325,
+      "paths": [
+        "workspace/hermes/STRATUMRO_SKILL_MATRIX.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/probe_results.json",
+      "count": 1,
+      "bytes": 2899,
+      "paths": [
+        "workspace/hermes/probe_results.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/probe_results_round2.json",
+      "count": 1,
+      "bytes": 1019,
+      "paths": [
+        "workspace/hermes/probe_results_round2.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/hermes/scripts",
+      "count": 2,
+      "bytes": 9112,
+      "paths": [
+        "workspace/hermes/scripts/probe_providers.py",
+        "workspace/hermes/scripts/probe_round2.py"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/multi_provider_review/ROLE_A_SOFTWARE_ARCHITECT.md",
+      "count": 1,
+      "bytes": 6303,
+      "paths": [
+        "workspace/multi_provider_review/ROLE_A_SOFTWARE_ARCHITECT.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/multi_provider_review/ROLE_B_AI_ARCHITECT.md",
+      "count": 1,
+      "bytes": 7327,
+      "paths": [
+        "workspace/multi_provider_review/ROLE_B_AI_ARCHITECT.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/multi_provider_review/ROLE_C_GEOSPATIAL_GEODESY.md",
+      "count": 1,
+      "bytes": 4346,
+      "paths": [
+        "workspace/multi_provider_review/ROLE_C_GEOSPATIAL_GEODESY.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/multi_provider_review/ROLE_D_COMPUTER_VISION.md",
+      "count": 1,
+      "bytes": 5055,
+      "paths": [
+        "workspace/multi_provider_review/ROLE_D_COMPUTER_VISION.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/multi_provider_review/ROLE_E_QA_REPRODUCIBILITY.md",
+      "count": 1,
+      "bytes": 5124,
+      "paths": [
+        "workspace/multi_provider_review/ROLE_E_QA_REPRODUCIBILITY.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/multi_provider_review/ROLE_F_ADVERSARIAL_REVIEWER.md",
+      "count": 1,
+      "bytes": 4730,
+      "paths": [
+        "workspace/multi_provider_review/ROLE_F_ADVERSARIAL_REVIEWER.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/notebooklm_sources/01_SURSE_OFICIALE_ROMANIA_GIS.md",
+      "count": 1,
+      "bytes": 2991,
+      "paths": [
+        "workspace/notebooklm_sources/01_SURSE_OFICIALE_ROMANIA_GIS.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/notebooklm_sources/02_ARHITECTURA_FUZIUNE_SAM2_LIDAR_NDSM.md",
+      "count": 1,
+      "bytes": 3747,
+      "paths": [
+        "workspace/notebooklm_sources/02_ARHITECTURA_FUZIUNE_SAM2_LIDAR_NDSM.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/attribute_tables_raw_dump.json",
+      "count": 1,
+      "bytes": 51397,
+      "paths": [
+        "workspace/output/attribute_tables_raw_dump.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/cladiri_finalizate_aoi_complet.geojson.BAK_PRE_P1",
+      "count": 1,
+      "bytes": 180302,
+      "paths": [
+        "workspace/output/cladiri_finalizate_aoi_complet.geojson.BAK_PRE_P1"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/cladiri_stereo70.gpkg.BAK_PRE_P1",
+      "count": 1,
+      "bytes": 19374080,
+      "paths": [
+        "workspace/output/cladiri_stereo70.gpkg.BAK_PRE_P1"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/raport_audit_vlm_local_minicpm.md",
+      "count": 1,
+      "bytes": 5348,
+      "paths": [
+        "workspace/output/raport_audit_vlm_local_minicpm.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/raport_reparare_si_finisare_modele.md",
+      "count": 1,
+      "bytes": 1682,
+      "paths": [
+        "workspace/output/raport_reparare_si_finisare_modele.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/raport_safe_margin_si_orto_complet.md",
+      "count": 1,
+      "bytes": 3246,
+      "paths": [
+        "workspace/output/raport_safe_margin_si_orto_complet.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/source_archives_attributes.json",
+      "count": 1,
+      "bytes": 6290,
+      "paths": [
+        "workspace/output/source_archives_attributes.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/test_validation_pad.dxf",
+      "count": 1,
+      "bytes": 98932,
+      "paths": [
+        "workspace/output/test_validation_pad.dxf"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/vlm_audit_controls.json",
+      "count": 1,
+      "bytes": 32083,
+      "paths": [
+        "workspace/output/vlm_audit_controls.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/vlm_prompt_ablation.json",
+      "count": 1,
+      "bytes": 1093,
+      "paths": [
+        "workspace/output/vlm_prompt_ablation.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/vlm_real_audit_transcript.NVIDIA_NONDISCRIMINATIVE.json",
+      "count": 1,
+      "bytes": 35409,
+      "paths": [
+        "workspace/output/vlm_real_audit_transcript.NVIDIA_NONDISCRIMINATIVE.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/vlm_real_audit_transcript.json",
+      "count": 1,
+      "bytes": 50923,
+      "paths": [
+        "workspace/output/vlm_real_audit_transcript.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/output/vlm_safe_margin_verdict.txt",
+      "count": 1,
+      "bytes": 116,
+      "paths": [
+        "workspace/output/vlm_safe_margin_verdict.txt"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase2/existing_contracts_inventory.md",
+      "count": 1,
+      "bytes": 8441,
+      "paths": [
+        "workspace/phase2/existing_contracts_inventory.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/CORE_FINAL_MAP.md",
+      "count": 1,
+      "bytes": 1478,
+      "paths": [
+        "workspace/phase3/CORE_FINAL_MAP.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/FIRST_EXTRACTION_GATE.md",
+      "count": 1,
+      "bytes": 2763,
+      "paths": [
+        "workspace/phase3/FIRST_EXTRACTION_GATE.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/core_extraction_map.md",
+      "count": 1,
+      "bytes": 5199,
+      "paths": [
+        "workspace/phase3/core_extraction_map.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/dependency_geodesy.md",
+      "count": 1,
+      "bytes": 247,
+      "paths": [
+        "workspace/phase3/dependency_geodesy.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/dependency_geometry.md",
+      "count": 1,
+      "bytes": 258,
+      "paths": [
+        "workspace/phase3/dependency_geometry.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/dependency_pointcloud.md",
+      "count": 1,
+      "bytes": 238,
+      "paths": [
+        "workspace/phase3/dependency_pointcloud.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/dependency_qa_qc.md",
+      "count": 1,
+      "bytes": 238,
+      "paths": [
+        "workspace/phase3/dependency_qa_qc.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/dependency_raster.md",
+      "count": 1,
+      "bytes": 232,
+      "paths": [
+        "workspace/phase3/dependency_raster.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/discovered_issues.md",
+      "count": 1,
+      "bytes": 2311,
+      "paths": [
+        "workspace/phase3/discovered_issues.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/extraction_geodesy.md",
+      "count": 1,
+      "bytes": 1158,
+      "paths": [
+        "workspace/phase3/extraction_geodesy.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/extraction_geometry.md",
+      "count": 1,
+      "bytes": 1285,
+      "paths": [
+        "workspace/phase3/extraction_geometry.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/extraction_pointcloud.md",
+      "count": 1,
+      "bytes": 657,
+      "paths": [
+        "workspace/phase3/extraction_pointcloud.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/extraction_qa_qc.md",
+      "count": 1,
+      "bytes": 1048,
+      "paths": [
+        "workspace/phase3/extraction_qa_qc.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/extraction_raster.md",
+      "count": 1,
+      "bytes": 643,
+      "paths": [
+        "workspace/phase3/extraction_raster.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/git_repository_relationship_matrix.md",
+      "count": 1,
+      "bytes": 4596,
+      "paths": [
+        "workspace/phase3/git_repository_relationship_matrix.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/regression_geodesy.json",
+      "count": 1,
+      "bytes": 329,
+      "paths": [
+        "workspace/phase3/regression_geodesy.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/regression_geometry.json",
+      "count": 1,
+      "bytes": 375,
+      "paths": [
+        "workspace/phase3/regression_geometry.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/regression_pointcloud.json",
+      "count": 1,
+      "bytes": 174,
+      "paths": [
+        "workspace/phase3/regression_pointcloud.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/regression_qa_qc.json",
+      "count": 1,
+      "bytes": 226,
+      "paths": [
+        "workspace/phase3/regression_qa_qc.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase3/regression_raster.json",
+      "count": 1,
+      "bytes": 163,
+      "paths": [
+        "workspace/phase3/regression_raster.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/PHASE42_DECISION_MATRIX.md",
+      "count": 1,
+      "bytes": 6408,
+      "paths": [
+        "workspace/phase4/PHASE42_DECISION_MATRIX.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/city3d_canonical_migration.md",
+      "count": 1,
+      "bytes": 6199,
+      "paths": [
+        "workspace/phase4/city3d_canonical_migration.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/city3d_compatibility_report.md",
+      "count": 1,
+      "bytes": 3072,
+      "paths": [
+        "workspace/phase4/city3d_compatibility_report.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/city3d_consumers.md",
+      "count": 1,
+      "bytes": 2039,
+      "paths": [
+        "workspace/phase4/city3d_consumers.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/city3d_public_api.md",
+      "count": 1,
+      "bytes": 3063,
+      "paths": [
+        "workspace/phase4/city3d_public_api.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/current_state_after_reorientation.md",
+      "count": 1,
+      "bytes": 5425,
+      "paths": [
+        "workspace/phase4/current_state_after_reorientation.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/domain_boundary_matrix.md",
+      "count": 1,
+      "bytes": 4341,
+      "paths": [
+        "workspace/phase4/domain_boundary_matrix.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/domain_consolidation_plan.md",
+      "count": 1,
+      "bytes": 7082,
+      "paths": [
+        "workspace/phase4/domain_consolidation_plan.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/phase42_change_inventory.md",
+      "count": 1,
+      "bytes": 5105,
+      "paths": [
+        "workspace/phase4/phase42_change_inventory.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/phase4/provider_ownership_matrix.md",
+      "count": 1,
+      "bytes": 3227,
+      "paths": [
+        "workspace/phase4/provider_ownership_matrix.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/body_recovery_20261013",
+      "count": 60,
+      "bytes": 22434665,
+      "paths": [
+        "workspace/reviews/body_recovery_20261013/REF_TIER1_014_color_final.gpkg",
+        "workspace/reviews/body_recovery_20261013/REF_TIER1_014_color_raw.gpkg",
+        "workspace/reviews/body_recovery_20261013/REF_TIER1_021_color_final.gpkg",
+        "workspace/reviews/body_recovery_20261013/REF_TIER1_021_color_raw.gpkg",
+        "workspace/reviews/body_recovery_20261013/before_after.png",
+        "workspace/reviews/body_recovery_20261013/color_experiment.json",
+        "workspace/reviews/body_recovery_20261013/export_readback.json",
+        "workspace/reviews/body_recovery_20261013/final_tiles/REF_TIER1_006.gpkg",
+        "workspace/reviews/body_recovery_20261013/final_tiles/REF_TIER1_014.gpkg",
+        "workspace/reviews/body_recovery_20261013/final_tiles/REF_TIER1_021.gpkg",
+        "workspace/reviews/body_recovery_20261013/final_tiles/results.json",
+        "workspace/reviews/body_recovery_20261013/full_tiles/REF_TIER1_014_color_final.gpkg",
+        "workspace/reviews/body_recovery_20261013/full_tiles/REF_TIER1_014_color_raw.gpkg",
+        "workspace/reviews/body_recovery_20261013/full_tiles/REF_TIER1_021_color_final.gpkg",
+        "workspace/reviews/body_recovery_20261013/full_tiles/REF_TIER1_021_color_raw.gpkg",
+        "workspace/reviews/body_recovery_20261013/full_tiles/color_experiment.json",
+        "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs~",
+        "workspace/reviews/body_recovery_20261013/inspectie_corectii_attachments.zip",
+        "workspace/reviews/body_recovery_20261013/integrated_tiles/REF_TIER1_006.gpkg",
+        "workspace/reviews/body_recovery_20261013/integrated_tiles/REF_TIER1_014.gpkg",
+        "workspace/reviews/body_recovery_20261013/integrated_tiles/REF_TIER1_021.gpkg",
+        "workspace/reviews/body_recovery_20261013/integrated_tiles/results.json",
+        "workspace/reviews/body_recovery_20261013/internal_check/REF_TIER1_009.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check/REF_TIER1_010.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check/REF_TIER1_011.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check/REF_TIER1_012.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check/results.json",
+        "workspace/reviews/body_recovery_20261013/internal_check_native/REF_TIER1_009.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check_native/REF_TIER1_010.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check_native/REF_TIER1_011.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check_native/REF_TIER1_012.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check_native/REF_TIER1_013.gpkg",
+        "workspace/reviews/body_recovery_20261013/internal_check_native/results.json",
+        "workspace/reviews/body_recovery_20261013/qgis_case14.png",
+        "workspace/reviews/body_recovery_20261013/qgis_readback.json",
+        "workspace/reviews/body_recovery_20261013/repaired_tiles/REF_TIER1_006.gpkg",
+        "workspace/reviews/body_recovery_20261013/repaired_tiles/REF_TIER1_014.gpkg",
+        "workspace/reviews/body_recovery_20261013/repaired_tiles/REF_TIER1_021.gpkg",
+        "workspace/reviews/body_recovery_20261013/repaired_tiles/results.json",
+        "workspace/reviews/body_recovery_20261013/roof_recovery.dxf",
+        "workspace/reviews/body_recovery_20261013/roof_recovery_dxf.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_detail_20261013_124119_B00005.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_detail_20261013_124119_B00006.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_detail_20261013_124119_B00008.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_detail_20261013_124119_B00009.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_detail_20261013_124119_B00010.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_detail_20261013_124119_B00014.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_detail_20261013_124119_B00018.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_detail_20261013_124119_B00030.png",
+        "workspace/reviews/body_recovery_20261013/screenshot_view_only_20261013_123924.png",
+        "workspace/reviews/body_recovery_20261013/scripts/create_roof_inspection_project.py",
+        "workspace/reviews/body_recovery_20261013/scripts/experiment_color_bodies.py",
+        "workspace/reviews/body_recovery_20261013/scripts/experiment_full_tile_bodies.py",
+        "workspace/reviews/body_recovery_20261013/scripts/package_roof_recovery.py",
+        "workspace/reviews/body_recovery_20261013/scripts/render_body_recovery.py",
+        "workspace/reviews/body_recovery_20261013/scripts/render_qgis_roofs.py",
+        "workspace/reviews/body_recovery_20261013/scripts/render_roof_dxf.py",
+        "workspace/reviews/body_recovery_20261013/scripts/verify_body_recovery_check_native.py",
+        "workspace/reviews/body_recovery_20261013/scripts/verify_body_recovery_final.py",
+        "workspace/reviews/body_recovery_20261013/verification_manifest.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/core_recovery_20261013",
+      "count": 17,
+      "bytes": 1624262,
+      "paths": [
+        "workspace/reviews/core_recovery_20261013/core_diagnostics.json",
+        "workspace/reviews/core_recovery_20261013/current_evaluation_after_fix.json",
+        "workspace/reviews/core_recovery_20261013/merge_ablation.json",
+        "workspace/reviews/core_recovery_20261013/real_smoke/hybrid_raw.gpkg",
+        "workspace/reviews/core_recovery_20261013/real_smoke/ndsm.tif",
+        "workspace/reviews/core_recovery_20261013/real_smoke/optical_raw.gpkg",
+        "workspace/reviews/core_recovery_20261013/real_smoke/qgis_readback.json",
+        "workspace/reviews/core_recovery_20261013/real_smoke/real_result_overlay.png",
+        "workspace/reviews/core_recovery_20261013/real_smoke/real_smoke_manifest.json",
+        "workspace/reviews/core_recovery_20261013/real_smoke/recovered_smoke.cp",
+        "workspace/reviews/core_recovery_20261013/real_smoke/recovered_smoke.dxf",
+        "workspace/reviews/core_recovery_20261013/real_smoke/recovered_smoke.gpkg",
+        "workspace/reviews/core_recovery_20261013/suite.stderr.txt",
+        "workspace/reviews/core_recovery_20261013/suite.stdout.txt",
+        "workspace/reviews/core_recovery_20261013/suite_final.stderr.txt",
+        "workspace/reviews/core_recovery_20261013/suite_final.stdout.txt",
+        "workspace/reviews/core_recovery_20261013/verification_summary.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/edge_recovery_20261013",
+      "count": 12,
+      "bytes": 12005052,
+      "paths": [
+        "workspace/reviews/edge_recovery_20261013/edge_candidates.gpkg",
+        "workspace/reviews/edge_recovery_20261013/edge_candidates_visual.png",
+        "workspace/reviews/edge_recovery_20261013/grabcut_experiment.gpkg",
+        "workspace/reviews/edge_recovery_20261013/grabcut_visual.png",
+        "workspace/reviews/edge_recovery_20261013/neutral_refinement.gpkg",
+        "workspace/reviews/edge_recovery_20261013/neutral_refinement.png",
+        "workspace/reviews/edge_recovery_20261013/prompt_refinement.gpkg",
+        "workspace/reviews/edge_recovery_20261013/prompt_refinement.json",
+        "workspace/reviews/edge_recovery_20261013/prompt_refinement_tight.gpkg",
+        "workspace/reviews/edge_recovery_20261013/prompt_refinement_tight.json",
+        "workspace/reviews/edge_recovery_20261013/raw_vs_selected.png",
+        "workspace/reviews/edge_recovery_20261013/tight_refinement_visual.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/inspection29_20261013",
+      "count": 3,
+      "bytes": 74849,
+      "paths": [
+        "workspace/reviews/inspection29_20261013/all_29_buildings.csv",
+        "workspace/reviews/inspection29_20261013/audit_current.json",
+        "workspace/reviews/inspection29_20261013/validation_checks.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/lidar_audit_20261017",
+      "count": 26,
+      "bytes": 21742110,
+      "paths": [
+        "workspace/reviews/lidar_audit_20261017/T17_class6.png",
+        "workspace/reviews/lidar_audit_20261017/T17_height.png",
+        "workspace/reviews/lidar_audit_20261017/T17_ortho.png",
+        "workspace/reviews/lidar_audit_20261017/T18_class6.png",
+        "workspace/reviews/lidar_audit_20261017/T18_height.png",
+        "workspace/reviews/lidar_audit_20261017/T18_ortho.png",
+        "workspace/reviews/lidar_audit_20261017/T20_class6.png",
+        "workspace/reviews/lidar_audit_20261017/T20_height.png",
+        "workspace/reviews/lidar_audit_20261017/T20_ortho.png",
+        "workspace/reviews/lidar_audit_20261017/audit_console.txt",
+        "workspace/reviews/lidar_audit_20261017/overview_class6.png",
+        "workspace/reviews/lidar_audit_20261017/overview_height.png",
+        "workspace/reviews/lidar_audit_20261017/overview_ortho.png",
+        "workspace/reviews/lidar_audit_20261017/point_density_1m.tif",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/QGIS/QGIS3.ini",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/bookmarks.xml",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/fonts/Open Sans",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/fonts/Open Sans_2",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/previewImages/170.png",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/python/expressions/__init__.py",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/qgis-auth.db",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/qgis.db",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/lidar_audit/user-history.db",
+        "workspace/reviews/lidar_audit_20261017/profiles/profiles/profiles.ini",
+        "workspace/reviews/lidar_audit_20261017/render_complete.txt",
+        "workspace/reviews/lidar_audit_20261017/surface_height_1m.tif"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/lot3_repaired_20261016",
+      "count": 26,
+      "bytes": 39850171,
+      "paths": [
+        "workspace/reviews/lot3_repaired_20261016/covers/T18_covering_ortho.tif",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T11_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T12_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T13_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T14_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T15_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T16_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T17_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T18_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T19_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/evidence/T20_selection.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T11.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T12.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T13.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T14.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T15.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T16.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T17.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T18.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T19.png",
+        "workspace/reviews/lot3_repaired_20261016/results/T20.png",
+        "workspace/reviews/lot3_repaired_20261016/results/lot3_contact_sheet.png",
+        "workspace/reviews/lot3_repaired_20261016/results/lot3_report.json",
+        "workspace/reviews/lot3_repaired_20261016/results/lot3_results.gpkg",
+        "workspace/reviews/lot3_repaired_20261016/results/selection_manifest.json",
+        "workspace/reviews/lot3_repaired_20261016/selection_manifest.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/lot3_revision_20261013",
+      "count": 29,
+      "bytes": 35912017,
+      "paths": [
+        "workspace/reviews/lot3_revision_20261013/case_studies/T11_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T12_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T13_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T14_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T15_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T16_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T17_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T18_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T19_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/case_studies/T20_grid_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/covers/T12_covering_ortho.tif",
+        "workspace/reviews/lot3_revision_20261013/covers/T14_covering_ortho.tif",
+        "workspace/reviews/lot3_revision_20261013/covers/T18_covering_ortho.tif",
+        "workspace/reviews/lot3_revision_20261013/covers/T19_covering_ortho.tif",
+        "workspace/reviews/lot3_revision_20261013/covers/T20_covering_ortho.tif",
+        "workspace/reviews/lot3_revision_20261013/covers/test_t12.tif",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T11_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T12_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T13_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T14_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T15_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T16_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T17_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T18_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T19_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/T20_diagnostic.png",
+        "workspace/reviews/lot3_revision_20261013/diagnostics/t14_detailed_inspection.png",
+        "workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg",
+        "workspace/reviews/lot3_revision_20261013/results/selection_manifest.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/lot3_revision_v3_20261016",
+      "count": 30,
+      "bytes": 40811133,
+      "paths": [
+        "workspace/reviews/lot3_revision_v3_20261016/covers/T18_covering_ortho.tif",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T11_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T12_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T13_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T14_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T15_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T16_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T17_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T18_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T19_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/evidence/T20_selection.png",
+        "workspace/reviews/lot3_revision_v3_20261016/qgis_canvas_lot3_t11_t12_closeup.png",
+        "workspace/reviews/lot3_revision_v3_20261016/qgis_canvas_lot3_t15_t20_closeup.png",
+        "workspace/reviews/lot3_revision_v3_20261016/qgis_canvas_lot3_t17_closeup.png",
+        "workspace/reviews/lot3_revision_v3_20261016/qgis_canvas_lot3_v3.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T11.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T12.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T13.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T14.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T15.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T16.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T17.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T18.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T19.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/T20.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/lot3_contact_sheet.png",
+        "workspace/reviews/lot3_revision_v3_20261016/results/lot3_report.json",
+        "workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg",
+        "workspace/reviews/lot3_revision_v3_20261016/results/selection_manifest.json",
+        "workspace/reviews/lot3_revision_v3_20261016/selection_manifest.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/prompt_recovery_20261013",
+      "count": 276,
+      "bytes": 255887891,
+      "paths": [
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_001/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_001/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_002/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_002/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_003/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_003/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_004/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_004/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_005/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_005/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_006/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_006/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_007/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_007/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_008/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_008/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_009/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_009/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_010/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_010/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_011/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_011/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_012/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_012/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_013/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_013/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_014/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_014/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_015/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_015/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_016/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_016/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_017/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_017/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_018/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_018/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_019/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_019/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_020/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_020/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_021/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_021/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_022/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_022/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_023/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_023/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_024/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_024/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_025/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_025/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_026/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_026/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_027/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_027/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_028/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_028/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_029/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/REF_TIER1_029/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/additive_crops/sam2_policy_comparison.json",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_001/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_001/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_002/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_002/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_003/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_003/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_004/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_004/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_005/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_005/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_006/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_006/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_007/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_007/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_008/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_008/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_009/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_009/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_010/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_010/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_011/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_011/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_012/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_012/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_013/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_013/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_014/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_014/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_015/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_015/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_016/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_016/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_017/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_017/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_018/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_018/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_019/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_019/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_020/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_020/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_021/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_021/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_022/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_022/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_023/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_023/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_025/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_025/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_026/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_026/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_027/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_027/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_028/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_028/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_029/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/REF_TIER1_029/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/class6_only_crops/sam2_policy_comparison.json",
+        "workspace/reviews/prompt_recovery_20261013/crop_results.json",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_001/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_001/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_002/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_002/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_003/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_003/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_004/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_004/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_005/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_005/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_006/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_006/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_007/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_007/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_008/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_008/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_009/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_009/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_010/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_010/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_011/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_011/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_012/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_012/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_013/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_013/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_014/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_014/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_015/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_015/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_016/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_016/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_017/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_017/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_018/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_018/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_019/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_019/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_020/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_020/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_021/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_021/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_022/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_022/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_023/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_023/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_024/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_024/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_025/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_025/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_026/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_026/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_027/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_027/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_028/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_028/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_029/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/REF_TIER1_029/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/crops/sam2_policy_comparison.json",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_001/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_001/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_002/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_002/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_003/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_003/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_004/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_004/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_005/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_005/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_006/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_006/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_007/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_007/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_008/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_008/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_009/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_009/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_010/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_010/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_011/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_011/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_012/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_012/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_013/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_013/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_014/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_014/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_015/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_015/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_016/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_016/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_017/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_017/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_018/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_018/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_019/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_019/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_020/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_020/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_021/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_021/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_022/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_022/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_023/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_023/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_024/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_024/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_025/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_025/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_026/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_026/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_027/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_027/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_028/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_028/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_029/legacy.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/REF_TIER1_029/legacy_raw.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/focused_crops/sam2_policy_comparison.json",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-0_halo.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-0_halo_mosaic.vrt",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-1_halo.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-1_halo_mosaic.vrt",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-2_halo.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-2_halo_mosaic.vrt",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-0_halo.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-0_halo_mosaic.vrt",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-1_halo.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-1_halo_mosaic.vrt",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-2_halo.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-2_halo_mosaic.vrt",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-0_halo.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-0_halo_mosaic.vrt",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-1_halo.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-1_halo_mosaic.vrt",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cadastru_ancpi.dxf",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/cladiri_stereo70.gpkg",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/dxf_preview.png",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/ndsm_stereo70.tif",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi/qgis_readback.json",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi_comparison.png",
+        "workspace/reviews/prompt_recovery_20261013/full_aoi_verification.json",
+        "workspace/reviews/prompt_recovery_20261013/inspection_01_06.png",
+        "workspace/reviews/prompt_recovery_20261013/inspection_07_12.png",
+        "workspace/reviews/prompt_recovery_20261013/inspection_13_18.png",
+        "workspace/reviews/prompt_recovery_20261013/inspection_19_24.png",
+        "workspace/reviews/prompt_recovery_20261013/inspection_25_29.png",
+        "workspace/reviews/prompt_recovery_20261013/recovery_key_cases.png",
+        "workspace/reviews/prompt_recovery_20261013/reference_lidar_diagnosis.json",
+        "workspace/reviews/prompt_recovery_20261013/reference_semantics_confirmation.json",
+        "workspace/reviews/prompt_recovery_20261013/scripts/recover_additive29.py",
+        "workspace/reviews/prompt_recovery_20261013/scripts/recover_all29.py",
+        "workspace/reviews/prompt_recovery_20261013/scripts/recover_class6only29.py",
+        "workspace/reviews/prompt_recovery_20261013/scripts/recover_focused29.py",
+        "workspace/reviews/prompt_recovery_20261013/scripts/render_full_recovery.py",
+        "workspace/reviews/prompt_recovery_20261013/scripts/render_recovery29.py",
+        "workspace/reviews/prompt_recovery_20261013/scripts/render_recovery_dxf.py",
+        "workspace/reviews/prompt_recovery_20261013/scripts/verify_recovery_full.py",
+        "workspace/reviews/prompt_recovery_20261013/scripts/verify_recovery_full_qgis.py",
+        "workspace/reviews/prompt_recovery_20261013/visual_review.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/refinement_20261013",
+      "count": 19,
+      "bytes": 11813429,
+      "paths": [
+        "workspace/reviews/refinement_20261013/legacy_lidar_arrays.npz",
+        "workspace/reviews/refinement_20261013/legacy_proposals.gpkg",
+        "workspace/reviews/refinement_20261013/lidar_completion_comparison.json",
+        "workspace/reviews/refinement_20261013/reference_manifest.json",
+        "workspace/reviews/refinement_20261013/sam2_comparison.png",
+        "workspace/reviews/refinement_20261013/sam2_crops/REF_TIER1_006/exclude_known_vegetation.gpkg",
+        "workspace/reviews/refinement_20261013/sam2_crops/REF_TIER1_006/legacy.gpkg",
+        "workspace/reviews/refinement_20261013/sam2_crops/REF_TIER1_014/exclude_known_vegetation.gpkg",
+        "workspace/reviews/refinement_20261013/sam2_crops/REF_TIER1_014/exclude_known_vegetation_raw.gpkg",
+        "workspace/reviews/refinement_20261013/sam2_crops/REF_TIER1_014/legacy.gpkg",
+        "workspace/reviews/refinement_20261013/sam2_crops/REF_TIER1_014/legacy_raw.gpkg",
+        "workspace/reviews/refinement_20261013/sam2_crops/REF_TIER1_021/exclude_known_vegetation.gpkg",
+        "workspace/reviews/refinement_20261013/sam2_crops/REF_TIER1_021/legacy.gpkg",
+        "workspace/reviews/refinement_20261013/sam2_crops/sam2_policy_comparison.json",
+        "workspace/reviews/refinement_20261013/suite.stderr.txt",
+        "workspace/reviews/refinement_20261013/suite.stdout.txt",
+        "workspace/reviews/refinement_20261013/vegetation_exclusion_lidar_arrays.npz",
+        "workspace/reviews/refinement_20261013/vegetation_exclusion_proposals.gpkg",
+        "workspace/reviews/refinement_20261013/verification_summary.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/retry_six_20261013",
+      "count": 9,
+      "bytes": 4017310,
+      "paths": [
+        "workspace/reviews/retry_six_20261013/T05.png",
+        "workspace/reviews/retry_six_20261013/T06.png",
+        "workspace/reviews/retry_six_20261013/T07.png",
+        "workspace/reviews/retry_six_20261013/T08.png",
+        "workspace/reviews/retry_six_20261013/T09.png",
+        "workspace/reviews/retry_six_20261013/T10.png",
+        "workspace/reviews/retry_six_20261013/retry_report.json",
+        "workspace/reviews/retry_six_20261013/retry_six.gpkg",
+        "workspace/reviews/retry_six_20261013/six_before_after.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/retry_six_complete_20261013",
+      "count": 10,
+      "bytes": 4020737,
+      "paths": [
+        "workspace/reviews/retry_six_complete_20261013/T05.png",
+        "workspace/reviews/retry_six_complete_20261013/T06.png",
+        "workspace/reviews/retry_six_complete_20261013/T07.png",
+        "workspace/reviews/retry_six_complete_20261013/T08.png",
+        "workspace/reviews/retry_six_complete_20261013/T09.png",
+        "workspace/reviews/retry_six_complete_20261013/T10.png",
+        "workspace/reviews/retry_six_complete_20261013/owner_feedback.json",
+        "workspace/reviews/retry_six_complete_20261013/retry_report.json",
+        "workspace/reviews/retry_six_complete_20261013/retry_six.gpkg",
+        "workspace/reviews/retry_six_complete_20261013/six_before_after.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/retry_six_deliverable_20261013",
+      "count": 9,
+      "bytes": 4020206,
+      "paths": [
+        "workspace/reviews/retry_six_deliverable_20261013/T05.png",
+        "workspace/reviews/retry_six_deliverable_20261013/T06.png",
+        "workspace/reviews/retry_six_deliverable_20261013/T07.png",
+        "workspace/reviews/retry_six_deliverable_20261013/T08.png",
+        "workspace/reviews/retry_six_deliverable_20261013/T09.png",
+        "workspace/reviews/retry_six_deliverable_20261013/T10.png",
+        "workspace/reviews/retry_six_deliverable_20261013/retry_report.json",
+        "workspace/reviews/retry_six_deliverable_20261013/retry_six.gpkg",
+        "workspace/reviews/retry_six_deliverable_20261013/six_before_after.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/retry_six_final_20261013",
+      "count": 9,
+      "bytes": 4018447,
+      "paths": [
+        "workspace/reviews/retry_six_final_20261013/T05.png",
+        "workspace/reviews/retry_six_final_20261013/T06.png",
+        "workspace/reviews/retry_six_final_20261013/T07.png",
+        "workspace/reviews/retry_six_final_20261013/T08.png",
+        "workspace/reviews/retry_six_final_20261013/T09.png",
+        "workspace/reviews/retry_six_final_20261013/T10.png",
+        "workspace/reviews/retry_six_final_20261013/retry_report.json",
+        "workspace/reviews/retry_six_final_20261013/retry_six.gpkg",
+        "workspace/reviews/retry_six_final_20261013/six_before_after.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/retry_six_integrated_20261013",
+      "count": 12,
+      "bytes": 4362291,
+      "paths": [
+        "workspace/reviews/retry_six_integrated_20261013/T05.png",
+        "workspace/reviews/retry_six_integrated_20261013/T06.png",
+        "workspace/reviews/retry_six_integrated_20261013/T07.png",
+        "workspace/reviews/retry_six_integrated_20261013/T08.png",
+        "workspace/reviews/retry_six_integrated_20261013/T09.png",
+        "workspace/reviews/retry_six_integrated_20261013/T10.png",
+        "workspace/reviews/retry_six_integrated_20261013/inspectie_rectificari_sase.qgs",
+        "workspace/reviews/retry_six_integrated_20261013/inspectie_rectificari_sase_attachments.zip",
+        "workspace/reviews/retry_six_integrated_20261013/qgis_readback.json",
+        "workspace/reviews/retry_six_integrated_20261013/retry_report.json",
+        "workspace/reviews/retry_six_integrated_20261013/retry_six.gpkg",
+        "workspace/reviews/retry_six_integrated_20261013/six_before_after.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/retry_six_rectified_20261013",
+      "count": 9,
+      "bytes": 4020206,
+      "paths": [
+        "workspace/reviews/retry_six_rectified_20261013/T05.png",
+        "workspace/reviews/retry_six_rectified_20261013/T06.png",
+        "workspace/reviews/retry_six_rectified_20261013/T07.png",
+        "workspace/reviews/retry_six_rectified_20261013/T08.png",
+        "workspace/reviews/retry_six_rectified_20261013/T09.png",
+        "workspace/reviews/retry_six_rectified_20261013/T10.png",
+        "workspace/reviews/retry_six_rectified_20261013/retry_report.json",
+        "workspace/reviews/retry_six_rectified_20261013/retry_six.gpkg",
+        "workspace/reviews/retry_six_rectified_20261013/six_before_after.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/retry_six_release_20261013",
+      "count": 2,
+      "bytes": 719751,
+      "paths": [
+        "workspace/reviews/retry_six_release_20261013/implementation_checkpoint.patch",
+        "workspace/reviews/retry_six_release_20261013/inspectie_completa_8_orto_loturi.qgs~"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/retry_six_surface_20261013",
+      "count": 9,
+      "bytes": 3865748,
+      "paths": [
+        "workspace/reviews/retry_six_surface_20261013/T05.png",
+        "workspace/reviews/retry_six_surface_20261013/T06.png",
+        "workspace/reviews/retry_six_surface_20261013/T07.png",
+        "workspace/reviews/retry_six_surface_20261013/T08.png",
+        "workspace/reviews/retry_six_surface_20261013/T09.png",
+        "workspace/reviews/retry_six_surface_20261013/T10.png",
+        "workspace/reviews/retry_six_surface_20261013/retry_report.json",
+        "workspace/reviews/retry_six_surface_20261013/retry_six.gpkg",
+        "workspace/reviews/retry_six_surface_20261013/six_before_after.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/review18_20261013",
+      "count": 22,
+      "bytes": 9378473,
+      "paths": [
+        "workspace/reviews/review18_20261013/B00005_separat.png",
+        "workspace/reviews/review18_20261013/README.md",
+        "workspace/reviews/review18_20261013/T01.png",
+        "workspace/reviews/review18_20261013/T02.png",
+        "workspace/reviews/review18_20261013/T03.png",
+        "workspace/reviews/review18_20261013/T04.png",
+        "workspace/reviews/review18_20261013/T05.png",
+        "workspace/reviews/review18_20261013/T06.png",
+        "workspace/reviews/review18_20261013/T07.png",
+        "workspace/reviews/review18_20261013/T08.png",
+        "workspace/reviews/review18_20261013/T09.png",
+        "workspace/reviews/review18_20261013/T10.png",
+        "workspace/reviews/review18_20261013/antigravity_tests_worker.json",
+        "workspace/reviews/review18_20261013/codex_visual_review.json",
+        "workspace/reviews/review18_20261013/inspectie_18_cazuri.qgs",
+        "workspace/reviews/review18_20261013/inspectie_18_cazuri_attachments.zip",
+        "workspace/reviews/review18_20261013/owner_feedback.json",
+        "workspace/reviews/review18_20261013/qgis_canvas.png",
+        "workspace/reviews/review18_20261013/qgis_readback.json",
+        "workspace/reviews/review18_20261013/test10_contact_sheet.png",
+        "workspace/reviews/review18_20261013/test10_results.json",
+        "workspace/reviews/review18_20261013/verification_manifest.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/simple_roofs_20261013",
+      "count": 2,
+      "bytes": 216968,
+      "paths": [
+        "workspace/reviews/simple_roofs_20261013/rectification_report.json",
+        "workspace/reviews/simple_roofs_20261013/simple_roofs.gpkg"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/simple_roofs_final_20261013",
+      "count": 7,
+      "bytes": 4079804,
+      "paths": [
+        "workspace/reviews/simple_roofs_final_20261013/comparison.png",
+        "workspace/reviews/simple_roofs_final_20261013/inspectie_forme_simple.qgs",
+        "workspace/reviews/simple_roofs_final_20261013/inspectie_forme_simple_attachments.zip",
+        "workspace/reviews/simple_roofs_final_20261013/qgis_canvas.png",
+        "workspace/reviews/simple_roofs_final_20261013/qgis_session_changes.json",
+        "workspace/reviews/simple_roofs_final_20261013/rectification_report.json",
+        "workspace/reviews/simple_roofs_final_20261013/simple_roofs.gpkg"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/simple_roofs_rectified_20261013",
+      "count": 12,
+      "bytes": 3994875,
+      "paths": [
+        "workspace/reviews/simple_roofs_rectified_20261013/README.md",
+        "workspace/reviews/simple_roofs_rectified_20261013/antigravity_review.json",
+        "workspace/reviews/simple_roofs_rectified_20261013/body5_partition_experiment.gpkg",
+        "workspace/reviews/simple_roofs_rectified_20261013/comparison.png",
+        "workspace/reviews/simple_roofs_rectified_20261013/inspectie_forme_simple.qgs",
+        "workspace/reviews/simple_roofs_rectified_20261013/inspectie_forme_simple_attachments.zip",
+        "workspace/reviews/simple_roofs_rectified_20261013/qgis_canvas.png",
+        "workspace/reviews/simple_roofs_rectified_20261013/qgis_readback.json",
+        "workspace/reviews/simple_roofs_rectified_20261013/rectification_report.json",
+        "workspace/reviews/simple_roofs_rectified_20261013/scripts/assemble_roof_edge_candidates.py",
+        "workspace/reviews/simple_roofs_rectified_20261013/scripts/experiment_prompt_refinement_tight.py",
+        "workspace/reviews/simple_roofs_rectified_20261013/verification_manifest.json"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/sparse_labels",
+      "count": 6,
+      "bytes": 4866151,
+      "paths": [
+        "workspace/reviews/sparse_labels/bucharest_fifim_holdout_catalog.json",
+        "workspace/reviews/sparse_labels/cluj_usamv_sparse_annotations.gpkg",
+        "workspace/reviews/sparse_labels/cluj_usamv_sparse_catalog.json",
+        "workspace/reviews/sparse_labels/rtx4050_vram_benchmark_report.json",
+        "workspace/reviews/sparse_labels/rtx4050_vram_benchmark_report.md",
+        "workspace/reviews/sparse_labels/sparse_labels_sample_patches.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/t10_debug_multipanel.png",
+      "count": 1,
+      "bytes": 323872,
+      "paths": [
+        "workspace/reviews/t10_debug_multipanel.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/reviews/t10_ortho_zoom.png",
+      "count": 1,
+      "bytes": 171523,
+      "paths": [
+        "workspace/reviews/t10_ortho_zoom.png"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    },
+    {
+      "group": "workspace/subagent_deep_findings.md",
+      "count": 1,
+      "bytes": 28644,
+      "paths": [
+        "workspace/subagent_deep_findings.md"
+      ],
+      "decision": "PRESERVE_PENDING_OWNER_OR_PROVENANCE_REVIEW"
+    }
+  ],
+  "reason": "Files include outputs, regional/national data, architecture drafts and other agents work. Untracked status alone is not evidence of junk.",
+  "excluded_operations": [
+    "bulk staging",
+    "bulk archive",
+    "data deletion",
+    "worktree removal"
+  ]
+}

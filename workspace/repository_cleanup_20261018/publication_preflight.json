@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "outgoing_text_blobs_checked": 833,
+  "matching_blob_paths_only_no_secret_values": [],
+  "blobs_above_100_mib": [],
+  "scope": "Limited pattern preflight on outgoing committed text, not a comprehensive security audit. No working-tree secret files read.",
+  "publication_authorization": "Owner selected draft PR without merge in this chat on 2026-10-18.",
+  "published_branch": "chore/stratumro-shared-checkpoint-20261018",
+  "publication_head": "728cf7e8562da9d9e159dbf3b65f49e3b09defef"
+}

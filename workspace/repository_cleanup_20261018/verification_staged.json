@@ -7,7 +7,7 @@
   "preexisting_untracked_paths_present": 936,
   "shared_qgis_project_unchanged_from_baseline_head": true,
   "product_diff_contains_only_preexisting_work": true,
-  "navigation_links_checked": 67,
+  "navigation_links_checked": 73,
   "links": [
     {
       "source": "README.md",
@@ -218,6 +218,18 @@
       "target": "junk/README.md"
     },
     {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "workspace/repository_cleanup_20261018/publication_result.json"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "workspace/repository_cleanup_20261018/remaining_inventory.json"
+    },
+    {
+      "source": "docs/PROJECT_STATE.md",
+      "target": "workspace/repository_cleanup_20261018/ci_initial_failure_summary.json"
+    },
+    {
       "source": "docs/REPOSITORY_GUIDE.md",
       "target": "workspace/repository_cleanup_20261018/migration_manifest.json"
     },
@@ -254,6 +266,14 @@
       "target": "workspace/repository_cleanup_20261018/README.md"
     },
     {
+      "source": "docs/AGENT_HANDOFF.md",
+      "target": "workspace/repository_cleanup_20261018/publication_result.json"
+    },
+    {
+      "source": "docs/AGENT_HANDOFF.md",
+      "target": "workspace/repository_cleanup_20261018/remaining_inventory.json"
+    },
+    {
       "source": "junk/README.md",
       "target": "workspace/repository_cleanup_20261018/migration_manifest.json"
     },
@@ -276,9 +296,14 @@
     {
       "source": "junk/README.md",
       "target": "AGENTS.md"
+    },
+    {
+      "source": "workspace/repository_cleanup_20261018/README.md",
+      "target": "workspace/repository_cleanup_20261018/ci_initial_failure_summary.json"
     }
   ],
-  "not_executed": [
+  "publication_snapshot_available": true,
+  "not_executed_by_this_check": [
     "product tests",
     "model inference",
     "QGIS session mutations",

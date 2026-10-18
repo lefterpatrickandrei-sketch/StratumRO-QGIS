@@ -1,0 +1,2 @@
+# Public CI output is evidence; preserve its exact newlines and timestamp spaces.
+ci_initial_ubuntu310_job.txt -text whitespace=-blank-at-eol
