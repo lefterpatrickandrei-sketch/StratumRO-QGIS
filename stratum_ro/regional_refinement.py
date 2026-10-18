@@ -148,6 +148,34 @@ class RegionalRoofRefiner:
         return dict(rgb=rgb, valid=valid, transform=tr, height=height, counts=counts,
                     bounds=list(bounds), sources=used)
 
+    def shape_variations(self, observed, previous=None, **parameters):
+        """Opt-in simpler proposals; inspect actual RGB validity and edge evidence.
+
+        Uses the same mosaic/service as refinement. Does not accept a building,
+        infer missing bodies or alter the original observation.
+        """
+        from .roof_simple_geometry import roof_shape_variations
+        chosen, variants=roof_shape_variations(observed,previous,**parameters)
+        scene=self.observe(observed.buffer(2))
+        before=edge_support(observed,scene['rgb'],scene['valid'],scene['transform'])
+        for option in variants:
+            g=option['geometry']
+            ev=scene_evidence(g,scene['rgb'],scene['valid'],scene['transform'])
+            after=edge_support(g,scene['rgb'],scene['valid'],scene['transform'])
+            option['optical_evidence']=ev;option['edge_evidence']=after
+            if (ev.get('rgb_valid_fraction',0)<self.config.min_rgb_valid_fraction
+                    or ev.get('geometry_inside_read_fraction',0)<.999 or ev.get('touches_nodata',True)):
+                option['reasons'].append('INCOMPLETE_OPTICAL_COVERAGE')
+            b=before['contrast_mean_per_m'];a=after['contrast_mean_per_m']
+            if b and a is not None and a<.85*b:option['reasons'].append('OPTICAL_EDGE_CONTRAST_DEGRADED')
+            option['eligible']=not option['reasons']
+        safe=[v for v in variants if v['eligible']]
+        if safe:chosen=min(safe,key=lambda o:(o['vertices'],-o['iou']))
+        else:
+            chosen=dict(geometry=observed,method='OBSERVATION_PRESERVED',family='UNRESOLVED',
+                vertices=vertices(observed),eligible=False,reasons=['NO_SAFE_SIMPLE_VARIANT'])
+        return chosen,variants
+
     def retry_observation(self, record, segmenter, *, context_m=24.):
         """Automatic mask retry using actual RGB/LiDAR context, never fake review.
 

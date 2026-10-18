@@ -11,6 +11,104 @@ from rasterio.features import rasterize
 from rasterio.transform import from_origin
 
 
+def roof_shape_family(geometry):
+    """Descriptive geometry family, never a cadastral body classification."""
+    if geometry.interiors:
+        return 'COURTYARD'
+    n = len(geometry.exterior.coords)-1
+    xy = np.asarray(geometry.exterior.coords)
+    edges = np.diff(xy, axis=0)
+    lengths = np.linalg.norm(edges, axis=1)
+    orthogonal = all(abs(np.dot(a,b))/(la*lb) < .03
+        for a,b,la,lb in zip(edges,np.roll(edges,-1,axis=0),lengths,np.roll(lengths,-1)))
+    if not orthogonal:
+        return 'OBLIQUE_OR_IRREGULAR'
+    if n == 4:return 'RECTANGLE'
+    if n == 6:return 'L'
+    if n == 8:
+        from shapely.geometry.polygon import orient
+        pts=np.asarray(orient(geometry,sign=1).exterior.coords)[:-1]
+        reflex=[]
+        for i,p in enumerate(pts):
+            a=p-pts[i-1];b=pts[(i+1)%n]-p
+            if a[0]*b[1]-a[1]*b[0]<0:reflex.append(i)
+        if len(reflex)==2 and (reflex[1]-reflex[0]) in (1,n-1):return 'U'
+        return 'T_OR_OFFSET'  # eight corners alone cannot distinguish T and Z
+    return 'ARTICULATED_ORTHOGONAL'
+
+
+def roof_shape_variations(observed, previous=None, *, min_support=.92,
+                          min_coverage=.92, max_area_change=.08,
+                          max_boundary_distance=1.5, min_edge=1., limit=6):
+    """Generate and rank simple alternatives using the existing ring fitter.
+
+    Projected metres required. Limits describe development generalization, not
+    survey accuracy. Preserve holes exactly and reject lost substantial wings.
+    Keep a rejected rectangle for transparent comparison, not forced output.
+    Each family/complexity competes independently; no fixed template is imposed.
+    """
+    if observed.geom_type!='Polygon' or not observed.is_valid or observed.is_empty:
+        raise ValueError('Valid Polygon required')
+    if not (0<min_support<=1 and 0<min_coverage<=1 and 0<=max_area_change<=1
+            and max_boundary_distance>0 and min_edge>0 and limit>=2):
+        raise ValueError('Invalid variation constraints')
+    options=[];seen=set()
+    def add(g,method):
+        if g is None or not g.is_valid or g.is_empty or g.geom_type!='Polygon':return
+        g=g.simplify(1e-7,preserve_topology=True)
+        key=g.normalize().wkb
+        if key in seen:return
+        seen.add(key)
+        inter=g.intersection(observed).area
+        support=inter/g.area;coverage=inter/observed.area
+        shift=g.boundary.hausdorff_distance(observed.boundary)
+        change=abs(g.area-observed.area)/observed.area
+        lengths=np.linalg.norm(np.diff(np.asarray(g.exterior.coords),axis=0),axis=1)
+        reasons=[]
+        if support<min_support:reasons.append('ADDED_UNSUPPORTED_AREA')
+        if coverage<min_coverage:reasons.append('LOST_OBSERVED_WING_OR_AREA')
+        if shift>max_boundary_distance:reasons.append('BOUNDARY_DISTANCE')
+        if change>max_area_change:reasons.append('AREA_CHANGE')
+        # Holes are evidence of unknown courtyards/lightwells, never auto-fill.
+        for hole in observed.interiors:
+            if g.intersection(Polygon(hole)).area>1e-6:reasons.append('FILLS_COURTYARD')
+        if lengths.min()<min_edge and method!='OBSERVATION':reasons.append('SHORT_EDGE')
+        options.append(dict(geometry=g,method=method,family=roof_shape_family(g),
+            vertices=len(g.exterior.coords)-1+sum(len(r.coords)-1 for r in g.interiors),
+            support=float(support),coverage=float(coverage),iou=float(inter/g.union(observed).area),
+            boundary_distance_m=float(shift),area_change_fraction=float(change),
+            eligible=not reasons,reasons=sorted(set(reasons))))
+    add(observed,'OBSERVATION')
+    if previous is not None:add(previous,'PREVIOUS_SIMPLE_PROPOSAL')
+    angle=_axis_angle(observed);origin=observed.centroid.coords[0]
+    for delta in (0,-2,2):
+        aligned=affinity.rotate(observed,-angle-delta,origin=origin)
+        add(affinity.rotate(box(*aligned.bounds),angle+delta,origin=origin),'RECTANGLE')
+        for tolerance in (.4,.75,1.,1.5,2.,3.,4.):
+            simple=aligned.simplify(tolerance,preserve_topology=True)
+            fitted=_orthogonal_ring(simple)
+            if fitted is not None:
+                world=affinity.rotate(fitted,angle+delta,origin=origin)
+                # Preserve original interior rings rather than reconstruct holes.
+                if observed.interiors:world=Polygon(world.exterior,[r.coords for r in observed.interiors])
+                add(world,'ORTHOGONAL_RUNS')
+            # Genuine oblique roofs may be simpler without being orthogonal.
+            add(affinity.rotate(simple,angle+delta,origin=origin),'FREE_DIRECTION_LINES')
+    eligible=[o for o in options if o['eligible']]
+    chosen=min(eligible,key=lambda o:(o['vertices'], -o['iou'])) if eligible else options[0]
+    # One best example per shape family/vertex count; avoid near-identical clutter.
+    representatives={}
+    for o in sorted(options,key=lambda o:(not o['eligible'],o['vertices'],-o['iou'])):
+        representatives.setdefault((o['family'],o['vertices']),o)
+    alternatives=[chosen]
+    for o in representatives.values():
+        if o is not chosen and len(alternatives)<limit:alternatives.append(o)
+    if all(o['method']!='RECTANGLE' for o in alternatives):
+        rectangle=next((o for o in options if o['method']=='RECTANGLE'),None)
+        if rectangle is not None:alternatives[-1]=rectangle
+    return chosen,alternatives
+
+
 def _axis_angle(geometry):
     xy = np.asarray(geometry.minimum_rotated_rectangle.exterior.coords)
     edges = np.diff(xy, axis=0)
