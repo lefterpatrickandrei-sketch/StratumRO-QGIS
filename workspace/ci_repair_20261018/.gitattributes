@@ -1,0 +1,2 @@
+# Unified-diff context lines are evidence, including their required leading space.
+*.diff -text whitespace=-blank-at-eol

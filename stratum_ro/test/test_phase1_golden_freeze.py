@@ -45,16 +45,28 @@ class TestPhase1GoldenFreeze(unittest.TestCase):
             
         cls.vec = CadastralVectorizer(crs="EPSG:3844")
 
-    def _hash_file(self, rel_path: str) -> str:
+    def _hash_file(self, rel_path: str, expected_sha256: str) -> str:
+        """Match frozen text bytes, allowing only Git's LF/CRLF conversion.
+
+        Frozen manifests stay unchanged. No JSON reserialization, whitespace
+        stripping or code/geometry normalization is allowed.
+        """
         full_path = os.path.join(PROJECT_ROOT, rel_path.replace("/", os.sep))
         self.assertTrue(os.path.exists(full_path), f"File missing: {rel_path}")
         with open(full_path, "rb") as f:
-            return hashlib.sha256(f.read()).hexdigest()
+            data = f.read()
+        candidates = [data]
+        if rel_path.endswith((".py", ".json", ".geojson", ".txt", ".csv")):
+            lf = data.replace(b"\r\n", b"\n")
+            candidates.extend([lf, lf.replace(b"\n", b"\r\n")])
+        hashes = {hashlib.sha256(content).hexdigest() for content in candidates}
+        self.assertIn(expected_sha256, hashes, f"Frozen file content changed: {rel_path}")
+        return expected_sha256
 
     def test_01_ground_truth_hashes_immutable(self):
         """Verifies that all 14 Ground Truth & reference datasets match their frozen SHA-256 hashes."""
         for rel_path, expected in self.gt_manifest.items():
-            actual_hash = self._hash_file(rel_path)
+            actual_hash = self._hash_file(rel_path, expected["sha256"])
             self.assertEqual(
                 actual_hash,
                 expected["sha256"],
@@ -62,21 +74,50 @@ class TestPhase1GoldenFreeze(unittest.TestCase):
             )
 
     def test_02_critical_production_modules_immutable(self):
-        """Verifies that all 23 critical production modules (or their canonical domain targets) match frozen SHA-256 hashes."""
-        canonical_domain_map = {
-            "stratum_ro/volumetric_3d.py": "stratum_ro/domain/city_3d/builder.py",
-        }
+        """Verify the exact 23 module paths actually recorded by the manifest.
+
+        The volumetric_3d entry already froze the compatibility forwarder, not
+        the domain implementation. Reinterpreting that hash as another file
+        created a false failure; the alias binding is tested separately below.
+        """
         for rel_path, expected in self.mod_manifest.items():
-            target_path = canonical_domain_map.get(rel_path, rel_path)
-            actual_hash = self._hash_file(target_path)
+            actual_hash = self._hash_file(rel_path, expected["sha256"])
             self.assertEqual(
                 actual_hash,
                 expected["sha256"],
-                f"Production code unexpectedly mutated: {target_path}"
+                f"Production code unexpectedly mutated: {rel_path}"
             )
-            # If migrated, also verify the forwarder at root exists
-            if rel_path in canonical_domain_map:
-                self.assertTrue(os.path.exists(os.path.join(PROJECT_ROOT, rel_path.replace("/", os.sep))))
+
+    def test_02b_volumetric_forwarder_binds_canonical_implementation(self):
+        from stratum_ro import volumetric_3d as legacy
+        from stratum_ro.domain.city_3d import builder
+        self.assertIs(legacy.Volumetric3DBuilder, builder.Volumetric3DBuilder)
+        self.assertIs(legacy._extract_polygons, builder._extract_polygons)
+
+    def test_02c_relocated_implementation_matches_historical_bytes(self):
+        receipt_path = os.path.join(BASELINE_DIR, "approved_module_relocations.json")
+        with open(receipt_path, encoding="utf-8") as stream:
+            receipt = json.load(stream)
+        self.assertTrue(receipt["relocations"])
+        for entry in receipt["relocations"]:
+            self._hash_file(entry["canonical_path"], entry["canonical_sha256"])
+
+    def test_frozen_hash_accepts_only_checkout_line_endings(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            path = os.path.join(directory, "frozen.geojson")
+            lf = b'{"coordinates": [1, 2]}\n'
+            crlf = lf.replace(b"\n", b"\r\n")
+            for expected_bytes in (lf, crlf):
+                expected = hashlib.sha256(expected_bytes).hexdigest()
+                for actual_bytes in (lf, crlf):
+                    with open(path, "wb") as stream:
+                        stream.write(actual_bytes)
+                    self.assertEqual(self._hash_file(path, expected), expected)
+            with open(path, "wb") as stream:
+                stream.write(b'{"coordinates": [1, 3]}\n')
+            with self.assertRaises(AssertionError):
+                self._hash_file(path, hashlib.sha256(lf).hexdigest())
 
     def test_03_vectorizer_determinism_and_golden_cases(self):
         """Verifies bit-for-bit determinism and geometric consistency on canonical regularizer cases."""

@@ -1,0 +1,10 @@
+{
+  "historical_commit": "0f9078257cb9304ef32ca83be0e6deb0556cdbb7",
+  "historical_path": "stratum_ro/volumetric_3d.py",
+  "canonical_path": "stratum_ro/domain/city_3d/builder.py",
+  "both_bytes": 9350,
+  "both_sha256": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
+  "byte_identical": true,
+  "new_receipt": "workspace/baseline/approved_module_relocations.json",
+  "existing_frozen_manifests_modified": false
+}

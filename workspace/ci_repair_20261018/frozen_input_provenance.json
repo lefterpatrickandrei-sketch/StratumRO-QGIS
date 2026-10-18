@@ -1,0 +1,748 @@
+{
+  "head": "d335fd668443087803770217ec6dd44bf6926dd1",
+  "method": "Compare raw/LF/CRLF bytes from working tree, Git HEAD and historical blobs. No manifest or source modified.",
+  "files": [
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/ground_truth/tier1_teren.geojson",
+      "target_path": "data/ground_truth/tier1_teren.geojson",
+      "expected_sha256": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+      "worktree_hashes": {
+        "raw": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+        "lf": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+        "crlf": "98e1ed5ed6fbd1a048b778bafbd0db309edff711777b5ed56293941f6aa9730f"
+      },
+      "head_hashes": {
+        "raw": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+        "lf": "4edecae807e795bb9dec46e41b61e7122526d88986440c9fe63f3f33d2574424",
+        "crlf": "98e1ed5ed6fbd1a048b778bafbd0db309edff711777b5ed56293941f6aa9730f"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/ground_truth/tier2_extended_gt.geojson",
+      "target_path": "data/ground_truth/tier2_extended_gt.geojson",
+      "expected_sha256": "44deb76b82f639f81fd64e4327a17a80783b48d6b0d188a818ef97f473671d34",
+      "worktree_hashes": {
+        "raw": "44deb76b82f639f81fd64e4327a17a80783b48d6b0d188a818ef97f473671d34",
+        "lf": "44deb76b82f639f81fd64e4327a17a80783b48d6b0d188a818ef97f473671d34",
+        "crlf": "b43308f515923af2843f0c1a811364827f72031729aedcff67a0118dff904264"
+      },
+      "head_hashes": {
+        "raw": "44deb76b82f639f81fd64e4327a17a80783b48d6b0d188a818ef97f473671d34",
+        "lf": "44deb76b82f639f81fd64e4327a17a80783b48d6b0d188a818ef97f473671d34",
+        "crlf": "b43308f515923af2843f0c1a811364827f72031729aedcff67a0118dff904264"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/ground_truth/tier4_osm_diagnostic_cluj.geojson",
+      "target_path": "data/ground_truth/tier4_osm_diagnostic_cluj.geojson",
+      "expected_sha256": "6c6c9708dac8dc5a35b90734a129325dae10d98cd81cc820b553725d1a401dbf",
+      "worktree_hashes": {
+        "raw": "6c6c9708dac8dc5a35b90734a129325dae10d98cd81cc820b553725d1a401dbf",
+        "lf": "a941c31ccb3cfb8868ec981fbfef6c30835ec8f9731249e61b5f8f110e82028d",
+        "crlf": "6c6c9708dac8dc5a35b90734a129325dae10d98cd81cc820b553725d1a401dbf"
+      },
+      "head_hashes": {
+        "raw": "a941c31ccb3cfb8868ec981fbfef6c30835ec8f9731249e61b5f8f110e82028d",
+        "lf": "a941c31ccb3cfb8868ec981fbfef6c30835ec8f9731249e61b5f8f110e82028d",
+        "crlf": "6c6c9708dac8dc5a35b90734a129325dae10d98cd81cc820b553725d1a401dbf"
+      },
+      "head_expected_match_variants": [
+        "crlf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/ground_truth/osm_buildings_aoi.geojson",
+      "target_path": "data/ground_truth/osm_buildings_aoi.geojson",
+      "expected_sha256": "3f93b384e2f64f375a4405ba06fb425a82ab63cd25ab1a130f8090d79f61b183",
+      "worktree_hashes": {
+        "raw": "3f93b384e2f64f375a4405ba06fb425a82ab63cd25ab1a130f8090d79f61b183",
+        "lf": "3f93b384e2f64f375a4405ba06fb425a82ab63cd25ab1a130f8090d79f61b183",
+        "crlf": "6eb4ef10a6beb6bb89161d7d76ce68d8c424fd896daa3b5e83449564cf24ba40"
+      },
+      "head_hashes": {
+        "raw": "3f93b384e2f64f375a4405ba06fb425a82ab63cd25ab1a130f8090d79f61b183",
+        "lf": "3f93b384e2f64f375a4405ba06fb425a82ab63cd25ab1a130f8090d79f61b183",
+        "crlf": "6eb4ef10a6beb6bb89161d7d76ce68d8c424fd896daa3b5e83449564cf24ba40"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/derived_reference/cluj_combined_unique_150.geojson",
+      "target_path": "data/derived_reference/cluj_combined_unique_150.geojson",
+      "expected_sha256": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44",
+      "worktree_hashes": {
+        "raw": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44",
+        "lf": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44",
+        "crlf": "928f39f72c6d32effbc273ef4d6e6d09cc70497794e57670340eb66aabd4cfe5"
+      },
+      "head_hashes": {
+        "raw": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44",
+        "lf": "967c3028da1e23c21f8362fcbb1381465d30d7b3073ce8b4b72cc19c8da5ad44",
+        "crlf": "928f39f72c6d32effbc273ef4d6e6d09cc70497794e57670340eb66aabd4cfe5"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/derived_reference/tier1_primary_29.geojson",
+      "target_path": "data/derived_reference/tier1_primary_29.geojson",
+      "expected_sha256": "50724423cf809af04c3a208ebf4bfa851a0b0f219593b17def9a8581f069d677",
+      "worktree_hashes": {
+        "raw": "50724423cf809af04c3a208ebf4bfa851a0b0f219593b17def9a8581f069d677",
+        "lf": "50724423cf809af04c3a208ebf4bfa851a0b0f219593b17def9a8581f069d677",
+        "crlf": "bc0a618fdc63576786efec26b4d70b077d93ea5fc74d0cc4a59372f2f93cd027"
+      },
+      "head_hashes": {
+        "raw": "50724423cf809af04c3a208ebf4bfa851a0b0f219593b17def9a8581f069d677",
+        "lf": "50724423cf809af04c3a208ebf4bfa851a0b0f219593b17def9a8581f069d677",
+        "crlf": "bc0a618fdc63576786efec26b4d70b077d93ea5fc74d0cc4a59372f2f93cd027"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/derived_reference/tier2_additional_121.geojson",
+      "target_path": "data/derived_reference/tier2_additional_121.geojson",
+      "expected_sha256": "ee3aebf58195d58bd8f7d695e6931987161df7a77ba9c3266e03f3b2dbc53f79",
+      "worktree_hashes": {
+        "raw": "ee3aebf58195d58bd8f7d695e6931987161df7a77ba9c3266e03f3b2dbc53f79",
+        "lf": "ee3aebf58195d58bd8f7d695e6931987161df7a77ba9c3266e03f3b2dbc53f79",
+        "crlf": "0925fc12fe26e5eba33137c7939c2158caf826381aef58ae20a897f7361a084c"
+      },
+      "head_hashes": {
+        "raw": "ee3aebf58195d58bd8f7d695e6931987161df7a77ba9c3266e03f3b2dbc53f79",
+        "lf": "ee3aebf58195d58bd8f7d695e6931987161df7a77ba9c3266e03f3b2dbc53f79",
+        "crlf": "0925fc12fe26e5eba33137c7939c2158caf826381aef58ae20a897f7361a084c"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/fixtures/case_01_L_shape.geojson",
+      "target_path": "data/fixtures/case_01_L_shape.geojson",
+      "expected_sha256": "edc51693f0bdba60b97926b650c883535a6fedb1396af150800d4568a742939b",
+      "worktree_hashes": {
+        "raw": "edc51693f0bdba60b97926b650c883535a6fedb1396af150800d4568a742939b",
+        "lf": "edc51693f0bdba60b97926b650c883535a6fedb1396af150800d4568a742939b",
+        "crlf": "f62b45279688fd664b0d226d1096d25aab198e7cb960b8c29fc1b7b92c9abc40"
+      },
+      "head_hashes": {
+        "raw": "edc51693f0bdba60b97926b650c883535a6fedb1396af150800d4568a742939b",
+        "lf": "edc51693f0bdba60b97926b650c883535a6fedb1396af150800d4568a742939b",
+        "crlf": "f62b45279688fd664b0d226d1096d25aab198e7cb960b8c29fc1b7b92c9abc40"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/fixtures/case_02_calcan_split.geojson",
+      "target_path": "data/fixtures/case_02_calcan_split.geojson",
+      "expected_sha256": "f5c298803325ec1eebcba0c4dbd5535bf6a6476d2627093ebecb1d96e0b181a0",
+      "worktree_hashes": {
+        "raw": "f5c298803325ec1eebcba0c4dbd5535bf6a6476d2627093ebecb1d96e0b181a0",
+        "lf": "f5c298803325ec1eebcba0c4dbd5535bf6a6476d2627093ebecb1d96e0b181a0",
+        "crlf": "af10dc96129560819cdaf29c4f5755687bb52363f3f162af7da3c83f72a3a866"
+      },
+      "head_hashes": {
+        "raw": "f5c298803325ec1eebcba0c4dbd5535bf6a6476d2627093ebecb1d96e0b181a0",
+        "lf": "f5c298803325ec1eebcba0c4dbd5535bf6a6476d2627093ebecb1d96e0b181a0",
+        "crlf": "af10dc96129560819cdaf29c4f5755687bb52363f3f162af7da3c83f72a3a866"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/fixtures/case_03_main_plus_annex.geojson",
+      "target_path": "data/fixtures/case_03_main_plus_annex.geojson",
+      "expected_sha256": "0f3042a26385574b3184e4ff9c7ab347d1a3d6134420febc0b482fa1055ac347",
+      "worktree_hashes": {
+        "raw": "0f3042a26385574b3184e4ff9c7ab347d1a3d6134420febc0b482fa1055ac347",
+        "lf": "0f3042a26385574b3184e4ff9c7ab347d1a3d6134420febc0b482fa1055ac347",
+        "crlf": "bb5f8defe853d3ef1a7a2f1346223d11e6212ae99525c659da25088d9fbc6fc9"
+      },
+      "head_hashes": {
+        "raw": "0f3042a26385574b3184e4ff9c7ab347d1a3d6134420febc0b482fa1055ac347",
+        "lf": "0f3042a26385574b3184e4ff9c7ab347d1a3d6134420febc0b482fa1055ac347",
+        "crlf": "bb5f8defe853d3ef1a7a2f1346223d11e6212ae99525c659da25088d9fbc6fc9"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/fixtures/case_04_tree_overhang.geojson",
+      "target_path": "data/fixtures/case_04_tree_overhang.geojson",
+      "expected_sha256": "7aa18be6534125c94d336e3161d704482466408d385ca30cf374fe8d96685858",
+      "worktree_hashes": {
+        "raw": "7aa18be6534125c94d336e3161d704482466408d385ca30cf374fe8d96685858",
+        "lf": "7aa18be6534125c94d336e3161d704482466408d385ca30cf374fe8d96685858",
+        "crlf": "f3c89fb2f756b8edd34f5a3bf4a5eb34baf7bf50832117b15a22b15aee2f39d0"
+      },
+      "head_hashes": {
+        "raw": "7aa18be6534125c94d336e3161d704482466408d385ca30cf374fe8d96685858",
+        "lf": "7aa18be6534125c94d336e3161d704482466408d385ca30cf374fe8d96685858",
+        "crlf": "f3c89fb2f756b8edd34f5a3bf4a5eb34baf7bf50832117b15a22b15aee2f39d0"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/fixtures/case_05_long_shadow.geojson",
+      "target_path": "data/fixtures/case_05_long_shadow.geojson",
+      "expected_sha256": "04b43fd5c2c4d5dcb1b62318be62515325ce3fd4002db8c5a3a49b2d828bbd27",
+      "worktree_hashes": {
+        "raw": "04b43fd5c2c4d5dcb1b62318be62515325ce3fd4002db8c5a3a49b2d828bbd27",
+        "lf": "04b43fd5c2c4d5dcb1b62318be62515325ce3fd4002db8c5a3a49b2d828bbd27",
+        "crlf": "b1b38f4f4ebcdaad77e8984e5ad974b89844873cdef0ee94d01fc0a566168b01"
+      },
+      "head_hashes": {
+        "raw": "04b43fd5c2c4d5dcb1b62318be62515325ce3fd4002db8c5a3a49b2d828bbd27",
+        "lf": "04b43fd5c2c4d5dcb1b62318be62515325ce3fd4002db8c5a3a49b2d828bbd27",
+        "crlf": "b1b38f4f4ebcdaad77e8984e5ad974b89844873cdef0ee94d01fc0a566168b01"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/fixtures/case_06_usamv_library_split.geojson",
+      "target_path": "data/fixtures/case_06_usamv_library_split.geojson",
+      "expected_sha256": "6db02edeff7c1ed008d801394147faa6438d52c4fc7c91767d12d2ddeb2bd8c9",
+      "worktree_hashes": {
+        "raw": "6db02edeff7c1ed008d801394147faa6438d52c4fc7c91767d12d2ddeb2bd8c9",
+        "lf": "367d3d2c3b2c1be11aea7d5df3e2e958190ec3ffd0405eae5432c75ca0bbc6ef",
+        "crlf": "6db02edeff7c1ed008d801394147faa6438d52c4fc7c91767d12d2ddeb2bd8c9"
+      },
+      "head_hashes": {
+        "raw": "367d3d2c3b2c1be11aea7d5df3e2e958190ec3ffd0405eae5432c75ca0bbc6ef",
+        "lf": "367d3d2c3b2c1be11aea7d5df3e2e958190ec3ffd0405eae5432c75ca0bbc6ef",
+        "crlf": "6db02edeff7c1ed008d801394147faa6438d52c4fc7c91767d12d2ddeb2bd8c9"
+      },
+      "head_expected_match_variants": [
+        "crlf"
+      ]
+    },
+    {
+      "manifest": "manifest_ground_truth.json",
+      "original_path": "data/fixtures/case_07_sf_maria_calcan_merge.geojson",
+      "target_path": "data/fixtures/case_07_sf_maria_calcan_merge.geojson",
+      "expected_sha256": "48e068bba4f27de82d6524e44cb32ad37ee58a0d6a2553cceb23e00f2a94f663",
+      "worktree_hashes": {
+        "raw": "48e068bba4f27de82d6524e44cb32ad37ee58a0d6a2553cceb23e00f2a94f663",
+        "lf": "75940c82a74a8ef1189cc4a1d07780eca44378a63c915d199b61895f29a2ee41",
+        "crlf": "48e068bba4f27de82d6524e44cb32ad37ee58a0d6a2553cceb23e00f2a94f663"
+      },
+      "head_hashes": {
+        "raw": "75940c82a74a8ef1189cc4a1d07780eca44378a63c915d199b61895f29a2ee41",
+        "lf": "75940c82a74a8ef1189cc4a1d07780eca44378a63c915d199b61895f29a2ee41",
+        "crlf": "48e068bba4f27de82d6524e44cb32ad37ee58a0d6a2553cceb23e00f2a94f663"
+      },
+      "head_expected_match_variants": [
+        "crlf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/vectorizer.py",
+      "target_path": "stratum_ro/vectorizer.py",
+      "expected_sha256": "ba7098b38415a1f2d99ec847e03727023588a6b6f97c13abd223fa44a36fd079",
+      "worktree_hashes": {
+        "raw": "ba7098b38415a1f2d99ec847e03727023588a6b6f97c13abd223fa44a36fd079",
+        "lf": "ba7098b38415a1f2d99ec847e03727023588a6b6f97c13abd223fa44a36fd079",
+        "crlf": "27d1c319047c8ece691549e26db2b46712e462158ddbe06bb019de54e47bb522"
+      },
+      "head_hashes": {
+        "raw": "ba7098b38415a1f2d99ec847e03727023588a6b6f97c13abd223fa44a36fd079",
+        "lf": "ba7098b38415a1f2d99ec847e03727023588a6b6f97c13abd223fa44a36fd079",
+        "crlf": "27d1c319047c8ece691549e26db2b46712e462158ddbe06bb019de54e47bb522"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/cad_exporter.py",
+      "target_path": "stratum_ro/cad_exporter.py",
+      "expected_sha256": "160fffed3a37a65f864ac09fca4b1b51a48e4ed40246af43d91c178d0993d086",
+      "worktree_hashes": {
+        "raw": "160fffed3a37a65f864ac09fca4b1b51a48e4ed40246af43d91c178d0993d086",
+        "lf": "160fffed3a37a65f864ac09fca4b1b51a48e4ed40246af43d91c178d0993d086",
+        "crlf": "169f3cb4e84c884ebc04f3b4318f41464f7a2146702471284d9830cd05c37c2f"
+      },
+      "head_hashes": {
+        "raw": "160fffed3a37a65f864ac09fca4b1b51a48e4ed40246af43d91c178d0993d086",
+        "lf": "160fffed3a37a65f864ac09fca4b1b51a48e4ed40246af43d91c178d0993d086",
+        "crlf": "169f3cb4e84c884ebc04f3b4318f41464f7a2146702471284d9830cd05c37c2f"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/volumetric_3d.py",
+      "target_path": "stratum_ro/domain/city_3d/builder.py",
+      "expected_sha256": "238ce1766e6590d6027ff26c25c3a451cd43e29350663f896f64c05b0155795a",
+      "worktree_hashes": {
+        "raw": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
+        "lf": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
+        "crlf": "18a831c56a56186526cb391c5ebfd70627afddfe89744afe3e649bf662ae56b0"
+      },
+      "head_hashes": {
+        "raw": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
+        "lf": "3a9a4e5e5de513a5b0f304fa80c1288f72556de44f23c7228c09ba1ee4ecec09",
+        "crlf": "18a831c56a56186526cb391c5ebfd70627afddfe89744afe3e649bf662ae56b0"
+      },
+      "head_expected_match_variants": [],
+      "historical_expected_matches": [
+        {
+          "revision": "299038bdfa453a5660a4dbf87d6f04692a0bacd5",
+          "path": "stratum_ro/volumetric_3d.py",
+          "newline_variants": [
+            "raw",
+            "lf"
+          ]
+        }
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/onnx_engine.py",
+      "target_path": "stratum_ro/onnx_engine.py",
+      "expected_sha256": "de0218022e53a2373ef26d7ca2d491b90a8074a7f622fce416fd379ab7029267",
+      "worktree_hashes": {
+        "raw": "de0218022e53a2373ef26d7ca2d491b90a8074a7f622fce416fd379ab7029267",
+        "lf": "de0218022e53a2373ef26d7ca2d491b90a8074a7f622fce416fd379ab7029267",
+        "crlf": "e730b7cfe902907f4b34beeee93f05622f058afccfc097989c93d5c90d5368b8"
+      },
+      "head_hashes": {
+        "raw": "de0218022e53a2373ef26d7ca2d491b90a8074a7f622fce416fd379ab7029267",
+        "lf": "de0218022e53a2373ef26d7ca2d491b90a8074a7f622fce416fd379ab7029267",
+        "crlf": "e730b7cfe902907f4b34beeee93f05622f058afccfc097989c93d5c90d5368b8"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/candidate_generator.py",
+      "target_path": "stratum_ro/candidate_generator.py",
+      "expected_sha256": "75debc95ebab2e73d3d8eb8e3d795fbe1d02f771a5525f9c76c03979c3e91f6b",
+      "worktree_hashes": {
+        "raw": "75debc95ebab2e73d3d8eb8e3d795fbe1d02f771a5525f9c76c03979c3e91f6b",
+        "lf": "75debc95ebab2e73d3d8eb8e3d795fbe1d02f771a5525f9c76c03979c3e91f6b",
+        "crlf": "df5200fb57ce0e17ffbca680aa4d0c96448a774c50b93e0b5c241054efca8e20"
+      },
+      "head_hashes": {
+        "raw": "75debc95ebab2e73d3d8eb8e3d795fbe1d02f771a5525f9c76c03979c3e91f6b",
+        "lf": "75debc95ebab2e73d3d8eb8e3d795fbe1d02f771a5525f9c76c03979c3e91f6b",
+        "crlf": "df5200fb57ce0e17ffbca680aa4d0c96448a774c50b93e0b5c241054efca8e20"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/vegetation_filter.py",
+      "target_path": "stratum_ro/vegetation_filter.py",
+      "expected_sha256": "d0946d1e24657fe1f182fd53e723fb6463816ae762259b852b7874caadba3314",
+      "worktree_hashes": {
+        "raw": "d0946d1e24657fe1f182fd53e723fb6463816ae762259b852b7874caadba3314",
+        "lf": "d0946d1e24657fe1f182fd53e723fb6463816ae762259b852b7874caadba3314",
+        "crlf": "9de3c430c2260cf8b98d8a490a046f34faa9b548add090235458f64ac956f1ed"
+      },
+      "head_hashes": {
+        "raw": "d0946d1e24657fe1f182fd53e723fb6463816ae762259b852b7874caadba3314",
+        "lf": "d0946d1e24657fe1f182fd53e723fb6463816ae762259b852b7874caadba3314",
+        "crlf": "9de3c430c2260cf8b98d8a490a046f34faa9b548add090235458f64ac956f1ed"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/mask_fusion.py",
+      "target_path": "stratum_ro/mask_fusion.py",
+      "expected_sha256": "baf2d6d40e8b8aebecb9a39f571ecc2ad426cff1b9cd8b9b133f84a7d711e767",
+      "worktree_hashes": {
+        "raw": "baf2d6d40e8b8aebecb9a39f571ecc2ad426cff1b9cd8b9b133f84a7d711e767",
+        "lf": "baf2d6d40e8b8aebecb9a39f571ecc2ad426cff1b9cd8b9b133f84a7d711e767",
+        "crlf": "45b80b669e538256aabb41b5830e0378cbcc09c22338c2c57ea9eb0c02497bd8"
+      },
+      "head_hashes": {
+        "raw": "baf2d6d40e8b8aebecb9a39f571ecc2ad426cff1b9cd8b9b133f84a7d711e767",
+        "lf": "baf2d6d40e8b8aebecb9a39f571ecc2ad426cff1b9cd8b9b133f84a7d711e767",
+        "crlf": "45b80b669e538256aabb41b5830e0378cbcc09c22338c2c57ea9eb0c02497bd8"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/prompt_generator.py",
+      "target_path": "stratum_ro/prompt_generator.py",
+      "expected_sha256": "0e02119c0009ae85b24cd3ea375426e84cad1cc2c0298bffd1583d77c435db4d",
+      "worktree_hashes": {
+        "raw": "0e02119c0009ae85b24cd3ea375426e84cad1cc2c0298bffd1583d77c435db4d",
+        "lf": "0e02119c0009ae85b24cd3ea375426e84cad1cc2c0298bffd1583d77c435db4d",
+        "crlf": "f4fcd35ca1f89653c7dd422e0ac54167a7ca20cf09a109afdcefb255f3b965ae"
+      },
+      "head_hashes": {
+        "raw": "0e02119c0009ae85b24cd3ea375426e84cad1cc2c0298bffd1583d77c435db4d",
+        "lf": "0e02119c0009ae85b24cd3ea375426e84cad1cc2c0298bffd1583d77c435db4d",
+        "crlf": "f4fcd35ca1f89653c7dd422e0ac54167a7ca20cf09a109afdcefb255f3b965ae"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/geometric_reconstruction_v2.py",
+      "target_path": "stratum_ro/geometric_reconstruction_v2.py",
+      "expected_sha256": "37099fe233c84dccef78c42aeaf266e4e538b64506e6169b69bfa5aa35deed6a",
+      "worktree_hashes": {
+        "raw": "37099fe233c84dccef78c42aeaf266e4e538b64506e6169b69bfa5aa35deed6a",
+        "lf": "80e8db285cb241d91d677e4b05f640ef2ba7ab1d273000790b6ab2143aed06eb",
+        "crlf": "37099fe233c84dccef78c42aeaf266e4e538b64506e6169b69bfa5aa35deed6a"
+      },
+      "head_hashes": {
+        "raw": "80e8db285cb241d91d677e4b05f640ef2ba7ab1d273000790b6ab2143aed06eb",
+        "lf": "80e8db285cb241d91d677e4b05f640ef2ba7ab1d273000790b6ab2143aed06eb",
+        "crlf": "37099fe233c84dccef78c42aeaf266e4e538b64506e6169b69bfa5aa35deed6a"
+      },
+      "head_expected_match_variants": [
+        "crlf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/stratum_ro_dockwidget.py",
+      "target_path": "stratum_ro/stratum_ro_dockwidget.py",
+      "expected_sha256": "f8f745d04b87b0c1797c965a20fed8a27f5814fba9a26215f6692d18d33c21f4",
+      "worktree_hashes": {
+        "raw": "f8f745d04b87b0c1797c965a20fed8a27f5814fba9a26215f6692d18d33c21f4",
+        "lf": "0e4b1988a35da257e6cb27a1d9d03dfd1f1574d57cca943e20cb5afd2743338f",
+        "crlf": "f8f745d04b87b0c1797c965a20fed8a27f5814fba9a26215f6692d18d33c21f4"
+      },
+      "head_hashes": {
+        "raw": "0e4b1988a35da257e6cb27a1d9d03dfd1f1574d57cca943e20cb5afd2743338f",
+        "lf": "0e4b1988a35da257e6cb27a1d9d03dfd1f1574d57cca943e20cb5afd2743338f",
+        "crlf": "f8f745d04b87b0c1797c965a20fed8a27f5814fba9a26215f6692d18d33c21f4"
+      },
+      "head_expected_match_variants": [
+        "crlf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/processing_provider.py",
+      "target_path": "stratum_ro/processing_provider.py",
+      "expected_sha256": "4d7eb9765be4c537a0f69a2bdcee1a0fc4247ab9eeaec42e420c3987fadf34f0",
+      "worktree_hashes": {
+        "raw": "4d7eb9765be4c537a0f69a2bdcee1a0fc4247ab9eeaec42e420c3987fadf34f0",
+        "lf": "4d7eb9765be4c537a0f69a2bdcee1a0fc4247ab9eeaec42e420c3987fadf34f0",
+        "crlf": "b0876ffdb1a8241511a695be1d87dc29b7a3496155c4285b5acdb15870cde9da"
+      },
+      "head_hashes": {
+        "raw": "4d7eb9765be4c537a0f69a2bdcee1a0fc4247ab9eeaec42e420c3987fadf34f0",
+        "lf": "4d7eb9765be4c537a0f69a2bdcee1a0fc4247ab9eeaec42e420c3987fadf34f0",
+        "crlf": "b0876ffdb1a8241511a695be1d87dc29b7a3496155c4285b5acdb15870cde9da"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/cadastral_algorithm.py",
+      "target_path": "stratum_ro/cadastral_algorithm.py",
+      "expected_sha256": "3d8371eec086b31eda6cf4a90a5c431ca775a82b41ef15f035a5b06396ec0f94",
+      "worktree_hashes": {
+        "raw": "3d8371eec086b31eda6cf4a90a5c431ca775a82b41ef15f035a5b06396ec0f94",
+        "lf": "3d8371eec086b31eda6cf4a90a5c431ca775a82b41ef15f035a5b06396ec0f94",
+        "crlf": "cee70bb43b4a0c9e9851dc90347f766f26d9ef0892e2c0589b71328aec21b2c5"
+      },
+      "head_hashes": {
+        "raw": "3d8371eec086b31eda6cf4a90a5c431ca775a82b41ef15f035a5b06396ec0f94",
+        "lf": "3d8371eec086b31eda6cf4a90a5c431ca775a82b41ef15f035a5b06396ec0f94",
+        "crlf": "cee70bb43b4a0c9e9851dc90347f766f26d9ef0892e2c0589b71328aec21b2c5"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/ai/router.py",
+      "target_path": "stratum_ro/ai/router.py",
+      "expected_sha256": "e4674d9318cb7880cfcfadb346e804d2ec25d5ebf2ea55e9cdbc0576d1531acf",
+      "worktree_hashes": {
+        "raw": "e4674d9318cb7880cfcfadb346e804d2ec25d5ebf2ea55e9cdbc0576d1531acf",
+        "lf": "e4674d9318cb7880cfcfadb346e804d2ec25d5ebf2ea55e9cdbc0576d1531acf",
+        "crlf": "0f80aa92b3ebe632b50dd19251fcabaac8af2b905d759ad5e1bddaa202c5c986"
+      },
+      "head_hashes": {
+        "raw": "e4674d9318cb7880cfcfadb346e804d2ec25d5ebf2ea55e9cdbc0576d1531acf",
+        "lf": "e4674d9318cb7880cfcfadb346e804d2ec25d5ebf2ea55e9cdbc0576d1531acf",
+        "crlf": "0f80aa92b3ebe632b50dd19251fcabaac8af2b905d759ad5e1bddaa202c5c986"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/ai/task_graph.py",
+      "target_path": "stratum_ro/ai/task_graph.py",
+      "expected_sha256": "555a95ef6e7129fd35b80ce89cc53e724ceeda81346f49044bb8cd43731f7039",
+      "worktree_hashes": {
+        "raw": "555a95ef6e7129fd35b80ce89cc53e724ceeda81346f49044bb8cd43731f7039",
+        "lf": "555a95ef6e7129fd35b80ce89cc53e724ceeda81346f49044bb8cd43731f7039",
+        "crlf": "ddb6361d1f585c426825529c51f6c97012c298d908a9411c5d3b762a4c2e1540"
+      },
+      "head_hashes": {
+        "raw": "555a95ef6e7129fd35b80ce89cc53e724ceeda81346f49044bb8cd43731f7039",
+        "lf": "555a95ef6e7129fd35b80ce89cc53e724ceeda81346f49044bb8cd43731f7039",
+        "crlf": "ddb6361d1f585c426825529c51f6c97012c298d908a9411c5d3b762a4c2e1540"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/ai/executor.py",
+      "target_path": "stratum_ro/ai/executor.py",
+      "expected_sha256": "eb18bf298b60b8f5b2077439dcb4627d0d514979e468165d213be6b7a2959cb1",
+      "worktree_hashes": {
+        "raw": "eb18bf298b60b8f5b2077439dcb4627d0d514979e468165d213be6b7a2959cb1",
+        "lf": "eb18bf298b60b8f5b2077439dcb4627d0d514979e468165d213be6b7a2959cb1",
+        "crlf": "92baf95be58058eb710427a75ac7720943c7e230fd389098ea028966972134c1"
+      },
+      "head_hashes": {
+        "raw": "eb18bf298b60b8f5b2077439dcb4627d0d514979e468165d213be6b7a2959cb1",
+        "lf": "eb18bf298b60b8f5b2077439dcb4627d0d514979e468165d213be6b7a2959cb1",
+        "crlf": "92baf95be58058eb710427a75ac7720943c7e230fd389098ea028966972134c1"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/ai/provenance.py",
+      "target_path": "stratum_ro/ai/provenance.py",
+      "expected_sha256": "69b7b53f18da985a9059927789b791d6d623083da48c5444af1c9fc1223c9b1c",
+      "worktree_hashes": {
+        "raw": "69b7b53f18da985a9059927789b791d6d623083da48c5444af1c9fc1223c9b1c",
+        "lf": "69b7b53f18da985a9059927789b791d6d623083da48c5444af1c9fc1223c9b1c",
+        "crlf": "b8e671732e88a8e371d0a27045a91f0fd7949a1445d003a94360ada0e73dd2ce"
+      },
+      "head_hashes": {
+        "raw": "69b7b53f18da985a9059927789b791d6d623083da48c5444af1c9fc1223c9b1c",
+        "lf": "69b7b53f18da985a9059927789b791d6d623083da48c5444af1c9fc1223c9b1c",
+        "crlf": "b8e671732e88a8e371d0a27045a91f0fd7949a1445d003a94360ada0e73dd2ce"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/ai/risk.py",
+      "target_path": "stratum_ro/ai/risk.py",
+      "expected_sha256": "e512ce6c585370921f314ed88bf839a8ec15fae244b2fb43df2a0d9ba56d4524",
+      "worktree_hashes": {
+        "raw": "e512ce6c585370921f314ed88bf839a8ec15fae244b2fb43df2a0d9ba56d4524",
+        "lf": "e512ce6c585370921f314ed88bf839a8ec15fae244b2fb43df2a0d9ba56d4524",
+        "crlf": "cf3a29459eed0a71b78559abd24feabdb4f7009c392f9d7a7fee9cc4a3f597f7"
+      },
+      "head_hashes": {
+        "raw": "e512ce6c585370921f314ed88bf839a8ec15fae244b2fb43df2a0d9ba56d4524",
+        "lf": "e512ce6c585370921f314ed88bf839a8ec15fae244b2fb43df2a0d9ba56d4524",
+        "crlf": "cf3a29459eed0a71b78559abd24feabdb4f7009c392f9d7a7fee9cc4a3f597f7"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/ai/data_profiler.py",
+      "target_path": "stratum_ro/ai/data_profiler.py",
+      "expected_sha256": "5309bd1fc0bb3a7fb07fe13e876f1211d0b0f7b614a51bbf2ac82ec54984a3e9",
+      "worktree_hashes": {
+        "raw": "5309bd1fc0bb3a7fb07fe13e876f1211d0b0f7b614a51bbf2ac82ec54984a3e9",
+        "lf": "5309bd1fc0bb3a7fb07fe13e876f1211d0b0f7b614a51bbf2ac82ec54984a3e9",
+        "crlf": "eacdd427a3dbc03fa0927fdcb3cde32869a39dd6ca946695807f0f020238df08"
+      },
+      "head_hashes": {
+        "raw": "5309bd1fc0bb3a7fb07fe13e876f1211d0b0f7b614a51bbf2ac82ec54984a3e9",
+        "lf": "5309bd1fc0bb3a7fb07fe13e876f1211d0b0f7b614a51bbf2ac82ec54984a3e9",
+        "crlf": "eacdd427a3dbc03fa0927fdcb3cde32869a39dd6ca946695807f0f020238df08"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/ai/vlm_verifier.py",
+      "target_path": "stratum_ro/ai/vlm_verifier.py",
+      "expected_sha256": "45cc067c358672660fffd017b07819ca023cd5e06cf0d480e26cfa8994935a67",
+      "worktree_hashes": {
+        "raw": "45cc067c358672660fffd017b07819ca023cd5e06cf0d480e26cfa8994935a67",
+        "lf": "45cc067c358672660fffd017b07819ca023cd5e06cf0d480e26cfa8994935a67",
+        "crlf": "2e2f56cc06464108fbe3553ba34d42205c1f06dd6a6bc698726d3c839acdad7d"
+      },
+      "head_hashes": {
+        "raw": "45cc067c358672660fffd017b07819ca023cd5e06cf0d480e26cfa8994935a67",
+        "lf": "45cc067c358672660fffd017b07819ca023cd5e06cf0d480e26cfa8994935a67",
+        "crlf": "2e2f56cc06464108fbe3553ba34d42205c1f06dd6a6bc698726d3c839acdad7d"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "stratum_ro/ai/closed_loop.py",
+      "target_path": "stratum_ro/ai/closed_loop.py",
+      "expected_sha256": "1fd357351818446d6eaba6b46a08aa8b3009f501643297a2adeade5f121a7358",
+      "worktree_hashes": {
+        "raw": "1fd357351818446d6eaba6b46a08aa8b3009f501643297a2adeade5f121a7358",
+        "lf": "1fd357351818446d6eaba6b46a08aa8b3009f501643297a2adeade5f121a7358",
+        "crlf": "da7c09685be2ebb42d14f782dbe7fa19d7319ecbf96dfdf15fc45087f8a1d7fa"
+      },
+      "head_hashes": {
+        "raw": "1fd357351818446d6eaba6b46a08aa8b3009f501643297a2adeade5f121a7358",
+        "lf": "1fd357351818446d6eaba6b46a08aa8b3009f501643297a2adeade5f121a7358",
+        "crlf": "da7c09685be2ebb42d14f782dbe7fa19d7319ecbf96dfdf15fc45087f8a1d7fa"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "engine/evaluation.py",
+      "target_path": "engine/evaluation.py",
+      "expected_sha256": "0029dc2fd49f7af44b96f4bafc7e3bee1a2348dd5c6a77c33dc306ad3905f681",
+      "worktree_hashes": {
+        "raw": "0029dc2fd49f7af44b96f4bafc7e3bee1a2348dd5c6a77c33dc306ad3905f681",
+        "lf": "0029dc2fd49f7af44b96f4bafc7e3bee1a2348dd5c6a77c33dc306ad3905f681",
+        "crlf": "8890205624c1fac139d29531a7031100ab4cd44d79c64800cb1917e815ff5436"
+      },
+      "head_hashes": {
+        "raw": "0029dc2fd49f7af44b96f4bafc7e3bee1a2348dd5c6a77c33dc306ad3905f681",
+        "lf": "0029dc2fd49f7af44b96f4bafc7e3bee1a2348dd5c6a77c33dc306ad3905f681",
+        "crlf": "8890205624c1fac139d29531a7031100ab4cd44d79c64800cb1917e815ff5436"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "engine/ablation_study.py",
+      "target_path": "engine/ablation_study.py",
+      "expected_sha256": "182789c74021023c88d293414bb095de15077f4ed81255e69487bbb4f8caf982",
+      "worktree_hashes": {
+        "raw": "182789c74021023c88d293414bb095de15077f4ed81255e69487bbb4f8caf982",
+        "lf": "182789c74021023c88d293414bb095de15077f4ed81255e69487bbb4f8caf982",
+        "crlf": "c581c531080b50fd079bf1d6a7df73f3900ce8e52e5bbb505b14f371a1f8e635"
+      },
+      "head_hashes": {
+        "raw": "182789c74021023c88d293414bb095de15077f4ed81255e69487bbb4f8caf982",
+        "lf": "182789c74021023c88d293414bb095de15077f4ed81255e69487bbb4f8caf982",
+        "crlf": "c581c531080b50fd079bf1d6a7df73f3900ce8e52e5bbb505b14f371a1f8e635"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    },
+    {
+      "manifest": "manifest_critical_modules.json",
+      "original_path": "tools/phase3_experiment_runner.py",
+      "target_path": "tools/phase3_experiment_runner.py",
+      "expected_sha256": "821373dce95abcf626d289f9f945b2b43a03ecc3639c3229d1f52bd1dfaea877",
+      "worktree_hashes": {
+        "raw": "821373dce95abcf626d289f9f945b2b43a03ecc3639c3229d1f52bd1dfaea877",
+        "lf": "821373dce95abcf626d289f9f945b2b43a03ecc3639c3229d1f52bd1dfaea877",
+        "crlf": "141f78f003941c407ba72040064200964f936915292ed5e52ef73215dee26092"
+      },
+      "head_hashes": {
+        "raw": "821373dce95abcf626d289f9f945b2b43a03ecc3639c3229d1f52bd1dfaea877",
+        "lf": "821373dce95abcf626d289f9f945b2b43a03ecc3639c3229d1f52bd1dfaea877",
+        "crlf": "141f78f003941c407ba72040064200964f936915292ed5e52ef73215dee26092"
+      },
+      "head_expected_match_variants": [
+        "raw",
+        "lf"
+      ]
+    }
+  ]
+}

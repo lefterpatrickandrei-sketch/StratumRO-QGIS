@@ -1,0 +1,36 @@
+test_01_ground_truth_hashes_immutable (stratum_ro.test.test_phase1_golden_freeze.TestPhase1GoldenFreeze)
+Verifies that all 14 Ground Truth & reference datasets match their frozen SHA-256 hashes. ... ok
+test_02_critical_production_modules_immutable (stratum_ro.test.test_phase1_golden_freeze.TestPhase1GoldenFreeze)
+Verify the exact 23 module paths actually recorded by the manifest. ... ok
+test_02b_volumetric_forwarder_binds_canonical_implementation (stratum_ro.test.test_phase1_golden_freeze.TestPhase1GoldenFreeze) ... ok
+test_02c_relocated_implementation_matches_historical_bytes (stratum_ro.test.test_phase1_golden_freeze.TestPhase1GoldenFreeze) ... ok
+test_03_vectorizer_determinism_and_golden_cases (stratum_ro.test.test_phase1_golden_freeze.TestPhase1GoldenFreeze)
+Verifies bit-for-bit determinism and geometric consistency on canonical regularizer cases. ... ok
+test_04_usamv_true_positive_geometry_freeze (stratum_ro.test.test_phase1_golden_freeze.TestPhase1GoldenFreeze)
+Verifies that the 4 USAMV TP building geometries match the frozen baseline areas and properties. ... ok
+test_05_phase3_recall_and_metrics_freeze (stratum_ro.test.test_phase1_golden_freeze.TestPhase1GoldenFreeze)
+Verifies that the authoritative Cluj–USAMV E9 benchmark metrics are frozen and immutable. ... ok
+test_frozen_hash_accepts_only_checkout_line_endings (stratum_ro.test.test_phase1_golden_freeze.TestPhase1GoldenFreeze) ... ok
+test_context_engine_profile_task (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_data_profiler_detects_wgs84_misprojection (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_data_profiler_l0_to_l4 (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_deterministic_capability_routing (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration)
+Mathematical/cadastral operations must resolve to local deterministic code. ... ok
+test_optical_segmentation_capability_routing (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_perturbation_translation_and_rotation (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_provenance_chain (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_resource_snapshot (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_risk_forbidden_command (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_risk_ground_truth_protection (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_risk_secret_scrubbing (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_task_graph_from_task_spec_balanced (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_task_graph_from_task_spec_high_risk (stratum_ro.test.test_phase4_orchestration.TestPhase4Orchestration) ... ok
+test_compute_sha256 (stratum_ro.test.test_dataset_resolver.TestCanonicalDatasetResolver) ... ok
+test_explicit_ground_truth_and_model_file_metadata (stratum_ro.test.test_dataset_resolver.TestCanonicalDatasetResolver) ... ok
+test_resolve_missing_datasets_is_explicit (stratum_ro.test.test_dataset_resolver.TestCanonicalDatasetResolver) ... ok
+test_ui_override_priority (stratum_ro.test.test_dataset_resolver.TestCanonicalDatasetResolver) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 13.593s
+
+OK

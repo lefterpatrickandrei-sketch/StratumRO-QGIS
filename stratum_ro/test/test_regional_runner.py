@@ -3,6 +3,7 @@
 This is a software regression test, not a real-model benchmark or visual verdict.
 """
 import json,sys,tempfile,unittest,contextlib,io
+from types import ModuleType
 from pathlib import Path
 from unittest.mock import patch
 import numpy as np
@@ -19,6 +20,18 @@ class RegionalRunnerTests(unittest.TestCase):
             def generate(self,rgb):
                 mask=np.zeros(rgb.shape[:2],dtype=bool);mask[3:9,3:9]=True
                 return [dict(segmentation=mask,predicted_iou=.95,stability_score=.99)]
+        # A model-double test must also work on CI without the optional SAM2
+        # package. Supply just the two import contracts consumed by the runner;
+        # no real model is imported, constructed or downloaded.
+        sam_package=ModuleType('sam2');sam_package.__path__=[]
+        build_module=ModuleType('sam2.build_sam')
+        build_module.build_sam2=lambda *args,**kwargs:object()
+        generator_module=ModuleType('sam2.automatic_mask_generator')
+        generator_module.SAM2AutomaticMaskGenerator=FakeGenerator
+        sam_package.build_sam=build_module
+        sam_package.automatic_mask_generator=generator_module
+        model_modules={'sam2':sam_package,'sam2.build_sam':build_module,
+                       'sam2.automatic_mask_generator':generator_module}
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);source=root/'source.tif';checkpoint=root/'checkpoint.pt'
             checkpoint.write_bytes(b'unit test model identity only')
@@ -31,9 +44,8 @@ class RegionalRunnerTests(unittest.TestCase):
                 parameters=dict(resolution_m=1.,core_m=8.,halo_m=2.))),encoding='utf-8')
             output=root/'result'
             with patch.object(sys,'argv',['runner','--config',str(config),'--output',str(output)]),\
+                 patch.dict(sys.modules,model_modules),\
                  patch('torch.cuda.is_available',return_value=False),\
-                 patch('sam2.build_sam.build_sam2',return_value=object()),\
-                 patch('sam2.automatic_mask_generator.SAM2AutomaticMaskGenerator',FakeGenerator),\
                  contextlib.redirect_stdout(io.StringIO()):
                 main()
             report=json.loads((output/'report.json').read_text())

@@ -21,6 +21,7 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 - [Lot4 și reverificarea vizuală Lot3](STRATUMRO_LOT4_AND_LOT3_VISUAL_RECHECK_2026-10-17.md).
 - [Identitatea produsului și direcția desktop](STRATUMRO_PRODUCT_IDENTITY_AND_DESKTOP_DIRECTION_2026-10-17.md).
 - [Auditul și aprobările reorganizării din 2026-10-18](../workspace/repository_cleanup_20261018/README.md).
+- [Repararea CI și proveniența referințelor, 2026-10-18](../workspace/ci_repair_20261018/README.md).
 - [Arhiva și restaurarea](../junk/README.md).
 
 ## Documentație istorică și de arhitectură

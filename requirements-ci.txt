@@ -1,0 +1,5 @@
+# Test the declared Python runtime plus mocked-provider/API test dependencies.
+# CI installs CPU-only torch first; this satisfies the runtime torch requirement.
+-r requirements.txt
+anthropic>=0.25.0
+httpx>=0.27.0
