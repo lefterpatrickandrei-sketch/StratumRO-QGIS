@@ -156,59 +156,60 @@ def compute_orthogonality_ratio(poly: Polygon, min_edge_len: float = 0.20, tol_d
 def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     """
     Ortogonalizează conturul clădirii la unghiuri drepte de 90° folosind algoritmul
-    bazat pe unghi dominant / drepte suport.
+    bazat pe unghi dominant / drepte suport și buildingregulariser.
     Garantează unghiuri stricte de 90° fără teșituri diagonale de tip Douglas-Peucker.
-    Protejează formele curbate (absidă, turn circular) și decroșurile mici de fațadă.
+    Protejează formele curbate autentice și decroșurile reale de fațadă (L, U, T).
     """
     if not poly.is_valid or poly.is_empty or poly.area < 6.0:
         return poly
 
-    # 0. Verificare dacă forma este preponderent curbată sau non-ortogonală (ex. absidă biserică)
-    ortho_ratio = compute_orthogonality_ratio(poly, min_edge_len=0.20)
-    if ortho_ratio < 0.65:
-        # Păstrăm curbura autentică fără a forța unghiuri de 90°
-        smooth_poly = poly.simplify(min(tolerance, 0.18), preserve_topology=True)
-        return smooth_poly if (smooth_poly.is_valid and smooth_poly.area >= 6.0) else poly
+    # 0. Dacă poligonul este deja ortogonal (>= 0.95), îl păstrăm neatins
+    current_ortho = compute_orthogonality_ratio(poly, min_edge_len=0.20)
+    if current_ortho >= 0.95:
+        return poly
 
-    # 1. Verificare dreptunghi canonic OBB (4 noduri la 90°)
-    mrr = poly.minimum_rotated_rectangle
-    if mrr.area > 0 and poly.convex_hull.area > 0:
-        solidity = poly.area / poly.convex_hull.area
-        rect_ratio = poly.area / mrr.area
-        h_dist_mrr = poly.hausdorff_distance(mrr)
+    # 1. Pre-curățare trepte de pixeli și colți ascuțiți
+    clean_poly = remove_acute_spikes(poly, min_angle_deg=40.0)
+    simp = clean_poly.simplify(0.20, preserve_topology=True)
+    if not simp.is_valid or simp.is_empty or simp.area < 6.0:
+        simp = clean_poly if clean_poly.is_valid else poly
 
-        # Forțăm MRR doar dacă nu există colțuri reflex macro (fără decroșuri, aripi, intrări/proeminențe)
-        reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.35)
-        if reflex_corners == 0:
-            if (solidity >= 0.88 and rect_ratio >= 0.85) or \
-               (solidity >= 0.94 and rect_ratio >= 0.92 and h_dist_mrr <= 0.40):
-                return mrr
+    # 2. Gardă strictă pentru dreptunghi canonic OBB (4 noduri la 90°)
+    # Acceptăm MRR DOAR dacă nu există decroșuri reflex macro și abaterea e minimă
+    mrr = simp.minimum_rotated_rectangle
+    if mrr.area > 0 and simp.convex_hull.area > 0:
+        reflex_corners = count_macro_reflex_corners(simp, min_edge_len=0.60)
+        h_dist_mrr = simp.hausdorff_distance(mrr)
+        a_diff_mrr = abs(mrr.area - simp.area) / (simp.area + 1e-6)
+        if reflex_corners == 0 and h_dist_mrr <= 0.50 and a_diff_mrr <= 0.04:
+            return mrr
 
-    # 2. Utilizare Building-Regulariser (dacă este instalat și forma nu este concavă)
-    reflex_corners = count_macro_reflex_corners(poly, min_edge_len=0.35)
-    solidity = poly.area / poly.convex_hull.area if poly.convex_hull.area > 0 else 1.0
-    if HAS_REGULARISER and reflex_corners == 0 and solidity >= 0.88:
-        try:
-            temp_gdf = gpd.GeoDataFrame([{"geometry": poly}], crs="EPSG:3844")
-            reg_gdf = regularize_geodataframe(
-                temp_gdf,
-                allow_45_degree=False,
-                parallel_threshold=1.0,
-                num_cores=1
-            )
-            reg_poly = reg_gdf.geometry.iloc[0]
-            if reg_poly is not None and reg_poly.is_valid and reg_poly.area >= 6.0:
-                inter_iou = poly.intersection(reg_poly).area / (poly.union(reg_poly).area + 1e-6)
-                if inter_iou >= 0.80:
-                    return reg_poly
-        except Exception:
-            pass
+    # 3. Utilizare Building-Regulariser pe contururi complexe (L, U, T, decroșuri)
+    if HAS_REGULARISER:
+        for p_thresh in (1.0, 1.5, 2.0):
+            try:
+                temp_gdf = gpd.GeoDataFrame([{"geometry": simp}], crs="EPSG:3844")
+                reg_gdf = regularize_geodataframe(
+                    temp_gdf,
+                    allow_45_degree=False,
+                    parallel_threshold=p_thresh,
+                    num_cores=1
+                )
+                reg_poly = reg_gdf.geometry.iloc[0]
+                if reg_poly is not None and reg_poly.is_valid and reg_poly.area >= 6.0:
+                    o_r = compute_orthogonality_ratio(reg_poly)
+                    h_r = simp.hausdorff_distance(reg_poly)
+                    a_diff_r = abs(reg_poly.area - simp.area) / (simp.area + 1e-6)
+                    if o_r >= 0.85 and a_diff_r <= 0.12 and h_r <= 1.50:
+                        return reg_poly
+            except Exception:
+                pass
 
-    # 3. Fallback ortogonal pe unghi dominant (cu simplificare cadastrală realistă)
-    coords = list(poly.exterior.coords)[:-1]
+    # 4. Fallback ortogonal pe unghi dominant
+    coords = list(simp.exterior.coords)[:-1]
     n = len(coords)
     if n < 4:
-        return poly
+        return simp
 
     weighted_angles = []
     total_len = 0.0
@@ -218,13 +219,13 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
         dx = p2[0] - p1[0]
         dy = p2[1] - p1[1]
         length = math.hypot(dx, dy)
-        if length > 0.25:
+        if length > 0.35:
             ang = math.degrees(math.atan2(dy, dx)) % 90.0
             weighted_angles.append((ang, length))
             total_len += length
 
     if not weighted_angles:
-        return poly.simplify(max(0.60, min(tolerance, 0.90)), preserve_topology=True)
+        return simp.simplify(0.35, preserve_topology=True)
 
     rad_angles = [math.radians(a * 4.0) for a, l in weighted_angles]
     weights = [l / total_len for a, l in weighted_angles]
@@ -232,13 +233,11 @@ def orthogonalize_cad(poly: Polygon, tolerance: float = 0.7) -> Polygon:
     mean_cos = sum(w * math.cos(r) for w, r in zip(weights, rad_angles))
     dom_angle = (math.degrees(math.atan2(mean_sin, mean_cos)) / 4.0) % 90.0
 
-    origin = poly.centroid
-    rot_poly = rotate(poly, -dom_angle, origin=origin)
-
-    # Conservăm decroșurile mici prin toleranță adaptivă
-    simp_rot = rot_poly.simplify(min(tolerance, 0.20), preserve_topology=True)
+    origin = simp.centroid
+    rot_poly = rotate(simp, -dom_angle, origin=origin)
+    simp_rot = rot_poly.simplify(min(tolerance, 0.30), preserve_topology=True)
     if not simp_rot.is_valid:
         simp_rot = rot_poly
 
     ortho_poly = rotate(simp_rot, dom_angle, origin=origin)
-    return ortho_poly if (ortho_poly.is_valid and ortho_poly.area > 5.0) else poly
+    return ortho_poly if (ortho_poly.is_valid and ortho_poly.area > 5.0) else simp
