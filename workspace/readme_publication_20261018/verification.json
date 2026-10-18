@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "head_at_check": "e6011fa8872aed27db1d988ce52516cfaff95f64",
+  "head_at_check": "fe156a847e6bd3534e245ac5e4e9b4d933c3caaf",
   "documents_checked": [
     "README.md",
     "docs/METHODS_AND_SOURCES.md",
@@ -15,7 +15,7 @@
   "links": [
     {
       "from": "README.md",
-      "target": "docs/assets/readme/system_flow.svg"
+      "target": "docs/assets/readme/system_flow.png"
     },
     {
       "from": "README.md",
@@ -95,7 +95,7 @@
     },
     {
       "from": "README.md",
-      "target": "docs/assets/readme/regional_evidence.svg"
+      "target": "docs/assets/readme/regional_evidence.png"
     },
     {
       "from": "README.md",
@@ -119,7 +119,7 @@
     },
     {
       "from": "README.md",
-      "target": "docs/assets/readme/iou_example.svg"
+      "target": "docs/assets/readme/iou_example.png"
     },
     {
       "from": "README.md",

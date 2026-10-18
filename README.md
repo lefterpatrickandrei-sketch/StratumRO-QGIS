@@ -6,7 +6,7 @@ StratumRO conectează instrumente precum **QGIS** cu procesarea raster, nori de 
 
 [Flux și arhitectură](#cum-lucrează-stratumro) · [Rezultate vizuale](#rezultate-vizuale-din-proiect) · [Formule](#cum-se-măsoară-rezultatul) · [Pornire](#cum-explorezi-proiectul) · [Documentație](#documentație-și-continuare) · [Surse](#surse-tehnice)
 
-![Fluxul StratumRO: date, procesare, revizie și livrare; direcția desktop este marcată separat](docs/assets/readme/system_flow.svg)
+![Fluxul StratumRO: date, procesare, revizie și livrare; direcția desktop este marcată separat](docs/assets/readme/system_flow.png)
 
 **Stadiu: dezvoltare și evaluare experimentală.** Există cod executabil, integrare QGIS, rezultate GIS/CAD și rulări regionale reale. Automatizarea completă pentru orice zonă și un instalator desktop final sunt obiective în lucru. [Starea verificată și limitele componentelor](docs/PROJECT_STATE.md) sunt documentate separat.
 
@@ -52,7 +52,7 @@ Integrarea nucleului este în curs: unele fluxuri folosesc încă implementări 
 
 Vederea arată propunerile și categoriile de revizie peste ortofoto. Contururile colorate sunt **observații experimentale**, inclusiv erori și cazuri incerte. [Selecția curentă](workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json) indică pachetul GIS și raportul folosit; nu alege rezultatele doar după numele directorului.
 
-![Grafice măsurate: 144 ferestre și distribuția celor 2081 observații revizuite](docs/assets/readme/regional_evidence.svg)
+![Grafice măsurate: 144 ferestre și distribuția celor 2081 observații revizuite](docs/assets/readme/regional_evidence.png)
 
 | Măsurare | Valoare și interpretare |
 |---|---|
@@ -99,10 +99,10 @@ DSM descrie suprafața superioară, DTM terenul. Scăderea are sens după alinie
 Pentru predicția $P$ și referința $R$, scorul de suprapunere este:
 
 $$
-\mathrm{IoU}(P,R)=\frac{\operatorname{Area}(P\cap R)}{\operatorname{Area}(P\cup R)}
+\mathrm{IoU}(P,R)=\frac{\mathrm{Area}(P\cap R)}{\mathrm{Area}(P\cup R)}
 $$
 
-![Exemplu didactic IoU: două dreptunghiuri de 10 pe 6 metri decalate cu un metru](docs/assets/readme/iou_example.svg)
+![Exemplu didactic IoU: două dreptunghiuri de 10 pe 6 metri decalate cu un metru](docs/assets/readme/iou_example.png)
 
 IoU este între 0 și 1 și nu exprimă o distanță în metri. În exemplu, decalajul de 1 m produce încă IoU ≈ 0,818. De aceea codul calculează și eroarea simetrică a conturului:
 
