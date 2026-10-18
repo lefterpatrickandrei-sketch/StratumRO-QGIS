@@ -14,6 +14,7 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 
 ## Reguli și dovezi specializate
 
+- [Reverificarea conversației Antigravity: workspace comun, Lot4/T22, full-auto și Lot5/A–B](../workspace/conversation_recheck_20261018/README.md).
 - [Protocolul comun de decizie pentru clădiri](STRATUMRO_AGENT_DECISION_PROTOCOL.md).
 - [Porți de evaluare înainte de inferență](STRATUMRO_EVALUATION_GATES.md).
 - [Tot progresul util în Git](STRATUMRO_GIT_PROGRESS_POLICY.md).

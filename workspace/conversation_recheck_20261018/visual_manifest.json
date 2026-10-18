@@ -1,0 +1,162 @@
+[
+  {
+    "body_id": "T21:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T21.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "00a031dc26cee6d3bc8e50d0c07dea60cfe83002931acfb85dfda1c77928fc21",
+    "versioned": false
+  },
+  {
+    "body_id": "T22:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T22.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "f9143a099211bea50a9825ca70774b87f58fa0c049b060005b79fbfa81998d96",
+    "versioned": false
+  },
+  {
+    "body_id": "T23:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T23.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "77ab9b93fbe485290c0ef997dafc9ec9e212de168a6a685d8856dc3ee57e486a",
+    "versioned": false
+  },
+  {
+    "body_id": "T24:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T24.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "aa7ab38aa42fac427fbed0b76ea1e62d1d7efd91770ca84d0024d7a8b3f2556f",
+    "versioned": false
+  },
+  {
+    "body_id": "T25:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T25.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "af21249782bb8b5c89eab8c035506d820560040eb63a0ae3978096db3cd8b3cf",
+    "versioned": false
+  },
+  {
+    "body_id": "T26:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T26.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "652d89788ad58ba39ba477f1f3aae56ae4c93a20904dab4b82dfbe63a4830100",
+    "versioned": false
+  },
+  {
+    "body_id": "T27:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T27.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "40ec233e9e8a7ec571a05526a74991c81ff4e2d7a5d923e38ade3ae89f66bd2e",
+    "versioned": false
+  },
+  {
+    "body_id": "T28:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T28.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "c196335c60c99372af268a5e3baabbd587606446fbb395ad8cd4c676e7e5a9c7",
+    "versioned": false
+  },
+  {
+    "body_id": "T29:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T29.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "69234cbe08ad7b6ac92f072aa214efac2de0af8b7d2f58fa53b36f106c77b83e",
+    "versioned": false
+  },
+  {
+    "body_id": "T30:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot4_T30.png",
+    "source": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "sha256": "05344b07eb27bdf42c7d5a052e17136e01a512bcfee78eaf1148e531f675bdb4",
+    "versioned": false
+  },
+  {
+    "body_id": "T31:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T31.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "3ed8522e9dfa6831a304091fe460f5a0e5407bdd1e83b00e78042db26a8317d1",
+    "versioned": false
+  },
+  {
+    "body_id": "T32:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T32.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "9fd6f1bd91e04e1be83eb87daa258e335b5f890ed70aa7e48e4308e184e33b1b",
+    "versioned": false
+  },
+  {
+    "body_id": "T33:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T33.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "1bf3369ed3851778341350bd3c7c2583dbd5e67d64b5a3bd9039549a3f24fca2",
+    "versioned": false
+  },
+  {
+    "body_id": "T34:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T34.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "5e9d259b2718744da05274eff42d414afe0a474a84dfffc3f15fa8b0aaafb3ae",
+    "versioned": false
+  },
+  {
+    "body_id": "T35:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T35.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "aaca862e7f90584c2bd758509a066c08e9c9e052743cb15c3dba748b9f13508c",
+    "versioned": false
+  },
+  {
+    "body_id": "T36:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T36.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "f5762b586f6f5422d36dd6475a96db63200368c1b464b7aab0f646a0aae8897f",
+    "versioned": false
+  },
+  {
+    "body_id": "T37:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T37.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "5d91108ed139e0552e54d271b8fe307aff01e3d7f2d20053c6e80421e1d7645a",
+    "versioned": false
+  },
+  {
+    "body_id": "T38:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T38.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "6e48ce55e53f6e6f4475942e4f94954d1bc240743adb8183639c554a359ad9d1",
+    "versioned": false
+  },
+  {
+    "body_id": "T39:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T39.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "25c31540484b21c72ef1087a39fa3794367d82bb48c1fdc589722936d62f8481",
+    "versioned": false
+  },
+  {
+    "body_id": "T40:C1",
+    "path": "workspace/reviews/conversation_recheck_20261018/lot5_T40.png",
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "sha256": "123320d322275ccf3eaf4e6d8ae018a10bf5386861c8e65e7aaac1e3dc7a5325",
+    "versioned": false
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "local_image_count": 20,
+  "local_image_hashes_match": true,
+  "audit_python_sources_parse": 3,
+  "audit_json_parse": true,
+  "local_document_links_checked": 72,
+  "source_consistency": "see consistency_recheck.json",
+  "production_tests_run": false,
+  "reason": "read-only audit scripts and documentation; no production code changes"
+}

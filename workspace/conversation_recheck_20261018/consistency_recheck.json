@@ -1,0 +1,41 @@
+{
+  "checked_at_utc": "2026-10-18T16:56:07.299545+00:00",
+  "note": "Files are live. Byte hashes changed between reads for two GPKGs; all recorded per-feature measurements, attributes and overlap pairs remain identical. No claim of byte identity or full WKB comparison is made. Audit performs read-only source access.",
+  "datasets": {
+    "lot3_v4": {
+      "source_hash_before": "3dcf7b21a0d2b47b3fcda31d84274536cf1b858905acc1a6c19c6570d1f0cf1f",
+      "source_hash_after": "3dcf7b21a0d2b47b3fcda31d84274536cf1b858905acc1a6c19c6570d1f0cf1f",
+      "source_bytes_changed": false,
+      "all_recorded_feature_statistics_identical": true,
+      "overlap_pairs_identical": true
+    },
+    "lot4_v4": {
+      "source_hash_before": "d3c43dc21a9efd1662c07b2355892db676df43273a8370c9521979c2b3ea2256",
+      "source_hash_after": "d5ee40efd97ca7f6cefc2a2cdeb609de61df600fb8526a7fcd3856e76f44d5d0",
+      "source_bytes_changed": true,
+      "all_recorded_feature_statistics_identical": true,
+      "overlap_pairs_identical": true
+    },
+    "full_auto_264": {
+      "source_hash_before": "2a893163f5b13e0f1187b1d1ee79ca5f0890b132cb38cb33154a2480c6bd6eda",
+      "source_hash_after": "2a893163f5b13e0f1187b1d1ee79ca5f0890b132cb38cb33154a2480c6bd6eda",
+      "source_bytes_changed": false,
+      "all_recorded_feature_statistics_identical": true,
+      "overlap_pairs_identical": true
+    },
+    "lot5_option_a": {
+      "source_hash_before": "d15e9dbb9bf300023e01e40afe57c0d949289c4d6a4015bea6eb369af69a1879",
+      "source_hash_after": "2a01d3f75a717e89230a7b24abe13c51a4140bb22b1948b06c50a0102eac60e7",
+      "source_bytes_changed": true,
+      "all_recorded_feature_statistics_identical": true,
+      "overlap_pairs_identical": true
+    },
+    "option_b_216": {
+      "source_hash_before": "d15e9dbb9bf300023e01e40afe57c0d949289c4d6a4015bea6eb369af69a1879",
+      "source_hash_after": "2a01d3f75a717e89230a7b24abe13c51a4140bb22b1948b06c50a0102eac60e7",
+      "source_bytes_changed": true,
+      "all_recorded_feature_statistics_identical": true,
+      "overlap_pairs_identical": true
+    }
+  }
+}

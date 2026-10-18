@@ -4,6 +4,8 @@ Data: 2026-10-18. Bază de cod: `5125134`, local și remote `main` la începutul
 
 **Verdict: proiectul QGIS este salvat și straturile se deschid, dar rezultatele noi nu sunt validate ca livrabile finale.** Verificarea salvării, testele software, corectitudinea geometrică și acceptarea vizuală sunt verificări distincte.
 
+**Completare după citirea conversației exacte:** [reverificarea conversației `80fa85ac-8b08-481d-a858-2210a8757155`](../conversation_recheck_20261018/README.md) confirmă același workspace, Lot4 v4 cu T22 recuperat (10 obiecte) și Lot5/A real. Excluderea datelor GIS din Git fusese cerută explicit de proprietar. Snapshot-ul live de mai jos este istoric; la reverificare proiectul are modificări nesalvate, păstrate neatinse. Erorile geometrice măsurate rămân confirmate.
+
 ## Ce am verificat direct
 
 - Proiect live: `workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs`; 85 straturi, toate valide pentru provider, `isDirty=False`, fără straturi vectoriale cu modificări nesalvate. [Snapshot complet](live_qgis_snapshot.json), [captură actuală](live_qgis_canvas.png).
@@ -67,7 +69,7 @@ Raportul de 3,427 s măsoară prelucrarea măștilor existente, nu detecția com
 
 ## Git și păstrarea dovezilor
 
-Commitul `b4e936d` a scos din urmărire multe rezultate, iar regulile noi ignoră întregul `workspace/reviews/`. Fișierele există pe disc și în istoricul anterior, dar un clone curent nu le primește automat. De aceea imaginile T10/regional din README erau rupte pe `main` la verificarea browserului.
+Commitul `b4e936d` a scos din urmărire multe rezultate, iar regulile noi ignoră întregul `workspace/reviews/`. **Corectură de context:** citirea ulterioară a conversației exacte arată că proprietarul ceruse explicit păstrarea locală a datelor GIS și capturilor, cu publicarea codului/documentației. Această excludere era autorizată. Fișierele există pe disc și în istoricul anterior, dar un clone curent nu le primește automat. Efectul asupra imaginilor T10/regional din README rămâne cel constatat: legături rupte pe `main` la verificarea browserului. [Dovezi și reconciliere](../conversation_recheck_20261018/README.md).
 
 Am selectat explicit **16 artefacte auditate**, în total aproximativ 5,68 MB: dependențele vizuale/documentare ale README-ului, proiectul QGIS comun și cele două GPKG/rapoarte folosite în verificarea actuală. [Lista exactă și SHA-256](retained_artifacts.json). Acestea se readaugă explicit în Git; nu se publică în masă toate fișierele ignorate. Datele brute, modelele și numeroase alte surse ale celor 85 de straturi nu sunt toate incluse. Proiectul salvat nu reprezintă un pachet portabil complet.
 

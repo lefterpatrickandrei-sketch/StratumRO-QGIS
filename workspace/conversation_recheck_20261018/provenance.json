@@ -1,0 +1,32 @@
+{
+  "source_files_sha256": {
+    "tools/run_comparison_a_vs_b.py": "f491e113413080922a37787c45577ff2397e467c40ea5a98367def15441dd16e",
+    "tools/run_stratumro_full_auto.py": "2da2258e03cc9a67a35e9bf85200ac97d933e23a968b72748b4d84be42891438",
+    "stratum_ro/core/geometry/regularizer.py": "cdae329c3756e6da06df4738f297d63449f58534386a22aafde9642baff3550f",
+    "stratum_ro/ai/tools/vector_tools.py": "7d866841b19465e76f7cb7b81b5240e5cabe519b4b0e9666a5c9d956be50896e"
+  },
+  "qgis_plugin_path": "C:\\Users\\lefpa\\AppData\\Roaming\\QGIS\\QGIS3\\profiles\\default\\python\\plugins\\stratum_ro",
+  "qgis_plugin_resolved_target": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\stratum_ro",
+  "incorrect_src_link_exists": false,
+  "rest260_input_check": {
+    "candidate_id": "REF_TIER1_014:B00014",
+    "raw_area_m2": 5129.020000000717,
+    "regional_pool_count": 380,
+    "maximum_intersection_with_regional_pool_m2": 0.0,
+    "regional_exact_geometry_matches": 0,
+    "comparison_rejected_count": 71,
+    "comparison_rejected_max_area_m2": 123.01875000012225
+  },
+  "t22_sol_actual_geometry_area_m2": 1658.5925443031003,
+  "code_inspection_findings": {
+    "comparison_input": "regional ROOF_CANDIDATES only; no COMPLEX_REVIEW input",
+    "option_a_selection": "top ten fixed score h90*2 + pct_elev + compactness*50",
+    "false_positive_rate_pct": "literal 0.0 at tools/run_comparison_a_vs_b.py:413, not measured",
+    "geographic_quarters": "no quarter-area split implemented",
+    "new_sam2_inference": "not implemented in comparison script",
+    "calibration": "fixed thresholds, no training/calibration against owner-accepted labels",
+    "full_auto_total_timer": "computed at line 620 before QGIS synchronization",
+    "ui_tool_import": "stratum_ro/ai/tools/vector_tools.py imports stratum_ro.vectorizer.CadastralVectorizer",
+    "integration_limit": "same core used by scripts does not prove every app entrypoint invokes this workflow"
+  }
+}
