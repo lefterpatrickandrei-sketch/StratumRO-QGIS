@@ -94,6 +94,7 @@ master_grp.setExpanded(True)
 def style_vector_layer(layer, color_hex, line_width_mm, style="solid"):
     symbol = QgsFillSymbol.createSimple({{
         "color": "0,0,0,0",
+        "style": "no",
         "outline_color": color_hex,
         "outline_width": str(line_width_mm),
         "outline_style": style,

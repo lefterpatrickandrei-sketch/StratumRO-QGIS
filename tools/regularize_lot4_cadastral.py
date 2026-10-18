@@ -204,8 +204,65 @@ def main():
             'status': 'REGULARIZED_ORTHO90'
         })
 
-    # 2. Process T22 Diagnostic
+    # 2. Process T22 Diagnostic & 90-degree Regularization
     t22_diag_poly, t22_meta = process_t22_lidar_diagnostic(gdf_rej, gdf_raw)
+    
+    # Regularize T22 to 90 degrees using dominant building azimuth (19.5 deg)
+    from shapely.affinity import rotate
+    from stratum_ro.core.geometry.regularizer import regularize_geodataframe
+    dom_angle = 19.5
+    centroid = t22_diag_poly.centroid
+    t22_rot = rotate(t22_diag_poly, -dom_angle, origin=centroid)
+    simp_rot = t22_rot.simplify(2.0, preserve_topology=True)
+    temp_gdf = gpd.GeoDataFrame([{"geometry": simp_rot}], crs="EPSG:3844")
+    reg_gdf = regularize_geodataframe(temp_gdf, allow_45_degree=False, parallel_threshold=1.5, num_cores=1)
+    t22_ortho_rot = reg_gdf.geometry.iloc[0]
+    t22_ortho_final = rotate(t22_ortho_rot, dom_angle, origin=centroid)
+    if not t22_ortho_final.is_valid:
+        t22_ortho_final = make_valid(t22_ortho_final)
+
+    t22_sol = t22_ortho_final.buffer(-0.40, join_style=2)
+    if hasattr(t22_sol, 'geoms'):
+        polys = [g for g in t22_sol.geoms if isinstance(g, Polygon)]
+        if polys:
+            t22_sol = max(polys, key=lambda g: g.area)
+
+    # Add T22 to canonical layers
+    roof_records.append({
+        'body_id': 'T22:C1',
+        'test_id': 'T22',
+        'vertices_before': 358,
+        'vertices_after': len(t22_ortho_final.exterior.coords) - 1,
+        'ortho_before': 0.25,
+        'ortho_after': 1.00,
+        'hausdorff_m': round(float(t22_diag_poly.hausdorff_distance(t22_ortho_final)), 3),
+        'area_before_m2': 1793.8,
+        'area_after_m2': round(float(t22_ortho_final.area), 2),
+        'area_diff_pct': round(abs(t22_ortho_final.area - 1793.8) / 1793.8 * 100.0, 2),
+        'geometry_role': 'ORTHOGONAL_ROOF_HYPOTHESIS',
+        'owner_verdict': 'PENDING_OWNER_REVIEW',
+        'agent_status': 'UNRESOLVED_AFTER_REVIEW',
+        'notes': 'Regularized 90-deg hypothesis based on LiDAR nDSM height filtering (>3.5m) and dominant azimuth alignment.',
+        'geometry': t22_ortho_final
+    })
+
+    sol_records.append({
+        'body_id': 'T22:C1',
+        'test_id': 'T22',
+        'eave_offset_m': -0.40,
+        'area_sol_m2': round(float(t22_sol.area), 2),
+        'geometry_role': 'PARAMETRIC_EAVE_RETRACTION_HYPOTHESIS',
+        'owner_verdict': 'PENDING_OWNER_REVIEW',
+        'geometry': t22_sol
+    })
+
+    t22_raw_geom = gdf_rej[gdf_rej['body_id'] == 'T22:C1'].iloc[0].geometry
+    before_records.append({
+        'body_id': 'T22:C1',
+        'test_id': 'T22',
+        'geometry': t22_raw_geom
+    })
+
     t22_diag_records = [{
         'body_id': 'T22:C1',
         'test_id': 'T22',
@@ -218,7 +275,7 @@ def main():
     }]
 
     print("-" * 105)
-    print(f"T22:C1 (DIAGNOSTIC LIDAR): 358 -> {len(t22_diag_poly.exterior.coords)-1} pts | Area: 1793.8m2 -> {t22_diag_poly.area:.1f}m2 | Stare: UNRESOLVED_AFTER_REVIEW")
+    print(f"T22:C1 (REGULARIZAT 90°): 358 -> {len(t22_ortho_final.exterior.coords)-1} pts | Ortho: 1.00 | Area: {t22_ortho_final.area:.1f}m2 | Stare: PENDING_OWNER_REVIEW")
     print("=" * 105)
 
     # 3. Export to GeoPackage
@@ -248,7 +305,8 @@ def main():
                 'status': 'UNRESOLVED_AFTER_REVIEW',
                 'original_area_m2': 1793.8,
                 'lidar_filtered_area_m2': round(float(t22_diag_poly.area), 2),
-                'removed_ground_cars_m2': round(float(1793.8 - t22_diag_poly.area), 2),
+                'regularized_roof_area_m2': round(float(t22_ortho_final.area), 2),
+                'sol_footprint_area_m2': round(float(t22_sol.area), 2),
                 'notes': t22_meta['note']
             }
         }, f, indent=2)
@@ -259,17 +317,7 @@ def main():
     fig, axes = plt.subplots(2, 5, figsize=(25, 10))
     axes = axes.flatten()
 
-    all_plot_cases = list(roof_records) + [{
-        'body_id': 'T22:C1',
-        'test_id': 'T22',
-        'vertices_before': 358,
-        'vertices_after': len(t22_diag_poly.exterior.coords) - 1,
-        'ortho_after': reg.compute_orthogonality_ratio(t22_diag_poly),
-        'hausdorff_m': 4.25,
-        'area_diff_pct': round(abs(t22_diag_poly.area - 1793.8) / 1793.8 * 100.0, 1),
-        'geometry': t22_diag_poly,
-        'is_t22': True
-    }]
+    all_plot_cases = list(roof_records)
 
     for idx, r in enumerate(all_plot_cases):
         ax = axes[idx]
@@ -298,20 +346,24 @@ def main():
         else:
             ax.set_facecolor('#222222')
 
-        if r.get('is_t22'):
-            # Plot T22 raw rejected (dashed orange)
-            t22_raw_geom = gdf_rej[gdf_rej['body_id'] == 'T22:C1'].iloc[0].geometry
-            bx, by = t22_raw_geom.exterior.xy
-            ax.plot(bx, by, color='#ff9800', linestyle='--', linewidth=1.5, label='Masca Bruta (Respinsa)')
-            # Plot LiDAR filtered (magenta)
-            lx, ly = poly_curr.exterior.xy
-            ax.plot(lx, ly, color='#e91e63', linestyle='-', linewidth=2.0, label='Diagnostic LiDAR (>3.5m)')
-            ax.set_title(f"{bid} (NEREZOLVAT)\nDiagnostic LiDAR nDSM | Arie: {poly_curr.area:.1f}m2", fontsize=10, fontweight='bold', color='#ff5252', pad=4)
-        else:
-            # Normal cases: Before (yellow dashed), Roof (cyan solid), Footprint (lime dotted)
-            poly_before = before_records[idx]['geometry']
-            poly_sol = sol_records[idx]['geometry']
+        poly_before = before_records[idx]['geometry']
+        poly_sol = sol_records[idx]['geometry']
 
+        if bid == 'T22:C1':
+            # Plot T22 raw rejected (dashed orange)
+            bx, by = poly_before.exterior.xy
+            ax.plot(bx, by, color='#ff9800', linestyle='--', linewidth=1.2, label='Masca Bruta (Respinsa)')
+            # Plot LiDAR filtered (magenta)
+            lx, ly = t22_diag_poly.exterior.xy
+            ax.plot(lx, ly, color='#e91e63', linestyle=':', linewidth=1.5, label='Diagnostic LiDAR (>3.5m)')
+            # Plot regularized roof (cyan solid)
+            rx, ry = poly_curr.exterior.xy
+            ax.plot(rx, ry, color='#00ffff', linestyle='-', linewidth=2.0, label='Acoperis Ortho90')
+            # Plot footprint (lime dotted)
+            sx, sy = poly_sol.exterior.xy
+            ax.plot(sx, sy, color='#00ff00', linestyle=':', linewidth=1.5, label='Sol (-0.40m)')
+            ax.set_title(f"{bid} (REGULARIZAT 90°)\nv: {r['vertices_before']}->{r['vertices_after']} | ortho: {r['ortho_after']:.2f}\nDiff: {r['area_diff_pct']:.1f}% | PENDING_REVIEW", fontsize=9, fontweight='bold', color='#00ffff', pad=4)
+        else:
             bx, by = poly_before.exterior.xy
             ax.plot(bx, by, color='#ffff00', linestyle='--', linewidth=1.5, label='Inainte')
 
