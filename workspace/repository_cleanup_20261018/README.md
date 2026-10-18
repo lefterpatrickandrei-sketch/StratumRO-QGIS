@@ -36,6 +36,8 @@ The owner approved the exact 13 moves and original entry-document snapshots, the
 
 `verify_cleanup.py` checks the 18 original archive files, protected dirty-file hashes, presence of all 936 pre-existing untracked paths, the shared QGIS project, unchanged product diff and current navigation links. Its first pre-staging run incorrectly omitted this task's two new JSON targets from its link candidate set; that checker issue and its failed record are preserved as `verification_initial.json`. It was corrected before delivery. Diagram syntax was inspected as Markdown/Mermaid; no Mermaid renderer or product test suite was executed in this documentation task.
 
+After the separately approved CI repair, run this guard with `--approved-test-changes workspace/ci_repair_20261018/checkpoint.json`. This explicitly permits only the four changed test paths listed in the owner-approved CI checkpoint; it does not permit production algorithm changes or weaken protection of pre-existing dirty files. Without that argument the original cleanup-only product-diff check remains strict.
+
 ## References used
 
 The installed `find-skills` workflow (`C:/Users/lefpa/.agents/skills/find-skills/SKILL.md`) was used for discovery. The official [GitHub awesome-copilot README skill](https://github.com/github/awesome-copilot/blob/main/skills/readme-blueprint-generator/SKILL.md) was read as a reference, not installed. Its template expects Copilot-specific source documents; StratumRO documentation is instead derived from actual local code and dated evidence.

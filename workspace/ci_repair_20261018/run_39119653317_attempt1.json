@@ -1,0 +1,255 @@
+{
+  "run_id": 39119653317,
+  "attempt": 1,
+  "head_sha": "85a51efa0f0ca8806ae703265f9d0d7feb909738",
+  "url": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39119653317",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "Test (windows-latest - Python 3.11)",
+      "id": 117652463147,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39119653317/job/117652463147",
+      "test_suites": [
+        {
+          "tests_run": 17,
+          "seconds": 0.129
+        },
+        {
+          "tests_run": 459,
+          "seconds": 40.371
+        }
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.11",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Fast Project Validation (Golden Geometry & Providers)",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Full Test Suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Independent Verification & Reproducibility Audit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.11",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log_file": "github_job_117652463147.txt",
+      "log_sha256": "ed6f455ba8f41fff54d77d01dea00775c62904ab178a215eb02dda349e972667"
+    },
+    {
+      "name": "Test (ubuntu-latest - Python 3.11)",
+      "id": 117652463255,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39119653317/job/117652463255",
+      "test_suites": [
+        {
+          "tests_run": 17,
+          "seconds": 0.088
+        },
+        {
+          "tests_run": 459,
+          "seconds": 5.599
+        }
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.11",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Fast Project Validation (Golden Geometry & Providers)",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Full Test Suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Independent Verification & Reproducibility Audit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.11",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log_file": "github_job_117652463255.txt",
+      "log_sha256": "cf3f6ec48995f9bb7f250023cd5b00755edafe06c0c0c660735f6a2684a92319"
+    },
+    {
+      "name": "Test (windows-latest - Python 3.10)",
+      "id": 117652463362,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39119653317/job/117652463362",
+      "test_suites": [
+        {
+          "tests_run": 17,
+          "seconds": 0.046
+        },
+        {
+          "tests_run": 459,
+          "seconds": 47.062
+        }
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.10",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Fast Project Validation (Golden Geometry & Providers)",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Full Test Suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Independent Verification & Reproducibility Audit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.10",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log_file": "github_job_117652463362.txt",
+      "log_sha256": "5a1d1a318da533eb99db7e6dd6dd0980f82f077a8d2d96e49c178efd30a6ba59"
+    },
+    {
+      "name": "Test (ubuntu-latest - Python 3.10)",
+      "id": 117652463383,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39119653317/job/117652463383",
+      "test_suites": [
+        {
+          "tests_run": 17,
+          "seconds": 0.052
+        },
+        {
+          "tests_run": 459,
+          "seconds": 6.642
+        }
+      ],
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Set up Python 3.10",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Fast Project Validation (Golden Geometry & Providers)",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Full Test Suite",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run Independent Verification & Reproducibility Audit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Set up Python 3.10",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout repository",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log_file": "github_job_117652463383.txt",
+      "log_sha256": "5c90fe59e20365909ca794b417733c7d037cc7a02d1f36149991165069fdcb59"
+    }
+  ],
+  "scope": "Software and integrity checks on GitHub runners; not real-model inference or independent cadastral accuracy."
+}

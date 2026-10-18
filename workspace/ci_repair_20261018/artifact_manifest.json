@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "path": "workspace/ci_repair_20261018/.gitattributes",
+      "bytes": 243,
+      "sha256": "aefdc058f8bc735f3bf31d01b8fdfa3674350dab97236c873b6cf856722cb1fc",
+      "lf_sha256": "aefdc058f8bc735f3bf31d01b8fdfa3674350dab97236c873b6cf856722cb1fc"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/audit_frozen_inputs.py",
+      "bytes": 3157,
+      "sha256": "2314e1e41c02e35cad105deecffea61c109cd4ea015bfd407b1b86f3119a561c",
+      "lf_sha256": "2314e1e41c02e35cad105deecffea61c109cd4ea015bfd407b1b86f3119a561c"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/checkpoint.json",
+      "bytes": 1286,
+      "sha256": "e609ebbc95617031720aab3c469c25030918f1cd72b3253288f5ec997da0e011",
+      "lf_sha256": "ebf55cc1c11b19bdf1222cdb82434fbdce4a53ae568ab00bd4dc1a6fe04792e9"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/collect_ci_evidence.py",
+      "bytes": 2592,
+      "sha256": "72ec2bbe82faa78f2c8ccf95ee60a39836545ca09da272a3248c4495b0611b2b",
+      "lf_sha256": "72ec2bbe82faa78f2c8ccf95ee60a39836545ca09da272a3248c4495b0611b2b"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/dependency_resolution.json",
+      "bytes": 106252,
+      "sha256": "76b9de574d6676b26067cfa0274c58baadc8891768a8ccdf1c4a4f31a1a32869",
+      "lf_sha256": "02f2350dd0ca0942925f476cf965289919c323ebfc8beb492ddf2435ea08da3c"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/final_checkpoint_scope.json",
+      "bytes": 2026,
+      "sha256": "6d69f30e8485eee0b5397b17693507175e1dbf08d01244402aef4e2cd556c09a",
+      "lf_sha256": "78f9955ddf7e6060fb52dad1732ce995f217e7fc52b5a59a0f8f0bfa37d48417"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/frozen_input_provenance.json",
+      "bytes": 35081,
+      "sha256": "3837e8a33ee207979034df76823ad87d695b71ee35d9d951623bf7afe3c9bebe",
+      "lf_sha256": "e04f87ca1159489a79caed78f87c06647fac8e284821cccdbea8df4f92d1a668"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/github_job_117652463147.txt",
+      "bytes": 249548,
+      "sha256": "ed6f455ba8f41fff54d77d01dea00775c62904ab178a215eb02dda349e972667",
+      "lf_sha256": "cc6717ca37f35502b62b751bf8387b64611d992a7a63407ac2fc8959cda37e54"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/github_job_117652463255.txt",
+      "bytes": 260155,
+      "sha256": "cf3f6ec48995f9bb7f250023cd5b00755edafe06c0c0c660735f6a2684a92319",
+      "lf_sha256": "cf3f6ec48995f9bb7f250023cd5b00755edafe06c0c0c660735f6a2684a92319"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/github_job_117652463362.txt",
+      "bytes": 254425,
+      "sha256": "5a1d1a318da533eb99db7e6dd6dd0980f82f077a8d2d96e49c178efd30a6ba59",
+      "lf_sha256": "798fa767a9aab23931ef3bb492166ea0177b234a0a5a0ed689c64ebd181f0ccf"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/github_job_117652463383.txt",
+      "bytes": 264474,
+      "sha256": "5c90fe59e20365909ca794b417733c7d037cc7a02d1f36149991165069fdcb59",
+      "lf_sha256": "5c90fe59e20365909ca794b417733c7d037cc7a02d1f36149991165069fdcb59"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/local_dependency_regressions.txt",
+      "bytes": 4925,
+      "sha256": "a3088d4943196f0819673b7c4ef0431474bea0a96eda6b09e9fb02c7d7cdccfb",
+      "lf_sha256": "4f4a57c336c114a62b32cac2826705d950de784b0ac235ef75840999a165f4f7"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/local_targeted_tests.txt",
+      "bytes": 3498,
+      "sha256": "3f2ebb4113348a0d3e91905b69bb34bfc7f7c7cad4634cdcc3d9da7405ddc027",
+      "lf_sha256": "d8718b055189bebee597272d3d6485c5e0625ee7a5a70ad44465ef9ea3943fb9"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/README.md",
+      "bytes": 5304,
+      "sha256": "55ea41da309128638509e884f701193ef120cf857cc70f022992aa7d882e221e",
+      "lf_sha256": "55ea41da309128638509e884f701193ef120cf857cc70f022992aa7d882e221e"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/run_39119653317_attempt1.json",
+      "bytes": 7198,
+      "sha256": "eabe777dc7367745026a915199e667f18df3de17b6d45455485b7458a5343166",
+      "lf_sha256": "faaee3fd0b9996f58ef08d497ccd23aff1795298faedd1a19e772d7b56cc3401"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/volumetric_extraction.diff",
+      "bytes": 10584,
+      "sha256": "f7df1eef0f73e05b54b26540ea3d1383ef99bcf5c610862a2aec6262bb32a4e5",
+      "lf_sha256": "94e9c008246c2b62e5e83472112c1098080e4ce36b73f469eb8a1c40e1cec192"
+    },
+    {
+      "path": "workspace/ci_repair_20261018/volumetric_implementation_provenance.json",
+      "bytes": 444,
+      "sha256": "b7756f5bd911fec81c928c237c78e39fb09e49e8d7f97bf06fc0d2c0c82aa439",
+      "lf_sha256": "2c6cb81914ac1dbdae45fab5ec6ac98bc6f3adf8fbb8ccd3d40e1b5cbf16ac6b"
+    }
+  ],
+  "scope": "All files in the CI evidence directory except this manifest. Raw public logs are preserved without text conversion; code/docs may undergo Git checkout line-ending conversion.",
+  "code_checkpoint": "85a51efa0f0ca8806ae703265f9d0d7feb909738"
+}

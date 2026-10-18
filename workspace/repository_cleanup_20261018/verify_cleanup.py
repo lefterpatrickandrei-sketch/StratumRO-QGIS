@@ -36,6 +36,8 @@ def sha(path: Path) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--git-archives', action='store_true')
+    parser.add_argument('--approved-test-changes', type=Path,
+                        help='Explicit owner-approved CI checkpoint; permits only its test paths in the product diff.')
     args = parser.parse_args()
     baseline = json.loads((OUT / 'baseline.json').read_text(encoding='utf-8'))
     migration = json.loads((OUT / 'migration_applied.json').read_text(encoding='utf-8'))
@@ -71,7 +73,14 @@ def main() -> None:
         errors.append('Shared QGIS project differs from baseline HEAD')
     changed_product = git('diff', '--name-only', baseline['head'], '--', 'stratum_ro', 'tools', 'scripts', 'engine', 'start_platform.py').decode().splitlines()
     expected_product = {r['path'] for r in baseline['foreign_dirty_tracked'] if r['path'].startswith(('stratum_ro/', 'tools/', 'scripts/', 'engine/'))}
-    if set(changed_product) != expected_product:
+    approved_tests = set()
+    if args.approved_test_changes:
+        approval = json.loads(args.approved_test_changes.read_text(encoding='utf-8'))
+        if approval.get('stage') != 'CI_REPAIR' or approval.get('owner_authorized') is not True:
+            raise ValueError('An explicit owner-approved CI checkpoint is required')
+        approved_tests = {p for p in approval['paths'] if p.startswith('stratum_ro/test/') and p.endswith('.py')}
+    authorized_product = expected_product | approved_tests
+    if set(changed_product) != authorized_product:
         errors.append('Product diff contains changes outside the pre-existing dirty files')
 
     # Check new navigation using exact case against tracked + explicitly created
@@ -105,7 +114,8 @@ def main() -> None:
               'foreign_dirty_paths_sha_verified': len(baseline['foreign_dirty_tracked']),
               'preexisting_untracked_paths_present': len(original_untracked) - len(missing_untracked),
               'shared_qgis_project_unchanged_from_baseline_head': not bool(project_changed),
-              'product_diff_contains_only_preexisting_work': set(changed_product) == expected_product,
+              'product_diff_contains_only_preexisting_or_approved_test_work': set(changed_product) == authorized_product,
+              'explicitly_approved_ci_test_changes': sorted(approved_tests),
               'navigation_links_checked': len(links), 'links': links,
               'publication_snapshot_available': (OUT / 'publication_result.json').is_file(),
               'not_executed_by_this_check': ['product tests', 'model inference', 'QGIS session mutations', 'provider calls', 'GitHub publication']}

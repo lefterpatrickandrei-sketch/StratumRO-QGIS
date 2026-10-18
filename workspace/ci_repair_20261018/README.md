@@ -31,6 +31,14 @@ Implementarea `stratum_ro/domain/city_3d/builder.py` este byte-identică (9350 b
 
 Suita completă este verificată de runner-ele CI pe commitul publicat, cu checkout curat. Nu înlocuiți acest rezultat cu testarea locală selectată sau cu o afirmație despre acuratețea extragerii clădirilor. PR-ul rămâne draft, fără merge.
 
+## Rezultat complet publicat
+
+[Rularea 39119653317](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39119653317), la commitul de cod `85a51efa0f0ca8806ae703265f9d0d7feb909738`, a trecut pe toate cele patru combinații Windows/Linux și Python 3.10/3.11. Fiecare job a executat verificarea rapidă (17 teste), suita completă (459 teste: 450 trecute, 9 omise pentru context QGIS) și verificarea independentă existentă.
+
+[Rezultatul structurat](run_39119653317_attempt1.json) leagă commitul, joburile, etapele, numărul de teste și hash-urile jurnalelor. Cele patru fișiere `github_job_*.txt` păstrează jurnalele publice complete; `collect_ci_evidence.py` le poate colecta prin citire, fără schimbarea joburilor. Formatarea lor brută este păstrată prin `.gitattributes`.
+
+Acesta este rezultatul verificărilor software și de integritate, nu o măsurare nouă de acuratețe cadastrală sau o inferență reală a ultimului model. Avertismentele platformei despre versiuni viitoare de runner/actions nu au eșuat joburile și nu au determinat actualizări suplimentare în această etapă.
+
 ## Referințe tehnice
 
 [PyTorch — instalare CPU](https://pytorch.org/get-started/locally/) pentru runner-ele fără GPU și [Git — conversia textului la checkout](https://git-scm.com/docs/gitattributes) pentru diferențele LF/CRLF. Nu s-a instalat un nou model sau serviciu AI.
