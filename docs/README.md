@@ -24,6 +24,7 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 - [Auditul și aprobările reorganizării din 2026-10-18](../workspace/repository_cleanup_20261018/README.md).
 - [Repararea CI și proveniența referințelor, 2026-10-18](../workspace/ci_repair_20261018/README.md).
 - [README vizual, arhiva versiunii anterioare și autorizarea integrării](../workspace/readme_publication_20261018/README.md).
+- [Verificare independentă după Antigravity: QGIS live, erori vizuale și reparații software](../workspace/project_verification_20261018/README.md).
 - [Arhiva și restaurarea](../junk/README.md).
 
 ## Documentație istorică și de arhitectură

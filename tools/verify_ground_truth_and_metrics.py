@@ -49,6 +49,11 @@ def compute_md5(filepath: str, normalize_newlines: bool = True) -> str:
     return hasher.hexdigest().upper()
 
 
+def metrics_match(metrics):
+    """Require equality at the precision used by the historical comparison."""
+    return all(reported == fresh for _, reported, fresh in metrics)
+
+
 def main():
     print("=" * 80)
     print("  STRATUM-RO: VERIFICARE INDEPENDENTĂ A INTEGRITĂȚII & RECALCULARE METRICI")
@@ -67,15 +72,16 @@ def main():
     if actual_gt_md5 == EXPECTED_GT_MD5:
         print("    [+] STATUS INTEGRITATE: VALIDAT (Potrivire exactă)")
     else:
-        print(f"    [!] ATENȚIE: MD5 diferă! Fișierul a fost modificat față de etalon.")
+        print("    [FAIL] MD5 diferă; integritatea referinței nu este confirmată.")
+        return 1
 
     # 2. Recalculare Metrică Geodezică Independentă pe CLADIRI_HIBRID...
     print("\n[2] Recalculare Metrică Geodezică Independentă pe CLADIRI_HIBRID...")
     if not os.path.exists(PRED_PATH):
         print(f"    [-] INFO: Fișierul de predicții '{PRED_PATH}' nu a fost găsit în mediul curent.")
         print("        Acesta este un artefact generat local din pipeline-ul fotogrammetric (gitignored).")
-        print("    [+] STATUS INTEGRITATE: Verificare etalon ground truth finalizată cu succes.")
-        return
+        print("    [PARTIAL] Integritatea referinței este confirmată; metricile NU au fost evaluate.")
+        return 0
 
     gdf_ref = gpd.read_file(EXPECTED_GT_PATH)
     gdf_pred = gpd.read_file(PRED_PATH, layer=PRED_LAYER)
@@ -126,8 +132,12 @@ def main():
             else:
                 status = "EQUAL" if rep_val == fresh_val else "DIFF"
             print(f"{label:30s} | {str(rep_val):18s} | {str(fresh_val):20s} | {status:12s}")
+        if not metrics_match(metrics_to_compare):
+            print("[FAIL] Metricile actuale diferă de raportul istoric. Nu se rescriu rapoartele sau etalonul.")
+            return 1
     else:
-        print(f"[-] Raportul istoric nu a fost găsit la: {REPORTED_SUMMARY_PATH}")
+        print(f"[FAIL] Raportul istoric nu a fost găsit la: {REPORTED_SUMMARY_PATH}")
+        return 1
 
     # 4. Rulare Ablație Multi-Configurație & Salvare Manifest
     print("\n[4] Execuție Matrice Ablație & Generare Manifest...")
@@ -145,8 +155,8 @@ def main():
 
     if not os.path.exists(ABLATION_GPKG):
         print(f"    [-] INFO: Fișierul de straturi de ablație '{ABLATION_GPKG}' nu a fost găsit în mediul curent.")
-        print("        Se omite generarea manifestului de ablație (artefact gitignored).")
-        return
+        print("        [PARTIAL] Metricile principale coincid; ablația NU a fost evaluată.")
+        return 0
 
     for cfg_id, cfg_name, layer_name in ablation_layers:
         gdf_layer = gpd.read_file(ABLATION_GPKG, layer=layer_name)
@@ -222,7 +232,8 @@ def main():
     print("\n" + "=" * 80)
     print("  VERIFICARE FINALIZATĂ CU SUCCES: TOATE CIFRELE SUNT REPRODUSE ȘI AUDITATE")
     print("=" * 80)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

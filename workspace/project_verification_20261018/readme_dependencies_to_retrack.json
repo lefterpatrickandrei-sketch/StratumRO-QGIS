@@ -1,0 +1,38 @@
+[
+  {
+    "path": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+    "bytes": 2271633
+  },
+  {
+    "path": "workspace/reviews/t10_antigravity_20261013/t10_before_after.png",
+    "bytes": 447010
+  },
+  {
+    "path": "workspace/reviews/t10_antigravity_20261013/t10_report.json",
+    "bytes": 1654
+  },
+  {
+    "path": "workspace/reviews/regional_roofs_20261017/qgis/revised_routing/REGIONAL_OVERVIEW.png",
+    "bytes": 1171770
+  },
+  {
+    "path": "workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json",
+    "bytes": 354
+  },
+  {
+    "path": "workspace/reviews/regional_roofs_20261017/scan_v1/report.json",
+    "bytes": 1321
+  },
+  {
+    "path": "workspace/reviews/regional_roofs_20261017/masked_review_v2/mask_guard_report.json",
+    "bytes": 46068
+  },
+  {
+    "path": "workspace/reviews/lot3_repairs_20261017/CURRENT_SELECTION.json",
+    "bytes": 359
+  },
+  {
+    "path": "workspace/reviews/lot4_20261017/CURRENT_SELECTION.json",
+    "bytes": 272
+  }
+]

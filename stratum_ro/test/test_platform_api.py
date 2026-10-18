@@ -4,19 +4,58 @@ Unit tests for StratumRO Geospatial Platform API and Closed-Loop Orchestrator.
 """
 
 import unittest
+import tempfile
+import importlib
 from pathlib import Path
+from unittest.mock import patch
+
+import geopandas as gpd
+from shapely.geometry import box
 from fastapi.testclient import TestClient
 
 from stratum_ro.api.app import app
 from stratum_ro.api.service import PlatformService, TRANSFORMER_3844_TO_4326
 from stratum_ro.ai.closed_loop import ClosedLoopOrchestrator, TestResults, QGISLiveStatus
 
+API_MODULE = importlib.import_module("stratum_ro.api.app")
+
 
 class TestPlatformAPI(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # Real export IO on isolated synthetic data, independent of workstation
+        # deliverables that are deliberately excluded from a fresh checkout.
+        cls.temp = tempfile.TemporaryDirectory()
+        cls.addClassCleanup(cls.temp.cleanup)
+        root = Path(cls.temp.name)
+        output = root / "workspace" / "output"
+        output.mkdir(parents=True)
+        fixture = gpd.GeoDataFrame(
+            [{"id": "SYNTHETIC_EXPORT", "geometry": box(392120, 585110, 392130, 585120)}],
+            crs="EPSG:3844",
+        )
+        for layer in ("CLADIRI_CADASTRU_CLEAN", "CLADIRI_SOL_ANCPI"):
+            fixture.to_file(output / "cladiri_stereo70.gpkg", layer=layer, driver="GPKG")
+        import ezdxf
+        drawing = ezdxf.new()
+        drawing.modelspace().add_lwpolyline([(392120,585110),(392130,585110),(392130,585120),(392120,585120)], close=True)
+        drawing.saveas(output / "cadastru_ancpi.dxf")
+        cls.fixture_root = root
         cls.client = TestClient(app)
+
+    def setUp(self):
+        if self._testMethodName.startswith("test_export_"):
+            root_patch = patch.object(API_MODULE, "PROJECT_ROOT", self.fixture_root)
+            root_patch.start()
+            self.addCleanup(root_patch.stop)
+
+    def test_export_missing_inputs_report_404(self):
+        with tempfile.TemporaryDirectory() as directory:
+            with patch.object(API_MODULE, "PROJECT_ROOT", Path(directory)):
+                for fmt in ("cp", "pad", "dxf"):
+                    with self.subTest(fmt=fmt):
+                        self.assertEqual(self.client.get(f"/api/export/{fmt}").status_code, 404)
 
     def test_health_endpoint(self):
         resp = self.client.get("/api/health")

@@ -1,5 +1,7 @@
 # Starea verificată a StratumRO
 
+**Verificare ulterioară, 2026-10-18:** PR #3 este integrat (`216b033`); commiturile ulterioare au introdus regresii. La `5125134`, CI eșuează, iar auditul live găsește 85 straturi valide, dar suprapuneri și contururi nefinisate. [Raportul cu imagini, artefacte și reparații locale](../workspace/project_verification_20261018/README.md) este punctul de continuare pentru această etapă. 491 teste locale trec după reparațiile software (9 omise); comparația metricilor datelor locale cu raportul istoric rămâne eșec explicit. Aceasta nu înlocuiește verdictele proprietarului sau nu validează global geometria.
+
 Actualizare: 2026-10-18. Bază inspectată înaintea reorganizării: `170407c`, local `main`. Acest document distinge citirea codului, dovezile unei rulări anterioare și obiectivele neimplementate. Reorganizarea documentației nu reprezintă o nouă validare a algoritmilor.
 
 ## Produs și prioritate

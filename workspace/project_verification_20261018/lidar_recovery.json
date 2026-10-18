@@ -1,0 +1,8 @@
+{
+  "source": "216b033:stratum_ro/lidar_processor.py",
+  "restored": "Existing completion, structural features, datum options and process signature; no new detector",
+  "preserved_new_method": "validate_extent_against_aoi",
+  "method_ast_unchanged": true,
+  "before_sha256": "57830332c98a6e4f5be021d04e11d0948109beef414fb4d743e0efe31b0d4499",
+  "repaired_sha256": "a7cbd178587567d4055796a15b5cd22f001e23ece74a8acc36dad327c4c5da3c"
+}

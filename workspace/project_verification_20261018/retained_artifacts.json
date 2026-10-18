@@ -1,0 +1,130 @@
+[
+  {
+    "path": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+    "bytes": 2271633,
+    "sha256": "02de516c026e52ef16bae0d0cfbb057476a1e1621a943272718fa6c75e9877b0",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "02de516c026e52ef16bae0d0cfbb057476a1e1621a943272718fa6c75e9877b0",
+    "staged_blob_bytes": 2271633
+  },
+  {
+    "path": "workspace/reviews/t10_antigravity_20261013/t10_before_after.png",
+    "bytes": 447010,
+    "sha256": "5c213ed7c7a31880599091c258e76f5073498e6f3b315016fbf083fab123c27b",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "5c213ed7c7a31880599091c258e76f5073498e6f3b315016fbf083fab123c27b",
+    "staged_blob_bytes": 447010
+  },
+  {
+    "path": "workspace/reviews/t10_antigravity_20261013/t10_report.json",
+    "bytes": 1654,
+    "sha256": "45f9dbf4e2737e713e0da82afe20a91686616f65ccff168252f81e47acce353a",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "2f03f53e413814c44854f9b67a3b89ac822d954f1ac99ceeb9ae4b2dad5790ef",
+    "staged_blob_bytes": 1606
+  },
+  {
+    "path": "workspace/reviews/regional_roofs_20261017/qgis/revised_routing/REGIONAL_OVERVIEW.png",
+    "bytes": 1171770,
+    "sha256": "39a9e0a6a68302c81f5205be4c6ecc65397b0944d9295d18783ec6e5cfd0ab61",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "39a9e0a6a68302c81f5205be4c6ecc65397b0944d9295d18783ec6e5cfd0ab61",
+    "staged_blob_bytes": 1171770
+  },
+  {
+    "path": "workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json",
+    "bytes": 354,
+    "sha256": "88b9e5e55e96739bfae83c68e45057485768f1e5d70c51bf86f03e2a3d390069",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "88b9e5e55e96739bfae83c68e45057485768f1e5d70c51bf86f03e2a3d390069",
+    "staged_blob_bytes": 354
+  },
+  {
+    "path": "workspace/reviews/regional_roofs_20261017/scan_v1/report.json",
+    "bytes": 1321,
+    "sha256": "3ddfea1eb4a7b2a65e6fbd2d805cd8aeb789ca56452491352a8936427be21d00",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "3ddfea1eb4a7b2a65e6fbd2d805cd8aeb789ca56452491352a8936427be21d00",
+    "staged_blob_bytes": 1321
+  },
+  {
+    "path": "workspace/reviews/regional_roofs_20261017/masked_review_v2/mask_guard_report.json",
+    "bytes": 46068,
+    "sha256": "db583fef76b316af88e7b38fe35571ab0896b19fba9542f422edb19b57e72076",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "db583fef76b316af88e7b38fe35571ab0896b19fba9542f422edb19b57e72076",
+    "staged_blob_bytes": 46068
+  },
+  {
+    "path": "workspace/reviews/lot3_repairs_20261017/CURRENT_SELECTION.json",
+    "bytes": 359,
+    "sha256": "79849b9a1b9cd7f3f5d899c8ad4808153d5ddcb79cb6887acea588b413440814",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "79849b9a1b9cd7f3f5d899c8ad4808153d5ddcb79cb6887acea588b413440814",
+    "staged_blob_bytes": 359
+  },
+  {
+    "path": "workspace/reviews/lot4_20261017/CURRENT_SELECTION.json",
+    "bytes": 272,
+    "sha256": "b407a32793158d8b261f08f8837e0f016e70a74166709250bb224f6d0f4c3a27",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "b407a32793158d8b261f08f8837e0f016e70a74166709250bb224f6d0f4c3a27",
+    "staged_blob_bytes": 272
+  },
+  {
+    "path": "workspace/reviews/t10_antigravity_20261013/t10_repair.gpkg",
+    "bytes": 172032,
+    "sha256": "8692ebc77d6d65e40e2a6910ca44dc1eabcd419ba43c47216fa824c8b3869aca",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "8692ebc77d6d65e40e2a6910ca44dc1eabcd419ba43c47216fa824c8b3869aca",
+    "staged_blob_bytes": 172032
+  },
+  {
+    "path": "workspace/reviews/auto_unvectorized_20261018/auto_unvectorized_orthogonal.gpkg",
+    "bytes": 999424,
+    "sha256": "2a893163f5b13e0f1187b1d1ee79ca5f0890b132cb38cb33154a2480c6bd6eda",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "2a893163f5b13e0f1187b1d1ee79ca5f0890b132cb38cb33154a2480c6bd6eda",
+    "staged_blob_bytes": 999424
+  },
+  {
+    "path": "workspace/reviews/auto_unvectorized_20261018/stratumro_full_auto_benchmark.json",
+    "bytes": 1411,
+    "sha256": "1ad9e5acc35503141441982fbb1afd54fa96c1bbe1fe944742d5e2614f2e3a6b",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "c0177fcd22fabf9cbe6b49e7602db8854226a7cc2125e3051551b1a0ecc26465",
+    "staged_blob_bytes": 1368
+  },
+  {
+    "path": "workspace/reviews/auto_unvectorized_20261018/record_executie_cap_coada.md",
+    "bytes": 2128,
+    "sha256": "059f0ef9faf453c991d827d87f43b1e0d6cbe3026ab95d3c2ae5f31fe64ed9f2",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "8dd3d07619faa44934b2d8f75b9e518f12ba9a08b4d1301e49c0538a08803f6b",
+    "staged_blob_bytes": 2084
+  },
+  {
+    "path": "workspace/reviews/auto_unvectorized_20261018/metaprompt_stratumro_full_auto.md",
+    "bytes": 3541,
+    "sha256": "83312c36c77e9088665d9adf131a49da39a7b0aae6748c504b9577ddc3f6b289",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "55e0669b7629d4cf0b2a5ceb7e4a75353c3286c868b7f4674ac188c740e98706",
+    "staged_blob_bytes": 3481
+  },
+  {
+    "path": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "bytes": 483328,
+    "sha256": "d15e9dbb9bf300023e01e40afe57c0d949289c4d6a4015bea6eb369af69a1879",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "d15e9dbb9bf300023e01e40afe57c0d949289c4d6a4015bea6eb369af69a1879",
+    "staged_blob_bytes": 483328
+  },
+  {
+    "path": "workspace/reviews/comparatie_a_vs_b_20261018/qgis_internal_audit.json",
+    "bytes": 73670,
+    "sha256": "058f3a45a847001fd27008187fef203fbd97adcd97a39abc8ec8085afca70c43",
+    "reason": "Read-only audited input or explicit dependency of current README and project state; retained in Git per owner policy",
+    "staged_blob_sha256": "096694349dae41cc16f1c2809051d2c6842b4df7f072407410abf99fae2b3aed",
+    "staged_blob_bytes": 70913
+  }
+]

@@ -1,0 +1,2757 @@
+{
+  "project_title": "StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie",
+  "project_path": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+  "crs": "EPSG:3844",
+  "layer_count_total": 85,
+  "canvas": {
+    "scale": 6050.6,
+    "extent": {
+      "xmin": 390440.84,
+      "ymin": 585313.1,
+      "xmax": 392209.83,
+      "ymax": 585955.06,
+      "width_m": 1768.99,
+      "height_m": 641.96
+    },
+    "has_custom_order": true,
+    "rendered_layers": [
+      "LOT5 - Acoperis Ortho90 (Cyan)",
+      "LOT5 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "LOT3 - Acoperis Ortho90 (Cyan)",
+      "LOT3 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "LOT4 - Acoperis Ortho90 (Cyan)",
+      "LOT4 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "RECTIFICARI_T05_T06_T07_T10",
+      "B5_DOUA_CORPURI",
+      "TESTE_10_REZULTATE",
+      "ACOPERISURI_SIMPLE",
+      "AUTO - candidati acoperis / NEVALIDATI",
+      "Cluj-0-0",
+      "Cluj-0-1",
+      "Cluj-0-2",
+      "Cluj-1-0",
+      "Cluj-1-1",
+      "Cluj-1-2",
+      "Cluj-2-0",
+      "Cluj-2-1"
+    ]
+  },
+  "tree_hierarchy": [
+    {
+      "name": "STRATUMRO_COMPARATIE_A_VS_B",
+      "type": "group",
+      "visible": true,
+      "children": [
+        {
+          "name": "OPTIUNEA_A_LOT5_TINTIT (1/4 Zona)",
+          "type": "group",
+          "visible": true,
+          "children": [
+            {
+              "name": "LOT5 - Acoperis Ortho90 (Cyan)",
+              "type": "vector",
+              "visible": true,
+              "valid": true,
+              "feature_count": 10,
+              "crs": "EPSG:3844",
+              "labels_enabled": true,
+              "children": []
+            },
+            {
+              "name": "LOT5 - Amprenta Sol ANCPI -0.40m (Verde)",
+              "type": "vector",
+              "visible": true,
+              "valid": true,
+              "feature_count": 10,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "OPTIUNEA_B_REGIONAL_FILTRAT (2/4 Zona)",
+          "type": "group",
+          "visible": false,
+          "children": [
+            {
+              "name": "OPT_B - Cladiri Validate nDSM (Portocaliu)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 216,
+              "crs": "EPSG:3844",
+              "labels_enabled": true,
+              "children": []
+            },
+            {
+              "name": "OPT_B - Amprenta Sol -0.40m (Verde)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 216,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "OPT_B - Falsuri Pozitive Eliminate (Gri)",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 71,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "STRATUMRO_RECTIFICARI_CANONICE_ORTHO90",
+      "type": "group",
+      "visible": true,
+      "children": [
+        {
+          "name": "LOT_REST_REGIONAL_ORTHO90",
+          "type": "group",
+          "visible": false,
+          "children": [
+            {
+              "name": "REST - Acoperis Ortho90 (Cyan)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 264,
+              "crs": "EPSG:3844",
+              "labels_enabled": true,
+              "children": []
+            },
+            {
+              "name": "REST - Amprenta Sol ANCPI -0.40m (Verde)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 264,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "REST - Masca initiala inainte de regularizare (Galben)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 264,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "REST - Candidati Deduplicati/Omisi (Gri)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 174,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "LOT4_RECTIFICAT_20261018",
+          "type": "group",
+          "visible": true,
+          "children": [
+            {
+              "name": "LOT4 - Acoperis Ortho90 (Cyan)",
+              "type": "vector",
+              "visible": true,
+              "valid": true,
+              "feature_count": 10,
+              "crs": "EPSG:3844",
+              "labels_enabled": true,
+              "children": []
+            },
+            {
+              "name": "LOT4 - Amprenta Sol ANCPI -0.40m (Verde)",
+              "type": "vector",
+              "visible": true,
+              "valid": true,
+              "feature_count": 10,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "LOT4 - T22 Diagnostic LiDAR nDSM (Magenta)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 1,
+              "crs": "EPSG:3844",
+              "labels_enabled": true,
+              "children": []
+            },
+            {
+              "name": "LOT4 - Masca initiala inainte de regularizare (Galben)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 10,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "LOT3_RECTIFICAT_20261018",
+          "type": "group",
+          "visible": true,
+          "children": [
+            {
+              "name": "LOT3 - Acoperis Ortho90 (Cyan)",
+              "type": "vector",
+              "visible": true,
+              "valid": true,
+              "feature_count": 20,
+              "crs": "EPSG:3844",
+              "labels_enabled": true,
+              "children": []
+            },
+            {
+              "name": "LOT3 - Amprenta Sol ANCPI -0.40m (Verde)",
+              "type": "vector",
+              "visible": true,
+              "valid": true,
+              "feature_count": 20,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "LOT3 - Masca initiala inainte de regularizare (Galben)",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 20,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACOPERISURI_AUTOMAT_REGIONAL_20261017_NEVALIDAT",
+      "type": "group",
+      "visible": true,
+      "children": [
+        {
+          "name": "AUTO - candidati acoperis / NEVALIDATI",
+          "type": "vector",
+          "visible": true,
+          "valid": true,
+          "feature_count": 380,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "AUTO - obiecte optice INCERTE / nu presupune cladiri",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 644,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "AUTO - vegetatie probabila / diagnostic",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1057,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "AUTO - acoperire scanare / nu parcele",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 144,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "AUTO - observatii brute / diagnostic",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 2081,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "T10 BACKUP - retrageri PRESUPUSE / NU masuratori",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 2,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "LOT4_T21_T30_IN_REVIZIE",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "LOT4 - 9 contururi / in revizie",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 9,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT4 - T22 nerezolvat",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "DIAGNOSTIC / ferestre si incercari respinse",
+          "type": "group",
+          "visible": false,
+          "children": [
+            {
+              "name": "LOT4 - ferestre de cautare / NU contur final",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 10,
+              "crs": "",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "LOT4 - T22 masca respinsa de agent",
+              "type": "vector",
+              "visible": false,
+              "valid": true,
+              "feature_count": 1,
+              "crs": "",
+              "labels_enabled": false,
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Lot4 - detalii ortofoto 5cm / CRS interpretat",
+          "type": "group",
+          "visible": true,
+          "children": [
+            {
+              "name": "Lot4 / T21_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T22_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T23_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T24_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T25_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T26_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T27_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T28_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T29_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "Lot4 / T30_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LOT3_REPARAT_20261017_NEVALIDAT",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "LOT3 - 20 ipoteze / NECESITA VERDICT",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 20,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "DETALII SID 5cm / interpretare CRS proiect",
+          "type": "group",
+          "visible": true,
+          "children": [
+            {
+              "name": "T11_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "T12_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "T13_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "T14_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "T15_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "T16_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "T18_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "T19_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            },
+            {
+              "name": "T20_5cm",
+              "type": "raster",
+              "visible": false,
+              "valid": true,
+              "feature_count": null,
+              "crs": "EPSG:3844",
+              "labels_enabled": false,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LOT3_T18_MUCHII_OBSERVATE_20261017",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "T18:C2 - MUCHIE OBSERVATA / DE VERIFICAT",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "T18 - DETALIU SID 5cm",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "T18 - SURSA NATIVA / detaliu muchie",
+          "type": "raster",
+          "visible": false,
+          "valid": true,
+          "feature_count": null,
+          "crs": "",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "LOT3_T18_ANEXA_IPOTEZA_20261017",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT",
+          "type": "vector",
+          "visible": true,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "T18:C2 - IPOTEZA ANEXA / MUCHIE DE VERIFICAT",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "LOT3_FINISARE_T17_T18_20261017",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "T17:C1 - FINISARE NEVERIFICATA",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "T17:C2 - FINISARE NEVERIFICATA",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "T18:C1 - FINISARE NEVERIFICATA",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "MASTI_BRUTE_FINISARE - mov",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 3,
+          "crs": "",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "LOT3_REVIZIE_V3_T11_T20",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "LOT3_V3_CORPURI_EXTRASE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 11,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT3_V3_CAZURI_NERECUPERATE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT3_V3_FERESTRE_SELECTIE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 8,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT3_V3_MASCA_BRUTA",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 19,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "LOT3_REVIZIE_20261013_ISTORIC",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "LOT3_REV_CORPURI_EXTRASE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 5,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT3_REV_CAZURI_NERECUPERATE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 5,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT3_REV_FERESTRE_SELECTIE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 8,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT3_REV_MASCA_BRUTA",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 8,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "LOT3_ISTORIC_INITIAL_NEACCEPTAT",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "LOT3_CORPURI_EXTRASE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 2,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT3_CAZURI_NERECUPERATE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 7,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "LOT3_FERESTRE_SELECTIE",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 8,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "T10_ISTORIC_PARTIAL (Incomplet anterior)",
+      "type": "vector",
+      "visible": false,
+      "valid": true,
+      "feature_count": 1,
+      "crs": "EPSG:3844",
+      "labels_enabled": false,
+      "children": []
+    },
+    {
+      "name": "RESPINSE_ANTERIOR_SASE",
+      "type": "vector",
+      "visible": false,
+      "valid": true,
+      "feature_count": 6,
+      "crs": "EPSG:3844",
+      "labels_enabled": false,
+      "children": []
+    },
+    {
+      "name": "RECTIFICARI_T05_T06_T07_T10",
+      "type": "vector",
+      "visible": true,
+      "valid": true,
+      "feature_count": 5,
+      "crs": "EPSG:3844",
+      "labels_enabled": true,
+      "children": []
+    },
+    {
+      "name": "B5_DOUA_CORPURI",
+      "type": "vector",
+      "visible": true,
+      "valid": true,
+      "feature_count": 2,
+      "crs": "EPSG:3844",
+      "labels_enabled": true,
+      "children": []
+    },
+    {
+      "name": "TESTE_10_REZULTATE",
+      "type": "vector",
+      "visible": true,
+      "valid": true,
+      "feature_count": 4,
+      "crs": "EPSG:3844",
+      "labels_enabled": true,
+      "children": []
+    },
+    {
+      "name": "ACOPERISURI_SIMPLE",
+      "type": "vector",
+      "visible": true,
+      "valid": true,
+      "feature_count": 7,
+      "crs": "EPSG:3844",
+      "labels_enabled": true,
+      "children": []
+    },
+    {
+      "name": "SOL_ESTIMAT_NEVERIFICAT",
+      "type": "vector",
+      "visible": false,
+      "valid": true,
+      "feature_count": 12,
+      "crs": "EPSG:3844",
+      "labels_enabled": false,
+      "children": []
+    },
+    {
+      "name": "REFERINTE_UTILIZATOR",
+      "type": "vector",
+      "visible": false,
+      "valid": true,
+      "feature_count": 3,
+      "crs": "EPSG:3844",
+      "labels_enabled": false,
+      "children": []
+    },
+    {
+      "name": "PROPUNERI_SELECTATE",
+      "type": "vector",
+      "visible": false,
+      "valid": true,
+      "feature_count": 12,
+      "crs": "EPSG:3844",
+      "labels_enabled": false,
+      "children": []
+    },
+    {
+      "name": "REVIZUIRE_COMPLEXA",
+      "type": "vector",
+      "visible": false,
+      "valid": true,
+      "feature_count": 71,
+      "crs": "EPSG:3844",
+      "labels_enabled": false,
+      "children": []
+    },
+    {
+      "name": "ORTOFOTO COMPLETE - 8 tile-uri",
+      "type": "group",
+      "visible": true,
+      "children": [
+        {
+          "name": "Cluj-0-0",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Cluj-0-1",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Cluj-0-2",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Cluj-1-0",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Cluj-1-1",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Cluj-1-2",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Cluj-2-0",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Cluj-2-1",
+          "type": "raster",
+          "visible": true,
+          "valid": true,
+          "feature_count": null,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    }
+  ],
+  "lot_layers_detail": {
+    "LOT3_CAZURI_NERECUPERATE": {
+      "id": "LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990",
+      "visible_in_tree": false,
+      "feature_count": 7,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T13"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T14"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T15"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T16"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 7
+    },
+    "LOT3_CORPURI_EXTRASE": {
+      "id": "LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92",
+      "visible_in_tree": false,
+      "feature_count": 2,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T12",
+            "area_m2": 678.0,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 678.01,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T12",
+            "area_m2": 170.8,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 170.77,
+          "is_valid": true
+        }
+      ],
+      "total_features": 2
+    },
+    "LOT3_FERESTRE_SELECTIE": {
+      "id": "LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a",
+      "visible_in_tree": false,
+      "feature_count": 8,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 1050.0,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T12"
+          },
+          "area_geom": 900.0,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T13"
+          },
+          "area_geom": 1225.0,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T14"
+          },
+          "area_geom": 2250.0,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T15"
+          },
+          "area_geom": 1800.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 8
+    },
+    "LOT3_REV_CAZURI_NERECUPERATE": {
+      "id": "LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732",
+      "visible_in_tree": false,
+      "feature_count": 5,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T14"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T15"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T16"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T19"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        },
+        {
+          "id": 6,
+          "fields": {
+            "test_id": "T20"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 5
+    },
+    "LOT3_REV_CORPURI_EXTRASE": {
+      "id": "LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a",
+      "visible_in_tree": false,
+      "feature_count": 5,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T11",
+            "area_m2": 129.7,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 129.74,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T11",
+            "area_m2": 147.6,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 147.6,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T12",
+            "area_m2": 74.7,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 74.75,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T13",
+            "area_m2": 93.1,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 93.06,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T13",
+            "area_m2": 157.3,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 157.34,
+          "is_valid": true
+        }
+      ],
+      "total_features": 5
+    },
+    "LOT3_REV_FERESTRE_SELECTIE": {
+      "id": "LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b",
+      "visible_in_tree": false,
+      "feature_count": 8,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 864.0,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T12"
+          },
+          "area_geom": 2112.0,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T13"
+          },
+          "area_geom": 1260.0,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T14"
+          },
+          "area_geom": 3025.0,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T15"
+          },
+          "area_geom": 3300.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 8
+    },
+    "LOT3_REV_MASCA_BRUTA": {
+      "id": "LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d",
+      "visible_in_tree": false,
+      "feature_count": 8,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 163.35,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 423.97,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 442.89,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T12"
+          },
+          "area_geom": 330.66,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T12"
+          },
+          "area_geom": 671.18,
+          "is_valid": true
+        }
+      ],
+      "total_features": 8
+    },
+    "LOT3_V3_CAZURI_NERECUPERATE": {
+      "id": "LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f",
+      "visible_in_tree": false,
+      "feature_count": 1,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T19"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 1
+    },
+    "LOT3_V3_CORPURI_EXTRASE": {
+      "id": "LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212",
+      "visible_in_tree": false,
+      "feature_count": 11,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T11",
+            "area_m2": 123.2,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 123.21,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T11",
+            "area_m2": 132.1,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 132.14,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T11",
+            "area_m2": 72.1,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 72.09,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T12",
+            "area_m2": 171.4,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 171.36,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T12",
+            "area_m2": 69.8,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 69.79,
+          "is_valid": true
+        }
+      ],
+      "total_features": 11
+    },
+    "LOT3_V3_FERESTRE_SELECTIE": {
+      "id": "LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e",
+      "visible_in_tree": false,
+      "feature_count": 8,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 864.0,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T12"
+          },
+          "area_geom": 1600.0,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T13"
+          },
+          "area_geom": 1584.0,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T14"
+          },
+          "area_geom": 1935.0,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T15"
+          },
+          "area_geom": 1184.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 8
+    },
+    "LOT3_V3_MASCA_BRUTA": {
+      "id": "LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce",
+      "visible_in_tree": false,
+      "feature_count": 19,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 181.62,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 145.06,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 56.0,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T11"
+          },
+          "area_geom": 79.61,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T12"
+          },
+          "area_geom": 203.47,
+          "is_valid": true
+        }
+      ],
+      "total_features": 19
+    },
+    "LOT3 - 20 ipoteze / NECESITA VERDICT": {
+      "id": "LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9",
+      "visible_in_tree": false,
+      "feature_count": 20,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T11:C1",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW",
+            "area_m2": 123.20999999958296
+          },
+          "area_geom": 123.21,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T11:C2",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW",
+            "area_m2": 132.13662916665913
+          },
+          "area_geom": 132.14,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T11:C3",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW",
+            "area_m2": 152.1373966693188
+          },
+          "area_geom": 152.14,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T12:C1",
+            "test_id": "T12",
+            "owner_verdict": "PENDING_OWNER_REVIEW",
+            "area_m2": 188.6150000002142
+          },
+          "area_geom": 188.62,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T12:C2",
+            "test_id": "T12",
+            "owner_verdict": "PENDING_OWNER_REVIEW",
+            "area_m2": 84.65357142889205
+          },
+          "area_geom": 84.65,
+          "is_valid": true
+        }
+      ],
+      "total_features": 20
+    },
+    "LOT3 - Acoperis Ortho90 (Cyan)": {
+      "id": "LOT3___Acoperis_Ortho90__Cyan__16f61bcb_e830_4943_a759_95af5e7b28b9",
+      "visible_in_tree": true,
+      "feature_count": 20,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T11:C1",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 123.21,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T11:C2",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 132.14,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T11:C3",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 148.36,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T12:C1",
+            "test_id": "T12",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 186.92,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T12:C2",
+            "test_id": "T12",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 82.04,
+          "is_valid": true
+        }
+      ],
+      "total_features": 20
+    },
+    "LOT3 - Amprenta Sol ANCPI -0.40m (Verde)": {
+      "id": "LOT3___Amprenta_Sol_ANCPI__0_40m__Verde__bb3d9a20_4a45_4d05_b9ce_a41e09d43195",
+      "visible_in_tree": true,
+      "feature_count": 20,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T11:C1",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 106.09,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T11:C2",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 113.22,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T11:C3",
+            "test_id": "T11",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 128.04,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T12:C1",
+            "test_id": "T12",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 162.53,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T12:C2",
+            "test_id": "T12",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 65.4,
+          "is_valid": true
+        }
+      ],
+      "total_features": 20
+    },
+    "LOT3 - Masca initiala inainte de regularizare (Galben)": {
+      "id": "LOT3___Masca_initiala_inainte_de_regularizare__Galben__932fe9f9_bca3_443b_9d26_0b937f38c317",
+      "visible_in_tree": false,
+      "feature_count": 20,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T11:C1",
+            "test_id": "T11",
+            "area_m2": 123.21
+          },
+          "area_geom": 123.21,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T11:C2",
+            "test_id": "T11",
+            "area_m2": 132.14
+          },
+          "area_geom": 132.14,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T11:C3",
+            "test_id": "T11",
+            "area_m2": 152.14
+          },
+          "area_geom": 152.14,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T12:C1",
+            "test_id": "T12",
+            "area_m2": 188.62
+          },
+          "area_geom": 188.62,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T12:C2",
+            "test_id": "T12",
+            "area_m2": 84.65
+          },
+          "area_geom": 84.65,
+          "is_valid": true
+        }
+      ],
+      "total_features": 20
+    },
+    "LOT4 - 9 contururi / in revizie": {
+      "id": "LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31",
+      "visible_in_tree": false,
+      "feature_count": 9,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T21:C1",
+            "test_id": "T21",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1373.16,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T23:C1",
+            "test_id": "T23",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 331.93,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T24:C1",
+            "test_id": "T24",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 296.12,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T25:C1",
+            "test_id": "T25",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 615.83,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T26:C1",
+            "test_id": "T26",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 88.45,
+          "is_valid": true
+        }
+      ],
+      "total_features": 9
+    },
+    "LOT4 - Acoperis Ortho90 (Cyan)": {
+      "id": "LOT4___Acoperis_Ortho90__Cyan__a3816a73_4d66_4bec_bcfe_017641837e58",
+      "visible_in_tree": true,
+      "feature_count": 10,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T21:C1",
+            "test_id": "T21",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1356.84,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T23:C1",
+            "test_id": "T23",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 333.38,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T24:C1",
+            "test_id": "T24",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 296.03,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T25:C1",
+            "test_id": "T25",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 615.83,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T26:C1",
+            "test_id": "T26",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 88.45,
+          "is_valid": true
+        }
+      ],
+      "total_features": 10
+    },
+    "LOT4 - Amprenta Sol ANCPI -0.40m (Verde)": {
+      "id": "LOT4___Amprenta_Sol_ANCPI__0_40m__Verde__239b1f8b_1ef7_42d7_9032_ba099fa69a36",
+      "visible_in_tree": true,
+      "feature_count": 10,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T21:C1",
+            "test_id": "T21",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1277.27,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T23:C1",
+            "test_id": "T23",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 300.92,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T24:C1",
+            "test_id": "T24",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 259.64,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T25:C1",
+            "test_id": "T25",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 574.11,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T26:C1",
+            "test_id": "T26",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 71.01,
+          "is_valid": true
+        }
+      ],
+      "total_features": 10
+    },
+    "LOT4 - Masca initiala inainte de regularizare (Galben)": {
+      "id": "LOT4___Masca_initiala_inainte_de_regularizare__Galben__cbb94b3d_1217_454a_b403_156011b0210c",
+      "visible_in_tree": false,
+      "feature_count": 10,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T21:C1",
+            "test_id": "T21",
+            "area_m2": 1373.16
+          },
+          "area_geom": 1373.16,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T23:C1",
+            "test_id": "T23",
+            "area_m2": 331.93
+          },
+          "area_geom": 331.93,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T24:C1",
+            "test_id": "T24",
+            "area_m2": 296.12
+          },
+          "area_geom": 296.12,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T25:C1",
+            "test_id": "T25",
+            "area_m2": 615.83
+          },
+          "area_geom": 615.83,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T26:C1",
+            "test_id": "T26",
+            "area_m2": 88.45
+          },
+          "area_geom": 88.45,
+          "is_valid": true
+        }
+      ],
+      "total_features": 10
+    },
+    "LOT4 - T22 Diagnostic LiDAR nDSM (Magenta)": {
+      "id": "LOT4___T22_Diagnostic_LiDAR_nDSM__Magenta__acfec04d_9e70_48af_bea1_910c65ef7a82",
+      "visible_in_tree": false,
+      "feature_count": 1,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T22:C1",
+            "test_id": "T22",
+            "area_m2": 1688.0,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1688.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 1
+    },
+    "LOT4 - T22 masca respinsa de agent": {
+      "id": "LOT4___T22_masca_respinsa_de_agent_c7f4cb6e_73a7_41cf_9637_bd8815e7dcc9",
+      "visible_in_tree": false,
+      "feature_count": 1,
+      "labels_enabled": false,
+      "crs": "",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T22:C1",
+            "test_id": "T22",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1793.8,
+          "is_valid": true
+        }
+      ],
+      "total_features": 1
+    },
+    "LOT4 - T22 nerezolvat": {
+      "id": "LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43",
+      "visible_in_tree": false,
+      "feature_count": 1,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T22",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 0.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 1
+    },
+    "LOT4 - ferestre de cautare / NU contur final": {
+      "id": "LOT4___ferestre_de_cautare___NU_contur_final_00e0d01f_705d_4551_ad86_8b9eae205f49",
+      "visible_in_tree": false,
+      "feature_count": 10,
+      "labels_enabled": false,
+      "crs": "",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T21"
+          },
+          "area_geom": 4307.0,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T22"
+          },
+          "area_geom": 6432.0,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T23"
+          },
+          "area_geom": 1184.0,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T24"
+          },
+          "area_geom": 2028.0,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T25"
+          },
+          "area_geom": 2565.0,
+          "is_valid": true
+        }
+      ],
+      "total_features": 10
+    },
+    "LOT5 - Acoperis Ortho90 (Cyan)": {
+      "id": "LOT5___Acoperis_Ortho90__Cyan__dbf9128a_860e_47a3_beaf_d83acb46bd45",
+      "visible_in_tree": true,
+      "feature_count": 10,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T31:C1",
+            "test_id": "T31",
+            "area_m2": 58.94,
+            "ortho_ratio": 1.0,
+            "h90_m": 27.93,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 58.94,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T32:C1",
+            "test_id": "T32",
+            "area_m2": 50.49,
+            "ortho_ratio": 1.0,
+            "h90_m": 28.43,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 50.49,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T33:C1",
+            "test_id": "T33",
+            "area_m2": 98.93,
+            "ortho_ratio": 1.0,
+            "h90_m": 24.97,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 98.93,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T34:C1",
+            "test_id": "T34",
+            "area_m2": 73.38,
+            "ortho_ratio": 1.0,
+            "h90_m": 28.3,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 73.38,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T35:C1",
+            "test_id": "T35",
+            "area_m2": 329.33,
+            "ortho_ratio": 1.0,
+            "h90_m": 17.69,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 329.33,
+          "is_valid": true
+        }
+      ],
+      "total_features": 10
+    },
+    "LOT5 - Amprenta Sol ANCPI -0.40m (Verde)": {
+      "id": "LOT5___Amprenta_Sol_ANCPI__0_40m__Verde__c2d0103d_0c60_4e9f_b27f_f863418f9452",
+      "visible_in_tree": true,
+      "feature_count": 10,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "T31:C1",
+            "test_id": "T31",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 46.68,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "T32:C1",
+            "test_id": "T32",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 39.13,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "T33:C1",
+            "test_id": "T33",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 83.28,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "T34:C1",
+            "test_id": "T34",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 58.77,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "T35:C1",
+            "test_id": "T35",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 296.89,
+          "is_valid": true
+        }
+      ],
+      "total_features": 10
+    },
+    "OPT_B - Amprenta Sol -0.40m (Verde)": {
+      "id": "OPT_B___Amprenta_Sol__0_40m__Verde__6a2a1cdf_4471_4f13_b936_ea29ac115261",
+      "visible_in_tree": false,
+      "feature_count": 216,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "OPT_B_001:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 460.76,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "OPT_B_002:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 269.15,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "OPT_B_003:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 153.37,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "OPT_B_004:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 205.5,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "OPT_B_005:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 72.63,
+          "is_valid": true
+        }
+      ],
+      "total_features": 216
+    },
+    "OPT_B - Cladiri Validate nDSM (Portocaliu)": {
+      "id": "OPT_B___Cladiri_Validate_nDSM__Portocaliu__3135407f_3336_4d65_8b1e_e552991eb065",
+      "visible_in_tree": false,
+      "feature_count": 216,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "OPT_B_001:C1",
+            "area_m2": 500.57,
+            "ortho_ratio": 1.0,
+            "h90_m": 13.66,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 500.57,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "OPT_B_002:C1",
+            "area_m2": 306.66,
+            "ortho_ratio": 1.0,
+            "h90_m": 6.05,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 306.66,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "OPT_B_003:C1",
+            "area_m2": 174.61,
+            "ortho_ratio": 1.0,
+            "h90_m": 7.24,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 174.61,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "OPT_B_004:C1",
+            "area_m2": 230.23,
+            "ortho_ratio": 1.0,
+            "h90_m": 4.77,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 230.23,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "OPT_B_005:C1",
+            "area_m2": 87.38,
+            "ortho_ratio": 1.0,
+            "h90_m": 3.93,
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 87.38,
+          "is_valid": true
+        }
+      ],
+      "total_features": 216
+    },
+    "OPT_B - Falsuri Pozitive Eliminate (Gri)": {
+      "id": "OPT_B___Falsuri_Pozitive_Eliminate__Gri__176fe6c7_5ea2_4924_9333_c709bb645b71",
+      "visible_in_tree": false,
+      "feature_count": 71,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "area_m2": 104.2,
+            "h90_m": 2.51
+          },
+          "area_geom": 104.19,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "area_m2": 89.9,
+            "h90_m": 2.6
+          },
+          "area_geom": 89.93,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "area_m2": 30.8,
+            "h90_m": 2.08
+          },
+          "area_geom": 30.78,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "area_m2": 19.9,
+            "h90_m": 9.46
+          },
+          "area_geom": 19.92,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "area_m2": 12.0,
+            "h90_m": 7.44
+          },
+          "area_geom": 11.99,
+          "is_valid": true
+        }
+      ],
+      "total_features": 71
+    },
+    "RECTIFICARI_T05_T06_T07_T10": {
+      "id": "RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4",
+      "visible_in_tree": true,
+      "feature_count": 5,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T05",
+            "owner_verdict": "PENDING"
+          },
+          "area_geom": 1094.78,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "test_id": "T05",
+            "owner_verdict": "PENDING"
+          },
+          "area_geom": 184.0,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "test_id": "T06",
+            "owner_verdict": "PENDING"
+          },
+          "area_geom": 239.94,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "test_id": "T07",
+            "owner_verdict": "PENDING"
+          },
+          "area_geom": 363.31,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "test_id": "T10",
+            "owner_verdict": "ACCEPTED_BY_OWNER"
+          },
+          "area_geom": 143.77,
+          "is_valid": true
+        }
+      ],
+      "total_features": 5
+    },
+    "REST - Acoperis Ortho90 (Cyan)": {
+      "id": "REST___Acoperis_Ortho90__Cyan__d07bcdb9_db5a_4768_9d2e_1ce2a57b28d9",
+      "visible_in_tree": false,
+      "feature_count": 264,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "REST_001:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 174.61,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "REST_002:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 230.23,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "REST_003:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 87.38,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "REST_004:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 64.05,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "REST_005:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 135.99,
+          "is_valid": true
+        }
+      ],
+      "total_features": 264
+    },
+    "REST - Amprenta Sol ANCPI -0.40m (Verde)": {
+      "id": "REST___Amprenta_Sol_ANCPI__0_40m__Verde__ca09e659_d04b_4396_8302_26a28c1ff7d1",
+      "visible_in_tree": false,
+      "feature_count": 264,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "REST_001:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 153.37,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "REST_002:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 205.5,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "REST_003:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 72.63,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "REST_004:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 49.28,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "REST_005:C1",
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 110.54,
+          "is_valid": true
+        }
+      ],
+      "total_features": 264
+    },
+    "REST - Candidati Deduplicati/Omisi (Gri)": {
+      "id": "REST___Candidati_Deduplicati_Omisi__Gri__248b2c72_4902_462d_8531_e39cfadf806a",
+      "visible_in_tree": false,
+      "feature_count": 174,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {},
+          "area_geom": 463.66,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {},
+          "area_geom": 1241.91,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {},
+          "area_geom": 292.38,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {},
+          "area_geom": 1428.69,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {},
+          "area_geom": 135.26,
+          "is_valid": true
+        }
+      ],
+      "total_features": 174
+    },
+    "REST - Masca initiala inainte de regularizare (Galben)": {
+      "id": "REST___Masca_initiala_inainte_de_regularizare__Galben__96a33735_0304_439a_8aa9_95d1a2dd750a",
+      "visible_in_tree": false,
+      "feature_count": 264,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "body_id": "REST_001:C1"
+          },
+          "area_geom": 161.54,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "body_id": "REST_002:C1"
+          },
+          "area_geom": 219.42,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "body_id": "REST_003:C1"
+          },
+          "area_geom": 78.01,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "body_id": "REST_004:C1"
+          },
+          "area_geom": 68.69,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "body_id": "REST_005:C1"
+          },
+          "area_geom": 140.5,
+          "is_valid": true
+        }
+      ],
+      "total_features": 264
+    },
+    "T10 BACKUP - retrageri PRESUPUSE / NU masuratori": {
+      "id": "T10_BACKUP___retrageri_PRESUPUSE___NU_masuratori_01589b46_fb61_4776_9786_50f6f3b20f4c",
+      "visible_in_tree": false,
+      "feature_count": 2,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {},
+          "area_geom": 131.95,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {},
+          "area_geom": 120.62,
+          "is_valid": true
+        }
+      ],
+      "total_features": 2
+    },
+    "T10_ISTORIC_PARTIAL (Incomplet anterior)": {
+      "id": "T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d",
+      "visible_in_tree": false,
+      "feature_count": 1,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "test_id": "T10",
+            "owner_verdict": "PENDING"
+          },
+          "area_geom": 108.81,
+          "is_valid": true
+        }
+      ],
+      "total_features": 1
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "benchmark_title": "StratumRO Full-Auto Cadastral Pipeline Benchmark",
+  "timestamp": "2026-10-18 18:07:50",
+  "hardware_profile": {
+    "platform": "win32",
+    "python_version": "3.10.10",
+    "qgis_version": "QGIS 3.40 (Live MCP Socket)"
+  },
+  "timing_record_seconds": {
+    "phase_1_reference_indexing_s": 0.112,
+    "phase_2_candidate_harvesting_s": 0.068,
+    "phase_3_spatial_deduplication_s": 0.049,
+    "phase_4_5_regularization_and_eaves_s": 2.693,
+    "phase_6_gpkg_export_s": 0.503,
+    "total_execution_time_s": 3.427,
+    "average_ms_per_building": 10.2
+  },
+  "inventory_record": {
+    "reference_lots_indexed": 71,
+    "breakdown_reference_lots": {
+      "lot_1_teste10": 10,
+      "lot_2_rectificari": 5,
+      "lot_2_b5": 2,
+      "lot_1_2_propuneri": 12,
+      "lot_1_2_simple": 12,
+      "lot_3_orthogonal": 20,
+      "lot_4_orthogonal": 10
+    },
+    "total_candidates_inspected": 438,
+    "duplicates_prevented_and_skipped": 174,
+    "unique_unvectorized_processed": 264,
+    "total_roof_area_m2": 30983.43,
+    "total_sol_area_m2": 25506.53
+  },
+  "geometric_quality_metrics": {
+    "mean_orthogonality_before": 0.22,
+    "mean_orthogonality_after": 0.973,
+    "orthogonality_gain_pct": 75.2,
+    "total_vertices_before": 6175,
+    "total_vertices_after": 5415,
+    "vertex_reduction_ratio": 0.877,
+    "mean_hausdorff_shift_m": 0.927
+  }
+}

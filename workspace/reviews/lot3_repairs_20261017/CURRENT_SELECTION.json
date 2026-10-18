@@ -1,0 +1,10 @@
+{
+  "selected_directory": "selected_v3",
+  "gpkg": "selected_v3/lot3_repaired.gpkg",
+  "layer": "REPAIRED_ROOF_CANDIDATES",
+  "shared_project": "workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+  "shared_group": "LOT3_REPARAT_20261017_NEVALIDAT",
+  "feature_count": 20,
+  "case_count": 10,
+  "owner_verdict": "PENDING_OWNER_REVIEW"
+}

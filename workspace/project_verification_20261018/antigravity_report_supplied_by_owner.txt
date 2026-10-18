@@ -1,0 +1,142 @@
+Ran command: Check git status (`git status`)
+Ran command: List recently modified review files (`powershell -Command "
+Get-ChildItem -Path workspace/reviews/ -Recurse -File | Select-Object FullName, Length, LastWriteTime | Sort-Object LastWriteTime -Descending | Select-Object -First 20 | Format-Table -AutoSize
+"`)
+Ran command: Check QGIS dirty state (`.\venv\Scripts\python.exe -c "
+import socket, json, struct
+def send_qgis(code):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(10.0)
+    s.connect(('127.0.0.1', 9876))
+    req = {'type': 'execute_code', 'params': {'code': code}}
+    payload = json.dumps(req).encode('utf-8')
+    s.sendall(struct.pack('>I', len(payload)) + payload)
+    raw_len = s.recv(4)
+    resp_len = struct.unpack('>I', raw_len)[0]
+    data = b''
+    while len(data) < resp_len:
+        chunk = s.recv(min(65536, resp_len - len(data)))
+        if not chunk: break
+        data += chunk
+    s.close()
+    return json.loads(data.decode('utf-8'))
+
+code = '''
+from qgis.core import QgsProject
+p = QgsProject.instance()
+result = {
+    'fileName': p.fileName(),
+    'isDirty': p.isDirty(),
+    'layerCount': len(p.mapLayers())
+}
+'''
+res = send_qgis(code)
+print(json.dumps(res, indent=2))
+"`)
+Ran command: Check QGIS dirty state and filename (`.\venv\Scripts\python.exe -c "
+import socket, json, struct
+def send_qgis(code):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(10.0)
+    s.connect(('127.0.0.1', 9876))
+    req = {'type': 'execute_code', 'params': {'code': code}}
+    payload = json.dumps(req).encode('utf-8')
+    s.sendall(struct.pack('>I', len(payload)) + payload)
+    raw_len = s.recv(4)
+    resp_len = struct.unpack('>I', raw_len)[0]
+    data = b''
+    while len(data) < resp_len:
+        chunk = s.recv(min(65536, resp_len - len(data)))
+        if not chunk: break
+        data += chunk
+    s.close()
+    return json.loads(data.decode('utf-8'))
+
+code = '''
+import json
+from qgis.core import QgsProject
+p = QgsProject.instance()
+print(json.dumps({
+    'fileName': p.fileName(),
+    'isDirty': p.isDirty(),
+    'layerCount': len(p.mapLayers())
+}))
+'''
+res = send_qgis(code)
+print(res['result']['stdout'])
+"`)
+Ran command: Check inspectie_corectii.qgs timestamp (`powershell -Command "
+Get-Item 'workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs' | Select-Object FullName, LastWriteTime
+"`)
+Viewed .gitignore:1-60
+Ran command: Check if workspace is ignored (`git check-ignore -v workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs`)
+Ran command: Search p.write in tools (`powershell -Command "Select-String -Path tools/*.py -Pattern '\.write\('"`)
+Ran command: Save QGIS project via p.write() (`.\venv\Scripts\python.exe -c "
+import socket, json, struct
+def send_qgis(code):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(10.0)
+    s.connect(('127.0.0.1', 9876))
+    req = {'type': 'execute_code', 'params': {'code': code}}
+    payload = json.dumps(req).encode('utf-8')
+    s.sendall(struct.pack('>I', len(payload)) + payload)
+    raw_len = s.recv(4)
+    resp_len = struct.unpack('>I', raw_len)[0]
+    data = b''
+    while len(data) < resp_len:
+        chunk = s.recv(min(65536, resp_len - len(data)))
+        if not chunk: break
+        data += chunk
+    s.close()
+    return json.loads(data.decode('utf-8'))
+
+code = '''
+from qgis.core import QgsProject
+p = QgsProject.instance()
+saved = p.write()
+print(f'Save success: {saved}, isDirty now: {p.isDirty()}')
+'''
+res = send_qgis(code)
+print(res['result']['stdout'])
+"`)
+
+**Da, totul este salvat pe disc (100%), nimic nu este lăsat în aer sau în memorie volatilă.**
+
+Am verificat starea fiecărei componente și am forțat salvarea proiectului QGIS:
+
+---
+
+### 1. Proiectul QGIS Desktop (`inspectie_corectii.qgs`)
+* **Locație:** [`workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs)
+* **Stare:** Am executat `QgsProject.instance().write()` prin PyQGIS.
+* **Confirmare:** `isDirty == False`. Dacă închizi sau repornești QGIS acum, vizibilitatea straturilor, etichetele oprite și culorile rămân exact așa cum le vezi.
+
+---
+
+### 2. Straturile Geospațiale & Geometriile (GeoPackage)
+Toate seturile de date generate sunt scrise pe disc în folderele dedicate:
+1. **Opțiunea A & B (Comparația recentă):**
+   * [`workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg) (conține straturile `opt_a_lot5_manhattan` și `opt_b_rest_regional`)
+2. **Procesarea celor 260 de clădiri unvectorizate:**
+   * [`workspace/reviews/auto_unvectorized_20261018/auto_unvectorized_orthogonal.gpkg`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/auto_unvectorized_20261018/auto_unvectorized_orthogonal.gpkg)
+3. **Loturile anterioare:**
+   * **Lot 3 ($T_1 \dots T_{20}$):** [`workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg)
+   * **Lot 4 ($T_{21} \dots T_{30}$):** [`workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg)
+   * **Lot 1 & Lot 2:** în [`workspace/reviews/body_recovery_20261013/`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/)
+
+---
+
+### 3. Rapoartele, Metapromptul & Benchmark-urile
+* **Jurnalul de execuție cap-coadă:** [`workspace/reviews/auto_unvectorized_20261018/record_executie_cap_coada.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/auto_unvectorized_20261018/record_executie_cap_coada.md)
+* **Metapromptul de organizare:** [`workspace/reviews/auto_unvectorized_20261018/metaprompt_stratumro_full_auto.md`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/auto_unvectorized_20261018/metaprompt_stratumro_full_auto.md)
+* **Benchmark timpi și metrici:** [`workspace/reviews/auto_unvectorized_20261018/stratumro_full_auto_benchmark.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/auto_unvectorized_20261018/stratumro_full_auto_benchmark.json)
+* **Auditul intern QGIS:** [`workspace/reviews/comparatie_a_vs_b_20261018/qgis_internal_audit.json`](file:///c:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/qgis_internal_audit.json)
+
+---
+
+### 4. Git & Stabilitate
+* Branch-ul este curat (`main`, la zi cu `origin/main`).
+* Niciun fișier binar greu (`.gpkg`, `.tif`, `.png`) nu a scăpat în Git (sunt izolate corect în `.gitignore`).
+* Scripturile utilitare de audit create (`tools/qgis_deep_metacognitive_audit.py` și `tools/print_qgis_audit_summary.py`) sunt pe disc gata de reutilizare dacă se dorește versionarea lor.
+
+*(Am notat observația ta că a fost ceva incorect în raționamentul/interpretarea mea — nu forțăm nimic mai departe. Când vrei să reluăm sau dacă vrei să îndrepți punctul respectiv, spune-mi cum dorești să procedăm.)*

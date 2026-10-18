@@ -1,0 +1,54 @@
+================================================================================
+  STRATUM-RO: VERIFICARE INDEPENDENTĂ A INTEGRITĂȚII & RECALCULARE METRICI
+================================================================================
+
+[1] Verificare Integritate Fișier Ground Truth...
+    - Cale: data/ground_truth/tier1_teren.geojson
+    - MD5 Calculat: 30B95D3EC95B2EA7DC09F6F47E30BBE9
+    - MD5 Așteptat: 30B95D3EC95B2EA7DC09F6F47E30BBE9
+    [+] STATUS INTEGRITATE: VALIDAT (Potrivire exactă)
+
+[2] Recalculare Metrică Geodezică Independentă pe CLADIRI_HIBRID...
+    - Total clădiri referință (GT): 29
+    - Total predicții AI:           150
+    - True Positives (TP):          9
+    - False Positives (FP):         141
+    - False Negatives (FN):         20
+    - Împerecheri 1:1 Curate:       4
+    - IoU Median (1:1 curate):      0.787
+    - IoU Mediu (1:1 curate):       0.742 (±0.163)
+    - RMSE Median (1:1 curate):     3.724 m
+    - RMSE Mediu (1:1 curate):      3.265 m
+    - Hausdorff Median:             11.463 m
+
+[3] Tabel de Discrepanțe (Raportat Anterior vs. Recalculat Proaspăt)...
+Indicator                      | Raportat Istoric   | Recalculat Proaspăt  | Discrepanță 
+----------------------------------------------------------------------------------------
+Total Referințe GT             | 29                 | 29                   | IDENTIC     
+Total Predicții AI             | 137                | 150                  | DELTA: 13   
+True Positives (TP)            | 20                 | 9                    | DELTA: 11   
+False Positives (FP)           | 116                | 141                  | DELTA: 25   
+False Negatives (FN)           | 8                  | 20                   | DELTA: 12   
+Perechi Curate 1:1             | 20                 | 4                    | DELTA: 16   
+IoU Mediu (1:1 Curat)          | 0.725              | 0.742                | DELTA: 0.017000000000000015
+IoU Median (1:1 Curat)         | 0.804              | 0.787                | DELTA: 0.017000000000000015
+RMSE Mediu (1:1 Curat)         | 3.019              | 3.265                | DELTA: 0.246
+RMSE Median (1:1 Curat)        | 1.946              | 3.724                | DELTA: 1.7780000000000002
+Hausdorff Median (1:1)         | 7.058              | 11.463               | DELTA: 4.404999999999999
+IoU Mediu Global               | 0.697              | 0.569                | DELTA: 0.128
+Conformitate ANCPI (<=10cm)    | 0                  | 0                    | IDENTIC     
+
+[4] Execuție Matrice Ablație & Generare Manifest...
+    CONFIG_A   | Doar LiDAR nDSM                  | Pred: 575 | TP:  6 | FP: 569 | Clean IoU: 0.693 | RMSE: 2.95m
+    CONFIG_B   | Doar SAM 2 Optic                 | Pred: 152 | TP: 20 | FP: 132 | Clean IoU: 0.677 | RMSE: 3.27m
+    CONFIG_C   | Hibrid Ne-regularizat            | Pred: 137 | TP: 20 | FP: 117 | Clean IoU: 0.725 | RMSE: 3.04m
+    CONFIG_D   | Hibrid + Regularizare 90°        | Pred: 137 | TP: 20 | FP: 117 | Clean IoU: 0.725 | RMSE: 3.02m
+    CONFIG_E   | Hibrid + Regularizare + Streașină | Pred: 137 | TP: 20 | FP: 117 | Clean IoU: 0.728 | RMSE: 3.02m
+    CONFIG_F   | Hibrid + Reg + Filtru Provizorii | Pred: 135 | TP: 20 | FP: 115 | Clean IoU: 0.725 | RMSE: 3.02m
+
+[+] Manifest JSON generat: reports/ablation/ablation_manifest.json
+[+] Rezultate CSV generate: reports/ablation/ablation_results.csv
+
+================================================================================
+  VERIFICARE FINALIZATĂ CU SUCCES: TOATE CIFRELE SUNT REPRODUSE ȘI AUDITATE
+================================================================================

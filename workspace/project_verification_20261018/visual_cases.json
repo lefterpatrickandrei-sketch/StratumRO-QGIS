@@ -1,0 +1,48 @@
+[
+  {
+    "image": "rest_complex.png",
+    "body_ids": [
+      "REST_260:C1"
+    ],
+    "dataset": "workspace/reviews/auto_unvectorized_20261018/auto_unvectorized_orthogonal.gpkg",
+    "layer": "ROOF_HYPOTHESES_ORTHO90",
+    "source_sha256": "6e43cb772e8567b59d32bb20dc9488cc022ce6c5c50301b4c68f4faf92b4321b",
+    "extent": [
+      390501.3057464327,
+      585238.3881668897,
+      390595.68426455645,
+      585423.6757562071
+    ]
+  },
+  {
+    "image": "option_a_complex.png",
+    "body_ids": [
+      "T39:C1"
+    ],
+    "dataset": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "LOT5_OPTIUNEA_A_ROOF",
+    "source_sha256": "d15e9dbb9bf300023e01e40afe57c0d949289c4d6a4015bea6eb369af69a1879",
+    "extent": [
+      390700.6949573886,
+      585322.4991324928,
+      390723.1623941776,
+      585347.9090530404
+    ]
+  },
+  {
+    "image": "option_b_overlap.png",
+    "body_ids": [
+      "OPT_B_154:C1",
+      "OPT_B_169:C1"
+    ],
+    "dataset": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "OPTIUNEA_B_ROOF_VALIDAT",
+    "source_sha256": "d15e9dbb9bf300023e01e40afe57c0d949289c4d6a4015bea6eb369af69a1879",
+    "extent": [
+      390724.17699993134,
+      585385.8806307308,
+      390810.0965720491,
+      585429.9184278179
+    ]
+  }
+]

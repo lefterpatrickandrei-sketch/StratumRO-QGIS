@@ -1,0 +1,25 @@
+{
+  "base_head": "51251348eb0eac0062a21bb3953c86ad78d44814",
+  "targeted_tests": {
+    "run": 37,
+    "passed": 37
+  },
+  "metric_gate_tests": {
+    "run": 4,
+    "passed": 4
+  },
+  "full_suite": {
+    "run": 491,
+    "passed": 482,
+    "skipped": 9,
+    "failures": 0,
+    "errors": 0
+  },
+  "fast_check_exit": 0,
+  "local_metric_comparison_exit": 1,
+  "local_metric_comparison_status": "EXPECTED_FAIL_REVEALS_UNRESOLVED_DATA_DRIFT",
+  "new_remote_ci_run": false,
+  "product_geometry_modified": false,
+  "qgis_project_state_modified_by_audit": false,
+  "prior_pr3_merge_commit": "216b033168239e6d10392992dc1ab5b00b63a5aa"
+}

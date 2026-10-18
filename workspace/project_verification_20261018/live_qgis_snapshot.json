@@ -1,0 +1,790 @@
+{
+  "path": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
+  "dirty": false,
+  "layer_count": 85,
+  "layers": [
+    {
+      "id": "ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f",
+      "name": "ACOPERISURI_SIMPLE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/simple_roofs_rectified_20261013/simple_roofs.gpkg|layername=ACOPERISURI_SIMPLE|subset=\"id\" LIKE 'REF_TIER1_021:%' AND \"id\" <> 'REF_TIER1_021:B00005'",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 7,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "AUTO___acoperire_scanare___nu_parcele_e513b9e9_eb4d_4b0a_8f60_b938762de518",
+      "name": "AUTO - acoperire scanare / nu parcele",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/regional_roofs_20261017/masked_review_v2/regional_review.gpkg|layername=SCAN_COVERAGE",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 144,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "AUTO___candidati_acoperis___NEVALIDATI_01914983_c1f9_4273_b7fc_ae1d5dfabc1e",
+      "name": "AUTO - candidati acoperis / NEVALIDATI",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/regional_roofs_20261017/masked_review_v2/regional_review.gpkg|layername=ROOF_CANDIDATES",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 380,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "AUTO___obiecte_optice_INCERTE___nu_presupune_cladiri_a3557864_ce7f_422b_9d59_cb25c5e93e4b",
+      "name": "AUTO - obiecte optice INCERTE / nu presupune cladiri",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/regional_roofs_20261017/masked_review_v2/regional_review.gpkg|layername=OPTICAL_UNKNOWN",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 644,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "AUTO___observatii_brute___diagnostic_dfef8d34_0cee_4d77_9d3a_b275f4b8d801",
+      "name": "AUTO - observatii brute / diagnostic",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/regional_roofs_20261017/masked_review_v2/regional_review.gpkg|layername=RAW_SELECTED_OBSERVATIONS",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 2081,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "AUTO___vegetatie_probabila___diagnostic_4b760f1c_1d67_43cb_9015_7f50404d66c2",
+      "name": "AUTO - vegetatie probabila / diagnostic",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/regional_roofs_20261017/masked_review_v2/regional_review.gpkg|layername=LIKELY_VEGETATION",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1057,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145",
+      "name": "B5_DOUA_CORPURI",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/review18_20261013/review18.gpkg|layername=B5_DOUA_CORPURI",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 2,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d",
+      "name": "Cluj-0-0",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-0_halo.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba",
+      "name": "Cluj-0-1",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-1_halo.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551",
+      "name": "Cluj-0-2",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-2_halo.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86",
+      "name": "Cluj-1-0",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-0_halo.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c",
+      "name": "Cluj-1-1",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-1_halo.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17",
+      "name": "Cluj-1-2",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-2_halo.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b",
+      "name": "Cluj-2-0",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-0_halo.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4",
+      "name": "Cluj-2-1",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-1_halo.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990",
+      "name": "LOT3_CAZURI_NERECUPERATE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 7,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92",
+      "name": "LOT3_CORPURI_EXTRASE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 2,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a",
+      "name": "LOT3_FERESTRE_SELECTIE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 8,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732",
+      "name": "LOT3_REV_CAZURI_NERECUPERATE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 5,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a",
+      "name": "LOT3_REV_CORPURI_EXTRASE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 5,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b",
+      "name": "LOT3_REV_FERESTRE_SELECTIE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 8,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d",
+      "name": "LOT3_REV_MASCA_BRUTA",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=MASCA_BRUTA_SAM2|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 8,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f",
+      "name": "LOT3_V3_CAZURI_NERECUPERATE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212",
+      "name": "LOT3_V3_CORPURI_EXTRASE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 11,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e",
+      "name": "LOT3_V3_FERESTRE_SELECTIE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 8,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce",
+      "name": "LOT3_V3_MASCA_BRUTA",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=MASCA_BRUTA_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 19,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9",
+      "name": "LOT3 - 20 ipoteze / NECESITA VERDICT",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v3/lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 20,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3___Acoperis_Ortho90__Cyan__16f61bcb_e830_4943_a759_95af5e7b28b9",
+      "name": "LOT3 - Acoperis Ortho90 (Cyan)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg|layername=ROOF_HYPOTHESES_ORTHO90",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 20,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3___Amprenta_Sol_ANCPI__0_40m__Verde__bb3d9a20_4a45_4d05_b9ce_a41e09d43195",
+      "name": "LOT3 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg|layername=FOOTPRINT_HYPOTHESES_SOL",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 20,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT3___Masca_initiala_inainte_de_regularizare__Galben__932fe9f9_bca3_443b_9d26_0b937f38c317",
+      "name": "LOT3 - Masca initiala inainte de regularizare (Galben)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg|layername=RAW_CANDIDATES_BEFORE",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 20,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31",
+      "name": "LOT4 - 9 contururi / in revizie",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected/lot4_review.gpkg|layername=ROOF_HYPOTHESES",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 9,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT4___Acoperis_Ortho90__Cyan__a3816a73_4d66_4bec_bcfe_017641837e58",
+      "name": "LOT4 - Acoperis Ortho90 (Cyan)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg|layername=ROOF_HYPOTHESES_ORTHO90",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 10,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT4___Amprenta_Sol_ANCPI__0_40m__Verde__239b1f8b_1ef7_42d7_9032_ba099fa69a36",
+      "name": "LOT4 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg|layername=FOOTPRINT_HYPOTHESES_SOL",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 10,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT4___Masca_initiala_inainte_de_regularizare__Galben__cbb94b3d_1217_454a_b403_156011b0210c",
+      "name": "LOT4 - Masca initiala inainte de regularizare (Galben)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg|layername=RAW_CANDIDATES_BEFORE",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 10,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT4___T22_Diagnostic_LiDAR_nDSM__Magenta__acfec04d_9e70_48af_bea1_910c65ef7a82",
+      "name": "LOT4 - T22 Diagnostic LiDAR nDSM (Magenta)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg|layername=T22_DIAGNOSTIC_LIDAR",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT4___T22_masca_respinsa_de_agent_c7f4cb6e_73a7_41cf_9637_bd8815e7dcc9",
+      "name": "LOT4 - T22 masca respinsa de agent",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected/lot4_review.gpkg|layername=REJECTED_CANDIDATES",
+      "valid": true,
+      "crs": "",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43",
+      "name": "LOT4 - T22 nerezolvat",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected/lot4_review.gpkg|layername=CASES_REVIEW|subset=\"agent_status\"='UNRESOLVED_AFTER_REVIEW'",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT4___ferestre_de_cautare___NU_contur_final_00e0d01f_705d_4551_ad86_8b9eae205f49",
+      "name": "LOT4 - ferestre de cautare / NU contur final",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected/lot4_review.gpkg|layername=SEARCH_ENVELOPES",
+      "valid": true,
+      "crs": "",
+      "count": 10,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT5___Acoperis_Ortho90__Cyan__dbf9128a_860e_47a3_beaf_d83acb46bd45",
+      "name": "LOT5 - Acoperis Ortho90 (Cyan)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=LOT5_OPTIUNEA_A_ROOF",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 10,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "LOT5___Amprenta_Sol_ANCPI__0_40m__Verde__c2d0103d_0c60_4e9f_b27f_f863418f9452",
+      "name": "LOT5 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=LOT5_OPTIUNEA_A_SOL",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 10,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "Lot4___T21_5cm_298db82e_ed7a_4f53_af20_70f196750509",
+      "name": "Lot4 / T21_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T21_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T22_5cm_a59d8b5f_8762_4733_afdc_90e2eebeff93",
+      "name": "Lot4 / T22_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T22_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T23_5cm_d8b73275_c136_4fbf_8285_c3dd6d411a79",
+      "name": "Lot4 / T23_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T23_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T24_5cm_64bad868_2e5d_4dc1_96a5_8ecb886ccfa2",
+      "name": "Lot4 / T24_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T24_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T25_5cm_fcef8985_b080_4d36_841c_fc38d56b0564",
+      "name": "Lot4 / T25_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T25_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T26_5cm_af73392a_a1af_48a6_82f6_1ae703c8141b",
+      "name": "Lot4 / T26_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T26_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T27_5cm_14f491c1_04e4_463c_aa60_60afa89ddeb5",
+      "name": "Lot4 / T27_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T27_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T28_5cm_d635dc6e_6b36_4228_87dc_320a83923852",
+      "name": "Lot4 / T28_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T28_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T29_5cm_f9dfa074_33e7_4d67_a509_b5800235e0b8",
+      "name": "Lot4 / T29_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T29_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "Lot4___T30_5cm_1c50aec5_e092_4883_8976_532b07c1b3c8",
+      "name": "Lot4 / T30_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T30_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "MASTI_BRUTE_FINISARE___mov_06c7364b_82d1_4e48_bfdf_71ebcaafe258",
+      "name": "MASTI_BRUTE_FINISARE - mov",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=RAW_OPTICAL_MASKS",
+      "valid": true,
+      "crs": "",
+      "count": 3,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "OPT_B___Amprenta_Sol__0_40m__Verde__6a2a1cdf_4471_4f13_b936_ea29ac115261",
+      "name": "OPT_B - Amprenta Sol -0.40m (Verde)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=OPTIUNEA_B_SOL_VALIDAT",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 216,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "OPT_B___Cladiri_Validate_nDSM__Portocaliu__3135407f_3336_4d65_8b1e_e552991eb065",
+      "name": "OPT_B - Cladiri Validate nDSM (Portocaliu)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=OPTIUNEA_B_ROOF_VALIDAT",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 216,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "OPT_B___Falsuri_Pozitive_Eliminate__Gri__176fe6c7_5ea2_4924_9333_c709bb645b71",
+      "name": "OPT_B - Falsuri Pozitive Eliminate (Gri)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=OPTIUNEA_B_FALS_POZITIV_ELIMINAT",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 71,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "PROPUNERI_SELECTATE_0bb56959_d9ae_4dc3_84f9_2dfbf231ecad",
+      "name": "PROPUNERI_SELECTATE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/roof_recovery.gpkg|layername=PROPUNERI_SELECTATE",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 12,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4",
+      "name": "RECTIFICARI_T05_T06_T07_T10",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg|layername=CORPURI_RECTIFICATE",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 5,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "REFERINTE_UTILIZATOR_5e655e0d_0041_4683_b16e_5605591087ae",
+      "name": "REFERINTE_UTILIZATOR",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/roof_recovery.gpkg|layername=REFERINTE_UTILIZATOR",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 3,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "RESPINSE_ANTERIOR_SASE_bd332c36_4829_458b_b374_6f633c63a18d",
+      "name": "RESPINSE_ANTERIOR_SASE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg|layername=RESPINSE_ANTERIOR",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 6,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "REST___Acoperis_Ortho90__Cyan__d07bcdb9_db5a_4768_9d2e_1ce2a57b28d9",
+      "name": "REST - Acoperis Ortho90 (Cyan)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/auto_unvectorized_20261018/auto_unvectorized_orthogonal.gpkg|layername=ROOF_HYPOTHESES_ORTHO90",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 264,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "REST___Amprenta_Sol_ANCPI__0_40m__Verde__ca09e659_d04b_4396_8302_26a28c1ff7d1",
+      "name": "REST - Amprenta Sol ANCPI -0.40m (Verde)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/auto_unvectorized_20261018/auto_unvectorized_orthogonal.gpkg|layername=FOOTPRINT_HYPOTHESES_SOL",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 264,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "REST___Candidati_Deduplicati_Omisi__Gri__248b2c72_4902_462d_8531_e39cfadf806a",
+      "name": "REST - Candidati Deduplicati/Omisi (Gri)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/auto_unvectorized_20261018/auto_unvectorized_orthogonal.gpkg|layername=DEDUPLICATED_SKIPPED",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 174,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "REST___Masca_initiala_inainte_de_regularizare__Galben__96a33735_0304_439a_8aa9_95d1a2dd750a",
+      "name": "REST - Masca initiala inainte de regularizare (Galben)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/auto_unvectorized_20261018/auto_unvectorized_orthogonal.gpkg|layername=RAW_CANDIDATES_BEFORE",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 264,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "REVIZUIRE_COMPLEXA_3ac9d5d1_9f0a_4850_b115_8955bfedfe3f",
+      "name": "REVIZUIRE_COMPLEXA",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/roof_recovery.gpkg|layername=REVIZUIRE_COMPLEXA",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 71,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "SOL_ESTIMAT_NEVERIFICAT_b9f6f6c0_8f05_4898_a452_97c4c9cb9c3f",
+      "name": "SOL_ESTIMAT_NEVERIFICAT",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/simple_roofs_rectified_20261013/simple_roofs.gpkg|layername=SOL_ESTIMAT_NEVERIFICAT",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 12,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T10_BACKUP___retrageri_PRESUPUSE___NU_masuratori_01589b46_fb61_4776_9786_50f6f3b20f4c",
+      "name": "T10 BACKUP - retrageri PRESUPUSE / NU masuratori",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/regional_roofs_20261017/ground_backup_T10/T10_ground_backup.gpkg|layername=ASSUMED_GROUND_SCENARIOS",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 2,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d",
+      "name": "T10_ISTORIC_PARTIAL (Incomplet anterior)",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg|layername=T10_ISTORIC_PARTIAL_RESPINS",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471",
+      "name": "T11_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T11_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "T12_5cm_75bd1002_6557_49a3_9fa0_95b2ea4bcd88",
+      "name": "T12_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T12_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "T13_5cm_11db7616_b226_442f_ab9a_3c4d29d741f6",
+      "name": "T13_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T13_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "T14_5cm_b012d662_864e_4468_b730_9b65d939af22",
+      "name": "T14_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T14_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "T15_5cm_9860cb9c_705f_4e04_a486_ca2afb9c88a6",
+      "name": "T15_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T15_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "T16_5cm_e6257cf3_53e7_4d0a_bc7d_939e1544e46b",
+      "name": "T16_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T16_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472",
+      "name": "T17:C1 - FINISARE NEVERIFICATA",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T17:C1'",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c",
+      "name": "T17:C2 - FINISARE NEVERIFICATA",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T17:C2'",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T18_5cm_25f3e210_9ef7_433b_9d5b_9b2f3ee3201a",
+      "name": "T18_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T18_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd",
+      "name": "T18:C1 - FINISARE NEVERIFICATA",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C1'",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd",
+      "name": "T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_edge_audit_20261017/observed_edges.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C1'",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260",
+      "name": "T18:C2 - IPOTEZA ANEXA / MUCHIE DE VERIFICAT",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_continuation_20261017/annex_review_final.gpkg|layername=CURRENT_ROOFS_AND_ANNEX_HYPOTHESIS|subset=\"body_id\" = 'T18:C2'",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5",
+      "name": "T18:C2 - MUCHIE OBSERVATA / DE VERIFICAT",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_edge_audit_20261017/observed_edges.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C2'",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364",
+      "name": "T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_continuation_20261017/annex_review_final.gpkg|layername=BOUNDARY_CONFLICT",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 1,
+      "editable": false,
+      "modified": false
+    },
+    {
+      "id": "T18___DETALIU_SID_5cm_df19f540_3a6b_48ad_a4b6_ce96b75c88bb",
+      "name": "T18 - DETALIU SID 5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_edge_audit_20261017/T18_detail_5cm.tif",
+      "valid": true,
+      "crs": ""
+    },
+    {
+      "id": "T18___SURSA_NATIVA___detaliu_muchie_ef0642d3_c4dd_4100_8d69_f70ea59d0c5c",
+      "name": "T18 - SURSA NATIVA / detaliu muchie",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_edge_audit_20261017/T18_native_seam.tif",
+      "valid": true,
+      "crs": ""
+    },
+    {
+      "id": "T19_5cm_2ed3ce64_c9f4_470a_8d34_26540cdcdc4a",
+      "name": "T19_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T19_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "T20_5cm_c4ba247e_4511_401f_83ad_a7bb8f1bd49c",
+      "name": "T20_5cm",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T20_5cm.tif",
+      "valid": true,
+      "crs": "EPSG:3844"
+    },
+    {
+      "id": "TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6",
+      "name": "TESTE_10_REZULTATE",
+      "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/review18_20261013/review18.gpkg|layername=TESTE_10_REZULTATE|subset=\"test_id\" IN ('T01','T02','T03','T04')",
+      "valid": true,
+      "crs": "EPSG:3844",
+      "count": 4,
+      "editable": false,
+      "modified": false
+    }
+  ],
+  "canvas_layers": [
+    "LOT5___Acoperis_Ortho90__Cyan__dbf9128a_860e_47a3_beaf_d83acb46bd45",
+    "LOT5___Amprenta_Sol_ANCPI__0_40m__Verde__c2d0103d_0c60_4e9f_b27f_f863418f9452",
+    "LOT3___Acoperis_Ortho90__Cyan__16f61bcb_e830_4943_a759_95af5e7b28b9",
+    "LOT3___Amprenta_Sol_ANCPI__0_40m__Verde__bb3d9a20_4a45_4d05_b9ce_a41e09d43195",
+    "LOT4___Acoperis_Ortho90__Cyan__a3816a73_4d66_4bec_bcfe_017641837e58",
+    "LOT4___Amprenta_Sol_ANCPI__0_40m__Verde__239b1f8b_1ef7_42d7_9032_ba099fa69a36",
+    "RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4",
+    "B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145",
+    "TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6",
+    "ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f",
+    "Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d",
+    "Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba",
+    "Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551",
+    "Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86",
+    "Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c",
+    "Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17",
+    "Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b",
+    "Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4"
+  ]
+}
