@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-19",
+  "scope": "All 216 current B case sheets, before/selected and 1026 displayed alternatives",
+  "visual_cases_reviewed": 216,
+  "displayed_alternatives": 1026,
+  "counts": {
+    "REVIEW": 134,
+    "PLAUSIBLE": 23,
+    "INCORRECT": 59
+  },
+  "is_measured_accuracy": false,
+  "is_owner_acceptance": false,
+  "geometry_edits": false,
+  "review_basis": "Visual inspection of original 1710x855 rendered sheets; no native-source measurement or independent field truth",
+  "limits": [
+    "Some variant captions overlap; full algorithm reasons remain in source report.json",
+    "One observation per case; no separate acceptance verdict for each alternative",
+    "Only current B v2 and previous geometry shown beside it; not every archived experimental run",
+    "216 candidates include overlapping parts/whole hypotheses; not 216 proven distinct buildings",
+    "Missing buildings outside supplied cases were not exhaustively surveyed"
+  ],
+  "source_files": {
+    "report.json": "fb381b5df7e0a653a987b25c0c363868f64e03190899cea27db71701bfac9696",
+    "visual_manifest.json": "0264aab03cfc936cae3436631d67fa48708ffad2af61e75b7e981b2723bc6de9",
+    "simple_variations.gpkg": "3ba03db4d439745fa7d0dff1b30a37de64c9c064e2237219ff45cc3629f33045"
+  },
+  "active_gpkg_matches_head": true
+}

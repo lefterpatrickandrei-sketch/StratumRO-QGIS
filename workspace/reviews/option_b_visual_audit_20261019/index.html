@@ -1,0 +1,1312 @@
+<!doctype html><html lang="ro"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StratumRO — audit vizual integral B</title>
+<style>body{font:17px/1.55 system-ui,sans-serif;max-width:1450px;margin:32px auto;padding:0 24px;color:#182334;background:#f5f7fa}a{color:#064eab}h1{font-size:30px}h2{margin-top:36px}article{background:white;border:1px solid #ccd3dd;border-left:6px solid #926300;padding:20px;margin:24px 0}article.INCORRECT{border-left-color:#b91c1c}article.PLAUSIBLE{border-left-color:#287443}img{width:100%;height:auto;border:1px solid #ddd}table{border-collapse:collapse;background:white;width:100%}td,th{border:1px solid #ccd3dd;padding:10px;text-align:left}nav a{display:inline-block;margin:6px 16px 6px 0}small{color:#485467}summary{cursor:pointer}code{overflow-wrap:anywhere} .status{font-weight:bold}</style>
+<h1>Audit vizual integral al opțiunii B</h1><p>216/216 planșe inspectate, înainte/după și 1.026 variante afișate. Data: 19 octombrie 2026.</p>
+<p><strong>Verdict: B necesită corecții înainte de livrarea automată.</strong> Auditul nu modifică geometriile, selecția activă sau acceptările proprietarului.</p>
+<table><tr><th>Concluzie de inspecție</th><th>Cazuri</th><th>Interpretare</th></tr>
+<tr><td>Eroare vizibilă</td><td>59</td><td>Eroare vizibilă în rezultatul prezentat, inclusiv fragmente sau fals candidat.</td></tr>
+<tr><td>Necesită verificare</td><td>134</td><td>Incertitudini de contur, identitate, ocluzie sau completitudine; nu echivalează cu respins.</td></tr>
+<tr><td>Plauzibil vizual</td><td>23</td><td>Coerent vizual la scara planșei; nu este acceptare cadastrală sau a proprietarului.</td></tr>
+</table><p>Aceste numere nu măsoară acuratețea modelului. Cazurile pot include aripi, componente suprapuse și același obiect în ipoteze diferite.</p>
+<h2>Ce trebuie rezolvat</h2><ol><li>Identificarea acoperișului complet înainte de simplificare: B120, B143, B176, B204.</li><li>Falsuri pe arbori, platforme și șantier: B024, B066, B192, B210.</li><li>Protejarea retragerilor reale: B035, B049, B055, B096, B109; numărul minim de noduri nu decide singur.</li><li>Relații parte–întreg și suprapuneri: B126/B174, B154/B169/B215, B151/B190.</li><li>Goluri de echipament și zgomot confundate cu curți: B043, B068, B110, B157.</li><li>Citire completă peste NoData înainte de un contur final: B180–B184, B197, B213.</li></ol>
+<p><a href="../option_b_simple_variations_20261018_v2/index.html">Raportul B original</a> · <a href="../option_b_simple_variations_20261018_v2/report.json">Deciziile algoritmului și motivele integrale</a></p>
+<details><summary>Metodă și limite</summary><p>Am inspectat toate planșele originale 1710 × 855, comparând conturul anterior, selecția și variantele vizibile. Unele texte ale variantelor sunt suprapuse în planșe; motivele integrale se citesc în JSON-ul original. Observația este la nivel de caz; nu atribuie un verdict independent fiecăreia dintre cele 1.026 variante.</p><p>Nu am făcut măsurători pe sursa nativă, verificare de teren, verificare cadastrală sau inventar exhaustiv al clădirilor omise. Istoricul tuturor rulărilor arhivate nu este certificat prin acest audit. Hash-ul fiecărei planșe este verificat; GeoPackage-ul activ este identic cu HEAD.</p></details>
+<h2>Index complet</h2><p>Folosește căutarea browserului pentru identificator sau deschide o planșă la rezoluția originală.</p><nav>
+<a href="#OPT_B_001:C1">B_001 — Necesită verificare</a>
+<a href="#OPT_B_002:C1">B_002 — Plauzibil vizual</a>
+<a href="#OPT_B_003:C1">B_003 — Necesită verificare</a>
+<a href="#OPT_B_004:C1">B_004 — Plauzibil vizual</a>
+<a href="#OPT_B_005:C1">B_005 — Necesită verificare</a>
+<a href="#OPT_B_006:C1">B_006 — Plauzibil vizual</a>
+<a href="#OPT_B_007:C1">B_007 — Necesită verificare</a>
+<a href="#OPT_B_008:C1">B_008 — Plauzibil vizual</a>
+<a href="#OPT_B_009:C1">B_009 — Necesită verificare</a>
+<a href="#OPT_B_010:C1">B_010 — Necesită verificare</a>
+<a href="#OPT_B_011:C1">B_011 — Necesită verificare</a>
+<a href="#OPT_B_012:C1">B_012 — Plauzibil vizual</a>
+<a href="#OPT_B_013:C1">B_013 — Necesită verificare</a>
+<a href="#OPT_B_014:C1">B_014 — Necesită verificare</a>
+<a href="#OPT_B_015:C1">B_015 — Necesită verificare</a>
+<a href="#OPT_B_016:C1">B_016 — Necesită verificare</a>
+<a href="#OPT_B_017:C1">B_017 — Eroare vizibilă</a>
+<a href="#OPT_B_018:C1">B_018 — Necesită verificare</a>
+<a href="#OPT_B_019:C1">B_019 — Plauzibil vizual</a>
+<a href="#OPT_B_020:C1">B_020 — Necesită verificare</a>
+<a href="#OPT_B_021:C1">B_021 — Necesită verificare</a>
+<a href="#OPT_B_022:C1">B_022 — Plauzibil vizual</a>
+<a href="#OPT_B_023:C1">B_023 — Necesită verificare</a>
+<a href="#OPT_B_024:C1">B_024 — Eroare vizibilă</a>
+<a href="#OPT_B_025:C1">B_025 — Necesită verificare</a>
+<a href="#OPT_B_026:C1">B_026 — Necesită verificare</a>
+<a href="#OPT_B_027:C1">B_027 — Necesită verificare</a>
+<a href="#OPT_B_028:C1">B_028 — Plauzibil vizual</a>
+<a href="#OPT_B_029:C1">B_029 — Plauzibil vizual</a>
+<a href="#OPT_B_030:C1">B_030 — Necesită verificare</a>
+<a href="#OPT_B_031:C1">B_031 — Plauzibil vizual</a>
+<a href="#OPT_B_032:C1">B_032 — Necesită verificare</a>
+<a href="#OPT_B_033:C1">B_033 — Necesită verificare</a>
+<a href="#OPT_B_034:C1">B_034 — Necesită verificare</a>
+<a href="#OPT_B_035:C1">B_035 — Eroare vizibilă</a>
+<a href="#OPT_B_036:C1">B_036 — Necesită verificare</a>
+<a href="#OPT_B_037:C1">B_037 — Necesită verificare</a>
+<a href="#OPT_B_038:C1">B_038 — Necesită verificare</a>
+<a href="#OPT_B_039:C1">B_039 — Eroare vizibilă</a>
+<a href="#OPT_B_040:C1">B_040 — Necesită verificare</a>
+<a href="#OPT_B_041:C1">B_041 — Necesită verificare</a>
+<a href="#OPT_B_042:C1">B_042 — Necesită verificare</a>
+<a href="#OPT_B_043:C1">B_043 — Eroare vizibilă</a>
+<a href="#OPT_B_044:C1">B_044 — Necesită verificare</a>
+<a href="#OPT_B_045:C1">B_045 — Necesită verificare</a>
+<a href="#OPT_B_046:C1">B_046 — Plauzibil vizual</a>
+<a href="#OPT_B_047:C1">B_047 — Necesită verificare</a>
+<a href="#OPT_B_048:C1">B_048 — Eroare vizibilă</a>
+<a href="#OPT_B_049:C1">B_049 — Eroare vizibilă</a>
+<a href="#OPT_B_050:C1">B_050 — Eroare vizibilă</a>
+<a href="#OPT_B_051:C1">B_051 — Necesită verificare</a>
+<a href="#OPT_B_052:C1">B_052 — Necesită verificare</a>
+<a href="#OPT_B_053:C1">B_053 — Necesită verificare</a>
+<a href="#OPT_B_054:C1">B_054 — Necesită verificare</a>
+<a href="#OPT_B_055:C1">B_055 — Eroare vizibilă</a>
+<a href="#OPT_B_056:C1">B_056 — Plauzibil vizual</a>
+<a href="#OPT_B_057:C1">B_057 — Eroare vizibilă</a>
+<a href="#OPT_B_058:C1">B_058 — Necesită verificare</a>
+<a href="#OPT_B_059:C1">B_059 — Plauzibil vizual</a>
+<a href="#OPT_B_060:C1">B_060 — Necesită verificare</a>
+<a href="#OPT_B_061:C1">B_061 — Necesită verificare</a>
+<a href="#OPT_B_062:C1">B_062 — Eroare vizibilă</a>
+<a href="#OPT_B_063:C1">B_063 — Necesită verificare</a>
+<a href="#OPT_B_064:C1">B_064 — Plauzibil vizual</a>
+<a href="#OPT_B_065:C1">B_065 — Plauzibil vizual</a>
+<a href="#OPT_B_066:C1">B_066 — Eroare vizibilă</a>
+<a href="#OPT_B_067:C1">B_067 — Necesită verificare</a>
+<a href="#OPT_B_068:C1">B_068 — Eroare vizibilă</a>
+<a href="#OPT_B_069:C1">B_069 — Necesită verificare</a>
+<a href="#OPT_B_070:C1">B_070 — Necesită verificare</a>
+<a href="#OPT_B_071:C1">B_071 — Necesită verificare</a>
+<a href="#OPT_B_072:C1">B_072 — Necesită verificare</a>
+<a href="#OPT_B_073:C1">B_073 — Necesită verificare</a>
+<a href="#OPT_B_074:C1">B_074 — Necesită verificare</a>
+<a href="#OPT_B_075:C1">B_075 — Necesită verificare</a>
+<a href="#OPT_B_076:C1">B_076 — Eroare vizibilă</a>
+<a href="#OPT_B_077:C1">B_077 — Eroare vizibilă</a>
+<a href="#OPT_B_078:C1">B_078 — Necesită verificare</a>
+<a href="#OPT_B_079:C1">B_079 — Plauzibil vizual</a>
+<a href="#OPT_B_080:C1">B_080 — Necesită verificare</a>
+<a href="#OPT_B_081:C1">B_081 — Necesită verificare</a>
+<a href="#OPT_B_082:C1">B_082 — Plauzibil vizual</a>
+<a href="#OPT_B_083:C1">B_083 — Plauzibil vizual</a>
+<a href="#OPT_B_084:C1">B_084 — Eroare vizibilă</a>
+<a href="#OPT_B_085:C1">B_085 — Necesită verificare</a>
+<a href="#OPT_B_086:C1">B_086 — Necesită verificare</a>
+<a href="#OPT_B_087:C1">B_087 — Eroare vizibilă</a>
+<a href="#OPT_B_088:C1">B_088 — Necesită verificare</a>
+<a href="#OPT_B_089:C1">B_089 — Necesită verificare</a>
+<a href="#OPT_B_090:C1">B_090 — Plauzibil vizual</a>
+<a href="#OPT_B_091:C1">B_091 — Necesită verificare</a>
+<a href="#OPT_B_092:C1">B_092 — Necesită verificare</a>
+<a href="#OPT_B_093:C1">B_093 — Necesită verificare</a>
+<a href="#OPT_B_094:C1">B_094 — Eroare vizibilă</a>
+<a href="#OPT_B_095:C1">B_095 — Necesită verificare</a>
+<a href="#OPT_B_096:C1">B_096 — Eroare vizibilă</a>
+<a href="#OPT_B_097:C1">B_097 — Necesită verificare</a>
+<a href="#OPT_B_098:C1">B_098 — Necesită verificare</a>
+<a href="#OPT_B_099:C1">B_099 — Necesită verificare</a>
+<a href="#OPT_B_100:C1">B_100 — Necesită verificare</a>
+<a href="#OPT_B_101:C1">B_101 — Necesită verificare</a>
+<a href="#OPT_B_102:C1">B_102 — Necesită verificare</a>
+<a href="#OPT_B_103:C1">B_103 — Necesită verificare</a>
+<a href="#OPT_B_104:C1">B_104 — Eroare vizibilă</a>
+<a href="#OPT_B_105:C1">B_105 — Necesită verificare</a>
+<a href="#OPT_B_106:C1">B_106 — Necesită verificare</a>
+<a href="#OPT_B_107:C1">B_107 — Necesită verificare</a>
+<a href="#OPT_B_108:C1">B_108 — Eroare vizibilă</a>
+<a href="#OPT_B_109:C1">B_109 — Eroare vizibilă</a>
+<a href="#OPT_B_110:C1">B_110 — Eroare vizibilă</a>
+<a href="#OPT_B_111:C1">B_111 — Plauzibil vizual</a>
+<a href="#OPT_B_112:C1">B_112 — Eroare vizibilă</a>
+<a href="#OPT_B_113:C1">B_113 — Necesită verificare</a>
+<a href="#OPT_B_114:C1">B_114 — Necesită verificare</a>
+<a href="#OPT_B_115:C1">B_115 — Eroare vizibilă</a>
+<a href="#OPT_B_116:C1">B_116 — Necesită verificare</a>
+<a href="#OPT_B_117:C1">B_117 — Necesită verificare</a>
+<a href="#OPT_B_118:C1">B_118 — Eroare vizibilă</a>
+<a href="#OPT_B_119:C1">B_119 — Plauzibil vizual</a>
+<a href="#OPT_B_120:C1">B_120 — Eroare vizibilă</a>
+<a href="#OPT_B_121:C1">B_121 — Necesită verificare</a>
+<a href="#OPT_B_122:C1">B_122 — Necesită verificare</a>
+<a href="#OPT_B_123:C1">B_123 — Necesită verificare</a>
+<a href="#OPT_B_124:C1">B_124 — Necesită verificare</a>
+<a href="#OPT_B_125:C1">B_125 — Necesită verificare</a>
+<a href="#OPT_B_126:C1">B_126 — Necesită verificare</a>
+<a href="#OPT_B_127:C1">B_127 — Necesită verificare</a>
+<a href="#OPT_B_128:C1">B_128 — Necesită verificare</a>
+<a href="#OPT_B_129:C1">B_129 — Eroare vizibilă</a>
+<a href="#OPT_B_130:C1">B_130 — Necesită verificare</a>
+<a href="#OPT_B_131:C1">B_131 — Necesită verificare</a>
+<a href="#OPT_B_132:C1">B_132 — Necesită verificare</a>
+<a href="#OPT_B_133:C1">B_133 — Necesită verificare</a>
+<a href="#OPT_B_134:C1">B_134 — Necesită verificare</a>
+<a href="#OPT_B_135:C1">B_135 — Necesită verificare</a>
+<a href="#OPT_B_136:C1">B_136 — Plauzibil vizual</a>
+<a href="#OPT_B_137:C1">B_137 — Eroare vizibilă</a>
+<a href="#OPT_B_138:C1">B_138 — Necesită verificare</a>
+<a href="#OPT_B_139:C1">B_139 — Necesită verificare</a>
+<a href="#OPT_B_140:C1">B_140 — Necesită verificare</a>
+<a href="#OPT_B_141:C1">B_141 — Necesită verificare</a>
+<a href="#OPT_B_142:C1">B_142 — Necesită verificare</a>
+<a href="#OPT_B_143:C1">B_143 — Eroare vizibilă</a>
+<a href="#OPT_B_144:C1">B_144 — Eroare vizibilă</a>
+<a href="#OPT_B_145:C1">B_145 — Necesită verificare</a>
+<a href="#OPT_B_146:C1">B_146 — Necesită verificare</a>
+<a href="#OPT_B_147:C1">B_147 — Necesită verificare</a>
+<a href="#OPT_B_148:C1">B_148 — Necesită verificare</a>
+<a href="#OPT_B_149:C1">B_149 — Necesită verificare</a>
+<a href="#OPT_B_150:C1">B_150 — Necesită verificare</a>
+<a href="#OPT_B_151:C1">B_151 — Necesită verificare</a>
+<a href="#OPT_B_152:C1">B_152 — Necesită verificare</a>
+<a href="#OPT_B_153:C1">B_153 — Eroare vizibilă</a>
+<a href="#OPT_B_154:C1">B_154 — Necesită verificare</a>
+<a href="#OPT_B_155:C1">B_155 — Necesită verificare</a>
+<a href="#OPT_B_156:C1">B_156 — Eroare vizibilă</a>
+<a href="#OPT_B_157:C1">B_157 — Eroare vizibilă</a>
+<a href="#OPT_B_158:C1">B_158 — Necesită verificare</a>
+<a href="#OPT_B_159:C1">B_159 — Necesită verificare</a>
+<a href="#OPT_B_160:C1">B_160 — Necesită verificare</a>
+<a href="#OPT_B_161:C1">B_161 — Necesită verificare</a>
+<a href="#OPT_B_162:C1">B_162 — Necesită verificare</a>
+<a href="#OPT_B_163:C1">B_163 — Necesită verificare</a>
+<a href="#OPT_B_164:C1">B_164 — Necesită verificare</a>
+<a href="#OPT_B_165:C1">B_165 — Plauzibil vizual</a>
+<a href="#OPT_B_166:C1">B_166 — Necesită verificare</a>
+<a href="#OPT_B_167:C1">B_167 — Necesită verificare</a>
+<a href="#OPT_B_168:C1">B_168 — Necesită verificare</a>
+<a href="#OPT_B_169:C1">B_169 — Necesită verificare</a>
+<a href="#OPT_B_170:C1">B_170 — Eroare vizibilă</a>
+<a href="#OPT_B_171:C1">B_171 — Necesită verificare</a>
+<a href="#OPT_B_172:C1">B_172 — Necesită verificare</a>
+<a href="#OPT_B_173:C1">B_173 — Necesită verificare</a>
+<a href="#OPT_B_174:C1">B_174 — Necesită verificare</a>
+<a href="#OPT_B_175:C1">B_175 — Eroare vizibilă</a>
+<a href="#OPT_B_176:C1">B_176 — Eroare vizibilă</a>
+<a href="#OPT_B_177:C1">B_177 — Necesită verificare</a>
+<a href="#OPT_B_178:C1">B_178 — Necesită verificare</a>
+<a href="#OPT_B_179:C1">B_179 — Necesită verificare</a>
+<a href="#OPT_B_180:C1">B_180 — Eroare vizibilă</a>
+<a href="#OPT_B_181:C1">B_181 — Necesită verificare</a>
+<a href="#OPT_B_182:C1">B_182 — Eroare vizibilă</a>
+<a href="#OPT_B_183:C1">B_183 — Eroare vizibilă</a>
+<a href="#OPT_B_184:C1">B_184 — Necesită verificare</a>
+<a href="#OPT_B_185:C1">B_185 — Eroare vizibilă</a>
+<a href="#OPT_B_186:C1">B_186 — Necesită verificare</a>
+<a href="#OPT_B_187:C1">B_187 — Necesită verificare</a>
+<a href="#OPT_B_188:C1">B_188 — Eroare vizibilă</a>
+<a href="#OPT_B_189:C1">B_189 — Necesită verificare</a>
+<a href="#OPT_B_190:C1">B_190 — Eroare vizibilă</a>
+<a href="#OPT_B_191:C1">B_191 — Necesită verificare</a>
+<a href="#OPT_B_192:C1">B_192 — Eroare vizibilă</a>
+<a href="#OPT_B_193:C1">B_193 — Necesită verificare</a>
+<a href="#OPT_B_194:C1">B_194 — Necesită verificare</a>
+<a href="#OPT_B_195:C1">B_195 — Eroare vizibilă</a>
+<a href="#OPT_B_196:C1">B_196 — Necesită verificare</a>
+<a href="#OPT_B_197:C1">B_197 — Eroare vizibilă</a>
+<a href="#OPT_B_198:C1">B_198 — Eroare vizibilă</a>
+<a href="#OPT_B_199:C1">B_199 — Eroare vizibilă</a>
+<a href="#OPT_B_200:C1">B_200 — Eroare vizibilă</a>
+<a href="#OPT_B_201:C1">B_201 — Eroare vizibilă</a>
+<a href="#OPT_B_202:C1">B_202 — Eroare vizibilă</a>
+<a href="#OPT_B_203:C1">B_203 — Necesită verificare</a>
+<a href="#OPT_B_204:C1">B_204 — Eroare vizibilă</a>
+<a href="#OPT_B_205:C1">B_205 — Eroare vizibilă</a>
+<a href="#OPT_B_206:C1">B_206 — Eroare vizibilă</a>
+<a href="#OPT_B_207:C1">B_207 — Eroare vizibilă</a>
+<a href="#OPT_B_208:C1">B_208 — Eroare vizibilă</a>
+<a href="#OPT_B_209:C1">B_209 — Necesită verificare</a>
+<a href="#OPT_B_210:C1">B_210 — Eroare vizibilă</a>
+<a href="#OPT_B_211:C1">B_211 — Eroare vizibilă</a>
+<a href="#OPT_B_212:C1">B_212 — Necesită verificare</a>
+<a href="#OPT_B_213:C1">B_213 — Eroare vizibilă</a>
+<a href="#OPT_B_214:C1">B_214 — Necesită verificare</a>
+<a href="#OPT_B_215:C1">B_215 — Necesită verificare</a>
+<a href="#OPT_B_216:C1">B_216 — Necesită verificare</a>
+</nav>
+<article class="REVIEW" id="OPT_B_001:C1"><h2>OPT_B_001:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis metalic lung; conturul selectat pastreaza treapta laterala. Dreptunghiurile alternative elimina acea diferenta; trebuie stabilit daca e retragere reala.</p>
+<p>10 → 10 noduri; 3 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_001_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_001_C1.jpg" alt="OPT_B_001:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>5cfde40657030bdaaa1a4d6cad4b3d5e8b617c9f8b04979c6056a53c29d1778f</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_002:C1"><h2>OPT_B_002:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Acoperis rosu lung separat de vegetatie; dreptunghiul urmareste forma dominanta. Diferente mici la capete necesita verificare metrica.</p>
+<p>11 → 4 noduri; 3 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_002_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_002_C1.jpg" alt="OPT_B_002:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>8555446b226bbf783eac56aa0ff60de2ee2af08639c6485deabf543940b0b4c4</code></small></details></article>
+<article class="REVIEW" id="OPT_B_003:C1"><h2>OPT_B_003:C1</h2>
+<p class="status">Necesită verificare</p><p>Forma in patru colturi uniformizeaza o variatie vizibila pe latura stanga; variantele cu sase/opt colturi pastreaza mai bine acea configuratie. Verificat doar din planse, nu alegere finala.</p>
+<p>11 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_003_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_003_C1.jpg" alt="OPT_B_003:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>76009551a4a099e4ed6928d30d8a7bae20ca97f145fd6fb49e8c396b6ab6aa7d</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_004:C1"><h2>OPT_B_004:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Corp gri dreptunghiular separat de corpul de sus. Rectificarea elimina colturi mici; marginea de sus necesita precizie locala.</p>
+<p>7 → 4 noduri; 3 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_004_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_004_C1.jpg" alt="OPT_B_004:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>9fa49d6a453d12aa09268d43836d5df9482ed5f3eaf80ef5140cb8b7a648ff50</code></small></details></article>
+<article class="REVIEW" id="OPT_B_005:C1"><h2>OPT_B_005:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp intunecat delimitat simplu; legatura cu extensiile din stanga si umbra de jos necesita identificare de corp, nu unire automata.</p>
+<p>9 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_005_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_005_C1.jpg" alt="OPT_B_005:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>1f21c4c01bff00caa712dcebca75a94b268fdeaa072c1b616010cb1cca21c994</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_006:C1"><h2>OPT_B_006:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Sera/corp mare aproape dreptunghiular; patru laturi sunt coerente vizual, fara includerea anexelor vecine.</p>
+<p>10 → 4 noduri; 3 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_006_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_006_C1.jpg" alt="OPT_B_006:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>dbff51074654e2e3da3914abcb17aac33a1478fbe6befc80cf061dbfcb0bec4e</code></small></details></article>
+<article class="REVIEW" id="OPT_B_007:C1"><h2>OPT_B_007:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis rosu articulat, partial ascuns de arbori. Simplificarea la sase noduri este mai clara, dar muchia oblica stanga si capetele nu sunt confirmate complet.</p>
+<p>16 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_007_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_007_C1.jpg" alt="OPT_B_007:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>404142c9449e82e892f01253fe7ad0ef38a38295d75affc74e14172276825a8b</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_008:C1"><h2>OPT_B_008:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Acoperisul rosu rectangular este separat de corpul vestic gri, conform identitatii T10; nu inseamna acceptare a noii geometrii.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_008_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_008_C1.jpg" alt="OPT_B_008:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>3497778bf98d6553ff5c34b14412901ad9fa96f67e01f04db4ef65333be09c10</code></small></details></article>
+<article class="REVIEW" id="OPT_B_009:C1"><h2>OPT_B_009:C1</h2>
+<p class="status">Necesită verificare</p><p>Contur articulat sub arbori; modelul urmareste limita vizibila a coroanei pe interior. Variantele ortogonale inventeaza trepte; acoperirea ascunsa nu poate fi confirmata.</p>
+<p>17 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_009_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_009_C1.jpg" alt="OPT_B_009:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>fd509fc65472c37227e07998dff3030a4e30a7439c5d5a8e18df4711e14205f9</code></small></details></article>
+<article class="REVIEW" id="OPT_B_010:C1"><h2>OPT_B_010:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis aproape rectangular, dar simplificarea elimina retragerea estica vizibila in masca. Necesara verificarea realitatii acelei retrageri; V3 pastreaza L.</p>
+<p>6 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_010_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_010_C1.jpg" alt="OPT_B_010:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>19534764dd3369d8efa6133e92f5d65f955ba02e715ff7d438d0361e577836f5</code></small></details></article>
+<article class="REVIEW" id="OPT_B_011:C1"><h2>OPT_B_011:C1</h2>
+<p class="status">Necesită verificare</p><p>Hala alba lunga; varf artificial pe marginea nordica si gaura minuscula duc la eticheta COURTYARD fara dovada unei curti. Forma simpla finala ramane cu artefact.</p>
+<p>13 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_011_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_011_C1.jpg" alt="OPT_B_011:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>a26554f22ff77fdb4c6d00272d4a9f1d94b1a8e88e31217dec90d67de041c9b5</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_012:C1"><h2>OPT_B_012:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Corp patrulater izolat, acoperis integral vizibil; contur coerent la scara plansei, fara vecini inclusi.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_012_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_012_C1.jpg" alt="OPT_B_012:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ee56039ffa50986d812b4b054a8452fa64558df27c1550dfbb909a2022bcb6d8</code></small></details></article>
+<article class="REVIEW" id="OPT_B_013:C1"><h2>OPT_B_013:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp lung cu latime variabila spre sud; dreptunghiul poate adauga teren langa partea ingusta. V2 pastreaza mai fidel retragerea.</p>
+<p>10 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_013_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_013_C1.jpg" alt="OPT_B_013:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>9a19e21f64d01122e2928cc889644aeb8ca0f10e37c31807fc836dd4a84737b7</code></small></details></article>
+<article class="REVIEW" id="OPT_B_014:C1"><h2>OPT_B_014:C1</h2>
+<p class="status">Necesită verificare</p><p>Anexa deschisa la culoare, distincta de corpul rosu. Dreptunghiul elimina o variatie vestica; verificare margine necesara.</p>
+<p>8 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_014_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_014_C1.jpg" alt="OPT_B_014:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>182638c980ec4728dd6fc43c16991d9455e77399a4e0f4654f144b7cdab7da57</code></small></details></article>
+<article class="REVIEW" id="OPT_B_015:C1"><h2>OPT_B_015:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp lung cu decalaj lateral in jumatatea sudica; dreptunghiul indreapta decalajul si poate intra in afara acoperisului. Varianta V2 mentine diferenta.</p>
+<p>10 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_015_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_015_C1.jpg" alt="OPT_B_015:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>592a1a5c1c1d1721653f87dcfbc4d921402c21053d5a4b3d59681833d81b9eb2</code></small></details></article>
+<article class="REVIEW" id="OPT_B_016:C1"><h2>OPT_B_016:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp ingust rosu partial ascuns de arbori. Patru colturi sunt o ipoteza; geometria capatului nordic ramane incerta.</p>
+<p>15 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_016_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_016_C1.jpg" alt="OPT_B_016:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>15732bfeb924a39c60ab7a1eb30b96d049d590482792c8fd0144aa519a9a27fa</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_017:C1"><h2>OPT_B_017:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Varf triunghiular artificial in nord-est si muchie diagonala care taie zona de acoperis. Variantele locale eligibile nu rezolva selectia corpului; este necesara redetectarea delimitarii.</p>
+<p>6 → 5 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_017_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_017_C1.jpg" alt="OPT_B_017:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>327dc68474adc39d03d3866390fb6b837046b3399e29b1bc23b8b6b153d4e281</code></small></details></article>
+<article class="REVIEW" id="OPT_B_018:C1"><h2>OPT_B_018:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis gri cu latura de nord acoperita de arbori; geometria urmeaza decupajul vizibil, nu exista dovada conturului integral. Dreptunghiurile respinse adauga mult teren.</p>
+<p>14 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_018_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_018_C1.jpg" alt="OPT_B_018:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>a027d1346444da990be99257f12a9b4e83fd24ce1b65500e91e0b3be2efdb5bb</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_019:C1"><h2>OPT_B_019:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Acoperis principal dreptunghiular izolat; piscina si vecinii nu sunt incluse. Margini coerente vizual.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_019_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_019_C1.jpg" alt="OPT_B_019:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>81fbb45e97771146003d4b3eb58e7dbc56b7c6f9b350df73c2b0d446eb81f6c4</code></small></details></article>
+<article class="REVIEW" id="OPT_B_020:C1"><h2>OPT_B_020:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul simplifica hala, dar suprima retrageri/proiectii pe laturile lungi. V3 in 12 noduri pastreaza configuratia articulata; nu se poate declara automat superior conturul cu patru noduri.</p>
+<p>24 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_020_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_020_C1.jpg" alt="OPT_B_020:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4d2ff185998f73bf08b50ebe8d874398b94642702dcd506ce306b5ccf41a53cb</code></small></details></article>
+<article class="REVIEW" id="OPT_B_021:C1"><h2>OPT_B_021:C1</h2>
+<p class="status">Necesită verificare</p><p>Hala gri cu NoData pe contur si multe noduri pastrate; muchia sudica ocoleste golul de date. Nici finalul pastrat nu este complet/finisat.</p>
+<p>48 → 48 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_021_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_021_C1.jpg" alt="OPT_B_021:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c918f72b0f3c89abac69555c33b0c874c3e5cabdad51adacc5e20222fdf05117</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_022:C1"><h2>OPT_B_022:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Corp rosu lung separat de cel verde si anexa nordica; dreptunghiul este coerent la scara imaginii. Capatul vestic trebuie verificat la rezolutie mai fina.</p>
+<p>12 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_022_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_022_C1.jpg" alt="OPT_B_022:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>e8639682faa31e9ebdd2a9010c28e786bd62d3f4ecfd496ac0233ff50b7ff52e</code></small></details></article>
+<article class="REVIEW" id="OPT_B_023:C1"><h2>OPT_B_023:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp rosu cu margine nordica si estica mascata de arbori; simplificarea rectangulara ramane ipoteza, acoperirea completa nu este demonstrata.</p>
+<p>12 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_023_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_023_C1.jpg" alt="OPT_B_023:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ac231af45a7d99e810d84a7993f009ce0bb0dcd95d25c6c0e7cee89885a8ae04</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_024:C1"><h2>OPT_B_024:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Poligonul inconjoara coroana unui arbore, nu acoperisul alb din dreapta. Toate alternativele simplifica obiectul gresit; fals candidat optic puternic suspect.</p>
+<p>11 → 11 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_024_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_024_C1.jpg" alt="OPT_B_024:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>573e9858023b7a9af6b99c8a5d3e479696ce5dd255781e852c2cfe44d8600117</code></small></details></article>
+<article class="REVIEW" id="OPT_B_025:C1"><h2>OPT_B_025:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghi pe petic de tabla ruginit in interiorul unui complex mare; geometria este simpla, dar corpul poate fi doar o portiune de material din acelasi acoperis gri. Identitate neconfirmata.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_025_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_025_C1.jpg" alt="OPT_B_025:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>59b62693e2284797dfc9a259de9e6063a2d55f344207acc480659b6d90fe965c</code></small></details></article>
+<article class="REVIEW" id="OPT_B_026:C1"><h2>OPT_B_026:C1</h2>
+<p class="status">Necesită verificare</p><p>Selecteaza doar portiunea deschisa la culoare dintre doua acoperisuri; nu demonstreaza un corp independent. Risc de fragmentare dupa material.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_026_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_026_C1.jpg" alt="OPT_B_026:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>b5bb6383bb3b8337b4c4f39fdb963d74339ca5bc5dc2a6f4b5a2a7f4de769311</code></small></details></article>
+<article class="REVIEW" id="OPT_B_027:C1"><h2>OPT_B_027:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp rosu vizibil; dreptunghiul umple retragerea sud-vestica. Variantele L pastreaza detaliul, trebuie decis daca acesta e parte reala a formei.</p>
+<p>9 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_027_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_027_C1.jpg" alt="OPT_B_027:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4887fafd42416536da22685f9428f1d727a5f7ae4417cf4e4df99f7034b506a5</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_028:C1"><h2>OPT_B_028:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Corp de tigla cu retrageri in sud-vest, pastrate de opt noduri; contur simplificat urmareste forma dominanta fara vecini inclusi.</p>
+<p>14 → 8 noduri; 6 variante afișate. Familie selectată de algoritm: T_OR_OFFSET. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_028_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_028_C1.jpg" alt="OPT_B_028:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>1040e3794706d0e6f39397339a32969c58d490119e2042961dd6e1100d4fb543</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_029:C1"><h2>OPT_B_029:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Anexa patrata alba delimitata separat de hala mare, coerenta vizual; granita fata de hala se pastreaza.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_029_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_029_C1.jpg" alt="OPT_B_029:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>acc2cbd303b0b44064fc93f64ed92dab4885aa4b3051d71da9a5aa9f805ec348</code></small></details></article>
+<article class="REVIEW" id="OPT_B_030:C1"><h2>OPT_B_030:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp intunecat dreptunghiular intre alte corpuri; delimitare locala plauzibila, dar identitatea si continuitatea spre nord necesita verificare.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_030_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_030_C1.jpg" alt="OPT_B_030:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d64193095336eb6217a95f714e086113afa6d182e71f2aa13d80c04b8f6f39eb</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_031:C1"><h2>OPT_B_031:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Patrulater oblic urmareste acoperisul de tigla; nu forteaza unghiuri drepte peste forma observata. Marginea estica necesita precizie locala.</p>
+<p>5 → 4 noduri; 3 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_031_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_031_C1.jpg" alt="OPT_B_031:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>6730577c4953f4b7855095f510bbf4c94f2d02abd6a32758f2743b7e1b621b11</code></small></details></article>
+<article class="REVIEW" id="OPT_B_032:C1"><h2>OPT_B_032:C1</h2>
+<p class="status">Necesită verificare</p><p>Portiune alba la capatul unei benzi de acoperis cu materiale diferite; poate fi anexa sau fragment. Doar contrastul de material nu justifica obiect separat.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_032_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_032_C1.jpg" alt="OPT_B_032:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0113046d21c7a2358bd0bb67e1ecd38e805c02fe8a36558d694e0f08cdb79419</code></small></details></article>
+<article class="REVIEW" id="OPT_B_033:C1"><h2>OPT_B_033:C1</h2>
+<p class="status">Necesită verificare</p><p>Conturul pastrat ocoleste neregularitati pe corpul rosu; suprapuneri/identitate fata de acoperisul de tigla lipit raman nerezolvate. Alternativa rectangulara verde nu este promovata din cauza QA comun.</p>
+<p>9 → 9 noduri; 3 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_033_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_033_C1.jpg" alt="OPT_B_033:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>357c4f729b76d12224105c2e46531c7c8e1caaba7854d8eaa68815580f66449c</code></small></details></article>
+<article class="REVIEW" id="OPT_B_034:C1"><h2>OPT_B_034:C1</h2>
+<p class="status">Necesită verificare</p><p>Doar jumatatea estica cu tigla a unui ansamblu cu jumatate vestica rosie; posibile corpuri separate, dar simpla culoare nu confirma separarea.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_034_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_034_C1.jpg" alt="OPT_B_034:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>68d3f5a2d6071906c0af0b1806d30726c4a9061e003a742dbe66fe0e16fe10ae</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_035:C1"><h2>OPT_B_035:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Selectia in cinci colturi umple retragerea estica reala cu teren intunecat/verde. Varianta L mentine retragerea; prioritatea pentru putine colturi produce regresie vizibila.</p>
+<p>10 → 5 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_035_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_035_C1.jpg" alt="OPT_B_035:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>544fd2ba041fb0edac88dd066bb16d0bfccf008c634d51c28b55bd9c6c85ecf6</code></small></details></article>
+<article class="REVIEW" id="OPT_B_036:C1"><h2>OPT_B_036:C1</h2>
+<p class="status">Necesită verificare</p><p>Anexa rosie simplificata la dreptunghi; retragerea nordica din masca dispare. Necesara verificarea marginii sub arbore si fata de corpul principal.</p>
+<p>13 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_036_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_036_C1.jpg" alt="OPT_B_036:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>59717e89a0250ad4e29423f297b1e9cbfdf10464037be889a4e656378a0613ee</code></small></details></article>
+<article class="REVIEW" id="OPT_B_037:C1"><h2>OPT_B_037:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis rosu articulat; dreptunghiul elimina retragerea sud-vestica si poate adauga teren. Varianta L pastreaza retragerea, variantele libere pastreaza colturile oblice.</p>
+<p>11 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_037_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_037_C1.jpg" alt="OPT_B_037:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>1f9bbd0716c2557991258e69e7951e1eb507d9889f7ad50d0452118349b8fe08</code></small></details></article>
+<article class="REVIEW" id="OPT_B_038:C1"><h2>OPT_B_038:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis de tigla cu colturi si retrageri; dreptunghiul umple diferentele sudice/estice. Necesara forma patrulatera/articulata sprijinita pe muchii, nu minim de colturi singur.</p>
+<p>12 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_038_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_038_C1.jpg" alt="OPT_B_038:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4cd78543a331d860e62a5ab37104720a2ba4e4be47776ac5d543858ce4989cbe</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_039:C1"><h2>OPT_B_039:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul decupeaza un obiect mic de pe acoperis ca si cum ar fi retragere de cladire si pastreaza gaura de luminator ca COURTYARD. Corpurile si accesoriile de acoperis sunt confundate.</p>
+<p>22 → 22 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_039_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_039_C1.jpg" alt="OPT_B_039:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>1d3d1cec31a75e3b977c8b4fe41a4df98cd779e886a354bc7ebefaa7807d7e71</code></small></details></article>
+<article class="REVIEW" id="OPT_B_040:C1"><h2>OPT_B_040:C1</h2>
+<p class="status">Necesită verificare</p><p>Selecteaza partea alba vizibila in jurul coroanei, cu varf artificial jos; conturul integral sub arbore nu este observat. Probabila fragmentare dupa ocluzie.</p>
+<p>14 → 14 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_040_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_040_C1.jpg" alt="OPT_B_040:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>8fad3eb25bbb808fb5bf4de9cea82b770daa20660d0f8cbba25e4d5c3121af29</code></small></details></article>
+<article class="REVIEW" id="OPT_B_041:C1"><h2>OPT_B_041:C1</h2>
+<p class="status">Necesită verificare</p><p>Banda ingusta rosie in spatele corpului B017; posibil acoperis de anexa sau segment separat al aceluiasi obiect. Inventarul pe corpuri nu e stabilit prin acest contur.</p>
+<p>9 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_041_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_041_C1.jpg" alt="OPT_B_041:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>cfa2664cb5af24577e29a56d9b724a21e38ae6026d7096fd1dc95e9ab85a10d3</code></small></details></article>
+<article class="REVIEW" id="OPT_B_042:C1"><h2>OPT_B_042:C1</h2>
+<p class="status">Necesită verificare</p><p>Forma finala libera are retrageri neregulate; varianta ortogonala V2 poate fi mai coerenta, dar latura sudica si separarea de corpul vestic necesita detaliu.</p>
+<p>12 → 8 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_042_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_042_C1.jpg" alt="OPT_B_042:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>eef493ca02623900b80f43cd6af538bed9c98ecddabe38b552f64a5983ea731d</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_043:C1"><h2>OPT_B_043:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Hala cu 89 noduri; marginea sud-estica urmareste structura/umbrele, iar aparatele de pe acoperis genereaza gauri etichetate COURTYARD. Nefinisat clar.</p>
+<p>89 → 89 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_043_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_043_C1.jpg" alt="OPT_B_043:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d6f3880a197974c9c3338342bcaf9abb6a5dc74d4db1f1eff3ca10129a4551b4</code></small></details></article>
+<article class="REVIEW" id="OPT_B_044:C1"><h2>OPT_B_044:C1</h2>
+<p class="status">Necesită verificare</p><p>Fragment de tigla in aceeasi banda cu B030/B032; forma rectangulara nu demonstreaza corp independent. Separare dupa material posibil artificiala.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_044_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_044_C1.jpg" alt="OPT_B_044:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>43e7599b568f90002d00c113bb619c8d3d5b6a62dfd52cf174e5e2bcf552469a</code></small></details></article>
+<article class="REVIEW" id="OPT_B_045:C1"><h2>OPT_B_045:C1</h2>
+<p class="status">Necesită verificare</p><p>Banda gri langa strada, context cu NoData; poate fi copertina sau portiune de acoperis. Din plansa nu se confirma cladire completa independenta.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_045_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_045_C1.jpg" alt="OPT_B_045:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d4e359e5e632be5ac53c8edeea8d0d94e9bbed11cac5afe90e53ec7477cc6ee4</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_046:C1"><h2>OPT_B_046:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Opt noduri pastreaza doua retrageri principale si separa vecinii; eliminare buna a zigzagurilor, dar necesita verificare metrica a muchiilor.</p>
+<p>21 → 8 noduri; 6 variante afișate. Familie selectată de algoritm: T_OR_OFFSET. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_046_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_046_C1.jpg" alt="OPT_B_046:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4e5ab1e5e3ccc52cbe63f8001fd4f82fdbc04d23f5162e9b0f51076a17c362ba</code></small></details></article>
+<article class="REVIEW" id="OPT_B_047:C1"><h2>OPT_B_047:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp gri cu margini nordice zimtate si retrageri oblice ramase; arborii acopera margini. Douasprezece noduri nu insemna forma corecta/finisata.</p>
+<p>23 → 12 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_047_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_047_C1.jpg" alt="OPT_B_047:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>a7eeb4c4ef2b980f02f0154dcd567ec77a86484da6d0a05a40d48e67c3352978</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_048:C1"><h2>OPT_B_048:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Patrulaterul contureaza doar un petic gri dintr-un acoperis mai mare care continua spre dreapta si jos; inventar fragmentat, completitudine insuficienta.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_048_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_048_C1.jpg" alt="OPT_B_048:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>6ff85830046acf62525d42a01417ff808f1b8e1a21e3aa12692c15b289700e50</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_049:C1"><h2>OPT_B_049:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul cu patru noduri umple retragerea estica evidenta a acoperisului. Varianta L in sase noduri pastreaza forma reala; regresie prin simplificare excesiva.</p>
+<p>6 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_049_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_049_C1.jpg" alt="OPT_B_049:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0f75e86763ca0235fa8264b501df5c1655ac45710076a6b1958ec457e3ad629d</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_050:C1"><h2>OPT_B_050:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Poligon pe teren/pamant din santier, fara acoperis vizibil. Nu este o cladire identificata; alternativele simplifica acelasi fals candidat.</p>
+<p>10 → 10 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_050_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_050_C1.jpg" alt="OPT_B_050:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2e2ec15ff39c9584ac359ff0deb24234c0cbeeb89913f17fb590ce5b96c7f408</code></small></details></article>
+<article class="REVIEW" id="OPT_B_051:C1"><h2>OPT_B_051:C1</h2>
+<p class="status">Necesită verificare</p><p>Peticul gri la mijlocul unei benzi cu acoperisuri de materiale diferite; forma locala este vizibila dar corpul independent nu este demonstrat.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_051_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_051_C1.jpg" alt="OPT_B_051:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>209e825fdb1df0bb3921ff1e91bb75f1b75b717a1558bb058137b4c15fd3c515</code></small></details></article>
+<article class="REVIEW" id="OPT_B_052:C1"><h2>OPT_B_052:C1</h2>
+<p class="status">Necesită verificare</p><p>Parte intunecata din banda cu sectiuni gri/rosu/alb; risc de fragmentare a acoperisului dupa material, asemenea B005/B032.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_052_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_052_C1.jpg" alt="OPT_B_052:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>f0e11b6812c738a79aaf690d568c0bea2105b02cbb042b1a62159a4a0da7a71d</code></small></details></article>
+<article class="REVIEW" id="OPT_B_053:C1"><h2>OPT_B_053:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic patrulater maro in interiorul unui complex alipuit; nu se confirma contur de corp complet doar din patch. Verificare identitate si continuitate.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_053_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_053_C1.jpg" alt="OPT_B_053:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>69ce8b91a3f5a1a7e0b0529bd923466eb2905b18b58f3c210194a00bef89c4cf</code></small></details></article>
+<article class="REVIEW" id="OPT_B_054:C1"><h2>OPT_B_054:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp gri cu capat curbat; forma dominanta este sustinuta, dar conturul pastrat are retrageri si multe colturi legate de contactul cu corpul rosu. Nu este finisat.</p>
+<p>19 → 19 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_054_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_054_C1.jpg" alt="OPT_B_054:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>885d8b9ad9b7abaf378e7b78516535d3266e585c45a742194f179cdfd65eab09</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_055:C1"><h2>OPT_B_055:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Patrulaterul selectat sterge retragerea sudica reala si trece in exteriorul acoperisului. V3 in L ar pastra forma; eligibilitatea nu justifica alegerea finala.</p>
+<p>6 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_055_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_055_C1.jpg" alt="OPT_B_055:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2323089ce67ff79b35b63366a7e802f66e874c8c005a7aa5c358cd71bdd0e120</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_056:C1"><h2>OPT_B_056:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Acoperis mov rectangular distinct de corpul rosu sudic; forma integrala coerenta vizual.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_056_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_056_C1.jpg" alt="OPT_B_056:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4b7295397af549ce7dcbcfdf4ed54a0e15eb24439fc82027305ccbd3dce19c53</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_057:C1"><h2>OPT_B_057:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Poligonul cuprinde numai sectiunea nordica a unei benzi rosii care continua mult spre sud; simplificarea nu rezolva trunchierea/fragmentarea.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_057_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_057_C1.jpg" alt="OPT_B_057:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>f0d41203bf867bc05bb40ff9beffc987fcc41bb79ba247d9838dd858c919751b</code></small></details></article>
+<article class="REVIEW" id="OPT_B_058:C1"><h2>OPT_B_058:C1</h2>
+<p class="status">Necesită verificare</p><p>Sectiune de tabla ruginita intre corpuri; muchia oblica sud-estica este vizibila, dar separarea de continuarea de tigla trebuie verificata pe corpuri.</p>
+<p>9 → 6 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_058_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_058_C1.jpg" alt="OPT_B_058:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2cdecf817429b5659581f56e172b8a6bf7f051dd2c3f162d4f5057dd94f3a7fe</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_059:C1"><h2>OPT_B_059:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Corp lung de tigla izolat intre vecini; contur rectangular coerent fara unire cu cladiri vecine.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_059_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_059_C1.jpg" alt="OPT_B_059:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>20b8e9b4200364c37a6c6afb47309a350eb79a0430e15d59e20101c90726e578</code></small></details></article>
+<article class="REVIEW" id="OPT_B_060:C1"><h2>OPT_B_060:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis articulat cu colturi si retrageri reale; sase noduri netezesc muchiile sudice/estice. V3 ortogonal pastreaza retragerile; necesara comparatie mai fina.</p>
+<p>13 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_060_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_060_C1.jpg" alt="OPT_B_060:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>46e12969622cc45fee94a8a83c31d2f6ab4d3144b0aac1529b543b8abd231f06</code></small></details></article>
+<article class="REVIEW" id="OPT_B_061:C1"><h2>OPT_B_061:C1</h2>
+<p class="status">Necesită verificare</p><p>Jumatatea rosie a ansamblului vecin cu B034; poate fi corp distinct, dar inventarul nu poate fi decis doar dupa material. Dreptunghiul local coerent.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_061_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_061_C1.jpg" alt="OPT_B_061:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>7681d2ac02ce8d4895360c6674f4386e4f95be8c26afa872542904b5d74aac1d</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_062:C1"><h2>OPT_B_062:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Poligonul contureaza numai partea superioara a aripii de tigla si se termina in interiorul acoperisului care continua spre strada. Completitudine insuficienta.</p>
+<p>8 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_062_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_062_C1.jpg" alt="OPT_B_062:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>747a658bb93a137255bd6e755f16138eb9c3f9fd694c9eb6515c6708f16ca27b</code></small></details></article>
+<article class="REVIEW" id="OPT_B_063:C1"><h2>OPT_B_063:C1</h2>
+<p class="status">Necesită verificare</p><p>Aripa de tigla are contur L pastrat si continuare gri sudica; identitatea intre materialele alipite trebuie verificata. Nu se confirma independenta din plansa.</p>
+<p>6 → 6 noduri; 3 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_063_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_063_C1.jpg" alt="OPT_B_063:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>57e0b210f6bd22c4db1e7c3b3608fd78dc75b583c24a3ef34c4d25cd967fc971</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_064:C1"><h2>OPT_B_064:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Corp alb plat integral delimitat, separat de cel rosu; muchiile exterioare coerente, cu o mica abatere fata de parapet ce cere control metric.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_064_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_064_C1.jpg" alt="OPT_B_064:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>31a709b556e7de65bc59324d2a45c31f663da05bb9d018e9760d1764c406516f</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_065:C1"><h2>OPT_B_065:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Constructie dreptunghiulara gri in cimitir; patru laturi urmaresc acoperisul dominant. Colturile usor taiate ale mastii nu justifica complexitatea initiala.</p>
+<p>8 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_065_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_065_C1.jpg" alt="OPT_B_065:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>5ecca817fc74c587d52fd774d503b6b068a56372f2cb5c71b534a51be9741d6a</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_066:C1"><h2>OPT_B_066:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Coroana portocalie de arbore este transformata intr-un dreptunghi de cladire. Niciuna dintre alternative nu identifica un acoperis.</p>
+<p>12 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_066_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_066_C1.jpg" alt="OPT_B_066:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d529868cd7093282b819215aa4ab3e1e325b854725d986da8784f9b734cb38b5</code></small></details></article>
+<article class="REVIEW" id="OPT_B_067:C1"><h2>OPT_B_067:C1</h2>
+<p class="status">Necesită verificare</p><p>Selecteaza un mic volum de acoperis dintr-un complex mai mare; obiectul local este vizibil, insa separarea/inaltimea nu se poate confirma numai din imagine.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_067_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_067_C1.jpg" alt="OPT_B_067:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>220fbeed22738824c726da7c70a72075cd7f05e00e20d7da267090a0a9dcb54d</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_068:C1"><h2>OPT_B_068:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Gaura pe un accesoriu de acoperis este tratata drept COURTYARD; conturul gri contine patchul separat B025. Posibila dublare si clasificare gresita a golului.</p>
+<p>12 → 12 noduri; 4 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_068_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_068_C1.jpg" alt="OPT_B_068:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>59a133857b427cdc8b5f7ed65bf2060477c51e5a3d8cab9d64e636d8a5c2da68</code></small></details></article>
+<article class="REVIEW" id="OPT_B_069:C1"><h2>OPT_B_069:C1</h2>
+<p class="status">Necesită verificare</p><p>Contur articulat de tigla cu prelungire triunghiulara sud-vestica; vegetatia mascheaza limita. Neregularitatea poate fi ocluzie, nu forma reala.</p>
+<p>12 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_069_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_069_C1.jpg" alt="OPT_B_069:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>105a1d828486fd42b69b4253110f1a4e890d462888dd1cff26ca3d74a8db8c8c</code></small></details></article>
+<article class="REVIEW" id="OPT_B_070:C1"><h2>OPT_B_070:C1</h2>
+<p class="status">Necesită verificare</p><p>Banda metalica intr-un complex cu acoperis de tigla; muchii sud-vestice/proiectii vizibile sunt indreptate de dreptunghi. Necesara verificarea identitatii si a prelungirii sudice.</p>
+<p>23 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_070_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_070_C1.jpg" alt="OPT_B_070:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ee9e47e3c019e77acc383cad412aa6423e4a5e0aafa5c4f5aeac03951ccc84ae</code></small></details></article>
+<article class="REVIEW" id="OPT_B_071:C1"><h2>OPT_B_071:C1</h2>
+<p class="status">Necesită verificare</p><p>Conturul urmareste doar sectiunea vizibila a unui acoperis rosu intre vecini si arbori; latura de sud ramane neregulata, completitudinea corpului neconfirmata.</p>
+<p>11 → 11 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_071_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_071_C1.jpg" alt="OPT_B_071:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2fa2e88ce70bd595c7c8cabaef847986553c51131fb06fafbd1d0554456df8eb</code></small></details></article>
+<article class="REVIEW" id="OPT_B_072:C1"><h2>OPT_B_072:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis de tigla cu colturi tesite/rotunjite pastrate; alternativa rectangulara poate fi mai simpla, dar QA vecini o blocheaza. Identitate fata de banda vestica de verificat.</p>
+<p>9 → 9 noduri; 4 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_072_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_072_C1.jpg" alt="OPT_B_072:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>fc814713d64eb9baa26c18f4df5d3b74d6527742a7712448e1e2a032d4a9eebf</code></small></details></article>
+<article class="REVIEW" id="OPT_B_073:C1"><h2>OPT_B_073:C1</h2>
+<p class="status">Necesită verificare</p><p>Aripa lunga de tigla cu retragere vestica pastrata; subdiviziunea fata de complexul gri necesita identitate, colturile tesite raman nefinisate.</p>
+<p>10 → 10 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_073_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_073_C1.jpg" alt="OPT_B_073:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0f900c7a422ea18c28825cb570bb4a72c5b9d5b6a01d3da0a0c85da2f20cd5b2</code></small></details></article>
+<article class="REVIEW" id="OPT_B_074:C1"><h2>OPT_B_074:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic segment gri al aceleiasi benzi de material ca B026; contur local coerent, corpul complet/independent neconfirmat.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_074_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_074_C1.jpg" alt="OPT_B_074:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>b5153ddda185fcbfc4d42627697ccafc5156fcf23cca280c7857e43e35929c6b</code></small></details></article>
+<article class="REVIEW" id="OPT_B_075:C1"><h2>OPT_B_075:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis de tigla si sectiune rosie alipita; simplificarea netezeste retragerea sudica. Necesara separarea corp/material si muchii reale.</p>
+<p>14 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_075_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_075_C1.jpg" alt="OPT_B_075:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>5acc9de1112356611d11f85b0fd5fa862df1bb8c05bcdf1a18ea08f97605fde4</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_076:C1"><h2>OPT_B_076:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Fragment mic rosu cu prelungire foarte ingusta pe marginea dintre acoperisuri; accesoriile/contactul creeaza un varf artificial. Nu este contur simplu de corp stabil.</p>
+<p>13 → 13 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_076_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_076_C1.jpg" alt="OPT_B_076:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>86eafb3c4427a0437d932406777242f781faa63001ca6c434b764b19b90914c9</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_077:C1"><h2>OPT_B_077:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Selectie pe capatul unui acoperis gri care continua evident spre nord-vest; contur fragmentat si apropiat de NoData, completitudine insuficienta.</p>
+<p>12 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_077_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_077_C1.jpg" alt="OPT_B_077:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c1af0fc083a63882d7b93a007c2dea7b87ad61dd39bc7fa242eb46e60b0582f4</code></small></details></article>
+<article class="REVIEW" id="OPT_B_078:C1"><h2>OPT_B_078:C1</h2>
+<p class="status">Necesită verificare</p><p>Volum gri in L la sud de aripa de tigla; forma locala este plauzibila, dar delimiteaza dupa material si cere confirmarea corpului independent.</p>
+<p>6 → 6 noduri; 4 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_078_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_078_C1.jpg" alt="OPT_B_078:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d3f3d335c32738a81f071517c05b0a9d2c039125f66dc3c3087f9e1899f23390</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_079:C1"><h2>OPT_B_079:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Hala metalica lunga cu latime variabila si muchie estica oblica; sase noduri pastreaza geometria dominanta fara dreptunghi fortat.</p>
+<p>12 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_079_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_079_C1.jpg" alt="OPT_B_079:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>925c26aee91f3e8ddc2fdaf6422e7b152101eeb8a8b038fd4ab1ac154e769db7</code></small></details></article>
+<article class="REVIEW" id="OPT_B_080:C1"><h2>OPT_B_080:C1</h2>
+<p class="status">Necesită verificare</p><p>Banda gri alipita complexului rosu si unei copertine albe; forma locala e rectangulara, dar delimitarea corpului complet ramane incerta.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_080_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_080_C1.jpg" alt="OPT_B_080:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>cbb63a8112ec2ed86384ff1275d676546062f8ab0ba64134fd10467da0d61e7f</code></small></details></article>
+<article class="REVIEW" id="OPT_B_081:C1"><h2>OPT_B_081:C1</h2>
+<p class="status">Necesită verificare</p><p>Banda lunga cu materiale de acoperis diferite; dreptunghiul simplifica bine ansamblul, dar poate uni corpuri alipite si indrepta coltul sudic. Identitate de verificat.</p>
+<p>9 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_081_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_081_C1.jpg" alt="OPT_B_081:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d9a39684f5dea569aa7640fb82dbea4cfe619fa5caee725dcb893126166d9c35</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_082:C1"><h2>OPT_B_082:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Corp rosu dreptunghiular integral, separat de pavaj si vecini; contur coerent la scara plansei.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_082_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_082_C1.jpg" alt="OPT_B_082:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>e77a85d102e5113f0fec5d658b6b52ed2a8f3417781d77369c66fd7417e20664</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_083:C1"><h2>OPT_B_083:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Forma L reala pastrata in sase noduri; curtea nu este umpluta. Varianta simpla reprezinta bine forma dominanta fata de masca zimtata.</p>
+<p>20 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: L. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_083_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_083_C1.jpg" alt="OPT_B_083:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>e7e985ceff1cf32313f8f9389554ab1f16b36eaa3374253dcc12e10abcdac411</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_084:C1"><h2>OPT_B_084:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Poligon pe o portiune de acoperis de colt care continua spre sud-est; limita se termina in interiorul imaginii unui acoperis mai mare. Nefinalizat/trunchiat, context NoData.</p>
+<p>10 → 10 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_084_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_084_C1.jpg" alt="OPT_B_084:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>462584fc44da46e9b45b228c97eea0af92a1787c4f2366dac694d7573c4d9f68</code></small></details></article>
+<article class="REVIEW" id="OPT_B_085:C1"><h2>OPT_B_085:C1</h2>
+<p class="status">Necesită verificare</p><p>Portiunea de tigla din capatul unei benzi care continua cu material gri; geometria simpla este locala, corpul independent trebuie confirmat.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_085_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_085_C1.jpg" alt="OPT_B_085:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>9d6b9f4290f5fe638e300385f89035a985a78eb2968977f0f835dfa41448e17d</code></small></details></article>
+<article class="REVIEW" id="OPT_B_086:C1"><h2>OPT_B_086:C1</h2>
+<p class="status">Necesită verificare</p><p>Constructie mica cu tigla si obstacole vecine; conturul in noua noduri pastreaza un varf ingust in est. Variantele respinse nu ofera forma completa sigura.</p>
+<p>13 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_086_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_086_C1.jpg" alt="OPT_B_086:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0188556623e6b30eeaa235ef24596a0c124f5a4853d452f37ced94cea78feb59</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_087:C1"><h2>OPT_B_087:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Fasie foarte ingusta langa marginea unui acoperis mare si NoData; nu contureaza o cladire completa. Alternativa rectangulara este tot un fragment.</p>
+<p>10 → 10 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_087_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_087_C1.jpg" alt="OPT_B_087:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>09ef1782c4dc92da4705f074ff7e2f1a914be9eee1a69e89861c51ffe72df522</code></small></details></article>
+<article class="REVIEW" id="OPT_B_088:C1"><h2>OPT_B_088:C1</h2>
+<p class="status">Necesită verificare</p><p>Aripa lunga de tigla legata de un corp estic. Dreptunghiul aripii este plauzibil local, dar separarea fata de extensia estica si colturile taiate necesita verificare.</p>
+<p>9 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_088_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_088_C1.jpg" alt="OPT_B_088:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d9de8c0e604bab92ce731ea61f54fbd8487c453769287169ae5d1f346f530a6f</code></small></details></article>
+<article class="REVIEW" id="OPT_B_089:C1"><h2>OPT_B_089:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis gri lung, simplificat cu muchii oblice si varf in capatul estic; o gaura minuscula este etichetata COURTYARD fara curte vizibila. V2 pastreaza mai clar retragerea.</p>
+<p>23 → 11 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_089_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_089_C1.jpg" alt="OPT_B_089:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>7bd22a6d9d768f61d9bd1d4766198df706eca928a0826a7ad2f3d02da1ccbcd0</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_090:C1"><h2>OPT_B_090:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Corp rosu lung cotit; simplificarea libera pastreaza curbura/cotul dominant si evita umplerea curtii, mult mai clara decat 42 noduri initiale. Pozitia exacta a muchiilor ramane de masurat.</p>
+<p>42 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_090_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_090_C1.jpg" alt="OPT_B_090:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>1ff02a16af01958ccfbde24f7165b8f83d1f6a9e1bac3f1c10d394ced47dcde4</code></small></details></article>
+<article class="REVIEW" id="OPT_B_091:C1"><h2>OPT_B_091:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic volum gri intre acoperisul de tigla si hala de tabla; forma dreptunghiulara vizibila, identitatea fata de continuari trebuie confirmata.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_091_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_091_C1.jpg" alt="OPT_B_091:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>455cb19b1039221cd0a5a8b428b91e098188151496017c97847074599f5232e7</code></small></details></article>
+<article class="REVIEW" id="OPT_B_092:C1"><h2>OPT_B_092:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic acoperis brun la marginea cimitirului si sub arbori; dreptunghi plauzibil dar margini/ocluzie insuficient clare pentru verdict final.</p>
+<p>12 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_092_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_092_C1.jpg" alt="OPT_B_092:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>e9e7b1e960467aa7f0d3a48b1bd6ff36fc8b828cb39071ebf9bdde35df93b7de</code></small></details></article>
+<article class="REVIEW" id="OPT_B_093:C1"><h2>OPT_B_093:C1</h2>
+<p class="status">Necesită verificare</p><p>Aripa de tigla oblica, in apropiere de NoData; doua capete si contactul cu alte materiale raman neregulate. Simplificarea nu a finisat conturul.</p>
+<p>20 → 20 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_093_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_093_C1.jpg" alt="OPT_B_093:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>84c219012d0369bc82cc964778fa76437b868c391544ba192d3695fee6225826</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_094:C1"><h2>OPT_B_094:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul taie transversal un acoperis de tigla mai mare si include un varf ingust artificial la vest. Este fragment de acoperis, nu cladire delimitata integral.</p>
+<p>8 → 8 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_094_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_094_C1.jpg" alt="OPT_B_094:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>047f1cf1a1b2371229d3afcb19e1099f130c794672eff15ee465cfce98fb8227</code></small></details></article>
+<article class="REVIEW" id="OPT_B_095:C1"><h2>OPT_B_095:C1</h2>
+<p class="status">Necesită verificare</p><p>Corp lung la colt de strada; conturul in sase noduri netezeste retragerile vestice, posibil din vegetatie sau arhitectura reala. Marginea vestica cere detaliu, nu automatizare prin minim de noduri.</p>
+<p>24 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_095_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_095_C1.jpg" alt="OPT_B_095:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>603037551b410067a8511edfaeace2022717e9b1654ee57b014b4c8a93fe544d</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_096:C1"><h2>OPT_B_096:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Dreptunghiul adauga o pana de teren pe latura nord-vestica unde acoperisul are retragere reala. Variantele cu sase/opt noduri pastreaza mai bine forma; regresie de selectie.</p>
+<p>8 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_096_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_096_C1.jpg" alt="OPT_B_096:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c674fe2cd961938c5653aedfe23cfbd17e087a4aca5ef748e1f80bf472877aa3</code></small></details></article>
+<article class="REVIEW" id="OPT_B_097:C1"><h2>OPT_B_097:C1</h2>
+<p class="status">Necesită verificare</p><p>Patru laturi urmaresc o portiune bruna dintr-un ansamblu lipit. Separarea dupa material nu demonstreaza corp independent; trebuie verificata continuitatea acoperisului.</p>
+<p>6 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_097_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_097_C1.jpg" alt="OPT_B_097:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>93e56d8efe05727ac3776189e911866d34fd8d3036940578c235e69f4c681823</code></small></details></article>
+<article class="REVIEW" id="OPT_B_098:C1"><h2>OPT_B_098:C1</h2>
+<p class="status">Necesită verificare</p><p>Retrageri mici in nord si muchii sub arbori; conturul se termina la schimbarea materialului. Variantele simple nu rezolva identitatea si ocluzia.</p>
+<p>13 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_098_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_098_C1.jpg" alt="OPT_B_098:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>32149fa43874357c6efe852c2e167030586448f3d2f37ed5ba23e32331eb68ab</code></small></details></article>
+<article class="REVIEW" id="OPT_B_099:C1"><h2>OPT_B_099:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul delimiteaza sectiunea rosie dintr-o banda de acoperis care continua spre sud-vest. Limita de material necesita verificare, inclusiv coltul tesit eliminat.</p>
+<p>8 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_099_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_099_C1.jpg" alt="OPT_B_099:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d5980bc64bae3341111bc6bc48572fe2a793120915cefdc6394ea479086250f3</code></small></details></article>
+<article class="REVIEW" id="OPT_B_100:C1"><h2>OPT_B_100:C1</h2>
+<p class="status">Necesită verificare</p><p>Volumul principal in L este pastrat, dar eticheta COURTYARD pare provenita dintr-un gol foarte mic pe acoperis. Coltul sud-estic simplificat taie o articulatie; alternativa cu mai multe noduri merita comparata.</p>
+<p>24 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_100_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_100_C1.jpg" alt="OPT_B_100:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>997e9a7237296bed04398117e5e94cb9787d90bf4201ebeccaa8caed883300ea</code></small></details></article>
+<article class="REVIEW" id="OPT_B_101:C1"><h2>OPT_B_101:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghi local plauzibil pentru aripa estica rosie; ansamblul continua spre vest. Nu confirma singur separarea corpurilor.</p>
+<p>12 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_101_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_101_C1.jpg" alt="OPT_B_101:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>da19ef9032436ea3410680492232a5d01b50b642289cc743d0fd2d46097e8aed</code></small></details></article>
+<article class="REVIEW" id="OPT_B_102:C1"><h2>OPT_B_102:C1</h2>
+<p class="status">Necesită verificare</p><p>Fasie ingusta pe marginea vestica a unei hale foarte mari. Poate fi copertina sau componenta de acoperis; nu trebuie numarata automat drept intreaga cladire.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_102_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_102_C1.jpg" alt="OPT_B_102:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c134af7f59f75db12dcace06bc3b154a0e049a44dad386b6a47c5b26faa1a3db</code></small></details></article>
+<article class="REVIEW" id="OPT_B_103:C1"><h2>OPT_B_103:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperisul brun ramane separat de cel rosu, dar pastreaza 16 noduri si mici articulatii incerte. Variantele respinse nu rezolva finisarea marginilor.</p>
+<p>16 → 16 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_103_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_103_C1.jpg" alt="OPT_B_103:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>55eeec23f3a9b8dbc225ebee77c6c9df2c69d8ac616cf6126efe072ae2448f63</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_104:C1"><h2>OPT_B_104:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul ajunge la NoData in nord si delimiteaza doar sectiunea bruna a unei benzi de acoperis. Rezultatul nu poate fi prezentat drept obiect complet.</p>
+<p>14 → 14 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_104_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_104_C1.jpg" alt="OPT_B_104:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d93e82055a4f5c6d40cb12293e8a5e63f801507e9c32323e8412c8b24ad3c9e0</code></small></details></article>
+<article class="REVIEW" id="OPT_B_105:C1"><h2>OPT_B_105:C1</h2>
+<p class="status">Necesită verificare</p><p>Obiect mic verde intr-o zona de parcare, cu contur rectangular local plauzibil. Trebuie confirmat ca structura acoperita, nu echivalat automat cu un corp cadastral.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_105_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_105_C1.jpg" alt="OPT_B_105:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>579c9baba95bb288e3db0af86ef9d966e94567eaa94d134ca14f3a0084cdc9ef</code></small></details></article>
+<article class="REVIEW" id="OPT_B_106:C1"><h2>OPT_B_106:C1</h2>
+<p class="status">Necesită verificare</p><p>Selecteaza sectiunea rosie sudica a unei benzi care continua spre nord. Simplificarea coltului si separarea de sectiunea vecina necesita verificare.</p>
+<p>8 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_106_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_106_C1.jpg" alt="OPT_B_106:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2fc258acbe674820b610088584a37789db8340ecd9ced4b8538b4eef5e9d97b3</code></small></details></article>
+<article class="REVIEW" id="OPT_B_107:C1"><h2>OPT_B_107:C1</h2>
+<p class="status">Necesită verificare</p><p>Ansamblu mare cu 92 noduri, margini zimtate si contact cu NoData. Forma complexa si acoperirea incompleta raman nerezolvate; nu este un rezultat finisat.</p>
+<p>92 → 92 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_107_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_107_C1.jpg" alt="OPT_B_107:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2c333f0c6c32f69b42ccb1dcc3d74e152b99256d120ececcf62a4d2afe3c2dfa</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_108:C1"><h2>OPT_B_108:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul selectat formeaza un varf triunghiular si umple zona dintre extensia ingusta si corpul principal. Alternativa in L pastreaza mai bine retragerea; simplificarea selectata introduce artefact.</p>
+<p>12 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_108_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_108_C1.jpg" alt="OPT_B_108:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>efd2fde4671a832dc8e3a906a55c78680e67eb741860cc2a8c4b8e1ef4415e2e</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_109:C1"><h2>OPT_B_109:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Dreptunghiul umple retragerea nordica si coltul tesit estic al aripii rosii. Alternativele oblice cu sase/opt noduri urmaresc mai bine acoperisul.</p>
+<p>14 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_109_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_109_C1.jpg" alt="OPT_B_109:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>112fa57b71410eac5f630f17f5450de24d7b2dc9a3dae11583daf4a0034f43ce</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_110:C1"><h2>OPT_B_110:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul taie in interiorul unei hale gri mai mari si pastreaza un mic gol de echipament ca COURTYARD. Niciuna dintre variante nu recupereaza intregul acoperis.</p>
+<p>12 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_110_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_110_C1.jpg" alt="OPT_B_110:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4e9eb02442f45a53a046ad8a127701d7f341f08beb97da3216acf401b3de03a0</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_111:C1"><h2>OPT_B_111:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Dreptunghiul urmareste un acoperis lung cu doua materiale, fara fragmentare la schimbarea culorii. Vecinii raman separati; coerent vizual la scara plansei.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_111_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_111_C1.jpg" alt="OPT_B_111:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>84eabe62a509f045ce380e0783b1bb53ea3abeb09d7ad53ebf06acd0052fd6d0</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_112:C1"><h2>OPT_B_112:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Selectia este numai o portiune a acoperisului gri, cu latura nordica trecand prin planul acoperisului. Rectangularizarea nu rezolva lipsa de acoperire.</p>
+<p>13 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_112_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_112_C1.jpg" alt="OPT_B_112:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0811fae7f47bc348124a48e5959cb0d83ecf987f845b3efac9f6c8a6eda818f0</code></small></details></article>
+<article class="REVIEW" id="OPT_B_113:C1"><h2>OPT_B_113:C1</h2>
+<p class="status">Necesită verificare</p><p>Patru laturi delimiteaza o sectiune portocalie dintr-un ansamblu continuu. Trebuie verificat daca limita este de corp sau numai de material.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_113_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_113_C1.jpg" alt="OPT_B_113:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4b5ff1b2a716f4ab94264fe60dce62258129295f4c0f1a9677f1b4b276f253f8</code></small></details></article>
+<article class="REVIEW" id="OPT_B_114:C1"><h2>OPT_B_114:C1</h2>
+<p class="status">Necesită verificare</p><p>Forma articulata pastreaza retragerea sudica, dar simplifica tesiturile si se leaga de aripi rosii vecine. Necesita verificarea colturilor si identitatii, nu dreptunghi fortat.</p>
+<p>19 → 8 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_114_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_114_C1.jpg" alt="OPT_B_114:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0b636d09db4aa4173b347dbd0fbf7db87a93699c3a68c8021346b9ee2fcce468</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_115:C1"><h2>OPT_B_115:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Patrulaterul umple retragerea sud-vestica; alternativa L o pastreaza. In plus, banda de acoperis continua spre nord, deci completitudinea obiectului ramane suspecta.</p>
+<p>6 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_115_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_115_C1.jpg" alt="OPT_B_115:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>162aa4e2f74cac907b0438410848e69e0865bcfa18be6f7bed7b5a39f7e82fc1</code></small></details></article>
+<article class="REVIEW" id="OPT_B_116:C1"><h2>OPT_B_116:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis deschis cu retragere nordica, foarte aproape de NoData. Conturul selectat evita golul, dar muchia sudica si coltul tesit cer verificare; alternativele ortogonale au acoperire optica incompleta.</p>
+<p>17 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_116_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_116_C1.jpg" alt="OPT_B_116:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2b262e9c6defbff58c3355bb32cdca5f882aea8c73d2912fdf5aff5012a83a33</code></small></details></article>
+<article class="REVIEW" id="OPT_B_117:C1"><h2>OPT_B_117:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul netezeste colturile tesite si marginea sudica a aripii rosii. Legatura cu aripa estica si forma colturilor nu sunt rezolvate de eligibilitatea geometrica.</p>
+<p>12 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_117_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_117_C1.jpg" alt="OPT_B_117:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>94009d4ef24460f75606cbeaf127a8dcc54f50f23b19b57a25e7f2b9e0318333</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_118:C1"><h2>OPT_B_118:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul captureaza capatul sudic al unui acoperis gri care continua spre nord sub vegetatie. Simplificarea nu recupereaza partea lipsa.</p>
+<p>9 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_118_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_118_C1.jpg" alt="OPT_B_118:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0f099f8474dfa406ccfb0aad49f7370a56453b445e1e7d9d2609ed4636b71062</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_119:C1"><h2>OPT_B_119:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Dreptunghiul urmareste masa principala izolata a acoperisului brun, eliminand ondulatii mici. Nu apare o retragere majora pierduta la scara plansei.</p>
+<p>7 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_119_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_119_C1.jpg" alt="OPT_B_119:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>08650e0014d142ded7126ca5bcb8616d1cc058f2d84619a1961c56d6c04a1eb4</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_120:C1"><h2>OPT_B_120:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Dreptunghiul este o sectiune intermediara dintr-un acoperis lung care continua spre sud-vest. Nu reprezinta intregul obiect; forma simpla nu corecteaza trunchierea.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_120_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_120_C1.jpg" alt="OPT_B_120:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>b9699657d0af25f6de33f56236a7e80e29a8f0ff11dc3b12c0062c9087f37f7b</code></small></details></article>
+<article class="REVIEW" id="OPT_B_121:C1"><h2>OPT_B_121:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis rosu neregulat in ansamblu cu tigla, langa NoData; 12 noduri pastreaza deformari la capete. Identitatea si muchiile ascunse necesita detaliu, alternativele dreptunghiulare depasesc forma.</p>
+<p>17 → 12 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_121_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_121_C1.jpg" alt="OPT_B_121:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>36f49e47817d79ce40cf1255889728b234b6d3d641f13381429858c273b9ffff</code></small></details></article>
+<article class="REVIEW" id="OPT_B_122:C1"><h2>OPT_B_122:C1</h2>
+<p class="status">Necesită verificare</p><p>Banda rosie lunga are forma rectangulara coerenta local, dar se leaga de acoperisuri transversale. Trebuie stabilit daca reprezinta aripa sau corp complet.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_122_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_122_C1.jpg" alt="OPT_B_122:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>29b21db00a74bc4d04b5716258b5eeccaa40fed3ccbc1491b2ebba49df1f49af</code></small></details></article>
+<article class="REVIEW" id="OPT_B_123:C1"><h2>OPT_B_123:C1</h2>
+<p class="status">Necesită verificare</p><p>Forma in L retine retragerea vestica, dar netezeste coltul estic si separa sectiunea inchisa de banda de tigla. Separarea si tesiturile necesita verificare.</p>
+<p>15 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: L. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_123_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_123_C1.jpg" alt="OPT_B_123:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0f7d4c0d1c607bf9e29f4d29440f89768d2f7630fdee1d717958267650dff5c5</code></small></details></article>
+<article class="REVIEW" id="OPT_B_124:C1"><h2>OPT_B_124:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic acoperis gri intre hala si aripa rosie, langa NoData si echipamente. Patru laturi reduc zgomotul, dar obiectul si limitele sale sunt incerte.</p>
+<p>14 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_124_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_124_C1.jpg" alt="OPT_B_124:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4eb1bec12145b4324c52e6328321c44c82e1f4cdbf050546e2cf397056c84b9e</code></small></details></article>
+<article class="REVIEW" id="OPT_B_125:C1"><h2>OPT_B_125:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis inchis la culoare, aproape de goluri NoData; opt noduri pastreaza retragerea sudica, dar marginile oblice pot reflecta ocluzii. Nu poate fi declarat complet fara sursa vecina.</p>
+<p>16 → 8 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_125_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_125_C1.jpg" alt="OPT_B_125:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c3e3836fa14981538ba2b3f2313f8747f34cdce5bfff28b959ef1fa1ecd8445f</code></small></details></article>
+<article class="REVIEW" id="OPT_B_126:C1"><h2>OPT_B_126:C1</h2>
+<p class="status">Necesită verificare</p><p>Cladire de cult cu extremitati articulate: 68 noduri si mici goluri raman. Alternativa cu 33 noduri simplifica mai mult, dar turnul/proiectiile trebuie distinse de zgomot; COURTYARD nu confirma curte reala.</p>
+<p>68 → 68 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_126_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_126_C1.jpg" alt="OPT_B_126:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>bf4c8ab81db7d4a41e55b6d5e3bc535a9632badba9fe1874e5cc084881e40d5e</code></small></details></article>
+<article class="REVIEW" id="OPT_B_127:C1"><h2>OPT_B_127:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic acoperis rosu lipit de alte corpuri, cu 13 noduri si retragere sudica. Variantele simple pierd parti; conturul ramas necesita finisare si verificarea separarii.</p>
+<p>13 → 13 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_127_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_127_C1.jpg" alt="OPT_B_127:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>09aa5f5e085110a18835fe74d6084fd4e17f7c3795aa3a36472b264ec85d1e83</code></small></details></article>
+<article class="REVIEW" id="OPT_B_128:C1"><h2>OPT_B_128:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul delimiteaza numai partea brun-rosie a unui edificiu mai mare cu cupola si extensii. Geometrie locala simpla, identitate de componenta, nu inventar complet.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_128_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_128_C1.jpg" alt="OPT_B_128:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>f231c3a829da2bec5f159763848e030db7ee271bf949db38679b579c0a1d7dc2</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_129:C1"><h2>OPT_B_129:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Patrulaterul umple retragerea sud-estica si formeaza o latura artificiala prin portiunea vecina de acoperis. Alternativa L conserva mai bine coltul; continuitatea ansamblului ramane nerezolvata.</p>
+<p>6 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_129_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_129_C1.jpg" alt="OPT_B_129:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>9894e66b1792b038306d27b562ef05ae794f8ad6348df42e9391bcc17371b438</code></small></details></article>
+<article class="REVIEW" id="OPT_B_130:C1"><h2>OPT_B_130:C1</h2>
+<p class="status">Necesită verificare</p><p>Aripa rosie vestica este rectangulara, dar face parte dintr-un ansamblu cu aripi spre est si acoperis gri spre nord. Forma locala plauzibila, separarea nu este demonstrata.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_130_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_130_C1.jpg" alt="OPT_B_130:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c202d1fb84daed27fb4e920f2b02a25a87ebd40889498854eb95de3e085a2c78</code></small></details></article>
+<article class="REVIEW" id="OPT_B_131:C1"><h2>OPT_B_131:C1</h2>
+<p class="status">Necesită verificare</p><p>Mica extensie gri la hala rosie; dreptunghiul urmareste local acoperisul. Necesita legatura explicita anexa/corp si verificarea jonctiunii, nu numarare automata separata.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_131_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_131_C1.jpg" alt="OPT_B_131:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>3b86923b73094b60815b3c35ecdc66fc1c090e08b3939240d1ee00ca880aa3d0</code></small></details></article>
+<article class="REVIEW" id="OPT_B_132:C1"><h2>OPT_B_132:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul elimina tesitura coltului sud-vestic si se opreste la o schimbare de acoperis spre est. Alternativa cu cinci/sapte noduri reda tesitura; trebuie confirmata limita de corp.</p>
+<p>7 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_132_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_132_C1.jpg" alt="OPT_B_132:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>f5856f2949a3ebce0942ed696d40fe989305385bc151efe19a4d3e24d6df9413</code></small></details></article>
+<article class="REVIEW" id="OPT_B_133:C1"><h2>OPT_B_133:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis gri lung sub arbori, cu prelungire subtire artificiala spre est. Pastreaza 11 noduri; variantele respinse nu corecteaza obiectul complet si colturile ascunse.</p>
+<p>11 → 11 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_133_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_133_C1.jpg" alt="OPT_B_133:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4fb36800b8d87c46a5300421aafd5a126e651eb6e99fe3486cae38f1aa38521d</code></small></details></article>
+<article class="REVIEW" id="OPT_B_134:C1"><h2>OPT_B_134:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghi local coerent pentru sectiunea rosie sudica, dar banda continua spre nord cu alta nuanta. Verificare de identitate si completitudine necesara.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_134_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_134_C1.jpg" alt="OPT_B_134:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>5b9cc5a90ed3365929bb7a5257154b2ac705a4d3b3c23ab6681bcb37fbfc1c7c</code></small></details></article>
+<article class="REVIEW" id="OPT_B_135:C1"><h2>OPT_B_135:C1</h2>
+<p class="status">Necesită verificare</p><p>Forma oblica in sase noduri pastreaza capatul nordic, dar limita sudica traverseaza jonctiunea cu acoperisul lung rosu. Nu e demonstrat ca este corp separat.</p>
+<p>9 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_135_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_135_C1.jpg" alt="OPT_B_135:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>6a624198682cf283fb5867c2c323d457d69e18badaafb14de04c13c9a7438bdb</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_136:C1"><h2>OPT_B_136:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Banda lunga rosie are margini drepte si dreptunghiul le urmareste coerent. Jonctiunea cu volumul transversal sudic este vizibila; delimitare de aripa plauzibila, fara dovada cadastrala.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_136_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_136_C1.jpg" alt="OPT_B_136:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>5f954b1d6ecf8b88ffed5367b83e0abc858dad4440b6c9626009621a6821352e</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_137:C1"><h2>OPT_B_137:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Selectia cuprinde o zona cu vegetatie/curte intre acoperisuri, nu un acoperis clar sustinut. Eligibilitatea unui dreptunghi nu rezolva falsul candidat.</p>
+<p>7 → 7 noduri; 5 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_137_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_137_C1.jpg" alt="OPT_B_137:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>056c11bbbcd69ebfb5c8c3d51c0e3947c17af5c4427f7881bd6e4d54e0abe7d1</code></small></details></article>
+<article class="REVIEW" id="OPT_B_138:C1"><h2>OPT_B_138:C1</h2>
+<p class="status">Necesită verificare</p><p>Petec de tigla intre mai multe aripi: cinci noduri netezesc o retragere sudica, iar limita estica este in ansamblu. Alternativa L arata de ce minimul de noduri nu e suficient.</p>
+<p>10 → 5 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_138_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_138_C1.jpg" alt="OPT_B_138:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>553a206cbb9608921defdbf0397276075bd046dfd7c89460d7fa48dffe427877</code></small></details></article>
+<article class="REVIEW" id="OPT_B_139:C1"><h2>OPT_B_139:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul urmareste o sectiune gri intr-o banda lunga cu materiale diferite. Necesita verificare de corp si a portiunilor de tigla adiacente.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_139_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_139_C1.jpg" alt="OPT_B_139:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>9da65116e17166f212a0399d7772111b9cc961fc03801cd130faf3f37fa8c805</code></small></details></article>
+<article class="REVIEW" id="OPT_B_140:C1"><h2>OPT_B_140:C1</h2>
+<p class="status">Necesită verificare</p><p>Sectiune de tigla cu sase noduri intre acoperisul inchis si cel cu benzi metalice. Netezirea coltului nordic si fragmentarea ansamblului necesita verificare.</p>
+<p>12 → 6 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_140_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_140_C1.jpg" alt="OPT_B_140:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d6d06dc5699e343e3147ef6cb5c5b2f29ed15d3b8e40146bec66fa4955f0ff33</code></small></details></article>
+<article class="REVIEW" id="OPT_B_141:C1"><h2>OPT_B_141:C1</h2>
+<p class="status">Necesită verificare</p><p>Cinci noduri urmaresc o portiune de tigla la strada, dar marginea nord-vestica diagonala poate taia articulatia reala. Nu este rezolvata continuitatea cu aripa spre nord.</p>
+<p>10 → 5 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_141_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_141_C1.jpg" alt="OPT_B_141:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ab2ac9277130b9cb76a388430a2c1d4d723444cf75523e3956394afb1fa72cd7</code></small></details></article>
+<article class="REVIEW" id="OPT_B_142:C1"><h2>OPT_B_142:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul elimina tesituri si decupeaza sectiunea de tigla dintr-un ansamblu mai larg. Variantele oblice pastreaza mai bine coltul estic; identitate incerta.</p>
+<p>12 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_142_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_142_C1.jpg" alt="OPT_B_142:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>1585383017898a2cccd7fb45049d4706478c127da68112166c793aa951c5ab45</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_143:C1"><h2>OPT_B_143:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Dreptunghiul acopera numai capatul nordic al acoperisului de tigla care continua mult spre sud. Este o fragmentare evidenta, chiar daca patrulaterul este regulat.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_143_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_143_C1.jpg" alt="OPT_B_143:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>3baaa02455917ccfa5a30e751b4c1add0861f40eeb72bc78f006f538ebbbcdfd</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_144:C1"><h2>OPT_B_144:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Simplificarea produce un varf ingust spre vest si o diagonala prea lunga spre est. Alternativele cu sapte/opt noduri pastreaza mai bine retragerea; conturul ales nu este finisat.</p>
+<p>15 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_144_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_144_C1.jpg" alt="OPT_B_144:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>e2a25ae88ec925e6d3c2e33f5bbabf3d5b720d95b21b039f36e31c045ea8cc4e</code></small></details></article>
+<article class="REVIEW" id="OPT_B_145:C1"><h2>OPT_B_145:C1</h2>
+<p class="status">Necesită verificare</p><p>Forma principala cu retragere estica este pastrata, dar colturile tesite sunt rectangularizate si un mic gol determina COURTYARD. Verificare necesara pentru noduri, gol si detalii de acoperis.</p>
+<p>22 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_145_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_145_C1.jpg" alt="OPT_B_145:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>e8970c7b174594597c642f6e7a721658dc9d0b64c7ef5522873405b0f4455996</code></small></details></article>
+<article class="REVIEW" id="OPT_B_146:C1"><h2>OPT_B_146:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic acoperis gri fragmentat vizual de arbori si pete deschise. Sase noduri reduc zgomotul, dar marginile si natura extensiei fata de cladirea rosie raman incerte.</p>
+<p>11 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_146_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_146_C1.jpg" alt="OPT_B_146:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>1f20f051eb0dd8d1b2dc7b4bdf172005e0740b83a8c63a946f7f0fb268d0ff6c</code></small></details></article>
+<article class="REVIEW" id="OPT_B_147:C1"><h2>OPT_B_147:C1</h2>
+<p class="status">Necesită verificare</p><p>Ansamblu lung de tigla cu margine estica sub arbori; 11 noduri pastreaza colturi determinate posibil de ocluzie si un gol minuscul etichetat curte. Include zona B143; identitatea si duplicatele trebuie verificate.</p>
+<p>19 → 11 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_147_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_147_C1.jpg" alt="OPT_B_147:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>5b8fb5d94a50a0f72d41ae04daafbf1d17bc66cd2c4e3f1a4a6e29b4d0cd2cec</code></small></details></article>
+<article class="REVIEW" id="OPT_B_148:C1"><h2>OPT_B_148:C1</h2>
+<p class="status">Necesită verificare</p><p>Sectiune rosie rectangulara sudica a aceluiasi ansamblu cu aripa vestica B130. Forma locala plauzibila; trebuie stabilit daca este corp distinct sau parte a cladirii comune.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_148_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_148_C1.jpg" alt="OPT_B_148:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>81bd50ba3127f69e7212b7c6271379c7ec607f37f991fda7e00b12a6b52bbeba</code></small></details></article>
+<article class="REVIEW" id="OPT_B_149:C1"><h2>OPT_B_149:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic corp brun cu retragere nordica pastrata in L; coltul estic si marginea sudica sunt simplificate. Vegetatia si legatura cu vecinul necesita confirmare.</p>
+<p>11 → 6 noduri; 5 variante afișate. Familie selectată de algoritm: L. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_149_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_149_C1.jpg" alt="OPT_B_149:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>008fb7cd9363a18deef75a6defc05adba78df4eabccb6b2c25b9c7ef080632f5</code></small></details></article>
+<article class="REVIEW" id="OPT_B_150:C1"><h2>OPT_B_150:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis gri in L: retragerea nord-estica este pastrata, dar marginea vestica traverseaza jonctiunea cu hala B110. Identitatea si suprapunerea cu sectiunile vecine cer verificare.</p>
+<p>14 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: L. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_150_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_150_C1.jpg" alt="OPT_B_150:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>b5281e94e390e6149f758da61e3b4260a1cb9ff2543ee4bb115000ced083d161</code></small></details></article>
+<article class="REVIEW" id="OPT_B_151:C1"><h2>OPT_B_151:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis gri articulat ramane cu 77 noduri si mici goluri. Variantele cu 20/24/27 noduri arata potential de simplificare, dar nu sunt selectate; muchiile zimtate si golurile de echipament raman.</p>
+<p>77 → 77 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_151_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_151_C1.jpg" alt="OPT_B_151:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>8cdcc22afe2ee23c4dd58b68800f9eb0a230fb9162df032ca1ae252643f3e376</code></small></details></article>
+<article class="REVIEW" id="OPT_B_152:C1"><h2>OPT_B_152:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis alb triunghiular cu structura aparenta; raman 74 noduri care urmaresc zimti si capete inguste. Variantele 9/16/18 noduri sunt mai simple, dar trebuie distinse marginea acoperisului si structura de sustinere.</p>
+<p>74 → 74 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_152_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_152_C1.jpg" alt="OPT_B_152:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>4ba5f610738f45bb288f6efd82bbdcc2107bf9a5078949f7b04cc5d60c60830d</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_153:C1"><h2>OPT_B_153:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Poligonul selectat este o fasie de pe un acoperis gri mult mai mare, cu varf si mic gol la vest. Simplificarea 42 la 14 noduri nu recupereaza obiectul complet.</p>
+<p>42 → 14 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_153_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_153_C1.jpg" alt="OPT_B_153:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2c246cf4bb4c0644fbeaf9487b68d2cdee81989dcc72ed471ba0d5c1d4400901</code></small></details></article>
+<article class="REVIEW" id="OPT_B_154:C1"><h2>OPT_B_154:C1</h2>
+<p class="status">Necesită verificare</p><p>Banda rosie cu articulatii si jonctiune cu hala alba ramane cu 74 noduri si un mic gol. Alternativele de 13/16 noduri exista, dar rezultatul ales este inca zgomotos si identitatile volumelor necesita verificare.</p>
+<p>74 → 74 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_154_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_154_C1.jpg" alt="OPT_B_154:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ab36ce0b028fde183f4e59119a3c55e2a0efb7f5eccc76c6123f54466861cd9b</code></small></details></article>
+<article class="REVIEW" id="OPT_B_155:C1"><h2>OPT_B_155:C1</h2>
+<p class="status">Necesită verificare</p><p>Selectia delimiteaza o suprafata cu instalatii intre hala gri si cea rosie. Poate fi acoperis tehnic sau echipament; nu e suficienta o forma rectangulara pentru a confirma cladire separata.</p>
+<p>8 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_155_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_155_C1.jpg" alt="OPT_B_155:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>6cfce465c65972ae10e12d4b48b2edcd93864be9c3938d585e0edb84835c68ce</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_156:C1"><h2>OPT_B_156:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul urmareste un element inchis de pe acoperisul gri, cu limite in interiorul acestuia. Nu reprezinta cladirea; variantele simplifica acelasi fragment.</p>
+<p>9 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_156_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_156_C1.jpg" alt="OPT_B_156:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d8bba0873f518a3f829536149fce6573ef73f2550d1dab3330ddf6bda8d70990</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_157:C1"><h2>OPT_B_157:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul gri pastreaza o crapatura interioara lunga si goluri interpretate COURTYARD, langa NoData. Sunt limite de masca/acoperis, nu o curte demonstrata; simplificarea nu rezolva obiectul.</p>
+<p>45 → 45 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_157_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_157_C1.jpg" alt="OPT_B_157:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>68d35bd5b3ec5c3d34b759d7b728be0b447f12726b224346c724e2b698903ac3</code></small></details></article>
+<article class="REVIEW" id="OPT_B_158:C1"><h2>OPT_B_158:C1</h2>
+<p class="status">Necesită verificare</p><p>Aripa rosie in L ajunge la NoData in nord, iar limita vestica taie o suprafata rosie continua. Toate alternativele simple sunt respinse pentru acoperire; cazul trebuie marcat incomplet.</p>
+<p>22 → 22 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_158_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_158_C1.jpg" alt="OPT_B_158:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2193020b4d4cfa502b49636683f12cdac4015b56649c8208ca528a3bb44b78a4</code></small></details></article>
+<article class="REVIEW" id="OPT_B_159:C1"><h2>OPT_B_159:C1</h2>
+<p class="status">Necesită verificare</p><p>Patrulaterul delimiteaza acoperisul gri dintre doua materiale; netezeste latura sud-vestica spre arbori. Muchia vestica si identitatea fata de vecini necesita verificare, fara extindere automata.</p>
+<p>12 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_159_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_159_C1.jpg" alt="OPT_B_159:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ee95f4c41e6d66f12bb2872c237433a6d632d495b6b569e636faadee63516c5c</code></small></details></article>
+<article class="REVIEW" id="OPT_B_160:C1"><h2>OPT_B_160:C1</h2>
+<p class="status">Necesită verificare</p><p>Sectiune rosie de capat intr-o banda lunga; dreptunghiul elimina crestatura sudica, posibil artefact de masca sau retragere reala. Necesita detaliu si verificarea continuitatii nordice.</p>
+<p>9 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_160_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_160_C1.jpg" alt="OPT_B_160:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d98c01f785450ccb8746951f020ec53d43809316cc77dcb3473bfe955e44b736</code></small></details></article>
+<article class="REVIEW" id="OPT_B_161:C1"><h2>OPT_B_161:C1</h2>
+<p class="status">Necesită verificare</p><p>Forma cu opt noduri pastreaza doua retrageri spre sud si simplifica capatul vestic tesit. Local plauzibila, dar colturile sub vegetatie si jonctiunea cu banda rosie necesita verificare.</p>
+<p>14 → 8 noduri; 6 variante afișate. Familie selectată de algoritm: T_OR_OFFSET. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_161_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_161_C1.jpg" alt="OPT_B_161:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>714d3033ac5ba6f2a1916ff7e3899e84e9ebf60e3c19c843c36faf2d53bf390e</code></small></details></article>
+<article class="REVIEW" id="OPT_B_162:C1"><h2>OPT_B_162:C1</h2>
+<p class="status">Necesită verificare</p><p>Sase noduri aproximeaza capatul portocaliu cu tesituri, atasat unui acoperis care continua spre nord-vest. Separarea de corp si marginea nordica trebuie confirmate.</p>
+<p>12 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_162_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_162_C1.jpg" alt="OPT_B_162:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0446f630f56d9397936c51b63f3cda8b978965a0fd764a38d9ad8cda009fea31</code></small></details></article>
+<article class="REVIEW" id="OPT_B_163:C1"><h2>OPT_B_163:C1</h2>
+<p class="status">Necesită verificare</p><p>Opt noduri pastreaza varful nordic si retragerea sudica, dar traseul vestic este netezit. Ansamblu de cladire de cult: trebuie distinse proiectiile reale de zgomot si de partile vecine.</p>
+<p>24 → 8 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_163_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_163_C1.jpg" alt="OPT_B_163:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c52a616372628d3155b8eabda45f78a73b0e061094d06f6e0ea2b95f3ecfb6b7</code></small></details></article>
+<article class="REVIEW" id="OPT_B_164:C1"><h2>OPT_B_164:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis de tigla in L, cu gol minuscul etichetat curte. Forma selectata umple tesitura vestica si pastreaza o limita la banda rosie nordica; verificare pentru colt, gol si identitate.</p>
+<p>19 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_164_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_164_C1.jpg" alt="OPT_B_164:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>527e2cbf59a4edb7147a115c27a485140c8af97fa608ac262b5b9bcc998280bc</code></small></details></article>
+<article class="PLAUSIBLE" id="OPT_B_165:C1"><h2>OPT_B_165:C1</h2>
+<p class="status">Plauzibil vizual</p><p>Acoperis rosu mic rectangular, separat spatial de vecini. Patru laturi urmeaza coerent marginea vizibila; fara regresie majora evidenta pe plansa.</p>
+<p>4 → 4 noduri; 1 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_165_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_165_C1.jpg" alt="OPT_B_165:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0940e9901c44139553193a94a728dc7378b006874f868cc39dd9a0dc23ab6c31</code></small></details></article>
+<article class="REVIEW" id="OPT_B_166:C1"><h2>OPT_B_166:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis mic cu colturi tesite, partial sub arbori. Sapte noduri evita dreptunghiul fortat, dar conturul nordic si latura vestica raman slab observabile.</p>
+<p>11 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_166_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_166_C1.jpg" alt="OPT_B_166:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c4f966cd323984f4733e6fc05dc98ff356971225da0030fba9e5091badb27d9d</code></small></details></article>
+<article class="REVIEW" id="OPT_B_167:C1"><h2>OPT_B_167:C1</h2>
+<p class="status">Necesită verificare</p><p>Extremitate estica articulata a unei cladiri de cult: selectia pastreaza retragerea estica, dar elimina treapta vestica la jonctiune. Necesita controlul proiectiilor si identitatii fata de nava principala.</p>
+<p>13 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_167_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_167_C1.jpg" alt="OPT_B_167:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d35b76fcc3f0a1d36c0e2f2769d449b4b82adc7e2d07bbf01d14b4803f67478e</code></small></details></article>
+<article class="REVIEW" id="OPT_B_168:C1"><h2>OPT_B_168:C1</h2>
+<p class="status">Necesită verificare</p><p>L in sase noduri pastreaza curtea, dar rectangularizeaza tesitura de la strada si se afla langa NoData la vest. Masa principala este coerenta, muchia vestica si colturile necesita detaliu.</p>
+<p>12 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: L. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_168_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_168_C1.jpg" alt="OPT_B_168:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ad545b5520a300d56e1ab05fcad999af9566ac8597629892390a9cd5961f1aeb</code></small></details></article>
+<article class="REVIEW" id="OPT_B_169:C1"><h2>OPT_B_169:C1</h2>
+<p class="status">Necesită verificare</p><p>Sectiune centrala din banda rosie B154: extinderile de la capete sunt excluse. 13 noduri raman desi exista variante simple; trebuie rezolvata relatia parte-intreg si posibila dublare cu B154.</p>
+<p>13 → 13 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_169_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_169_C1.jpg" alt="OPT_B_169:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>3ecbd2d3ae101cace52ede0bba0c79b4f05f885247d35b1dc2a356b296b7b32a</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_170:C1"><h2>OPT_B_170:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Sectiunea sudica a acoperisului in L B168 este izolata printr-o limita diagonala interna. Nu este un obiect complet, iar simplificarea pastreaza fragmentarea.</p>
+<p>10 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_170_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_170_C1.jpg" alt="OPT_B_170:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c9677ea2d19cec80672946a4df18c5a71b09986122aa9090584de84e0a302e8e</code></small></details></article>
+<article class="REVIEW" id="OPT_B_171:C1"><h2>OPT_B_171:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul simplifica acoperisul de colt, dar pierde tesituri si mascheaza jonctiunea cu banda spre nord-est. Variantele L/oblice evidentiaza detaliile; necesitati de identitate si colturi.</p>
+<p>13 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_171_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_171_C1.jpg" alt="OPT_B_171:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>40d9854d71f5702298b155222b68ea7c0d026fa76f911a79b38e42ac497d906b</code></small></details></article>
+<article class="REVIEW" id="OPT_B_172:C1"><h2>OPT_B_172:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis portocaliu lung: dreptunghiul adauga triunghiuri la capatul sud-vestic tesit si elimina o mica articulatie nordica. Alternativa cu sase/zece noduri respecta mai bine capatul.</p>
+<p>13 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_172_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_172_C1.jpg" alt="OPT_B_172:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>0293db6e0619e9f66c7f642f16794960a51dfbed45ac0594d9a2e7730e26fe7c</code></small></details></article>
+<article class="REVIEW" id="OPT_B_173:C1"><h2>OPT_B_173:C1</h2>
+<p class="status">Necesită verificare</p><p>Dreptunghiul delimiteaza o fasie de tigla intre ansambluri, eliminand tesitura nordica. Identitatea fata de masa de tigla vestica necesita verificare; simplificarea nu demonstreaza separarea.</p>
+<p>10 → 4 noduri; 4 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_173_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_173_C1.jpg" alt="OPT_B_173:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>b876a66aabd8c3e777b19d66e4b675fa7aaecc3b8a45b25b4950c97c04b22f22</code></small></details></article>
+<article class="REVIEW" id="OPT_B_174:C1"><h2>OPT_B_174:C1</h2>
+<p class="status">Necesită verificare</p><p>Nava principala rosie a edificiului B126 este un candidat separat. 12 noduri pastreaza zgomot desi sunt disponibile dreptunghiuri; trebuie stabilita relatia cu intregul B126, nu numarate ca doua cladiri independente.</p>
+<p>12 → 12 noduri; 3 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_174_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_174_C1.jpg" alt="OPT_B_174:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>fffaa8f49722b748cddfff3f51b037d3f93742cc9f47389e250e4ba80e1e0bd4</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_175:C1"><h2>OPT_B_175:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Dreptunghiul urmareste o parte ingusta a acoperisului de la strada, omite portiunea de tigla sudica si continuarea spre est. Niciuna dintre variante nu recupereaza obiectul complet.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_175_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_175_C1.jpg" alt="OPT_B_175:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>941debabc9c0d53667cacb1bf34be153c682b28b8e910f10d07770280aab38eb</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_176:C1"><h2>OPT_B_176:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Candidat doar pe sfertul nord-vestic al unui acoperis rosu mult mai mare. Patru noduri fac fragmentul regulat, fara sa rezolve trunchierea.</p>
+<p>11 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_176_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_176_C1.jpg" alt="OPT_B_176:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ed3ff8669d2499f7fe05b6f16e0bd7df7aa12d35d66dab27d5892deeb3885548</code></small></details></article>
+<article class="REVIEW" id="OPT_B_177:C1"><h2>OPT_B_177:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic patrat central pe edificiul cu cupola B128, posibil turn/acoperis tehnic. Trebuie modelat drept componenta cu relatie la cladire, nu automat corp cadastral independent.</p>
+<p>4 → 4 noduri; 2 variante afișate. Familie selectată de algoritm: RECTANGLE. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_177_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_177_C1.jpg" alt="OPT_B_177:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>75326a8d4c8d3e3850ea525035c659377ceaa27e8ed90e0a72e434370c67ef6a</code></small></details></article>
+<article class="REVIEW" id="OPT_B_178:C1"><h2>OPT_B_178:C1</h2>
+<p class="status">Necesită verificare</p><p>Suprafata inchisa sub arbori la vestul unui acoperis mare. Sase noduri termina intr-un varf sudic; natura anexei si muchiile ascunse necesita date suplimentare.</p>
+<p>15 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_178_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_178_C1.jpg" alt="OPT_B_178:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>91c81b598257bdefa07d377fba7796abfd1b7bde02cee34f3caaf357c6754c03</code></small></details></article>
+<article class="REVIEW" id="OPT_B_179:C1"><h2>OPT_B_179:C1</h2>
+<p class="status">Necesită verificare</p><p>Hala gri lunga langa gol NoData foarte mare. Rame zimtate de 81 noduri si mici goluri persista; alternativele simple exista, dar marginea estica nu are context suficient pentru validare.</p>
+<p>81 → 81 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_179_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_179_C1.jpg" alt="OPT_B_179:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>f282116d7206e01feb78f3a08bff6e0d66b2bef23fbbf617295510ff956b5fc7</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_180:C1"><h2>OPT_B_180:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Masca este o fasie ingusta de acoperis taiata de limita NoData. 22 noduri urmaresc marginea decupajului; nu se poate livra drept cladire completa.</p>
+<p>22 → 22 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_180_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_180_C1.jpg" alt="OPT_B_180:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>91a0ca5ce7514a3d27d668e07ed2b88a01b4ad1a18cb9dfb50932c04e54736bc</code></small></details></article>
+<article class="REVIEW" id="OPT_B_181:C1"><h2>OPT_B_181:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis brun lung cu gol NoData pe muchia nordica. Conturul pastreaza decupajul lipsa ca articulatie; forma completa si legatura cu extensiile gri nu sunt verificabile aici.</p>
+<p>13 → 13 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_181_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_181_C1.jpg" alt="OPT_B_181:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>29c9947e4ff058092b5c2e4fc8344f64459a1790e9a50e6b3a04fc4170b9d97b</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_182:C1"><h2>OPT_B_182:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Fragment rosu intre hale urmareste o limita curba de NoData si un gol. 66 noduri raman, toate alternativele sunt incomplete; nu este un contur complet de cladire.</p>
+<p>66 → 66 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_182_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_182_C1.jpg" alt="OPT_B_182:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>530cb87f309b7d526f96d8d21edd050886ceab5d566371a936743f36e8261324</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_183:C1"><h2>OPT_B_183:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Numai o portiune inchisa de acoperis apare la marginea NoData printre arbori. Latura vestica reproduce decupajul; lipseste dovada intregului obiect.</p>
+<p>22 → 22 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_183_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_183_C1.jpg" alt="OPT_B_183:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2b454f95e186cf5c4605b35ad3168ae66800ac50fdc77dcde1c400d3f37057c6</code></small></details></article>
+<article class="REVIEW" id="OPT_B_184:C1"><h2>OPT_B_184:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis de tigla la strada, cu marginea nordica taiata de NoData. 26 noduri includ pinten vestic; toate variantele au acoperire incompleta. Necesita vecin/sursa completa, nu acceptare finala.</p>
+<p>26 → 26 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_184_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_184_C1.jpg" alt="OPT_B_184:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>aa0d29919711b0c46f4f46767c06d8138e590bb82b4f7fe740fbf50a4c893235</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_185:C1"><h2>OPT_B_185:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Patrulaterul delimiteaza o singura fata vestica a unui acoperis de tigla mai mare si creeaza varf sudic. Alternativa L nu rezolva identitatea; fragment de plan de acoperis.</p>
+<p>7 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_185_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_185_C1.jpg" alt="OPT_B_185:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>6945c0240486a440f1cdee3a2118a80874c331a1aa22cefdc1d98f14ab615a46</code></small></details></article>
+<article class="REVIEW" id="OPT_B_186:C1"><h2>OPT_B_186:C1</h2>
+<p class="status">Necesită verificare</p><p>Mic acoperis inchis la limita estica NoData, cu 40 noduri. Forma aproximativ pentagonala poate fi reala, dar marginea lipsa si anexele rosii impiedica verificarea completitudinii.</p>
+<p>40 → 40 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_186_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_186_C1.jpg" alt="OPT_B_186:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>bf5d4937476c2072249efe0eb4f9cb637db203e87c4435d7b265560744964d23</code></small></details></article>
+<article class="REVIEW" id="OPT_B_187:C1"><h2>OPT_B_187:C1</h2>
+<p class="status">Necesită verificare</p><p>Fasie lunga din ansamblu de acoperisuri, capatul nordic ajunge la NoData. Patrulaterul netezeste artefacte, insa separarea fata de banda estica si completitudinea necesita sursa.</p>
+<p>18 → 4 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_187_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_187_C1.jpg" alt="OPT_B_187:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>b799392f518c7eacc90acd625dffdc849f8740acc76786c4ab8c62c92c862260</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_188:C1"><h2>OPT_B_188:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul gri urmareste marginea NoData pe intreaga latura nordica si un capat ingust estic. Forma ramane taiata de lipsa datelor, nu rezolvata prin cele 30 noduri.</p>
+<p>30 → 30 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_188_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_188_C1.jpg" alt="OPT_B_188:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>cff9d5fdff5e47fef7c2bbc5425e0da06bf07ff1b5aa4aba4fd513b7beec08b4</code></small></details></article>
+<article class="REVIEW" id="OPT_B_189:C1"><h2>OPT_B_189:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis gri articulat lung la limita NoData, 53 noduri si goluri mici pastrate ca COURTYARD. Extremitatile si componentele lipite necesita verificare; simplificarile sunt respinse.</p>
+<p>53 → 53 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_189_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_189_C1.jpg" alt="OPT_B_189:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c83c621df597a9a48381014e3763f4a37715c079cb191d7d75df535c902b0ec6</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_190:C1"><h2>OPT_B_190:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Selecteaza jumatatea vestica a capatului nordic din cladirea gri mare B151. Latura estica este o taietura interna a acoperisului; dublare/fragmentare evidenta.</p>
+<p>9 → 5 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_190_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_190_C1.jpg" alt="OPT_B_190:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>ae3cfc52342b13ff7475cee322494e431296e1441ac3ada9c14f811ddb2a9237</code></small></details></article>
+<article class="REVIEW" id="OPT_B_191:C1"><h2>OPT_B_191:C1</h2>
+<p class="status">Necesită verificare</p><p>Banda bruna intre acoperisuri, cu lipsa de date la vest si nord. 21 noduri raman, alternativele sunt incomplete; conturul complet nu este confirmat.</p>
+<p>21 → 21 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_191_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_191_C1.jpg" alt="OPT_B_191:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>5920b0ce9de98ec1ff602085ac22d71ac2148480d33330638dad0b042b373f65</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_192:C1"><h2>OPT_B_192:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Fals candidat pe alee/platforma pavata langa cladirea T14, cu vegetatie si marcaje. Nu se vede acoperis sustinut; regularizarea si pastrarea golului nu il transforma in cladire.</p>
+<p>20 → 20 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_192_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_192_C1.jpg" alt="OPT_B_192:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>43b1b2e8edb0af33430f9d626afb873d696cccf4d62ccd846edb5c8fadcb1488</code></small></details></article>
+<article class="REVIEW" id="OPT_B_193:C1"><h2>OPT_B_193:C1</h2>
+<p class="status">Necesită verificare</p><p>Capat de acoperis mixt gri/tigla la NoData, cu 26 noduri si gol la sud. Toate alternativele simple au acoperire incompleta; necesita sursa si verificarea relatiei cu B189.</p>
+<p>26 → 26 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_193_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_193_C1.jpg" alt="OPT_B_193:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2e1c99c09cf52cb67750b21354bb23828979f5ecae6448670d1dd3eb6a09cc68</code></small></details></article>
+<article class="REVIEW" id="OPT_B_194:C1"><h2>OPT_B_194:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis rosu mic chiar pe limita NoData; 18 noduri urmaresc capete neregulate. Forma si identitatea fata de banda vecina nu sunt confirmate, toate variantele au lipsa de acoperire.</p>
+<p>18 → 18 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_194_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_194_C1.jpg" alt="OPT_B_194:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>43e670cb4b115fd48d63aec5c0b31f6972b44c901558385affc307675212cc36</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_195:C1"><h2>OPT_B_195:C1</h2>
+<p class="status">Eroare vizibilă</p><p>O singura portiune portocalie din acoperisul lung este delimitata pe material si terminata printr-un varf intern. NoData in nord si gol mic nu justifica fragmentul drept cladire.</p>
+<p>28 → 28 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_195_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_195_C1.jpg" alt="OPT_B_195:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>794d7569f83835b47423153e3fa276ae9c259ed302601f76b56b05a5d9f20c9d</code></small></details></article>
+<article class="REVIEW" id="OPT_B_196:C1"><h2>OPT_B_196:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis cu echipamente langa gol NoData, in ansamblul B191. Raman 27 noduri si muchii nesigure; trebuie confirmat daca este corp sau componenta tehnica.</p>
+<p>27 → 27 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_196_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_196_C1.jpg" alt="OPT_B_196:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>94a900771c9fe879972608038cadeec432ed3cd4b4c5ba1de37ca369215a3dd8</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_197:C1"><h2>OPT_B_197:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Banda rosie lunga este taiata pe toata latura vestica de NoData, cu 91 noduri urmand decupajul. Nu reprezinta o cladire complet observata si nu e finisata.</p>
+<p>91 → 91 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_197_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_197_C1.jpg" alt="OPT_B_197:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>5a7c6678ef06fc3354dd3117fddf21ff7db472ed2176493a0ab022ac81627601</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_198:C1"><h2>OPT_B_198:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Selecteaza capatul sudic al halei B179 plus o zona de teren si un pinten estic. Latura nordica taie interiorul acoperisului; golurile si variantele nu rezolva fragmentarea.</p>
+<p>33 → 33 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_198_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_198_C1.jpg" alt="OPT_B_198:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>b2d9003cd3131e1cdf64fea576e2a5033f67220345a7a87669d9d422ebe926d6</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_199:C1"><h2>OPT_B_199:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Fragment de suprafata gri cu echipamente intre goluri NoData foarte mari. Conturul de 118 noduri reproduce decupajul si structuri mici; obiectul complet nu este observat.</p>
+<p>118 → 118 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_199_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_199_C1.jpg" alt="OPT_B_199:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>f08b8d4cc322a5bb5020da0bb4108ba646261a9c09bc6c72a160078ca7ab8658</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_200:C1"><h2>OPT_B_200:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Poligon mare gri se termina printr-o latura verticala in interiorul aceluiasi acoperis, cu gol minuscul pastrat ca curte. Include fasia B153; acoperisul este fragmentat si duplicat ca parti.</p>
+<p>14 → 9 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_200_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_200_C1.jpg" alt="OPT_B_200:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>7ac366a06781c91cb5d135b0f8047c58c78d37612380738914ccdffa4aa2ff37</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_201:C1"><h2>OPT_B_201:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Zona cu obiecte/vegetatie si platforme la strada, taiata de NoData; nu se vede acoperis coerent sustinut. 94 noduri si goluri nu trebuie pastrate ca o cladire finala.</p>
+<p>94 → 94 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_201_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_201_C1.jpg" alt="OPT_B_201:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>84b0d087623c5cc090c2a98640a9bfdbe52a112d4b19b5b07cbfc8f659ef2d91</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_202:C1"><h2>OPT_B_202:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Acoperisul gri continua spre est, dar poligonul este taiat vertical in interior; marginea vestica urmareste vegetatia si are goluri multiple. Incomplet si zgomotos, nu doar forma complexa reala.</p>
+<p>63 → 63 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_202_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_202_C1.jpg" alt="OPT_B_202:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>e1f7dd02aa262039fc60f0fb2900be2121ec2d97e66fe2677ebfdd7f2ba5b07d</code></small></details></article>
+<article class="REVIEW" id="OPT_B_203:C1"><h2>OPT_B_203:C1</h2>
+<p class="status">Necesită verificare</p><p>Aripa de tigla la vestul B173: 15 noduri pastreaza colturi si retragere, dar limita sudica traverseaza jonctiunea cu volumul de la strada. Necesita identitate si acoperire comuna, nu contur simplificat izolat.</p>
+<p>15 → 15 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_203_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_203_C1.jpg" alt="OPT_B_203:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d95059048ab000da83f700835795885a5b7b6ee3a604e95b71b9a414f874cdf8</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_204:C1"><h2>OPT_B_204:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Doar sectiunea nordica a unui acoperis rosu continuu spre sud este conturata. Golul NoData la est adauga incertitudine; niciuna dintre variante nu acopera intregul obiect.</p>
+<p>18 → 18 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_204_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_204_C1.jpg" alt="OPT_B_204:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>af7bf6163bebb1ac5a1cd27b3569152c2c6b3c9ea329c1248b4b347197f2f81f</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_205:C1"><h2>OPT_B_205:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Patrulaterul selecteaza banda nordica dintr-un acoperis de tigla mai mare, cu limita sudica prin planul acoperisului. Simplificarea nu recupereaza partea lipsa.</p>
+<p>7 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_205_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_205_C1.jpg" alt="OPT_B_205:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>c00851aa5c76cb2778670793230fa107318b59c2966602a9e708075913a4995a</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_206:C1"><h2>OPT_B_206:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Fasie triunghiulara lunga prin centrul acoperisului gri B200/B153. Nu este cladire distincta; variantele modeleaza acelasi fragment si varf artificial.</p>
+<p>13 → 13 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_206_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_206_C1.jpg" alt="OPT_B_206:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>2cd627d9569f7ef750a11bb1865e5f9edcb9f3b145138881aa021c0e6084cde0</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_207:C1"><h2>OPT_B_207:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Patrulaterul selecteaza numai coltul nord-vestic al ansamblului cu acoperis gri B112/B159. Limitele estica si sudica sunt interne, completitudinea ramane gresita.</p>
+<p>9 → 4 noduri; 5 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_207_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_207_C1.jpg" alt="OPT_B_207:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>a22e0e23f617a663721fce2d97fd8abfcc68e7e8f0ab5c5a9fe00c6357e619ff</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_208:C1"><h2>OPT_B_208:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Conturul taie vertical jumatate din acoperisul de tigla si continua intr-o prelungire ingusta spre sud. Sapte noduri netezesc zgomotul, dar pastreaza fragmentarea obiectului.</p>
+<p>21 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_208_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_208_C1.jpg" alt="OPT_B_208:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>04edba8cf9a9df55a024deb3530ab2969433f61a4ac5534b7c2391846721d542</code></small></details></article>
+<article class="REVIEW" id="OPT_B_209:C1"><h2>OPT_B_209:C1</h2>
+<p class="status">Necesită verificare</p><p>Forma L reprezinta doar jonctiunea nord-vestica a ansamblului portocaliu. Identitatea de aripa si limitele fata de acoperisurile vecine trebuie confirmate; nu presupunere de corp independent.</p>
+<p>11 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: L. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_209_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_209_C1.jpg" alt="OPT_B_209:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>e0cf1e2d8fbd67395b9c2f4675da2774d411e022b2c19c7b3ec5038c7fd53a53</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_210:C1"><h2>OPT_B_210:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Fals candidat pe santier/teren cu utilaje si materiale. Poligonul de 15 noduri si golurile corespund obiectelor din santier, nu unui acoperis observat.</p>
+<p>60 → 15 noduri; 6 variante afișate. Familie selectată de algoritm: COURTYARD. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_210_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_210_C1.jpg" alt="OPT_B_210:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>12810e24a22a2628e1b47562741a3d9f2e63553845284b3ae0bffb0f18e9a887</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_211:C1"><h2>OPT_B_211:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Poligonul este o singura fata estica a acoperisului lung B195/B187, cu latura vestica pe coama si contact NoData la nord. Nu este conturul intregii cladiri.</p>
+<p>27 → 7 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_211_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_211_C1.jpg" alt="OPT_B_211:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>3805a92ae80578969de8c3bcf3a030e71a8d0567cdca8ff7036a1099c678aa9d</code></small></details></article>
+<article class="REVIEW" id="OPT_B_212:C1"><h2>OPT_B_212:C1</h2>
+<p class="status">Necesită verificare</p><p>Portiune de tigla langa edificiul B163, cu marginea nordica lipita de NoData. 36 noduri si un gol mic raman; forma completa si relatia dintre aripi nu sunt stabilite.</p>
+<p>36 → 36 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_212_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_212_C1.jpg" alt="OPT_B_212:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>636d41785e3cfc81d92514516873da5fd0accdcbb780433410b9c06eb0fc88e1</code></small></details></article>
+<article class="INCORRECT" id="OPT_B_213:C1"><h2>OPT_B_213:C1</h2>
+<p class="status">Eroare vizibilă</p><p>Portiune bruna la limita vestica NoData; latura urmareste decupajul pe o mare parte din lungime. Cele 34 noduri nu reprezinta marginea completa a unei cladiri observate.</p>
+<p>34 → 34 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_213_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_213_C1.jpg" alt="OPT_B_213:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>a6d01fc1b582e1ac26006cdc64044684c06812b44a4e34e94474e0e37838726d</code></small></details></article>
+<article class="REVIEW" id="OPT_B_214:C1"><h2>OPT_B_214:C1</h2>
+<p class="status">Necesită verificare</p><p>Aripa rosie estica a ansamblului portocaliu, cu 34 noduri si gol NoData in nord. Nu e clar daca separarea este de corp sau de material; necesita sursa completa si finisare.</p>
+<p>34 → 34 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_214_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_214_C1.jpg" alt="OPT_B_214:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>f7f377f58aed1a034052e952054c27136ac6696c201797a97b95a44bd36890dd</code></small></details></article>
+<article class="REVIEW" id="OPT_B_215:C1"><h2>OPT_B_215:C1</h2>
+<p class="status">Necesită verificare</p><p>Sectiune estica din banda rosie B154 cu 45 noduri si mai multe goluri mici pe acoperis. Alternativele de 18/20 noduri exista, dar relatia parte-intreg si golurile artificiale trebuie rezolvate.</p>
+<p>45 → 45 noduri; 6 variante afișate. Familie selectată de algoritm: UNRESOLVED. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_215_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_215_C1.jpg" alt="OPT_B_215:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>235c56711cd074ccad39256d5380b7f39973ed4f22ca54ce82ecc339c0ccce49</code></small></details></article>
+<article class="REVIEW" id="OPT_B_216:C1"><h2>OPT_B_216:C1</h2>
+<p class="status">Necesită verificare</p><p>Acoperis gri la marginea estica NoData, cu retragere nord-estica pastrata in sase noduri. Forma este local coerenta, dar muchia estica coincide cu lipsa imaginii; completitudinea nu poate fi confirmata.</p>
+<p>23 → 6 noduri; 6 variante afișate. Familie selectată de algoritm: OBLIQUE_OR_IRREGULAR. Verdict proprietar: neschimbat, în așteptare.</p>
+<a href="../option_b_simple_variations_20261018_v2/images/OPT_B_216_C1.jpg"><img loading="lazy" width="1710" height="855" src="../option_b_simple_variations_20261018_v2/images/OPT_B_216_C1.jpg" alt="OPT_B_216:C1: anterior, selectat și alternative"></a>
+<details><summary>Proveniență</summary><small>SHA-256 planșă: <code>d37f8ebbd5eb859789792e7092a3c65bf3d37b9ced13a5296851ec178ae18961</code></small></details></article>
+</html>
