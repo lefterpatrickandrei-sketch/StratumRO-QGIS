@@ -1,0 +1,10 @@
+{
+  "relative_website_links_verified": 670,
+  "archive_files_sha256_verified": 401,
+  "tests_total": 508,
+  "tests_passed": 499,
+  "tests_skipped": 9,
+  "batch_output_geometries_unchanged": 216,
+  "raw_data_uploaded": false,
+  "github_pages_enabled": false
+}

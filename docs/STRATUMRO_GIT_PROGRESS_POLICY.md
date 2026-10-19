@@ -18,3 +18,10 @@ Commitul local nu reprezintă backup remote. Push-ul rămâne o operație distin
 Această regulă se aplică progresului curent și viitor; nu este dovada că toate fișierele istorice neversionate din repository au fost deja auditate sau incluse.
 
 Continuarea cadastrală se face în proiectul QGIS comun. Cererea cea mai recentă a proprietarului de a nu mai crea proiecte separate înlocuiește preferința anterioară pentru izolare vizuală; fișierele și proiectele separate deja create se păstrează ca istoric.
+
+
+## Actualizare explicită a proprietarului, 2026-10-19
+
+Proprietarul a cerut salvarea paginilor web create și a celorlalte rezultate utile în Git **și GitHub**, cu checkpointuri de progres. Pentru rezultatele B ale etapelor 2026-10-18/19 această cerere înlocuiește politica intermediară „doar cod/documentație pe GitHub, GIS și imagini numai local”. Include HTML, imagini, GIS și istoricul util aprobat; nu doar scriptul generator sau un manifest. Inventarul exact este în `workspace/option_b_consolidation_20261019/publication_inventory.json`.
+
+Publicarea progresului este autorizată în ramura PR-ului draft #4, fără merge implicit în main, fără force push, fără rescriere de istoric. Nu includeți lucrările străine neexaminate, secretele sau automat toate datele brute ale proiectului. Pentru următoarele checkpointuri relevante verificați remote-ul și raportați separat commitul local și publicarea confirmată. Arhivarea continuă în `junk/`, cu lista aprobată, hash și restaurare. B este fluxul activ pentru această consolidare; loturile acceptate și celelalte funcții StratumRO nu sunt eliminate.

@@ -1,0 +1,11 @@
+{
+  "count": 216,
+  "variant_count": 1026,
+  "changed_vs_reviewed_output": [],
+  "conflicts_before": 68,
+  "conflicts_after": 60,
+  "joint_reverted": [
+    "OPT_B_033:C1",
+    "OPT_B_203:C1"
+  ]
+}

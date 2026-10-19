@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "active_option": "B",
+  "owner_verdict": "PENDING_OWNER_REVIEW",
+  "active_review": {
+    "directory": "workspace/reviews/option_b_simple_variations_20261018_v2",
+    "gpkg": "simple_variations.gpkg",
+    "layer": "B_SIMPLE",
+    "website": "index.html"
+  },
+  "simplification_input": {
+    "path": "workspace/reviews/option_b_refinement_20261018_final/refinement.gpkg",
+    "layer": "B4_FINAL_REVIEW",
+    "baseline_layer": "B0_BASELINE"
+  },
+  "reader_config": "workspace/option_b_refinement_20261018/config_replay.json",
+  "batch_entrypoint": "stratum_ro.regional_refinement.RegionalRoofRefiner.simplify_shapes",
+  "service_factory": "stratum_ro.api.service.PlatformService.create_regional_roof_refiner",
+  "report_command": "venv/Scripts/python.exe tools/review_simple_roof_variations.py <fresh-output-directory>",
+  "archive_manifest": "workspace/option_b_consolidation_20261019/archive_manifest.json"
+}

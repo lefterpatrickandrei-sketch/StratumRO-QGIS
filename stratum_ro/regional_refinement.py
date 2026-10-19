@@ -176,6 +176,72 @@ class RegionalRoofRefiner:
                 vertices=vertices(observed),eligible=False,reasons=['NO_SAFE_SIMPLE_VARIANT'])
         return chosen,variants
 
+    def simplify_shapes(self, records, **parameters):
+        """Canonical B batch stage: proposals, sensor gates and joint topology QA.
+
+        Called by report/CLI and other service consumers. No file writes, render
+        code, reference contours, inference or owner acceptance. Keep all IDs and
+        original shapes when a simplification increases neighbor intersection.
+        Alternative eligibility is local; batch guards can still block selection.
+        """
+        records=list(records)
+        ids=[r.get('candidate_id') for r in records]
+        if any(not isinstance(i,str) or not i for i in ids) or len(set(ids))!=len(ids):
+            raise ValueError('Unique nonempty candidate IDs required')
+        for r in records:
+            g=r['geometry']
+            if g.geom_type!='Polygon' or g.is_empty or not g.is_valid:
+                raise ValueError('Valid single Polygon observations required')
+        previous=[dict(candidate_id=r['candidate_id'],geometry=r['geometry']) for r in records]
+        by_old={r['candidate_id']:r['geometry'] for r in records}
+        final=[];variants=[];decisions=[];selected={}
+        tree=STRtree([r['geometry'] for r in records]) if records else None
+        threshold=self.config.conflict_area_m2
+        for item in records:
+            ident=item['candidate_id'];g=item['geometry']
+            chosen,options=self.shape_variations(g,item.get('baseline_geometry'),**parameters)
+            # Search the actual proposal as well as the old shape; do not assume
+            # a fixed buffer contains every possible user-supplied tolerance.
+            for j in tree.query(g.union(chosen['geometry']),predicate='intersects'):
+                neighbor=records[int(j)]
+                if neighbor['candidate_id']==ident:continue
+                n=neighbor['geometry']
+                if chosen['geometry'].intersection(n).area>g.intersection(n).area+threshold:
+                    chosen=dict(geometry=g,vertices=vertices(g),family='UNRESOLVED',
+                        method='PREVIOUS_CONFLICT_GUARD',eligible=False,reasons=['INCREASES_NEIGHBOR_OVERLAP'])
+                    break
+            selected[ident]=chosen
+            final.append(dict(candidate_id=ident,geometry=chosen['geometry'],family=chosen['family'],
+                vertices=chosen['vertices'],method=chosen['method'],owner_verdict='PENDING_OWNER_REVIEW',
+                qa_status='SHAPE_PROPOSAL_REVIEW_REQUIRED',previous_qa_status=item.get('qa_status','UNKNOWN'),
+                reasons=list(chosen['reasons'])))
+            for n,option in enumerate(options,1):
+                variants.append(dict(candidate_id=ident,variant_id=f'{ident}:V{n}',**option))
+        reverted=[]
+        while True:
+            bad=set()
+            for pair in overlap_pairs(final,threshold):
+                a,b=pair['a'],pair['b']
+                if pair['area_m2']>by_old[a].intersection(by_old[b]).area+threshold:bad.update([a,b])
+            changed=False
+            for r in final:
+                ident=r['candidate_id']
+                if ident in bad and not r['geometry'].equals(by_old[ident]):
+                    r.update(geometry=by_old[ident],method='JOINT_CONFLICT_GUARD',family='UNRESOLVED',
+                        vertices=vertices(by_old[ident]),reasons=['JOINT_OVERLAP_INCREASE'])
+                    selected[ident]=dict(r);reverted.append(ident);changed=True
+            if not changed:break
+        for r in final:
+            ident=r['candidate_id']
+            decisions.append(dict(candidate_id=ident,nodes_before=vertices(by_old[ident]),nodes_after=r['vertices'],
+                selected={k:v for k,v in selected[ident].items() if k not in ('geometry','candidate_id')},
+                alternatives=[{k:v for k,v in o.items() if k not in ('geometry','candidate_id','variant_id')}
+                    for o in variants if o['candidate_id']==ident]))
+        return dict(previous=previous,final=final,variants=variants,decisions=decisions,
+            jointly_reverted_ids=reverted,conflicts_before=overlap_pairs(previous,threshold),
+            conflicts_after=overlap_pairs(final,threshold),measured_accuracy=None,measured_recall=None,
+            scope='EXISTING_B_PROPOSALS_SIMPLE_SHAPE_ALTERNATIVES')
+
     def retry_observation(self, record, segmenter, *, context_m=24.):
         """Automatic mask retry using actual RGB/LiDAR context, never fake review.
 
