@@ -17,6 +17,28 @@ from stratum_ro.regional_refinement import vertices,overlap_pairs
 from tools.refine_regional_roofs import save_json,save_layer,sha
 
 
+def render_case(engine,out,ident,g,chosen,options):
+    # Same geographic frame for every alternative; explicit validity mask.
+    scene=engine.observe(g.buffer(2))
+    panels=[('B anterior',g,'#ffad32'),('Propunere simpla',chosen['geometry'],'#00e2ff')]
+    for n,option in enumerate(options,1):
+        panels.append((f'V{n}: {option["family"]}, {option["vertices"]} colturi\n'+
+            ('eligibila' if option['eligible'] else 'RESPINSA: '+', '.join(option['reasons'])),
+            option['geometry'],'#3bea4d' if option['eligible'] else '#fa54be'))
+    fig,axes=plt.subplots(2,4,figsize=(18,9),layout='constrained')
+    rgb=np.dstack([scene['rgb'],scene['valid'].astype('uint8')*255])
+    bottom,left,top,right=0,0,0,0
+    west,south,east,north=array_bounds(*scene['valid'].shape,scene['transform'])
+    for ax in axes.flat:ax.axis('off')
+    for ax,(title,geom,color) in zip(axes.flat,panels):
+        ax.imshow(rgb,extent=(west,east,south,north),interpolation='nearest')
+        for ring in [geom.exterior]+list(geom.interiors):
+            xy=np.asarray(ring.coords);ax.plot(xy[:,0],xy[:,1],color=color,lw=1.7)
+        ax.set_xlim(west,east);ax.set_ylim(south,north);ax.set_title(title,fontsize=9)
+    fig.suptitle(f'{ident}: {vertices(g)} → {vertices(chosen["geometry"])} colturi · ipoteze, fara acceptare automata')
+    fig.savefig(out/'images'/(ident.replace(':','_')+'.jpg'),dpi=95);plt.close(fig)
+
+
 def run(output):
     out=Path(output).resolve();out.mkdir(parents=True,exist_ok=False);(out/'images').mkdir()
     source=ROOT/'workspace/reviews/option_b_refinement_20261018_final/refinement.gpkg'
@@ -54,25 +76,7 @@ def run(output):
             details.append({k:v for k,v in option.items() if k!='geometry'})
         decisions.append(dict(candidate_id=ident,nodes_before=vertices(g),nodes_after=vertices(chosen['geometry']),
             selected={k:v for k,v in chosen.items() if k!='geometry'},alternatives=details))
-        # Same geographic frame for every alternative; explicit validity mask.
-        scene=engine.observe(g.buffer(2))
-        panels=[('B anterior',g,'#ffad32'),('Propunere simpla',chosen['geometry'],'#00e2ff')]
-        for n,option in enumerate(options,1):
-            panels.append((f'V{n}: {option["family"]}, {option["vertices"]} colturi\n'+
-                ('eligibila' if option['eligible'] else 'RESPINSA: '+', '.join(option['reasons'])),
-                option['geometry'],'#3bea4d' if option['eligible'] else '#fa54be'))
-        fig,axes=plt.subplots(2,4,figsize=(18,9),layout='constrained')
-        rgb=np.dstack([scene['rgb'],scene['valid'].astype('uint8')*255])
-        bottom,left,top,right=0,0,0,0
-        west,south,east,north=array_bounds(*scene['valid'].shape,scene['transform'])
-        for ax in axes.flat:ax.axis('off')
-        for ax,(title,geom,color) in zip(axes.flat,panels):
-            ax.imshow(rgb,extent=(west,east,south,north),interpolation='nearest')
-            for ring in [geom.exterior]+list(geom.interiors):
-                xy=np.asarray(ring.coords);ax.plot(xy[:,0],xy[:,1],color=color,lw=1.7)
-            ax.set_xlim(west,east);ax.set_ylim(south,north);ax.set_title(title,fontsize=9)
-        fig.suptitle(f'{ident}: {vertices(g)} → {vertices(chosen["geometry"])} colturi · ipoteze, fara acceptare automata')
-        fig.savefig(out/'images'/(ident.replace(':','_')+'.jpg'),dpi=95);plt.close(fig)
+        render_case(engine,out,ident,g,chosen,options)
         if index%20==0:print(f'{index+1}/{len(data)}',flush=True)
     # Joint update can introduce conflict even if each passes against old shapes.
     # Monotonically revert changed proposals until no pairwise area increases.
@@ -91,7 +95,13 @@ def run(output):
                 reverted.append(r['candidate_id']);changed=True
         if not changed:break
     # Do not silently mismatch rendered selections: stop for regeneration if any.
-    if reverted:raise RuntimeError('Joint conflict revisions require rerender: '+str(reverted))
+    for ident in reverted:
+        record=next(r for r in final if r['candidate_id']==ident)
+        d=next(d for d in decisions if d['candidate_id']==ident)
+        d['nodes_after']=record['vertices']
+        d['selected']={k:v for k,v in record.items() if k not in ['geometry','candidate_id']}
+        options=[r for r in variants if r['candidate_id']==ident]
+        render_case(engine,out,ident,by_old[ident],record,options)
     gpkg=out/'simple_variations.gpkg'
     save_layer(gpkg,'B_PREVIOUS',previous);save_layer(gpkg,'B_SIMPLE',final);save_layer(gpkg,'B_VARIATIONS',variants)
     report=dict(input_count=len(data),output_count=len(final),variant_count=len(variants),

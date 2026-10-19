@@ -1,0 +1,21 @@
+{
+  "input_count": 216,
+  "output_count": 216,
+  "variants": 1026,
+  "valid_polygons": true,
+  "stable_ids": true,
+  "owner_verdicts_unchanged": true,
+  "no_increase_in_corner_count": true,
+  "holes_preserved": true,
+  "neighbor_overlap_area_increase_limited_m2": 0.05,
+  "image_hashes_verified": 216,
+  "tests_total": 507,
+  "tests_passed": 498,
+  "tests_skipped": 9,
+  "qgis_original_layer_ids_preserved": 96,
+  "qgis_final_layer_count": 99,
+  "browser_verified": true,
+  "new_sam2_inference": false,
+  "accuracy": null,
+  "git_publication": false
+}

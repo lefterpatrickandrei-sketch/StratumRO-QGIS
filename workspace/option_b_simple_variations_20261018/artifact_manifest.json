@@ -1,0 +1,1358 @@
+[
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/browser_B046.png",
+    "bytes": 14851,
+    "sha256": "1aee57ca59972ea2629006294946c873752c25fa31e0b34f1377d4d46c8dd60a",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/index.html",
+    "bytes": 39667,
+    "sha256": "1c99f8fe0b73c33bde238b27dc9628bb4edf479e8fa9d10604e07c8bf9a19dec",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/live_qgis.pgw",
+    "bytes": 101,
+    "sha256": "d8a0fe48ab2700e00bbe3818175dd5cc38664026b292a5cdfa691c8f12200fad",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/live_qgis.png",
+    "bytes": 895444,
+    "sha256": "10970fdbb24c158bfb8fc70324672259cf736d8a2a44468d62dc9ec68030bcaa",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/manifest.json",
+    "bytes": 3527,
+    "sha256": "59866fb910dff4fa6a9412e44d16f79bb31a800653049fea161ab871fc38507b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/project_before_simple_shapes.qgs",
+    "bytes": 2561129,
+    "sha256": "a80994c56ce79c6fcbba3cd8323ef4cc9099cab57306a77ff1ff069589f86941",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/qgis_integration.json",
+    "bytes": 275,
+    "sha256": "190a1843523c7dfd7e568c2390078266871405b0444f73ca216fd4824d3dc5ba",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/report.json",
+    "bytes": 1705335,
+    "sha256": "fb381b5df7e0a653a987b25c0c363868f64e03190899cea27db71701bfac9696",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/simple_variations.gpkg",
+    "bytes": 1536000,
+    "sha256": "3ba03db4d439745fa7d0dff1b30a37de64c9c064e2237219ff45cc3629f33045",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/visual_manifest.json",
+    "bytes": 36725,
+    "sha256": "0264aab03cfc936cae3436631d67fa48708ffad2af61e75b7e981b2723bc6de9",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_001_C1.jpg",
+    "bytes": 102663,
+    "sha256": "5cfde40657030bdaaa1a4d6cad4b3d5e8b617c9f8b04979c6056a53c29d1778f",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_002_C1.jpg",
+    "bytes": 113498,
+    "sha256": "8555446b226bbf783eac56aa0ff60de2ee2af08639c6485deabf543940b0b4c4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_003_C1.jpg",
+    "bytes": 139327,
+    "sha256": "76009551a4a099e4ed6928d30d8a7bae20ca97f145fd6fb49e8c396b6ab6aa7d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_004_C1.jpg",
+    "bytes": 133093,
+    "sha256": "9fa49d6a453d12aa09268d43836d5df9482ed5f3eaf80ef5140cb8b7a648ff50",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_005_C1.jpg",
+    "bytes": 124024,
+    "sha256": "1f21c4c01bff00caa712dcebca75a94b268fdeaa072c1b616010cb1cca21c994",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_006_C1.jpg",
+    "bytes": 144295,
+    "sha256": "dbff51074654e2e3da3914abcb17aac33a1478fbe6befc80cf061dbfcb0bec4e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_007_C1.jpg",
+    "bytes": 181042,
+    "sha256": "404142c9449e82e892f01253fe7ad0ef38a38295d75affc74e14172276825a8b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_008_C1.jpg",
+    "bytes": 82276,
+    "sha256": "3497778bf98d6553ff5c34b14412901ad9fa96f67e01f04db4ef65333be09c10",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_009_C1.jpg",
+    "bytes": 197412,
+    "sha256": "fd509fc65472c37227e07998dff3030a4e30a7439c5d5a8e18df4711e14205f9",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_010_C1.jpg",
+    "bytes": 160122,
+    "sha256": "19534764dd3369d8efa6133e92f5d65f955ba02e715ff7d438d0361e577836f5",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_011_C1.jpg",
+    "bytes": 219381,
+    "sha256": "a26554f22ff77fdb4c6d00272d4a9f1d94b1a8e88e31217dec90d67de041c9b5",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_012_C1.jpg",
+    "bytes": 94968,
+    "sha256": "ee56039ffa50986d812b4b054a8452fa64558df27c1550dfbb909a2022bcb6d8",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_013_C1.jpg",
+    "bytes": 152925,
+    "sha256": "9a19e21f64d01122e2928cc889644aeb8ca0f10e37c31807fc836dd4a84737b7",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_014_C1.jpg",
+    "bytes": 138221,
+    "sha256": "182638c980ec4728dd6fc43c16991d9455e77399a4e0f4654f144b7cdab7da57",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_015_C1.jpg",
+    "bytes": 138393,
+    "sha256": "592a1a5c1c1d1721653f87dcfbc4d921402c21053d5a4b3d59681833d81b9eb2",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_016_C1.jpg",
+    "bytes": 151038,
+    "sha256": "15732bfeb924a39c60ab7a1eb30b96d049d590482792c8fd0144aa519a9a27fa",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_017_C1.jpg",
+    "bytes": 150929,
+    "sha256": "327dc68474adc39d03d3866390fb6b837046b3399e29b1bc23b8b6b153d4e281",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_018_C1.jpg",
+    "bytes": 163464,
+    "sha256": "a027d1346444da990be99257f12a9b4e83fd24ce1b65500e91e0b3be2efdb5bb",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_019_C1.jpg",
+    "bytes": 86496,
+    "sha256": "81fbb45e97771146003d4b3eb58e7dbc56b7c6f9b350df73c2b0d446eb81f6c4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_020_C1.jpg",
+    "bytes": 184100,
+    "sha256": "4d2ff185998f73bf08b50ebe8d874398b94642702dcd506ce306b5ccf41a53cb",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_021_C1.jpg",
+    "bytes": 201300,
+    "sha256": "c918f72b0f3c89abac69555c33b0c874c3e5cabdad51adacc5e20222fdf05117",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_022_C1.jpg",
+    "bytes": 148721,
+    "sha256": "e8639682faa31e9ebdd2a9010c28e786bd62d3f4ecfd496ac0233ff50b7ff52e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_023_C1.jpg",
+    "bytes": 140281,
+    "sha256": "ac231af45a7d99e810d84a7993f009ce0bb0dcd95d25c6c0e7cee89885a8ae04",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_024_C1.jpg",
+    "bytes": 196173,
+    "sha256": "573e9858023b7a9af6b99c8a5d3e479696ce5dd255781e852c2cfe44d8600117",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_025_C1.jpg",
+    "bytes": 76107,
+    "sha256": "59b62693e2284797dfc9a259de9e6063a2d55f344207acc480659b6d90fe965c",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_026_C1.jpg",
+    "bytes": 88501,
+    "sha256": "b5bb6383bb3b8337b4c4f39fdb963d74339ca5bc5dc2a6f4b5a2a7f4de769311",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_027_C1.jpg",
+    "bytes": 171536,
+    "sha256": "4887fafd42416536da22685f9428f1d727a5f7ae4417cf4e4df99f7034b506a5",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_028_C1.jpg",
+    "bytes": 221919,
+    "sha256": "1040e3794706d0e6f39397339a32969c58d490119e2042961dd6e1100d4fb543",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_029_C1.jpg",
+    "bytes": 79180,
+    "sha256": "acc2cbd303b0b44064fc93f64ed92dab4885aa4b3051d71da9a5aa9f805ec348",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_030_C1.jpg",
+    "bytes": 71602,
+    "sha256": "d64193095336eb6217a95f714e086113afa6d182e71f2aa13d80c04b8f6f39eb",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_031_C1.jpg",
+    "bytes": 114157,
+    "sha256": "6730577c4953f4b7855095f510bbf4c94f2d02abd6a32758f2743b7e1b621b11",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_032_C1.jpg",
+    "bytes": 81417,
+    "sha256": "0113046d21c7a2358bd0bb67e1ecd38e805c02fe8a36558d694e0f08cdb79419",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_033_C1.jpg",
+    "bytes": 123522,
+    "sha256": "357c4f729b76d12224105c2e46531c7c8e1caaba7854d8eaa68815580f66449c",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_034_C1.jpg",
+    "bytes": 79071,
+    "sha256": "68d3f5a2d6071906c0af0b1806d30726c4a9061e003a742dbe66fe0e16fe10ae",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_035_C1.jpg",
+    "bytes": 167337,
+    "sha256": "544fd2ba041fb0edac88dd066bb16d0bfccf008c634d51c28b55bd9c6c85ecf6",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_036_C1.jpg",
+    "bytes": 124826,
+    "sha256": "59717e89a0250ad4e29423f297b1e9cbfdf10464037be889a4e656378a0613ee",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_037_C1.jpg",
+    "bytes": 189106,
+    "sha256": "1f9bbd0716c2557991258e69e7951e1eb507d9889f7ad50d0452118349b8fe08",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_038_C1.jpg",
+    "bytes": 187835,
+    "sha256": "4cd78543a331d860e62a5ab37104720a2ba4e4be47776ac5d543858ce4989cbe",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_039_C1.jpg",
+    "bytes": 156837,
+    "sha256": "1d3d1cec31a75e3b977c8b4fe41a4df98cd779e886a354bc7ebefaa7807d7e71",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_040_C1.jpg",
+    "bytes": 180866,
+    "sha256": "8fad3eb25bbb808fb5bf4de9cea82b770daa20660d0f8cbba25e4d5c3121af29",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_041_C1.jpg",
+    "bytes": 155985,
+    "sha256": "cfa2664cb5af24577e29a56d9b724a21e38ae6026d7096fd1dc95e9ab85a10d3",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_042_C1.jpg",
+    "bytes": 187874,
+    "sha256": "eef493ca02623900b80f43cd6af538bed9c98ecddabe38b552f64a5983ea731d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_043_C1.jpg",
+    "bytes": 167208,
+    "sha256": "d6f3880a197974c9c3338342bcaf9abb6a5dc74d4db1f1eff3ca10129a4551b4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_044_C1.jpg",
+    "bytes": 73214,
+    "sha256": "43e7599b568f90002d00c113bb619c8d3d5b6a62dfd52cf174e5e2bcf552469a",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_045_C1.jpg",
+    "bytes": 101682,
+    "sha256": "d4e359e5e632be5ac53c8edeea8d0d94e9bbed11cac5afe90e53ec7477cc6ee4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_046_C1.jpg",
+    "bytes": 195189,
+    "sha256": "4e5ab1e5e3ccc52cbe63f8001fd4f82fdbc04d23f5162e9b0f51076a17c362ba",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_047_C1.jpg",
+    "bytes": 202886,
+    "sha256": "a7eeb4c4ef2b980f02f0154dcd567ec77a86484da6d0a05a40d48e67c3352978",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_048_C1.jpg",
+    "bytes": 79410,
+    "sha256": "6ff85830046acf62525d42a01417ff808f1b8e1a21e3aa12692c15b289700e50",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_049_C1.jpg",
+    "bytes": 126054,
+    "sha256": "0f75e86763ca0235fa8264b501df5c1655ac45710076a6b1958ec457e3ad629d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_050_C1.jpg",
+    "bytes": 163129,
+    "sha256": "2e2ec15ff39c9584ac359ff0deb24234c0cbeeb89913f17fb590ce5b96c7f408",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_051_C1.jpg",
+    "bytes": 81061,
+    "sha256": "209e825fdb1df0bb3921ff1e91bb75f1b75b717a1558bb058137b4c15fd3c515",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_052_C1.jpg",
+    "bytes": 76441,
+    "sha256": "f0e11b6812c738a79aaf690d568c0bea2105b02cbb042b1a62159a4a0da7a71d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_053_C1.jpg",
+    "bytes": 107614,
+    "sha256": "69ce8b91a3f5a1a7e0b0529bd923466eb2905b18b58f3c210194a00bef89c4cf",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_054_C1.jpg",
+    "bytes": 157254,
+    "sha256": "885d8b9ad9b7abaf378e7b78516535d3266e585c45a742194f179cdfd65eab09",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_055_C1.jpg",
+    "bytes": 144444,
+    "sha256": "2323089ce67ff79b35b63366a7e802f66e874c8c005a7aa5c358cd71bdd0e120",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_056_C1.jpg",
+    "bytes": 81771,
+    "sha256": "4b7295397af549ce7dcbcfdf4ed54a0e15eb24439fc82027305ccbd3dce19c53",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_057_C1.jpg",
+    "bytes": 78279,
+    "sha256": "f0d41203bf867bc05bb40ff9beffc987fcc41bb79ba247d9838dd858c919751b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_058_C1.jpg",
+    "bytes": 153739,
+    "sha256": "2cdecf817429b5659581f56e172b8a6bf7f051dd2c3f162d4f5057dd94f3a7fe",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_059_C1.jpg",
+    "bytes": 84291,
+    "sha256": "20b8e9b4200364c37a6c6afb47309a350eb79a0430e15d59e20101c90726e578",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_060_C1.jpg",
+    "bytes": 173041,
+    "sha256": "46e12969622cc45fee94a8a83c31d2f6ab4d3144b0aac1529b543b8abd231f06",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_061_C1.jpg",
+    "bytes": 77834,
+    "sha256": "7681d2ac02ce8d4895360c6674f4386e4f95be8c26afa872542904b5d74aac1d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_062_C1.jpg",
+    "bytes": 167356,
+    "sha256": "747a658bb93a137255bd6e755f16138eb9c3f9fd694c9eb6515c6708f16ca27b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_063_C1.jpg",
+    "bytes": 107100,
+    "sha256": "57e0b210f6bd22c4db1e7c3b3608fd78dc75b583c24a3ef34c4d25cd967fc971",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_064_C1.jpg",
+    "bytes": 87802,
+    "sha256": "31a709b556e7de65bc59324d2a45c31f663da05bb9d018e9760d1764c406516f",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_065_C1.jpg",
+    "bytes": 169325,
+    "sha256": "5ecca817fc74c587d52fd774d503b6b068a56372f2cb5c71b534a51be9741d6a",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_066_C1.jpg",
+    "bytes": 197088,
+    "sha256": "d529868cd7093282b819215aa4ab3e1e325b854725d986da8784f9b734cb38b5",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_067_C1.jpg",
+    "bytes": 98098,
+    "sha256": "220fbeed22738824c726da7c70a72075cd7f05e00e20d7da267090a0a9dcb54d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_068_C1.jpg",
+    "bytes": 116212,
+    "sha256": "59a133857b427cdc8b5f7ed65bf2060477c51e5a3d8cab9d64e636d8a5c2da68",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_069_C1.jpg",
+    "bytes": 181807,
+    "sha256": "105a1d828486fd42b69b4253110f1a4e890d462888dd1cff26ca3d74a8db8c8c",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_070_C1.jpg",
+    "bytes": 190862,
+    "sha256": "ee9e47e3c019e77acc383cad412aa6423e4a5e0aafa5c4f5aeac03951ccc84ae",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_071_C1.jpg",
+    "bytes": 160027,
+    "sha256": "2fa2e88ce70bd595c7c8cabaef847986553c51131fb06fafbd1d0554456df8eb",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_072_C1.jpg",
+    "bytes": 120863,
+    "sha256": "fc814713d64eb9baa26c18f4df5d3b74d6527742a7712448e1e2a032d4a9eebf",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_073_C1.jpg",
+    "bytes": 168682,
+    "sha256": "0f900c7a422ea18c28825cb570bb4a72c5b9d5b6a01d3da0a0c85da2f20cd5b2",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_074_C1.jpg",
+    "bytes": 105408,
+    "sha256": "b5153ddda185fcbfc4d42627697ccafc5156fcf23cca280c7857e43e35929c6b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_075_C1.jpg",
+    "bytes": 197589,
+    "sha256": "5acc9de1112356611d11f85b0fd5fa862df1bb8c05bcdf1a18ea08f97605fde4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_076_C1.jpg",
+    "bytes": 172353,
+    "sha256": "86eafb3c4427a0437d932406777242f781faa63001ca6c434b764b19b90914c9",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_077_C1.jpg",
+    "bytes": 166877,
+    "sha256": "c1af0fc083a63882d7b93a007c2dea7b87ad61dd39bc7fa242eb46e60b0582f4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_078_C1.jpg",
+    "bytes": 127684,
+    "sha256": "d3f3d335c32738a81f071517c05b0a9d2c039125f66dc3c3087f9e1899f23390",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_079_C1.jpg",
+    "bytes": 164740,
+    "sha256": "925c26aee91f3e8ddc2fdaf6422e7b152101eeb8a8b038fd4ab1ac154e769db7",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_080_C1.jpg",
+    "bytes": 77414,
+    "sha256": "cbb63a8112ec2ed86384ff1275d676546062f8ab0ba64134fd10467da0d61e7f",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_081_C1.jpg",
+    "bytes": 195619,
+    "sha256": "d9a39684f5dea569aa7640fb82dbea4cfe619fa5caee725dcb893126166d9c35",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_082_C1.jpg",
+    "bytes": 91710,
+    "sha256": "e77a85d102e5113f0fec5d658b6b52ed2a8f3417781d77369c66fd7417e20664",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_083_C1.jpg",
+    "bytes": 192203,
+    "sha256": "e7e985ceff1cf32313f8f9389554ab1f16b36eaa3374253dcc12e10abcdac411",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_084_C1.jpg",
+    "bytes": 171469,
+    "sha256": "462584fc44da46e9b45b228c97eea0af92a1787c4f2366dac694d7573c4d9f68",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_085_C1.jpg",
+    "bytes": 73299,
+    "sha256": "9d6b9f4290f5fe638e300385f89035a985a78eb2968977f0f835dfa41448e17d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_086_C1.jpg",
+    "bytes": 157237,
+    "sha256": "0188556623e6b30eeaa235ef24596a0c124f5a4853d452f37ced94cea78feb59",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_087_C1.jpg",
+    "bytes": 125924,
+    "sha256": "09ef1782c4dc92da4705f074ff7e2f1a914be9eee1a69e89861c51ffe72df522",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_088_C1.jpg",
+    "bytes": 134597,
+    "sha256": "d9de8c0e604bab92ce731ea61f54fbd8487c453769287169ae5d1f346f530a6f",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_089_C1.jpg",
+    "bytes": 177413,
+    "sha256": "7bd22a6d9d768f61d9bd1d4766198df706eca928a0826a7ad2f3d02da1ccbcd0",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_090_C1.jpg",
+    "bytes": 177227,
+    "sha256": "1ff02a16af01958ccfbde24f7165b8f83d1f6a9e1bac3f1c10d394ced47dcde4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_091_C1.jpg",
+    "bytes": 94364,
+    "sha256": "455cb19b1039221cd0a5a8b428b91e098188151496017c97847074599f5232e7",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_092_C1.jpg",
+    "bytes": 145592,
+    "sha256": "e9e7b1e960467aa7f0d3a48b1bd6ff36fc8b828cb39071ebf9bdde35df93b7de",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_093_C1.jpg",
+    "bytes": 177760,
+    "sha256": "84c219012d0369bc82cc964778fa76437b868c391544ba192d3695fee6225826",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_094_C1.jpg",
+    "bytes": 164533,
+    "sha256": "047f1cf1a1b2371229d3afcb19e1099f130c794672eff15ee465cfce98fb8227",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_095_C1.jpg",
+    "bytes": 167307,
+    "sha256": "603037551b410067a8511edfaeace2022717e9b1654ee57b014b4c8a93fe544d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_096_C1.jpg",
+    "bytes": 195933,
+    "sha256": "c674fe2cd961938c5653aedfe23cfbd17e087a4aca5ef748e1f80bf472877aa3",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_097_C1.jpg",
+    "bytes": 141625,
+    "sha256": "93e56d8efe05727ac3776189e911866d34fd8d3036940578c235e69f4c681823",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_098_C1.jpg",
+    "bytes": 183517,
+    "sha256": "32149fa43874357c6efe852c2e167030586448f3d2f37ed5ba23e32331eb68ab",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_099_C1.jpg",
+    "bytes": 148639,
+    "sha256": "d5980bc64bae3341111bc6bc48572fe2a793120915cefdc6394ea479086250f3",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_100_C1.jpg",
+    "bytes": 190809,
+    "sha256": "997e9a7237296bed04398117e5e94cb9787d90bf4201ebeccaa8caed883300ea",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_101_C1.jpg",
+    "bytes": 176269,
+    "sha256": "da19ef9032436ea3410680492232a5d01b50b642289cc743d0fd2d46097e8aed",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_102_C1.jpg",
+    "bytes": 86964,
+    "sha256": "c134af7f59f75db12dcace06bc3b154a0e049a44dad386b6a47c5b26faa1a3db",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_103_C1.jpg",
+    "bytes": 157854,
+    "sha256": "55eeec23f3a9b8dbc225ebee77c6c9df2c69d8ac616cf6126efe072ae2448f63",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_104_C1.jpg",
+    "bytes": 162142,
+    "sha256": "d93e82055a4f5c6d40cb12293e8a5e63f801507e9c32323e8412c8b24ad3c9e0",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_105_C1.jpg",
+    "bytes": 82400,
+    "sha256": "579c9baba95bb288e3db0af86ef9d966e94567eaa94d134ca14f3a0084cdc9ef",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_106_C1.jpg",
+    "bytes": 161920,
+    "sha256": "2fc258acbe674820b610088584a37789db8340ecd9ced4b8538b4eef5e9d97b3",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_107_C1.jpg",
+    "bytes": 199331,
+    "sha256": "2c333f0c6c32f69b42ccb1dcc3d74e152b99256d120ececcf62a4d2afe3c2dfa",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_108_C1.jpg",
+    "bytes": 165404,
+    "sha256": "efd2fde4671a832dc8e3a906a55c78680e67eb741860cc2a8c4b8e1ef4415e2e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_109_C1.jpg",
+    "bytes": 171899,
+    "sha256": "112fa57b71410eac5f630f17f5450de24d7b2dc9a3dae11583daf4a0034f43ce",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_110_C1.jpg",
+    "bytes": 163793,
+    "sha256": "4e9eb02442f45a53a046ad8a127701d7f341f08beb97da3216acf401b3de03a0",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_111_C1.jpg",
+    "bytes": 86132,
+    "sha256": "84eabe62a509f045ce380e0783b1bb53ea3abeb09d7ad53ebf06acd0052fd6d0",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_112_C1.jpg",
+    "bytes": 168152,
+    "sha256": "0811fae7f47bc348124a48e5959cb0d83ecf987f845b3efac9f6c8a6eda818f0",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_113_C1.jpg",
+    "bytes": 78398,
+    "sha256": "4b5ff1b2a716f4ab94264fe60dce62258129295f4c0f1a9677f1b4b276f253f8",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_114_C1.jpg",
+    "bytes": 180898,
+    "sha256": "0b636d09db4aa4173b347dbd0fbf7db87a93699c3a68c8021346b9ee2fcce468",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_115_C1.jpg",
+    "bytes": 154777,
+    "sha256": "162aa4e2f74cac907b0438410848e69e0865bcfa18be6f7bed7b5a39f7e82fc1",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_116_C1.jpg",
+    "bytes": 158102,
+    "sha256": "2b262e9c6defbff58c3355bb32cdca5f882aea8c73d2912fdf5aff5012a83a33",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_117_C1.jpg",
+    "bytes": 182865,
+    "sha256": "94009d4ef24460f75606cbeaf127a8dcc54f50f23b19b57a25e7f2b9e0318333",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_118_C1.jpg",
+    "bytes": 164664,
+    "sha256": "0f099f8474dfa406ccfb0aad49f7370a56453b445e1e7d9d2609ed4636b71062",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_119_C1.jpg",
+    "bytes": 144872,
+    "sha256": "08650e0014d142ded7126ca5bcb8616d1cc058f2d84619a1961c56d6c04a1eb4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_120_C1.jpg",
+    "bytes": 75864,
+    "sha256": "b9699657d0af25f6de33f56236a7e80e29a8f0ff11dc3b12c0062c9087f37f7b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_121_C1.jpg",
+    "bytes": 160689,
+    "sha256": "36f49e47817d79ce40cf1255889728b234b6d3d641f13381429858c273b9ffff",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_122_C1.jpg",
+    "bytes": 107262,
+    "sha256": "29b21db00a74bc4d04b5716258b5eeccaa40fed3ccbc1491b2ebba49df1f49af",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_123_C1.jpg",
+    "bytes": 195311,
+    "sha256": "0f7d4c0d1c607bf9e29f4d29440f89768d2f7630fdee1d717958267650dff5c5",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_124_C1.jpg",
+    "bytes": 162806,
+    "sha256": "4eb1bec12145b4324c52e6328321c44c82e1f4cdbf050546e2cf397056c84b9e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_125_C1.jpg",
+    "bytes": 210765,
+    "sha256": "c3e3836fa14981538ba2b3f2313f8747f34cdce5bfff28b959ef1fa1ecd8445f",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_126_C1.jpg",
+    "bytes": 184125,
+    "sha256": "bf4c8ab81db7d4a41e55b6d5e3bc535a9632badba9fe1874e5cc084881e40d5e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_127_C1.jpg",
+    "bytes": 168106,
+    "sha256": "09aa5f5e085110a18835fe74d6084fd4e17f7c3795aa3a36472b264ec85d1e83",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_128_C1.jpg",
+    "bytes": 82061,
+    "sha256": "f231c3a829da2bec5f159763848e030db7ee271bf949db38679b579c0a1d7dc2",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_129_C1.jpg",
+    "bytes": 119524,
+    "sha256": "9894e66b1792b038306d27b562ef05ae794f8ad6348df42e9391bcc17371b438",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_130_C1.jpg",
+    "bytes": 79030,
+    "sha256": "c202d1fb84daed27fb4e920f2b02a25a87ebd40889498854eb95de3e085a2c78",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_131_C1.jpg",
+    "bytes": 92151,
+    "sha256": "3b86923b73094b60815b3c35ecdc66fc1c090e08b3939240d1ee00ca880aa3d0",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_132_C1.jpg",
+    "bytes": 137848,
+    "sha256": "f5856f2949a3ebce0942ed696d40fe989305385bc151efe19a4d3e24d6df9413",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_133_C1.jpg",
+    "bytes": 169663,
+    "sha256": "4fb36800b8d87c46a5300421aafd5a126e651eb6e99fe3486cae38f1aa38521d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_134_C1.jpg",
+    "bytes": 79546,
+    "sha256": "5b9cc5a90ed3365929bb7a5257154b2ac705a4d3b3c23ab6681bcb37fbfc1c7c",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_135_C1.jpg",
+    "bytes": 201696,
+    "sha256": "6a624198682cf283fb5867c2c323d457d69e18badaafb14de04c13c9a7438bdb",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_136_C1.jpg",
+    "bytes": 77322,
+    "sha256": "5f954b1d6ecf8b88ffed5367b83e0abc858dad4440b6c9626009621a6821352e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_137_C1.jpg",
+    "bytes": 147016,
+    "sha256": "056c11bbbcd69ebfb5c8c3d51c0e3947c17af5c4427f7881bd6e4d54e0abe7d1",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_138_C1.jpg",
+    "bytes": 182417,
+    "sha256": "553a206cbb9608921defdbf0397276075bd046dfd7c89460d7fa48dffe427877",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_139_C1.jpg",
+    "bytes": 86854,
+    "sha256": "9da65116e17166f212a0399d7772111b9cc961fc03801cd130faf3f37fa8c805",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_140_C1.jpg",
+    "bytes": 169904,
+    "sha256": "d6d06dc5699e343e3147ef6cb5c5b2f29ed15d3b8e40146bec66fa4955f0ff33",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_141_C1.jpg",
+    "bytes": 159187,
+    "sha256": "ab2ac9277130b9cb76a388430a2c1d4d723444cf75523e3956394afb1fa72cd7",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_142_C1.jpg",
+    "bytes": 161126,
+    "sha256": "1585383017898a2cccd7fb45049d4706478c127da68112166c793aa951c5ab45",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_143_C1.jpg",
+    "bytes": 91224,
+    "sha256": "3baaa02455917ccfa5a30e751b4c1add0861f40eeb72bc78f006f538ebbbcdfd",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_144_C1.jpg",
+    "bytes": 189363,
+    "sha256": "e2a25ae88ec925e6d3c2e33f5bbabf3d5b720d95b21b039f36e31c045ea8cc4e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_145_C1.jpg",
+    "bytes": 157767,
+    "sha256": "e8970c7b174594597c642f6e7a721658dc9d0b64c7ef5522873405b0f4455996",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_146_C1.jpg",
+    "bytes": 169193,
+    "sha256": "1f20f051eb0dd8d1b2dc7b4bdf172005e0740b83a8c63a946f7f0fb268d0ff6c",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_147_C1.jpg",
+    "bytes": 187128,
+    "sha256": "5b8fb5d94a50a0f72d41ae04daafbf1d17bc66cd2c4e3f1a4a6e29b4d0cd2cec",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_148_C1.jpg",
+    "bytes": 72250,
+    "sha256": "81bd50ba3127f69e7212b7c6271379c7ec607f37f991fda7e00b12a6b52bbeba",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_149_C1.jpg",
+    "bytes": 148795,
+    "sha256": "008fb7cd9363a18deef75a6defc05adba78df4eabccb6b2c25b9c7ef080632f5",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_150_C1.jpg",
+    "bytes": 151533,
+    "sha256": "b5281e94e390e6149f758da61e3b4260a1cb9ff2543ee4bb115000ced083d161",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_151_C1.jpg",
+    "bytes": 193471,
+    "sha256": "8cdcc22afe2ee23c4dd58b68800f9eb0a230fb9162df032ca1ae252643f3e376",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_152_C1.jpg",
+    "bytes": 188037,
+    "sha256": "4ba5f610738f45bb288f6efd82bbdcc2107bf9a5078949f7b04cc5d60c60830d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_153_C1.jpg",
+    "bytes": 180302,
+    "sha256": "2c246cf4bb4c0644fbeaf9487b68d2cdee81989dcc72ed471ba0d5c1d4400901",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_154_C1.jpg",
+    "bytes": 169022,
+    "sha256": "ab36ce0b028fde183f4e59119a3c55e2a0efb7f5eccc76c6123f54466861cd9b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_155_C1.jpg",
+    "bytes": 164173,
+    "sha256": "6cfce465c65972ae10e12d4b48b2edcd93864be9c3938d585e0edb84835c68ce",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_156_C1.jpg",
+    "bytes": 163331,
+    "sha256": "d8bba0873f518a3f829536149fce6573ef73f2550d1dab3330ddf6bda8d70990",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_157_C1.jpg",
+    "bytes": 189917,
+    "sha256": "68d35bd5b3ec5c3d34b759d7b728be0b447f12726b224346c724e2b698903ac3",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_158_C1.jpg",
+    "bytes": 163784,
+    "sha256": "2193020b4d4cfa502b49636683f12cdac4015b56649c8208ca528a3bb44b78a4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_159_C1.jpg",
+    "bytes": 151711,
+    "sha256": "ee95f4c41e6d66f12bb2872c237433a6d632d495b6b569e636faadee63516c5c",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_160_C1.jpg",
+    "bytes": 163536,
+    "sha256": "d98c01f785450ccb8746951f020ec53d43809316cc77dcb3473bfe955e44b736",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_161_C1.jpg",
+    "bytes": 194687,
+    "sha256": "714d3033ac5ba6f2a1916ff7e3899e84e9ebf60e3c19c843c36faf2d53bf390e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_162_C1.jpg",
+    "bytes": 179253,
+    "sha256": "0446f630f56d9397936c51b63f3cda8b978965a0fd764a38d9ad8cda009fea31",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_163_C1.jpg",
+    "bytes": 158885,
+    "sha256": "c52a616372628d3155b8eabda45f78a73b0e061094d06f6e0ea2b95f3ecfb6b7",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_164_C1.jpg",
+    "bytes": 181481,
+    "sha256": "527e2cbf59a4edb7147a115c27a485140c8af97fa608ac262b5b9bcc998280bc",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_165_C1.jpg",
+    "bytes": 92593,
+    "sha256": "0940e9901c44139553193a94a728dc7378b006874f868cc39dd9a0dc23ab6c31",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_166_C1.jpg",
+    "bytes": 199428,
+    "sha256": "c4f966cd323984f4733e6fc05dc98ff356971225da0030fba9e5091badb27d9d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_167_C1.jpg",
+    "bytes": 142462,
+    "sha256": "d35b76fcc3f0a1d36c0e2f2769d449b4b82adc7e2d07bbf01d14b4803f67478e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_168_C1.jpg",
+    "bytes": 207566,
+    "sha256": "ad545b5520a300d56e1ab05fcad999af9566ac8597629892390a9cd5961f1aeb",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_169_C1.jpg",
+    "bytes": 149782,
+    "sha256": "3ecbd2d3ae101cace52ede0bba0c79b4f05f885247d35b1dc2a356b296b7b32a",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_170_C1.jpg",
+    "bytes": 179097,
+    "sha256": "c9677ea2d19cec80672946a4df18c5a71b09986122aa9090584de84e0a302e8e",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_171_C1.jpg",
+    "bytes": 167579,
+    "sha256": "40d9854d71f5702298b155222b68ea7c0d026fa76f911a79b38e42ac497d906b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_172_C1.jpg",
+    "bytes": 194469,
+    "sha256": "0293db6e0619e9f66c7f642f16794960a51dfbed45ac0594d9a2e7730e26fe7c",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_173_C1.jpg",
+    "bytes": 136611,
+    "sha256": "b876a66aabd8c3e777b19d66e4b675fa7aaecc3b8a45b25b4950c97c04b22f22",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_174_C1.jpg",
+    "bytes": 119591,
+    "sha256": "fffaa8f49722b748cddfff3f51b037d3f93742cc9f47389e250e4ba80e1e0bd4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_175_C1.jpg",
+    "bytes": 97503,
+    "sha256": "941debabc9c0d53667cacb1bf34be153c682b28b8e910f10d07770280aab38eb",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_176_C1.jpg",
+    "bytes": 159632,
+    "sha256": "ed3ff8669d2499f7fe05b6f16e0bd7df7aa12d35d66dab27d5892deeb3885548",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_177_C1.jpg",
+    "bytes": 87306,
+    "sha256": "75326a8d4c8d3e3850ea525035c659377ceaa27e8ed90e0a72e434370c67ef6a",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_178_C1.jpg",
+    "bytes": 182994,
+    "sha256": "91c81b598257bdefa07d377fba7796abfd1b7bde02cee34f3caaf357c6754c03",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_179_C1.jpg",
+    "bytes": 171708,
+    "sha256": "f282116d7206e01feb78f3a08bff6e0d66b2bef23fbbf617295510ff956b5fc7",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_180_C1.jpg",
+    "bytes": 158731,
+    "sha256": "91a0ca5ce7514a3d27d668e07ed2b88a01b4ad1a18cb9dfb50932c04e54736bc",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_181_C1.jpg",
+    "bytes": 188754,
+    "sha256": "29c9947e4ff058092b5c2e4fc8344f64459a1790e9a50e6b3a04fc4170b9d97b",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_182_C1.jpg",
+    "bytes": 191256,
+    "sha256": "530cb87f309b7d526f96d8d21edd050886ceab5d566371a936743f36e8261324",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_183_C1.jpg",
+    "bytes": 131196,
+    "sha256": "2b454f95e186cf5c4605b35ad3168ae66800ac50fdc77dcde1c400d3f37057c6",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_184_C1.jpg",
+    "bytes": 150541,
+    "sha256": "aa0d29919711b0c46f4f46767c06d8138e590bb82b4f7fe740fbf50a4c893235",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_185_C1.jpg",
+    "bytes": 158653,
+    "sha256": "6945c0240486a440f1cdee3a2118a80874c331a1aa22cefdc1d98f14ab615a46",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_186_C1.jpg",
+    "bytes": 144735,
+    "sha256": "bf5d4937476c2072249efe0eb4f9cb637db203e87c4435d7b265560744964d23",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_187_C1.jpg",
+    "bytes": 152604,
+    "sha256": "b799392f518c7eacc90acd625dffdc849f8740acc76786c4ab8c62c92c862260",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_188_C1.jpg",
+    "bytes": 177782,
+    "sha256": "cff9d5fdff5e47fef7c2bbc5425e0da06bf07ff1b5aa4aba4fd513b7beec08b4",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_189_C1.jpg",
+    "bytes": 180114,
+    "sha256": "c83c621df597a9a48381014e3763f4a37715c079cb191d7d75df535c902b0ec6",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_190_C1.jpg",
+    "bytes": 144522,
+    "sha256": "ae3cfc52342b13ff7475cee322494e431296e1441ac3ada9c14f811ddb2a9237",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_191_C1.jpg",
+    "bytes": 150549,
+    "sha256": "5920b0ce9de98ec1ff602085ac22d71ac2148480d33330638dad0b042b373f65",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_192_C1.jpg",
+    "bytes": 159333,
+    "sha256": "43b1b2e8edb0af33430f9d626afb873d696cccf4d62ccd846edb5c8fadcb1488",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_193_C1.jpg",
+    "bytes": 139040,
+    "sha256": "2e1c99c09cf52cb67750b21354bb23828979f5ecae6448670d1dd3eb6a09cc68",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_194_C1.jpg",
+    "bytes": 151594,
+    "sha256": "43e670cb4b115fd48d63aec5c0b31f6972b44c901558385affc307675212cc36",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_195_C1.jpg",
+    "bytes": 138525,
+    "sha256": "794d7569f83835b47423153e3fa276ae9c259ed302601f76b56b05a5d9f20c9d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_196_C1.jpg",
+    "bytes": 168161,
+    "sha256": "94a900771c9fe879972608038cadeec432ed3cd4b4c5ba1de37ca369215a3dd8",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_197_C1.jpg",
+    "bytes": 136876,
+    "sha256": "5a7c6678ef06fc3354dd3117fddf21ff7db472ed2176493a0ab022ac81627601",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_198_C1.jpg",
+    "bytes": 178439,
+    "sha256": "b2d9003cd3131e1cdf64fea576e2a5033f67220345a7a87669d9d422ebe926d6",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_199_C1.jpg",
+    "bytes": 193794,
+    "sha256": "f08b8d4cc322a5bb5020da0bb4108ba646261a9c09bc6c72a160078ca7ab8658",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_200_C1.jpg",
+    "bytes": 202779,
+    "sha256": "7ac366a06781c91cb5d135b0f8047c58c78d37612380738914ccdffa4aa2ff37",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_201_C1.jpg",
+    "bytes": 139532,
+    "sha256": "84b0d087623c5cc090c2a98640a9bfdbe52a112d4b19b5b07cbfc8f659ef2d91",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_202_C1.jpg",
+    "bytes": 195183,
+    "sha256": "e1f7dd02aa262039fc60f0fb2900be2121ec2d97e66fe2677ebfdd7f2ba5b07d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_203_C1.jpg",
+    "bytes": 189077,
+    "sha256": "d95059048ab000da83f700835795885a5b7b6ee3a604e95b71b9a414f874cdf8",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_204_C1.jpg",
+    "bytes": 194172,
+    "sha256": "af7bf6163bebb1ac5a1cd27b3569152c2c6b3c9ea329c1248b4b347197f2f81f",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_205_C1.jpg",
+    "bytes": 136009,
+    "sha256": "c00851aa5c76cb2778670793230fa107318b59c2966602a9e708075913a4995a",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_206_C1.jpg",
+    "bytes": 167355,
+    "sha256": "2cd627d9569f7ef750a11bb1865e5f9edcb9f3b145138881aa021c0e6084cde0",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_207_C1.jpg",
+    "bytes": 144719,
+    "sha256": "a22e0e23f617a663721fce2d97fd8abfcc68e7e8f0ab5c5a9fe00c6357e619ff",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_208_C1.jpg",
+    "bytes": 157556,
+    "sha256": "04edba8cf9a9df55a024deb3530ab2969433f61a4ac5534b7c2391846721d542",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_209_C1.jpg",
+    "bytes": 161473,
+    "sha256": "e0cf1e2d8fbd67395b9c2f4675da2774d411e022b2c19c7b3ec5038c7fd53a53",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_210_C1.jpg",
+    "bytes": 195549,
+    "sha256": "12810e24a22a2628e1b47562741a3d9f2e63553845284b3ae0bffb0f18e9a887",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_211_C1.jpg",
+    "bytes": 138369,
+    "sha256": "3805a92ae80578969de8c3bcf3a030e71a8d0567cdca8ff7036a1099c678aa9d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_212_C1.jpg",
+    "bytes": 170340,
+    "sha256": "636d41785e3cfc81d92514516873da5fd0accdcbb780433410b9c06eb0fc88e1",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_213_C1.jpg",
+    "bytes": 132902,
+    "sha256": "a6d01fc1b582e1ac26006cdc64044684c06812b44a4e34e94474e0e37838726d",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_214_C1.jpg",
+    "bytes": 167993,
+    "sha256": "f7f377f58aed1a034052e952054c27136ac6696c201797a97b95a44bd36890dd",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_215_C1.jpg",
+    "bytes": 173457,
+    "sha256": "235c56711cd074ccad39256d5380b7f39973ed4f22ca54ce82ecc339c0ccce49",
+    "versioned": false
+  },
+  {
+    "path": "workspace/reviews/option_b_simple_variations_20261018_v2/images/OPT_B_216_C1.jpg",
+    "bytes": 165031,
+    "sha256": "d37f8ebbd5eb859789792e7092a3c65bf3d37b9ced13a5296851ec178ae18961",
+    "versioned": false
+  }
+]

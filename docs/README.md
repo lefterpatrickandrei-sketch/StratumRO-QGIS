@@ -34,3 +34,5 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 Fișierele `RAPORT_*.md`, `MASTER_AUDIT_*.md`, `PROJECT_PROGRESS.md` și celelalte rapoarte datate descriu etape anterioare. Unele folosesc afirmații de performanță sau certificare care nu sunt susținute de verificarea curentă; nu le propaga ca stare prezentă.
 
 Directorul `architecture/` conține și materiale locale neversionate ale altor agenți. Nu presupune că un document marcat PASS descrie implementarea actuală sau că este deja publicat. Verifică fișierul, importurile, testul și dovada invocate. Documentul curent de navigare arhitecturală este [SYSTEM_MAP.md](SYSTEM_MAP.md); consolidarea celorlalte materiale necesită inventar și ownership, nu ștergere în masă.
+
+- [B: forme simple si alternative, 2026-10-19](../workspace/option_b_simple_variations_20261018/README.md) — executie, 216 comparatii, reguli si limite.
