@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis saveDateTime="2026-10-19T09:46:52" version="3.40.0-Bratislava" saveUserFull="Patrick Lefter" projectname="StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie" saveUser="lefpa">
+<qgis saveDateTime="2026-10-19T09:58:42" version="3.40.0-Bratislava" saveUserFull="Patrick Lefter" projectname="StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie" saveUser="lefpa">
   <homePath path=""/>
   <title>StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie</title>
   <transaction mode="Disabled"/>
@@ -55,11 +55,11 @@
         </customproperties>
       </layer-tree-layer>
     </layer-tree-group>
-    <layer-tree-group groupLayer="" expanded="1" name="B_FORME_SIMPLE_SI_VARIATII_20261018" checked="Qt::Unchecked">
+    <layer-tree-group groupLayer="" expanded="1" name="B_FORME_SIMPLE_SI_VARIATII_20261018" checked="Qt::Checked">
       <customproperties>
         <Option/>
       </customproperties>
-      <layer-tree-layer legend_split_behavior="0" id="B___FORME_SIMPLE___necesita_verificare_a50ce9e1_3ce8_492b_b876_ce82a6e89d6f" providerKey="ogr" patch_size="-1,-1" expanded="1" name="B - FORME SIMPLE / necesita verificare" checked="Qt::Unchecked" legend_exp="" source="../option_b_simple_variations_20261018_v2/simple_variations.gpkg|layername=B_SIMPLE">
+      <layer-tree-layer legend_split_behavior="0" id="B___FORME_SIMPLE___necesita_verificare_a50ce9e1_3ce8_492b_b876_ce82a6e89d6f" providerKey="ogr" patch_size="-1,-1" expanded="1" name="B - FORME SIMPLE / necesita verificare" checked="Qt::Checked" legend_exp="" source="../option_b_simple_variations_20261018_v2/simple_variations.gpkg|layername=B_SIMPLE">
         <customproperties>
           <Option/>
         </customproperties>
@@ -75,7 +75,7 @@
         </customproperties>
       </layer-tree-layer>
     </layer-tree-group>
-    <layer-tree-group groupLayer="" expanded="1" name="B_RAFINARE_20261018 - ETAPE SI REVIZIE" checked="Qt::Unchecked">
+    <layer-tree-group groupLayer="" expanded="1" name="B_RAFINARE_20261018 - ETAPE SI REVIZIE" checked="Qt::Checked">
       <customproperties>
         <Option/>
       </customproperties>
@@ -847,10 +847,10 @@
   <mapcanvas annotationsVisible="1" name="theMapCanvas">
     <units>meters</units>
     <extent>
-      <xmin>390882.43535133718978614</xmin>
-      <ymin>585663.33104843809269369</ymin>
-      <xmax>390908.34389520401600748</xmax>
-      <ymax>585705.2435528349597007</ymax>
+      <xmin>391160.12512606102973223</xmin>
+      <ymin>585659.62899757642298937</ymin>
+      <xmax>391211.94221379468217492</xmax>
+      <ymax>585743.4540063701570034</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -888,10 +888,10 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup name="B_FORME_SIMPLE_SI_VARIATII_20261018" checked="Qt::Unchecked" open="true">
-      <legendlayer showFeatureCount="0" drawingOrder="3" name="B - FORME SIMPLE / necesita verificare" checked="Qt::Unchecked" open="true">
+    <legendgroup name="B_FORME_SIMPLE_SI_VARIATII_20261018" checked="Qt::Checked" open="true">
+      <legendlayer showFeatureCount="0" drawingOrder="3" name="B - FORME SIMPLE / necesita verificare" checked="Qt::Checked" open="true">
         <filegroup hidden="false" open="true">
-          <legendlayerfile visible="0" layerid="B___FORME_SIMPLE___necesita_verificare_a50ce9e1_3ce8_492b_b876_ce82a6e89d6f" isInOverview="0"/>
+          <legendlayerfile visible="1" layerid="B___FORME_SIMPLE___necesita_verificare_a50ce9e1_3ce8_492b_b876_ce82a6e89d6f" isInOverview="0"/>
         </filegroup>
       </legendlayer>
       <legendlayer showFeatureCount="0" drawingOrder="4" name="B - ALTERNATIVE / eligibile si respinse" checked="Qt::Unchecked" open="true">
@@ -905,7 +905,7 @@
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendgroup name="B_RAFINARE_20261018 - ETAPE SI REVIZIE" checked="Qt::Unchecked" open="true">
+    <legendgroup name="B_RAFINARE_20261018 - ETAPE SI REVIZIE" checked="Qt::Checked" open="true">
       <legendlayer showFeatureCount="0" drawingOrder="7" name="6. PROPUNERI - cyan simplu / portocaliu revizie" checked="Qt::Unchecked" open="true">
         <filegroup hidden="false" open="true">
           <legendlayerfile visible="0" layerid="6__PROPUNERI___cyan_simplu___portocaliu_revizie_b2b1f1da_047b_4f65_a654_6662809738fc" isInOverview="0"/>
@@ -9174,7 +9174,9 @@
         <constraint field="edge_evidence" desc="" exp=""/>
       </constraintExpressions>
       <expressionfields/>
-      <attributeactions/>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
       <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
         <columns/>
       </attributetableconfig>
@@ -9917,7 +9919,9 @@
         <constraint field="reasons" desc="" exp=""/>
       </constraintExpressions>
       <expressionfields/>
-      <attributeactions/>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
       <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
         <columns/>
       </attributetableconfig>
@@ -43687,7 +43691,7 @@
       </spatialrefsys>
     </CoordinateCustomCrs>
   </ProjectDisplaySettings>
-  <ProjectGpsSettings destinationLayerProvider="ogr" destinationFollowsActiveLayer="1" destinationLayerSource="C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/option_b_refinement_20261018_final/refinement.gpkg|layername=B4_FINAL_REVIEW" destinationLayerName="6. PROPUNERI - cyan simplu / portocaliu revizie" destinationLayer="6__PROPUNERI___cyan_simplu___portocaliu_revizie_b2b1f1da_047b_4f65_a654_6662809738fc" autoCommitFeatures="0" autoAddTrackVertices="0">
+  <ProjectGpsSettings destinationLayerProvider="ogr" destinationFollowsActiveLayer="1" destinationLayerSource="C:\Users\lefpa\Downloads\QGIS-AI\workspace\reviews\option_b_simple_variations_20261018_v2\simple_variations.gpkg|layername=B_VARIATIONS" destinationLayerName="B - ALTERNATIVE / eligibile si respinse" destinationLayer="B___ALTERNATIVE___eligibile_si_respinse_2f66227b_e1a1_4795_bc1c_a55eaa31fb48" autoCommitFeatures="0" autoAddTrackVertices="0">
     <timeStampFields/>
   </ProjectGpsSettings>
 </qgis>
