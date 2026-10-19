@@ -3,6 +3,27 @@ from shapely.geometry import Polygon,box
 from stratum_ro.roof_simple_geometry import roof_shape_variations,roof_shape_family
 
 class ShapeVariationTests(unittest.TestCase):
+    def test_small_real_notch_on_large_roof_survives_global_area_budget(self):
+        g=Polygon([(0,0),(40,0),(40,20),(22,20),(22,18),(20,18),(20,20),(0,20)])
+        selected,options=roof_shape_variations(g)
+        self.assertLess(selected['geometry'].intersection(box(20,18.5,22,20)).area,.5)
+        self.assertTrue(any('FILLS_LOCAL_RECESS_OR_ADDS_SPUR' in o['reasons'] for o in options if o['method']=='RECTANGLE'))
+
+    def test_reviewed_non_roof_is_retained_as_diagnostic_not_accepted(self):
+        from stratum_ro.regional_refinement import RegionalRoofRefiner
+        class Stub(RegionalRoofRefiner):
+            def shape_variations(self,g,previous=None,**kwargs):return roof_shape_variations(g,previous,**kwargs)
+        engine=Stub(None)
+        records=[dict(candidate_id='A',geometry=box(0,0,10,10)),dict(candidate_id='B',geometry=box(-1,-1,20,20))]
+        annotation=dict(action='NON_ROOF',reviewer='visual-review',evidence_path='sheet.jpg',evidence_sha256='abc',observation='pavement')
+        result=engine.simplify_shapes(records,review_annotations={'A':annotation})
+        a=next(r for r in result['final'] if r['candidate_id']=='A')
+        self.assertEqual(a['display_role'],'DIAGNOSTIC_ONLY')
+        self.assertEqual(a['owner_verdict'],'PENDING_OWNER_REVIEW')
+        self.assertEqual(a['possible_parent_ids'],['B'])
+        self.assertEqual(len(result['final']),2)
+        with self.assertRaises(ValueError):engine.simplify_shapes(records,review_annotations={'A':{'action':'NON_ROOF'}})
+
     def test_batch_identity_neighbor_guards_and_order_invariance(self):
         from stratum_ro.regional_refinement import RegionalRoofRefiner
         class Stub(RegionalRoofRefiner):

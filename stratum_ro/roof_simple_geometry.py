@@ -39,7 +39,8 @@ def roof_shape_family(geometry):
 
 def roof_shape_variations(observed, previous=None, *, min_support=.92,
                           min_coverage=.92, max_area_change=.08,
-                          max_boundary_distance=1.5, min_edge=1., limit=6):
+                          max_boundary_distance=1.5, min_edge=1., limit=6,
+                          local_change_tolerance=.35, max_local_change_area=.25):
     """Generate and rank simple alternatives using the existing ring fitter.
 
     Projected metres required. Limits describe development generalization, not
@@ -50,7 +51,9 @@ def roof_shape_variations(observed, previous=None, *, min_support=.92,
     if observed.geom_type!='Polygon' or not observed.is_valid or observed.is_empty:
         raise ValueError('Valid Polygon required')
     if not (0<min_support<=1 and 0<min_coverage<=1 and 0<=max_area_change<=1
-            and max_boundary_distance>0 and min_edge>0 and limit>=2):
+            and max_boundary_distance>0 and min_edge>0 and limit>=2
+            and math.isfinite(local_change_tolerance) and local_change_tolerance>0
+            and math.isfinite(max_local_change_area) and max_local_change_area>=0):
         raise ValueError('Invalid variation constraints')
     options=[];seen=set()
     def add(g,method):
@@ -63,12 +66,22 @@ def roof_shape_variations(observed, previous=None, *, min_support=.92,
         support=inter/g.area;coverage=inter/observed.area
         shift=g.boundary.hausdorff_distance(observed.boundary)
         change=abs(g.area-observed.area)/observed.area
+        # Global area fractions hide small but deep notches on large roofs.
+        # Measure changes beyond a physical boundary band, in projected metres.
+        # This is fidelity to the observation, not proof it is a whole roof.
+        added_core=g.difference(observed.buffer(local_change_tolerance))
+        removed_core=observed.difference(g.buffer(local_change_tolerance))
+        def largest_area(geometry):
+            return max((p.area for p in getattr(geometry,'geoms',[geometry])),default=0.)
+        added_local=largest_area(added_core);removed_local=largest_area(removed_core)
         lengths=np.linalg.norm(np.diff(np.asarray(g.exterior.coords),axis=0),axis=1)
         reasons=[]
         if support<min_support:reasons.append('ADDED_UNSUPPORTED_AREA')
         if coverage<min_coverage:reasons.append('LOST_OBSERVED_WING_OR_AREA')
         if shift>max_boundary_distance:reasons.append('BOUNDARY_DISTANCE')
         if change>max_area_change:reasons.append('AREA_CHANGE')
+        if added_local>max_local_change_area:reasons.append('FILLS_LOCAL_RECESS_OR_ADDS_SPUR')
+        if removed_local>max_local_change_area:reasons.append('CUTS_LOCAL_WING_OR_CORNER')
         # Holes are evidence of unknown courtyards/lightwells, never auto-fill.
         for hole in observed.interiors:
             if g.intersection(Polygon(hole)).area>1e-6:reasons.append('FILLS_COURTYARD')
@@ -77,6 +90,7 @@ def roof_shape_variations(observed, previous=None, *, min_support=.92,
             vertices=len(g.exterior.coords)-1+sum(len(r.coords)-1 for r in g.interiors),
             support=float(support),coverage=float(coverage),iou=float(inter/g.union(observed).area),
             boundary_distance_m=float(shift),area_change_fraction=float(change),
+            added_local_core_m2=float(added_local),removed_local_core_m2=float(removed_local),
             eligible=not reasons,reasons=sorted(set(reasons))))
     add(observed,'OBSERVATION')
     if previous is not None:add(previous,'PREVIOUS_SIMPLE_PROPOSAL')

@@ -155,14 +155,18 @@ class RegionalRoofRefiner:
         infer missing bodies or alter the original observation.
         """
         from .roof_simple_geometry import roof_shape_variations
-        chosen, variants=roof_shape_variations(observed,previous,**parameters)
         scene=self.observe(observed.buffer(2))
+        from .roof_mask_fidelity import normalize_height_supported_pinholes
+        fit_input,cleanup=normalize_height_supported_pinholes(observed,scene['valid'],scene['transform'],scene['height'])
+        chosen, variants=roof_shape_variations(fit_input,previous,**parameters)
         before=edge_support(observed,scene['rgb'],scene['valid'],scene['transform'])
         for option in variants:
             g=option['geometry']
-            ev=scene_evidence(g,scene['rgb'],scene['valid'],scene['transform'])
+            ev=scene_evidence(g,scene['rgb'],scene['valid'],scene['transform'],scene['height'],scene['counts'])
             after=edge_support(g,scene['rgb'],scene['valid'],scene['transform'])
             option['optical_evidence']=ev;option['edge_evidence']=after
+            option['pinholes_cleanup']=cleanup
+            option['interior_ring_role']='UNVERIFIED_MASK_INTERIORS_NOT_PROVEN_COURTYARDS'
             if (ev.get('rgb_valid_fraction',0)<self.config.min_rgb_valid_fraction
                     or ev.get('geometry_inside_read_fraction',0)<.999 or ev.get('touches_nodata',True)):
                 option['reasons'].append('INCOMPLETE_OPTICAL_COVERAGE')
@@ -176,7 +180,7 @@ class RegionalRoofRefiner:
                 vertices=vertices(observed),eligible=False,reasons=['NO_SAFE_SIMPLE_VARIANT'])
         return chosen,variants
 
-    def simplify_shapes(self, records, **parameters):
+    def simplify_shapes(self, records, *, review_annotations=None, **parameters):
         """Canonical B batch stage: proposals, sensor gates and joint topology QA.
 
         Called by report/CLI and other service consumers. No file writes, render
@@ -192,6 +196,14 @@ class RegionalRoofRefiner:
             g=r['geometry']
             if g.geom_type!='Polygon' or g.is_empty or not g.is_valid:
                 raise ValueError('Valid single Polygon observations required')
+        annotations=review_annotations or {}
+        if set(annotations)-set(ids):
+            raise ValueError('Review annotation references an unknown candidate')
+        for annotation in annotations.values():
+            if annotation.get('action') not in ('NON_ROOF','INCOMPLETE','SHAPE_REPAIR','REVIEW'):
+                raise ValueError('Unknown reviewed action')
+            if not all(annotation.get(k) for k in ('reviewer','evidence_path','evidence_sha256','observation')):
+                raise ValueError('Reviewed actions require author and bound visual evidence')
         previous=[dict(candidate_id=r['candidate_id'],geometry=r['geometry']) for r in records]
         by_old={r['candidate_id']:r['geometry'] for r in records}
         final=[];variants=[];decisions=[];selected={}
@@ -233,8 +245,32 @@ class RegionalRoofRefiner:
             if not changed:break
         for r in final:
             ident=r['candidate_id']
+            annotation=annotations.get(ident,{})
+            action=annotation.get('action','REVIEW')
+            r['review_action']=action
+            r['agent_observation']=annotation.get('observation','')
+            # Quarantine is explicit and reversible. No inference of a whole
+            # building from a neat rectangle, or automatic union of nested roofs.
+            r['display_role']='DIAGNOSTIC_ONLY' if action in ('NON_ROOF','INCOMPLETE') else 'ROOF_PROPOSAL'
+            if action in ('NON_ROOF','INCOMPLETE'):
+                r['reasons']=list(r['reasons'])+['VISUAL_'+action+'_REQUIRES_RECOVERY']
+                r['qa_status']='EXCLUDED_FROM_DELIVERY_RETAINED_DIAGNOSTIC'
+            r['owner_verdict']=next(item.get('owner_verdict','PENDING_OWNER_REVIEW') for item in records if item['candidate_id']==ident)
+            # Any nested candidate is only a relationship to inspect, not a
+            # duplicate proved by containment. Distinct height bodies survive.
+            relations=[]
+            g=by_old[ident]
+            for j in tree.query(g,predicate='intersects'):
+                other=records[int(j)]
+                if other['candidate_id']==ident or other['geometry'].area<=g.area*1.15:continue
+                fraction=g.intersection(other['geometry']).area/g.area
+                if fraction>=.90:
+                    relations.append(dict(candidate_id=other['candidate_id'],fraction=float(fraction)))
+            r['possible_parent_ids']=[x['candidate_id'] for x in sorted(relations,key=lambda x:x['candidate_id'])]
+            if relations:r['reasons']=list(r['reasons'])+['PART_WHOLE_IDENTITY_REVIEW']
             decisions.append(dict(candidate_id=ident,nodes_before=vertices(by_old[ident]),nodes_after=r['vertices'],
                 selected={k:v for k,v in selected[ident].items() if k not in ('geometry','candidate_id')},
+                review_annotation=annotation,display_role=r['display_role'],possible_parent_ids=r['possible_parent_ids'],
                 alternatives=[{k:v for k,v in o.items() if k not in ('geometry','candidate_id','variant_id')}
                     for o in variants if o['candidate_id']==ident]))
         return dict(previous=previous,final=final,variants=variants,decisions=decisions,
