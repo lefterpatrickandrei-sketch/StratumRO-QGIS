@@ -1,0 +1,21 @@
+{
+  "tests": {
+    "command": "venv/Scripts/python.exe -m unittest discover -s stratum_ro/test -p test_*.py",
+    "total": 511,
+    "passed": 502,
+    "skipped": 9,
+    "failed": 0,
+    "log": "tests_final_511.txt"
+  },
+  "image_hashes_verified": 216,
+  "case_ids_preserved": 216,
+  "valid_geometries": 216,
+  "proposals": 152,
+  "diagnostic": 64,
+  "owner_acceptance_changed": false,
+  "qgis_layers": 102,
+  "invalid_qgis_sources": 0,
+  "preexisting_ab_gpkg_unchanged": true,
+  "common_project_saved": true,
+  "notes": "Raw ortho and nDSM are local dependencies; no new inference; remaining visual errors documented."
+}

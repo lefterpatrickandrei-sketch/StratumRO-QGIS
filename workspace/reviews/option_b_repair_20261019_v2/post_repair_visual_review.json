@@ -1,0 +1,515 @@
+{
+  "changed_cases": [
+    {
+      "candidate_id": "OPT_B_003:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Bevels restored; boundaries need review against roof rather than rectangular prior.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_003_C1.jpg",
+      "evidence_sha256": "73643c052501ed0c1dd1c64ec03e3a716f6f21714a97ba6c7800728e699d43f9",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_010:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Small boundary adjustment; no visually major change at sheet scale.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_010_C1.jpg",
+      "evidence_sha256": "c555ff1076d6cf26373f641b588911eef5bd26dc57cd6b25054349ac01cbf26e",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_011:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Small exterior jog remains; no owner acceptance.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_011_C1.jpg",
+      "evidence_sha256": "b56719b0cf09ae4ed99a9043b7c5639a56547527f9fa77e6677c07430b543d20",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_013:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "More exterior bevels than previous rectangle; still requires review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_013_C1.jpg",
+      "evidence_sha256": "aacf840d4d3166e88d51c98541bcdb1db8dbaf3e5c6a7e6ea8455c81c173c8c9",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_014:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Oblique shoulder restored; needs corner review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_014_C1.jpg",
+      "evidence_sha256": "daa0abf12d83c8fc76b5b21febb7351eba75e4b62f6d030dcb9b99adfd160b58",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_015:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Exterior corners changed; alignment review remains.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_015_C1.jpg",
+      "evidence_sha256": "5919e39f2571674f952327e2b19c3d9718aadb98ba665e50eeb57d3a00f9403f",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_016:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Chamfered corners replace rectangle; occlusion/identity still uncertain.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_016_C1.jpg",
+      "evidence_sha256": "9dd12dd89ecdce97a37d8cb3a08ee031d59e5ccd56192db3b957ca570f0da691",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_017:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Acute triangular spur rejected; narrow original notch remains and body may be partial.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_017_C1.jpg",
+      "evidence_sha256": "9f6554176c4e22d6ad8e55b4cd84140804d4c27b86bde69991aba4d580763007",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_020:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Local steps restored; completeness still unproven.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_020_C1.jpg",
+      "evidence_sha256": "f599ea3b9075296fa3737786c2524bb54e912938a5c35f471e1a27af83e16537",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_027:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Step restored on lower edge; same partial body identity needs review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_027_C1.jpg",
+      "evidence_sha256": "03d96686023868ba605d383787693e0c5218ef2a978a3ec6173fd970ea0cb783",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_035:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "L recess restored instead of filled upper-right corner.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_035_C1.jpg",
+      "evidence_sha256": "8b1a8ddb5c4ecc0519dd59d064e76e3e9a5f83d834e8ae4e2fa4726599384791",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_036:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Roof shoulder restored; minor bevels remain.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_036_C1.jpg",
+      "evidence_sha256": "28003517ce4e3458c73a97394bfc29d2cc010382eee75ccdab65816fd8e62cd9",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_037:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Chamfered corners retained; review at valid-data boundary.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_037_C1.jpg",
+      "evidence_sha256": "8222a6c30732b236e9b8a8de95e27acd5893fb5fdc7e939c878542874e6d4507",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_039:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Tiny interior removed with height support; exterior equipment-like notch remains wrong/suspect.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_039_C1.jpg",
+      "evidence_sha256": "cdcf39c9f47b74c82b9927938d9c12a3e414a049d935739fc2746c2a69d46d5e",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_043:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Five tiny mask holes removed with height support, 89 to 11 total vertices vs active prior; pointed end still needs review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_043_C1.jpg",
+      "evidence_sha256": "1ac23d067c15e99276bfd84d603097431bbb5af509cf36d4977d9ac64d974744",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_047:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Local setbacks restored; shadowed boundary not accepted.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_047_C1.jpg",
+      "evidence_sha256": "67083d5af61831ef429c37dbc11a5bf92e997124159622c044c120b1211b41fc",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_049:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Six-corner L preserves visible right-side recess; checked also in live QGIS.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_049_C1.jpg",
+      "evidence_sha256": "7eab6ceafd5a8cf105d8f78b4eeb77ffb227b9a0c667acf066813f7279f01e4f",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_055:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Six-corner L restores lower-edge recess.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_055_C1.jpg",
+      "evidence_sha256": "4927bb7b1a5a507b81f97412d2f33bd19b00a39ef946f498c772da157c5a78f5",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_060:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Bays restored but extra bevels require review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_060_C1.jpg",
+      "evidence_sha256": "8c3261f742955e74f7cf0c211d0089bd3fb95a05fdabd6399aa76091d66e3a80",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_065:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Simple rectangle retained with boundary shift; cemetery context needs semantic review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_065_C1.jpg",
+      "evidence_sha256": "99ecb97751c0a6fbc9a75392644109b9362f03a02d40ea7c277bf225d9085b0b",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_066:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Tree false positive remains diagnostic; changed shape is not a repaired building.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_066_C1.jpg",
+      "evidence_sha256": "33be850b19ecc981562ce425a376c3677784d47040898fb93663960ef3cf0f23",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_070:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Setback restored; wing identity still requires review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_070_C1.jpg",
+      "evidence_sha256": "9777f0a58104876adcaf7dcc9cbb62241d50807b682e278db4e00535917ee7e8",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_075:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Lower local recess restored; occluded edge remains uncertain.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_075_C1.jpg",
+      "evidence_sha256": "afad1d7103e01c59510b2b50c365b9c150bca6cdb3fce8675a9a401cfe592302",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_079:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Corner/step follows observed roof more closely; not accepted.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_079_C1.jpg",
+      "evidence_sha256": "408203de2b995341fecd26edb1d247624d81cdbe1cd2e98c5ab8413920b3635e",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_081:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "End bevel restored; valid-data context remains limited.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_081_C1.jpg",
+      "evidence_sha256": "d1dbf01ac481d73a376bcf58fc62c4b253b3db66aa0ff0504805409dce7bb18c",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_185:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Only roof fragment represented; new L is not completeness recovery.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_185_C1.jpg",
+      "evidence_sha256": "de23e796bf29fc88fb6985bdd013cac097ea07f9ba70067dd87d5214df51e546",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_046:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Opposite local setbacks preserved; corner/identity review remains.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_046_C1.jpg",
+      "evidence_sha256": "fd816c73b2bb947f8c8e0eba22262f404ae1d348b030493b3c5a5048cf09ba13",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_089:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Hole cleanup and local outline changes; possible duplication/whole-body identity unresolved.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_089_C1.jpg",
+      "evidence_sha256": "c8e00cbbc2dc6cb8f64cf117c3e0a16ccc6da214e0e42ca992945fda9f9c1f81",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_096:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Visible shoulder preserved rather than swallowed by rectangle.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_096_C1.jpg",
+      "evidence_sha256": "3c35f41f8dec4bb128dacf7fe0a88e1df82e386b765f10207f04b9bd4feaf722",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_099:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Small rectangle shift; existing partial-body identity unresolved.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_099_C1.jpg",
+      "evidence_sha256": "e208aa03faa6b4b50848580b2d896ed2eb138d72ca7ea971af4aca3a6497a427",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_100:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Main L retained; local steps added, requires comparison with accepted T05.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_100_C1.jpg",
+      "evidence_sha256": "9b01821a7f72c5b2066e16493fd96d80c0f00789dc78402bc23f6a6a1900ef8e",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_109:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Roof shoulder restored; rounded/bevelled edge still needs refinement.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_109_C1.jpg",
+      "evidence_sha256": "b5c98a4e5b844b5d978de8b92ee1218509232e6067d70e8965d7bd0fbf4f6b50",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_110:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Tiny interior removed with height support; rectangle remains proposal.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_110_C1.jpg",
+      "evidence_sha256": "3701ace4c4be29f0a453ba4e61041830d16b1cfc66dbae815f3c62ad4c4f782f",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_114:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Minor corner changes only; no completeness claim.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_114_C1.jpg",
+      "evidence_sha256": "71ed42a26a932b6c91aee53c6345da28858ab139fb05ace3184f27b49d5b7773",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_115:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Local lower recess restored; identity of partial roof remains uncertain.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_115_C1.jpg",
+      "evidence_sha256": "c18904c86fe5ae52acea2793ac613b49614281e3aa978aba5716498498ae037f",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_116:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "NoData and jagged lower edge remain diagnostic.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_116_C1.jpg",
+      "evidence_sha256": "974fac1f58a7e0bf313cfe6c4a31b4a05b7c996a3b6212394f48ac0c5d174b70",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_126:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Some tiny holes removed; exterior still complex, not solved.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_126_C1.jpg",
+      "evidence_sha256": "9e1822ff9b47a755489fc4ca9ac84fa7097aaf3b92adbd9ef4739a18bef2d5b7",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_129:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Six-corner L restores lower-right recess.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_129_C1.jpg",
+      "evidence_sha256": "ba16f515045692aeab29dfa81fbccefce203976d6b406264b5323143f12e0028",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_200:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Tiny interior cleaned; seed cuts larger roof, still diagnostic.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_200_C1.jpg",
+      "evidence_sha256": "7b5c949e95c4b168cc67ee595db165ee7b3e5122ae51c96eb9566325d3d42967",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_202:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Interior cleanup partial; missing whole roof and noisy exterior remain diagnostic.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_202_C1.jpg",
+      "evidence_sha256": "5bdba3338a04926fe1d748ef8e4587c76f3577def50013e80c15d8ca7fd8da0f",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_137:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Courtyard/vegetation false candidate retained only in diagnostic.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_137_C1.jpg",
+      "evidence_sha256": "d596e359c7862b3e3b8b5a5d2a0181555dcfcd5fc7ba360ac206544a5beea683",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_144:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Local notch retained but pointed spur still present; not solved.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_144_C1.jpg",
+      "evidence_sha256": "d337724a3862cc2822c8cb3f544061a1bbfcdbc21fe92ad25b12dbcaefec2942",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_145:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "L retained with small boundary shift; no whole-building identity established.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_145_C1.jpg",
+      "evidence_sha256": "11c47801ba105a69ecbdfba3b3e8989f15f46c7adab7d10c595102d408dfc472",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_147:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Local step restored; triangular end still suspect.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_147_C1.jpg",
+      "evidence_sha256": "21d8adf488c1f8cd4105b2a913a5869c6c8ec8530512f96f8219c46722ec7da9",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_152:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Exterior simpler but elongated tip remains; not accepted.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_152_C1.jpg",
+      "evidence_sha256": "60e3d2512ff744478b92031f1f5de81e2ef28e487475afa9acd4d7e58e5d2850",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_153:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Interior cleaned; long partial roof and exterior spur remain diagnostic.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_153_C1.jpg",
+      "evidence_sha256": "1ecf1d9e35aa5ba7e36743b212afae23beb593b807a8f93864698e700a035c1d",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_163:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Local shoulder restored; boundaries near NoData still review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_163_C1.jpg",
+      "evidence_sha256": "d965d93beeb9ebd68cf889069ea687728f8d3ec255c6533ac83451d4d0852e38",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_164:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Small interior cleaned and exterior shoulder restored; same roof identity review.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_164_C1.jpg",
+      "evidence_sha256": "9ee088f44ed39936b6736bdd4df625f695f7ca7f11c81b08f265e6b25be6cb37",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_210:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Construction/platform candidate still diagnostic, not a roof recovery.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_210_C1.jpg",
+      "evidence_sha256": "3ffe601b81a2077c95be50c435f8271dfdf644e3651d8cc8774c2f5cf1a10e7d",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_167:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "L setback retained, minor outline change.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_167_C1.jpg",
+      "evidence_sha256": "9ea754fd546e816aa5394aa81b30b50acd753c1747d1f07a21857f91e43d9b7a",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_171:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Notch restored; still fragment of a larger roof.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_171_C1.jpg",
+      "evidence_sha256": "1b6d056ec2f24e809ec592680c24798f2aa4bb8d9ec74fa5c052169c26ea43e1",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_172:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Shoulder and bevels retained; no independent precision measurement.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_172_C1.jpg",
+      "evidence_sha256": "1d67726fc0a66491e1106ece1b652316b8a8067824678088ee2ea180db513c59",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_187:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Roof strip at NoData boundary remains incomplete diagnostic.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_187_C1.jpg",
+      "evidence_sha256": "ade39be2aa4ffc62e5bd3050f65cfeadbab2a75c0f98a8778604797ab487e477",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    },
+    {
+      "candidate_id": "OPT_B_157:C1",
+      "reviewer": "Codex visual post-check",
+      "method": "before/after panels in 9 contact sheets; 13 target cases also full alternatives",
+      "observation": "Tiny interior cleaned but long cut and NoData remain diagnostic.",
+      "evidence_path": "workspace/reviews/option_b_repair_20261019_v2/images/OPT_B_157_C1.jpg",
+      "evidence_sha256": "857fcf7bd3ac431465531b2aa87535648645fd155cfe1c6d8a45449e7a1aee86",
+      "owner_verdict": "PENDING_OWNER_REVIEW"
+    }
+  ],
+  "full_sheet_target_ids": [
+    17,
+    35,
+    39,
+    43,
+    49,
+    55,
+    68,
+    96,
+    108,
+    109,
+    115,
+    129,
+    144
+  ],
+  "unchanged_cases": "162 geometries equal to prior active result; prior 216-case audit remains relevant, not re-certified",
+  "unresolved_priority": [
+    39,
+    108,
+    126,
+    144,
+    147,
+    152
+  ],
+  "automatic_delivery_ready": false
+}

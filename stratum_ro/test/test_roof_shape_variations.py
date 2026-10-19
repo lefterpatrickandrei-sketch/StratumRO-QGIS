@@ -3,6 +3,16 @@ from shapely.geometry import Polygon,box
 from stratum_ro.roof_simple_geometry import roof_shape_variations,roof_shape_family
 
 class ShapeVariationTests(unittest.TestCase):
+    def test_previous_variant_cannot_introduce_an_acute_spur(self):
+        observed=Polygon([(0,0),(20,0),(20,10),(12,10),(12,8),(10,8),(10,10),(0,10)])
+        spur=Polygon([(0,0),(20,0),(20,10),(19.8,10),(19.9,11),(19.6,10),(12,10),(12,8),(10,8),(10,10),(0,10)])
+        selected,options=roof_shape_variations(observed,spur,limit=100)
+        previous=[o for o in options if o['geometry'].equals(spur)]
+        self.assertTrue(previous)
+        self.assertIn('INTRODUCES_ACUTE_SPUR',previous[0]['reasons'])
+        self.assertFalse(previous[0]['eligible'])
+        self.assertTrue(selected['geometry'].equals(observed))
+
     def test_small_real_notch_on_large_roof_survives_global_area_budget(self):
         g=Polygon([(0,0),(40,0),(40,20),(22,20),(22,18),(20,18),(20,20),(0,20)])
         selected,options=roof_shape_variations(g)

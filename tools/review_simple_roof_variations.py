@@ -34,7 +34,7 @@ def render_case(engine,out,ident,g,chosen,options):
         for ring in [geom.exterior]+list(geom.interiors):
             xy=np.asarray(ring.coords);ax.plot(xy[:,0],xy[:,1],color=color,lw=1.7)
         ax.set_xlim(west,east);ax.set_ylim(south,north);ax.set_title('\n'.join(textwrap.fill(line,48) for line in title.splitlines()),fontsize=8)
-    fig.suptitle(f'{ident}: {vertices(g)} â†’ {vertices(chosen["geometry"])} colturi Â· ipoteze, fara acceptare automata')
+    fig.suptitle(f'{ident}: {vertices(g)} -> {vertices(chosen["geometry"])} colturi | ipoteze, fara acceptare automata')
     fig.savefig(out/'images'/(ident.replace(':','_')+'.jpg'),dpi=95);plt.close(fig)
 
 
@@ -66,9 +66,9 @@ def run(output, review_actions=None):
     compare=previous
     comparison_source=None
     if review_actions:
-        active=selection['active_review']
+        active=selection.get('comparison_review',selection['active_review'])
         comparison_source=ROOT/active['directory']/active['gpkg']
-        prior=gpd.read_file(comparison_source,layer=active['layer']).set_index('candidate_id')
+        prior=gpd.read_file(comparison_source,layer=active.get('all_cases_layer',active['layer'])).set_index('candidate_id')
         compare=[dict(candidate_id=r['candidate_id'],geometry=prior.loc[r['candidate_id']].geometry) for r in previous]
         for old,new,decision in zip(compare,final,decisions):
             decision['changed_vs_active']=not old['geometry'].equals(new['geometry'])
@@ -96,7 +96,7 @@ def run(output, review_actions=None):
         changed_vs_active=sum(d.get('changed_vs_active',False) for d in decisions),
         comparison_source=str(comparison_source) if comparison_source else None,
         review_actions_sha256=sha(Path(review_actions)) if review_actions else None,
-        parameters=dict(min_support=.92,min_coverage=.92,max_area_change=.08,max_boundary_distance_m=1.5,min_edge_m=1.,local_change_tolerance_m=.35,max_local_change_area_m2=.25))
+        parameters=dict(min_support=.92,min_coverage=.92,max_area_change=.08,max_boundary_distance_m=1.5,min_edge_m=1.,local_change_tolerance_m=.35,max_local_change_area_m2=.75,significant_recess_min_area_m2=1.,significant_recess_depth_m=.8,max_recess_fill_fraction=.30))
     save_json(out/'report.json',report)
     entries=[]
     for d in decisions:
@@ -109,14 +109,14 @@ def run(output, review_actions=None):
     rows=[]
     for d,e in zip(decisions,entries):
         note=d.get('review_annotation',{})
-        rows.append(f'<details><summary>{html.escape(d["candidate_id"])} · {d["nodes_before"]} → {d["nodes_after"]} colturi · {d["selected"]["family"]} · {d.get("display_role", "REVIEW")}</summary><p>{html.escape(note.get("observation", ""))}</p><p>Actiune: {note.get("action", "REVIEW")}; diagnostic pastrat separat pentru NON_ROOF/INCOMPLETE. Ipoteze, fara acceptare automata.</p><a href="{e["path"]}"><img loading="lazy" src="{e["path"]}"></a></details>')
-    page=f'''<!doctype html><html lang="ro"><meta charset="utf-8"><title>B â€” forme simple si variatii</title>
+        rows.append(f'<details><summary>{html.escape(d["candidate_id"])}  |  {d["nodes_before"]} -> {d["nodes_after"]} colturi  |  {d["selected"]["family"]}  |  {d.get("display_role", "REVIEW")}</summary><p>Observatie din auditul initial, nu verdict dupa corectie: {html.escape(note.get("observation", ""))}</p><p>Actiune: {note.get("action", "REVIEW")}; diagnostic pastrat separat pentru NON_ROOF/INCOMPLETE. Ipoteze, fara acceptare automata.</p><a href="{e["path"]}"><img loading="lazy" src="{e["path"]}"></a></details>')
+    page=f'''<!doctype html><html lang="ro"><meta charset="utf-8"><title>B - forme simple si variatii</title>
 <style>body{{font:17px/1.5 system-ui;max-width:1550px;margin:30px auto;padding:20px;background:#f4f7f8;color:#183146}}img{{width:100%}}summary{{padding:14px;background:white;cursor:pointer;border-bottom:1px solid #ccd}}.note{{padding:20px;background:#fff0d5}}</style>
-<h1>Varianta B â€” forme mai simple si alternative</h1><p class="note">{report['simplified_cases']} din 216 contururi simplificate. {report['total_nodes_before']} â†’ {report['total_nodes_after']} colturi in total. {len(variants)} alternative pastrate. Toate necesita verificare; simplu nu inseamna automat corect.</p>
+<h1>Varianta B - forme mai simple si alternative</h1><p class="note">{report['simplified_cases']} din 216 contururi simplificate. {report['total_nodes_before']} -> {report['total_nodes_after']} colturi in total. {len(variants)} alternative pastrate. Toate necesita verificare; simplu nu inseamna automat corect.</p>
 <p>Deschide fiecare caz pentru comparatia pe aceeasi imagine. Cyan = propunere selectata; verde = alternativa eligibila geometric; mov = alternativa respinsa. Niciuna dintre culori nu inseamna acceptare.</p>
 <p>Dreptunghi, L, U, T sau decalaj, forme articulate, curte interioara si directii oblice sunt tratate ca familii posibile. Nu inventam toate aceste forme pentru fiecare cladire. T si Z nu sunt deosebite sigur doar din opt colturi. Corpurile diferite raman separate.</p>
-<p>Limite de dezvoltare: sprijin/acoperire minimum 92%, schimbare de arie maximum 8%, abatere de contur maximum 1,5 m; nu sunt tolerante cadastrale. Curti pastrate, NoData si degradarea muchiilor blocheaza schimbarea. Suprapunerile existente raman in revizie. Nu exista o noua detectie pe zona si nu sunt recuperate cladiri lipsa prin simplificare.</p>
-<p><a href="report.json">Raport complet</a> Â· <a href="simple_variations.gpkg">Straturi GIS</a> Â· <a href="../option_b_refinement_20261018_final/index.html">Etapa anterioara</a></p>
+<p>Limite de dezvoltare: sprijin/acoperire minimum 92%, schimbare de arie maximum 8%, abatere de contur maximum 1,5 m; nu sunt tolerante cadastrale. Retragerile semnificative sunt protejate. Golurile mici pot fi eliminate numai cu sprijin de inaltime valid; celelalte raman neverificate. NoData si degradarea muchiilor blocheaza schimbarea. Suprapunerile existente raman in revizie. Nu exista o noua detectie pe zona si nu sunt recuperate cladiri lipsa prin simplificare.</p>
+<p><a href="report.json">Raport complet</a>  |  <a href="simple_variations.gpkg">Straturi GIS</a>  |  <a href="../option_b_refinement_20261018_final/index.html">Etapa anterioara</a></p>
 {''.join(rows)}<p>Cercetare: <a href="https://www.informatik.uni-wuerzburg.de/en/algo/research/geographic-information-systems/simplification-of-building-footprints/">Haunert si Wolff: reducerea muchiilor cu pastrarea topologiei</a>; <a href="https://www.mdpi.com/2220-9964/12/12/469">regularizarea contururilor ortogonale</a>. Implementare proprie limitata, folosind fitterul existent; nu reproducere integrala a algoritmilor publicati.</p></html>'''
     (out/'index.html').write_text(page,encoding='utf-8')
     if review_actions:

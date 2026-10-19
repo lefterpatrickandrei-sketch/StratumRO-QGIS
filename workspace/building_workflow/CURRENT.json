@@ -3,9 +3,11 @@
   "active_option": "B",
   "owner_verdict": "PENDING_OWNER_REVIEW",
   "active_review": {
-    "directory": "workspace/reviews/option_b_simple_variations_20261018_v2",
+    "directory": "workspace/reviews/option_b_repair_20261019_v2",
     "gpkg": "simple_variations.gpkg",
-    "layer": "B_SIMPLE",
+    "layer": "B_ROOF_PROPOSALS",
+    "diagnostic_layer": "B_DIAGNOSTIC_ONLY",
+    "all_cases_layer": "B_SIMPLE",
     "website": "index.html"
   },
   "simplification_input": {
@@ -16,6 +18,12 @@
   "reader_config": "workspace/option_b_refinement_20261018/config_replay.json",
   "batch_entrypoint": "stratum_ro.regional_refinement.RegionalRoofRefiner.simplify_shapes",
   "service_factory": "stratum_ro.api.service.PlatformService.create_regional_roof_refiner",
-  "report_command": "venv/Scripts/python.exe tools/review_simple_roof_variations.py <fresh-output-directory>",
-  "archive_manifest": "workspace/option_b_consolidation_20261019/archive_manifest.json"
+  "report_command": "venv/Scripts/python.exe tools/review_simple_roof_variations.py <fresh-output-directory> --review-actions workspace/option_b_repair_20261019/review_actions.json",
+  "archive_manifest": "workspace/option_b_consolidation_20261019/archive_manifest.json",
+  "review_actions": "workspace/option_b_repair_20261019/review_actions.json",
+  "comparison_review": {
+    "directory": "workspace/reviews/option_b_simple_variations_20261018_v2",
+    "gpkg": "simple_variations.gpkg",
+    "layer": "B_SIMPLE"
+  }
 }

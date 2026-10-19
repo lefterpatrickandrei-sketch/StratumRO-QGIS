@@ -1,0 +1,81 @@
+{
+  "source": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_final\\refinement.gpkg",
+  "source_sha256": "8fa921186da4f0816be4b10125b4397bc5ab4b994300b161d99a2bbea0eb984e",
+  "code": {
+    "stratum_ro/roof_simple_geometry.py": "c04f7500ce42723e9d9bc7cbd4f0fac8774682cbde74cab7d2cc5673d23d9e1d",
+    "stratum_ro/regional_refinement.py": "7551274e21cbf4283b7d6fe18a64027b022d8e649ffc240319c42b1fab88c708",
+    "tools/review_simple_roof_variations.py": "aceaef3376efa14a470647437a7303bb19b8ef2617aa38fab13e98d6fd8d3f3e"
+  },
+  "gpkg_sha256": "26af7286e8a8b108d558a81a9b58b6fef6bb8b872774ab927987bf1d540b81f9",
+  "config": {
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "OPTIUNEA_B_ROOF_VALIDAT",
+    "id_field": "body_id",
+    "rejected_layer": "OPTIUNEA_B_FALS_POZITIV_ELIMINAT",
+    "observations": "workspace/reviews/regional_roofs_20261017/masked_review_v2/regional_review.gpkg",
+    "observation_layer": "ROOF_CANDIDATES",
+    "observation_match_iou": 0.6,
+    "orthophotos": [
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-1_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-2_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-1_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-2_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-1_halo.tif"
+    ],
+    "height": "workspace/derived/cluj_ndsm_1m.tif",
+    "parameters": {},
+    "replay_retry_package": "workspace/reviews/option_b_refinement_20261018_run4/refinement.gpkg",
+    "existing_lots": [
+      {
+        "path": "workspace/reviews/simple_roofs_rectified_20261013/simple_roofs.gpkg",
+        "layer": "ACOPERISURI_SIMPLE",
+        "include": {
+          "id": [
+            "REF_TIER1_021:B00006",
+            "REF_TIER1_021:B00008",
+            "REF_TIER1_021:B00009",
+            "REF_TIER1_021:B00010",
+            "REF_TIER1_021:B00014",
+            "REF_TIER1_021:B00018",
+            "REF_TIER1_021:B00030"
+          ]
+        }
+      },
+      {
+        "path": "workspace/reviews/review18_20261013/review18.gpkg",
+        "layer": "B5_DOUA_CORPURI"
+      },
+      {
+        "path": "workspace/reviews/retry_six_release_20261013/retry_six.gpkg",
+        "layer": "CORPURI_RECTIFICATE"
+      },
+      {
+        "path": "workspace/reviews/review18_20261013/review18.gpkg",
+        "layer": "TESTE_10_REZULTATE",
+        "include": {
+          "test_id": [
+            "T01",
+            "T02",
+            "T03",
+            "T04"
+          ]
+        }
+      },
+      {
+        "path": "workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg",
+        "layer": "ROOF_HYPOTHESES_ORTHO90"
+      },
+      {
+        "path": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+        "layer": "ROOF_HYPOTHESES_ORTHO90"
+      },
+      {
+        "path": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+        "layer": "LOT5_OPTIUNEA_A_ROOF"
+      }
+    ]
+  }
+}

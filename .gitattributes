@@ -1,1 +1,5 @@
 projects/**/*.gpkg filter=lfs diff=lfs merge=lfs -text
+# Keep review evidence and project backups byte-exact for SHA-256 manifests.
+workspace/option_b_repair_20261019/** -text whitespace=cr-at-eol
+workspace/reviews/option_b_repair_20261019/** -text whitespace=cr-at-eol
+workspace/reviews/option_b_repair_20261019_v2/** -text whitespace=cr-at-eol

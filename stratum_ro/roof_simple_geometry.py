@@ -40,7 +40,7 @@ def roof_shape_family(geometry):
 def roof_shape_variations(observed, previous=None, *, min_support=.92,
                           min_coverage=.92, max_area_change=.08,
                           max_boundary_distance=1.5, min_edge=1., limit=6,
-                          local_change_tolerance=.35, max_local_change_area=.25):
+                          local_change_tolerance=.35, max_local_change_area=.75):
     """Generate and rank simple alternatives using the existing ring fitter.
 
     Projected metres required. Limits describe development generalization, not
@@ -56,6 +56,14 @@ def roof_shape_variations(observed, previous=None, *, min_support=.92,
             and math.isfinite(max_local_change_area) and max_local_change_area>=0):
         raise ValueError('Invalid variation constraints')
     options=[];seen=set()
+    from shapely.geometry import Point
+    hull=observed.convex_hull
+    void=hull.difference(Polygon(observed.exterior))
+    recesses=[]
+    for pocket in getattr(void,'geoms',[void]):
+        if pocket.is_empty or pocket.geom_type!='Polygon' or pocket.area<1.:continue
+        depth=max(Point(xy).distance(hull.boundary) for xy in pocket.exterior.coords)
+        if depth>=.8:recesses.append(pocket)
     def add(g,method):
         if g is None or not g.is_valid or g.is_empty or g.geom_type!='Polygon':return
         g=g.simplify(1e-7,preserve_topology=True)
@@ -72,16 +80,34 @@ def roof_shape_variations(observed, previous=None, *, min_support=.92,
         added_core=g.difference(observed.buffer(local_change_tolerance))
         removed_core=observed.difference(g.buffer(local_change_tolerance))
         def largest_area(geometry):
-            return max((p.area for p in getattr(geometry,'geoms',[geometry])),default=0.)
+            # Long thin edge bands are not compact lost wings/notches. Keep
+            # global support/distance checks for these, instead of preserving
+            # every mask wobble simply because its total length is large.
+            areas=[]
+            for part in getattr(geometry,'geoms',[geometry]):
+                if part.is_empty or part.geom_type!='Polygon':continue
+                rectangle=np.asarray(part.minimum_rotated_rectangle.exterior.coords)
+                width=np.linalg.norm(np.diff(rectangle,axis=0),axis=1).min()
+                if width>=.8:areas.append(part.area)
+            return max(areas,default=0.)
         added_local=largest_area(added_core);removed_local=largest_area(removed_core)
         lengths=np.linalg.norm(np.diff(np.asarray(g.exterior.coords),axis=0),axis=1)
         reasons=[]
+        def minimum_angle(polygon):
+            xy=np.asarray(polygon.exterior.coords)[:-1]
+            a=np.roll(xy,1,axis=0)-xy;b=np.roll(xy,-1,axis=0)-xy
+            cosine=(a*b).sum(axis=1)/(np.linalg.norm(a,axis=1)*np.linalg.norm(b,axis=1))
+            return float(np.degrees(np.arccos(np.clip(cosine,-1.,1.))).min())
+        if minimum_angle(g)<40. and minimum_angle(observed)>=40.:
+            reasons.append('INTRODUCES_ACUTE_SPUR')
         if support<min_support:reasons.append('ADDED_UNSUPPORTED_AREA')
         if coverage<min_coverage:reasons.append('LOST_OBSERVED_WING_OR_AREA')
         if shift>max_boundary_distance:reasons.append('BOUNDARY_DISTANCE')
         if change>max_area_change:reasons.append('AREA_CHANGE')
         if added_local>max_local_change_area:reasons.append('FILLS_LOCAL_RECESS_OR_ADDS_SPUR')
         if removed_local>max_local_change_area:reasons.append('CUTS_LOCAL_WING_OR_CORNER')
+        if any(g.intersection(pocket).area/pocket.area>.30 for pocket in recesses):
+            reasons.append('FILLS_SIGNIFICANT_RECESS')
         # Holes are evidence of unknown courtyards/lightwells, never auto-fill.
         for hole in observed.interiors:
             if g.intersection(Polygon(hole)).area>1e-6:reasons.append('FILLS_COURTYARD')

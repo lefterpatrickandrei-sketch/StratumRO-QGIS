@@ -44,8 +44,14 @@ Unealta MCP istorică `vector.refine_regional_roofs` folosește încă traseul d
 
 ## Fișiere și reproducere
 
-Raportul activ: [B cu forme simple](../workspace/reviews/option_b_simple_variations_20261018_v2/index.html). [Intrarea web comună](../workspace/reviews/index.html) leagă raportul activ și etapa sursă. După clonare, porniți un server local pe folderul `workspace/reviews`, apoi deschideți `index.html`; paginile nu necesită dependențe externe. GitHub stochează HTML și imaginile, fără activarea GitHub Pages.
+Raportul activ: [B cu corectii locale](../workspace/reviews/option_b_repair_20261019_v2/index.html). [Intrarea web comună](../workspace/reviews/index.html) leagă raportul activ și etapa sursă. După clonare, porniți un server local pe folderul `workspace/reviews`, apoi deschideți `index.html`; paginile nu necesită dependențe externe. GitHub stochează HTML și imaginile, fără activarea GitHub Pages.
 
 Rularea algoritmului necesită în plus cele opt ortofotouri indicate în configurație. Salvarea rapoartelor/GPKG nu înseamnă că întregul set brut orto/LiDAR a fost publicat. Manifestele păstrează proveniența.
 
 [Consolidare și verificări](../workspace/option_b_consolidation_20261019/README.md). [Manifestul arhivei](../workspace/option_b_consolidation_20261019/archive_manifest.json) mapează căile istorice către `junk/`. Documentele și manifestele vechi sunt snapshoturi; nu le rescrieți pentru a pretinde că au fost generate la noua structură.
+
+## Checkpoint de corectii locale 2026-10-19
+
+[Predare completa](../workspace/option_b_repair_20261019/README.md). Selectorul separa stratul de 152 propuneri de cele 64 cazuri diagnostice, pastrand toate cele 216 in B_SIMPLE. `review_actions.json` contine interventii de revizie ale agentului cu dovezi SHA-256; nu este clasificator automat sau verdict al proprietarului. Noile verificari locale protejeaza retragerile si limiteaza varfurile artificiale. Golurile mici sunt curatate numai cu sprijin de inaltime valid. Exemplele incomplete nu sunt recuperate prin reducerea nodurilor.
+
+Pentru rerulare folositi comanda din CURRENT.json cu --review-actions si un director nou. comparison_review pastreaza comparatia completa de 216 cazuri, iar simplification_input ramane intrarea bruta. Grupul QGIS activ este B_CORECTII_20261019. Snapshoturile QGS trebuie restaurate la calea comuna originala pentru rezolvarea cailor relative; nu deschideti orbește copia din directorul de artefacte.
