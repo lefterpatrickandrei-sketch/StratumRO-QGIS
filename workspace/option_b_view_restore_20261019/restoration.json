@@ -1,0 +1,105 @@
+{
+  "operation": "Restore pre-change layer visibility only; no geometry or selector changes",
+  "changes": [
+    {
+      "name": "B_RAFINARE_20261018 - ETAPE SI REVIZIE",
+      "visible": false
+    },
+    {
+      "name": "6. PROPUNERI - cyan simplu / portocaliu revizie",
+      "visible": true
+    },
+    {
+      "name": "LOT5 - Acoperis Ortho90 (Cyan)",
+      "visible": true
+    },
+    {
+      "name": "LOT5 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "visible": true
+    },
+    {
+      "name": "LOT4 - Acoperis Ortho90 (Cyan)",
+      "visible": true
+    },
+    {
+      "name": "LOT4 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "visible": true
+    },
+    {
+      "name": "LOT3 - Acoperis Ortho90 (Cyan)",
+      "visible": true
+    },
+    {
+      "name": "LOT3 - Amprenta Sol ANCPI -0.40m (Verde)",
+      "visible": true
+    },
+    {
+      "name": "T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT",
+      "visible": true
+    },
+    {
+      "name": "RECTIFICARI_T05_T06_T07_T10",
+      "visible": true
+    },
+    {
+      "name": "B5_DOUA_CORPURI",
+      "visible": true
+    },
+    {
+      "name": "TESTE_10_REZULTATE",
+      "visible": true
+    },
+    {
+      "name": "ACOPERISURI_SIMPLE",
+      "visible": true
+    }
+  ],
+  "new_B_results_retained": true,
+  "new_B_group_visible": false,
+  "lot_layers": [
+    {
+      "name": "ACOPERISURI_SIMPLE",
+      "id": "ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f",
+      "count": 7,
+      "visible": true
+    },
+    {
+      "name": "B5_DOUA_CORPURI",
+      "id": "B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145",
+      "count": 2,
+      "visible": true
+    },
+    {
+      "name": "LOT3 - Acoperis Ortho90 (Cyan)",
+      "id": "LOT3___Acoperis_Ortho90__Cyan__16f61bcb_e830_4943_a759_95af5e7b28b9",
+      "count": 20,
+      "visible": true
+    },
+    {
+      "name": "LOT4 - Acoperis Ortho90 (Cyan)",
+      "id": "LOT4___Acoperis_Ortho90__Cyan__a3816a73_4d66_4bec_bcfe_017641837e58",
+      "count": 10,
+      "visible": true
+    },
+    {
+      "name": "LOT5 - Acoperis Ortho90 (Cyan)",
+      "id": "LOT5___Acoperis_Ortho90__Cyan__dbf9128a_860e_47a3_beaf_d83acb46bd45",
+      "count": 10,
+      "visible": true
+    },
+    {
+      "name": "RECTIFICARI_T05_T06_T07_T10",
+      "id": "RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4",
+      "count": 5,
+      "visible": true
+    },
+    {
+      "name": "TESTE_10_REZULTATE",
+      "id": "TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6",
+      "count": 4,
+      "visible": true
+    }
+  ],
+  "total_layers": 102,
+  "saved": true
+}
