@@ -1,0 +1,14 @@
+{
+  "initial_evidence_files": 878,
+  "all_tracked_after_relocation": true,
+  "archived_files": 401,
+  "remote_checkpoint_verified": "6a2df39fbb19b8dce3b944b098c6b06003180c61",
+  "remote_branch": "fix/stratumro-verification-20261018",
+  "pr": "https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/pull/4",
+  "draft": true,
+  "merged": false,
+  "github_pages_enabled": false,
+  "website_entry": "workspace/reviews/index.html",
+  "local_url": "http://127.0.0.1:8769/index.html",
+  "ci_at_observation": "IN_PROGRESS_NOT_CLAIMED_PASSED"
+}
