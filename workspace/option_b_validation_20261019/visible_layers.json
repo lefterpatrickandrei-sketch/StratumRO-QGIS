@@ -1,0 +1,102 @@
+[
+  {
+    "layer": "ACOPERISURI_SIMPLE",
+    "parent": "",
+    "visible": true
+  },
+  {
+    "layer": "B5_DOUA_CORPURI",
+    "parent": "",
+    "visible": true
+  },
+  {
+    "layer": "Cluj-0-0",
+    "parent": "ORTOFOTO COMPLETE - 8 tile-uri",
+    "visible": true
+  },
+  {
+    "layer": "Cluj-0-1",
+    "parent": "ORTOFOTO COMPLETE - 8 tile-uri",
+    "visible": true
+  },
+  {
+    "layer": "Cluj-0-2",
+    "parent": "ORTOFOTO COMPLETE - 8 tile-uri",
+    "visible": true
+  },
+  {
+    "layer": "Cluj-1-0",
+    "parent": "ORTOFOTO COMPLETE - 8 tile-uri",
+    "visible": true
+  },
+  {
+    "layer": "Cluj-1-1",
+    "parent": "ORTOFOTO COMPLETE - 8 tile-uri",
+    "visible": true
+  },
+  {
+    "layer": "Cluj-1-2",
+    "parent": "ORTOFOTO COMPLETE - 8 tile-uri",
+    "visible": true
+  },
+  {
+    "layer": "Cluj-2-0",
+    "parent": "ORTOFOTO COMPLETE - 8 tile-uri",
+    "visible": true
+  },
+  {
+    "layer": "Cluj-2-1",
+    "parent": "ORTOFOTO COMPLETE - 8 tile-uri",
+    "visible": true
+  },
+  {
+    "layer": "LOT3 - Acoperis Ortho90 (Cyan)",
+    "parent": "LOT3_RECTIFICAT_20261018",
+    "visible": true
+  },
+  {
+    "layer": "LOT3 - Amprenta Sol ANCPI -0.40m (Verde)",
+    "parent": "LOT3_RECTIFICAT_20261018",
+    "visible": true
+  },
+  {
+    "layer": "LOT4 - Acoperis Ortho90 (Cyan)",
+    "parent": "LOT4_RECTIFICAT_20261018",
+    "visible": true
+  },
+  {
+    "layer": "LOT4 - Amprenta Sol ANCPI -0.40m (Verde)",
+    "parent": "LOT4_RECTIFICAT_20261018",
+    "visible": true
+  },
+  {
+    "layer": "LOT5 - Acoperis Ortho90 (Cyan)",
+    "parent": "OPTIUNEA_A_LOT5_TINTIT (1/4 Zona)",
+    "visible": true
+  },
+  {
+    "layer": "LOT5 - Amprenta Sol ANCPI -0.40m (Verde)",
+    "parent": "OPTIUNEA_A_LOT5_TINTIT (1/4 Zona)",
+    "visible": true
+  },
+  {
+    "layer": "OPT_B - Acoperis Propuneri Remediate (Mov Dash)",
+    "parent": "OPTIUNEA_B_REMEDIATA_20261019",
+    "visible": true
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)",
+    "parent": "OPTIUNEA_B_REMEDIATA_20261019",
+    "visible": true
+  },
+  {
+    "layer": "RECTIFICARI_T05_T06_T07_T10",
+    "parent": "",
+    "visible": true
+  },
+  {
+    "layer": "TESTE_10_REZULTATE",
+    "parent": "",
+    "visible": true
+  }
+]

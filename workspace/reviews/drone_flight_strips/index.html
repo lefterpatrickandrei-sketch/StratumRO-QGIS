@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StratumRO — Zbor Fotogrammetric de Inspectie Detaliata</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0b0f14;
+      color: #e6edf3;
+      margin: 0;
+      padding: 24px;
+    }
+    header {
+      max-width: 1400px;
+      margin: 0 auto 24px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 16px;
+    }
+    h1 { margin: 0 0 8px; color: #58a6ff; font-size: 26px; }
+    .subtitle { color: #8b949e; font-size: 15px; margin-bottom: 16px; }
+    .flight-stats {
+      display: flex;
+      gap: 20px;
+      background: #161b22;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      font-size: 14px;
+    }
+    .flight-stats strong { color: #2ea043; }
+    .flight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(640px, 1fr));
+      gap: 24px;
+      max-width: 1400px;
+      margin: 24px auto;
+    }
+    .flight-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .flight-card-header {
+      padding: 10px 14px;
+      background: #21262d;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .badge {
+      background: #1f6feb;
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    .flight-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+    }
+    .flight-footer {
+      padding: 10px 14px;
+      background: #161b22;
+      font-size: 12px;
+      color: #8b949e;
+      border-top: 1px solid #30363d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>StratumRO — Misiune de Zbor Fotogrammetric pe Intregul Ortofoto (25 Cadre)</h1>
+    <div class="subtitle">
+      Acoperire 100% la scara 1:350 prin benzi paralele de zbor fotogrammetric (Snake pattern). Fiecare cadru captureaza la rezolutie maxima textura ortofoto 5cm vs poligoanele vectorizate in QGIS.
+    </div>
+    <div class="flight-stats">
+      <div>Total Cadre Capturate: <strong>25 / 25</strong></div>
+      <div>Acoperire Teren: <strong>1.05 km x 1.05 km (100% AOI)</strong></div>
+      <div>Scara Cadru: <strong>1:350 (Ultra Detaliu)</strong></div>
+      <div>Suprapunere Longitudinala: <strong>20%</strong></div>
+    </div>
+  </header>
+
+  <main class="flight-grid">
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_01_FRAME_01 — Nord (Calea Manastur) - Vest</span>
+        <span class="badge">Banda 1</span>
+      </div>
+      <a href="STRIP_01_FRAME_01.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_01_FRAME_01.png" alt="STRIP_01_FRAME_01">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390530.0 - 390748.3 | Y: 585667.7 - 585886.0
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_01_FRAME_02 — Nord (Calea Manastur) - Vest</span>
+        <span class="badge">Banda 1</span>
+      </div>
+      <a href="STRIP_01_FRAME_02.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_01_FRAME_02.png" alt="STRIP_01_FRAME_02">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390737.4 - 390955.8 | Y: 585667.7 - 585886.0
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_01_FRAME_03 — Nord (Calea Manastur) - Centru</span>
+        <span class="badge">Banda 1</span>
+      </div>
+      <a href="STRIP_01_FRAME_03.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_01_FRAME_03.png" alt="STRIP_01_FRAME_03">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390944.8 - 391163.2 | Y: 585667.7 - 585886.0
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_01_FRAME_04 — Nord (Calea Manastur) - Centru</span>
+        <span class="badge">Banda 1</span>
+      </div>
+      <a href="STRIP_01_FRAME_04.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_01_FRAME_04.png" alt="STRIP_01_FRAME_04">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391152.2 - 391370.6 | Y: 585667.7 - 585886.0
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_01_FRAME_05 — Nord (Calea Manastur) - Est</span>
+        <span class="badge">Banda 1</span>
+      </div>
+      <a href="STRIP_01_FRAME_05.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_01_FRAME_05.png" alt="STRIP_01_FRAME_05">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391359.7 - 391578.0 | Y: 585667.7 - 585886.0
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_02_FRAME_05 — Nord (Calea Manastur) - Est</span>
+        <span class="badge">Banda 2</span>
+      </div>
+      <a href="STRIP_02_FRAME_05.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_02_FRAME_05.png" alt="STRIP_02_FRAME_05">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391359.7 - 391578.0 | Y: 585460.2 - 585678.6
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_02_FRAME_04 — Nord (Calea Manastur) - Centru</span>
+        <span class="badge">Banda 2</span>
+      </div>
+      <a href="STRIP_02_FRAME_04.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_02_FRAME_04.png" alt="STRIP_02_FRAME_04">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391152.2 - 391370.6 | Y: 585460.2 - 585678.6
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_02_FRAME_03 — Nord (Calea Manastur) - Centru</span>
+        <span class="badge">Banda 2</span>
+      </div>
+      <a href="STRIP_02_FRAME_03.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_02_FRAME_03.png" alt="STRIP_02_FRAME_03">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390944.8 - 391163.2 | Y: 585460.2 - 585678.6
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_02_FRAME_02 — Nord (Calea Manastur) - Vest</span>
+        <span class="badge">Banda 2</span>
+      </div>
+      <a href="STRIP_02_FRAME_02.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_02_FRAME_02.png" alt="STRIP_02_FRAME_02">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390737.4 - 390955.8 | Y: 585460.2 - 585678.6
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_02_FRAME_01 — Nord (Calea Manastur) - Vest</span>
+        <span class="badge">Banda 2</span>
+      </div>
+      <a href="STRIP_02_FRAME_01.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_02_FRAME_01.png" alt="STRIP_02_FRAME_01">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390530.0 - 390748.3 | Y: 585460.2 - 585678.6
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_03_FRAME_01 — Centru (Campus USAMV) - Vest</span>
+        <span class="badge">Banda 3</span>
+      </div>
+      <a href="STRIP_03_FRAME_01.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_03_FRAME_01.png" alt="STRIP_03_FRAME_01">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390530.0 - 390748.3 | Y: 585252.8 - 585471.2
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_03_FRAME_02 — Centru (Campus USAMV) - Vest</span>
+        <span class="badge">Banda 3</span>
+      </div>
+      <a href="STRIP_03_FRAME_02.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_03_FRAME_02.png" alt="STRIP_03_FRAME_02">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390737.4 - 390955.8 | Y: 585252.8 - 585471.2
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_03_FRAME_03 — Centru (Campus USAMV) - Centru</span>
+        <span class="badge">Banda 3</span>
+      </div>
+      <a href="STRIP_03_FRAME_03.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_03_FRAME_03.png" alt="STRIP_03_FRAME_03">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390944.8 - 391163.2 | Y: 585252.8 - 585471.2
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_03_FRAME_04 — Centru (Campus USAMV) - Centru</span>
+        <span class="badge">Banda 3</span>
+      </div>
+      <a href="STRIP_03_FRAME_04.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_03_FRAME_04.png" alt="STRIP_03_FRAME_04">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391152.2 - 391370.6 | Y: 585252.8 - 585471.2
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_03_FRAME_05 — Centru (Campus USAMV) - Est</span>
+        <span class="badge">Banda 3</span>
+      </div>
+      <a href="STRIP_03_FRAME_05.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_03_FRAME_05.png" alt="STRIP_03_FRAME_05">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391359.7 - 391578.0 | Y: 585252.8 - 585471.2
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_04_FRAME_05 — Sud (Cimitir / Bazine) - Est</span>
+        <span class="badge">Banda 4</span>
+      </div>
+      <a href="STRIP_04_FRAME_05.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_04_FRAME_05.png" alt="STRIP_04_FRAME_05">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391359.7 - 391578.0 | Y: 585045.4 - 585263.8
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_04_FRAME_04 — Sud (Cimitir / Bazine) - Centru</span>
+        <span class="badge">Banda 4</span>
+      </div>
+      <a href="STRIP_04_FRAME_04.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_04_FRAME_04.png" alt="STRIP_04_FRAME_04">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391152.2 - 391370.6 | Y: 585045.4 - 585263.8
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_04_FRAME_03 — Sud (Cimitir / Bazine) - Centru</span>
+        <span class="badge">Banda 4</span>
+      </div>
+      <a href="STRIP_04_FRAME_03.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_04_FRAME_03.png" alt="STRIP_04_FRAME_03">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390944.8 - 391163.2 | Y: 585045.4 - 585263.8
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_04_FRAME_02 — Sud (Cimitir / Bazine) - Vest</span>
+        <span class="badge">Banda 4</span>
+      </div>
+      <a href="STRIP_04_FRAME_02.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_04_FRAME_02.png" alt="STRIP_04_FRAME_02">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390737.4 - 390955.8 | Y: 585045.4 - 585263.8
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_04_FRAME_01 — Sud (Cimitir / Bazine) - Vest</span>
+        <span class="badge">Banda 4</span>
+      </div>
+      <a href="STRIP_04_FRAME_01.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_04_FRAME_01.png" alt="STRIP_04_FRAME_01">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390530.0 - 390748.3 | Y: 585045.4 - 585263.8
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_05_FRAME_01 — Sud (Cimitir / Bazine) - Vest</span>
+        <span class="badge">Banda 5</span>
+      </div>
+      <a href="STRIP_05_FRAME_01.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_05_FRAME_01.png" alt="STRIP_05_FRAME_01">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390530.0 - 390748.3 | Y: 584838.0 - 585056.3
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_05_FRAME_02 — Sud (Cimitir / Bazine) - Vest</span>
+        <span class="badge">Banda 5</span>
+      </div>
+      <a href="STRIP_05_FRAME_02.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_05_FRAME_02.png" alt="STRIP_05_FRAME_02">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390737.4 - 390955.8 | Y: 584838.0 - 585056.3
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_05_FRAME_03 — Sud (Cimitir / Bazine) - Centru</span>
+        <span class="badge">Banda 5</span>
+      </div>
+      <a href="STRIP_05_FRAME_03.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_05_FRAME_03.png" alt="STRIP_05_FRAME_03">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 390944.8 - 391163.2 | Y: 584838.0 - 585056.3
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_05_FRAME_04 — Sud (Cimitir / Bazine) - Centru</span>
+        <span class="badge">Banda 5</span>
+      </div>
+      <a href="STRIP_05_FRAME_04.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_05_FRAME_04.png" alt="STRIP_05_FRAME_04">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391152.2 - 391370.6 | Y: 584838.0 - 585056.3
+      </div>
+    </div>
+
+    <div class="flight-card">
+      <div class="flight-card-header">
+        <span>STRIP_05_FRAME_05 — Sud (Cimitir / Bazine) - Est</span>
+        <span class="badge">Banda 5</span>
+      </div>
+      <a href="STRIP_05_FRAME_05.png" target="_blank">
+        <img class="flight-img" loading="lazy" src="STRIP_05_FRAME_05.png" alt="STRIP_05_FRAME_05">
+      </a>
+      <div class="flight-footer">
+        Coordonate Stereo 70: X: 391359.7 - 391578.0 | Y: 584838.0 - 585056.3
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>

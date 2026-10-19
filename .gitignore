@@ -21,6 +21,8 @@ htmlcov/
 Thumbs.db
 .DS_Store
 desktop.ini
+*.db-shm
+*.db-wal
 
 # Logs
 logs/
@@ -170,6 +172,9 @@ workspace/notebooklm_sources/
 workspace/all_available_models.json
 workspace/dev_benchmark_report.json
 workspace/hermes/probe_results*.json
+workspace/option_b_validation_20261019/*.png
+workspace/option_b_validation_20261019/*.pgw
+workspace/option_b_validation_20261019/qgis_cases/
 projects/**/provenance/
 projects/**/state/
 projects/**/workspace/

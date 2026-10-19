@@ -2,19 +2,20 @@
   "project_title": "StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie",
   "project_path": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs",
   "crs": "EPSG:3844",
-  "layer_count_total": 85,
+  "layer_count_total": 106,
   "canvas": {
-    "scale": 6050.6,
+    "scale": 580.1,
     "extent": {
-      "xmin": 390440.84,
-      "ymin": 585313.1,
-      "xmax": 392209.83,
-      "ymax": 585955.06,
-      "width_m": 1768.99,
-      "height_m": 641.96
+      "xmin": 391143.12,
+      "ymin": 585577.91,
+      "xmax": 391312.73,
+      "ymax": 585675.22,
+      "width_m": 169.61,
+      "height_m": 97.31
     },
     "has_custom_order": true,
     "rendered_layers": [
+      "B - FORME SIMPLE / necesita verificare",
       "LOT5 - Acoperis Ortho90 (Cyan)",
       "LOT5 - Amprenta Sol ANCPI -0.40m (Verde)",
       "LOT3 - Acoperis Ortho90 (Cyan)",
@@ -25,7 +26,6 @@
       "B5_DOUA_CORPURI",
       "TESTE_10_REZULTATE",
       "ACOPERISURI_SIMPLE",
-      "AUTO - candidati acoperis / NEVALIDATI",
       "Cluj-0-0",
       "Cluj-0-1",
       "Cluj-0-2",
@@ -33,10 +33,250 @@
       "Cluj-1-1",
       "Cluj-1-2",
       "Cluj-2-0",
-      "Cluj-2-1"
+      "Cluj-2-1",
+      "OPT_B - Acoperis Propuneri Remediate (Mov Dash)",
+      "OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)"
     ]
   },
   "tree_hierarchy": [
+    {
+      "name": "OPTIUNEA_B_REMEDIATA_20261019",
+      "type": "group",
+      "visible": true,
+      "children": [
+        {
+          "name": "OPT_B - Acoperis Propuneri Remediate (Mov Dash)",
+          "type": "vector",
+          "visible": true,
+          "valid": true,
+          "feature_count": 141,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)",
+          "type": "vector",
+          "visible": true,
+          "valid": true,
+          "feature_count": 141,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "OPT_B - Avertizare Limita Zbor NoData (Mov Dotted)",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 26,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "OPT_B - Duplicate Con\u021binere Suprimate (Mov Sub\u021bire)",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 10,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "B_CORECTII_20261019",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "B - acoperisuri in revizie / corectii locale",
+          "type": "vector",
+          "visible": true,
+          "valid": true,
+          "feature_count": 152,
+          "crs": "EPSG:3844",
+          "labels_enabled": true,
+          "children": []
+        },
+        {
+          "name": "B - false sau incomplete / necesita recuperare",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 64,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "B - inainte de corectii",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "B_FORME_SIMPLE_SI_VARIATII_20261018",
+      "type": "group",
+      "visible": true,
+      "children": [
+        {
+          "name": "B - FORME SIMPLE / necesita verificare",
+          "type": "vector",
+          "visible": true,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "B - ALTERNATIVE / eligibile si respinse",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 1026,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "B - ETAPA ANTERIOARA",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "B_RAFINARE_20261018 - ETAPE SI REVIZIE",
+      "type": "group",
+      "visible": false,
+      "children": [
+        {
+          "name": "6. PROPUNERI - cyan simplu / portocaliu revizie",
+          "type": "vector",
+          "visible": true,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "QA - cazuri nerezolvate (nu livrabile finale)",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 135,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "5. SAM2 - incercari, inclusiv nepromovate",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 4,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "4. QA inainte de SAM2",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "3. Simplificare cu garduri",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "2. Observatii dupa deduplicare",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "1. Observatii optice originale",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "0. B initial - 216 propuneri",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 216,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Recall - cei 71 respinsi anterior, neverificati",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 71,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "Context - alte loturi (copii pentru QA)",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 58,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        },
+        {
+          "name": "SAM2 - componente vectorizate, scoruri si motive",
+          "type": "vector",
+          "visible": false,
+          "valid": true,
+          "feature_count": 16,
+          "crs": "EPSG:3844",
+          "labels_enabled": false,
+          "children": []
+        }
+      ]
+    },
     {
       "name": "STRATUMRO_COMPARATIE_A_VS_B",
       "type": "group",
@@ -72,7 +312,7 @@
         {
           "name": "OPTIUNEA_B_REGIONAL_FILTRAT (2/4 Zona)",
           "type": "group",
-          "visible": false,
+          "visible": true,
           "children": [
             {
               "name": "OPT_B - Cladiri Validate nDSM (Portocaliu)",
@@ -81,7 +321,7 @@
               "valid": true,
               "feature_count": 216,
               "crs": "EPSG:3844",
-              "labels_enabled": true,
+              "labels_enabled": false,
               "children": []
             },
             {
@@ -125,7 +365,7 @@
               "valid": true,
               "feature_count": 264,
               "crs": "EPSG:3844",
-              "labels_enabled": true,
+              "labels_enabled": false,
               "children": []
             },
             {
@@ -192,7 +432,7 @@
               "valid": true,
               "feature_count": 1,
               "crs": "EPSG:3844",
-              "labels_enabled": true,
+              "labels_enabled": false,
               "children": []
             },
             {
@@ -249,12 +489,12 @@
     {
       "name": "ACOPERISURI_AUTOMAT_REGIONAL_20261017_NEVALIDAT",
       "type": "group",
-      "visible": true,
+      "visible": false,
       "children": [
         {
           "name": "AUTO - candidati acoperis / NEVALIDATI",
           "type": "vector",
-          "visible": true,
+          "visible": false,
           "valid": true,
           "feature_count": 380,
           "crs": "EPSG:3844",
@@ -325,7 +565,7 @@
           "valid": true,
           "feature_count": 9,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -335,7 +575,7 @@
           "valid": true,
           "feature_count": 1,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -486,7 +726,7 @@
           "valid": true,
           "feature_count": 20,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -600,7 +840,7 @@
           "valid": true,
           "feature_count": 1,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -610,7 +850,7 @@
           "valid": true,
           "feature_count": 1,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -657,7 +897,7 @@
           "valid": true,
           "feature_count": 1,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         }
       ]
@@ -674,7 +914,7 @@
           "valid": true,
           "feature_count": 1,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -684,7 +924,7 @@
           "valid": true,
           "feature_count": 1,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -694,7 +934,7 @@
           "valid": true,
           "feature_count": 1,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -721,7 +961,7 @@
           "valid": true,
           "feature_count": 11,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -731,7 +971,7 @@
           "valid": true,
           "feature_count": 1,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -741,7 +981,7 @@
           "valid": true,
           "feature_count": 8,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -768,7 +1008,7 @@
           "valid": true,
           "feature_count": 5,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -778,7 +1018,7 @@
           "valid": true,
           "feature_count": 5,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -788,7 +1028,7 @@
           "valid": true,
           "feature_count": 8,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -815,7 +1055,7 @@
           "valid": true,
           "feature_count": 2,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -825,7 +1065,7 @@
           "valid": true,
           "feature_count": 7,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         },
         {
@@ -835,7 +1075,7 @@
           "valid": true,
           "feature_count": 8,
           "crs": "EPSG:3844",
-          "labels_enabled": true,
+          "labels_enabled": false,
           "children": []
         }
       ]
@@ -1033,7 +1273,7 @@
       "id": "LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990",
       "visible_in_tree": false,
       "feature_count": 7,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1083,7 +1323,7 @@
       "id": "LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92",
       "visible_in_tree": false,
       "feature_count": 2,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1113,7 +1353,7 @@
       "id": "LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a",
       "visible_in_tree": false,
       "feature_count": 8,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1163,7 +1403,7 @@
       "id": "LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732",
       "visible_in_tree": false,
       "feature_count": 5,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1213,7 +1453,7 @@
       "id": "LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a",
       "visible_in_tree": false,
       "feature_count": 5,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1273,7 +1513,7 @@
       "id": "LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b",
       "visible_in_tree": false,
       "feature_count": 8,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1373,7 +1613,7 @@
       "id": "LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f",
       "visible_in_tree": false,
       "feature_count": 1,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1391,7 +1631,7 @@
       "id": "LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212",
       "visible_in_tree": false,
       "feature_count": 11,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1451,7 +1691,7 @@
       "id": "LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e",
       "visible_in_tree": false,
       "feature_count": 8,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1551,7 +1791,7 @@
       "id": "LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9",
       "visible_in_tree": false,
       "feature_count": 20,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -1796,7 +2036,7 @@
       "id": "LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31",
       "visible_in_tree": false,
       "feature_count": 9,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -2036,7 +2276,7 @@
       "id": "LOT4___T22_Diagnostic_LiDAR_nDSM__Magenta__acfec04d_9e70_48af_bea1_910c65ef7a82",
       "visible_in_tree": false,
       "feature_count": 1,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -2077,7 +2317,7 @@
       "id": "LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43",
       "visible_in_tree": false,
       "feature_count": 1,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -2277,6 +2517,106 @@
       ],
       "total_features": 10
     },
+    "OPT_B - Acoperis Propuneri Remediate (Mov Dash)": {
+      "id": "OPT_B___Acoperis_Propuneri_Remediate__Mov_Dash__28582e95_1941_43a0_a5f7_86958bc6345f",
+      "visible_in_tree": true,
+      "feature_count": 141,
+      "labels_enabled": true,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1431.41,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1086.6,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1029.46,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 705.39,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 580.28,
+          "is_valid": true
+        }
+      ],
+      "total_features": 141
+    },
+    "OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)": {
+      "id": "OPT_B___Amprenta_Sol_1CC_ANCPI__0_40m__Mov_Solid__cb23063b_46c6_44c1_bb52_0a61371b3902",
+      "visible_in_tree": true,
+      "feature_count": 141,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1371.49,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 1022.36,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 969.59,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 644.43,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 528.73,
+          "is_valid": true
+        }
+      ],
+      "total_features": 141
+    },
     "OPT_B - Amprenta Sol -0.40m (Verde)": {
       "id": "OPT_B___Amprenta_Sol__0_40m__Verde__6a2a1cdf_4471_4f13_b936_ea29ac115261",
       "visible_in_tree": false,
@@ -2332,11 +2672,61 @@
       ],
       "total_features": 216
     },
+    "OPT_B - Avertizare Limita Zbor NoData (Mov Dotted)": {
+      "id": "OPT_B___Avertizare_Limita_Zbor_NoData__Mov_Dotted__bcf807fa_3e15_4322_be43_3d515156b4cf",
+      "visible_in_tree": false,
+      "feature_count": 26,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 82.24,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 544.51,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 506.67,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 35.79,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 74.33,
+          "is_valid": true
+        }
+      ],
+      "total_features": 26
+    },
     "OPT_B - Cladiri Validate nDSM (Portocaliu)": {
       "id": "OPT_B___Cladiri_Validate_nDSM__Portocaliu__3135407f_3336_4d65_8b1e_e552991eb065",
       "visible_in_tree": false,
       "feature_count": 216,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {
@@ -2401,6 +2791,56 @@
         }
       ],
       "total_features": 216
+    },
+    "OPT_B - Duplicate Con\u021binere Suprimate (Mov Sub\u021bire)": {
+      "id": "OPT_B___Duplicate_Con_inere_Suprimate__Mov_Sub_ire__c9235340_851d_4791_94fd_ef4db6812d80",
+      "visible_in_tree": false,
+      "feature_count": 10,
+      "labels_enabled": false,
+      "crs": "EPSG:3844",
+      "features_sample": [
+        {
+          "id": 1,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 189.82,
+          "is_valid": true
+        },
+        {
+          "id": 2,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 24.51,
+          "is_valid": true
+        },
+        {
+          "id": 3,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 36.1,
+          "is_valid": true
+        },
+        {
+          "id": 4,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 150.9,
+          "is_valid": true
+        },
+        {
+          "id": 5,
+          "fields": {
+            "owner_verdict": "PENDING_OWNER_REVIEW"
+          },
+          "area_geom": 25.74,
+          "is_valid": true
+        }
+      ],
+      "total_features": 10
     },
     "OPT_B - Falsuri Pozitive Eliminate (Gri)": {
       "id": "OPT_B___Falsuri_Pozitive_Eliminate__Gri__176fe6c7_5ea2_4924_9333_c709bb645b71",
@@ -2516,7 +2956,7 @@
       "id": "REST___Acoperis_Ortho90__Cyan__d07bcdb9_db5a_4768_9d2e_1ce2a57b28d9",
       "visible_in_tree": false,
       "feature_count": 264,
-      "labels_enabled": true,
+      "labels_enabled": false,
       "crs": "EPSG:3844",
       "features_sample": [
         {

@@ -6,7 +6,7 @@ Failure returns the observed polygon with NEEDS_REVIEW, never a forced rectangle
 import math
 import numpy as np
 from shapely import affinity
-from shapely.geometry import Polygon, box
+from shapely.geometry import Polygon, box, MultiPolygon
 from rasterio.features import rasterize
 from rasterio.transform import from_origin
 
@@ -98,7 +98,7 @@ def roof_shape_variations(observed, previous=None, *, min_support=.92,
             a=np.roll(xy,1,axis=0)-xy;b=np.roll(xy,-1,axis=0)-xy
             cosine=(a*b).sum(axis=1)/(np.linalg.norm(a,axis=1)*np.linalg.norm(b,axis=1))
             return float(np.degrees(np.arccos(np.clip(cosine,-1.,1.))).min())
-        if minimum_angle(g)<40. and minimum_angle(observed)>=40.:
+        if minimum_angle(g)<40. and (method!='OBSERVATION' or minimum_angle(observed)>=40.):
             reasons.append('INTRODUCES_ACUTE_SPUR')
         if support<min_support:reasons.append('ADDED_UNSUPPORTED_AREA')
         if coverage<min_coverage:reasons.append('LOST_OBSERVED_WING_OR_AREA')
@@ -183,8 +183,24 @@ def _orthogonal_ring(polygon):
     return candidate if candidate.is_valid and candidate.area>0 else None
 
 
+def _minimum_interior_angle(polygon):
+    xy = np.asarray(polygon.exterior.coords)[:-1]
+    if len(xy) < 3:
+        return 0.0
+    a = np.roll(xy, 1, axis=0) - xy
+    b = np.roll(xy, -1, axis=0) - xy
+    norm_a = np.linalg.norm(a, axis=1)
+    norm_b = np.linalg.norm(b, axis=1)
+    mask = (norm_a > 1e-6) & (norm_b > 1e-6)
+    if not mask.all():
+        return 0.0
+    cosine = (a[mask] * b[mask]).sum(axis=1) / (norm_a[mask] * norm_b[mask])
+    angles = np.degrees(np.arccos(np.clip(cosine, -1.0, 1.0)))
+    return float(angles.min()) if len(angles) > 0 else 0.0
+
+
 def simple_roof_geometry(optical, orientation_hint=None, min_support=.92,
-                         min_coverage=.90, max_vertices=12, min_edge=.8,
+                         min_coverage=.90, max_vertices=12, min_edge=1.,
                          angle_search_degrees=4, *, max_boundary_distance=None,
                          max_area_change=None):
     """Return (geometry, diagnostics), preferring the fewest supported corners.
@@ -236,7 +252,7 @@ def simple_roof_geometry(optical, orientation_hint=None, min_support=.92,
     for method,candidate in possibilities:
         vertices=len(candidate.exterior.coords)-1
         lengths=np.linalg.norm(np.diff(np.asarray(candidate.exterior.coords),axis=0),axis=1)
-        if vertices>max_vertices or lengths.min()<min_edge:continue
+        if vertices>max_vertices or lengths.min()<min_edge or _minimum_interior_angle(candidate)<40.:continue
         # Physical guards apply to every candidate, including rectangles, before
         # selecting the fewest vertices. Mask agreement is not ground truth.
         if max_boundary_distance is not None and candidate.boundary.hausdorff_distance(aligned.boundary)>max_boundary_distance:
@@ -265,6 +281,88 @@ def simple_roof_geometry(optical, orientation_hint=None, min_support=.92,
         return optical,{'method':'NEEDS_REVIEW','reason':'NO_SUPPORTED_SIMPLE_FIT'}
     vertices,neg_iou,method,candidate,support,coverage=min(accepted,key=lambda x:(x[0],x[1]))
     result=affinity.rotate(candidate,angle,origin=origin)
+    # Clean consecutive duplicate vertices
+    coords = list(result.exterior.coords)
+    cleaned = [coords[0]]
+    for pt in coords[1:]:
+        if math.hypot(pt[0] - cleaned[-1][0], pt[1] - cleaned[-1][1]) > 1e-5:
+            cleaned.append(pt)
+    if len(cleaned) > 1 and math.hypot(cleaned[0][0] - cleaned[-1][0], cleaned[0][1] - cleaned[-1][1]) <= 1e-5:
+        cleaned[-1] = cleaned[0]
+    elif len(cleaned) > 2 and cleaned[0] != cleaned[-1]:
+        cleaned.append(cleaned[0])
+    if len(cleaned) >= 4:
+        poly = Polygon(cleaned)
+        if poly.is_valid:
+            result = poly
     return result,{'method':method,'vertices':vertices,'support':float(support),
                    'coverage':float(coverage),'iou':float(-neg_iou),'angle_deg':angle,
                    'status':'REVIEW_REQUIRED'}
+
+
+def remove_acute_spurs(geom, min_angle=40.0):
+    """Iteratively remove acute spur vertices (< min_angle deg) on free corners."""
+    if geom is None or geom.is_empty:
+        return geom
+    if geom.geom_type == 'MultiPolygon':
+        polys = [remove_acute_spurs(p, min_angle=min_angle) for p in geom.geoms]
+        valid = [p for p in polys if p is not None and p.is_valid and not p.is_empty]
+        return MultiPolygon(valid) if valid else geom
+    if geom.geom_type != 'Polygon':
+        return geom
+    coords = list(geom.exterior.coords)[:-1]
+    changed = True
+    while changed and len(coords) >= 4:
+        changed = False
+        xy = np.asarray(coords)
+        a = np.roll(xy, 1, axis=0) - xy
+        b = np.roll(xy, -1, axis=0) - xy
+        norm_a = np.linalg.norm(a, axis=1)
+        norm_b = np.linalg.norm(b, axis=1)
+        mask = (norm_a > 1e-6) & (norm_b > 1e-6)
+        if not mask.all():
+            break
+        cosine = (a[mask] * b[mask]).sum(axis=1) / (norm_a[mask] * norm_b[mask])
+        angles = np.degrees(np.arccos(np.clip(cosine, -1.0, 1.0)))
+        min_idx = int(np.argmin(angles))
+        if angles[min_idx] < min_angle:
+            test_coords = [coords[i] for i in range(len(coords)) if i != min_idx]
+            test_poly = Polygon(test_coords, [r.coords for r in geom.interiors])
+            if test_poly.is_valid and test_poly.area > 0 and test_poly.intersection(geom).area / geom.area >= 0.85:
+                coords = test_coords
+                geom = test_poly
+                changed = True
+    return geom
+
+
+def remove_short_edges(geom, min_edge=0.6, min_fidelity=0.95):
+    """Iteratively remove vertices forming micro-edges (< min_edge m) if shape fidelity is preserved."""
+    if geom is None or geom.is_empty:
+        return geom
+    if geom.geom_type == 'MultiPolygon':
+        polys = [remove_short_edges(p, min_edge=min_edge, min_fidelity=min_fidelity) for p in geom.geoms]
+        valid = [p for p in polys if p is not None and p.is_valid and not p.is_empty]
+        return MultiPolygon(valid) if valid else geom
+    if geom.geom_type != 'Polygon':
+        return geom
+    coords = list(geom.exterior.coords)[:-1]
+    changed = True
+    while changed and len(coords) >= 4:
+        changed = False
+        n = len(coords)
+        for i in range(n):
+            p1 = coords[i]
+            p2 = coords[(i + 1) % n]
+            d = math.hypot(p2[0] - p1[0], p2[1] - p1[1])
+            if d < min_edge:
+                test_coords = [coords[k] for k in range(n) if k != (i + 1) % n]
+                if len(test_coords) < 3:
+                    continue
+                tp = Polygon(test_coords, [r.coords for r in geom.interiors])
+                if tp.is_valid and tp.area > 0 and (tp.intersection(geom).area / geom.area) >= min_fidelity:
+                    coords = test_coords
+                    geom = tp
+                    changed = True
+                    break
+    return geom
+

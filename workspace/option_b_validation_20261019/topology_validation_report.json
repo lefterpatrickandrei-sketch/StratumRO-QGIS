@@ -1,0 +1,37 @@
+{
+  "input_gpkg": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\option_b_validation_20261019\\b_proposals_cleaned.gpkg",
+  "validated_layer": "B_ROOF_PROPOSALS",
+  "feature_count": 141,
+  "gate1_topology_conformance": {
+    "status": "PASS",
+    "duplicate_node_errors": 0,
+    "spurious_hole_errors": 0,
+    "short_edges_count": 21,
+    "acute_angles_count": 0,
+    "details": []
+  },
+  "gate2_sensor_grounding": {
+    "status": "PASS",
+    "touches_nodata_count": 0,
+    "low_elevation_count": 0,
+    "low_elevation_cases": []
+  },
+  "gate3_cadastral_fidelity": {
+    "status": "PASS",
+    "overlapping_pairs_gt_0_05m2": 0,
+    "overlapping_pairs": []
+  },
+  "gate4_cad_compliance": {
+    "status": "PASS",
+    "has_1cc_footprint_layer": true,
+    "available_layers": [
+      "B_ROOF_PROPOSALS",
+      "B_FOOTPRINT_1CC",
+      "INCOMPLET_LIMITA_ZBOR",
+      "DUPLICATE_CONFINED_SUPRIMATE",
+      "FALS_POZITIV_SOL_SUB_1_8M",
+      "B_SIMPLE_ALL_CLEANED"
+    ]
+  },
+  "overall_verdict": "ADMIS"
+}

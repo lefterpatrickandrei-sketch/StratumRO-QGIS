@@ -1,0 +1,12 @@
+{
+  "total_input": 216,
+  "pure_rectangles": 119,
+  "articulated_l_u_t": 76,
+  "courtyards": 0,
+  "suppressed_gt_overlap": 19,
+  "suppressed_cemetery_non1cc": 1,
+  "suppressed_road_phantom": 1,
+  "nodata_boundary_flagged": 26,
+  "active_deliverable_count": 195,
+  "details": []
+}

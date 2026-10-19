@@ -1,0 +1,352 @@
+[
+  {
+    "station_id": "STRIP_01_FRAME_01",
+    "strip": 1,
+    "frame": 1,
+    "bounds": [
+      390530.0,
+      585667.7,
+      390748.3,
+      585886.0
+    ],
+    "zone": "Nord (Calea Manastur) - Vest",
+    "image": "STRIP_01_FRAME_01.png",
+    "size_kb": 245
+  },
+  {
+    "station_id": "STRIP_01_FRAME_02",
+    "strip": 1,
+    "frame": 2,
+    "bounds": [
+      390737.4,
+      585667.7,
+      390955.8,
+      585886.0
+    ],
+    "zone": "Nord (Calea Manastur) - Vest",
+    "image": "STRIP_01_FRAME_02.png",
+    "size_kb": 968
+  },
+  {
+    "station_id": "STRIP_01_FRAME_03",
+    "strip": 1,
+    "frame": 3,
+    "bounds": [
+      390944.8,
+      585667.7,
+      391163.2,
+      585886.0
+    ],
+    "zone": "Nord (Calea Manastur) - Centru",
+    "image": "STRIP_01_FRAME_03.png",
+    "size_kb": 1619
+  },
+  {
+    "station_id": "STRIP_01_FRAME_04",
+    "strip": 1,
+    "frame": 4,
+    "bounds": [
+      391152.2,
+      585667.7,
+      391370.6,
+      585886.0
+    ],
+    "zone": "Nord (Calea Manastur) - Centru",
+    "image": "STRIP_01_FRAME_04.png",
+    "size_kb": 884
+  },
+  {
+    "station_id": "STRIP_01_FRAME_05",
+    "strip": 1,
+    "frame": 5,
+    "bounds": [
+      391359.7,
+      585667.7,
+      391578.0,
+      585886.0
+    ],
+    "zone": "Nord (Calea Manastur) - Est",
+    "image": "STRIP_01_FRAME_05.png",
+    "size_kb": 18
+  },
+  {
+    "station_id": "STRIP_02_FRAME_05",
+    "strip": 2,
+    "frame": 5,
+    "bounds": [
+      391359.7,
+      585460.2,
+      391578.0,
+      585678.6
+    ],
+    "zone": "Nord (Calea Manastur) - Est",
+    "image": "STRIP_02_FRAME_05.png",
+    "size_kb": 449
+  },
+  {
+    "station_id": "STRIP_02_FRAME_04",
+    "strip": 2,
+    "frame": 4,
+    "bounds": [
+      391152.2,
+      585460.2,
+      391370.6,
+      585678.6
+    ],
+    "zone": "Nord (Calea Manastur) - Centru",
+    "image": "STRIP_02_FRAME_04.png",
+    "size_kb": 1729
+  },
+  {
+    "station_id": "STRIP_02_FRAME_03",
+    "strip": 2,
+    "frame": 3,
+    "bounds": [
+      390944.8,
+      585460.2,
+      391163.2,
+      585678.6
+    ],
+    "zone": "Nord (Calea Manastur) - Centru",
+    "image": "STRIP_02_FRAME_03.png",
+    "size_kb": 2285
+  },
+  {
+    "station_id": "STRIP_02_FRAME_02",
+    "strip": 2,
+    "frame": 2,
+    "bounds": [
+      390737.4,
+      585460.2,
+      390955.8,
+      585678.6
+    ],
+    "zone": "Nord (Calea Manastur) - Vest",
+    "image": "STRIP_02_FRAME_02.png",
+    "size_kb": 2306
+  },
+  {
+    "station_id": "STRIP_02_FRAME_01",
+    "strip": 2,
+    "frame": 1,
+    "bounds": [
+      390530.0,
+      585460.2,
+      390748.3,
+      585678.6
+    ],
+    "zone": "Nord (Calea Manastur) - Vest",
+    "image": "STRIP_02_FRAME_01.png",
+    "size_kb": 1650
+  },
+  {
+    "station_id": "STRIP_03_FRAME_01",
+    "strip": 3,
+    "frame": 1,
+    "bounds": [
+      390530.0,
+      585252.8,
+      390748.3,
+      585471.2
+    ],
+    "zone": "Centru (Campus USAMV) - Vest",
+    "image": "STRIP_03_FRAME_01.png",
+    "size_kb": 1347
+  },
+  {
+    "station_id": "STRIP_03_FRAME_02",
+    "strip": 3,
+    "frame": 2,
+    "bounds": [
+      390737.4,
+      585252.8,
+      390955.8,
+      585471.2
+    ],
+    "zone": "Centru (Campus USAMV) - Vest",
+    "image": "STRIP_03_FRAME_02.png",
+    "size_kb": 2238
+  },
+  {
+    "station_id": "STRIP_03_FRAME_03",
+    "strip": 3,
+    "frame": 3,
+    "bounds": [
+      390944.8,
+      585252.8,
+      391163.2,
+      585471.2
+    ],
+    "zone": "Centru (Campus USAMV) - Centru",
+    "image": "STRIP_03_FRAME_03.png",
+    "size_kb": 2112
+  },
+  {
+    "station_id": "STRIP_03_FRAME_04",
+    "strip": 3,
+    "frame": 4,
+    "bounds": [
+      391152.2,
+      585252.8,
+      391370.6,
+      585471.2
+    ],
+    "zone": "Centru (Campus USAMV) - Centru",
+    "image": "STRIP_03_FRAME_04.png",
+    "size_kb": 1188
+  },
+  {
+    "station_id": "STRIP_03_FRAME_05",
+    "strip": 3,
+    "frame": 5,
+    "bounds": [
+      391359.7,
+      585252.8,
+      391578.0,
+      585471.2
+    ],
+    "zone": "Centru (Campus USAMV) - Est",
+    "image": "STRIP_03_FRAME_05.png",
+    "size_kb": 142
+  },
+  {
+    "station_id": "STRIP_04_FRAME_05",
+    "strip": 4,
+    "frame": 5,
+    "bounds": [
+      391359.7,
+      585045.4,
+      391578.0,
+      585263.8
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Est",
+    "image": "STRIP_04_FRAME_05.png",
+    "size_kb": 6
+  },
+  {
+    "station_id": "STRIP_04_FRAME_04",
+    "strip": 4,
+    "frame": 4,
+    "bounds": [
+      391152.2,
+      585045.4,
+      391370.6,
+      585263.8
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Centru",
+    "image": "STRIP_04_FRAME_04.png",
+    "size_kb": 131
+  },
+  {
+    "station_id": "STRIP_04_FRAME_03",
+    "strip": 4,
+    "frame": 3,
+    "bounds": [
+      390944.8,
+      585045.4,
+      391163.2,
+      585263.8
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Centru",
+    "image": "STRIP_04_FRAME_03.png",
+    "size_kb": 933
+  },
+  {
+    "station_id": "STRIP_04_FRAME_02",
+    "strip": 4,
+    "frame": 2,
+    "bounds": [
+      390737.4,
+      585045.4,
+      390955.8,
+      585263.8
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Vest",
+    "image": "STRIP_04_FRAME_02.png",
+    "size_kb": 1605
+  },
+  {
+    "station_id": "STRIP_04_FRAME_01",
+    "strip": 4,
+    "frame": 1,
+    "bounds": [
+      390530.0,
+      585045.4,
+      390748.3,
+      585263.8
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Vest",
+    "image": "STRIP_04_FRAME_01.png",
+    "size_kb": 759
+  },
+  {
+    "station_id": "STRIP_05_FRAME_01",
+    "strip": 5,
+    "frame": 1,
+    "bounds": [
+      390530.0,
+      584838.0,
+      390748.3,
+      585056.3
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Vest",
+    "image": "STRIP_05_FRAME_01.png",
+    "size_kb": 37
+  },
+  {
+    "station_id": "STRIP_05_FRAME_02",
+    "strip": 5,
+    "frame": 2,
+    "bounds": [
+      390737.4,
+      584838.0,
+      390955.8,
+      585056.3
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Vest",
+    "image": "STRIP_05_FRAME_02.png",
+    "size_kb": 37
+  },
+  {
+    "station_id": "STRIP_05_FRAME_03",
+    "strip": 5,
+    "frame": 3,
+    "bounds": [
+      390944.8,
+      584838.0,
+      391163.2,
+      585056.3
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Centru",
+    "image": "STRIP_05_FRAME_03.png",
+    "size_kb": 6
+  },
+  {
+    "station_id": "STRIP_05_FRAME_04",
+    "strip": 5,
+    "frame": 4,
+    "bounds": [
+      391152.2,
+      584838.0,
+      391370.6,
+      585056.3
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Centru",
+    "image": "STRIP_05_FRAME_04.png",
+    "size_kb": 6
+  },
+  {
+    "station_id": "STRIP_05_FRAME_05",
+    "strip": 5,
+    "frame": 5,
+    "bounds": [
+      391359.7,
+      584838.0,
+      391578.0,
+      585056.3
+    ],
+    "zone": "Sud (Cimitir / Bazine) - Est",
+    "image": "STRIP_05_FRAME_05.png",
+    "size_kb": 6
+  }
+]

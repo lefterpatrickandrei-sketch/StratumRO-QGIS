@@ -47,3 +47,28 @@ Continuarea CI a fost autorizată și implementată separat: vezi [dosarul CI](.
 ## Ultimul checkpoint B, 2026-10-19
 
 Cititi [predarea corectiilor locale](../workspace/option_b_repair_20261019/README.md) si selectorul comun CURRENT.json. In QGIS folositi B_CORECTII_20261019; nu confundati cele 152 propuneri cu rezultate acceptate. Cele 64 diagnostice sunt pastrate, nu reparate. Codul comun contine regulile, dar rutarea cazurilor din audit este o intrare manuala explicita.
+
+## Ultimul checkpoint: Inspecție Fotogrammetrică 1:150 și Remediere Balansată (2026-10-19)
+
+- **Audit & Verificare Sesiune Anterioară (`073958fc-f6cd-404a-b651-d8da605d64a6`)**:
+  - A fost auditată și verificată rescrierea trilingvă a documentației (`README.md` în engleză, `README.ro.md` în română, `README.es.md` în spaniolă).
+  - Ghidul operațional QGIS Desktop (`docs/QGIS_WORKFLOW.md`) a fost verificat și completat: clarifică rolul QGIS ca Faza 1 activă de inspecție vizuală și cockpit Human-in-the-Loop, integrat cu puntea MCP pe portul 9876 și exporturile CAD conforme ANCPI Ordinul 600/2023.
+  - S-a verificat integritatea a peste 163 de legături locale Markdown: **0 legături rupte**.
+  - `AGENTS.md` a fost consolidat cu secțiunea „Orientare Rapidă pentru Agenți AI”, harta directoarelor și regulile de aur geodezice (Stereo 70 EPSG:3844, fără coordonate inventate, fără auto-declarare ADMIS).
+
+- **Inovație Geometrică & Geodezică (Sesiunea `dcb45b25-1f51-4e7a-886e-31b74fb30717`)**:
+  - **Unelte create și active**:
+    - `tools/simulate_drone_photogrammetry_flight.py`: Zbor fotogrammetric grilă 5×5 (25 stații foto acoperind 100% perimetrul de 1.05 km × 1.05 km).
+    - `tools/capture_scale_150_remediated_frames.py`: Captură cadru QGIS la scară cadastrală 1:150 (fereastră 44 m × 25 m, rezoluție 1 px = 3.9 cm).
+    - `tools/remediate_full_map_precision_first.py`: Remediere cadastrală balansată: **195 clădiri validate 1CC**, **75 de corpuri articulate L/U/T păstrate la 90°**, **119 dreptunghiuri pure**, **19 dubluri suprimate față de Lot 1–5**, **0 spike-uri**.
+  - **Straturi active**:
+    - GeoPackage: `workspace/option_b_validation_20261019/b_proposals_cleaned.gpkg` (straturi `B_ROOF_PROPOSALS` și `B_FOOTPRINT_1CC`).
+    - Proiect QGIS comun: `workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs`.
+  - **Rapoarte și galerii locale (Server HTTP Port 8769)**:
+    - `http://127.0.0.1:8769/scara_150_ultra_detaliu/index.html` (Galerie comparativă 1:150 Înainte vs După)
+    - `http://127.0.0.1:8769/scara_150_ultra_detaliu/charts.html` (Dashboard interactiv de grafice Chart.js)
+    - `http://127.0.0.1:8769/drone_flight_strips/index.html` (Zbor fotogrammetric 25 benzi)
+  - **Verificări automate**:
+    - `python scripts/validate_project.py --mode fast`: 17 teste Golden Geometry trecute în 2.67s.
+    - `python -m unittest discover stratum_ro/test`: 536 teste trecute (0 eșecuri, 0 erori, 9 omise pentru context GUI QGIS).
+

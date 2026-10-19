@@ -4,8 +4,9 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 
 | Document | Rol |
 |---|---|
-| [README principal](../README.md) | Identitatea produsului și punctele de intrare |
-| [AGENTS.md](../AGENTS.md) | Reguli comune, fără roluri exclusive impuse unui furnizor |
+| [README principal (EN)](../README.md) · [🇷🇴 Română](../README.ro.md) · [🇪🇸 Español](../README.es.md) | Prezentarea trilingvă a platformei, arhitectură și puncte de intrare |
+| [Ghidul QGIS (Faza 1)](QGIS_WORKFLOW.md) | Operarea curentă pe canvas QGIS Desktop, inspecție vizuală și flux cadastral |
+| [AGENTS.md](../AGENTS.md) | Ghidul central al agenților AI: Orientare rapidă, hartă directoare, reguli geodezice și igienă Git |
 | [PROJECT_STATE.md](PROJECT_STATE.md) | Stare verificată, selecții active, limite și lucrări rămase |
 | [SYSTEM_MAP.md](SYSTEM_MAP.md) | Diagrame ale implementării și ale direcției propuse |
 | [METHODS_AND_SOURCES.md](METHODS_AND_SOURCES.md) | Formule explicate, convenții raster/geometrie și legături la cod și surse oficiale |
@@ -14,6 +15,7 @@ Intrările curente sunt întreținute împreună; rapoartele datate rămân dove
 
 ## Reguli și dovezi specializate
 
+- [Inspecția Fotogrammetrică 1:150 și Remedierea Balansată (2026-10-19)](../workspace/option_b_validation_20261019/full_map_precision_first_report.json) — Recensământ 9 categorii defecte, 195 clădiri 1CC, eliminare spike-uri, 100% unghiuri 90°.
 - [Rafinarea B implementată: motor comun, QA, SAM2 și toate etapele vizuale](../workspace/option_b_refinement_20261018/README.md).
 - [Reverificarea conversației Antigravity: workspace comun, Lot4/T22, full-auto și Lot5/A–B](../workspace/conversation_recheck_20261018/README.md).
 - [Protocolul comun de decizie pentru clădiri](STRATUMRO_AGENT_DECISION_PROTOCOL.md).

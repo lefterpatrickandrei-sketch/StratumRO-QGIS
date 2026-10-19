@@ -1,6 +1,6 @@
 # Intrare Gemini / Antigravity pentru StratumRO
 
-Citește [AGENTS.md](AGENTS.md), apoi [starea actuală](docs/PROJECT_STATE.md) și [predarea comună](docs/AGENT_HANDOFF.md). Regulile și dovezile sunt în același repository folosit de ceilalți agenți.
+Citește [AGENTS.md](AGENTS.md) (inclusiv secțiunea *Quick Orientation for AI Agents*), [Ghidul QGIS](docs/QGIS_WORKFLOW.md), apoi [starea actuală](docs/PROJECT_STATE.md) și [predarea comună](docs/AGENT_HANDOFF.md). Regulile și dovezile sunt în același repository folosit de ceilalți agenți.
 
 Deschide proiectul `C:/Users/lefpa/Downloads/QGIS-AI`; confirmă copia, branch-ul și fișierele proprii înainte de editare. Păstrează proiectul QGIS comun. Nu presupune că ai citit conversația proprietarului doar pentru că există acest fișier; folosește feedback-ul versionat și cere informațiile care lipsesc.
 

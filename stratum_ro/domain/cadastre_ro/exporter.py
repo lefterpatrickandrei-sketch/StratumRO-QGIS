@@ -307,6 +307,17 @@ class CadastralDxfExporter:
             msp.add_circle((round(gx, 3), round(gy, 3)), radius=max(r, 1.0), dxfattribs={"layer": "ARBORI", "color": colors.GREEN})
             msp.add_point((round(gx, 3), round(gy, 3)), dxfattribs={"layer": "ARBORI", "color": colors.GREEN})
 
+        # 4b. Export Tree Canopies -> ARBORI (Closed polygon boundary of tree crowns)
+        canopies = categories_dict.get("ARBORI_CORONAMENT", [])
+        for c in canopies:
+            poly = c.get("geometry")
+            if poly and poly.is_valid and not poly.is_empty:
+                if poly.geom_type == 'Polygon':
+                    pts = [(round(pt[0], 3), round(pt[1], 3)) for pt in poly.exterior.coords]
+                    msp.add_lwpolyline(pts, close=True, dxfattribs={"layer": "ARBORI", "color": colors.GREEN})
+                    for pt in pts:
+                        all_coords_for_bbox.append(pt)
+
         # 5. Export Poles & Towers -> STALPI
         poles = categories_dict.get("STALPI_TURNURI", [])
         for p in poles:

@@ -1,0 +1,428 @@
+[
+  {
+    "layer": "0. B initial - 216 propuneri",
+    "dist": 4.89,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "0. B initial - 216 propuneri",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "1. Observatii optice originale",
+    "dist": 5.05,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "1. Observatii optice originale",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "2. Observatii dupa deduplicare",
+    "dist": 5.05,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "2. Observatii dupa deduplicare",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "3. Simplificare cu garduri",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "3. Simplificare cu garduri",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "4. QA inainte de SAM2",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "4. QA inainte de SAM2",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "6. PROPUNERI - cyan simplu / portocaliu revizie",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "6. PROPUNERI - cyan simplu / portocaliu revizie",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "AUTO - acoperire scanare / nu parcele",
+    "dist": 8.4,
+    "fields": {}
+  },
+  {
+    "layer": "AUTO - acoperire scanare / nu parcele",
+    "dist": 0.0,
+    "fields": {}
+  },
+  {
+    "layer": "AUTO - candidati acoperis / NEVALIDATI",
+    "dist": 5.05,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001"
+    }
+  },
+  {
+    "layer": "AUTO - candidati acoperis / NEVALIDATI",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "W003_006_M0076_P001_0074"
+    }
+  },
+  {
+    "layer": "AUTO - obiecte optice INCERTE / nu presupune cladiri",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "W002_006_M0071_P001_0067"
+    }
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "dist": 5.05,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001"
+    }
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "dist": 1.8,
+    "fields": {
+      "candidate_id": "W002_006_M0002_P001_0002"
+    }
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "dist": 6.99,
+    "fields": {
+      "candidate_id": "W002_007_M0059_P001_0055"
+    }
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "dist": 0.92,
+    "fields": {
+      "candidate_id": "W003_007_M0059_P001_0056"
+    }
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "dist": 3.58,
+    "fields": {
+      "candidate_id": "W002_006_M0075_P001_0069"
+    }
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "W002_006_M0071_P001_0067"
+    }
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "W003_006_M0076_P001_0074"
+    }
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "dist": 3.79,
+    "fields": {
+      "candidate_id": "W002_006_M0069_P001_0065"
+    }
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "dist": 1.8,
+    "fields": {
+      "candidate_id": "W002_006_M0002_P001_0002"
+    }
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "dist": 6.99,
+    "fields": {
+      "candidate_id": "W002_007_M0059_P001_0055"
+    }
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "dist": 0.95,
+    "fields": {
+      "candidate_id": "W003_007_M0059_P001_0056"
+    }
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "dist": 3.58,
+    "fields": {
+      "candidate_id": "W002_006_M0075_P001_0069"
+    }
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "dist": 3.79,
+    "fields": {
+      "candidate_id": "W002_006_M0069_P001_0065"
+    }
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - ETAPA ANTERIOARA",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "B - ETAPA ANTERIOARA",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - FORME SIMPLE / necesita verificare",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "B - FORME SIMPLE / necesita verificare",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - acoperisuri in revizie / corectii locale",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "B - false sau incomplete / necesita recuperare",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "B - inainte de corectii",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "B - inainte de corectii",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "OPT_B - Acoperis Propuneri Remediate (Mov Dash)",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)",
+    "dist": 5.72,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol -0.40m (Verde)",
+    "dist": 5.31,
+    "fields": {
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol -0.40m (Verde)",
+    "dist": 0.34,
+    "fields": {
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "OPT_B - Cladiri Validate nDSM (Portocaliu)",
+    "dist": 4.89,
+    "fields": {
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "OPT_B - Cladiri Validate nDSM (Portocaliu)",
+    "dist": 0.0,
+    "fields": {
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "QA - cazuri nerezolvate (nu livrabile finale)",
+    "dist": 5.27,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    }
+  },
+  {
+    "layer": "QA - cazuri nerezolvate (nu livrabile finale)",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    }
+  },
+  {
+    "layer": "REST - Acoperis Ortho90 (Cyan)",
+    "dist": 4.89,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001",
+      "body_id": "REST_008:C1"
+    }
+  },
+  {
+    "layer": "REST - Amprenta Sol ANCPI -0.40m (Verde)",
+    "dist": 5.31,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001",
+      "body_id": "REST_008:C1"
+    }
+  },
+  {
+    "layer": "REST - Candidati Deduplicati/Omisi (Gri)",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "REF_TIER1_006:B00003"
+    }
+  },
+  {
+    "layer": "REST - Candidati Deduplicati/Omisi (Gri)",
+    "dist": 0.0,
+    "fields": {
+      "candidate_id": "W003_006_M0076_P001_0074"
+    }
+  },
+  {
+    "layer": "REST - Masca initiala inainte de regularizare (Galben)",
+    "dist": 5.05,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001",
+      "body_id": "REST_008:C1"
+    }
+  },
+  {
+    "layer": "REVIZUIRE_COMPLEXA",
+    "dist": 0.0,
+    "fields": {
+      "id": "REF_TIER1_006:B00003"
+    }
+  }
+]

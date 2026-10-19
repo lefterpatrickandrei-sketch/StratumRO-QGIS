@@ -1,0 +1,327 @@
+{
+  "B5_DOUA_CORPURI": {
+    "id": "B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/review18_20261013/review18.gpkg|layername=B5_DOUA_CORPURI",
+    "count": 2
+  },
+  "LOT3_CAZURI_NERECUPERATE": {
+    "id": "LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 7
+  },
+  "LOT3_CORPURI_EXTRASE": {
+    "id": "LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 2
+  },
+  "LOT3_FERESTRE_SELECTIE": {
+    "id": "LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_20261013/lot3_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 8
+  },
+  "LOT3_REV_CAZURI_NERECUPERATE": {
+    "id": "LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 5
+  },
+  "LOT3_REV_CORPURI_EXTRASE": {
+    "id": "LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 5
+  },
+  "LOT3_REV_FERESTRE_SELECTIE": {
+    "id": "LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 8
+  },
+  "LOT3_REV_MASCA_BRUTA": {
+    "id": "LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_20261013/results/lot3_revision_results.gpkg|layername=MASCA_BRUTA_SAM2|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 8
+  },
+  "LOT3_V3_CAZURI_NERECUPERATE": {
+    "id": "LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=CAZURI_NERECUPERATE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 1
+  },
+  "LOT3_V3_CORPURI_EXTRASE": {
+    "id": "LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=CORPURI_EXTRASE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 11
+  },
+  "LOT3_V3_FERESTRE_SELECTIE": {
+    "id": "LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=FERESTRE_SELECTIE_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 8
+  },
+  "LOT3_V3_MASCA_BRUTA": {
+    "id": "LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_revision_v3_20261016/results/lot3_results.gpkg|layername=MASCA_BRUTA_LOT3|subset=\"test_id\" NOT IN ('T17','T18')",
+    "count": 19
+  },
+  "LOT3 - 20 ipoteze / NECESITA VERDICT": {
+    "id": "LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v3/lot3_repaired.gpkg|layername=REPAIRED_ROOF_CANDIDATES",
+    "count": 20
+  },
+  "LOT3 - Acoperis Ortho90 (Cyan)": {
+    "id": "LOT3___Acoperis_Ortho90__Cyan__16f61bcb_e830_4943_a759_95af5e7b28b9",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg|layername=ROOF_HYPOTHESES_ORTHO90",
+    "count": 20
+  },
+  "LOT3 - Amprenta Sol ANCPI -0.40m (Verde)": {
+    "id": "LOT3___Amprenta_Sol_ANCPI__0_40m__Verde__bb3d9a20_4a45_4d05_b9ce_a41e09d43195",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg|layername=FOOTPRINT_HYPOTHESES_SOL",
+    "count": 20
+  },
+  "LOT3 - Masca initiala inainte de regularizare (Galben)": {
+    "id": "LOT3___Masca_initiala_inainte_de_regularizare__Galben__932fe9f9_bca3_443b_9d26_0b937f38c317",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg|layername=RAW_CANDIDATES_BEFORE",
+    "count": 20
+  },
+  "LOT4 - 9 contururi / in revizie": {
+    "id": "LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected/lot4_review.gpkg|layername=ROOF_HYPOTHESES",
+    "count": 9
+  },
+  "LOT4 - Acoperis Ortho90 (Cyan)": {
+    "id": "LOT4___Acoperis_Ortho90__Cyan__a3816a73_4d66_4bec_bcfe_017641837e58",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg|layername=ROOF_HYPOTHESES_ORTHO90",
+    "count": 10
+  },
+  "LOT4 - Amprenta Sol ANCPI -0.40m (Verde)": {
+    "id": "LOT4___Amprenta_Sol_ANCPI__0_40m__Verde__239b1f8b_1ef7_42d7_9032_ba099fa69a36",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg|layername=FOOTPRINT_HYPOTHESES_SOL",
+    "count": 10
+  },
+  "LOT4 - Masca initiala inainte de regularizare (Galben)": {
+    "id": "LOT4___Masca_initiala_inainte_de_regularizare__Galben__cbb94b3d_1217_454a_b403_156011b0210c",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg|layername=RAW_CANDIDATES_BEFORE",
+    "count": 10
+  },
+  "LOT4 - T22 Diagnostic LiDAR nDSM (Magenta)": {
+    "id": "LOT4___T22_Diagnostic_LiDAR_nDSM__Magenta__acfec04d_9e70_48af_bea1_910c65ef7a82",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg|layername=T22_DIAGNOSTIC_LIDAR",
+    "count": 1
+  },
+  "LOT4 - T22 masca respinsa de agent": {
+    "id": "LOT4___T22_masca_respinsa_de_agent_c7f4cb6e_73a7_41cf_9637_bd8815e7dcc9",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected/lot4_review.gpkg|layername=REJECTED_CANDIDATES",
+    "count": 1
+  },
+  "LOT4 - T22 nerezolvat": {
+    "id": "LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected/lot4_review.gpkg|layername=CASES_REVIEW|subset=\"agent_status\"='UNRESOLVED_AFTER_REVIEW'",
+    "count": 1
+  },
+  "LOT4 - ferestre de cautare / NU contur final": {
+    "id": "LOT4___ferestre_de_cautare___NU_contur_final_00e0d01f_705d_4551_ad86_8b9eae205f49",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/selected/lot4_review.gpkg|layername=SEARCH_ENVELOPES",
+    "count": 10
+  },
+  "LOT5 - Acoperis Ortho90 (Cyan)": {
+    "id": "LOT5___Acoperis_Ortho90__Cyan__dbf9128a_860e_47a3_beaf_d83acb46bd45",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=LOT5_OPTIUNEA_A_ROOF",
+    "count": 10
+  },
+  "LOT5 - Amprenta Sol ANCPI -0.40m (Verde)": {
+    "id": "LOT5___Amprenta_Sol_ANCPI__0_40m__Verde__c2d0103d_0c60_4e9f_b27f_f863418f9452",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=LOT5_OPTIUNEA_A_SOL",
+    "count": 10
+  },
+  "Lot4 / T21_5cm": {
+    "id": "Lot4___T21_5cm_298db82e_ed7a_4f53_af20_70f196750509",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T21_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T22_5cm": {
+    "id": "Lot4___T22_5cm_a59d8b5f_8762_4733_afdc_90e2eebeff93",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T22_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T23_5cm": {
+    "id": "Lot4___T23_5cm_d8b73275_c136_4fbf_8285_c3dd6d411a79",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T23_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T24_5cm": {
+    "id": "Lot4___T24_5cm_64bad868_2e5d_4dc1_96a5_8ecb886ccfa2",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T24_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T25_5cm": {
+    "id": "Lot4___T25_5cm_fcef8985_b080_4d36_841c_fc38d56b0564",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T25_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T26_5cm": {
+    "id": "Lot4___T26_5cm_af73392a_a1af_48a6_82f6_1ae703c8141b",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T26_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T27_5cm": {
+    "id": "Lot4___T27_5cm_14f491c1_04e4_463c_aa60_60afa89ddeb5",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T27_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T28_5cm": {
+    "id": "Lot4___T28_5cm_d635dc6e_6b36_4228_87dc_320a83923852",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T28_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T29_5cm": {
+    "id": "Lot4___T29_5cm_f9dfa074_33e7_4d67_a509_b5800235e0b8",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T29_5cm.tif",
+    "count": -1
+  },
+  "Lot4 / T30_5cm": {
+    "id": "Lot4___T30_5cm_1c50aec5_e092_4883_8976_532b07c1b3c8",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot4_20261017/covers/T30_5cm.tif",
+    "count": -1
+  },
+  "OPT_B - Acoperis Propuneri Remediate (Mov Dash)": {
+    "id": "OPT_B___Acoperis_Propuneri_Remediate__Mov_Dash__28582e95_1941_43a0_a5f7_86958bc6345f",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/option_b_validation_20261019/b_proposals_cleaned.gpkg|layername=B_ROOF_PROPOSALS",
+    "count": 141
+  },
+  "OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)": {
+    "id": "OPT_B___Amprenta_Sol_1CC_ANCPI__0_40m__Mov_Solid__cb23063b_46c6_44c1_bb52_0a61371b3902",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/option_b_validation_20261019/b_proposals_cleaned.gpkg|layername=B_FOOTPRINT_1CC",
+    "count": 141
+  },
+  "OPT_B - Amprenta Sol -0.40m (Verde)": {
+    "id": "OPT_B___Amprenta_Sol__0_40m__Verde__6a2a1cdf_4471_4f13_b936_ea29ac115261",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=OPTIUNEA_B_SOL_VALIDAT",
+    "count": 216
+  },
+  "OPT_B - Avertizare Limita Zbor NoData (Mov Dotted)": {
+    "id": "OPT_B___Avertizare_Limita_Zbor_NoData__Mov_Dotted__bcf807fa_3e15_4322_be43_3d515156b4cf",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/option_b_validation_20261019/b_proposals_cleaned.gpkg|layername=INCOMPLET_LIMITA_ZBOR",
+    "count": 26
+  },
+  "OPT_B - Cladiri Validate nDSM (Portocaliu)": {
+    "id": "OPT_B___Cladiri_Validate_nDSM__Portocaliu__3135407f_3336_4d65_8b1e_e552991eb065",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=OPTIUNEA_B_ROOF_VALIDAT",
+    "count": 216
+  },
+  "OPT_B - Duplicate Con\u021binere Suprimate (Mov Sub\u021bire)": {
+    "id": "OPT_B___Duplicate_Con_inere_Suprimate__Mov_Sub_ire__c9235340_851d_4791_94fd_ef4db6812d80",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/option_b_validation_20261019/b_proposals_cleaned.gpkg|layername=DUPLICATE_CONFINED_SUPRIMATE",
+    "count": 10
+  },
+  "OPT_B - Falsuri Pozitive Eliminate (Gri)": {
+    "id": "OPT_B___Falsuri_Pozitive_Eliminate__Gri__176fe6c7_5ea2_4924_9333_c709bb645b71",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg|layername=OPTIUNEA_B_FALS_POZITIV_ELIMINAT",
+    "count": 71
+  },
+  "RECTIFICARI_T05_T06_T07_T10": {
+    "id": "RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg|layername=CORPURI_RECTIFICATE",
+    "count": 5
+  },
+  "T10 BACKUP - retrageri PRESUPUSE / NU masuratori": {
+    "id": "T10_BACKUP___retrageri_PRESUPUSE___NU_masuratori_01589b46_fb61_4776_9786_50f6f3b20f4c",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/regional_roofs_20261017/ground_backup_T10/T10_ground_backup.gpkg|layername=ASSUMED_GROUND_SCENARIOS",
+    "count": 2
+  },
+  "T10_ISTORIC_PARTIAL (Incomplet anterior)": {
+    "id": "T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/retry_six_release_20261013/retry_six.gpkg|layername=T10_ISTORIC_PARTIAL_RESPINS",
+    "count": 1
+  },
+  "T11_5cm": {
+    "id": "T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T11_5cm.tif",
+    "count": -1
+  },
+  "T12_5cm": {
+    "id": "T12_5cm_75bd1002_6557_49a3_9fa0_95b2ea4bcd88",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T12_5cm.tif",
+    "count": -1
+  },
+  "T13_5cm": {
+    "id": "T13_5cm_11db7616_b226_442f_ab9a_3c4d29d741f6",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T13_5cm.tif",
+    "count": -1
+  },
+  "T14_5cm": {
+    "id": "T14_5cm_b012d662_864e_4468_b730_9b65d939af22",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T14_5cm.tif",
+    "count": -1
+  },
+  "T15_5cm": {
+    "id": "T15_5cm_9860cb9c_705f_4e04_a486_ca2afb9c88a6",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T15_5cm.tif",
+    "count": -1
+  },
+  "T16_5cm": {
+    "id": "T16_5cm_e6257cf3_53e7_4d0a_bc7d_939e1544e46b",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T16_5cm.tif",
+    "count": -1
+  },
+  "T17:C1 - FINISARE NEVERIFICATA": {
+    "id": "T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T17:C1'",
+    "count": 1
+  },
+  "T17:C2 - FINISARE NEVERIFICATA": {
+    "id": "T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T17:C2'",
+    "count": 1
+  },
+  "T18_5cm": {
+    "id": "T18_5cm_25f3e210_9ef7_433b_9d5b_9b2f3ee3201a",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T18_5cm.tif",
+    "count": -1
+  },
+  "T18:C1 - FINISARE NEVERIFICATA": {
+    "id": "T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_finishing_20261017/results/cadastral_review.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C1'",
+    "count": 1
+  },
+  "T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT": {
+    "id": "T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_edge_audit_20261017/observed_edges.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C1'",
+    "count": 1
+  },
+  "T18:C2 - IPOTEZA ANEXA / MUCHIE DE VERIFICAT": {
+    "id": "T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_continuation_20261017/annex_review_final.gpkg|layername=CURRENT_ROOFS_AND_ANNEX_HYPOTHESIS|subset=\"body_id\" = 'T18:C2'",
+    "count": 1
+  },
+  "T18:C2 - MUCHIE OBSERVATA / DE VERIFICAT": {
+    "id": "T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_edge_audit_20261017/observed_edges.gpkg|layername=ROOF_HYPOTHESES|subset=\"body_id\" = 'T18:C2'",
+    "count": 1
+  },
+  "T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT": {
+    "id": "T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_continuation_20261017/annex_review_final.gpkg|layername=BOUNDARY_CONFLICT",
+    "count": 1
+  },
+  "T18 - DETALIU SID 5cm": {
+    "id": "T18___DETALIU_SID_5cm_df19f540_3a6b_48ad_a4b6_ce96b75c88bb",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_edge_audit_20261017/T18_detail_5cm.tif",
+    "count": -1
+  },
+  "T18 - SURSA NATIVA / detaliu muchie": {
+    "id": "T18___SURSA_NATIVA___detaliu_muchie_ef0642d3_c4dd_4100_8d69_f70ea59d0c5c",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_edge_audit_20261017/T18_native_seam.tif",
+    "count": -1
+  },
+  "T19_5cm": {
+    "id": "T19_5cm_2ed3ce64_c9f4_470a_8d34_26540cdcdc4a",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T19_5cm.tif",
+    "count": -1
+  },
+  "T20_5cm": {
+    "id": "T20_5cm_c4ba247e_4511_401f_83ad_a7bb8f1bd49c",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/lot3_repairs_20261017/covers/T20_5cm.tif",
+    "count": -1
+  },
+  "TESTE_10_REZULTATE": {
+    "id": "TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6",
+    "source": "C:/Users/lefpa/Downloads/QGIS-AI/workspace/reviews/review18_20261013/review18.gpkg|layername=TESTE_10_REZULTATE|subset=\"test_id\" IN ('T01','T02','T03','T04')",
+    "count": 4
+  }
+}

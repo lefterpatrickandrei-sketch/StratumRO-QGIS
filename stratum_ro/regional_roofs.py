@@ -17,7 +17,7 @@ from rasterio.transform import from_origin
 from rasterio.vrt import WarpedVRT
 from rasterio.enums import Resampling
 from scipy.ndimage import label, find_objects
-from shapely.geometry import shape, box, Polygon
+from shapely.geometry import shape, box, Polygon, MultiPolygon
 from shapely.strtree import STRtree
 
 
@@ -162,11 +162,14 @@ def route_surface(rgb, component, height, counts):
     known=np.isfinite(height[component]); vals=height[component][known]
     cf=counts[component]; class6=float((cf>0).mean())
     elevated=float((vals>=1.8).mean()) if vals.size else None
+    median_h=float(np.median(vals)) if vals.size else None
+    mean_h=float(vals.mean()) if vals.size else None
     red=float(((r-g>14)&(r-b>14)&(r>55)).mean())
     neutral=float(((sat<=.25)&(high>=45)).mean())
     route=route_summary(vegetation,class6)
     return dict(route=route,vegetation_fraction=vegetation,class6_fraction=class6,
                 height_coverage=float(known.mean()),elevated_fraction=elevated,
+                median_height=median_h,mean_height=mean_h,
                 red_fraction=red,neutral_fraction=neutral,
                 lidar_role='EXPERIMENTAL_CONTEXT_NOT_IDENTITY_OR_GROUND_TRUTH')
 
@@ -205,52 +208,139 @@ def vectorize_automatic_masks(masks, rgb, valid, transform, height, counts, conf
     return records,excluded
 
 
-def deduplicate_candidates(records, iou_threshold=.60, containment=.92):
+def remove_duplicate_consecutive_nodes(geom, tolerance=1e-5):
+    """Remove consecutive duplicate vertices and 0-length segments."""
+    if geom is None or geom.is_empty:
+        return geom
+    if geom.geom_type == 'MultiPolygon':
+        polys = [remove_duplicate_consecutive_nodes(p, tolerance=tolerance) for p in geom.geoms]
+        valid_polys = [p for p in polys if p is not None and p.is_valid and not p.is_empty]
+        if not valid_polys:
+            return geom
+        mp = MultiPolygon(valid_polys)
+        return mp if mp.is_valid else geom
+    if geom.geom_type == 'Polygon':
+        def clean_ring(coords):
+            coords = list(coords)
+            if not coords:
+                return []
+            cleaned = [coords[0]]
+            for pt in coords[1:]:
+                if math.hypot(pt[0] - cleaned[-1][0], pt[1] - cleaned[-1][1]) > tolerance:
+                    cleaned.append(pt)
+            while len(cleaned) > 2 and math.hypot(cleaned[0][0] - cleaned[-1][0], cleaned[0][1] - cleaned[-1][1]) <= tolerance:
+                cleaned.pop()
+            if len(cleaned) < 3:
+                return []
+            cleaned.append(cleaned[0])
+            return cleaned
+        ext = clean_ring(geom.exterior.coords)
+        if len(ext) < 4:
+            return geom
+        interiors = []
+        for hole in geom.interiors:
+            h = clean_ring(hole.coords)
+            if len(h) >= 4:
+                interiors.append(h)
+        poly = Polygon(ext, interiors)
+        return poly if poly.is_valid else geom
+    return geom
+
+
+def remove_spurious_interior_rings(polygon, min_hole_area=2.0):
+    """Eliminate pinholes and mask noise holes (< min_hole_area m2)."""
+    if not polygon.interiors:
+        return polygon
+    kept = [ring for ring in polygon.interiors if Polygon(ring).area >= min_hole_area]
+    cleaned = Polygon(polygon.exterior.coords, [r.coords for r in kept])
+    return cleaned if cleaned.is_valid else polygon
+
+
+def deduplicate_candidates(records, iou_threshold=.60, containment=.92, extreme_containment=.95):
     """Suppress repeated observations, never union adjacent buildings.
 
     Nested masks are not suppressed by containment alone: they may be another
     roof body. Similar area is required, and lineage of suppressed views remains.
+    When containment >= extreme_containment (0.95), small duplicates are suppressed
+    unless confirmed as distinct sub-bodies (C2) with significant height difference (>= 1.5m).
     """
     if not records:return [],[]
-    rank=sorted(range(len(records)),key=lambda i:(records[i]['touches_window'] or records[i]['touches_nodata'],
-        records[i]['route']!='ROOF_CANDIDATE_REVIEW',-records[i]['sam_score'],-records[i]['geometry'].area,
+    rank=sorted(range(len(records)),key=lambda i:(records[i].get('touches_window',False) or records[i].get('touches_nodata',False),
+        records[i].get('route')!='ROOF_CANDIDATE_REVIEW',-records[i].get('sam_score',0.0),-records[i]['geometry'].area,
         records[i]['candidate_id']))
     tree=STRtree([r['geometry'] for r in records]);kept=set();links=[]
     for idx in rank:
         current=records[idx]; geom=current['geometry']; duplicate=None
         for other in sorted(int(j) for j in tree.query(geom,predicate='intersects') if int(j) in kept):
-            target=records[other]['geometry']; overlap=geom.intersection(target).area
-            ratio=min(geom.area,target.area)/max(geom.area,target.area)
-            if overlap/geom.union(target).area>=iou_threshold or (ratio>=.75 and overlap/min(geom.area,target.area)>=containment):
+            target=records[other]['geometry']
+            overlap=geom.intersection(target).area
+            min_area=min(geom.area,target.area)
+            max_area=max(geom.area,target.area)
+            if min_area<=0:continue
+            ratio=min_area/max_area
+            containment_val=overlap/min_area
+            union_area=geom.union(target).area
+            iou_val=overlap/union_area if union_area>0 else 0
+            
+            is_dup = (iou_val >= iou_threshold) or (ratio >= .75 and containment_val >= containment)
+            if not is_dup and containment_val >= extreme_containment:
+                # Extreme containment: check if distinct sub-body (Delta h >= 1.5m or designated sub_body)
+                h_curr = current.get('median_height') or current.get('h90_m') or current.get('height_m')
+                h_targ = records[other].get('median_height') or records[other].get('h90_m') or records[other].get('height_m')
+                is_sub_body = (
+                    current.get('is_sub_body') or
+                    any(k in str(current.get('candidate_id', '')).lower() for k in ['body', 'annex', 'sub', ':c2', '_c2']) or
+                    (h_curr is not None and h_targ is not None and abs(h_curr - h_targ) >= 1.5)
+                )
+                if is_sub_body:
+                    current['is_sub_body'] = True
+                    current['parent_candidate_id'] = records[other]['candidate_id']
+                    current['sub_body_tier'] = 'C2'
+                else:
+                    is_dup = True
+            if is_dup:
                 duplicate=other;break
         if duplicate is None:kept.add(idx)
         else:links.append(dict(suppressed=current['candidate_id'],retained=records[duplicate]['candidate_id']))
     return [records[i] for i in rank if i in kept],links
 
 
-def simplify_regional_roof(raw, *, boundary_tolerance_m=.6, max_vertices=16):
+def simplify_regional_roof(raw, *, boundary_tolerance_m=1.5, max_vertices=16, min_hole_area=2.0):
     """Simple geometry only if no significant wing/hole is removed or invented.
 
     Shape agreement is with SAM, not reality. Save the raw observation and route
     complex masks to review instead of calling a many-corner mask a finished roof.
+    Holes < 2.0 m2 are filled as spurious pinholes/artefacts, while real courtyards
+    (>= 2.0 m2) are preserved without blocking exterior simplification.
     """
     from .roof_simple_geometry import simple_roof_geometry
     anchor=raw.representative_point()
-    if not raw.interiors:
-        candidate,info=simple_roof_geometry(raw,min_support=.95,min_coverage=.95,max_vertices=max_vertices)
-        if info['method']!='NEEDS_REVIEW' and candidate.boundary.hausdorff_distance(raw.boundary)<=boundary_tolerance_m:
-            removed=raw.difference(candidate);added=candidate.difference(raw)
-            pieces=lambda g:list(g.geoms) if hasattr(g,'geoms') else [g]
-            # No globally small area loss may hide a real narrow but long wing.
-            changes=[g for diff in [removed,added] for g in pieces(diff) if not g.is_empty and g.area>0]
-            if all(g.area<=2. and min(g.minimum_rotated_rectangle.bounds[2]-g.minimum_rotated_rectangle.bounds[0],
-                   g.minimum_rotated_rectangle.bounds[3]-g.minimum_rotated_rectangle.bounds[1])<=1.2 for g in changes):
-                return candidate,dict(method=info['method'],status='SIMPLE_HYPOTHESIS_REVIEW',**{
-                    k:info[k] for k in ['support','coverage']})
-    candidate=raw.simplify(.25,preserve_topology=True)
-    n=len(candidate.exterior.coords)-1+sum(len(r.coords)-1 for r in candidate.interiors)
-    status='GEOMETRY_NEEDS_REVIEW' if n>max_vertices else 'OPTICAL_HYPOTHESIS_REVIEW'
-    return candidate,dict(method='RAW_OPTICAL_SIMPLIFIED_NOT_FORCED',status=status)
+    cleaned = remove_spurious_interior_rings(raw, min_hole_area=min_hole_area)
+    cleaned = remove_duplicate_consecutive_nodes(cleaned, tolerance=0.05)
+    real_interiors = list(cleaned.interiors)
+    
+    outer = Polygon(cleaned.exterior)
+    candidate_outer, info = simple_roof_geometry(outer, min_support=.95, min_coverage=.95, max_vertices=max_vertices)
+    if info['method'] != 'NEEDS_REVIEW' and candidate_outer.boundary.hausdorff_distance(outer.boundary) <= boundary_tolerance_m:
+        if real_interiors:
+            reconstructed = Polygon(candidate_outer.exterior.coords, [r.coords for r in real_interiors])
+            candidate = reconstructed if (reconstructed.is_valid and reconstructed.area > 0) else cleaned.simplify(.25, preserve_topology=True)
+        else:
+            candidate = candidate_outer
+        
+        inter = candidate.intersection(raw).area
+        support = inter / candidate.area if candidate.area > 0 else 0
+        coverage = inter / raw.area if raw.area > 0 else 0
+        if support >= .90 and coverage >= .90:
+            candidate = remove_duplicate_consecutive_nodes(candidate, tolerance=0.05)
+            return candidate, dict(method=info['method'], status='SIMPLE_HYPOTHESIS_REVIEW', **{
+                k: info[k] for k in ['support', 'coverage'] if k in info})
+                
+    candidate = cleaned.simplify(.25, preserve_topology=True)
+    candidate = remove_duplicate_consecutive_nodes(candidate, tolerance=0.05)
+    n = len(candidate.exterior.coords) - 1 + sum(len(r.coords) - 1 for r in candidate.interiors)
+    status = 'GEOMETRY_NEEDS_REVIEW' if n > max_vertices else 'OPTICAL_HYPOTHESIS_REVIEW'
+    return candidate, dict(method='RAW_OPTICAL_SIMPLIFIED_NOT_FORCED', status=status)
 
 
 def expand_edge_candidate(record, mosaic, predictor, config, height_path=None, counts_path=None):

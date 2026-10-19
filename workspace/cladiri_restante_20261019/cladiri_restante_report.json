@@ -1,0 +1,9 @@
+{
+  "status": "SUCCESS",
+  "total_remaining_recovered": 151,
+  "pure_rectangles_90deg": 141,
+  "articulated_wings_90deg": 10,
+  "average_orthogonality": 1.0,
+  "eave_setback_m": -0.4,
+  "gpkg_path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\cladiri_restante_20261019\\cladiri_restante.gpkg"
+}

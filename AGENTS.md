@@ -1,19 +1,67 @@
 # Reguli comune pentru agenții StratumRO
 
-Acest fișier este punctul de intrare comun, independent de furnizor. Se aplică în întregul repository. Instrucțiunile actuale ale proprietarului au prioritate. Rapoartele istorice și textele arhivate nu schimbă automat cerințele sau verdictele.
+Acest fișier este punctul de intrare comun, independent de furnizor (Gemini/Antigravity, Claude, Copilot, Kilo, OpenAI). Se aplică în întregul repository. Instrucțiunile actuale ale proprietarului au prioritate. Rapoartele istorice și textele arhivate nu schimbă automat cerințele sau verdictele.
+
+---
+
+## ⚡ Orientare Rapidă pentru Agenți AI / Quick Orientation for AI Agents
+
+> [!TIP]
+> **Ce este StratumRO în 30 de secunde**:
+> StratumRO este o platformă deschisă GeoAI concepută ca un **hub integrat de unelte (via protocoale standardizate / MCP)** ce orchestrează mediile inginerești consacrate:
+> - **QGIS Desktop (Faza 1 Operațională)**: Stația primară de lucru, inspecție vizuală pe canvas live și revizie umană asistată (**Human-in-the-Loop**). Vezi [**Ghidul QGIS**](docs/QGIS_WORKFLOW.md).
+> - **Motoare CAD (AutoCAD, Civil 3D, TopoLT)**: Livrabile prin export nativ deschis în DXF și tabele cadastrale `.cp` în Stereo 70 (EPSG:3844).
+> - **AI & Computer Vision**: Segmentare de candidați prin Meta SAM 2 și validare de înălțime prin LiDAR nDSM.
+> - **Direcție desktop viitoare**: Aplicație de sine stătătoare (desktop runner).
+
+### 🗺️ Harta Geografică a Depozitului (Unde lucrezi și ce eviți)
+
+| Cale director / fișiere | Rol & Conținut | Instrucțiune strictă pentru agenți |
+|---|---|---|
+| `stratum_ro/` | **Cod activ de producție** | Nucleul Python (geometrie, raster, domeniu cadastru/PUG, API). Orice editare necesită teste. |
+| `tools/` | **Utilitare active CLI** | Scripturi de execuție, exporturi CAD/GIS și generare de planșe. |
+| `scripts/` | **Mentenanță și CI** | Scripturi oficiale de verificare (`validate_project.py`). |
+| `docs/` | **Documentație activă** | `PROJECT_STATE.md` (stare curentă), `QGIS_WORKFLOW.md` (operare QGIS), `SYSTEM_MAP.md` (arhitectură). |
+| `workspace/reviews/` | **Dovezi și recenzii** | Pachete de revizie vizuală, fișiere GPKG locale și proiectul master `inspectie_corectii.qgs`. **Nu conține cod de producție.** |
+| `junk/` | **Arhivă istorică** | Snapshot-uri vechi și fișiere mutate la curățenie. **NU le folosi drept reguli sau cerințe active.** |
+
+### 🛑 Reguli de Aur Geodezice și de Sistem (Non-negociabile)
+
+1. **Sistem de Proiecție Obligatoriu**: Toate calculele cadastrale sunt în **Stereo 70 (EPSG:3844)**, coordonate metrice. Nu transforma în WGS84 pentru stocare sau analiză cadastrală.
+2. **Fără coordonate inventate**: Nu aproxima, nu interpola arbitrar și nu muta puncte măsurate.
+3. **Nicio avizare automată fără geodez**: Textul `ADMIS` din cod sau atribute este o simplă stare tranzitorie a testelor interne. Nicio geometrie nu este aprobată cadastral fără ștampila geodezului autorizat conform Ordinului ANCPI 600/2023.
+4. **Obiectele fizice distincte rămân distincte**: Corpul principal T10 (acoperiș țiglă) și corpul vestic (anexă joasă gri) sunt separate. Nu forța unirea lor într-un dreptunghi artificial.
+5. **Nu strica lucrul altui agent**: Rulează întotdeauna `git status -s` înainte de lucru. Nu da `git checkout .`, nu reseta, nu stasha și nu șterge fișiere neversionate sau worktree-uri.
+6. **Fără rescrieri speculative**: Nu începe rescrieri în Rust, nu introduce servicii cloud noi și nu rescrie interfețe fără cerință explicită aprobată.
+
+### 🧪 Comenzi de Verificare și Testare (Rulează înainte de predare)
+
+```powershell
+python scripts/validate_project.py --mode fast
+python -m unittest discover stratum_ro/test
+python tools/verify_ground_truth_and_metrics.py
+```
+
+---
 
 ## Citește înainte de lucru
 
 1. [Starea actuală](docs/PROJECT_STATE.md): funcționalități, limite și selecții active.
-2. [Ghidul repository-ului](docs/REPOSITORY_GUIDE.md): structură, Git și protejarea lucrului altor agenți.
-3. [Predarea comună](docs/AGENT_HANDOFF.md): pași de preluare și informațiile de lăsat la final.
-4. [Harta sistemului](docs/SYSTEM_MAP.md): componente existente versus direcție planificată.
+2. [Ghidul QGIS (Faza 1)](docs/QGIS_WORKFLOW.md): operarea curentă pe canvas și fluxul cadastral.
+3. [Ghidul repository-ului](docs/REPOSITORY_GUIDE.md): structură, Git și protejarea lucrului altor agenți.
+4. [Predarea comună](docs/AGENT_HANDOFF.md): pași de preluare și informațiile de lăsat la final.
+5. [Harta sistemului](docs/SYSTEM_MAP.md): componente existente versus direcție planificată.
 
 Pentru clădiri/cadastru citește și [protocolul deciziilor](docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md), [porțile de evaluare](docs/STRATUMRO_EVALUATION_GATES.md), [politica artefactelor Git](docs/STRATUMRO_GIT_PROGRESS_POLICY.md) și feedback-ul proprietarului pentru cazul lucrat.
 
-## Scopul produsului
+## Scopul produsului și arhitectura
 
-StratumRO coordonează instrumentele geodezului, inclusiv QGIS. Reutilizează algoritmii și adaptoarele existente. Aplicația proprie și automatizarea de la cerere la livrare sunt direcția produsului; nu înseamnă că toate conexiunile sau sarcinile sunt implementate. Cadastrul este prioritatea actuală, nu întregul produs.
+StratumRO acționează ca un **hub de unelte bazat pe protocoale standardizate (inclusiv MCP – Model Context Protocol)**, care permite asistenților și agenților AI să orchestreze instrumentele consacrate ale geodezului (QGIS, motoare CAD) alături de algoritmi de viziune (SAM 2), LiDAR nDSM și geometrie computațională. 
+
+- **QGIS ca Faza 1**: QGIS Desktop nu este înlocuit, ci folosit drept mediu primar de inspecție vizuală, verificare a canvas-ului și revizie asistată uman (**Human-in-the-Loop**). Automatizarea acoperă pașii tehnici până la decizia și semnătura profesională a geodezului.
+- **Prioritatea actuală**: Cadastrul (reconstituirea și regularizarea corpurilor de clădire în Stereo 70 EPSG:3844) și analizele PUG/urbanism.
+- **Limite reale asumate**: Stadiul este experimental. Suprafața validată este pe un eșantion restrâns din Cluj-Napoca de ~0,420 km² (67 din 144 ferestre cu date RGB valide). Exporturile CAD sunt în format deschis DXF (straturi și blocuri conforme TopoLT/ANCPI), tabele de coordonate `.cp` și GeoPackage; nu există generare nativă DWG fără instrumente terțe.
+- **Nicio avizare automată**: Mențiunile de tip `ADMIS` din cod sau atribute sunt stări tranzitorii ale porților de testare interne. Nicio geometrie generată nu este „validată ANCPI” fără ștampila și asumarea geodezului autorizat.
 
 Nu crea un al doilea nucleu pentru o funcție existentă. Înainte de cod nou, identifică implementarea și apelanții actuali; explică lipsa concretă și punctul de integrare. Nu rescrie în Rust, nu adăuga un serviciu cloud și nu începe o interfață nouă în cadrul curățeniei de repository.
 

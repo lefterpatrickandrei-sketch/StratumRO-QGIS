@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StratumRO — Dashboard & Grafice de Calitate Cadastrală</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #121722;
+            --bg-card: #182030;
+            --bg-card-hover: #1f2a40;
+            --border-color: #26334d;
+            --border-focus: #3b82f6;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            --accent-purple: #a855f7;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 24px;
+        }
+
+        .container { max-width: 1440px; margin: 0 auto; }
+
+        header {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+        }
+
+        .badge-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-rose { background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); border: 1px solid rgba(244, 63, 94, 0.3); }
+        .badge-cyan { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.3); }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-purple { background: rgba(168, 85, 247, 0.15); color: var(--accent-purple); border: 1px solid rgba(168, 85, 247, 0.3); }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 960px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-bottom: 32px;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-focus);
+        }
+
+        .kpi-val {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 6px;
+        }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-bottom: 36px;
+        }
+
+        @media (max-width: 1024px) {
+            .charts-grid { grid-template-columns: 1fr; }
+        }
+
+        .chart-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-header {
+            margin-bottom: 20px;
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .chart-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            flex-grow: 1;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--border-focus);
+            background: var(--bg-card-hover);
+            color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge-bar">
+                <span class="badge badge-cyan">📊 Dashboard Vizual</span>
+                <span class="badge badge-emerald">📐 100% Ortogonalitate 90°</span>
+                <span class="badge badge-purple">🎯 195 Clădiri Validate</span>
+                <span class="badge badge-rose">🚫 0 Spike-uri</span>
+            </div>
+            <h1>Metrici & Grafice de Calitate Cadastrală</h1>
+            <p class="subtitle">
+                Analiză cantitativă a remedierii geometrice pe întregul ortofoto (1.05 km²):
+                repartiția familiilor de acoperișuri, recensământul celor 9 categorii de defecte
+                și saltul de fidelitate geometrică (Înainte vs După).
+            </p>
+        </header>
+
+        <!-- KPI Grid -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: var(--accent-cyan);">195</div>
+                <div class="kpi-label">Clădiri Active Validate 1CC</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: var(--accent-emerald);">75</div>
+                <div class="kpi-label">Corpuri Articulate (L/U/T/Bazilici)</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: var(--accent-purple);">100%</div>
+                <div class="kpi-label">Rată de Ortogonalitate (90°)</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: var(--accent-rose);">0</div>
+                <div class="kpi-label">Spike-uri sau Unghiuri &lt; 75°</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: var(--accent-amber);">19</div>
+                <div class="kpi-label">Dubluri Eliminate vs Lot 1–5</div>
+            </div>
+        </div>
+
+        <!-- Charts Grid 1 -->
+        <div class="charts-grid">
+            <!-- Chart 1: Repartiția Familiilor Geometrice -->
+            <div class="chart-box">
+                <div class="chart-header">
+                    <div class="chart-title">1. Repartiția Familiilor Arhitecturale Active (195 Clădiri)</div>
+                    <div class="chart-subtitle">Păstrarea decroșurilor reale în L, U, T și abside vs dreptunghiuri pure</div>
+                </div>
+                <div class="canvas-wrapper">
+                    <canvas id="shapesChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 2: Comparativ Înainte vs După Remediere -->
+            <div class="chart-box">
+                <div class="chart-header">
+                    <div class="chart-title">2. Saltul Calitativ: Înainte vs După Remediere</div>
+                    <div class="chart-subtitle">Eliminarea forțării dreptunghiulare și a spike-urilor de mască</div>
+                </div>
+                <div class="canvas-wrapper">
+                    <canvas id="beforeAfterChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid 2 -->
+        <div class="charts-grid">
+            <!-- Chart 3: Recensământul Celor 9 Categorii de Defecte pe Tot Ortofoto -->
+            <div class="chart-box" style="grid-column: 1 / -1;">
+                <div class="chart-header">
+                    <div class="chart-title">3. Recensământul Celor 9 Categorii de Defecte pe Tot Ortofoto (214 Anomalii Depistate)</div>
+                    <div class="chart-subtitle">Distribuția pe cele 25 de benzi fotogrammetrice (1.05 km x 1.05 km)</div>
+                </div>
+                <div class="canvas-wrapper" style="min-height: 400px;">
+                    <canvas id="defectsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-nav">
+            <a href="/scara_150_ultra_detaliu/index.html" class="nav-btn">🔍 Galeria Înainte vs După (Scara 1:150)</a>
+            <a href="/drone_flight_strips/index.html" class="nav-btn">✈️ Zbor Dronă Grilă 5x5 (25 Cadre)</a>
+            <a href="/cadastral_audit_remediation_20261019/index.html" class="nav-btn">🛠️ Dashboard Audit Comparativ</a>
+        </div>
+    </div>
+
+    <script>
+        // Set chart default typography and colors
+        Chart.defaults.color = '#94a3b8';
+        Chart.defaults.font.family = "'Inter', sans-serif";
+
+        // 1. Shapes Doughnut Chart
+        const ctxShapes = document.getElementById('shapesChart').getContext('2d');
+        new Chart(ctxShapes, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Dreptunghiuri Pure (4 noduri)',
+                    'Forme în L (6 noduri)',
+                    'Pavilioane Articulate / Biserici (10-14 noduri)',
+                    'Forme în T sau Decroș (8 noduri)',
+                    'Forme în U (8 noduri)',
+                    'Forme Oblice / Atipice'
+                ],
+                datasets: [{
+                    data: [119, 50, 12, 10, 3, 1],
+                    backgroundColor: [
+                        '#3b82f6', // blue
+                        '#10b981', // emerald
+                        '#a855f7', // purple
+                        '#06b6d4', // cyan
+                        '#f59e0b', // amber
+                        '#64748b'  // muted
+                    ],
+                    borderColor: '#182030',
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            boxWidth: 14,
+                            padding: 16,
+                            font: { size: 12 }
+                        }
+                    }
+                },
+                cutout: '65%'
+            }
+        });
+
+        // 2. Before vs After Bar Chart
+        const ctxBA = document.getElementById('beforeAfterChart').getContext('2d');
+        new Chart(ctxBA, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Corpuri Articulate L/U/T',
+                    'Dreptunghiuri Forțate',
+                    'Spike-uri / Colți < 75°',
+                    'Dubluri peste Lot 1–5'
+                ],
+                datasets: [
+                    {
+                        label: 'Înainte (Simplificare Forțată)',
+                        data: [6, 135, 38, 19],
+                        backgroundColor: 'rgba(244, 63, 94, 0.75)',
+                        borderColor: '#f43f5e',
+                        borderWidth: 1,
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'După (Remediere Balansată)',
+                        data: [75, 119, 0, 0],
+                        backgroundColor: 'rgba(16, 185, 129, 0.75)',
+                        borderColor: '#10b981',
+                        borderWidth: 1,
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { display: false }
+                    },
+                    y: {
+                        grid: { color: 'rgba(38, 51, 77, 0.4)' },
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { boxWidth: 14, padding: 14 }
+                    }
+                }
+            }
+        });
+
+        // 3. Defects Horizontal Bar Chart
+        const ctxDefects = document.getElementById('defectsChart').getContext('2d');
+        new Chart(ctxDefects, {
+            type: 'bar',
+            indexAxis: 'y',
+            data: {
+                labels: [
+                    'CAT 3: Halucinații pe Copaci & Parcuri (USAMV)',
+                    'CAT 1: Suprapuneri cu Lot 1–5 Ground Truth',
+                    'CAT 7: Decroșuri Mutilate (Forțate la 4 Noduri)',
+                    'CAT 9: Trunchieri la Limita NoData',
+                    'CAT 8: Rotații Deviate față de Coamă/Stradă',
+                    'CAT 2: Fantome pe Carosabil (Calea Mănăștur)',
+                    'CAT 4: Cavouri & Morminte Cimitir (Non-1CC)',
+                    'CAT 6: Pavilioane Mari Sfișiate pe Cusături',
+                    'CAT 5: Bazine Tehnice & Șanțuri cu Apă'
+                ],
+                datasets: [{
+                    label: 'Număr Cazuri Identificate pe Tot Ortofoto (1.05 km²)',
+                    data: [54, 40, 31, 26, 19, 18, 12, 8, 6],
+                    backgroundColor: [
+                        'rgba(244, 63, 94, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(168, 85, 247, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(6, 182, 212, 0.8)',
+                        'rgba(236, 72, 153, 0.8)',
+                        'rgba(139, 92, 246, 0.8)',
+                        'rgba(14, 165, 233, 0.8)',
+                        'rgba(100, 116, 139, 0.8)'
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { color: 'rgba(38, 51, 77, 0.4)' },
+                        beginAtZero: true
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

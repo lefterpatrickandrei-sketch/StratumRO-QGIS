@@ -1,0 +1,1280 @@
+{
+  "total": 141,
+  "compact_rectangles_fitted": 138,
+  "articulated_orthogonalized": 3,
+  "nodes_before": 992,
+  "nodes_after": 699,
+  "ortho_ratio_before_sum": 97.80275894126514,
+  "ortho_ratio_after_sum": 140.96296296296296,
+  "details": [
+    {
+      "candidate_id": "OPT_B_006:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 1431.41,
+      "reg_area": 1431.41,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_020:C1",
+      "orig_nodes": 12,
+      "reg_nodes": 4,
+      "orig_area": 1086.6,
+      "reg_area": 1086.6,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_100:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 1029.46,
+      "reg_area": 1029.46,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_154:C1",
+      "orig_nodes": 10,
+      "reg_nodes": 4,
+      "orig_area": 705.39,
+      "reg_area": 705.39,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_152:C1",
+      "orig_nodes": 16,
+      "reg_nodes": 76,
+      "orig_area": 580.28,
+      "reg_area": 593.08,
+      "orig_ortho": 0.19,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_151:C1",
+      "orig_nodes": 68,
+      "reg_nodes": 4,
+      "orig_area": 514.1,
+      "reg_area": 514.1,
+      "orig_ortho": 0.15,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_043:C1",
+      "orig_nodes": 5,
+      "reg_nodes": 4,
+      "orig_area": 503.1,
+      "reg_area": 503.1,
+      "orig_ortho": 0.2,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_089:C1",
+      "orig_nodes": 20,
+      "reg_nodes": 4,
+      "orig_area": 495.43,
+      "reg_area": 495.43,
+      "orig_ortho": 0.2,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_011:C1",
+      "orig_nodes": 10,
+      "reg_nodes": 4,
+      "orig_area": 483.14,
+      "reg_area": 483.14,
+      "orig_ortho": 0.3,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_114:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 472.76,
+      "reg_area": 472.76,
+      "orig_ortho": 0.44,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_001:C1",
+      "orig_nodes": 12,
+      "reg_nodes": 4,
+      "orig_area": 467.0,
+      "reg_area": 467.0,
+      "orig_ortho": 0.17,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_126:C1",
+      "orig_nodes": 14,
+      "reg_nodes": 4,
+      "orig_area": 453.62,
+      "reg_area": 453.62,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_147:C1",
+      "orig_nodes": 10,
+      "reg_nodes": 4,
+      "orig_area": 403.6,
+      "reg_area": 403.6,
+      "orig_ortho": 0.4,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_002:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 289.42,
+      "reg_area": 289.42,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_164:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 277.55,
+      "reg_area": 277.55,
+      "orig_ortho": 0.56,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_047:C1",
+      "orig_nodes": 8,
+      "reg_nodes": 4,
+      "orig_area": 251.1,
+      "reg_area": 251.1,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_136:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 241.61,
+      "reg_area": 241.61,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_037:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 236.53,
+      "reg_area": 236.53,
+      "orig_ortho": 0.5,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_090:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 44,
+      "orig_area": 227.26,
+      "reg_area": 223.38,
+      "orig_ortho": 0.22,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_101:C1",
+      "orig_nodes": 5,
+      "reg_nodes": 4,
+      "orig_area": 220.91,
+      "reg_area": 220.91,
+      "orig_ortho": 0.8,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_049:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 220.91,
+      "reg_area": 220.91,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_004:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 217.3,
+      "reg_area": 217.3,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_079:C1",
+      "orig_nodes": 8,
+      "reg_nodes": 4,
+      "orig_area": 203.23,
+      "reg_area": 203.23,
+      "orig_ortho": 0.25,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_015:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 194.7,
+      "reg_area": 194.7,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_095:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 190.55,
+      "reg_area": 190.55,
+      "orig_ortho": 0.67,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_068:C1",
+      "orig_nodes": 5,
+      "reg_nodes": 4,
+      "orig_area": 189.15,
+      "reg_area": 189.15,
+      "orig_ortho": 0.8,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_046:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 178.33,
+      "reg_area": 178.33,
+      "orig_ortho": 0.56,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_028:C1",
+      "orig_nodes": 8,
+      "reg_nodes": 4,
+      "orig_area": 177.16,
+      "reg_area": 177.16,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_029:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 168.86,
+      "reg_area": 168.86,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_019:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 167.82,
+      "reg_area": 167.82,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_172:C1",
+      "orig_nodes": 10,
+      "reg_nodes": 4,
+      "orig_area": 163.61,
+      "reg_area": 163.61,
+      "orig_ortho": 0.2,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_159:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 163.01,
+      "reg_area": 163.01,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_060:C1",
+      "orig_nodes": 13,
+      "reg_nodes": 4,
+      "orig_area": 162.33,
+      "reg_area": 162.33,
+      "orig_ortho": 0.15,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_081:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 159.19,
+      "reg_area": 159.19,
+      "orig_ortho": 0.33,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_003:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 152.02,
+      "reg_area": 152.02,
+      "orig_ortho": 0.5,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_082:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 151.6,
+      "reg_area": 151.6,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_119:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 144.78,
+      "reg_area": 144.78,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_012:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 144.0,
+      "reg_area": 144.0,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_058:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 143.68,
+      "reg_area": 143.68,
+      "orig_ortho": 0.17,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_038:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 140.24,
+      "reg_area": 140.24,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_168:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 138.98,
+      "reg_area": 138.98,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_010:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 137.1,
+      "reg_area": 137.1,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_008:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 136.17,
+      "reg_area": 136.17,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_144:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 135.29,
+      "reg_area": 135.29,
+      "orig_ortho": 0.67,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_009:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 135.27,
+      "reg_area": 135.27,
+      "orig_ortho": 0.22,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_042:C1",
+      "orig_nodes": 8,
+      "reg_nodes": 4,
+      "orig_area": 127.32,
+      "reg_area": 127.32,
+      "orig_ortho": 0.25,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_064:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 127.26,
+      "reg_area": 127.26,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_013:C1",
+      "orig_nodes": 10,
+      "reg_nodes": 4,
+      "orig_area": 125.25,
+      "reg_area": 125.25,
+      "orig_ortho": 0.1,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_093:C1",
+      "orig_nodes": 19,
+      "reg_nodes": 4,
+      "orig_area": 122.17,
+      "reg_area": 122.17,
+      "orig_ortho": 0.16,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_106:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 119.36,
+      "reg_area": 119.36,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_031:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 118.36,
+      "reg_area": 118.36,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_027:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 116.14,
+      "reg_area": 116.14,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_145:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 115.97,
+      "reg_area": 115.97,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_109:C1",
+      "orig_nodes": 8,
+      "reg_nodes": 4,
+      "orig_area": 114.26,
+      "reg_area": 114.26,
+      "orig_ortho": 0.25,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_023:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 113.77,
+      "reg_area": 113.77,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_073:C1",
+      "orig_nodes": 10,
+      "reg_nodes": 4,
+      "orig_area": 113.69,
+      "reg_area": 113.69,
+      "orig_ortho": 0.2,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_129:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 109.92,
+      "reg_area": 109.92,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_111:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 104.24,
+      "reg_area": 104.24,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_055:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 103.32,
+      "reg_area": 103.32,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_132:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 102.59,
+      "reg_area": 102.59,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_130:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 99.54,
+      "reg_area": 99.54,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_070:C1",
+      "orig_nodes": 8,
+      "reg_nodes": 4,
+      "orig_area": 99.06,
+      "reg_area": 99.06,
+      "orig_ortho": 0.38,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_069:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 96.98,
+      "reg_area": 96.98,
+      "orig_ortho": 0.44,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_134:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 96.75,
+      "reg_area": 96.75,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_065:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 96.67,
+      "reg_area": 96.67,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_088:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 94.58,
+      "reg_area": 94.58,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_075:C1",
+      "orig_nodes": 13,
+      "reg_nodes": 4,
+      "orig_area": 94.09,
+      "reg_area": 94.09,
+      "orig_ortho": 0.15,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_099:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 93.49,
+      "reg_area": 93.49,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_163:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 91.24,
+      "reg_area": 91.24,
+      "orig_ortho": 0.22,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_059:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 90.54,
+      "reg_area": 90.54,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_096:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 88.44,
+      "reg_area": 88.44,
+      "orig_ortho": 0.5,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_054:C1",
+      "orig_nodes": 19,
+      "reg_nodes": 4,
+      "orig_area": 87.96,
+      "reg_area": 87.96,
+      "orig_ortho": 0.06,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_128:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 87.71,
+      "reg_area": 87.71,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_063:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 86.94,
+      "reg_area": 86.94,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_035:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 85.76,
+      "reg_area": 85.76,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_061:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 83.95,
+      "reg_area": 83.95,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_072:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 82.09,
+      "reg_area": 82.09,
+      "orig_ortho": 0.11,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_140:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 81.62,
+      "reg_area": 81.62,
+      "orig_ortho": 0.17,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_103:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 81.08,
+      "reg_area": 81.08,
+      "orig_ortho": 0.78,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_108:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 80.34,
+      "reg_area": 80.34,
+      "orig_ortho": 0.33,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_034:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 78.44,
+      "reg_area": 78.44,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_141:C1",
+      "orig_nodes": 5,
+      "reg_nodes": 4,
+      "orig_area": 80.11,
+      "reg_area": 80.11,
+      "orig_ortho": 0.6,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_056:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 78.75,
+      "reg_area": 78.75,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_122:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 77.82,
+      "reg_area": 77.82,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_173:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 77.61,
+      "reg_area": 77.61,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_123:C1",
+      "orig_nodes": 7,
+      "reg_nodes": 4,
+      "orig_area": 73.36,
+      "reg_area": 73.36,
+      "orig_ortho": 0.71,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_117:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 76.14,
+      "reg_area": 76.14,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_005:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 75.53,
+      "reg_area": 75.53,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_040:C1",
+      "orig_nodes": 13,
+      "reg_nodes": 4,
+      "orig_area": 74.6,
+      "reg_area": 74.6,
+      "orig_ortho": 0.31,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_142:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 72.12,
+      "reg_area": 72.12,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_162:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 71.98,
+      "reg_area": 71.98,
+      "orig_ortho": 0.33,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_160:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 70.65,
+      "reg_area": 70.65,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_203:C1",
+      "orig_nodes": 14,
+      "reg_nodes": 4,
+      "orig_area": 69.62,
+      "reg_area": 69.62,
+      "orig_ortho": 0.07,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_086:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 69.69,
+      "reg_area": 69.69,
+      "orig_ortho": 0.33,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_018:C1",
+      "orig_nodes": 7,
+      "reg_nodes": 27,
+      "orig_area": 69.67,
+      "reg_area": 69.71,
+      "orig_ortho": 0.43,
+      "reg_ortho": 0.96
+    },
+    {
+      "candidate_id": "OPT_B_007:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 69.65,
+      "reg_area": 69.65,
+      "orig_ortho": 0.33,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_014:C1",
+      "orig_nodes": 5,
+      "reg_nodes": 4,
+      "orig_area": 68.64,
+      "reg_area": 68.64,
+      "orig_ortho": 0.6,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_098:C1",
+      "orig_nodes": 7,
+      "reg_nodes": 4,
+      "orig_area": 68.42,
+      "reg_area": 68.42,
+      "orig_ortho": 0.43,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_022:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 68.25,
+      "reg_area": 68.25,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_030:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 66.56,
+      "reg_area": 66.56,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_135:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 65.61,
+      "reg_area": 65.61,
+      "orig_ortho": 0.33,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_113:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 62.18,
+      "reg_area": 62.18,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_085:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 57.6,
+      "reg_area": 57.6,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_165:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 57.42,
+      "reg_area": 57.42,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_161:C1",
+      "orig_nodes": 8,
+      "reg_nodes": 4,
+      "orig_area": 55.07,
+      "reg_area": 55.07,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_121:C1",
+      "orig_nodes": 12,
+      "reg_nodes": 4,
+      "orig_area": 54.2,
+      "reg_area": 88.22,
+      "orig_ortho": 0.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_016:C1",
+      "orig_nodes": 8,
+      "reg_nodes": 4,
+      "orig_area": 54.17,
+      "reg_area": 54.17,
+      "orig_ortho": 0.12,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_097:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 52.04,
+      "reg_area": 52.04,
+      "orig_ortho": 0.5,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_209:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 50.16,
+      "reg_area": 50.16,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_033:C1",
+      "orig_nodes": 9,
+      "reg_nodes": 4,
+      "orig_area": 49.62,
+      "reg_area": 49.62,
+      "orig_ortho": 0.11,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_139:C1",
+      "orig_nodes": 5,
+      "reg_nodes": 4,
+      "orig_area": 48.58,
+      "reg_area": 48.58,
+      "orig_ortho": 0.8,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_044:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 48.28,
+      "reg_area": 48.28,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_036:C1",
+      "orig_nodes": 13,
+      "reg_nodes": 4,
+      "orig_area": 47.25,
+      "reg_area": 47.25,
+      "orig_ortho": 0.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_078:C1",
+      "orig_nodes": 7,
+      "reg_nodes": 4,
+      "orig_area": 46.77,
+      "reg_area": 46.77,
+      "orig_ortho": 0.86,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_148:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 46.08,
+      "reg_area": 46.08,
+      "orig_ortho": 0.5,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_171:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 46.02,
+      "reg_area": 46.02,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_041:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 44.69,
+      "reg_area": 44.69,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_080:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 43.53,
+      "reg_area": 43.53,
+      "orig_ortho": 0.67,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_052:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 41.51,
+      "reg_area": 41.51,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_071:C1",
+      "orig_nodes": 11,
+      "reg_nodes": 4,
+      "orig_area": 40.25,
+      "reg_area": 40.25,
+      "orig_ortho": 0.27,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_155:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 39.61,
+      "reg_area": 39.61,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_178:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 36.52,
+      "reg_area": 36.52,
+      "orig_ortho": 0.17,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_133:C1",
+      "orig_nodes": 10,
+      "reg_nodes": 4,
+      "orig_area": 36.27,
+      "reg_area": 36.27,
+      "orig_ortho": 0.2,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_166:C1",
+      "orig_nodes": 7,
+      "reg_nodes": 4,
+      "orig_area": 35.77,
+      "reg_area": 35.77,
+      "orig_ortho": 0.14,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_051:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 33.66,
+      "reg_area": 33.66,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_091:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 29.73,
+      "reg_area": 29.73,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_115:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 29.53,
+      "reg_area": 29.53,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_138:C1",
+      "orig_nodes": 5,
+      "reg_nodes": 4,
+      "orig_area": 29.51,
+      "reg_area": 29.51,
+      "orig_ortho": 0.4,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_102:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 29.19,
+      "reg_area": 29.19,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_124:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 26.82,
+      "reg_area": 26.82,
+      "orig_ortho": 0.75,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_053:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 26.23,
+      "reg_area": 26.23,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_045:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 24.57,
+      "reg_area": 24.57,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_177:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 24.48,
+      "reg_area": 24.48,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_149:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 24.33,
+      "reg_area": 24.33,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_127:C1",
+      "orig_nodes": 13,
+      "reg_nodes": 4,
+      "orig_area": 22.93,
+      "reg_area": 22.93,
+      "orig_ortho": 0.15,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_074:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 22.35,
+      "reg_area": 22.35,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_092:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 21.9,
+      "reg_area": 21.9,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_032:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 21.42,
+      "reg_area": 21.42,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_146:C1",
+      "orig_nodes": 6,
+      "reg_nodes": 4,
+      "orig_area": 21.29,
+      "reg_area": 21.29,
+      "orig_ortho": 0.33,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_105:C1",
+      "orig_nodes": 4,
+      "reg_nodes": 4,
+      "orig_area": 17.91,
+      "reg_area": 17.91,
+      "orig_ortho": 1.0,
+      "reg_ortho": 1.0
+    },
+    {
+      "candidate_id": "OPT_B_067:C1",
+      "orig_nodes": 5,
+      "reg_nodes": 4,
+      "orig_area": 19.51,
+      "reg_area": 19.51,
+      "orig_ortho": 0.6,
+      "reg_ortho": 1.0
+    }
+  ]
+}

@@ -72,7 +72,7 @@ class CadastralProductGenerator:
             b_copy["categorie_cadastru"] = "CLADIRE_PRINCIPALA"
             b_copy["regim_inaltime"] = regim
             b_copy["suprafata_sol_mp"] = b.get("area_m2")
-            b_copy["validare_ancpi"] = "ADMIS"
+            b_copy["validare_ancpi"] = "PENDING_OWNER_REVIEW"
             formatted_main.append(b_copy)
 
         main_union = unary_union([b["geometry"] for b in formatted_main]) if formatted_main else None
@@ -119,7 +119,7 @@ class CadastralProductGenerator:
                     "center_x": round(float(cleaned.centroid.x), 2),
                     "center_y": round(float(cleaned.centroid.y), 2),
                     "geometry": cleaned,
-                    "validare_ancpi": "ADMIS"
+                    "validare_ancpi": "PENDING_OWNER_REVIEW"
                 })
 
         # 3. EXCLUDERE SPAȚIALĂ STRICTĂ A COPACILOR DIN CLĂDIRI

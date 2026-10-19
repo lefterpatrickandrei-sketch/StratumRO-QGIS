@@ -1,0 +1,1669 @@
+{
+  "total_proposals": 141,
+  "summary": {
+    "non_orthogonal_corners_count": 67,
+    "fragments_and_slivers_count": 42,
+    "high_complexity_nodes_count": 34,
+    "short_edges_count": 21,
+    "notched_roofs_count": 7
+  },
+  "non_orthogonal_cases": [
+    {
+      "candidate_id": "OPT_B_152:C1",
+      "area_m2": 580.28,
+      "nodes": 16,
+      "bad_angles_count": 13,
+      "bad_angles": [
+        135.9,
+        147.4,
+        144.5,
+        125.9,
+        72.9,
+        117.3,
+        177.0,
+        161.7,
+        108.3,
+        128.2,
+        127.9,
+        137.7,
+        110.0
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_151:C1",
+      "area_m2": 514.1,
+      "nodes": 68,
+      "bad_angles_count": 58,
+      "bad_angles": [
+        158.7,
+        119.0,
+        152.1,
+        162.9,
+        157.6,
+        136.8,
+        142.2,
+        145.4,
+        147.5,
+        168.5,
+        144.6,
+        157.7,
+        55.5,
+        109.7,
+        107.1,
+        144.0,
+        157.8,
+        124.1,
+        119.7,
+        114.7,
+        140.0,
+        119.3,
+        109.8,
+        125.5,
+        123.7,
+        148.1,
+        164.5,
+        159.9,
+        156.1,
+        163.0,
+        139.4,
+        131.6,
+        133.6,
+        111.8,
+        145.5,
+        115.0,
+        145.5,
+        118.4,
+        44.2,
+        133.7,
+        118.9,
+        134.2,
+        156.0,
+        155.9,
+        147.8,
+        152.0,
+        171.4,
+        112.4,
+        150.9,
+        143.1,
+        149.5,
+        40.0,
+        115.6,
+        148.0,
+        139.9,
+        151.1,
+        164.0,
+        136.6
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_043:C1",
+      "area_m2": 503.1,
+      "nodes": 5,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        138.7,
+        129.4,
+        61.7,
+        117.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_089:C1",
+      "area_m2": 495.43,
+      "nodes": 20,
+      "bad_angles_count": 16,
+      "bad_angles": [
+        141.9,
+        126.6,
+        131.8,
+        125.3,
+        150.9,
+        110.4,
+        135.0,
+        154.9,
+        134.1,
+        150.6,
+        45.0,
+        121.8,
+        159.2,
+        127.6,
+        136.4,
+        123.4
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_011:C1",
+      "area_m2": 483.14,
+      "nodes": 10,
+      "bad_angles_count": 7,
+      "bad_angles": [
+        69.3,
+        117.5,
+        165.2,
+        159.4,
+        122.2,
+        145.3,
+        140.8
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_114:C1",
+      "area_m2": 472.76,
+      "nodes": 9,
+      "bad_angles_count": 5,
+      "bad_angles": [
+        136.3,
+        108.2,
+        113.3,
+        119.1,
+        136.3
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_001:C1",
+      "area_m2": 467.0,
+      "nodes": 12,
+      "bad_angles_count": 10,
+      "bad_angles": [
+        137.6,
+        146.1,
+        176.7,
+        142.2,
+        127.9,
+        139.8,
+        131.7,
+        178.5,
+        178.1,
+        175.2
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_147:C1",
+      "area_m2": 403.6,
+      "nodes": 10,
+      "bad_angles_count": 6,
+      "bad_angles": [
+        50.1,
+        138.9,
+        73.1,
+        74.6,
+        117.8,
+        161.4
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_164:C1",
+      "area_m2": 277.55,
+      "nodes": 9,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        135.4,
+        138.4,
+        69.9,
+        71.8
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_037:C1",
+      "area_m2": 236.53,
+      "nodes": 6,
+      "bad_angles_count": 3,
+      "bad_angles": [
+        162.2,
+        115.8,
+        152.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_090:C1",
+      "area_m2": 227.26,
+      "nodes": 9,
+      "bad_angles_count": 7,
+      "bad_angles": [
+        132.2,
+        136.2,
+        159.0,
+        110.1,
+        161.3,
+        131.9,
+        71.5
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_101:C1",
+      "area_m2": 220.91,
+      "nodes": 5,
+      "bad_angles_count": 1,
+      "bad_angles": [
+        178.2
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_079:C1",
+      "area_m2": 203.23,
+      "nodes": 8,
+      "bad_angles_count": 6,
+      "bad_angles": [
+        133.2,
+        137.1,
+        159.1,
+        112.5,
+        115.3,
+        160.1
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_095:C1",
+      "area_m2": 190.55,
+      "nodes": 6,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        133.0,
+        139.8
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_068:C1",
+      "area_m2": 189.15,
+      "nodes": 5,
+      "bad_angles_count": 1,
+      "bad_angles": [
+        178.1
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_046:C1",
+      "area_m2": 178.33,
+      "nodes": 9,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        147.5,
+        116.9,
+        73.7,
+        49.1
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_172:C1",
+      "area_m2": 163.61,
+      "nodes": 10,
+      "bad_angles_count": 8,
+      "bad_angles": [
+        136.2,
+        145.1,
+        128.1,
+        140.7,
+        137.2,
+        132.6,
+        142.3,
+        125.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_060:C1",
+      "area_m2": 162.33,
+      "nodes": 13,
+      "bad_angles_count": 11,
+      "bad_angles": [
+        139.5,
+        130.0,
+        121.2,
+        121.2,
+        126.6,
+        141.4,
+        121.0,
+        119.8,
+        166.6,
+        129.4,
+        132.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_081:C1",
+      "area_m2": 159.19,
+      "nodes": 6,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        144.2,
+        125.9,
+        119.9,
+        148.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_003:C1",
+      "area_m2": 152.02,
+      "nodes": 6,
+      "bad_angles_count": 3,
+      "bad_angles": [
+        159.3,
+        133.2,
+        121.0
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_058:C1",
+      "area_m2": 143.68,
+      "nodes": 6,
+      "bad_angles_count": 5,
+      "bad_angles": [
+        129.8,
+        135.7,
+        138.8,
+        158.8,
+        63.8
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_144:C1",
+      "area_m2": 135.29,
+      "nodes": 6,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        121.7,
+        118.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_009:C1",
+      "area_m2": 135.27,
+      "nodes": 9,
+      "bad_angles_count": 7,
+      "bad_angles": [
+        128.6,
+        108.5,
+        133.2,
+        135.5,
+        126.4,
+        119.9,
+        117.2
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_042:C1",
+      "area_m2": 127.32,
+      "nodes": 8,
+      "bad_angles_count": 6,
+      "bad_angles": [
+        136.6,
+        130.8,
+        137.9,
+        137.0,
+        117.9,
+        149.6
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_013:C1",
+      "area_m2": 125.25,
+      "nodes": 10,
+      "bad_angles_count": 9,
+      "bad_angles": [
+        140.3,
+        115.9,
+        145.9,
+        174.2,
+        128.7,
+        145.4,
+        138.8,
+        139.4,
+        137.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_093:C1",
+      "area_m2": 122.17,
+      "nodes": 19,
+      "bad_angles_count": 16,
+      "bad_angles": [
+        153.5,
+        139.9,
+        146.3,
+        136.3,
+        134.5,
+        152.6,
+        124.9,
+        159.6,
+        146.3,
+        133.2,
+        133.1,
+        162.4,
+        116.6,
+        171.0,
+        164.4,
+        173.6
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_109:C1",
+      "area_m2": 114.26,
+      "nodes": 8,
+      "bad_angles_count": 6,
+      "bad_angles": [
+        127.1,
+        129.7,
+        120.7,
+        147.9,
+        148.3,
+        117.2
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_073:C1",
+      "area_m2": 113.69,
+      "nodes": 10,
+      "bad_angles_count": 8,
+      "bad_angles": [
+        111.5,
+        158.0,
+        128.3,
+        158.2,
+        139.1,
+        131.1,
+        131.7,
+        136.6
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_070:C1",
+      "area_m2": 99.06,
+      "nodes": 8,
+      "bad_angles_count": 5,
+      "bad_angles": [
+        116.3,
+        147.8,
+        151.6,
+        133.3,
+        156.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_069:C1",
+      "area_m2": 96.98,
+      "nodes": 9,
+      "bad_angles_count": 5,
+      "bad_angles": [
+        121.4,
+        169.1,
+        117.8,
+        113.3,
+        60.1
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_075:C1",
+      "area_m2": 94.09,
+      "nodes": 13,
+      "bad_angles_count": 11,
+      "bad_angles": [
+        137.8,
+        143.4,
+        174.9,
+        145.7,
+        124.0,
+        141.6,
+        119.4,
+        116.2,
+        166.1,
+        108.0,
+        168.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_163:C1",
+      "area_m2": 91.24,
+      "nodes": 9,
+      "bad_angles_count": 7,
+      "bad_angles": [
+        52.7,
+        147.5,
+        113.8,
+        108.2,
+        123.7,
+        135.7,
+        122.8
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_096:C1",
+      "area_m2": 88.44,
+      "nodes": 6,
+      "bad_angles_count": 3,
+      "bad_angles": [
+        160.9,
+        137.6,
+        66.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_054:C1",
+      "area_m2": 87.96,
+      "nodes": 19,
+      "bad_angles_count": 18,
+      "bad_angles": [
+        149.8,
+        120.6,
+        147.9,
+        160.0,
+        148.0,
+        169.2,
+        149.3,
+        118.8,
+        160.7,
+        159.4,
+        151.2,
+        140.1,
+        121.6,
+        146.6,
+        123.5,
+        149.3,
+        123.7,
+        151.3
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_072:C1",
+      "area_m2": 82.09,
+      "nodes": 9,
+      "bad_angles_count": 8,
+      "bad_angles": [
+        148.3,
+        139.5,
+        105.2,
+        168.6,
+        165.6,
+        135.8,
+        134.2,
+        160.4
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_140:C1",
+      "area_m2": 81.62,
+      "nodes": 6,
+      "bad_angles_count": 5,
+      "bad_angles": [
+        115.4,
+        117.4,
+        128.6,
+        150.8,
+        106.3
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_103:C1",
+      "area_m2": 81.08,
+      "nodes": 9,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        142.8,
+        127.2
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_108:C1",
+      "area_m2": 80.34,
+      "nodes": 6,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        58.5,
+        148.1,
+        108.1,
+        147.3
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_141:C1",
+      "area_m2": 80.11,
+      "nodes": 5,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        155.9,
+        118.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_123:C1",
+      "area_m2": 73.36,
+      "nodes": 7,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        161.3,
+        111.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_040:C1",
+      "area_m2": 74.6,
+      "nodes": 13,
+      "bad_angles_count": 9,
+      "bad_angles": [
+        147.4,
+        152.7,
+        142.3,
+        146.5,
+        143.1,
+        145.2,
+        126.4,
+        154.4,
+        172.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_162:C1",
+      "area_m2": 71.98,
+      "nodes": 6,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        124.8,
+        132.6,
+        108.2,
+        151.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_203:C1",
+      "area_m2": 69.62,
+      "nodes": 14,
+      "bad_angles_count": 13,
+      "bad_angles": [
+        152.3,
+        165.4,
+        130.1,
+        136.5,
+        159.4,
+        163.5,
+        148.2,
+        108.1,
+        132.5,
+        118.3,
+        139.1,
+        122.1,
+        147.0
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_086:C1",
+      "area_m2": 69.69,
+      "nodes": 9,
+      "bad_angles_count": 6,
+      "bad_angles": [
+        142.6,
+        148.4,
+        154.3,
+        130.3,
+        54.6,
+        105.8
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_018:C1",
+      "area_m2": 69.67,
+      "nodes": 7,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        139.2,
+        132.0,
+        128.9,
+        140.1
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_007:C1",
+      "area_m2": 69.65,
+      "nodes": 6,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        148.0,
+        120.4,
+        145.3,
+        109.4
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_014:C1",
+      "area_m2": 68.64,
+      "nodes": 5,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        114.9,
+        151.6
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_098:C1",
+      "area_m2": 68.42,
+      "nodes": 7,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        110.6,
+        121.8,
+        135.5,
+        134.4
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_135:C1",
+      "area_m2": 65.61,
+      "nodes": 6,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        138.4,
+        129.7,
+        152.5,
+        132.1
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_121:C1",
+      "area_m2": 54.2,
+      "nodes": 12,
+      "bad_angles_count": 12,
+      "bad_angles": [
+        154.4,
+        111.7,
+        129.5,
+        117.5,
+        118.2,
+        167.7,
+        159.4,
+        71.4,
+        135.3,
+        137.5,
+        151.0,
+        135.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_016:C1",
+      "area_m2": 54.17,
+      "nodes": 8,
+      "bad_angles_count": 7,
+      "bad_angles": [
+        134.4,
+        137.0,
+        131.8,
+        144.8,
+        128.2,
+        170.1,
+        130.1
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_097:C1",
+      "area_m2": 52.04,
+      "nodes": 4,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        123.8,
+        60.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_033:C1",
+      "area_m2": 49.62,
+      "nodes": 9,
+      "bad_angles_count": 8,
+      "bad_angles": [
+        131.6,
+        140.2,
+        127.4,
+        141.3,
+        146.6,
+        124.0,
+        163.2,
+        155.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_139:C1",
+      "area_m2": 48.58,
+      "nodes": 5,
+      "bad_angles_count": 1,
+      "bad_angles": [
+        178.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_036:C1",
+      "area_m2": 47.25,
+      "nodes": 13,
+      "bad_angles_count": 13,
+      "bad_angles": [
+        119.0,
+        155.2,
+        153.4,
+        114.4,
+        173.5,
+        137.7,
+        131.9,
+        135.4,
+        132.5,
+        151.6,
+        140.2,
+        141.1,
+        123.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_078:C1",
+      "area_m2": 46.77,
+      "nodes": 7,
+      "bad_angles_count": 1,
+      "bad_angles": [
+        178.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_148:C1",
+      "area_m2": 46.08,
+      "nodes": 6,
+      "bad_angles_count": 3,
+      "bad_angles": [
+        68.9,
+        153.8,
+        175.0
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_080:C1",
+      "area_m2": 43.53,
+      "nodes": 6,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        163.2,
+        177.9
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_071:C1",
+      "area_m2": 40.25,
+      "nodes": 11,
+      "bad_angles_count": 8,
+      "bad_angles": [
+        135.0,
+        162.8,
+        125.7,
+        133.9,
+        108.9,
+        167.8,
+        159.1,
+        144.0
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_178:C1",
+      "area_m2": 36.52,
+      "nodes": 6,
+      "bad_angles_count": 5,
+      "bad_angles": [
+        124.2,
+        144.5,
+        133.4,
+        55.3,
+        159.5
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_133:C1",
+      "area_m2": 36.27,
+      "nodes": 10,
+      "bad_angles_count": 8,
+      "bad_angles": [
+        124.1,
+        130.6,
+        140.1,
+        125.8,
+        144.5,
+        129.1,
+        119.9,
+        144.0
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_166:C1",
+      "area_m2": 35.77,
+      "nodes": 7,
+      "bad_angles_count": 6,
+      "bad_angles": [
+        126.3,
+        137.2,
+        113.2,
+        145.7,
+        131.9,
+        142.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_138:C1",
+      "area_m2": 29.51,
+      "nodes": 5,
+      "bad_angles_count": 3,
+      "bad_angles": [
+        122.0,
+        105.8,
+        126.2
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_124:C1",
+      "area_m2": 26.82,
+      "nodes": 4,
+      "bad_angles_count": 1,
+      "bad_angles": [
+        106.0
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_127:C1",
+      "area_m2": 22.93,
+      "nodes": 13,
+      "bad_angles_count": 11,
+      "bad_angles": [
+        145.6,
+        124.4,
+        149.3,
+        120.7,
+        135.0,
+        113.2,
+        147.5,
+        147.3,
+        116.6,
+        143.1,
+        116.6
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_146:C1",
+      "area_m2": 21.29,
+      "nodes": 6,
+      "bad_angles_count": 4,
+      "bad_angles": [
+        133.8,
+        113.2,
+        149.7,
+        130.6
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_067:C1",
+      "area_m2": 19.51,
+      "nodes": 5,
+      "bad_angles_count": 2,
+      "bad_angles": [
+        65.2,
+        152.3
+      ]
+    }
+  ],
+  "sliver_cases": [
+    {
+      "candidate_id": "OPT_B_152:C1",
+      "area_m2": 580.28,
+      "fill_ratio": 0.456,
+      "is_small": false
+    },
+    {
+      "candidate_id": "OPT_B_090:C1",
+      "area_m2": 227.26,
+      "fill_ratio": 0.598,
+      "is_small": false
+    },
+    {
+      "candidate_id": "OPT_B_018:C1",
+      "area_m2": 69.67,
+      "fill_ratio": 0.568,
+      "is_small": false
+    },
+    {
+      "candidate_id": "OPT_B_085:C1",
+      "area_m2": 57.6,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_165:C1",
+      "area_m2": 57.42,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_161:C1",
+      "area_m2": 55.07,
+      "fill_ratio": 0.754,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_121:C1",
+      "area_m2": 54.2,
+      "fill_ratio": 0.614,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_016:C1",
+      "area_m2": 54.17,
+      "fill_ratio": 0.858,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_097:C1",
+      "area_m2": 52.04,
+      "fill_ratio": 0.757,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_209:C1",
+      "area_m2": 50.16,
+      "fill_ratio": 0.78,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_033:C1",
+      "area_m2": 49.62,
+      "fill_ratio": 0.878,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_139:C1",
+      "area_m2": 48.58,
+      "fill_ratio": 0.997,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_044:C1",
+      "area_m2": 48.28,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_036:C1",
+      "area_m2": 47.25,
+      "fill_ratio": 0.89,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_078:C1",
+      "area_m2": 46.77,
+      "fill_ratio": 0.898,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_148:C1",
+      "area_m2": 46.08,
+      "fill_ratio": 0.998,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_171:C1",
+      "area_m2": 46.02,
+      "fill_ratio": 0.943,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_041:C1",
+      "area_m2": 44.69,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_080:C1",
+      "area_m2": 43.53,
+      "fill_ratio": 0.998,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_052:C1",
+      "area_m2": 41.51,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_071:C1",
+      "area_m2": 40.25,
+      "fill_ratio": 0.773,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_155:C1",
+      "area_m2": 39.61,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_178:C1",
+      "area_m2": 36.52,
+      "fill_ratio": 0.692,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_133:C1",
+      "area_m2": 36.27,
+      "fill_ratio": 0.807,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_166:C1",
+      "area_m2": 35.77,
+      "fill_ratio": 0.75,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_051:C1",
+      "area_m2": 33.66,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_091:C1",
+      "area_m2": 29.73,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_115:C1",
+      "area_m2": 29.53,
+      "fill_ratio": 0.893,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_138:C1",
+      "area_m2": 29.51,
+      "fill_ratio": 0.757,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_102:C1",
+      "area_m2": 29.19,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_124:C1",
+      "area_m2": 26.82,
+      "fill_ratio": 0.837,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_053:C1",
+      "area_m2": 26.23,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_045:C1",
+      "area_m2": 24.57,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_177:C1",
+      "area_m2": 24.48,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_149:C1",
+      "area_m2": 24.33,
+      "fill_ratio": 0.867,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_127:C1",
+      "area_m2": 22.93,
+      "fill_ratio": 0.819,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_074:C1",
+      "area_m2": 22.35,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_092:C1",
+      "area_m2": 21.9,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_032:C1",
+      "area_m2": 21.42,
+      "fill_ratio": 1.0,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_146:C1",
+      "area_m2": 21.29,
+      "fill_ratio": 0.86,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_105:C1",
+      "area_m2": 17.91,
+      "fill_ratio": 0.987,
+      "is_small": true
+    },
+    {
+      "candidate_id": "OPT_B_067:C1",
+      "area_m2": 19.51,
+      "fill_ratio": 0.973,
+      "is_small": true
+    }
+  ],
+  "complex_cases": [
+    {
+      "candidate_id": "OPT_B_020:C1",
+      "area_m2": 1086.6,
+      "nodes": 12
+    },
+    {
+      "candidate_id": "OPT_B_154:C1",
+      "area_m2": 705.39,
+      "nodes": 10
+    },
+    {
+      "candidate_id": "OPT_B_152:C1",
+      "area_m2": 580.28,
+      "nodes": 16
+    },
+    {
+      "candidate_id": "OPT_B_151:C1",
+      "area_m2": 514.1,
+      "nodes": 68
+    },
+    {
+      "candidate_id": "OPT_B_089:C1",
+      "area_m2": 495.43,
+      "nodes": 20
+    },
+    {
+      "candidate_id": "OPT_B_011:C1",
+      "area_m2": 483.14,
+      "nodes": 10
+    },
+    {
+      "candidate_id": "OPT_B_114:C1",
+      "area_m2": 472.76,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_001:C1",
+      "area_m2": 467.0,
+      "nodes": 12
+    },
+    {
+      "candidate_id": "OPT_B_126:C1",
+      "area_m2": 453.62,
+      "nodes": 14
+    },
+    {
+      "candidate_id": "OPT_B_147:C1",
+      "area_m2": 403.6,
+      "nodes": 10
+    },
+    {
+      "candidate_id": "OPT_B_164:C1",
+      "area_m2": 277.55,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_090:C1",
+      "area_m2": 227.26,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_046:C1",
+      "area_m2": 178.33,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_172:C1",
+      "area_m2": 163.61,
+      "nodes": 10
+    },
+    {
+      "candidate_id": "OPT_B_060:C1",
+      "area_m2": 162.33,
+      "nodes": 13
+    },
+    {
+      "candidate_id": "OPT_B_009:C1",
+      "area_m2": 135.27,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_013:C1",
+      "area_m2": 125.25,
+      "nodes": 10
+    },
+    {
+      "candidate_id": "OPT_B_093:C1",
+      "area_m2": 122.17,
+      "nodes": 19
+    },
+    {
+      "candidate_id": "OPT_B_073:C1",
+      "area_m2": 113.69,
+      "nodes": 10
+    },
+    {
+      "candidate_id": "OPT_B_069:C1",
+      "area_m2": 96.98,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_075:C1",
+      "area_m2": 94.09,
+      "nodes": 13
+    },
+    {
+      "candidate_id": "OPT_B_163:C1",
+      "area_m2": 91.24,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_054:C1",
+      "area_m2": 87.96,
+      "nodes": 19
+    },
+    {
+      "candidate_id": "OPT_B_072:C1",
+      "area_m2": 82.09,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_103:C1",
+      "area_m2": 81.08,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_040:C1",
+      "area_m2": 74.6,
+      "nodes": 13
+    },
+    {
+      "candidate_id": "OPT_B_203:C1",
+      "area_m2": 69.62,
+      "nodes": 14
+    },
+    {
+      "candidate_id": "OPT_B_086:C1",
+      "area_m2": 69.69,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_121:C1",
+      "area_m2": 54.2,
+      "nodes": 12
+    },
+    {
+      "candidate_id": "OPT_B_033:C1",
+      "area_m2": 49.62,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_036:C1",
+      "area_m2": 47.25,
+      "nodes": 13
+    },
+    {
+      "candidate_id": "OPT_B_071:C1",
+      "area_m2": 40.25,
+      "nodes": 11
+    },
+    {
+      "candidate_id": "OPT_B_133:C1",
+      "area_m2": 36.27,
+      "nodes": 10
+    },
+    {
+      "candidate_id": "OPT_B_127:C1",
+      "area_m2": 22.93,
+      "nodes": 13
+    }
+  ],
+  "short_edge_cases": [
+    {
+      "candidate_id": "OPT_B_151:C1",
+      "short_edges_count": 21,
+      "short_edges": [
+        0.62,
+        0.76,
+        0.96,
+        0.95,
+        0.81,
+        0.62,
+        0.91,
+        0.62,
+        0.62,
+        0.91,
+        0.76,
+        0.81,
+        0.75,
+        0.91,
+        0.76,
+        0.85,
+        0.75,
+        0.96,
+        0.76,
+        0.75,
+        0.75
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_011:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.95
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_001:C1",
+      "short_edges_count": 3,
+      "short_edges": [
+        0.99,
+        0.57,
+        0.7
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_093:C1",
+      "short_edges_count": 6,
+      "short_edges": [
+        0.76,
+        0.91,
+        0.95,
+        0.76,
+        0.95,
+        0.33
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_073:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.91
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_075:C1",
+      "short_edges_count": 3,
+      "short_edges": [
+        0.97,
+        0.65,
+        0.91
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_054:C1",
+      "short_edges_count": 8,
+      "short_edges": [
+        0.41,
+        0.15,
+        0.91,
+        0.91,
+        0.76,
+        0.28,
+        0.27,
+        0.42
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_072:C1",
+      "short_edges_count": 2,
+      "short_edges": [
+        0.97,
+        0.87
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_103:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.71
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_040:C1",
+      "short_edges_count": 2,
+      "short_edges": [
+        0.9,
+        0.62
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_203:C1",
+      "short_edges_count": 2,
+      "short_edges": [
+        0.82,
+        0.99
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_033:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.81
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_139:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.42
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_036:C1",
+      "short_edges_count": 4,
+      "short_edges": [
+        0.96,
+        0.76,
+        0.62,
+        0.76
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_078:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.36
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_148:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.32
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_080:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.27
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_071:C1",
+      "short_edges_count": 2,
+      "short_edges": [
+        0.95,
+        0.91
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_133:C1",
+      "short_edges_count": 2,
+      "short_edges": [
+        0.76,
+        0.87
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_127:C1",
+      "short_edges_count": 8,
+      "short_edges": [
+        0.75,
+        0.9,
+        0.64,
+        0.81,
+        0.91,
+        0.75,
+        0.67,
+        0.6
+      ]
+    },
+    {
+      "candidate_id": "OPT_B_067:C1",
+      "short_edges_count": 1,
+      "short_edges": [
+        0.54
+      ]
+    }
+  ],
+  "notched_cases": [
+    {
+      "candidate_id": "OPT_B_100:C1",
+      "area_m2": 1029.46,
+      "hull_ratio": 0.837,
+      "nodes": 6
+    },
+    {
+      "candidate_id": "OPT_B_152:C1",
+      "area_m2": 580.28,
+      "hull_ratio": 0.805,
+      "nodes": 16
+    },
+    {
+      "candidate_id": "OPT_B_151:C1",
+      "area_m2": 514.1,
+      "hull_ratio": 0.791,
+      "nodes": 68
+    },
+    {
+      "candidate_id": "OPT_B_090:C1",
+      "area_m2": 227.26,
+      "hull_ratio": 0.738,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_009:C1",
+      "area_m2": 135.27,
+      "hull_ratio": 0.848,
+      "nodes": 9
+    },
+    {
+      "candidate_id": "OPT_B_040:C1",
+      "area_m2": 74.6,
+      "hull_ratio": 0.832,
+      "nodes": 13
+    },
+    {
+      "candidate_id": "OPT_B_018:C1",
+      "area_m2": 69.67,
+      "hull_ratio": 0.823,
+      "nodes": 7
+    }
+  ]
+}

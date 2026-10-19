@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 from shapely.geometry import box,Polygon
 from shapely import affinity
-from stratum_ro.roof_simple_geometry import simple_roof_geometry
+from stratum_ro.roof_simple_geometry import simple_roof_geometry, remove_acute_spurs, remove_short_edges
 
 
 class SimpleRoofGeometryTests(unittest.TestCase):
@@ -49,6 +49,21 @@ class SimpleRoofGeometryTests(unittest.TestCase):
         for a,b in zip(edges,np.roll(edges,-1,axis=0)):
             self.assertAlmostEqual(float(np.dot(a,b)),0,places=7)
         self.assertEqual(p.wkb,before)
+
+    def test_remove_acute_spurs(self):
+        # A 10x10 rectangle with a sharp 15-degree spur at (15, 0.5)
+        p = Polygon([(0,0), (10,0), (14, 0.5), (10, 1), (10,10), (0,10), (0,0)])
+        cleaned = remove_acute_spurs(p, min_angle=40.0)
+        self.assertTrue(cleaned.is_valid)
+        self.assertNotIn((14, 0.5), list(cleaned.exterior.coords))
+
+    def test_remove_short_edges(self):
+        # A rectangle with a tiny 0.15m notch along top edge
+        p = Polygon([(0,0), (10,0), (10,10), (5.15,10), (5.0,9.9), (4.85,10), (0,10), (0,0)])
+        cleaned = remove_short_edges(p, min_edge=0.5)
+        self.assertTrue(cleaned.is_valid)
+        diffs = np.diff(np.asarray(cleaned.exterior.coords), axis=0)
+        self.assertGreaterEqual(float(np.linalg.norm(diffs, axis=1).min()), 0.5)
 
 
 if __name__=='__main__':unittest.main()

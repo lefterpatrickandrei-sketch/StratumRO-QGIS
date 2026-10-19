@@ -8,7 +8,8 @@ from shapely.geometry import box,Polygon
 from shapely.ops import unary_union
 from stratum_ro.regional_roofs import (OrthoMosaic,RegionalRoofConfig,plan_windows,
     deduplicate_candidates,route_surface,vectorize_automatic_masks,ground_footprint_scenarios,
-    simplify_regional_roof,sample_evidence)
+    simplify_regional_roof,sample_evidence,
+    remove_duplicate_consecutive_nodes,remove_spurious_interior_rings)
 
 
 class RegionalRoofTests(unittest.TestCase):
@@ -114,6 +115,53 @@ class RegionalRoofTests(unittest.TestCase):
             values=sample_evidence(path,from_origin(0,2,1,1),(2,4))
             self.assertEqual(values[1,1],0);self.assertTrue(np.isnan(values[0,1]))
             self.assertTrue(np.isnan(values[:,2:]).all())
+
+    def test_remove_duplicate_consecutive_nodes(self):
+        poly = Polygon([(0,0), (0,0), (10,0), (10,10), (10,10), (0,10), (0,0)])
+        cleaned = remove_duplicate_consecutive_nodes(poly, tolerance=0.05)
+        self.assertEqual(len(cleaned.exterior.coords), 5)
+        self.assertTrue(cleaned.is_valid)
+
+    def test_remove_spurious_interior_rings(self):
+        # Exterior 20x20, one pinhole 1x1 (area 1.0 < 2.0), one genuine courtyard 4x4 (area 16.0 >= 2.0)
+        ring_small = box(1, 1, 2, 2).exterior.coords
+        ring_large = box(5, 5, 9, 9).exterior.coords
+        poly = Polygon(box(0, 0, 20, 20).exterior.coords, [ring_small, ring_large])
+        cleaned = remove_spurious_interior_rings(poly, min_hole_area=2.0)
+        self.assertEqual(len(cleaned.interiors), 1)
+        self.assertAlmostEqual(Polygon(cleaned.interiors[0]).area, 16.0)
+
+    def test_extreme_containment_deduplication(self):
+        # 1. Extreme containment without height difference or sub-body tag -> suppressed
+        rec_main = dict(candidate_id='OPT_B_126:C1', geometry=box(0,0,20,20), sam_score=0.95, touches_window=False, touches_nodata=False)
+        rec_dup = dict(candidate_id='OPT_B_174:C1', geometry=box(0,0,15,15), sam_score=0.90, touches_window=False, touches_nodata=False)
+        kept, links = deduplicate_candidates([rec_main, rec_dup])
+        self.assertEqual(len(kept), 1)
+        self.assertEqual(kept[0]['candidate_id'], 'OPT_B_126:C1')
+        self.assertEqual(len(links), 1)
+
+        # 2. Extreme containment with LiDAR Delta h >= 1.5m -> retained as sub-body C2
+        rec_tower = dict(candidate_id='OPT_B_174:C1', geometry=box(2,2,8,8), sam_score=0.90,
+                         touches_window=False, touches_nodata=False, median_height=8.5)
+        rec_base = dict(candidate_id='OPT_B_126:C1', geometry=box(0,0,20,20), sam_score=0.95,
+                        touches_window=False, touches_nodata=False, median_height=3.0)
+        kept2, links2 = deduplicate_candidates([rec_base, rec_tower])
+        self.assertEqual(len(kept2), 2)
+        self.assertEqual(len(links2), 0)
+        tower_kept = next(r for r in kept2 if r['candidate_id'] == 'OPT_B_174:C1')
+        self.assertTrue(tower_kept.get('is_sub_body'))
+        self.assertEqual(tower_kept.get('sub_body_tier'), 'C2')
+
+    def test_simplify_with_courtyard_and_pinholes(self):
+        # Outer is 20x20 with small jitter nodes, inside has a 1x1 pinhole and a 5x5 courtyard
+        coords_ext = [(0,0), (10,0.05), (20,0), (20,10.05), (20,20), (10,19.95), (0,20), (0,0)]
+        pinhole = box(2, 2, 3, 3).exterior.coords
+        courtyard = box(8, 8, 13, 13).exterior.coords
+        poly = Polygon(coords_ext, [pinhole, courtyard])
+        simplified, info = simplify_regional_roof(poly)
+        self.assertIn('RECTANGLE', info['method'])
+        self.assertEqual(len(simplified.interiors), 1)
+        self.assertAlmostEqual(Polygon(simplified.interiors[0]).area, 25.0)
 
 
 if __name__=='__main__':unittest.main()

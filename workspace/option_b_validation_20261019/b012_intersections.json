@@ -1,0 +1,794 @@
+[
+  {
+    "layer": "0. B initial - 216 propuneri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1",
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 137.79,
+    "vertices": 19
+  },
+  {
+    "layer": "0. B initial - 216 propuneri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 159.25,
+    "vertices": 5
+  },
+  {
+    "layer": "0. B initial - 216 propuneri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 152.5,
+    "vertices": 39
+  },
+  {
+    "layer": "1. Observatii optice originale",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 145.31,
+    "vertices": 22
+  },
+  {
+    "layer": "1. Observatii optice originale",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1",
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 147.53,
+    "vertices": 19
+  },
+  {
+    "layer": "1. Observatii optice originale",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 152.57,
+    "vertices": 33
+  },
+  {
+    "layer": "2. Observatii dupa deduplicare",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 145.31,
+    "vertices": 22
+  },
+  {
+    "layer": "2. Observatii dupa deduplicare",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 152.57,
+    "vertices": 33
+  },
+  {
+    "layer": "2. Observatii dupa deduplicare",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1",
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 147.53,
+    "vertices": 19
+  },
+  {
+    "layer": "3. Simplificare cu garduri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "3. Simplificare cu garduri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 151.73,
+    "vertices": 22
+  },
+  {
+    "layer": "3. Simplificare cu garduri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1",
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 142.61,
+    "vertices": 7
+  },
+  {
+    "layer": "4. QA inainte de SAM2",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "4. QA inainte de SAM2",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 151.73,
+    "vertices": 22
+  },
+  {
+    "layer": "4. QA inainte de SAM2",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1",
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 142.61,
+    "vertices": 7
+  },
+  {
+    "layer": "6. PROPUNERI - cyan simplu / portocaliu revizie",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "6. PROPUNERI - cyan simplu / portocaliu revizie",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 151.73,
+    "vertices": 22
+  },
+  {
+    "layer": "6. PROPUNERI - cyan simplu / portocaliu revizie",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1",
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 142.61,
+    "vertices": 7
+  },
+  {
+    "layer": "AUTO - acoperire scanare / nu parcele",
+    "visible": false,
+    "fields": {
+      "status": "SCANNED_NOT_PROOF_OF_NO_OMISSIONS"
+    },
+    "area": 9216.0,
+    "vertices": 5
+  },
+  {
+    "layer": "AUTO - acoperire scanare / nu parcele",
+    "visible": false,
+    "fields": {
+      "status": "SCANNED_NOT_PROOF_OF_NO_OMISSIONS"
+    },
+    "area": 9216.0,
+    "vertices": 5
+  },
+  {
+    "layer": "AUTO - candidati acoperis / NEVALIDATI",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0000_P001_0000"
+    },
+    "area": 147.53,
+    "vertices": 19
+  },
+  {
+    "layer": "AUTO - candidati acoperis / NEVALIDATI",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001"
+    },
+    "area": 145.31,
+    "vertices": 22
+  },
+  {
+    "layer": "AUTO - candidati acoperis / NEVALIDATI",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_006_M0076_P001_0074"
+    },
+    "area": 152.57,
+    "vertices": 33
+  },
+  {
+    "layer": "AUTO - obiecte optice INCERTE / nu presupune cladiri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_006_M0071_P001_0067"
+    },
+    "area": 26.75,
+    "vertices": 11
+  },
+  {
+    "layer": "AUTO - obiecte optice INCERTE / nu presupune cladiri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_007_M0049_P001_0047"
+    },
+    "area": 31.24,
+    "vertices": 19
+  },
+  {
+    "layer": "AUTO - obiecte optice INCERTE / nu presupune cladiri",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0033_P001_0032"
+    },
+    "area": 8.43,
+    "vertices": 8
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_006_M0019_P001_0019"
+    },
+    "area": 77.35,
+    "vertices": 197
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_006_M0075_P001_0069"
+    },
+    "area": 87.48,
+    "vertices": 247
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_006_M0002_P001_0002"
+    },
+    "area": 123.89,
+    "vertices": 193
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0000_P001_0000"
+    },
+    "area": 147.37,
+    "vertices": 321
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_007_M0059_P001_0056"
+    },
+    "area": 15.64,
+    "vertices": 117
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001"
+    },
+    "area": 144.56,
+    "vertices": 357
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_007_M0049_P001_0047"
+    },
+    "area": 30.96,
+    "vertices": 207
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0033_P001_0032"
+    },
+    "area": 8.57,
+    "vertices": 65
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_006_M0071_P001_0067"
+    },
+    "area": 26.37,
+    "vertices": 145
+  },
+  {
+    "layer": "AUTO - observatii brute / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_006_M0076_P001_0074"
+    },
+    "area": 151.51,
+    "vertices": 319
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_006_M0019_P001_0019"
+    },
+    "area": 77.06,
+    "vertices": 24
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_006_M0002_P001_0002"
+    },
+    "area": 124.57,
+    "vertices": 23
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_007_M0059_P001_0056"
+    },
+    "area": 15.73,
+    "vertices": 7
+  },
+  {
+    "layer": "AUTO - vegetatie probabila / diagnostic",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_006_M0075_P001_0069"
+    },
+    "area": 87.83,
+    "vertices": 32
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 153.57,
+    "vertices": 13
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 151.79,
+    "vertices": 8
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 146.66,
+    "vertices": 14
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 137.1,
+    "vertices": 5
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 142.61,
+    "vertices": 7
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 145.02,
+    "vertices": 5
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 137.79,
+    "vertices": 19
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 151.73,
+    "vertices": 22
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 144.62,
+    "vertices": 5
+  },
+  {
+    "layer": "B - ALTERNATIVE / eligibile si respinse",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 270.9,
+    "vertices": 5
+  },
+  {
+    "layer": "B - ETAPA ANTERIOARA",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "B - ETAPA ANTERIOARA",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 151.73,
+    "vertices": 22
+  },
+  {
+    "layer": "B - ETAPA ANTERIOARA",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 142.61,
+    "vertices": 7
+  },
+  {
+    "layer": "B - FORME SIMPLE / necesita verificare",
+    "visible": true,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "B - FORME SIMPLE / necesita verificare",
+    "visible": true,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 151.79,
+    "vertices": 8
+  },
+  {
+    "layer": "B - FORME SIMPLE / necesita verificare",
+    "visible": true,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 145.02,
+    "vertices": 5
+  },
+  {
+    "layer": "B - acoperisuri in revizie / corectii locale",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "B - acoperisuri in revizie / corectii locale",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 137.1,
+    "vertices": 5
+  },
+  {
+    "layer": "B - false sau incomplete / necesita recuperare",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 151.79,
+    "vertices": 8
+  },
+  {
+    "layer": "B - inainte de corectii",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "B - inainte de corectii",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1"
+    },
+    "area": 151.79,
+    "vertices": 8
+  },
+  {
+    "layer": "B - inainte de corectii",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 145.02,
+    "vertices": 5
+  },
+  {
+    "layer": "OPT_B - Acoperis Propuneri Remediate (Mov Dash)",
+    "visible": true,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "OPT_B - Acoperis Propuneri Remediate (Mov Dash)",
+    "visible": true,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 137.1,
+    "vertices": 5
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)",
+    "visible": true,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1"
+    },
+    "area": 125.44,
+    "vertices": 5
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)",
+    "visible": true,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1"
+    },
+    "area": 118.85,
+    "vertices": 5
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol -0.40m (Verde)",
+    "visible": false,
+    "fields": {
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 118.13,
+    "vertices": 19
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol -0.40m (Verde)",
+    "visible": false,
+    "fields": {
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 139.7,
+    "vertices": 5
+  },
+  {
+    "layer": "OPT_B - Amprenta Sol -0.40m (Verde)",
+    "visible": false,
+    "fields": {
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 123.38,
+    "vertices": 39
+  },
+  {
+    "layer": "OPT_B - Cladiri Validate nDSM (Portocaliu)",
+    "visible": false,
+    "fields": {
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 137.79,
+    "vertices": 19
+  },
+  {
+    "layer": "OPT_B - Cladiri Validate nDSM (Portocaliu)",
+    "visible": false,
+    "fields": {
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 159.25,
+    "vertices": 5
+  },
+  {
+    "layer": "OPT_B - Cladiri Validate nDSM (Portocaliu)",
+    "visible": false,
+    "fields": {
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 152.5,
+    "vertices": 39
+  },
+  {
+    "layer": "QA - cazuri nerezolvate (nu livrabile finale)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_010:C1",
+      "body_id": "OPT_B_010:C1"
+    },
+    "area": 142.61,
+    "vertices": 7
+  },
+  {
+    "layer": "QA - cazuri nerezolvate (nu livrabile finale)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_012:C1",
+      "body_id": "OPT_B_012:C1"
+    },
+    "area": 144.0,
+    "vertices": 5
+  },
+  {
+    "layer": "QA - cazuri nerezolvate (nu livrabile finale)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "OPT_B_208:C1",
+      "body_id": "OPT_B_208:C1"
+    },
+    "area": 151.73,
+    "vertices": 22
+  },
+  {
+    "layer": "REST - Acoperis Ortho90 (Cyan)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0000_P001_0000",
+      "body_id": "REST_006:C1"
+    },
+    "area": 137.79,
+    "vertices": 19
+  },
+  {
+    "layer": "REST - Acoperis Ortho90 (Cyan)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001",
+      "body_id": "REST_008:C1"
+    },
+    "area": 159.25,
+    "vertices": 5
+  },
+  {
+    "layer": "REST - Amprenta Sol ANCPI -0.40m (Verde)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0000_P001_0000",
+      "body_id": "REST_006:C1"
+    },
+    "area": 118.13,
+    "vertices": 19
+  },
+  {
+    "layer": "REST - Amprenta Sol ANCPI -0.40m (Verde)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001",
+      "body_id": "REST_008:C1"
+    },
+    "area": 139.7,
+    "vertices": 5
+  },
+  {
+    "layer": "REST - Candidati Deduplicati/Omisi (Gri)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "REF_TIER1_006:B00003"
+    },
+    "area": 25114.54,
+    "vertices": 2251
+  },
+  {
+    "layer": "REST - Candidati Deduplicati/Omisi (Gri)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W003_006_M0076_P001_0074"
+    },
+    "area": 152.57,
+    "vertices": 33
+  },
+  {
+    "layer": "REST - Masca initiala inainte de regularizare (Galben)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0000_P001_0000",
+      "body_id": "REST_006:C1"
+    },
+    "area": 147.53,
+    "vertices": 19
+  },
+  {
+    "layer": "REST - Masca initiala inainte de regularizare (Galben)",
+    "visible": false,
+    "fields": {
+      "candidate_id": "W002_007_M0002_P001_0001",
+      "body_id": "REST_008:C1"
+    },
+    "area": 145.31,
+    "vertices": 22
+  },
+  {
+    "layer": "REVIZUIRE_COMPLEXA",
+    "visible": false,
+    "fields": {
+      "id": "REF_TIER1_006:B00003"
+    },
+    "area": 25114.54,
+    "vertices": 2251
+  }
+]

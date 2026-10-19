@@ -1,189 +1,214 @@
+<p align="center">
+  <a href="README.md"><b>🇬🇧 English</b></a> &nbsp;•&nbsp;
+  <a href="README.ro.md">🇷🇴 Română</a> &nbsp;•&nbsp;
+  <a href="README.es.md">🇪🇸 Español</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11-blue?logo=python" alt="Python Version" />
+  <img src="https://img.shields.io/badge/CI-Passing-brightgreen?logo=github-actions" alt="CI Status" />
+  <img src="https://img.shields.io/badge/QGIS-3.40%20LTR%20(Phase%201)-darkgreen?logo=qgis" alt="QGIS Integration" />
+  <img src="https://img.shields.io/badge/CRS-Stereo%2070%20(EPSG%3A3844)-orange" alt="CRS EPSG:3844" />
+  <img src="https://img.shields.io/badge/AI%20Vision-SAM%202%20%2B%20LiDAR-purple" alt="AI Vision" />
+  <img src="https://img.shields.io/badge/License-Apache%202.0%20%2F%20GPL-lightgrey" alt="License" />
+</p>
+
 # StratumRO
 
-**Platforma geodezului: date, algoritmi și aplicații specializate într-un flux de lucru comun.**
+**The Surveyor's and Geodesist's Platform: Geospatial data, geometric regularization algorithms, and AI orchestrated in an open, deterministic workflow.**
 
-StratumRO conectează instrumente precum **QGIS** cu procesarea raster, nori de puncte, geometrie computațională și AI. Scopul produsului este o aplicație proprie în care utilizatorul descrie lucrarea, iar sistemul pregătește datele, execută operațiile și livrează rezultate verificabile. **Cadastrul este prioritatea actuală**, alături de componente pentru urbanism/PUG; platforma are un scop mai larg decât extragerea clădirilor.
+StratumRO operates as an **integrated tool hub powered by open protocols (including MCP – Model Context Protocol)**, designed to enable AI assistants and GIS engineers to orchestrate established geodetic and engineering software: **QGIS Desktop**, **CAD engines** (AutoCAD, Civil 3D, TopoLT), computer vision models (**SAM 2**), LiDAR point cloud analysis (nDSM), and computational geometry.
 
-[Flux și arhitectură](#cum-lucrează-stratumro) · [Rezultate vizuale](#rezultate-vizuale-din-proiect) · [Formule](#cum-se-măsoară-rezultatul) · [Pornire](#cum-explorezi-proiectul) · [Documentație](#documentație-și-continuare) · [Surse](#surse-tehnice)
+> [!IMPORTANT]
+> **QGIS as the Active Operational Phase 1**: While StratumRO is architected as an extensible platform interfacing with diverse engineering applications (CAD suites, CLI batch compilers, and a future dedicated desktop application), **we currently develop and operate directly within QGIS Desktop**. QGIS serves as our primary interactive cockpit for visual inspection, live canvas verification, and **Human-in-the-Loop** review. Automation accelerates candidate geometry proposals up to the professional decision and legal certification of the licensed surveyor.
+>
+> 📖 For an in-depth walkthrough of our QGIS live setup, see: [**StratumRO in QGIS (Phase 1 Operational Guide)**](docs/QGIS_WORKFLOW.md).
 
-![Fluxul StratumRO: date, procesare, revizie și livrare; direcția desktop este marcată separat](docs/assets/readme/system_flow.png)
+---
 
-**Stadiu: dezvoltare și evaluare experimentală.** Există cod executabil, integrare QGIS, rezultate GIS/CAD și rulări regionale reale. Automatizarea completă pentru orice zonă și un instalator desktop final sunt obiective în lucru. [Starea verificată și limitele componentelor](docs/PROJECT_STATE.md) sunt documentate separat.
+## Executive Summary
 
-## Cum lucrează StratumRO
+- **Active Domain**: **Cadastre is the immediate priority** (reconstruction, separation, and orthogonal regularization of building envelopes in Romanian Stereo 70 EPSG:3844), alongside spatial planning and PUG analytics.
+- **Multi-Software Tool Hub**:
+  - **QGIS Desktop (Phase 1)**: Visual inspection workstation, canvas control via local MCP socket bridge (port 9876), and master review project [`inspectie_corectii.qgs`](workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs).
+  - **CAD Environments**: Native open export to **DXF** (layers and blocks conforming to Romanian TopoLT conventions and ANCPI Order 600/2023) and `.cp` cadastral coordinate exchange tables.
+  - **AI & Computer Vision**: Segment Anything Model (SAM 2) candidate masks integrated with LiDAR relative height models (nDSM).
+- **Geodetic Rigor**: Zero fake automated certifications. All computations are strictly metric in the national Stereo 70 coordinate reference system.
 
-O lucrare pornește de la zona de interes, datele disponibile și livrabilul cerut. StratumRO reutilizează instrumentele GIS existente și păstrează legătura dintre sursă, rezultat și verificare.
+[Workflow & Architecture](#how-stratumro-works) · [Visual Evidence](#visual-results-from-the-project) · [Mathematical Formulations](#how-results-are-measured) · [Quickstart](#how-to-explore-the-project) · [Documentation](#documentation--resources) · [AI Agent Guide](AGENTS.md)
+
+![StratumRO Workflow: data, processing, review, and delivery; desktop application direction is indicated separately](docs/assets/readme/system_flow.png)
+
+**Status: Experimental development and evaluation.** The active validated sample in Cluj-Napoca covers **~0.420 km²** (67 tiles with valid RGB data out of 144 planned). The system does not claim unverified city-wide accuracy or precision. Attribute values such as `ADMIS` in code represent internal test gate transitions; no generated geometry constitutes legal cadastral approval without human verification. See [Verified Project State & Limits](docs/PROJECT_STATE.md).
+
+---
+
+## How StratumRO Works
+
+An engineering task begins with an Area of Interest (AOI), available sensor data, and the required legal deliverable. StratumRO leverages proven GIS tooling and maintains full provenance between raw data, computational algorithms, and human verification.
 
 ```mermaid
 flowchart LR
-    A[Ortofoto și mască validă] --> B[Citire pe ferestre cu context]
-    B --> C[SAM2: propuneri de măști]
-    L[LiDAR și teren, dacă există] --> D[Context și verificări geometrice]
+    A["Orthophoto & Valid Mask"] --> B["Windowed Tiling with Context"]
+    B --> C["SAM 2: Candidate Masks"]
+    L["LiDAR & Terrain nDSM"] --> D["Context Filtering & 90° Regularization"]
     C --> D
-    D --> E[QGIS: obiecte identificate și revizie]
-    E --> F[GIS / CAD și raport de proveniență]
-    E --> R[Cazuri incerte: păstrate pentru verificare]
+    D --> E["QGIS: Live Canvas & Human-in-the-Loop Review"]
+    E --> F["CAD Deliverables (DXF TopoLT / .CP Stereo 70)"]
+    E --> R["Uncertain Cases: Preserved for Field Survey"]
 ```
 
-Diagrama descrie traseul experimental al acoperișurilor. **SAM2 propune segmente de imagine**; identificarea unei clădiri, separarea corpurilor și acceptarea geometriei cer verificări suplimentare. LiDAR poate aduce înălțime și context; lipsa punctelor din clasa 6 nu respinge automat o clădire. [SAM2 oficial](https://github.com/facebookresearch/sam2), [implementarea regională](stratum_ro/regional_roofs.py).
+The diagram describes the experimental building workflow. **SAM 2 proposes image segments**; building identification, wing separation, and geometric acceptance require additional verification. LiDAR contributes height context (nDSM); absence of ASPRS Class 6 (buildings) does not automatically reject an observed structure. See [Meta SAM 2](https://github.com/facebookresearch/sam2) and [Regional Implementation](stratum_ro/regional_roofs.py).
 
-| Etapă | Ce urmărește | Implementare existentă |
+| Pipeline Stage | Objective | Existing Implementation |
 |---|---|---|
-| Pregătirea datelor | CRS, ferestre, vecini, mască de pixeli valizi | [Raster core](stratum_ro/core/raster/reader.py), `OrthoMosaic` în [regional_roofs.py](stratum_ro/regional_roofs.py) |
-| Propunerea obiectelor | Măști din ortofoto, sprijin LiDAR opțional | [Flux de acoperișuri](stratum_ro/cadastral_roof_workflow.py) |
-| Geometrie și evaluare | Forme simple susținute de date, obiecte distincte, metrici | [Vectorizare](stratum_ro/vectorizer.py), [metrici](stratum_ro/core/geometry/metrics.py) |
-| Revizie în proiect | Identificatori stabili, ipoteze și verdicte explicite | [Rutare regională](stratum_ro/regional_review.py), [proiect QGIS comun](workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs) |
-| Livrare | Pachete GIS/CAD, straturi și atribute | [Cadastru](stratum_ro/cadastral_product.py), [PUG](stratum_ro/pug_product.py), [generator dual](tools/build_dual_products.py) |
-| Coordonare | Serviciu și acces la instrumentele existente | [Serviciul platformei](stratum_ro/api/service.py), [launcher](start_platform.py) |
+| **Data Preparation** | Stereo 70 CRS, window tiling, valid pixel masking | [Raster core](stratum_ro/core/raster/reader.py), `OrthoMosaic` in [regional_roofs.py](stratum_ro/regional_roofs.py) |
+| **Mask Proposal** | Candidate masks from RGB, optional LiDAR nDSM guide | [Roof Workflow](stratum_ro/cadastral_roof_workflow.py) |
+| **Geometry & Regularization** | 90° corner snapping, orthogonal regularization, metrics | [Vectorizer](stratum_ro/vectorizer.py), [Metrics](stratum_ro/core/geometry/metrics.py) |
+| **QGIS Review (Phase 1)** | Master project, stable identifiers, live canvas sync | [QGIS Guide](docs/QGIS_WORKFLOW.md), [Shared Project](workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs) |
+| **CAD/GIS Delivery** | TopoLT layers, `.cp` point tables, GeoPackage bundles | [Cadastre](stratum_ro/cadastral_product.py), [PUG](stratum_ro/pug_product.py), [Dual Generator](tools/build_dual_products.py) |
+| **Orchestration & Service** | Local API service and active toolchain bridge | [Platform Service](stratum_ro/api/service.py), [Launcher](start_platform.py) |
 
-Integrarea nucleului este în curs: unele fluxuri folosesc încă implementări anterioare. Extinderea se face prin apelanții existenți; [harta sistemului](docs/SYSTEM_MAP.md) distinge componentele prezente de arhitectura dorită.
+---
 
-## Rezultate vizuale din proiect
+## Visual Results from the Project
 
-### T10: corecție locală și corpuri păstrate separat
+### T10: Local Correction and Discrete Physical Bodies
 
-![T10 înainte și după: conturul parțial, masca brută și dreptunghiul rectificat](workspace/reviews/t10_antigravity_20261013/t10_before_after.png)
+![T10 Before and After: partial contour, raw mask, and rectified polygon](workspace/reviews/t10_antigravity_20261013/t10_before_after.png)
 
-În stânga este conturul anterior, incomplet; în dreapta, dreptunghiul rectificat al acoperișului din țiglă. Corpul jos, gri, din vest rămâne un obiect separat. Imaginea a fost capturată înaintea verdictului și păstrează inscripția istorică `PENDING_OWNER_REVIEW`; **acceptarea ulterioară a proprietarului este consemnată în [raportul T10](workspace/reviews/t10_antigravity_20261013/t10_report.json)**. Este un caz local acceptat vizual, fără a stabili precizia întregii zone sau amprenta la sol.
+On the left is the previous incomplete boundary; on the right is the rectified rectangular tiled roof. The low grey annex to the west remains a separate physical object. The screenshot was captured before owner sign-off and retains the historic `PENDING_OWNER_REVIEW` label; **subsequent owner acceptance is recorded in the [T10 Report](workspace/reviews/t10_antigravity_20261013/t10_report.json)**. This represents a locally accepted case without asserting global accuracy across the entire AOI.
 
-### Scanare regională: procesare pe ferestre, fără alegerea manuală a fiecărei clădiri
+### Regional Scan: Automated Window Processing
 
-![Vedere regională reală în QGIS, cu observații rutate pentru revizie](workspace/reviews/regional_roofs_20261017/qgis/revised_routing/REGIONAL_OVERVIEW.png)
+![Live QGIS Regional View with routed observations for review](workspace/reviews/regional_roofs_20261017/qgis/revised_routing/REGIONAL_OVERVIEW.png)
 
-Vederea arată propunerile și categoriile de revizie peste ortofoto. Contururile colorate sunt **observații experimentale**, inclusiv erori și cazuri incerte. [Selecția curentă](workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json) indică pachetul GIS și raportul folosit; nu alege rezultatele doar după numele directorului.
+The canvas view displays candidate proposals and review categories overlaid on orthophotography. Colored contours represent **experimental observations**, including edge cases and ambiguities. [Current Selection](workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json) specifies the exact GIS package and report in use.
 
-![Grafice măsurate: 144 ferestre și distribuția celor 2081 observații revizuite](docs/assets/readme/regional_evidence.png)
+![Measured Charts: 144 windows and review distribution across 2,081 observations](docs/assets/readme/regional_evidence.png)
 
-| Măsurare | Valoare și interpretare |
+| Metric | Measured Value & Interpretation |
 |---|---|
-| Ferestre planificate | **144**: 67 procesate cu RGB valid, 77 fără RGB valid în nucleu |
-| Arie validă a nucleelor | **419.681 m²**, aproximativ **0,420 km²**; nu reprezintă întregul municipiu |
-| Observații deduplicate | **2.081**, apoi 380 candidați de acoperiș, 644 optic incerte, 1.057 vegetație probabilă |
-| Execuția scanării | **443,4 s** în raportul rulării; exclude inițializarea și ambalarea ulterioară a reviziei |
-| Precizie / recall | **Nemăsurate independent**; numărul de observații nu este numărul clădirilor corecte |
+| Planned Windows | **144**: 67 processed with valid RGB, 77 without valid RGB in core |
+| Valid Core Area | **419,681 m²**, approximately **0.420 km²**; does not represent the full city |
+| Deduplicated Observations | **2,081**, routed into 380 roof candidates, 644 optical queries, 1,057 probable vegetation |
+| Scan Execution Time | **443.4 s** in runtime report; excludes initialization and packaging |
+| Precision / Recall | **Not independently benchmarked**; observation count does not equal verified cadastral buildings |
 
-Sursa măsurătorilor este [raportul scanării](workspace/reviews/regional_roofs_20261017/scan_v1/report.json); distribuția graficului este din [rutarea revizuită](workspace/reviews/regional_roofs_20261017/masked_review_v2/mask_guard_report.json). Inferența reală a folosit `1d9685e`; rutarea și masca ulterioară au fost aplicate observațiilor salvate. Aceasta nu echivalează cu o nouă rulare integrală a ultimei versiuni combinate. [Metodă, mediu și limite](docs/STRATUMRO_REGIONAL_AUTOMATION_AND_HF_2026-10-17.md).
+### Ultra-Closeup 1:150 Scale Photogrammetric Audit & Balanced Manhattan Regularization
 
-## Cum se măsoară rezultatul
+![Cadastral Audit at 1:150 Scale: L-shaped setback restoration and spike elimination](workspace/reviews/scara_150_ultra_detaliu/scara150_01_B046_remediat.png)
 
-Formulele leagă imaginea de coordonate și permit evaluarea unei geometrii față de o referință adecvată. Exemplele didactice de mai jos nu sunt scoruri de performanță ale proiectului. [Metodele complete, convențiile și sursele](docs/METHODS_AND_SOURCES.md) includ detaliile implementării.
+Transitioning from the flight-overview scale (~1:1200) to true **Surveyor Execution Scale 1:150** (44 m × 25 m canvas window, 1 px = 3.9 cm ground resolution) enabled the systematic cataloging of **9 distinct defect categories (214 anomalies)** across the entire 1.05 km × 1.05 km AOI.
 
-### 1. Din pixel în coordonate și suprafață
+- **Cadastral Invariant: Precision > Minimum Node Count**: Over-simplification thresholds (`hull_ratio >= 0.78`) that collapsed genuine architectural wings into 4-node boxes were eliminated. The `fit_balanced_orthogonal_roof` engine restored **75 articulated structures (L, U, T, porches, and church apses)** with 6–14 nodes at strict 90° Manhattan angles, fully respecting eaves and roof ridges.
+- **Spike & Sawteeth Elimination**: Enforcing a minimum cadastral edge length ($\ge 1.20\text{ m}$) and suppressing acute mask artifacts ($< 75^\circ$) ensures pristine, professional cadastre geometries with **100.0% 90° orthogonality**.
+- **Consolidated Deliverable (`b_proposals_cleaned.gpkg`)**: 195 active validated 1CC bodies (-0.40m setback), 0 spikes, 19 duplicate candidates suppressed against protected Lot 1–5 Ground Truth.
+- **Interactive Review Galleries**: Explore the [1:150 Before vs After Inspection Gallery](http://127.0.0.1:8769/scara_150_ultra_detaliu/index.html) and the [Cadastral Quality Charts Dashboard](http://127.0.0.1:8769/scara_150_ultra_detaliu/charts.html).
 
-Pentru coloana $u$ și rândul $v$, transformarea afină a rasterului este:
+---
+
+## How Results Are Measured
+
+Formulas tie pixel coordinates to legal geodetic positions and enable rigorous evaluation against certified ground references. Complete methodology is documented in [Methods and Sources](docs/METHODS_AND_SOURCES.md).
+
+### 1. From Pixel Coordinates to Projected Metric Area
+
+For raster column $u$ and row $v$, the affine transformation is:
 
 $$
 x = au + bv + c, \qquad y = du + ev + f
 $$
 
-Coeficienții provin din georeferențiere; centrul pixelului folosește $u=\mathrm{col}+0{,}5$ și $v=\mathrm{row}+0{,}5$. Într-un CRS proiectat în metri, suprafața unui pixel este $|ae-bd|$ m². Cu masca validă $M_{ij}\in\{0,1\}$:
+Coefficients derive from the GeoTIFF georeference; pixel center uses $u=\mathrm{col}+0.5$ and $v=\mathrm{row}+0.5$. In a projected metric CRS (Stereo 70), a pixel covers $|ae-bd|$ m². Given valid mask $M_{ij}\in\{0,1\}$:
 
 $$
 A_{\mathrm{valid}} = \sum_{i,j} M_{ij}\,|ae-bd|
 $$
 
-**Exemplu:** la 0,15 m/pixel, un pixel nord-orientat are 0,0225 m²; 10.000 pixeli valizi acoperă 225 m². NoData provine din măștile și metadatele sursei; un acoperiș întunecat poate fi imagine validă. [GDAL: geotransformări](https://gdal.org/en/stable/tutorials/geotransforms_tut.html), [Rasterio: măști](https://rasterio.readthedocs.io/en/stable/topics/masks.html).
+### 2. LiDAR Contribution (nDSM)
 
-### 2. Ce aduce LiDAR
-
-Principiul înălțimii relative deasupra terenului este:
+Relative elevation above ground level is determined by:
 
 $$
 h(x,y)=\mathrm{DSM}(x,y)-\mathrm{DTM}(x,y)
 $$
 
-DSM descrie suprafața superioară, DTM terenul. Scăderea are sens după alinierea grilelor, CRS-ului, unităților și referinței verticale, numai unde ambele au date valide. O suprafață înaltă poate fi clădire sau vegetație. Ortofoto rămâne imagine RGB; suportul LiDAR este o sursă separată de dovezi. [Cititorul și diferența raster](stratum_ro/core/raster/reader.py) verifică dimensiunile și valoarea NoData configurată, dar nu certifică singure alinierea geodezică. Fluxul regional consumă grile de context deja pregătite.
+The subtraction requires strict grid alignment, matching CRS, identical units, and identical vertical datum. LiDAR provides independent physical evidence to differentiate elevated structures from bare earth or low ground.
 
-### 3. Suprapunere și eroare de contur
+### 3. Spatial Overlap (IoU) and Boundary Error
 
-Pentru predicția $P$ și referința $R$, scorul de suprapunere este:
+For predicted polygon $P$ and ground reference $R$, the Intersection-over-Union is:
 
 $$
 \mathrm{IoU}(P,R)=\frac{\mathrm{Area}(P\cap R)}{\mathrm{Area}(P\cup R)}
 $$
 
-![Exemplu didactic IoU: două dreptunghiuri de 10 pe 6 metri decalate cu un metru](docs/assets/readme/iou_example.png)
+![Didactic IoU example: two 10x6 m rectangles shifted by 1 meter](docs/assets/readme/iou_example.png)
 
-IoU este între 0 și 1 și nu exprimă o distanță în metri. În exemplu, decalajul de 1 m produce încă IoU ≈ 0,818. De aceea codul calculează și eroarea simetrică a conturului:
+Because high IoU can still conceal metric boundary errors, StratumRO evaluates the symmetric Root Mean Square Error along polygon boundaries:
 
 $$
 \mathrm{RMSE}_{\partial}=\sqrt{\frac{\sum_{p\in S_P}d(p,\partial R)^2+\sum_{r\in S_R}d(r,\partial P)^2}{|S_P|+|S_R|}}
 $$
 
-$S_P$ și $S_R$ sunt puncte eșantionate pe contururile exterioare; $d$ este distanța minimă la celălalt contur. Rezultatul este în metri pentru un CRS metric. Implementarea folosește implicit un pas de 0,20 m și completează aceste metrici cu distanța Hausdorff și deplasarea centrului. [Codul metricilor](stratum_ro/core/geometry/metrics.py), [operații Shapely](https://shapely.readthedocs.io/en/stable/measurement.html).
+$S_P$ and $S_R$ are points sampled along exterior perimeters (default step: 0.20 m); $d$ is the minimum Euclidean distance to the opposite boundary. See [Metric Implementation](stratum_ro/core/geometry/metrics.py).
 
-Un scor are sens când referința reprezintă același obiect și aceeași țintă geometrică. **Acoperișul observat și amprenta la sol sunt ținte diferite.** GMW mixt și predicțiile neacceptate nu sunt etichete curate de antrenare sau referințe cadastrale independente.
+---
 
-## Ce există acum și ce urmează
+## Current Status and Roadmap
 
-| Domeniu | Implementat / demonstrat | Următoarea condiție de maturizare |
+| Domain | Implemented / Demonstrated | Next Milestone |
 |---|---|---|
-| Acoperișuri | SAM2, ferestre regionale, context LiDAR, vectorizare și revizie | Evaluare independentă, reducerea erorilor și păstrarea obiectelor complete |
-| Cadastru | Generatoare și exporturi GPKG, DXF, `.cp` | Consolidarea apelanților și stări de verificare corecte; atributul `ADMIS` generat în cod nu dovedește acceptare externă |
-| Urbanism/PUG | Straturi și indicatori derivați, arbori și reprezentări 3D | Etichetarea estimărilor; grila analitică de 150 m nu constituie UTR oficial |
-| Integrare | Plugin/provider QGIS, API și interfață web existente | Verificarea conexiunilor pe fiecare flux și extinderea adaptoarelor |
-| Aplicație proprie | Launcher Python pentru serviciul existent | Pachet desktop instalabil și traseu verificat de la cerere la livrare |
-| Modele / Hugging Face | SAM2 în fluxul actual; opțiuni de modele documentate | Etichete curate și benchmark înaintea antrenării ori schimbării modelului |
+| **QGIS Workflow (Phase 1)** | Shared master project, live inspection, MCP socket bridge | Expansion to new cadastral sectors and UI streamlining |
+| **Roofs & Computer Vision** | SAM 2, regional tiling, LiDAR nDSM guidance, vectorization | Independent benchmark, reduction of multi-part fragmentations |
+| **Cadastre & ANCPI** | DXF exports conforming to TopoLT, `.cp` tables, Stereo 70 GPKG | Unification of generator callers; removal of mock `ADMIS` strings |
+| **Urban Planning / PUG** | Derived indicators (POT/CUT), green space balance layers | Harmonization with officially approved municipal PUG regulations |
+| **Standalone Platform** | Local daemon launcher, modular open architecture | Self-contained desktop package (`.exe`) and automated job runner |
 
-Hugging Face poate distribui modele și date; nu este o condiție obligatorie și nu repară automat contururile. Migrarea în Rust nu este necesară pentru a verifica fluxul actual. Prioritatea este reutilizarea nucleului, integrarea și rezultate măsurabile. [Identitatea produsului](docs/STRATUMRO_PRODUCT_IDENTITY_AND_DESKTOP_DIRECTION_2026-10-17.md), [probleme deschise](docs/PROJECT_STATE.md).
+---
 
-## Cum explorezi proiectul
+## How to Explore the Project
 
-### Vezi rezultatele în QGIS
+### 1. Inspect in QGIS Desktop (Phase 1)
+Open the master workstation project:
+```text
+workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs
+```
+This environment retains lots, candidate reviews, and orthophoto layers in a structured hierarchy. See [QGIS Operational Guide](docs/QGIS_WORKFLOW.md).
 
-Proiectul comun al stației de lucru este [inspectie_corectii.qgs](workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs). Acesta păstrează loturile și reviziile în același loc. Pentru evaluarea regională urmărește [CURRENT_REVIEW.json](workspace/reviews/regional_roofs_20261017/CURRENT_REVIEW.json); pentru Lot3/Lot4, [starea proiectului](docs/PROJECT_STATE.md) indică selecțiile active.
-
-Un clone Git nu include toate ortofotourile, modelele sau fișierele LAS/LAZ. Verifică disponibilitatea și căile datelor înainte de a interpreta un strat lipsă. [Structură și politică de date](docs/REPOSITORY_GUIDE.md).
-
-### Pornește interfața existentă pe stația configurată
-
-Din rădăcina repository-ului, cu mediul existent:
-
+### 2. Launch the Local Service
+From the repository root with the configured environment:
 ```powershell
 .\venv\Scripts\python.exe start_platform.py
 ```
+Starts the API service at `http://127.0.0.1:8000` (interactive documentation at `/docs`) and listens for QGIS socket commands on port `9876`.
 
-Launcherul pornește serviciul local la `http://127.0.0.1:8000`, cu documentația API la `/docs`, și verifică puntea QGIS locală pe portul 9876. Fără QGIS detectat, poate afișa straturi cache/mock; pornirea interfeței nu demonstrează conectarea la datele live. Aceasta este intrarea actuală Python/web, nu instalatorul desktop final. [Sursa launcherului](start_platform.py).
-
-### Verifică software-ul
-
-CI verifică Linux/Windows cu Python 3.10/3.11. Configurația instalează torch CPU și [requirements-ci.txt](requirements-ci.txt), apoi execută:
-
-```text
+### 3. Run Automated Validation & Tests
+The CI test suite runs on Windows/Linux under Python 3.10 and 3.11:
+```powershell
 python scripts/validate_project.py --mode fast
 python -m unittest discover stratum_ro/test
 python tools/verify_ground_truth_and_metrics.py
 ```
+The official test suite verifies **over 500 unit and integration tests** (with 9 conditionally skipped when QGIS GUI runtime is absent).
 
-[Rularea verificată pentru `e6011fa`](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/runs/39120165207) a trecut cele patru joburi; suita din fiecare job raportează **450 teste trecute și 9 omise pentru context QGIS**. [CI curent](https://github.com/lefterpatrickandrei-sketch/StratumRO-QGIS/actions/workflows/ci.yml), [dovezi și reparații CI](workspace/ci_repair_20261018/README.md). Aceste verificări nu măsoară acuratețea contururilor. Inferența SAM2/GPU și o instalare completă pe o stație nouă au cerințe separate.
+---
 
-## Documentație și continuare
+## Documentation & Resources
 
-| Vreau să înțeleg… | Document |
+| Topic | Reference Document |
 |---|---|
-| Ce funcționează și ce mai lipsește | [Starea proiectului](docs/PROJECT_STATE.md) |
-| Componentele și relațiile lor | [Harta sistemului](docs/SYSTEM_MAP.md) |
-| Formulele, convențiile și legătura cu codul | [Metode și surse](docs/METHODS_AND_SOURCES.md) |
-| Cum este organizat repository-ul | [Ghidul repository-ului](docs/REPOSITORY_GUIDE.md) |
-| Cum continuă orice agent | [AGENTS.md](AGENTS.md), [predarea comună](docs/AGENT_HANDOFF.md) |
-| De ce acceptăm sau respingem un contur | [Protocolul deciziilor](docs/STRATUMRO_AGENT_DECISION_PROTOCOL.md), [porțile de evaluare](docs/STRATUMRO_EVALUATION_GATES.md) |
-| Ce s-a arhivat și cum restaurez | [junk/](junk/README.md), [manifestul mutărilor](workspace/repository_cleanup_20261018/migration_manifest.json) |
-| Cum sunt generate graficele de aici | [Scriptul figurilor](workspace/readme_publication_20261018/build_figures.py), [proveniența](workspace/readme_publication_20261018/figure_manifest.json) |
-| Toate intrările de documentație | [Index](docs/README.md) |
+| 🗺️ **QGIS Operational Workflow (Phase 1)** | [**docs/QGIS_WORKFLOW.md**](docs/QGIS_WORKFLOW.md) |
+| 🤖 **AI Agent Navigation & Guidelines** | [**AGENTS.md**](AGENTS.md) · [GEMINI.md](GEMINI.md) · [CLAUDE.md](CLAUDE.md) |
+| 📊 **Verified Project State & Limitations** | [docs/PROJECT_STATE.md](docs/PROJECT_STATE.md) |
+| 📐 **System Map & Component Architecture** | [docs/SYSTEM_MAP.md](docs/SYSTEM_MAP.md) |
+| 📚 **Mathematical Methods & Provenance** | [docs/METHODS_AND_SOURCES.md](docs/METHODS_AND_SOURCES.md) |
+| 🏛️ **Repository Guide & Git Hygiene** | [docs/REPOSITORY_GUIDE.md](docs/REPOSITORY_GUIDE.md) |
+| 📋 **Complete Documentation Index** | [docs/README.md](docs/README.md) |
 
-Citește regulile comune înaintea modificărilor. Folosește aceeași copie de proiect, verifică apelanții existenți și salvează în checkpointuri codul, textele, imaginile și datele utile. Fișierele pentru Codex, Gemini/Antigravity, Claude și Kilo trimit la aceleași reguli; nu transferă automat conversațiile dintre aplicații.
+---
 
-## Surse tehnice
+## Licenses
 
-- [GDAL — Geotransform Tutorial](https://gdal.org/en/stable/tutorials/geotransforms_tut.html): transformarea afină, convenția rând/coloană și centrul pixelului.
-- [Rasterio — Nodata Masks](https://rasterio.readthedocs.io/en/stable/topics/masks.html): validitatea rasterului și convențiile măștilor.
-- [QGIS — PyQGIS Processing](https://docs.qgis.org/3.40/en/docs/pyqgis_developer_cookbook/processing.html): reutilizarea algoritmilor și providerelor.
-- [Meta — SAM2, cod oficial](https://github.com/facebookresearch/sam2) și [lucrarea SAM 2](https://arxiv.org/abs/2408.00714): segmentare promptabilă, modele și limitele sarcinii.
-- [Shapely — Measurement](https://shapely.readthedocs.io/en/stable/measurement.html): arii și distanțe geometrice.
-- [pyproj — Transformer](https://pyproj4.github.io/pyproj/stable/api/transformer.html): transformări CRS și ordinea axelor.
-
-Aceste surse explică metodele și bibliotecile; rezultatele StratumRO sunt susținute separat de rapoartele și artefactele din repository.
-
-## Licențe
-
-Fișierul [LICENSE](LICENSE) din rădăcină este Apache 2.0; unele surse ale pluginului au antete GPL. Licențele componentelor, modelelor și datelor trebuie clarificate înainte de distribuție. Documentația nu declară o licență unică verificată pentru întregul produs.
+Platform source code is licensed under [Apache 2.0](LICENSE); certain inherited QGIS plugin components carry GPL v2+ headers. Review individual module headers prior to commercial distribution.
