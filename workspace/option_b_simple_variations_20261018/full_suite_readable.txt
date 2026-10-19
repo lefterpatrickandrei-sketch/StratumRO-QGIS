@@ -1,7 +1,6 @@
-C:\Users\lefpa\Downloads\QGIS-AI\venv\lib\site-packages\shapely\decorators.py:173: DeprecationWarning: The 'resolution' argument is deprecated. Use 'quad_segs' instead
-  result = func(*args, **kwargs)
-2026-10-18 20:56:03.3140204 [W:onnxruntime:, graph.cc:120 onnxruntime::MergeShapeInfo] Error merging shape info for output. '/image_encoder/trunk/Concat_3_output_0' source:{4} target:{5}. Falling back to lenient merge.
-----------------------------------------------------------------------
-Ran 507 tests in 39.794s
-
-OK (skipped=9)
+C:\Users\lefpa\Downloads\QGIS-AI\venv\lib\site-packages\shapely\decorators.py:173: DeprecationWarning: The 'resolution' argument is deprecated. Use 'quad_segs' instead
+  result = func(*args, **kwargs)
+2026-10-18 20:56:03.3140204 [W:onnxruntime:, graph.cc:120 onnxruntime::MergeShapeInfo] Error merging shape info for output. '/image_encoder/trunk/Concat_3_output_0' source:{4} target:{5}. Falling back to lenient merge.
+----------------------------------------------------------------------
+Ran 507 tests in 39.794s
+OK (skipped=9)
