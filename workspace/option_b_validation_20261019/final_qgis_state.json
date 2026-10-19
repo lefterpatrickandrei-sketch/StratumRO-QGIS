@@ -1,0 +1,35 @@
+{
+  "lots": [
+    {
+      "name": "ACOPERISURI_SIMPLE",
+      "visible": true
+    },
+    {
+      "name": "B5_DOUA_CORPURI",
+      "visible": true
+    },
+    {
+      "name": "LOT3 - Acoperis Ortho90 (Cyan)",
+      "visible": true
+    },
+    {
+      "name": "LOT4 - Acoperis Ortho90 (Cyan)",
+      "visible": true
+    },
+    {
+      "name": "LOT5 - Acoperis Ortho90 (Cyan)",
+      "visible": true
+    },
+    {
+      "name": "RECTIFICARI_T05_T06_T07_T10",
+      "visible": true
+    },
+    {
+      "name": "TESTE_10_REZULTATE",
+      "visible": true
+    }
+  ],
+  "saved": true,
+  "layer_count": 102,
+  "overview_is_rendered_extent_not_canvas_navigation": true
+}

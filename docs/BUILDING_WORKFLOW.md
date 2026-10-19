@@ -55,3 +55,7 @@ Rularea algoritmului necesită în plus cele opt ortofotouri indicate în config
 [Predare completa](../workspace/option_b_repair_20261019/README.md). Selectorul separa stratul de 152 propuneri de cele 64 cazuri diagnostice, pastrand toate cele 216 in B_SIMPLE. `review_actions.json` contine interventii de revizie ale agentului cu dovezi SHA-256; nu este clasificator automat sau verdict al proprietarului. Noile verificari locale protejeaza retragerile si limiteaza varfurile artificiale. Golurile mici sunt curatate numai cu sprijin de inaltime valid. Exemplele incomplete nu sunt recuperate prin reducerea nodurilor.
 
 Pentru rerulare folositi comanda din CURRENT.json cu --review-actions si un director nou. comparison_review pastreaza comparatia completa de 216 cazuri, iar simplification_input ramane intrarea bruta. Grupul QGIS activ este B_CORECTII_20261019. Snapshoturile QGS trebuie restaurate la calea comuna originala pentru rezolvarea cailor relative; nu deschideti orbește copia din directorul de artefacte.
+
+## Afisare si verificare QGIS, 2026-10-19
+
+B foloseste mov #b030e0 pentru a se distinge de cele cinci loturi, a caror vizibilitate se pastreaza. Integratorul pastreaza implicit vizibilitatea straturilor existente (`preserve_existing_visibility=True`). Nu promovati global rezultatul nou dupa numarul total al nodurilor. Cititi [auditul numeric, vizual si cercetarea](../workspace/option_b_validation_20261019/README.md). Selectorul algoritmic si vederea curenta QGIS sunt distincte: B anterior este vizibil, reparatia noua ramane disponibila.
