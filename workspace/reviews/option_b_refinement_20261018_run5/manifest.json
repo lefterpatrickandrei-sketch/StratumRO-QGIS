@@ -1,0 +1,82 @@
+{
+  "request": {
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "OPTIUNEA_B_ROOF_VALIDAT",
+    "id_field": "body_id",
+    "rejected_layer": "OPTIUNEA_B_FALS_POZITIV_ELIMINAT",
+    "observations": "workspace/reviews/regional_roofs_20261017/masked_review_v2/regional_review.gpkg",
+    "observation_layer": "ROOF_CANDIDATES",
+    "observation_match_iou": 0.6,
+    "orthophotos": [
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-1_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-2_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-1_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-2_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-1_halo.tif"
+    ],
+    "height": "workspace/derived/cluj_ndsm_1m.tif",
+    "parameters": {},
+    "replay_retry_package": "workspace/reviews/option_b_refinement_20261018_run4/refinement.gpkg"
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\comparatie_a_vs_b_20261018\\comparatie_a_vs_b.gpkg",
+      "sha256": "2a01d3f75a717e89230a7b24abe13c51a4140bb22b1948b06c50a0102eac60e7"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-0_halo.tif",
+      "sha256": "3b8978e48d801869f699d92d4a70dbc086930ec9b3c6b69fdeffd94c4388870c"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+      "sha256": "7401f866f04a29012145feab39d0eeb17626cc89add7c6148836ba0c9d7aa6bd"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-2_halo.tif",
+      "sha256": "b601034d3a3284a6571de7149818ea342b21f39d74bbc3d38ccf91d34138617c"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+      "sha256": "832c03fab54b3f89fd0697859ad23e4d9b600e269d7023db0c5060b85d276631"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-1_halo.tif",
+      "sha256": "97488261fd42f1f2a40af66e2385464d2ab4d452da51f24c27adf199497aae70"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-2_halo.tif",
+      "sha256": "cdd0909d6e31d54a02b0c6c562c6437024c5e9c95f4b852b5d8efa6ca4be7f63"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-0_halo.tif",
+      "sha256": "4c53cc7f3c0e78ac557d5bf0db65a7190c4520a3bd263e207199cd8e2a69e61b"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-1_halo.tif",
+      "sha256": "0db94f260ce7a079c8e21e4d9a40c08db5d6e85d2156845ffb1f51133b62f15b"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\derived\\cluj_ndsm_1m.tif",
+      "sha256": "0b4bc40b73f154a23a507137edbe44f41ab35c54d8149488695598df5d1b7220"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\regional_roofs_20261017\\masked_review_v2\\regional_review.gpkg",
+      "sha256": "84580f7e6901804f04aa7ebb29305c27b8b80372baf60f4ad3f2fdefc6f2f56c"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_run4\\refinement.gpkg",
+      "sha256": "ecee5ef996dcca187d353c58550deef779d2e9036ddc6839ecf001fae262cd75"
+    }
+  ],
+  "code_sha256": {
+    "tools/refine_regional_roofs.py": "f86ba6c032a3b2c0d0e35b81766760e186d99344e44306be04afb609c1f3ffce",
+    "stratum_ro/regional_refinement.py": "06147f7ae0e10d4e428375d82aaf9e7afa9ce60d17ed3cc5ccf2d92a2fe59e0f",
+    "stratum_ro/roof_simple_geometry.py": "afc08f5a09ed303f9254f10e8128546eddf8c465b4c0aa05be3ff0d72809adb6",
+    "stratum_ro/regional_roofs.py": "c59a038a77c4160fb10ca5a079198008d662201fded8008811da3a7ce70f0bcf",
+    "stratum_ro/api/service.py": "f10fb28d16440afc047fc6a235ce288b04422c0b8f7912f760a706a7e3019a1f"
+  },
+  "gpkg_sha256": "e2f58f21d0822e7ab787f1ba9fee0d6740555f6510679231ab11d00a359ed1a0"
+}

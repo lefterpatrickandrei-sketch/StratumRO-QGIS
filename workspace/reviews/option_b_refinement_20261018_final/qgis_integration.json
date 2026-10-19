@@ -1,0 +1,103 @@
+{
+  "project": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\body_recovery_20261013\\inspectie_corectii.qgs",
+  "dirty_before": true,
+  "canvas_layer_ids_before": [
+    "LOT5___Acoperis_Ortho90__Cyan__dbf9128a_860e_47a3_beaf_d83acb46bd45",
+    "LOT5___Amprenta_Sol_ANCPI__0_40m__Verde__c2d0103d_0c60_4e9f_b27f_f863418f9452",
+    "OPT_B___Cladiri_Validate_nDSM__Portocaliu__3135407f_3336_4d65_8b1e_e552991eb065",
+    "OPT_B___Amprenta_Sol__0_40m__Verde__6a2a1cdf_4471_4f13_b936_ea29ac115261",
+    "LOT3___Acoperis_Ortho90__Cyan__16f61bcb_e830_4943_a759_95af5e7b28b9",
+    "LOT3___Amprenta_Sol_ANCPI__0_40m__Verde__bb3d9a20_4a45_4d05_b9ce_a41e09d43195",
+    "LOT4___Acoperis_Ortho90__Cyan__a3816a73_4d66_4bec_bcfe_017641837e58",
+    "LOT4___Amprenta_Sol_ANCPI__0_40m__Verde__239b1f8b_1ef7_42d7_9032_ba099fa69a36",
+    "RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4",
+    "B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145",
+    "TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6",
+    "ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f",
+    "Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d",
+    "Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba",
+    "Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551",
+    "Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86",
+    "Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c",
+    "Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17",
+    "Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b",
+    "Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4"
+  ],
+  "old_b_visibility": {
+    "OPT_B___Amprenta_Sol__0_40m__Verde__6a2a1cdf_4471_4f13_b936_ea29ac115261": true,
+    "OPT_B___Cladiri_Validate_nDSM__Portocaliu__3135407f_3336_4d65_8b1e_e552991eb065": true
+  },
+  "disk_backup_sha256": "02de516c026e52ef16bae0d0cfbb057476a1e1621a943272718fa6c75e9877b0",
+  "added_layers": [
+    {
+      "layer_id": "6__PROPUNERI___cyan_simplu___portocaliu_revizie_b2b1f1da_047b_4f65_a654_6662809738fc",
+      "source_layer": "B4_FINAL_REVIEW",
+      "count": 216,
+      "visible": true
+    },
+    {
+      "layer_id": "QA___cazuri_nerezolvate__nu_livrabile_finale__dba0a63c_921b_438f_9655_798f92e3a40f",
+      "source_layer": "UNRESOLVED_REVIEW",
+      "count": 135,
+      "visible": false
+    },
+    {
+      "layer_id": "5__SAM2___incercari__inclusiv_nepromovate_713437f6_b311_421a_b84b_88c7fd9438b3",
+      "source_layer": "B4_RETRY_OBSERVATIONS",
+      "count": 4,
+      "visible": false
+    },
+    {
+      "layer_id": "4__QA_inainte_de_SAM2_f36a213d_a45c_4d36_89b9_da60e0e7ec89",
+      "source_layer": "B3_BEFORE_RETRY_QA",
+      "count": 216,
+      "visible": false
+    },
+    {
+      "layer_id": "3__Simplificare_cu_garduri_28f92587_4b04_47de_ba65_ead8f1a4dbd3",
+      "source_layer": "B3_SIMPLE_FIT",
+      "count": 216,
+      "visible": false
+    },
+    {
+      "layer_id": "2__Observatii_dupa_deduplicare_0e5d9d42_f55b_47cb_8bad_19298dc5d77d",
+      "source_layer": "B2_DEDUPLICATED",
+      "count": 216,
+      "visible": false
+    },
+    {
+      "layer_id": "1__Observatii_optice_originale_077759d7_610c_4dbd_9576_19284bc395e4",
+      "source_layer": "B1_OBSERVATIONS",
+      "count": 216,
+      "visible": false
+    },
+    {
+      "layer_id": "0__B_initial___216_propuneri_4c71e384_25d6_42c3_a5d7_9657c339139e",
+      "source_layer": "B0_BASELINE",
+      "count": 216,
+      "visible": false
+    },
+    {
+      "layer_id": "Recall___cei_71_respinsi_anterior__neverificati_c1f8d7df_4a91_46ec_92e1_9adc1413e7b6",
+      "source_layer": "B0_REJECTED_RECALL_QUEUE",
+      "count": 71,
+      "visible": false
+    },
+    {
+      "layer_id": "Context___alte_loturi__copii_pentru_QA__2138348d_54f5_4933_90b1_d7f8d7771782",
+      "source_layer": "EXISTING_OTHER_LOTS",
+      "count": 58,
+      "visible": false
+    },
+    {
+      "layer_id": "SAM2___componente_vectorizate__scoruri_si_motive_dc394b70_659b_4935_97dc_883be6cd1022",
+      "source_layer": "SAM2_ALL_ATTEMPTS",
+      "count": 16,
+      "visible": false
+    }
+  ],
+  "project_saved": true,
+  "dirty_after": false,
+  "project_after_sha256": "a80994c56ce79c6fcbba3cd8323ef4cc9099cab57306a77ff1ff069589f86941",
+  "render_order_fixed": true
+}

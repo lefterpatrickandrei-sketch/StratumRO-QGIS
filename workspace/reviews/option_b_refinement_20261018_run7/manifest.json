@@ -1,0 +1,159 @@
+{
+  "request": {
+    "source": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+    "layer": "OPTIUNEA_B_ROOF_VALIDAT",
+    "id_field": "body_id",
+    "rejected_layer": "OPTIUNEA_B_FALS_POZITIV_ELIMINAT",
+    "observations": "workspace/reviews/regional_roofs_20261017/masked_review_v2/regional_review.gpkg",
+    "observation_layer": "ROOF_CANDIDATES",
+    "observation_match_iou": 0.6,
+    "orthophotos": [
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-1_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-0-2_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-1_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-1-2_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-0_halo.tif",
+      "workspace/reviews/prompt_recovery_20261013/full_aoi/cache_tile_Cluj-2-1_halo.tif"
+    ],
+    "height": "workspace/derived/cluj_ndsm_1m.tif",
+    "parameters": {},
+    "replay_retry_package": "workspace/reviews/option_b_refinement_20261018_run4/refinement.gpkg",
+    "existing_lots": [
+      {
+        "path": "workspace/reviews/simple_roofs_rectified_20261013/simple_roofs.gpkg",
+        "layer": "ACOPERISURI_SIMPLE",
+        "include": {
+          "id": [
+            "REF_TIER1_021:B00006",
+            "REF_TIER1_021:B00008",
+            "REF_TIER1_021:B00009",
+            "REF_TIER1_021:B00010",
+            "REF_TIER1_021:B00014",
+            "REF_TIER1_021:B00018",
+            "REF_TIER1_021:B00030"
+          ]
+        }
+      },
+      {
+        "path": "workspace/reviews/review18_20261013/review18.gpkg",
+        "layer": "B5_DOUA_CORPURI"
+      },
+      {
+        "path": "workspace/reviews/retry_six_release_20261013/retry_six.gpkg",
+        "layer": "CORPURI_RECTIFICATE"
+      },
+      {
+        "path": "workspace/reviews/review18_20261013/review18.gpkg",
+        "layer": "TESTE_10_REZULTATE",
+        "include": {
+          "test_id": [
+            "T01",
+            "T02",
+            "T03",
+            "T04"
+          ]
+        }
+      },
+      {
+        "path": "workspace/reviews/lot3_repairs_20261017/selected_v4_orthogonal/lot3_orthogonal.gpkg",
+        "layer": "ROOF_HYPOTHESES_ORTHO90"
+      },
+      {
+        "path": "workspace/reviews/lot4_20261017/selected_v4_orthogonal/lot4_orthogonal.gpkg",
+        "layer": "ROOF_HYPOTHESES_ORTHO90"
+      },
+      {
+        "path": "workspace/reviews/comparatie_a_vs_b_20261018/comparatie_a_vs_b.gpkg",
+        "layer": "LOT5_OPTIUNEA_A_ROOF"
+      }
+    ]
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\comparatie_a_vs_b_20261018\\comparatie_a_vs_b.gpkg",
+      "sha256": "2a01d3f75a717e89230a7b24abe13c51a4140bb22b1948b06c50a0102eac60e7"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-0_halo.tif",
+      "sha256": "3b8978e48d801869f699d92d4a70dbc086930ec9b3c6b69fdeffd94c4388870c"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif",
+      "sha256": "7401f866f04a29012145feab39d0eeb17626cc89add7c6148836ba0c9d7aa6bd"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-2_halo.tif",
+      "sha256": "b601034d3a3284a6571de7149818ea342b21f39d74bbc3d38ccf91d34138617c"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+      "sha256": "832c03fab54b3f89fd0697859ad23e4d9b600e269d7023db0c5060b85d276631"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-1_halo.tif",
+      "sha256": "97488261fd42f1f2a40af66e2385464d2ab4d452da51f24c27adf199497aae70"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-2_halo.tif",
+      "sha256": "cdd0909d6e31d54a02b0c6c562c6437024c5e9c95f4b852b5d8efa6ca4be7f63"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-0_halo.tif",
+      "sha256": "4c53cc7f3c0e78ac557d5bf0db65a7190c4520a3bd263e207199cd8e2a69e61b"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-1_halo.tif",
+      "sha256": "0db94f260ce7a079c8e21e4d9a40c08db5d6e85d2156845ffb1f51133b62f15b"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\derived\\cluj_ndsm_1m.tif",
+      "sha256": "0b4bc40b73f154a23a507137edbe44f41ab35c54d8149488695598df5d1b7220"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\regional_roofs_20261017\\masked_review_v2\\regional_review.gpkg",
+      "sha256": "84580f7e6901804f04aa7ebb29305c27b8b80372baf60f4ad3f2fdefc6f2f56c"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_run4\\refinement.gpkg",
+      "sha256": "ecee5ef996dcca187d353c58550deef779d2e9036ddc6839ecf001fae262cd75"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\simple_roofs_rectified_20261013\\simple_roofs.gpkg",
+      "sha256": "1abbf86cc477c46b473052886800b124e4a63d8fe18b0d975073f389ec24fc9d"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\review18_20261013\\review18.gpkg",
+      "sha256": "59e26fb98a53cec140a99bdbfe8254fb2f97359011fda15458e4b50ec4cb11bc"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\retry_six_release_20261013\\retry_six.gpkg",
+      "sha256": "9f03f66a61b264cb928c01cf7250217c3498c2adeda30fa7055e18ccbe39771c"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\review18_20261013\\review18.gpkg",
+      "sha256": "59e26fb98a53cec140a99bdbfe8254fb2f97359011fda15458e4b50ec4cb11bc"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot3_repairs_20261017\\selected_v4_orthogonal\\lot3_orthogonal.gpkg",
+      "sha256": "3dcf7b21a0d2b47b3fcda31d84274536cf1b858905acc1a6c19c6570d1f0cf1f"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\lot4_20261017\\selected_v4_orthogonal\\lot4_orthogonal.gpkg",
+      "sha256": "d5ee40efd97ca7f6cefc2a2cdeb609de61df600fb8526a7fcd3856e76f44d5d0"
+    },
+    {
+      "path": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\comparatie_a_vs_b_20261018\\comparatie_a_vs_b.gpkg",
+      "sha256": "2a01d3f75a717e89230a7b24abe13c51a4140bb22b1948b06c50a0102eac60e7"
+    }
+  ],
+  "code_sha256": {
+    "tools/refine_regional_roofs.py": "2b93719c88191ed2f5369cfb96843ef91a9fae7dfaff046e0a4b97073d137a46",
+    "stratum_ro/regional_refinement.py": "9251c77382cb4c8c03d298ce3066e5ef11d1688baafcba89c177eb22bcfc3871",
+    "stratum_ro/roof_simple_geometry.py": "afc08f5a09ed303f9254f10e8128546eddf8c465b4c0aa05be3ff0d72809adb6",
+    "stratum_ro/regional_roofs.py": "c59a038a77c4160fb10ca5a079198008d662201fded8008811da3a7ce70f0bcf",
+    "stratum_ro/api/service.py": "f10fb28d16440afc047fc6a235ce288b04422c0b8f7912f760a706a7e3019a1f"
+  },
+  "gpkg_sha256": "f82e8b202942bd593428b5e641f21cbe071dd33c4de454918c581ae44f4a1193"
+}

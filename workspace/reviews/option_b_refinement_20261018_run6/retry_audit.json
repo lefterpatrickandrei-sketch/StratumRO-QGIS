@@ -1,0 +1,313 @@
+[
+  {
+    "status": "NO_SAFE_RETRY_MASK",
+    "anchor": [
+      390735.675,
+      585594.225
+    ],
+    "negative_points": [
+      [
+        390715.425,
+        585566.325
+      ],
+      [
+        390708.675,
+        585586.725
+      ],
+      [
+        390737.025,
+        585609.375
+      ],
+      [
+        390745.875,
+        585610.725
+      ]
+    ],
+    "sources": [
+      "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-0_halo.tif"
+    ],
+    "bounds": [
+      390685.2,
+      585534.3,
+      390781.05,
+      585631.35
+    ],
+    "attempts": [
+      {
+        "mask_index": 0,
+        "score": 0.51078200340271,
+        "coverage": 0.9913376804411983,
+        "area_m2": 1421.7075000001332,
+        "reasons": [
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 1,
+        "score": 0.3902846574783325,
+        "coverage": 0.11225325155068681,
+        "area_m2": 160.53749999988653,
+        "reasons": [
+          "LOST_OBSERVED_ROOF_AREA",
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 1,
+        "score": 0.3902846574783325,
+        "coverage": 0.010299618095199298,
+        "area_m2": 14.714999999993008,
+        "reasons": [
+          "LOST_OWN_SEED",
+          "LOST_OBSERVED_ROOF_AREA",
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 1,
+        "score": 0.3902846574783325,
+        "coverage": 0.008205047442863237,
+        "area_m2": 11.72250000006811,
+        "reasons": [
+          "LOST_OWN_SEED",
+          "LOST_OBSERVED_ROOF_AREA",
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 2,
+        "score": 0.5676416158676147,
+        "coverage": 0.8548692768828992,
+        "area_m2": 1223.482500001308,
+        "reasons": [
+          "LOW_MASK_SCORE"
+        ]
+      }
+    ],
+    "seed_role": "AUTOMATIC_SENSOR_SUPPORTED_NOT_OWNER_REVIEWED",
+    "automatic_completeness_claim": false,
+    "candidate_id": "OPT_B_006:C1"
+  },
+  {
+    "status": "RESEGMENTED_HYPOTHESIS_PENDING_REVIEW",
+    "anchor": [
+      391282.125,
+      585553.275
+    ],
+    "negative_points": [
+      [
+        391298.475,
+        585559.875
+      ],
+      [
+        391269.225,
+        585557.9249999999
+      ],
+      [
+        391274.02499999997,
+        585545.775
+      ],
+      [
+        391278.975,
+        585566.1749999999
+      ]
+    ],
+    "sources": [
+      "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-1-0_halo.tif",
+      "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-2-0_halo.tif"
+    ],
+    "bounds": [
+      391249.35,
+      585521.1,
+      391317.0,
+      585587.85
+    ],
+    "attempts": [
+      {
+        "mask_index": 0,
+        "score": 0.3578895032405853,
+        "coverage": 0.9840684850779261,
+        "area_m2": 193.432499999892,
+        "reasons": [
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 1,
+        "score": 0.3854421079158783,
+        "coverage": 0.14365627231462455,
+        "area_m2": 27.157499999725857,
+        "reasons": [
+          "LOST_OBSERVED_ROOF_AREA",
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 2,
+        "score": 0.9233056902885437,
+        "coverage": 0.9856146740958094,
+        "area_m2": 189.9900000000022,
+        "reasons": []
+      }
+    ],
+    "seed_role": "AUTOMATIC_SENSOR_SUPPORTED_NOT_OWNER_REVIEWED",
+    "automatic_completeness_claim": false,
+    "candidate_id": "OPT_B_046:C1"
+  },
+  {
+    "status": "NO_SAFE_RETRY_MASK",
+    "anchor": [
+      390748.57499999995,
+      585403.125
+    ],
+    "negative_points": [
+      [
+        390759.67499999993,
+        585396.6749999999
+      ],
+      [
+        390731.02499999997,
+        585405.075
+      ],
+      [
+        390789.52499999997,
+        585428.625
+      ],
+      [
+        390755.77499999997,
+        585419.475
+      ]
+    ],
+    "sources": [
+      "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif"
+    ],
+    "bounds": [
+      390711.44999999995,
+      585368.55,
+      390822.6,
+      585448.35
+    ],
+    "attempts": [
+      {
+        "mask_index": 0,
+        "score": 0.15249772369861603,
+        "coverage": 0.9559413325110372,
+        "area_m2": 711.9449999997629,
+        "reasons": [
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 0,
+        "score": 0.15249772369861603,
+        "coverage": 0.0,
+        "area_m2": 11.047499999954605,
+        "reasons": [
+          "LOST_OWN_SEED",
+          "LOST_OBSERVED_ROOF_AREA",
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 1,
+        "score": 0.45468878746032715,
+        "coverage": 0.12411143255743785,
+        "area_m2": 86.64749999977128,
+        "reasons": [
+          "LOST_OWN_SEED",
+          "LOST_OBSERVED_ROOF_AREA",
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 1,
+        "score": 0.45468878746032715,
+        "coverage": 0.23250088887228781,
+        "area_m2": 165.5774999997575,
+        "reasons": [
+          "LOST_OBSERVED_ROOF_AREA",
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 2,
+        "score": 0.89396071434021,
+        "coverage": 0.7195404137274314,
+        "area_m2": 507.17249999987786,
+        "reasons": [
+          "LOST_OBSERVED_ROOF_AREA"
+        ]
+      }
+    ],
+    "seed_role": "AUTOMATIC_SENSOR_SUPPORTED_NOT_OWNER_REVIEWED",
+    "automatic_completeness_claim": false,
+    "candidate_id": "OPT_B_154:C1",
+    "post_geometry_gate_status": "DIAGNOSTIC_ONLY_COMPLEXITY_UNRESOLVED"
+  },
+  {
+    "status": "RESEGMENTED_HYPOTHESIS_PENDING_REVIEW",
+    "anchor": [
+      390760.27499999997,
+      585408.2250000001
+    ],
+    "negative_points": [
+      [
+        390759.675,
+        585396.675
+      ],
+      [
+        390755.77499999997,
+        585419.4750000001
+      ],
+      [
+        390748.87499999994,
+        585392.625
+      ],
+      [
+        390745.425,
+        585416.775
+      ]
+    ],
+    "sources": [
+      "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\prompt_recovery_20261013\\full_aoi\\cache_tile_Cluj-0-1_halo.tif"
+    ],
+    "bounds": [
+      390722.39999999997,
+      585373.65,
+      390805.2,
+      585441.3
+    ],
+    "attempts": [
+      {
+        "mask_index": 0,
+        "score": 0.6361526846885681,
+        "coverage": 0.9916230374707543,
+        "area_m2": 697.2525000000815,
+        "reasons": [
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 1,
+        "score": 0.6430345177650452,
+        "coverage": 0.5353679086668627,
+        "area_m2": 195.18750000003547,
+        "reasons": [
+          "LOST_OBSERVED_ROOF_AREA",
+          "LOW_MASK_SCORE"
+        ]
+      },
+      {
+        "mask_index": 2,
+        "score": 0.8555893898010254,
+        "coverage": 0.9885786369756365,
+        "area_m2": 652.5899999997165,
+        "reasons": []
+      }
+    ],
+    "seed_role": "AUTOMATIC_SENSOR_SUPPORTED_NOT_OWNER_REVIEWED",
+    "automatic_completeness_claim": false,
+    "candidate_id": "OPT_B_169:C1",
+    "post_geometry_gate_status": "DIAGNOSTIC_ONLY_COMPLEXITY_UNRESOLVED"
+  }
+]

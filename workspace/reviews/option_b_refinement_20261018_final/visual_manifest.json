@@ -1,0 +1,1514 @@
+[
+  {
+    "candidate_id": "OPT_B_001:C1",
+    "final_id": "OPT_B_001:C1",
+    "path": "images/OPT_B_001_C1.png",
+    "sha256": "cfb53ea11e1d4868f59633ad8e7afd87cac9a1bd71f776063570348cb9c2b4e9",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_002:C1",
+    "final_id": "OPT_B_002:C1",
+    "path": "images/OPT_B_002_C1.png",
+    "sha256": "a03bef96f8447e15b27fcde0d58bd66918014637a6639e557adc73365febf37e",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_003:C1",
+    "final_id": "OPT_B_003:C1",
+    "path": "images/OPT_B_003_C1.png",
+    "sha256": "38a1d84647eeec6210ad48dd63b85d07933b7d58ae43132b307d80631aed14c1",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_004:C1",
+    "final_id": "OPT_B_004:C1",
+    "path": "images/OPT_B_004_C1.png",
+    "sha256": "3d51137bdb0f6a7e06da54270e7a1b8ea9fafd30db91db62534181d62301f062",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_005:C1",
+    "final_id": "OPT_B_005:C1",
+    "path": "images/OPT_B_005_C1.png",
+    "sha256": "d5fffeb01f0d3e11ecfc265d84481bd1831fe5e871b6a68c70c1f38fa947e172",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_006:C1",
+    "final_id": "OPT_B_006:C1",
+    "path": "images/OPT_B_006_C1.png",
+    "sha256": "73afb7b210bf7d2dea6e761ead9fc3991b06e1f0a603e3b9c4ad2988093f20d6",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_007:C1",
+    "final_id": "OPT_B_007:C1",
+    "path": "images/OPT_B_007_C1.png",
+    "sha256": "3564cbb110a4abac0874e7127c1c28d8ab6236c979f6889aa7f428d4bd737b65",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_008:C1",
+    "final_id": "OPT_B_008:C1",
+    "path": "images/OPT_B_008_C1.png",
+    "sha256": "33a115f6af2c1f8cfaa3c245557cb5a79ad8a120c729dcfea4a7a5b26cb738d6",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_009:C1",
+    "final_id": "OPT_B_009:C1",
+    "path": "images/OPT_B_009_C1.png",
+    "sha256": "3d6ba7705105eb2dd341b135fbe25e1a6943af58a3ddfb2ec34289cac1756cfc",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_010:C1",
+    "final_id": "OPT_B_010:C1",
+    "path": "images/OPT_B_010_C1.png",
+    "sha256": "f1bfe73b3faf7fdf3b56ec165147326a82fda0b8f5717cc0bc8ee5c3e79d1704",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_011:C1",
+    "final_id": "OPT_B_011:C1",
+    "path": "images/OPT_B_011_C1.png",
+    "sha256": "351d9a13711d37dbcc6105ee54037b46d0517088f736ebea3027092ce42ddc75",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_012:C1",
+    "final_id": "OPT_B_012:C1",
+    "path": "images/OPT_B_012_C1.png",
+    "sha256": "69795e16980bf83c7db0a2fa9177c8e512d92fa380bd128b9efd84342220542e",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_013:C1",
+    "final_id": "OPT_B_013:C1",
+    "path": "images/OPT_B_013_C1.png",
+    "sha256": "3ef173ebb8384a370b16debdcea846d2770125e5165ed6fd4c7d513c86af1c34",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_014:C1",
+    "final_id": "OPT_B_014:C1",
+    "path": "images/OPT_B_014_C1.png",
+    "sha256": "fe3ba18211bde76a6d311b6701e2ed37e408651cfa1a0123db6eb3fc9cd6004c",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_015:C1",
+    "final_id": "OPT_B_015:C1",
+    "path": "images/OPT_B_015_C1.png",
+    "sha256": "f05158763fae23794b6a413705b2547dfc603b11b1b71467e5e659c528e29521",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_016:C1",
+    "final_id": "OPT_B_016:C1",
+    "path": "images/OPT_B_016_C1.png",
+    "sha256": "d444c56f5f41eeae7346c59bfe386c96bc12745d1c2d37a0f5b2c09ee70ddb84",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_017:C1",
+    "final_id": "OPT_B_017:C1",
+    "path": "images/OPT_B_017_C1.png",
+    "sha256": "621539b7db50ea8d847922d2f9986adafd38c3728e5aceb431f5b0ff27cb3f21",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_018:C1",
+    "final_id": "OPT_B_018:C1",
+    "path": "images/OPT_B_018_C1.png",
+    "sha256": "2ff49385cae12b0c2f7bd2655713c49e73f3d9d91bc0abaf4580268c845deca5",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_019:C1",
+    "final_id": "OPT_B_019:C1",
+    "path": "images/OPT_B_019_C1.png",
+    "sha256": "e5ee22216c5fbc1d22205f99fa34fb0a6aeed3752117b40acb4198c62ec28e0b",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_020:C1",
+    "final_id": "OPT_B_020:C1",
+    "path": "images/OPT_B_020_C1.png",
+    "sha256": "e1890a974d61788f79ddce266bbd916e6955d546c2ec232704e8f487fd095976",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_021:C1",
+    "final_id": "OPT_B_021:C1",
+    "path": "images/OPT_B_021_C1.png",
+    "sha256": "d7e22e4d80f734ffca1e38a5e9c0049f3e776404ee983813ba73d97fab80a0d0",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_022:C1",
+    "final_id": "OPT_B_022:C1",
+    "path": "images/OPT_B_022_C1.png",
+    "sha256": "89a2316d9b60efae4f661db3112126900b795a091a1e3f99e938d19309823afc",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_023:C1",
+    "final_id": "OPT_B_023:C1",
+    "path": "images/OPT_B_023_C1.png",
+    "sha256": "2e7b231af0726c6bef57564710b3c49b3857895c4091ec1836a753385020330a",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_024:C1",
+    "final_id": "OPT_B_024:C1",
+    "path": "images/OPT_B_024_C1.png",
+    "sha256": "986217f06454b7162dbfb51d7c2b3c6c00cd1f79cfef6e9d3f68ad44d7538927",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_025:C1",
+    "final_id": "OPT_B_025:C1",
+    "path": "images/OPT_B_025_C1.png",
+    "sha256": "61cd2837597db86d9ffd07d5617dc03b296ca6e58207eb90c733572b11bbf208",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_026:C1",
+    "final_id": "OPT_B_026:C1",
+    "path": "images/OPT_B_026_C1.png",
+    "sha256": "2aac1eedb8922d3136b1f1ba734705464a987e1e1096c060461bf70fab3b7e75",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_027:C1",
+    "final_id": "OPT_B_027:C1",
+    "path": "images/OPT_B_027_C1.png",
+    "sha256": "935b13cdf2a9266706d4bdaac31827f886691883b3631ed6c3d814d1ffe153f0",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_028:C1",
+    "final_id": "OPT_B_028:C1",
+    "path": "images/OPT_B_028_C1.png",
+    "sha256": "98c4e563f2195104e06d6c02b6fd20a290ee8f99f9f2bfdc42eac0c520b0d172",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_029:C1",
+    "final_id": "OPT_B_029:C1",
+    "path": "images/OPT_B_029_C1.png",
+    "sha256": "9135e31bc314bd6d109d772257b742b531208774b2a886dc8d18e2bbbfd5dac3",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_030:C1",
+    "final_id": "OPT_B_030:C1",
+    "path": "images/OPT_B_030_C1.png",
+    "sha256": "acb670fd7149a1cdbad869055afb2c83f49c85d43561de75233004cb4d8bb446",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_031:C1",
+    "final_id": "OPT_B_031:C1",
+    "path": "images/OPT_B_031_C1.png",
+    "sha256": "cf1af37b89fd9a33d1fba0ce7bb26b49570e15953bb1cf37d29b15e457c27dbf",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_032:C1",
+    "final_id": "OPT_B_032:C1",
+    "path": "images/OPT_B_032_C1.png",
+    "sha256": "46aaf7a8a973faef1c791c3ac436224b40df3d316e3da204fce3c36082cfaf1b",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_033:C1",
+    "final_id": "OPT_B_033:C1",
+    "path": "images/OPT_B_033_C1.png",
+    "sha256": "b5bae2214ab2be3bf5eeb4aef61ba735781bae7ca1c3f6c12990353931788ffa",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_034:C1",
+    "final_id": "OPT_B_034:C1",
+    "path": "images/OPT_B_034_C1.png",
+    "sha256": "74094eccf9caab96e6344be0335370ddc22c6e6407faee8296103eecaebf6306",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_035:C1",
+    "final_id": "OPT_B_035:C1",
+    "path": "images/OPT_B_035_C1.png",
+    "sha256": "1a51840e772f4245195ff179116c34f40ba6bb0a9ee8a9ecbf449c2d66bdcf17",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_036:C1",
+    "final_id": "OPT_B_036:C1",
+    "path": "images/OPT_B_036_C1.png",
+    "sha256": "23e1801a0216b1263ca765a8c01c3c807765e6dad2b30dde004ff3c14f467c7c",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_037:C1",
+    "final_id": "OPT_B_037:C1",
+    "path": "images/OPT_B_037_C1.png",
+    "sha256": "c7943ed60522bd75f36b855ae6a5e05a7ef2032048db61220502a38ef376f4f2",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_038:C1",
+    "final_id": "OPT_B_038:C1",
+    "path": "images/OPT_B_038_C1.png",
+    "sha256": "6091beb260c5d0a220ab98223d1b715b3fbef14d6bb10628b592c6092881a225",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_039:C1",
+    "final_id": "OPT_B_039:C1",
+    "path": "images/OPT_B_039_C1.png",
+    "sha256": "b4afe6b05ee0066fa1bb41f4290e4bfde58838b9e5c7ae08c29f937a72ed335e",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_040:C1",
+    "final_id": "OPT_B_040:C1",
+    "path": "images/OPT_B_040_C1.png",
+    "sha256": "76c6430698080dc92dc729b085539fe455e380dba4cf6fce089a5548ff65b886",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_041:C1",
+    "final_id": "OPT_B_041:C1",
+    "path": "images/OPT_B_041_C1.png",
+    "sha256": "6162879349b5a2efcb29509a1a73001f15c3dc23159bc13858ce8468e4889284",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_042:C1",
+    "final_id": "OPT_B_042:C1",
+    "path": "images/OPT_B_042_C1.png",
+    "sha256": "aff0566a4e5656194109ac5ca0d3e671d81292e78d4c9005555322e16e9207aa",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_043:C1",
+    "final_id": "OPT_B_043:C1",
+    "path": "images/OPT_B_043_C1.png",
+    "sha256": "d82c35afb9a0d8aa94a68e39f30e1d5ce1dd11beb6f9144126216c666af483b8",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_044:C1",
+    "final_id": "OPT_B_044:C1",
+    "path": "images/OPT_B_044_C1.png",
+    "sha256": "b0b009b15b71e3c322bab5dd6be4f7fc3f8ac58fdefff74c22ce7f7b8c3b885d",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_045:C1",
+    "final_id": "OPT_B_045:C1",
+    "path": "images/OPT_B_045_C1.png",
+    "sha256": "34c2d2d813ce77b489c378feab5fb4123f5a1600c2251febe29a35f9d7f61133",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_046:C1",
+    "final_id": "OPT_B_046:C1",
+    "path": "images/OPT_B_046_C1.png",
+    "sha256": "db1e004239b6341af45cbd0b9f43ac04c793ff2ede9849f4007915fc547e4717",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_047:C1",
+    "final_id": "OPT_B_047:C1",
+    "path": "images/OPT_B_047_C1.png",
+    "sha256": "c49a3398d2da2d754442bd6b2f6bfec35b89fec2118e9d82af52753b8b3af84c",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_048:C1",
+    "final_id": "OPT_B_048:C1",
+    "path": "images/OPT_B_048_C1.png",
+    "sha256": "942799be67f40a67990ae778ce045ed1ef7622a19d20ca014595c2fe434640a8",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_049:C1",
+    "final_id": "OPT_B_049:C1",
+    "path": "images/OPT_B_049_C1.png",
+    "sha256": "986e986175156170deaccbeea7c23622eea896a19c19e152eabedf09a01f8b37",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_050:C1",
+    "final_id": "OPT_B_050:C1",
+    "path": "images/OPT_B_050_C1.png",
+    "sha256": "3a8bd3c56073cec86e62cb4e1d57f1eff08f8479e1b688a34e226582387a9430",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_051:C1",
+    "final_id": "OPT_B_051:C1",
+    "path": "images/OPT_B_051_C1.png",
+    "sha256": "000b73b97d9e4979af31da797d27e9b5f87e6d4c1f8d6fe80c4c9815574688bf",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_052:C1",
+    "final_id": "OPT_B_052:C1",
+    "path": "images/OPT_B_052_C1.png",
+    "sha256": "641d6d1343b70d2d8f138b6b4515ec2b5398a8918b8e8b88a585847d32720895",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_053:C1",
+    "final_id": "OPT_B_053:C1",
+    "path": "images/OPT_B_053_C1.png",
+    "sha256": "517081e9513d5ff032455263194ce955ed0f18ef94a2ad960447f5adee42c2d1",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_054:C1",
+    "final_id": "OPT_B_054:C1",
+    "path": "images/OPT_B_054_C1.png",
+    "sha256": "e782400048474c196946167c859bec93d539bbdaf0bc1d3bf9d9e158bef730b6",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_055:C1",
+    "final_id": "OPT_B_055:C1",
+    "path": "images/OPT_B_055_C1.png",
+    "sha256": "4f71efa6975d1c6eeebc65b335d88070807005d2020943e70483b8362e727893",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_056:C1",
+    "final_id": "OPT_B_056:C1",
+    "path": "images/OPT_B_056_C1.png",
+    "sha256": "bb7db1ed569686272c058bc141f8a3878cc5a14d76b0dd562c00496e16b3e874",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_057:C1",
+    "final_id": "OPT_B_057:C1",
+    "path": "images/OPT_B_057_C1.png",
+    "sha256": "f7ccf48144fc615662e0a50edd3cb332322a0a0d80af0509b44ab9330290000f",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_058:C1",
+    "final_id": "OPT_B_058:C1",
+    "path": "images/OPT_B_058_C1.png",
+    "sha256": "e4d68ba2708f303d97b370131b1b36d474a1828f828290ae3e6c9ea00e63be45",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_059:C1",
+    "final_id": "OPT_B_059:C1",
+    "path": "images/OPT_B_059_C1.png",
+    "sha256": "0b97680cf12bf7d2c66dd5df99eda005d288b95ec9bd5d006ad5f8f2dd833091",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_060:C1",
+    "final_id": "OPT_B_060:C1",
+    "path": "images/OPT_B_060_C1.png",
+    "sha256": "6542fb282239b7ea049675087d6214fa7ee370a88a6ac7345f6d13f3e8065651",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_061:C1",
+    "final_id": "OPT_B_061:C1",
+    "path": "images/OPT_B_061_C1.png",
+    "sha256": "166203d3c6f20661d67a468f1e3a772076b40650ea13db43fc86f3ab276f8469",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_062:C1",
+    "final_id": "OPT_B_062:C1",
+    "path": "images/OPT_B_062_C1.png",
+    "sha256": "719e6dba7f590bdc4ae79b972c7464bed148578f1655811b5a2708e1d2130eea",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_063:C1",
+    "final_id": "OPT_B_063:C1",
+    "path": "images/OPT_B_063_C1.png",
+    "sha256": "8a438f729f4462271d9eb5b0cd33e82f6f5ce82d85479ed0f0eb22a9d002d14b",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_064:C1",
+    "final_id": "OPT_B_064:C1",
+    "path": "images/OPT_B_064_C1.png",
+    "sha256": "9c87af91d35b8799efbb9ac7002c1e7b836da0e3fe438fdaae3d68059a245ad2",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_065:C1",
+    "final_id": "OPT_B_065:C1",
+    "path": "images/OPT_B_065_C1.png",
+    "sha256": "ea31cfc8bdfb1b27ec045e5df6b615df82fa4e61533e7e4c3c037eaa3c8e2803",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_066:C1",
+    "final_id": "OPT_B_066:C1",
+    "path": "images/OPT_B_066_C1.png",
+    "sha256": "7e0c4656953b4074c18fc27bbb950ab2f740197578f08c68c97e69fa797c75b2",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_067:C1",
+    "final_id": "OPT_B_067:C1",
+    "path": "images/OPT_B_067_C1.png",
+    "sha256": "cd102d1ab2616934c50af02aaee95581f3ee20d4cbe788fe6530857659181398",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_068:C1",
+    "final_id": "OPT_B_068:C1",
+    "path": "images/OPT_B_068_C1.png",
+    "sha256": "7f2f5817b8a1f04bce302f01f3229ab3717f4e30873d51706311f7a5e0f8d70d",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_069:C1",
+    "final_id": "OPT_B_069:C1",
+    "path": "images/OPT_B_069_C1.png",
+    "sha256": "d892b4fdc4dcdca830963b488b4dbdee83451f54e8d97b69fd32aac83f397d36",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_070:C1",
+    "final_id": "OPT_B_070:C1",
+    "path": "images/OPT_B_070_C1.png",
+    "sha256": "624674c3c26907e30472a93c4b8602ba89d7f8a13283cd1ae5d49c3b01d2a11a",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_071:C1",
+    "final_id": "OPT_B_071:C1",
+    "path": "images/OPT_B_071_C1.png",
+    "sha256": "926b90750062c1b834e61018b7ade6a655b8cd2cddda4b32667ea39c0149cbad",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_072:C1",
+    "final_id": "OPT_B_072:C1",
+    "path": "images/OPT_B_072_C1.png",
+    "sha256": "7266eff2c4fca0ba46b92cdb1e865eac5b584863e88cd58d8ed264982e9ebca3",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_073:C1",
+    "final_id": "OPT_B_073:C1",
+    "path": "images/OPT_B_073_C1.png",
+    "sha256": "a0320050b3eacf7c763c419a5adb5e7b3c4ed279d1e5c8ab69a89964bae78273",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_074:C1",
+    "final_id": "OPT_B_074:C1",
+    "path": "images/OPT_B_074_C1.png",
+    "sha256": "2942a4ab5d20cebcbbaedc784a76f9748befb4d1c4cb1fe9629b7cfdea890b86",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_075:C1",
+    "final_id": "OPT_B_075:C1",
+    "path": "images/OPT_B_075_C1.png",
+    "sha256": "7dd0f910e6e0a5d0f7c40cd698046cea64c0a4b268c2972316f37c2a50fd3c74",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_076:C1",
+    "final_id": "OPT_B_076:C1",
+    "path": "images/OPT_B_076_C1.png",
+    "sha256": "a899748e8fbe21465a124ef677a3749ac7cebb243ff14f0b3975494de3b981ee",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_077:C1",
+    "final_id": "OPT_B_077:C1",
+    "path": "images/OPT_B_077_C1.png",
+    "sha256": "3d8d1e5a4928af183bcb3b5ee167a25105e72a9a6cc25e3c77c2dc48bf6d8086",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_078:C1",
+    "final_id": "OPT_B_078:C1",
+    "path": "images/OPT_B_078_C1.png",
+    "sha256": "a1de5dbabe0157cc0d4f278e0364f18682fc417b86d6bef61431798de6798269",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_079:C1",
+    "final_id": "OPT_B_079:C1",
+    "path": "images/OPT_B_079_C1.png",
+    "sha256": "0013916269b24dce9d0702ab0b85d8403ab5f8c67d419e1456067c3afe9a9030",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_080:C1",
+    "final_id": "OPT_B_080:C1",
+    "path": "images/OPT_B_080_C1.png",
+    "sha256": "e6de87ab5c044c0c969ddbf82319ceb33882ef7a6b4c81b36508111aa4fd69bf",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_081:C1",
+    "final_id": "OPT_B_081:C1",
+    "path": "images/OPT_B_081_C1.png",
+    "sha256": "c2eb29d20812a6faec35c2bd10320fa92fb01baf8db6d9b9bcb1c1491a84e106",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_082:C1",
+    "final_id": "OPT_B_082:C1",
+    "path": "images/OPT_B_082_C1.png",
+    "sha256": "90e42c8ee16b72b9e886b4999e74582acf82ccbd6449d695e44fb9070f75a022",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_083:C1",
+    "final_id": "OPT_B_083:C1",
+    "path": "images/OPT_B_083_C1.png",
+    "sha256": "250dd05733491889542b7cd9c61cec53adbba9659cf229c8c9f54d41e9751be8",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_084:C1",
+    "final_id": "OPT_B_084:C1",
+    "path": "images/OPT_B_084_C1.png",
+    "sha256": "477f6e500fa08863bf964d38f5d1d6922de5c193d228cca8eb9530b753996e3f",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_085:C1",
+    "final_id": "OPT_B_085:C1",
+    "path": "images/OPT_B_085_C1.png",
+    "sha256": "5e1a4a1106d75cd7a510126615f194fb8233fff2661dfef3f8ef8c3614da9f18",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_086:C1",
+    "final_id": "OPT_B_086:C1",
+    "path": "images/OPT_B_086_C1.png",
+    "sha256": "2db4d31c2bb3c8b7f03acf80a7cb7119a4cdc99f9468504e719db693f3471d17",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_087:C1",
+    "final_id": "OPT_B_087:C1",
+    "path": "images/OPT_B_087_C1.png",
+    "sha256": "d2c48d5ddf0390747b8981294ff12c732b6360371a380909bf0903a331f83851",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_088:C1",
+    "final_id": "OPT_B_088:C1",
+    "path": "images/OPT_B_088_C1.png",
+    "sha256": "46a3aa5b9ac8e7661612f02045608f0968fbc70424d61914c81eb85e303e8f77",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_089:C1",
+    "final_id": "OPT_B_089:C1",
+    "path": "images/OPT_B_089_C1.png",
+    "sha256": "8bb450781f32aacc45588a86ba8de453d2df88507b6888851c901da9cfa02a32",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_090:C1",
+    "final_id": "OPT_B_090:C1",
+    "path": "images/OPT_B_090_C1.png",
+    "sha256": "158f59f4d0e3df472ddf466173c50766e187a839db69a220a5885bb48641a80a",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_091:C1",
+    "final_id": "OPT_B_091:C1",
+    "path": "images/OPT_B_091_C1.png",
+    "sha256": "cc556d1d334c9dbe7fde6972db978f3e24a6c6a641df7369ebedbb6a0bc38ed5",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_092:C1",
+    "final_id": "OPT_B_092:C1",
+    "path": "images/OPT_B_092_C1.png",
+    "sha256": "c4ee8c10ef1e48fde49a3a5e82a74447aed61d9e9168d54a0cd4c2d05ac406df",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_093:C1",
+    "final_id": "OPT_B_093:C1",
+    "path": "images/OPT_B_093_C1.png",
+    "sha256": "e64b0720e66993556d1f0e68edbf231a61b26bf4dbd494917e1cfa5c1d02706c",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_094:C1",
+    "final_id": "OPT_B_094:C1",
+    "path": "images/OPT_B_094_C1.png",
+    "sha256": "308c044f042e54b83c03562625dcf5161a4473639a375de77e58f85451f8a134",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_095:C1",
+    "final_id": "OPT_B_095:C1",
+    "path": "images/OPT_B_095_C1.png",
+    "sha256": "11e5e397a62a649e4a697d776c0f0abce3a45f1fa3acb120f43259f1c3680fd4",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_096:C1",
+    "final_id": "OPT_B_096:C1",
+    "path": "images/OPT_B_096_C1.png",
+    "sha256": "cd893691ef3165f59d85c08706501e33bce8293e975271c8f12c5d839b972705",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_097:C1",
+    "final_id": "OPT_B_097:C1",
+    "path": "images/OPT_B_097_C1.png",
+    "sha256": "0e80374a9d990992b7310bf016b67c331371068107438fa69e285f0ce8510f38",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_098:C1",
+    "final_id": "OPT_B_098:C1",
+    "path": "images/OPT_B_098_C1.png",
+    "sha256": "ae2cffff22555f152228335976933f839a31e26db23b8155caee03644d7f363a",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_099:C1",
+    "final_id": "OPT_B_099:C1",
+    "path": "images/OPT_B_099_C1.png",
+    "sha256": "c475b1aa9db26d58e1fa18c97fc74def6fe32c81d16fd558433df705d7df6830",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_100:C1",
+    "final_id": "OPT_B_100:C1",
+    "path": "images/OPT_B_100_C1.png",
+    "sha256": "0ad18b2a5bacf2e2a69393edacb6793143e3d7d887ca7ea72504fcf4be1ce8e0",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_101:C1",
+    "final_id": "OPT_B_101:C1",
+    "path": "images/OPT_B_101_C1.png",
+    "sha256": "2a2470518ec50e71886278fbdfc6927689587d1ce637cb89b696a2b9fd4bbf7e",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_102:C1",
+    "final_id": "OPT_B_102:C1",
+    "path": "images/OPT_B_102_C1.png",
+    "sha256": "7bcf7cad85b65111241dffa85a4a759cfe0e03496e94491ba682f165469c39cd",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_103:C1",
+    "final_id": "OPT_B_103:C1",
+    "path": "images/OPT_B_103_C1.png",
+    "sha256": "02fa11eaef2584375994c9014f241b9b27f712865b7743ef119c3d5e05483aa2",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_104:C1",
+    "final_id": "OPT_B_104:C1",
+    "path": "images/OPT_B_104_C1.png",
+    "sha256": "8a4d80417c5733cd429a647ed816f07c30801092b284550e6754bc9bf70ac64a",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_105:C1",
+    "final_id": "OPT_B_105:C1",
+    "path": "images/OPT_B_105_C1.png",
+    "sha256": "478dbeb1eacb53bd2afc26164f7e632b34095365e48eecbd1d86acc19314c304",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_106:C1",
+    "final_id": "OPT_B_106:C1",
+    "path": "images/OPT_B_106_C1.png",
+    "sha256": "a310be9e163f5270f8e863f659b562079e70346736bbe10b3892bc7c10a2d299",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_107:C1",
+    "final_id": "OPT_B_107:C1",
+    "path": "images/OPT_B_107_C1.png",
+    "sha256": "17acff1ee414602a255ea4529402d667cd36df76b32a7641324e86152b7b4384",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_108:C1",
+    "final_id": "OPT_B_108:C1",
+    "path": "images/OPT_B_108_C1.png",
+    "sha256": "4c887aa0ef8c0a418add11b17b0e01382e2fd600aa7755af9a9e03507170d189",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_109:C1",
+    "final_id": "OPT_B_109:C1",
+    "path": "images/OPT_B_109_C1.png",
+    "sha256": "648a5d6c73c1be9c69e0f5baf13fb203cd19fd2547c3998ec3cb73575b9cf021",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_110:C1",
+    "final_id": "OPT_B_110:C1",
+    "path": "images/OPT_B_110_C1.png",
+    "sha256": "9ed003b3773443f837e8a45d56acaa2f199f6644ccfb0a100f6f5a953ff87222",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_111:C1",
+    "final_id": "OPT_B_111:C1",
+    "path": "images/OPT_B_111_C1.png",
+    "sha256": "23d633ed914dc2ceaa49d1cda5f5c19a7ab25def34d6fb3fe693c87d42e8ebef",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_112:C1",
+    "final_id": "OPT_B_112:C1",
+    "path": "images/OPT_B_112_C1.png",
+    "sha256": "a0e3742b813ce88bc961cd7f6998c2b6ee93d541d1f0f79ebc9089bc947f7bf4",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_113:C1",
+    "final_id": "OPT_B_113:C1",
+    "path": "images/OPT_B_113_C1.png",
+    "sha256": "c30778e20b89fa9d2285ad3f2d03e8a7714f220b54f636e48a3f00931c47d827",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_114:C1",
+    "final_id": "OPT_B_114:C1",
+    "path": "images/OPT_B_114_C1.png",
+    "sha256": "4b27e6f52295ed120f1d656cd661bece5675eefe2ef0f9818a0e8aff1c2790c0",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_115:C1",
+    "final_id": "OPT_B_115:C1",
+    "path": "images/OPT_B_115_C1.png",
+    "sha256": "9b8ad8cca7ec3ce9567e1e15305530832341ddffb4a7fd90d6cdb30ecc97128d",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_116:C1",
+    "final_id": "OPT_B_116:C1",
+    "path": "images/OPT_B_116_C1.png",
+    "sha256": "c14b81124a6a740771eb6650ec08c01828d01d136a435949cffabf39136885fb",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_117:C1",
+    "final_id": "OPT_B_117:C1",
+    "path": "images/OPT_B_117_C1.png",
+    "sha256": "b05e854edcef35041bbb791176a54f590f04bba8aff10360cda62db5f48e410a",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_118:C1",
+    "final_id": "OPT_B_118:C1",
+    "path": "images/OPT_B_118_C1.png",
+    "sha256": "f890ac2d31f6f1273223b9030d6d33d58b027b5678fbab9c92a47c163bf7e981",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_119:C1",
+    "final_id": "OPT_B_119:C1",
+    "path": "images/OPT_B_119_C1.png",
+    "sha256": "747541253c0563c7ef00cfd3961c43b5db204d50c92923efb792b7a1b3410741",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_120:C1",
+    "final_id": "OPT_B_120:C1",
+    "path": "images/OPT_B_120_C1.png",
+    "sha256": "aa7cb3919bc49ecf49c9f7cb30afa27d265368c28b5c08d2279ed7bc3e25f56e",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_121:C1",
+    "final_id": "OPT_B_121:C1",
+    "path": "images/OPT_B_121_C1.png",
+    "sha256": "a7d7fdca1d608439109a96196a00e37063703f1761090cb5e935d7b7c0077caa",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_122:C1",
+    "final_id": "OPT_B_122:C1",
+    "path": "images/OPT_B_122_C1.png",
+    "sha256": "a47c94b51dbcb8b0d81d822588a78b14a662af633714b6468a33706c61d7dca7",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_123:C1",
+    "final_id": "OPT_B_123:C1",
+    "path": "images/OPT_B_123_C1.png",
+    "sha256": "78547ccce8abc3341a6538cbc13277e1ae0d9585dbedadd8526f41f380714133",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_124:C1",
+    "final_id": "OPT_B_124:C1",
+    "path": "images/OPT_B_124_C1.png",
+    "sha256": "c71331ebd705f502420d3d7f221853d1e175ff6d1d1decb80f240c4617202f5e",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_125:C1",
+    "final_id": "OPT_B_125:C1",
+    "path": "images/OPT_B_125_C1.png",
+    "sha256": "6000a4d2bbd828150c4ea309ea36a707ecd66449816ed6ecc1b50892aaeb135e",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_126:C1",
+    "final_id": "OPT_B_126:C1",
+    "path": "images/OPT_B_126_C1.png",
+    "sha256": "799e41507138c6f0c68ff1b708cccbfdc56ab81925b026900143df713d107248",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_127:C1",
+    "final_id": "OPT_B_127:C1",
+    "path": "images/OPT_B_127_C1.png",
+    "sha256": "060bec6704830eb097d4eaab8f3e91f14d5220cf84f1b2b5ab50bfcb2cd71bf7",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_128:C1",
+    "final_id": "OPT_B_128:C1",
+    "path": "images/OPT_B_128_C1.png",
+    "sha256": "9b9b20b9689303a53947586a24cc27466a5bc14de0f34e53b5054b89b3f7d94c",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_129:C1",
+    "final_id": "OPT_B_129:C1",
+    "path": "images/OPT_B_129_C1.png",
+    "sha256": "8f97e5c3883708cc71a777289b84d0daca9b0a7f9843469958f5bf53de96d414",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_130:C1",
+    "final_id": "OPT_B_130:C1",
+    "path": "images/OPT_B_130_C1.png",
+    "sha256": "6dc0a6d584414024e3ddb65ed240ce2a09cf6240914189702a0992463ceb08d6",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_131:C1",
+    "final_id": "OPT_B_131:C1",
+    "path": "images/OPT_B_131_C1.png",
+    "sha256": "1dcd6061cca409b586d9aaee6e20198166b76952ac48bb12f5ab357e509d0e94",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_132:C1",
+    "final_id": "OPT_B_132:C1",
+    "path": "images/OPT_B_132_C1.png",
+    "sha256": "33b0b2227b1918666c72a4f1cab7c4483cb3037af07d63fac3c8996d47549f5e",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_133:C1",
+    "final_id": "OPT_B_133:C1",
+    "path": "images/OPT_B_133_C1.png",
+    "sha256": "b5bae4beed9099b019950abbcecd0c6754ea210374f82bf75bb7f1ebab30c925",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_134:C1",
+    "final_id": "OPT_B_134:C1",
+    "path": "images/OPT_B_134_C1.png",
+    "sha256": "98181c7237b2e39407c2026a024a7f495c9f37b560529fab9b27158f89dade6b",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_135:C1",
+    "final_id": "OPT_B_135:C1",
+    "path": "images/OPT_B_135_C1.png",
+    "sha256": "28cbe69223efd86399b4f147e4e7abaafa4e140b2f61cdb424c61a36af3c4748",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_136:C1",
+    "final_id": "OPT_B_136:C1",
+    "path": "images/OPT_B_136_C1.png",
+    "sha256": "a41c79a9a6f13456a039245468e25a76bf7d75bea5d0c8d8af8055ca515735e0",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_137:C1",
+    "final_id": "OPT_B_137:C1",
+    "path": "images/OPT_B_137_C1.png",
+    "sha256": "67eca72d87845e721ba905b73c042ce1070edd07c4009e3deab08ceb7cc310bd",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_138:C1",
+    "final_id": "OPT_B_138:C1",
+    "path": "images/OPT_B_138_C1.png",
+    "sha256": "8415d56309a4183f309481df3beb1c58c51c1f28324642a027d1321114d915af",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_139:C1",
+    "final_id": "OPT_B_139:C1",
+    "path": "images/OPT_B_139_C1.png",
+    "sha256": "0211e1030c68d7ea9d900e7ac405fcefe76294ed03f0c6370c7578d6df72c952",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_140:C1",
+    "final_id": "OPT_B_140:C1",
+    "path": "images/OPT_B_140_C1.png",
+    "sha256": "e1cb4a4a8d4718166d97ba1851c74a0ba1e8636a4a65c19d46b4f6966aeb9202",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_141:C1",
+    "final_id": "OPT_B_141:C1",
+    "path": "images/OPT_B_141_C1.png",
+    "sha256": "86eca2584c355e5b2c7305e4016ceab69fd9a46fdb7e58ca74f10488d13e639c",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_142:C1",
+    "final_id": "OPT_B_142:C1",
+    "path": "images/OPT_B_142_C1.png",
+    "sha256": "936f4f050249325759a6f20295fcfbf736e666e2cab4cf9eff8f57fa90d64e86",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_143:C1",
+    "final_id": "OPT_B_143:C1",
+    "path": "images/OPT_B_143_C1.png",
+    "sha256": "8abccd95481686e34a6638939d422a3343a2595c060b982eaf1934c9528a0b4b",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_144:C1",
+    "final_id": "OPT_B_144:C1",
+    "path": "images/OPT_B_144_C1.png",
+    "sha256": "10445c15bbd7bc41a9e2737bb15567e38f2c9db7292092c1a4147c22f77560ae",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_145:C1",
+    "final_id": "OPT_B_145:C1",
+    "path": "images/OPT_B_145_C1.png",
+    "sha256": "97d704f4780e16715a17592607b30fd1807202b80d2342bc5c375d5d89d202b4",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_146:C1",
+    "final_id": "OPT_B_146:C1",
+    "path": "images/OPT_B_146_C1.png",
+    "sha256": "e71901dabf2a06d44d4d7aff322f908777461870562b668724e8847bc8341a68",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_147:C1",
+    "final_id": "OPT_B_147:C1",
+    "path": "images/OPT_B_147_C1.png",
+    "sha256": "05eb0964c274deea2b74a7727436f954049f4ee7c06c62e8c927b0e5e5e342b7",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_148:C1",
+    "final_id": "OPT_B_148:C1",
+    "path": "images/OPT_B_148_C1.png",
+    "sha256": "7812ad2071e9c56703c96a112ec5eb8a37c271757d3e2ff554caf92993a9d108",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_149:C1",
+    "final_id": "OPT_B_149:C1",
+    "path": "images/OPT_B_149_C1.png",
+    "sha256": "52f2621781d2dca24976f6576db3519768819f0168597d5940dc244240581c36",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_150:C1",
+    "final_id": "OPT_B_150:C1",
+    "path": "images/OPT_B_150_C1.png",
+    "sha256": "c69a0f034fb0d8f2bae644d28ddcc68bc121d01affcbb5ec035151b3d2800fe6",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_151:C1",
+    "final_id": "OPT_B_151:C1",
+    "path": "images/OPT_B_151_C1.png",
+    "sha256": "70f4c59d9190cf2762bc590a358b88e68915c06bcfca8816bb747b9e19bba400",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_152:C1",
+    "final_id": "OPT_B_152:C1",
+    "path": "images/OPT_B_152_C1.png",
+    "sha256": "724b0dd6be6606ebd4855d92ee6202ca45355f0753302647051bd8747c7f04f5",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_153:C1",
+    "final_id": "OPT_B_153:C1",
+    "path": "images/OPT_B_153_C1.png",
+    "sha256": "d0bf45fb2fe43149204c4ee11f1b0aed36a93ccabc68401a884002ba6a34ce65",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_154:C1",
+    "final_id": "OPT_B_154:C1",
+    "path": "images/OPT_B_154_C1.png",
+    "sha256": "0bedf6799d09058acba62bcc179d6a205333cf2a19dbf758e1e6e2915f5439f0",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_155:C1",
+    "final_id": "OPT_B_155:C1",
+    "path": "images/OPT_B_155_C1.png",
+    "sha256": "e9ca4d8e22fd4cf3f99c996f8ca8b842e4cc20c2b968f281d17ec4eea915df6d",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_156:C1",
+    "final_id": "OPT_B_156:C1",
+    "path": "images/OPT_B_156_C1.png",
+    "sha256": "5a4c4ff3ef05bf0b0e2d25f0e73544c030332f156250f297111a72b41170c183",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_157:C1",
+    "final_id": "OPT_B_157:C1",
+    "path": "images/OPT_B_157_C1.png",
+    "sha256": "2b9140614948e082d062af313ccf2baa40c68bac2e78eb3fdabcf41ba7a7f94f",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_158:C1",
+    "final_id": "OPT_B_158:C1",
+    "path": "images/OPT_B_158_C1.png",
+    "sha256": "33ab86def2210450dffee44a888c0bfd6716ab912614c347ff4d9b89d27212dd",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_159:C1",
+    "final_id": "OPT_B_159:C1",
+    "path": "images/OPT_B_159_C1.png",
+    "sha256": "8701ae1fcd8a2044656cca18bb4bccf05d28788e36aa255379af47107ba407e3",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_160:C1",
+    "final_id": "OPT_B_160:C1",
+    "path": "images/OPT_B_160_C1.png",
+    "sha256": "e5e63fcd9f65d8aff6dea19373d75972ab71c65d1285dacf0109ac0cde69112d",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_161:C1",
+    "final_id": "OPT_B_161:C1",
+    "path": "images/OPT_B_161_C1.png",
+    "sha256": "dd774945e71793afd29f44983e74653570959432d25474193cc9a0c4726115ba",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_162:C1",
+    "final_id": "OPT_B_162:C1",
+    "path": "images/OPT_B_162_C1.png",
+    "sha256": "271f779cb4523df87547cdd193d65bbec16d70908f6d96047f8a8f65621eee95",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_163:C1",
+    "final_id": "OPT_B_163:C1",
+    "path": "images/OPT_B_163_C1.png",
+    "sha256": "dd4dbee5f46908a50026612f3085c11cb0618fbc792420dc3749aada556404c1",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_164:C1",
+    "final_id": "OPT_B_164:C1",
+    "path": "images/OPT_B_164_C1.png",
+    "sha256": "30d4f65a80f3767f600224c96c250bf49582c60b24c005bb346f559c961f6617",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_165:C1",
+    "final_id": "OPT_B_165:C1",
+    "path": "images/OPT_B_165_C1.png",
+    "sha256": "81c789211944a37bfa1b192f7dfabab9a699f3384a66e98200d63516a2108c0a",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_166:C1",
+    "final_id": "OPT_B_166:C1",
+    "path": "images/OPT_B_166_C1.png",
+    "sha256": "a8daa3b5c0d7ce79af1471f0ba4d500f6e88a27886c40717d941744cb22fe687",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_167:C1",
+    "final_id": "OPT_B_167:C1",
+    "path": "images/OPT_B_167_C1.png",
+    "sha256": "34de6c3fd2e8df02da8108cd6d51384586041e80eaef2f0588f467901ee10257",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_168:C1",
+    "final_id": "OPT_B_168:C1",
+    "path": "images/OPT_B_168_C1.png",
+    "sha256": "c7c7ce8d7080966ed7c5c0cc5697c7f3f2c33347a3c91bc7bec77219de0cdc3f",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_169:C1",
+    "final_id": "OPT_B_169:C1",
+    "path": "images/OPT_B_169_C1.png",
+    "sha256": "fc221e880600b3492ac5684ac605a76fefb9ecc679ba50b2653ad70c2cb2cc0a",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_170:C1",
+    "final_id": "OPT_B_170:C1",
+    "path": "images/OPT_B_170_C1.png",
+    "sha256": "8ca3f6a9b2ff413257ff0888ad28a87d7e6bf556af033582b3e3664819aad452",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_171:C1",
+    "final_id": "OPT_B_171:C1",
+    "path": "images/OPT_B_171_C1.png",
+    "sha256": "316d89c158c2634a9e5c9bd836da03347bd845f711b25fdde9ad53d466aba7e6",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_172:C1",
+    "final_id": "OPT_B_172:C1",
+    "path": "images/OPT_B_172_C1.png",
+    "sha256": "48c2fbaf484c5c95a3d49eec71cc29658005899e55ec94c21ad013e0866c305c",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_173:C1",
+    "final_id": "OPT_B_173:C1",
+    "path": "images/OPT_B_173_C1.png",
+    "sha256": "c439c3b4518e4c1b0ae8b13a1f447abefce76631b6c52cbcceb80f22fa408b22",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_174:C1",
+    "final_id": "OPT_B_174:C1",
+    "path": "images/OPT_B_174_C1.png",
+    "sha256": "c3f3272e5cd2e577ebcbdda759fe419d123318bda8a661f0aba01583a16a578e",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_175:C1",
+    "final_id": "OPT_B_175:C1",
+    "path": "images/OPT_B_175_C1.png",
+    "sha256": "61c4125180a197a6b30f3a6b8cf963805b6b7f2ffed9f5bcd109d7b1f2e83d75",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_176:C1",
+    "final_id": "OPT_B_176:C1",
+    "path": "images/OPT_B_176_C1.png",
+    "sha256": "049b471e5f321c8006862e8e34270c434342f21a3f9243670ca75580dc253e5f",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_177:C1",
+    "final_id": "OPT_B_177:C1",
+    "path": "images/OPT_B_177_C1.png",
+    "sha256": "0235445b82dbd5120a8611a322464d6c11d7ebf399e8f79034d84504baf685f6",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_178:C1",
+    "final_id": "OPT_B_178:C1",
+    "path": "images/OPT_B_178_C1.png",
+    "sha256": "6ea8e3fb8249ba73c4ce4a875ce65dbb20db6fff5f868f556cfffa99452c116f",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_179:C1",
+    "final_id": "OPT_B_179:C1",
+    "path": "images/OPT_B_179_C1.png",
+    "sha256": "47d14878a0cf1f8849a0f5f4907d51cea499819c960d5d89c2b016d12338b90f",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_180:C1",
+    "final_id": "OPT_B_180:C1",
+    "path": "images/OPT_B_180_C1.png",
+    "sha256": "d84df4d3fe4d5dd11e1da5f99cfe3b1ee899e4c3d869a4ae7c10d3b4af68dcae",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_181:C1",
+    "final_id": "OPT_B_181:C1",
+    "path": "images/OPT_B_181_C1.png",
+    "sha256": "d92828aa80fae15850b9b9fae8e7dbf0e311b22950836801c5f58b2e2cf821b6",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_182:C1",
+    "final_id": "OPT_B_182:C1",
+    "path": "images/OPT_B_182_C1.png",
+    "sha256": "32539d5604247126fde25d15a4866471dc9eeb62401a57803ca99017edb32d96",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_183:C1",
+    "final_id": "OPT_B_183:C1",
+    "path": "images/OPT_B_183_C1.png",
+    "sha256": "27571df2be93fad4f540ab385751c65a8c11cf2dceebe9141c1c3bfe758b0210",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_184:C1",
+    "final_id": "OPT_B_184:C1",
+    "path": "images/OPT_B_184_C1.png",
+    "sha256": "9d6564c1fdaf4b98bb1a60a1ef89a6ca354bfb985b57065e5e9c4b8a3f99aaa4",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_185:C1",
+    "final_id": "OPT_B_185:C1",
+    "path": "images/OPT_B_185_C1.png",
+    "sha256": "458df43c9517c0d6fda2c87cfc2bb7e407e4eec9d99114119a5d0f5ca783185f",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_186:C1",
+    "final_id": "OPT_B_186:C1",
+    "path": "images/OPT_B_186_C1.png",
+    "sha256": "f140faf2e6d4043edaf72602af9f2dbc2474db65c15cc7f3d3a548c0599c62b5",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_187:C1",
+    "final_id": "OPT_B_187:C1",
+    "path": "images/OPT_B_187_C1.png",
+    "sha256": "169dbd44ee9d33b61919d9e684d4bc62d2dc673d54ce00d66d8909ac6f469095",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_188:C1",
+    "final_id": "OPT_B_188:C1",
+    "path": "images/OPT_B_188_C1.png",
+    "sha256": "d685856618a8c5a157303255c57a61aee1d226e6fc6c103f6edf959aca9fb2fa",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_189:C1",
+    "final_id": "OPT_B_189:C1",
+    "path": "images/OPT_B_189_C1.png",
+    "sha256": "2396cd2c485afda5edc084a4949f452a90d2a87f838e0043cd53aac23ec176cc",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_190:C1",
+    "final_id": "OPT_B_190:C1",
+    "path": "images/OPT_B_190_C1.png",
+    "sha256": "9b8713d64245b939638d807a0f419759e1fc6ec6379eb73279b3fbfb2828ec57",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_191:C1",
+    "final_id": "OPT_B_191:C1",
+    "path": "images/OPT_B_191_C1.png",
+    "sha256": "5711f998cd901b049d8a528d4dc50bab73dd8330ebd80bea8f838123b1ad647c",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_192:C1",
+    "final_id": "OPT_B_192:C1",
+    "path": "images/OPT_B_192_C1.png",
+    "sha256": "51f619914d78096735fd3f64f480a854f22d9039e8ff3d91350fd2fd2f9a238f",
+    "qa_status": "SIMPLE_ROOF_HYPOTHESIS"
+  },
+  {
+    "candidate_id": "OPT_B_193:C1",
+    "final_id": "OPT_B_193:C1",
+    "path": "images/OPT_B_193_C1.png",
+    "sha256": "850cf2d8a4451b252daa80784a5443862b089a89169cca65465854d0cb25eafe",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_194:C1",
+    "final_id": "OPT_B_194:C1",
+    "path": "images/OPT_B_194_C1.png",
+    "sha256": "d22d55ce93f949033a44e3a260e384355e52a813ffc9a65fb2e9764277685497",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_195:C1",
+    "final_id": "OPT_B_195:C1",
+    "path": "images/OPT_B_195_C1.png",
+    "sha256": "a9700498168627e227c1093f6de2859d6fc172f7133138da33944fc7db31dab6",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_196:C1",
+    "final_id": "OPT_B_196:C1",
+    "path": "images/OPT_B_196_C1.png",
+    "sha256": "f60203e3ca03452aecf4fd08ae5a6ec2ea30cdd6757156c5c5eeb4975c679814",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_197:C1",
+    "final_id": "OPT_B_197:C1",
+    "path": "images/OPT_B_197_C1.png",
+    "sha256": "421b147629752efc5c1c272d1d73445530eca9b0d4e9fa0b8630bc5b8f3313b6",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_198:C1",
+    "final_id": "OPT_B_198:C1",
+    "path": "images/OPT_B_198_C1.png",
+    "sha256": "fe3485a73ce1f065e8f5b0dd6d55abebb5bd87a229ce067cf3913d38b1a46b2c",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_199:C1",
+    "final_id": "OPT_B_199:C1",
+    "path": "images/OPT_B_199_C1.png",
+    "sha256": "b37408cd4fa97808603c05a80907f6a5770ca6cf582de84e8c9dea05c1a0ebdd",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_200:C1",
+    "final_id": "OPT_B_200:C1",
+    "path": "images/OPT_B_200_C1.png",
+    "sha256": "7ea24ac02e67823b0abf4f69fef6a13339427470f87f79a9f6ce8e9dd37a90be",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_201:C1",
+    "final_id": "OPT_B_201:C1",
+    "path": "images/OPT_B_201_C1.png",
+    "sha256": "ed041fbe037fb3b32b300bfb34e9434704942f8dea7e81c0bf42f339d7638501",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_202:C1",
+    "final_id": "OPT_B_202:C1",
+    "path": "images/OPT_B_202_C1.png",
+    "sha256": "7292b7e1d4ff40c9de499cd7d7acdc98d42f3efc324d8a8f5769c5dc3d579570",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_203:C1",
+    "final_id": "OPT_B_203:C1",
+    "path": "images/OPT_B_203_C1.png",
+    "sha256": "d49c64b9a48e98deb17c98ed0511a2544f1ad351b691d46cdd4e0bb6e9474ac9",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_204:C1",
+    "final_id": "OPT_B_204:C1",
+    "path": "images/OPT_B_204_C1.png",
+    "sha256": "7adcfdbe1499273a9193697f8ab232fc9934e9cea995213db6e5c951981a5f24",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_205:C1",
+    "final_id": "OPT_B_205:C1",
+    "path": "images/OPT_B_205_C1.png",
+    "sha256": "e2ef3f28fe23315e415c0538061b475fe54361e284119ba3325f790491d18e7a",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_206:C1",
+    "final_id": "OPT_B_206:C1",
+    "path": "images/OPT_B_206_C1.png",
+    "sha256": "da53d14bd0b268765cd9a325474209f046285990b7da652b060901fd53e2d620",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_207:C1",
+    "final_id": "OPT_B_207:C1",
+    "path": "images/OPT_B_207_C1.png",
+    "sha256": "89f9b7b540b1fcc3f1abbada42f9456b54e4a7369b6e43b58eef569cdcea5b4e",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_208:C1",
+    "final_id": "OPT_B_208:C1",
+    "path": "images/OPT_B_208_C1.png",
+    "sha256": "cfc41777dff91b029d7ef0747eaa4c6e58d260d442f6b5f46199832164b172f2",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_209:C1",
+    "final_id": "OPT_B_209:C1",
+    "path": "images/OPT_B_209_C1.png",
+    "sha256": "0928cfb81e6fdd8027b1c879a5c528d4a8a2681e72817f56a253d3ac305d77ab",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_210:C1",
+    "final_id": "OPT_B_210:C1",
+    "path": "images/OPT_B_210_C1.png",
+    "sha256": "63cb181a2542fe53da92ff5df53bd1776aaddf04b51b8680b318adae78958524",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_211:C1",
+    "final_id": "OPT_B_211:C1",
+    "path": "images/OPT_B_211_C1.png",
+    "sha256": "0c3c6ea3ecc0066a0eaba117fa1419cc6d5f1196b1b6d822f2d4ec286c2d491b",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_212:C1",
+    "final_id": "OPT_B_212:C1",
+    "path": "images/OPT_B_212_C1.png",
+    "sha256": "953240dc24f9d8d2dd75cad5ff79355fd83ec62af4dd09cad2638fc8ec2d5171",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_213:C1",
+    "final_id": "OPT_B_213:C1",
+    "path": "images/OPT_B_213_C1.png",
+    "sha256": "63b4cd9a20cf5909bf4dc2135f60d1d7e368c7c0997e6b38ae32dbee6988e361",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_214:C1",
+    "final_id": "OPT_B_214:C1",
+    "path": "images/OPT_B_214_C1.png",
+    "sha256": "d7ef3d9341d977df2c92692f85d11f6d65ae653f01a84ddcdd3c5d43538b5b7b",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_215:C1",
+    "final_id": "OPT_B_215:C1",
+    "path": "images/OPT_B_215_C1.png",
+    "sha256": "b890c38b2a4819f375dcaffe3d16611181686d7b35b818992568f534879ff5f6",
+    "qa_status": "NEEDS_REVIEW"
+  },
+  {
+    "candidate_id": "OPT_B_216:C1",
+    "final_id": "OPT_B_216:C1",
+    "path": "images/OPT_B_216_C1.png",
+    "sha256": "6670b15171617d8d653aa415471d6f6e3f528da27ef1ef38addc26271a0aa6a6",
+    "qa_status": "NEEDS_REVIEW"
+  }
+]

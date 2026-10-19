@@ -1,0 +1,147 @@
+{
+  "schema_version": 2,
+  "crs": "EPSG:3844",
+  "cases": [
+    {
+      "test_id": "OPT_B_006_C1",
+      "source_body_ids": [
+        "OPT_B_006:C1"
+      ],
+      "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_006_C1.tif",
+      "search_center": [
+        390733.00247427495,
+        585582.7352310272
+      ],
+      "target_extent": [
+        390703.3802781652,
+        585552.3931321612,
+        390762.6246703846,
+        585613.0773298932
+      ],
+      "search_bbox": [
+        390698.3802781652,
+        585547.3931321612,
+        390767.6246703846,
+        585618.0773298932
+      ],
+      "selection_image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_006_C1.png",
+      "valid_fraction": 1.0,
+      "selection_review": {
+        "status": "AWAITING_ACTUAL_VISUAL_REVIEW"
+      }
+    },
+    {
+      "test_id": "OPT_B_046_C1",
+      "source_body_ids": [
+        "OPT_B_046:C1"
+      ],
+      "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_046_C1.tif",
+      "search_center": [
+        391282.4894596725,
+        585554.2830431457
+      ],
+      "target_extent": [
+        391267.92797786917,
+        585539.4214814379,
+        391298.0547319948,
+        585568.9606415693
+      ],
+      "search_bbox": [
+        391262.92797786917,
+        585534.4214814379,
+        391303.0547319948,
+        585573.9606415693
+      ],
+      "selection_image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_046_C1.png",
+      "valid_fraction": 0.999933118608867,
+      "selection_review": {
+        "status": "AWAITING_ACTUAL_VISUAL_REVIEW"
+      }
+    },
+    {
+      "test_id": "OPT_B_080_C1",
+      "source_body_ids": [
+        "OPT_B_080:C1"
+      ],
+      "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_080_C1.tif",
+      "search_center": [
+        390664.49736496864,
+        585452.5980751178
+      ],
+      "target_extent": [
+        390654.5744004167,
+        585443.616291718,
+        390674.42032952065,
+        585461.5798585176
+      ],
+      "search_bbox": [
+        390649.5744004167,
+        585438.616291718,
+        390679.42032952065,
+        585466.5798585176
+      ],
+      "selection_image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_080_C1.png",
+      "valid_fraction": 1.0,
+      "selection_review": {
+        "status": "AWAITING_ACTUAL_VISUAL_REVIEW"
+      }
+    },
+    {
+      "test_id": "OPT_B_120_C1",
+      "source_body_ids": [
+        "OPT_B_120:C1"
+      ],
+      "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_120_C1.tif",
+      "search_center": [
+        390639.59972532286,
+        585388.3368950321
+      ],
+      "target_extent": [
+        390628.39858527976,
+        585377.2593653505,
+        390650.80086536583,
+        585399.4144247138
+      ],
+      "search_bbox": [
+        390623.39858527976,
+        585372.2593653505,
+        390655.80086536583,
+        585404.4144247138
+      ],
+      "selection_image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_120_C1.png",
+      "valid_fraction": 0.9209943042705085,
+      "selection_review": {
+        "status": "AWAITING_ACTUAL_VISUAL_REVIEW"
+      }
+    },
+    {
+      "test_id": "OPT_B_154_C1",
+      "source_body_ids": [
+        "OPT_B_154:C1",
+        "OPT_B_169:C1"
+      ],
+      "tile": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_154_C1.tif",
+      "search_center": [
+        390760.4360903215,
+        585408.0694328337
+      ],
+      "target_extent": [
+        390730.3147222429,
+        585386.5892340569,
+        390803.9588497375,
+        585429.2098244918
+      ],
+      "search_bbox": [
+        390725.3147222429,
+        585381.5892340569,
+        390808.9588497375,
+        585434.2098244918
+      ],
+      "selection_image": "C:\\Users\\lefpa\\Downloads\\QGIS-AI\\workspace\\reviews\\option_b_refinement_20261018_evaluation\\OPT_B_154_C1.png",
+      "valid_fraction": 1.0,
+      "selection_review": {
+        "status": "AWAITING_ACTUAL_VISUAL_REVIEW"
+      }
+    }
+  ]
+}
