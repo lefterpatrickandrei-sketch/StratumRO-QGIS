@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StratumRO — Simulare Zbor Dronă Acoperire 60%-40% (Cluj-Napoca)</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --success: #34d399;
+      --warning: #fbbf24;
+      --danger: #f87171;
+      --purple: #a855f7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      padding: 24px;
+      line-height: 1.6;
+    }
+    .container { max-width: 1280px; margin: 0 auto; }
+    header {
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-flight { background: rgba(56, 189, 248, 0.2); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-overlap { background: rgba(168, 85, 247, 0.2); color: var(--purple); border: 1px solid var(--purple); }
+
+    .grid-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 18px;
+      position: relative;
+    }
+    .stat-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent);
+    }
+    .stat-card.purple::before { background: var(--purple); }
+    .stat-card.success::before { background: var(--success); }
+    .stat-card.warning::before { background: var(--warning); }
+
+    .stat-val { font-size: 2rem; font-weight: 800; color: #fff; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; margin-top: 4px; }
+    .stat-sub { font-size: 0.75rem; color: var(--accent); margin-top: 4px; }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 28px;
+    }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flight-canvas-container {
+      position: relative;
+      background: #030712;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    canvas {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      background: #090d16;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      font-size: 0.85rem;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; }
+    .legend-box { width: 14px; height: 14px; border-radius: 3px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 0.85rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th {
+      background: rgba(31, 41, 55, 0.5);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+    tr:hover { background: rgba(56, 189, 248, 0.04); }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div>
+      <span class="badge badge-flight">Misiune Fotogrammetrică Aeriană</span>
+      <span class="badge badge-overlap">Overlap 60% Longitudinal / 40% Transversal</span>
+      <h1 style="font-size: 1.8rem; margin-top: 8px;">Simulare Zbor Dronă: Acoperire 60%-40% peste Cluj-Napoca</h1>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">Analiza redundanței stereoscopice și a densității razelor foto pe cele 195 de clădiri (Stereo 70)</p>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 0.85rem; color: var(--text-muted);">AOI: 1.05 km × 1.05 km (110 ha)</div>
+      <div style="font-size: 0.85rem; color: var(--accent); font-weight: 600;">Stereo 70 EPSG:3844</div>
+    </div>
+  </header>
+
+  <div class="grid-stats">
+    <div class="stat-card purple">
+      <div class="stat-val">253</div>
+      <div class="stat-label">Declanșări Foto (Stații Aeriene)</div>
+      <div class="stat-sub">11 Benzi de Zbor (Pas: 108.0m)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">5.1 <span style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">fotografii</span></div>
+      <div class="stat-label">Redundanță Medie per Clădire</div>
+      <div class="stat-sub">Interval: 2 .. 8 raze de vizibilitate</div>
+    </div>
+    <div class="stat-card success">
+      <div class="stat-val">189 <span style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/ 195</span></div>
+      <div class="stat-label">Clădiri cu Stereorestituție Validă</div>
+      <div class="stat-sub">≥ 3 raze convergente (98.5% din perimetru)</div>
+    </div>
+    <div class="stat-card warning">
+      <div class="stat-val">60% / 40%</div>
+      <div class="stat-label">Raport Overlap Strict</div>
+      <div class="stat-sub">Amprentă sol cadru: 180m × 120m</div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE CANVAS FLIGHT MISSION MAP -->
+  <div class="card">
+    <div class="card-title">
+      <span>✈️</span> Harta Dinamică a Zborului Fotogrammetric (Traseu Boustrophedon & Cadre 60%-40%)
+    </div>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 14px;">
+      Traseul de zbor șerpuit (linii albastre), centrele de proiecție ale camerei aeriene (puncte albe) și cele 195 de clădiri colorate după numărul de fotografii care le intersectează:
+    </p>
+
+    <div class="flight-canvas-container">
+      <canvas id="flightCanvas" width="900" height="750"></canvas>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-box" style="background: #38bdf8;"></div><span>Traseu Zbor Dronă (11 benzi)</span></div>
+        <div class="legend-item"><div class="legend-box" style="background: #f87171;"></div><span>Clădiri cu 1–2 raze (Margine)</span></div>
+        <div class="legend-item"><div class="legend-box" style="background: #34d399;"></div><span>Clădiri cu 3–5 raze (Stereo Optim)</span></div>
+        <div class="legend-item"><div class="legend-box" style="background: #a855f7;"></div><span>Clădiri cu ≥ 6 raze (Densitate Mare)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON: 60/40 OVERLAP VS 20% OVERLAP -->
+  <div class="card">
+    <div class="card-title">
+      <span>📐</span> Concluziile Analizei Fotogrammetrice 60%-40%
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div style="background: rgba(31, 41, 55, 0.4); border-radius: 8px; padding: 18px;">
+        <h4 style="color: var(--accent); margin-bottom: 8px;">1. Garanția Stereorestituției 3D pe Clădiri</h4>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">
+          Cu acoperire de 60% longitudinal și 40% transversal, <strong>fiecare clădire din Cluj este văzută în medie din 5.1 unghiuri foto diferite</strong>. Aceasta permite reconstrucția automată a norului dens de puncte fotogrammetric și elimină unghiurile moarte generate de umbre sau coame înalte.
+        </p>
+      </div>
+      <div style="background: rgba(31, 41, 55, 0.4); border-radius: 8px; padding: 18px;">
+        <h4 style="color: var(--warning); margin-bottom: 8px;">2. Explicația Deformării Zidurilor de Calcan</h4>
+        <p style="color: var(--text-muted); font-size: 0.88rem;">
+          Deplasarea de relief (paralaxa) pe clădirile înalte face ca peretele de calcan să fie ascuns sau privit oblic sub unghiuri diferite între benzile adiacente. De aceea, <strong>retragerea streșinii pe zid comun trebuie să fie strict 0.00m</strong>: bufferul uniform de -0.40m a distrus contiguitatea pe 56 de clădiri alipite.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE: SAMPLES -->
+  <div class="card">
+    <div class="card-title">
+      <span>📋</span> Eșantion Clădiri: Gradul de Acoperire Fotogrammetrică în Misiunea 60%-40%
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID Clădire</th>
+          <th>Suprafață Acoperiș</th>
+          <th>Coordonate Stereo 70 (Centroid)</th>
+          <th>Raze Foto (Cadre 60%-40%)</th>
+          <th>Statut Stereoscopic</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td><strong>OPT_B_003:C1</strong></td>
+          <td>151.53 m²</td>
+          <td>[390664.2, 585479.8]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">5</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_004:C1</strong></td>
+          <td>217.3 m²</td>
+          <td>[390705.8, 585486.9]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">5</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_007:C1</strong></td>
+          <td>67.35 m²</td>
+          <td>[390845.8, 585411.2]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">3</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_008:C1</strong></td>
+          <td>136.17 m²</td>
+          <td>[390936.0, 585666.0]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_009:C1</strong></td>
+          <td>136.18 m²</td>
+          <td>[391036.3, 585601.9]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_010:C1</strong></td>
+          <td>137.1 m²</td>
+          <td>[391216.1, 585617.3]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_011:C1</strong></td>
+          <td>483.06 m²</td>
+          <td>[391204.4, 585549.1]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_012:C1</strong></td>
+          <td>144.0 m²</td>
+          <td>[391197.7, 585627.7]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">5</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_013:C1</strong></td>
+          <td>125.14 m²</td>
+          <td>[390783.5, 585668.9]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">5</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_014:C1</strong></td>
+          <td>68.63 m²</td>
+          <td>[391027.6, 585736.4]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_016:C1</strong></td>
+          <td>53.85 m²</td>
+          <td>[390934.0, 585772.3]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">5</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_018:C1</strong></td>
+          <td>122.71 m²</td>
+          <td>[390676.7, 585301.8]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">5</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_022:C1</strong></td>
+          <td>68.25 m²</td>
+          <td>[390839.6, 585661.1]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_023:C1</strong></td>
+          <td>113.77 m²</td>
+          <td>[390689.1, 585452.4]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_024:C1</strong></td>
+          <td>110.31 m²</td>
+          <td>[390945.7, 585504.7]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_025:C1</strong></td>
+          <td>24.51 m²</td>
+          <td>[390989.7, 585787.9]</td>
+          <td><strong style="color: #38bdf8; font-size: 1.1rem;">6</strong> cadre foto</td>
+          <td><span class="badge" style="background: #38bdf822; color: #38bdf8; border: 1px solid #38bdf8;">EXCELENT_MULTI_CADRU (Model 3D dens)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_026:C1</strong></td>
+          <td>36.1 m²</td>
+          <td>[391179.7, 585707.7]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">3</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+        <tr>
+          <td><strong>OPT_B_027:C1</strong></td>
+          <td>116.14 m²</td>
+          <td>[390676.7, 585481.2]</td>
+          <td><strong style="color: #34d399; font-size: 1.1rem;">4</strong> cadre foto</td>
+          <td><span class="badge" style="background: #34d39922; color: #34d399; border: 1px solid #34d399;">OPTIM_STANDARD (Stereorestitutie posibila)</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <footer style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 30px;">
+    StratumRO Drone Flight Simulator v2.0 • Acoperire 60/40 • Calculat în Antigravity 2.0
+  </footer>
+
+</div>
+
+<script>
+// Randare Traseu de Zbor si Cladiri pe Canvas
+const canvas = document.getElementById('flightCanvas');
+const ctx = canvas.getContext('2d');
+
+const X_MIN = 390530.0;
+const X_MAX = 391578.0;
+const Y_MIN = 584838.0;
+const Y_MAX = 585886.0;
+
+const pad = 40;
+const w = canvas.width - pad * 2;
+const h = canvas.height - pad * 2;
+
+function mapX(x) { return pad + ((x - X_MIN) / (X_MAX - X_MIN)) * w; }
+function mapY(y) { return pad + (1 - (y - Y_MIN) / (Y_MAX - Y_MIN)) * h; }
+
+// 1. Grid AOI
+ctx.strokeStyle = '#1f2937';
+ctx.lineWidth = 1;
+for (let i = 0; i <= 10; i++) {
+  ctx.beginPath();
+  ctx.moveTo(pad + i * (w/10), pad);
+  ctx.lineTo(pad + i * (w/10), pad + h);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(pad, pad + i * (h/10));
+  ctx.lineTo(pad + w, pad + i * (h/10));
+  ctx.stroke();
+}
+
+// 2. Traiectorie Zbor (Snake Flight Strips)
+const stations = [{"id": "STRIP_01_IMG_01", "strip": 1, "photo": 1, "x": 390530.0, "y": 585886.0, "bounds": [390440.0, 585826.0, 390620.0, 585946.0]}, {"id": "STRIP_01_IMG_02", "strip": 1, "photo": 2, "x": 390530.0, "y": 585838.0, "bounds": [390440.0, 585778.0, 390620.0, 585898.0]}, {"id": "STRIP_01_IMG_03", "strip": 1, "photo": 3, "x": 390530.0, "y": 585790.0, "bounds": [390440.0, 585730.0, 390620.0, 585850.0]}, {"id": "STRIP_01_IMG_04", "strip": 1, "photo": 4, "x": 390530.0, "y": 585742.0, "bounds": [390440.0, 585682.0, 390620.0, 585802.0]}, {"id": "STRIP_01_IMG_05", "strip": 1, "photo": 5, "x": 390530.0, "y": 585694.0, "bounds": [390440.0, 585634.0, 390620.0, 585754.0]}, {"id": "STRIP_01_IMG_06", "strip": 1, "photo": 6, "x": 390530.0, "y": 585646.0, "bounds": [390440.0, 585586.0, 390620.0, 585706.0]}, {"id": "STRIP_01_IMG_07", "strip": 1, "photo": 7, "x": 390530.0, "y": 585598.0, "bounds": [390440.0, 585538.0, 390620.0, 585658.0]}, {"id": "STRIP_01_IMG_08", "strip": 1, "photo": 8, "x": 390530.0, "y": 585550.0, "bounds": [390440.0, 585490.0, 390620.0, 585610.0]}, {"id": "STRIP_01_IMG_09", "strip": 1, "photo": 9, "x": 390530.0, "y": 585502.0, "bounds": [390440.0, 585442.0, 390620.0, 585562.0]}, {"id": "STRIP_01_IMG_10", "strip": 1, "photo": 10, "x": 390530.0, "y": 585454.0, "bounds": [390440.0, 585394.0, 390620.0, 585514.0]}, {"id": "STRIP_01_IMG_11", "strip": 1, "photo": 11, "x": 390530.0, "y": 585406.0, "bounds": [390440.0, 585346.0, 390620.0, 585466.0]}, {"id": "STRIP_01_IMG_12", "strip": 1, "photo": 12, "x": 390530.0, "y": 585358.0, "bounds": [390440.0, 585298.0, 390620.0, 585418.0]}, {"id": "STRIP_01_IMG_13", "strip": 1, "photo": 13, "x": 390530.0, "y": 585310.0, "bounds": [390440.0, 585250.0, 390620.0, 585370.0]}, {"id": "STRIP_01_IMG_14", "strip": 1, "photo": 14, "x": 390530.0, "y": 585262.0, "bounds": [390440.0, 585202.0, 390620.0, 585322.0]}, {"id": "STRIP_01_IMG_15", "strip": 1, "photo": 15, "x": 390530.0, "y": 585214.0, "bounds": [390440.0, 585154.0, 390620.0, 585274.0]}, {"id": "STRIP_01_IMG_16", "strip": 1, "photo": 16, "x": 390530.0, "y": 585166.0, "bounds": [390440.0, 585106.0, 390620.0, 585226.0]}, {"id": "STRIP_01_IMG_17", "strip": 1, "photo": 17, "x": 390530.0, "y": 585118.0, "bounds": [390440.0, 585058.0, 390620.0, 585178.0]}, {"id": "STRIP_01_IMG_18", "strip": 1, "photo": 18, "x": 390530.0, "y": 585070.0, "bounds": [390440.0, 585010.0, 390620.0, 585130.0]}, {"id": "STRIP_01_IMG_19", "strip": 1, "photo": 19, "x": 390530.0, "y": 585022.0, "bounds": [390440.0, 584962.0, 390620.0, 585082.0]}, {"id": "STRIP_01_IMG_20", "strip": 1, "photo": 20, "x": 390530.0, "y": 584974.0, "bounds": [390440.0, 584914.0, 390620.0, 585034.0]}, {"id": "STRIP_01_IMG_21", "strip": 1, "photo": 21, "x": 390530.0, "y": 584926.0, "bounds": [390440.0, 584866.0, 390620.0, 584986.0]}, {"id": "STRIP_01_IMG_22", "strip": 1, "photo": 22, "x": 390530.0, "y": 584878.0, "bounds": [390440.0, 584818.0, 390620.0, 584938.0]}, {"id": "STRIP_01_IMG_23", "strip": 1, "photo": 23, "x": 390530.0, "y": 584830.0, "bounds": [390440.0, 584770.0, 390620.0, 584890.0]}, {"id": "STRIP_02_IMG_01", "strip": 2, "photo": 1, "x": 390638.0, "y": 584838.0, "bounds": [390548.0, 584778.0, 390728.0, 584898.0]}, {"id": "STRIP_02_IMG_02", "strip": 2, "photo": 2, "x": 390638.0, "y": 584886.0, "bounds": [390548.0, 584826.0, 390728.0, 584946.0]}, {"id": "STRIP_02_IMG_03", "strip": 2, "photo": 3, "x": 390638.0, "y": 584934.0, "bounds": [390548.0, 584874.0, 390728.0, 584994.0]}, {"id": "STRIP_02_IMG_04", "strip": 2, "photo": 4, "x": 390638.0, "y": 584982.0, "bounds": [390548.0, 584922.0, 390728.0, 585042.0]}, {"id": "STRIP_02_IMG_05", "strip": 2, "photo": 5, "x": 390638.0, "y": 585030.0, "bounds": [390548.0, 584970.0, 390728.0, 585090.0]}, {"id": "STRIP_02_IMG_06", "strip": 2, "photo": 6, "x": 390638.0, "y": 585078.0, "bounds": [390548.0, 585018.0, 390728.0, 585138.0]}, {"id": "STRIP_02_IMG_07", "strip": 2, "photo": 7, "x": 390638.0, "y": 585126.0, "bounds": [390548.0, 585066.0, 390728.0, 585186.0]}, {"id": "STRIP_02_IMG_08", "strip": 2, "photo": 8, "x": 390638.0, "y": 585174.0, "bounds": [390548.0, 585114.0, 390728.0, 585234.0]}, {"id": "STRIP_02_IMG_09", "strip": 2, "photo": 9, "x": 390638.0, "y": 585222.0, "bounds": [390548.0, 585162.0, 390728.0, 585282.0]}, {"id": "STRIP_02_IMG_10", "strip": 2, "photo": 10, "x": 390638.0, "y": 585270.0, "bounds": [390548.0, 585210.0, 390728.0, 585330.0]}, {"id": "STRIP_02_IMG_11", "strip": 2, "photo": 11, "x": 390638.0, "y": 585318.0, "bounds": [390548.0, 585258.0, 390728.0, 585378.0]}, {"id": "STRIP_02_IMG_12", "strip": 2, "photo": 12, "x": 390638.0, "y": 585366.0, "bounds": [390548.0, 585306.0, 390728.0, 585426.0]}, {"id": "STRIP_02_IMG_13", "strip": 2, "photo": 13, "x": 390638.0, "y": 585414.0, "bounds": [390548.0, 585354.0, 390728.0, 585474.0]}, {"id": "STRIP_02_IMG_14", "strip": 2, "photo": 14, "x": 390638.0, "y": 585462.0, "bounds": [390548.0, 585402.0, 390728.0, 585522.0]}, {"id": "STRIP_02_IMG_15", "strip": 2, "photo": 15, "x": 390638.0, "y": 585510.0, "bounds": [390548.0, 585450.0, 390728.0, 585570.0]}, {"id": "STRIP_02_IMG_16", "strip": 2, "photo": 16, "x": 390638.0, "y": 585558.0, "bounds": [390548.0, 585498.0, 390728.0, 585618.0]}, {"id": "STRIP_02_IMG_17", "strip": 2, "photo": 17, "x": 390638.0, "y": 585606.0, "bounds": [390548.0, 585546.0, 390728.0, 585666.0]}, {"id": "STRIP_02_IMG_18", "strip": 2, "photo": 18, "x": 390638.0, "y": 585654.0, "bounds": [390548.0, 585594.0, 390728.0, 585714.0]}, {"id": "STRIP_02_IMG_19", "strip": 2, "photo": 19, "x": 390638.0, "y": 585702.0, "bounds": [390548.0, 585642.0, 390728.0, 585762.0]}, {"id": "STRIP_02_IMG_20", "strip": 2, "photo": 20, "x": 390638.0, "y": 585750.0, "bounds": [390548.0, 585690.0, 390728.0, 585810.0]}, {"id": "STRIP_02_IMG_21", "strip": 2, "photo": 21, "x": 390638.0, "y": 585798.0, "bounds": [390548.0, 585738.0, 390728.0, 585858.0]}, {"id": "STRIP_02_IMG_22", "strip": 2, "photo": 22, "x": 390638.0, "y": 585846.0, "bounds": [390548.0, 585786.0, 390728.0, 585906.0]}, {"id": "STRIP_02_IMG_23", "strip": 2, "photo": 23, "x": 390638.0, "y": 585894.0, "bounds": [390548.0, 585834.0, 390728.0, 585954.0]}, {"id": "STRIP_03_IMG_01", "strip": 3, "photo": 1, "x": 390746.0, "y": 585886.0, "bounds": [390656.0, 585826.0, 390836.0, 585946.0]}, {"id": "STRIP_03_IMG_02", "strip": 3, "photo": 2, "x": 390746.0, "y": 585838.0, "bounds": [390656.0, 585778.0, 390836.0, 585898.0]}, {"id": "STRIP_03_IMG_03", "strip": 3, "photo": 3, "x": 390746.0, "y": 585790.0, "bounds": [390656.0, 585730.0, 390836.0, 585850.0]}, {"id": "STRIP_03_IMG_04", "strip": 3, "photo": 4, "x": 390746.0, "y": 585742.0, "bounds": [390656.0, 585682.0, 390836.0, 585802.0]}, {"id": "STRIP_03_IMG_05", "strip": 3, "photo": 5, "x": 390746.0, "y": 585694.0, "bounds": [390656.0, 585634.0, 390836.0, 585754.0]}, {"id": "STRIP_03_IMG_06", "strip": 3, "photo": 6, "x": 390746.0, "y": 585646.0, "bounds": [390656.0, 585586.0, 390836.0, 585706.0]}, {"id": "STRIP_03_IMG_07", "strip": 3, "photo": 7, "x": 390746.0, "y": 585598.0, "bounds": [390656.0, 585538.0, 390836.0, 585658.0]}, {"id": "STRIP_03_IMG_08", "strip": 3, "photo": 8, "x": 390746.0, "y": 585550.0, "bounds": [390656.0, 585490.0, 390836.0, 585610.0]}, {"id": "STRIP_03_IMG_09", "strip": 3, "photo": 9, "x": 390746.0, "y": 585502.0, "bounds": [390656.0, 585442.0, 390836.0, 585562.0]}, {"id": "STRIP_03_IMG_10", "strip": 3, "photo": 10, "x": 390746.0, "y": 585454.0, "bounds": [390656.0, 585394.0, 390836.0, 585514.0]}, {"id": "STRIP_03_IMG_11", "strip": 3, "photo": 11, "x": 390746.0, "y": 585406.0, "bounds": [390656.0, 585346.0, 390836.0, 585466.0]}, {"id": "STRIP_03_IMG_12", "strip": 3, "photo": 12, "x": 390746.0, "y": 585358.0, "bounds": [390656.0, 585298.0, 390836.0, 585418.0]}, {"id": "STRIP_03_IMG_13", "strip": 3, "photo": 13, "x": 390746.0, "y": 585310.0, "bounds": [390656.0, 585250.0, 390836.0, 585370.0]}, {"id": "STRIP_03_IMG_14", "strip": 3, "photo": 14, "x": 390746.0, "y": 585262.0, "bounds": [390656.0, 585202.0, 390836.0, 585322.0]}, {"id": "STRIP_03_IMG_15", "strip": 3, "photo": 15, "x": 390746.0, "y": 585214.0, "bounds": [390656.0, 585154.0, 390836.0, 585274.0]}, {"id": "STRIP_03_IMG_16", "strip": 3, "photo": 16, "x": 390746.0, "y": 585166.0, "bounds": [390656.0, 585106.0, 390836.0, 585226.0]}, {"id": "STRIP_03_IMG_17", "strip": 3, "photo": 17, "x": 390746.0, "y": 585118.0, "bounds": [390656.0, 585058.0, 390836.0, 585178.0]}, {"id": "STRIP_03_IMG_18", "strip": 3, "photo": 18, "x": 390746.0, "y": 585070.0, "bounds": [390656.0, 585010.0, 390836.0, 585130.0]}, {"id": "STRIP_03_IMG_19", "strip": 3, "photo": 19, "x": 390746.0, "y": 585022.0, "bounds": [390656.0, 584962.0, 390836.0, 585082.0]}, {"id": "STRIP_03_IMG_20", "strip": 3, "photo": 20, "x": 390746.0, "y": 584974.0, "bounds": [390656.0, 584914.0, 390836.0, 585034.0]}, {"id": "STRIP_03_IMG_21", "strip": 3, "photo": 21, "x": 390746.0, "y": 584926.0, "bounds": [390656.0, 584866.0, 390836.0, 584986.0]}, {"id": "STRIP_03_IMG_22", "strip": 3, "photo": 22, "x": 390746.0, "y": 584878.0, "bounds": [390656.0, 584818.0, 390836.0, 584938.0]}, {"id": "STRIP_03_IMG_23", "strip": 3, "photo": 23, "x": 390746.0, "y": 584830.0, "bounds": [390656.0, 584770.0, 390836.0, 584890.0]}, {"id": "STRIP_04_IMG_01", "strip": 4, "photo": 1, "x": 390854.0, "y": 584838.0, "bounds": [390764.0, 584778.0, 390944.0, 584898.0]}, {"id": "STRIP_04_IMG_02", "strip": 4, "photo": 2, "x": 390854.0, "y": 584886.0, "bounds": [390764.0, 584826.0, 390944.0, 584946.0]}, {"id": "STRIP_04_IMG_03", "strip": 4, "photo": 3, "x": 390854.0, "y": 584934.0, "bounds": [390764.0, 584874.0, 390944.0, 584994.0]}, {"id": "STRIP_04_IMG_04", "strip": 4, "photo": 4, "x": 390854.0, "y": 584982.0, "bounds": [390764.0, 584922.0, 390944.0, 585042.0]}, {"id": "STRIP_04_IMG_05", "strip": 4, "photo": 5, "x": 390854.0, "y": 585030.0, "bounds": [390764.0, 584970.0, 390944.0, 585090.0]}, {"id": "STRIP_04_IMG_06", "strip": 4, "photo": 6, "x": 390854.0, "y": 585078.0, "bounds": [390764.0, 585018.0, 390944.0, 585138.0]}, {"id": "STRIP_04_IMG_07", "strip": 4, "photo": 7, "x": 390854.0, "y": 585126.0, "bounds": [390764.0, 585066.0, 390944.0, 585186.0]}, {"id": "STRIP_04_IMG_08", "strip": 4, "photo": 8, "x": 390854.0, "y": 585174.0, "bounds": [390764.0, 585114.0, 390944.0, 585234.0]}, {"id": "STRIP_04_IMG_09", "strip": 4, "photo": 9, "x": 390854.0, "y": 585222.0, "bounds": [390764.0, 585162.0, 390944.0, 585282.0]}, {"id": "STRIP_04_IMG_10", "strip": 4, "photo": 10, "x": 390854.0, "y": 585270.0, "bounds": [390764.0, 585210.0, 390944.0, 585330.0]}, {"id": "STRIP_04_IMG_11", "strip": 4, "photo": 11, "x": 390854.0, "y": 585318.0, "bounds": [390764.0, 585258.0, 390944.0, 585378.0]}, {"id": "STRIP_04_IMG_12", "strip": 4, "photo": 12, "x": 390854.0, "y": 585366.0, "bounds": [390764.0, 585306.0, 390944.0, 585426.0]}, {"id": "STRIP_04_IMG_13", "strip": 4, "photo": 13, "x": 390854.0, "y": 585414.0, "bounds": [390764.0, 585354.0, 390944.0, 585474.0]}, {"id": "STRIP_04_IMG_14", "strip": 4, "photo": 14, "x": 390854.0, "y": 585462.0, "bounds": [390764.0, 585402.0, 390944.0, 585522.0]}, {"id": "STRIP_04_IMG_15", "strip": 4, "photo": 15, "x": 390854.0, "y": 585510.0, "bounds": [390764.0, 585450.0, 390944.0, 585570.0]}, {"id": "STRIP_04_IMG_16", "strip": 4, "photo": 16, "x": 390854.0, "y": 585558.0, "bounds": [390764.0, 585498.0, 390944.0, 585618.0]}, {"id": "STRIP_04_IMG_17", "strip": 4, "photo": 17, "x": 390854.0, "y": 585606.0, "bounds": [390764.0, 585546.0, 390944.0, 585666.0]}, {"id": "STRIP_04_IMG_18", "strip": 4, "photo": 18, "x": 390854.0, "y": 585654.0, "bounds": [390764.0, 585594.0, 390944.0, 585714.0]}, {"id": "STRIP_04_IMG_19", "strip": 4, "photo": 19, "x": 390854.0, "y": 585702.0, "bounds": [390764.0, 585642.0, 390944.0, 585762.0]}, {"id": "STRIP_04_IMG_20", "strip": 4, "photo": 20, "x": 390854.0, "y": 585750.0, "bounds": [390764.0, 585690.0, 390944.0, 585810.0]}, {"id": "STRIP_04_IMG_21", "strip": 4, "photo": 21, "x": 390854.0, "y": 585798.0, "bounds": [390764.0, 585738.0, 390944.0, 585858.0]}, {"id": "STRIP_04_IMG_22", "strip": 4, "photo": 22, "x": 390854.0, "y": 585846.0, "bounds": [390764.0, 585786.0, 390944.0, 585906.0]}, {"id": "STRIP_04_IMG_23", "strip": 4, "photo": 23, "x": 390854.0, "y": 585894.0, "bounds": [390764.0, 585834.0, 390944.0, 585954.0]}, {"id": "STRIP_05_IMG_01", "strip": 5, "photo": 1, "x": 390962.0, "y": 585886.0, "bounds": [390872.0, 585826.0, 391052.0, 585946.0]}, {"id": "STRIP_05_IMG_02", "strip": 5, "photo": 2, "x": 390962.0, "y": 585838.0, "bounds": [390872.0, 585778.0, 391052.0, 585898.0]}, {"id": "STRIP_05_IMG_03", "strip": 5, "photo": 3, "x": 390962.0, "y": 585790.0, "bounds": [390872.0, 585730.0, 391052.0, 585850.0]}, {"id": "STRIP_05_IMG_04", "strip": 5, "photo": 4, "x": 390962.0, "y": 585742.0, "bounds": [390872.0, 585682.0, 391052.0, 585802.0]}, {"id": "STRIP_05_IMG_05", "strip": 5, "photo": 5, "x": 390962.0, "y": 585694.0, "bounds": [390872.0, 585634.0, 391052.0, 585754.0]}, {"id": "STRIP_05_IMG_06", "strip": 5, "photo": 6, "x": 390962.0, "y": 585646.0, "bounds": [390872.0, 585586.0, 391052.0, 585706.0]}, {"id": "STRIP_05_IMG_07", "strip": 5, "photo": 7, "x": 390962.0, "y": 585598.0, "bounds": [390872.0, 585538.0, 391052.0, 585658.0]}, {"id": "STRIP_05_IMG_08", "strip": 5, "photo": 8, "x": 390962.0, "y": 585550.0, "bounds": [390872.0, 585490.0, 391052.0, 585610.0]}, {"id": "STRIP_05_IMG_09", "strip": 5, "photo": 9, "x": 390962.0, "y": 585502.0, "bounds": [390872.0, 585442.0, 391052.0, 585562.0]}, {"id": "STRIP_05_IMG_10", "strip": 5, "photo": 10, "x": 390962.0, "y": 585454.0, "bounds": [390872.0, 585394.0, 391052.0, 585514.0]}, {"id": "STRIP_05_IMG_11", "strip": 5, "photo": 11, "x": 390962.0, "y": 585406.0, "bounds": [390872.0, 585346.0, 391052.0, 585466.0]}, {"id": "STRIP_05_IMG_12", "strip": 5, "photo": 12, "x": 390962.0, "y": 585358.0, "bounds": [390872.0, 585298.0, 391052.0, 585418.0]}, {"id": "STRIP_05_IMG_13", "strip": 5, "photo": 13, "x": 390962.0, "y": 585310.0, "bounds": [390872.0, 585250.0, 391052.0, 585370.0]}, {"id": "STRIP_05_IMG_14", "strip": 5, "photo": 14, "x": 390962.0, "y": 585262.0, "bounds": [390872.0, 585202.0, 391052.0, 585322.0]}, {"id": "STRIP_05_IMG_15", "strip": 5, "photo": 15, "x": 390962.0, "y": 585214.0, "bounds": [390872.0, 585154.0, 391052.0, 585274.0]}, {"id": "STRIP_05_IMG_16", "strip": 5, "photo": 16, "x": 390962.0, "y": 585166.0, "bounds": [390872.0, 585106.0, 391052.0, 585226.0]}, {"id": "STRIP_05_IMG_17", "strip": 5, "photo": 17, "x": 390962.0, "y": 585118.0, "bounds": [390872.0, 585058.0, 391052.0, 585178.0]}, {"id": "STRIP_05_IMG_18", "strip": 5, "photo": 18, "x": 390962.0, "y": 585070.0, "bounds": [390872.0, 585010.0, 391052.0, 585130.0]}, {"id": "STRIP_05_IMG_19", "strip": 5, "photo": 19, "x": 390962.0, "y": 585022.0, "bounds": [390872.0, 584962.0, 391052.0, 585082.0]}, {"id": "STRIP_05_IMG_20", "strip": 5, "photo": 20, "x": 390962.0, "y": 584974.0, "bounds": [390872.0, 584914.0, 391052.0, 585034.0]}, {"id": "STRIP_05_IMG_21", "strip": 5, "photo": 21, "x": 390962.0, "y": 584926.0, "bounds": [390872.0, 584866.0, 391052.0, 584986.0]}, {"id": "STRIP_05_IMG_22", "strip": 5, "photo": 22, "x": 390962.0, "y": 584878.0, "bounds": [390872.0, 584818.0, 391052.0, 584938.0]}, {"id": "STRIP_05_IMG_23", "strip": 5, "photo": 23, "x": 390962.0, "y": 584830.0, "bounds": [390872.0, 584770.0, 391052.0, 584890.0]}, {"id": "STRIP_06_IMG_01", "strip": 6, "photo": 1, "x": 391070.0, "y": 584838.0, "bounds": [390980.0, 584778.0, 391160.0, 584898.0]}, {"id": "STRIP_06_IMG_02", "strip": 6, "photo": 2, "x": 391070.0, "y": 584886.0, "bounds": [390980.0, 584826.0, 391160.0, 584946.0]}, {"id": "STRIP_06_IMG_03", "strip": 6, "photo": 3, "x": 391070.0, "y": 584934.0, "bounds": [390980.0, 584874.0, 391160.0, 584994.0]}, {"id": "STRIP_06_IMG_04", "strip": 6, "photo": 4, "x": 391070.0, "y": 584982.0, "bounds": [390980.0, 584922.0, 391160.0, 585042.0]}, {"id": "STRIP_06_IMG_05", "strip": 6, "photo": 5, "x": 391070.0, "y": 585030.0, "bounds": [390980.0, 584970.0, 391160.0, 585090.0]}, {"id": "STRIP_06_IMG_06", "strip": 6, "photo": 6, "x": 391070.0, "y": 585078.0, "bounds": [390980.0, 585018.0, 391160.0, 585138.0]}, {"id": "STRIP_06_IMG_07", "strip": 6, "photo": 7, "x": 391070.0, "y": 585126.0, "bounds": [390980.0, 585066.0, 391160.0, 585186.0]}, {"id": "STRIP_06_IMG_08", "strip": 6, "photo": 8, "x": 391070.0, "y": 585174.0, "bounds": [390980.0, 585114.0, 391160.0, 585234.0]}, {"id": "STRIP_06_IMG_09", "strip": 6, "photo": 9, "x": 391070.0, "y": 585222.0, "bounds": [390980.0, 585162.0, 391160.0, 585282.0]}, {"id": "STRIP_06_IMG_10", "strip": 6, "photo": 10, "x": 391070.0, "y": 585270.0, "bounds": [390980.0, 585210.0, 391160.0, 585330.0]}, {"id": "STRIP_06_IMG_11", "strip": 6, "photo": 11, "x": 391070.0, "y": 585318.0, "bounds": [390980.0, 585258.0, 391160.0, 585378.0]}, {"id": "STRIP_06_IMG_12", "strip": 6, "photo": 12, "x": 391070.0, "y": 585366.0, "bounds": [390980.0, 585306.0, 391160.0, 585426.0]}, {"id": "STRIP_06_IMG_13", "strip": 6, "photo": 13, "x": 391070.0, "y": 585414.0, "bounds": [390980.0, 585354.0, 391160.0, 585474.0]}, {"id": "STRIP_06_IMG_14", "strip": 6, "photo": 14, "x": 391070.0, "y": 585462.0, "bounds": [390980.0, 585402.0, 391160.0, 585522.0]}, {"id": "STRIP_06_IMG_15", "strip": 6, "photo": 15, "x": 391070.0, "y": 585510.0, "bounds": [390980.0, 585450.0, 391160.0, 585570.0]}, {"id": "STRIP_06_IMG_16", "strip": 6, "photo": 16, "x": 391070.0, "y": 585558.0, "bounds": [390980.0, 585498.0, 391160.0, 585618.0]}, {"id": "STRIP_06_IMG_17", "strip": 6, "photo": 17, "x": 391070.0, "y": 585606.0, "bounds": [390980.0, 585546.0, 391160.0, 585666.0]}, {"id": "STRIP_06_IMG_18", "strip": 6, "photo": 18, "x": 391070.0, "y": 585654.0, "bounds": [390980.0, 585594.0, 391160.0, 585714.0]}, {"id": "STRIP_06_IMG_19", "strip": 6, "photo": 19, "x": 391070.0, "y": 585702.0, "bounds": [390980.0, 585642.0, 391160.0, 585762.0]}, {"id": "STRIP_06_IMG_20", "strip": 6, "photo": 20, "x": 391070.0, "y": 585750.0, "bounds": [390980.0, 585690.0, 391160.0, 585810.0]}, {"id": "STRIP_06_IMG_21", "strip": 6, "photo": 21, "x": 391070.0, "y": 585798.0, "bounds": [390980.0, 585738.0, 391160.0, 585858.0]}, {"id": "STRIP_06_IMG_22", "strip": 6, "photo": 22, "x": 391070.0, "y": 585846.0, "bounds": [390980.0, 585786.0, 391160.0, 585906.0]}, {"id": "STRIP_06_IMG_23", "strip": 6, "photo": 23, "x": 391070.0, "y": 585894.0, "bounds": [390980.0, 585834.0, 391160.0, 585954.0]}, {"id": "STRIP_07_IMG_01", "strip": 7, "photo": 1, "x": 391178.0, "y": 585886.0, "bounds": [391088.0, 585826.0, 391268.0, 585946.0]}, {"id": "STRIP_07_IMG_02", "strip": 7, "photo": 2, "x": 391178.0, "y": 585838.0, "bounds": [391088.0, 585778.0, 391268.0, 585898.0]}, {"id": "STRIP_07_IMG_03", "strip": 7, "photo": 3, "x": 391178.0, "y": 585790.0, "bounds": [391088.0, 585730.0, 391268.0, 585850.0]}, {"id": "STRIP_07_IMG_04", "strip": 7, "photo": 4, "x": 391178.0, "y": 585742.0, "bounds": [391088.0, 585682.0, 391268.0, 585802.0]}, {"id": "STRIP_07_IMG_05", "strip": 7, "photo": 5, "x": 391178.0, "y": 585694.0, "bounds": [391088.0, 585634.0, 391268.0, 585754.0]}, {"id": "STRIP_07_IMG_06", "strip": 7, "photo": 6, "x": 391178.0, "y": 585646.0, "bounds": [391088.0, 585586.0, 391268.0, 585706.0]}, {"id": "STRIP_07_IMG_07", "strip": 7, "photo": 7, "x": 391178.0, "y": 585598.0, "bounds": [391088.0, 585538.0, 391268.0, 585658.0]}, {"id": "STRIP_07_IMG_08", "strip": 7, "photo": 8, "x": 391178.0, "y": 585550.0, "bounds": [391088.0, 585490.0, 391268.0, 585610.0]}, {"id": "STRIP_07_IMG_09", "strip": 7, "photo": 9, "x": 391178.0, "y": 585502.0, "bounds": [391088.0, 585442.0, 391268.0, 585562.0]}, {"id": "STRIP_07_IMG_10", "strip": 7, "photo": 10, "x": 391178.0, "y": 585454.0, "bounds": [391088.0, 585394.0, 391268.0, 585514.0]}, {"id": "STRIP_07_IMG_11", "strip": 7, "photo": 11, "x": 391178.0, "y": 585406.0, "bounds": [391088.0, 585346.0, 391268.0, 585466.0]}, {"id": "STRIP_07_IMG_12", "strip": 7, "photo": 12, "x": 391178.0, "y": 585358.0, "bounds": [391088.0, 585298.0, 391268.0, 585418.0]}, {"id": "STRIP_07_IMG_13", "strip": 7, "photo": 13, "x": 391178.0, "y": 585310.0, "bounds": [391088.0, 585250.0, 391268.0, 585370.0]}, {"id": "STRIP_07_IMG_14", "strip": 7, "photo": 14, "x": 391178.0, "y": 585262.0, "bounds": [391088.0, 585202.0, 391268.0, 585322.0]}, {"id": "STRIP_07_IMG_15", "strip": 7, "photo": 15, "x": 391178.0, "y": 585214.0, "bounds": [391088.0, 585154.0, 391268.0, 585274.0]}, {"id": "STRIP_07_IMG_16", "strip": 7, "photo": 16, "x": 391178.0, "y": 585166.0, "bounds": [391088.0, 585106.0, 391268.0, 585226.0]}, {"id": "STRIP_07_IMG_17", "strip": 7, "photo": 17, "x": 391178.0, "y": 585118.0, "bounds": [391088.0, 585058.0, 391268.0, 585178.0]}, {"id": "STRIP_07_IMG_18", "strip": 7, "photo": 18, "x": 391178.0, "y": 585070.0, "bounds": [391088.0, 585010.0, 391268.0, 585130.0]}, {"id": "STRIP_07_IMG_19", "strip": 7, "photo": 19, "x": 391178.0, "y": 585022.0, "bounds": [391088.0, 584962.0, 391268.0, 585082.0]}, {"id": "STRIP_07_IMG_20", "strip": 7, "photo": 20, "x": 391178.0, "y": 584974.0, "bounds": [391088.0, 584914.0, 391268.0, 585034.0]}, {"id": "STRIP_07_IMG_21", "strip": 7, "photo": 21, "x": 391178.0, "y": 584926.0, "bounds": [391088.0, 584866.0, 391268.0, 584986.0]}, {"id": "STRIP_07_IMG_22", "strip": 7, "photo": 22, "x": 391178.0, "y": 584878.0, "bounds": [391088.0, 584818.0, 391268.0, 584938.0]}, {"id": "STRIP_07_IMG_23", "strip": 7, "photo": 23, "x": 391178.0, "y": 584830.0, "bounds": [391088.0, 584770.0, 391268.0, 584890.0]}, {"id": "STRIP_08_IMG_01", "strip": 8, "photo": 1, "x": 391286.0, "y": 584838.0, "bounds": [391196.0, 584778.0, 391376.0, 584898.0]}, {"id": "STRIP_08_IMG_02", "strip": 8, "photo": 2, "x": 391286.0, "y": 584886.0, "bounds": [391196.0, 584826.0, 391376.0, 584946.0]}, {"id": "STRIP_08_IMG_03", "strip": 8, "photo": 3, "x": 391286.0, "y": 584934.0, "bounds": [391196.0, 584874.0, 391376.0, 584994.0]}, {"id": "STRIP_08_IMG_04", "strip": 8, "photo": 4, "x": 391286.0, "y": 584982.0, "bounds": [391196.0, 584922.0, 391376.0, 585042.0]}, {"id": "STRIP_08_IMG_05", "strip": 8, "photo": 5, "x": 391286.0, "y": 585030.0, "bounds": [391196.0, 584970.0, 391376.0, 585090.0]}, {"id": "STRIP_08_IMG_06", "strip": 8, "photo": 6, "x": 391286.0, "y": 585078.0, "bounds": [391196.0, 585018.0, 391376.0, 585138.0]}, {"id": "STRIP_08_IMG_07", "strip": 8, "photo": 7, "x": 391286.0, "y": 585126.0, "bounds": [391196.0, 585066.0, 391376.0, 585186.0]}, {"id": "STRIP_08_IMG_08", "strip": 8, "photo": 8, "x": 391286.0, "y": 585174.0, "bounds": [391196.0, 585114.0, 391376.0, 585234.0]}, {"id": "STRIP_08_IMG_09", "strip": 8, "photo": 9, "x": 391286.0, "y": 585222.0, "bounds": [391196.0, 585162.0, 391376.0, 585282.0]}, {"id": "STRIP_08_IMG_10", "strip": 8, "photo": 10, "x": 391286.0, "y": 585270.0, "bounds": [391196.0, 585210.0, 391376.0, 585330.0]}, {"id": "STRIP_08_IMG_11", "strip": 8, "photo": 11, "x": 391286.0, "y": 585318.0, "bounds": [391196.0, 585258.0, 391376.0, 585378.0]}, {"id": "STRIP_08_IMG_12", "strip": 8, "photo": 12, "x": 391286.0, "y": 585366.0, "bounds": [391196.0, 585306.0, 391376.0, 585426.0]}, {"id": "STRIP_08_IMG_13", "strip": 8, "photo": 13, "x": 391286.0, "y": 585414.0, "bounds": [391196.0, 585354.0, 391376.0, 585474.0]}, {"id": "STRIP_08_IMG_14", "strip": 8, "photo": 14, "x": 391286.0, "y": 585462.0, "bounds": [391196.0, 585402.0, 391376.0, 585522.0]}, {"id": "STRIP_08_IMG_15", "strip": 8, "photo": 15, "x": 391286.0, "y": 585510.0, "bounds": [391196.0, 585450.0, 391376.0, 585570.0]}, {"id": "STRIP_08_IMG_16", "strip": 8, "photo": 16, "x": 391286.0, "y": 585558.0, "bounds": [391196.0, 585498.0, 391376.0, 585618.0]}, {"id": "STRIP_08_IMG_17", "strip": 8, "photo": 17, "x": 391286.0, "y": 585606.0, "bounds": [391196.0, 585546.0, 391376.0, 585666.0]}, {"id": "STRIP_08_IMG_18", "strip": 8, "photo": 18, "x": 391286.0, "y": 585654.0, "bounds": [391196.0, 585594.0, 391376.0, 585714.0]}, {"id": "STRIP_08_IMG_19", "strip": 8, "photo": 19, "x": 391286.0, "y": 585702.0, "bounds": [391196.0, 585642.0, 391376.0, 585762.0]}, {"id": "STRIP_08_IMG_20", "strip": 8, "photo": 20, "x": 391286.0, "y": 585750.0, "bounds": [391196.0, 585690.0, 391376.0, 585810.0]}, {"id": "STRIP_08_IMG_21", "strip": 8, "photo": 21, "x": 391286.0, "y": 585798.0, "bounds": [391196.0, 585738.0, 391376.0, 585858.0]}, {"id": "STRIP_08_IMG_22", "strip": 8, "photo": 22, "x": 391286.0, "y": 585846.0, "bounds": [391196.0, 585786.0, 391376.0, 585906.0]}, {"id": "STRIP_08_IMG_23", "strip": 8, "photo": 23, "x": 391286.0, "y": 585894.0, "bounds": [391196.0, 585834.0, 391376.0, 585954.0]}, {"id": "STRIP_09_IMG_01", "strip": 9, "photo": 1, "x": 391394.0, "y": 585886.0, "bounds": [391304.0, 585826.0, 391484.0, 585946.0]}, {"id": "STRIP_09_IMG_02", "strip": 9, "photo": 2, "x": 391394.0, "y": 585838.0, "bounds": [391304.0, 585778.0, 391484.0, 585898.0]}, {"id": "STRIP_09_IMG_03", "strip": 9, "photo": 3, "x": 391394.0, "y": 585790.0, "bounds": [391304.0, 585730.0, 391484.0, 585850.0]}, {"id": "STRIP_09_IMG_04", "strip": 9, "photo": 4, "x": 391394.0, "y": 585742.0, "bounds": [391304.0, 585682.0, 391484.0, 585802.0]}, {"id": "STRIP_09_IMG_05", "strip": 9, "photo": 5, "x": 391394.0, "y": 585694.0, "bounds": [391304.0, 585634.0, 391484.0, 585754.0]}, {"id": "STRIP_09_IMG_06", "strip": 9, "photo": 6, "x": 391394.0, "y": 585646.0, "bounds": [391304.0, 585586.0, 391484.0, 585706.0]}, {"id": "STRIP_09_IMG_07", "strip": 9, "photo": 7, "x": 391394.0, "y": 585598.0, "bounds": [391304.0, 585538.0, 391484.0, 585658.0]}, {"id": "STRIP_09_IMG_08", "strip": 9, "photo": 8, "x": 391394.0, "y": 585550.0, "bounds": [391304.0, 585490.0, 391484.0, 585610.0]}, {"id": "STRIP_09_IMG_09", "strip": 9, "photo": 9, "x": 391394.0, "y": 585502.0, "bounds": [391304.0, 585442.0, 391484.0, 585562.0]}, {"id": "STRIP_09_IMG_10", "strip": 9, "photo": 10, "x": 391394.0, "y": 585454.0, "bounds": [391304.0, 585394.0, 391484.0, 585514.0]}, {"id": "STRIP_09_IMG_11", "strip": 9, "photo": 11, "x": 391394.0, "y": 585406.0, "bounds": [391304.0, 585346.0, 391484.0, 585466.0]}, {"id": "STRIP_09_IMG_12", "strip": 9, "photo": 12, "x": 391394.0, "y": 585358.0, "bounds": [391304.0, 585298.0, 391484.0, 585418.0]}, {"id": "STRIP_09_IMG_13", "strip": 9, "photo": 13, "x": 391394.0, "y": 585310.0, "bounds": [391304.0, 585250.0, 391484.0, 585370.0]}, {"id": "STRIP_09_IMG_14", "strip": 9, "photo": 14, "x": 391394.0, "y": 585262.0, "bounds": [391304.0, 585202.0, 391484.0, 585322.0]}, {"id": "STRIP_09_IMG_15", "strip": 9, "photo": 15, "x": 391394.0, "y": 585214.0, "bounds": [391304.0, 585154.0, 391484.0, 585274.0]}, {"id": "STRIP_09_IMG_16", "strip": 9, "photo": 16, "x": 391394.0, "y": 585166.0, "bounds": [391304.0, 585106.0, 391484.0, 585226.0]}, {"id": "STRIP_09_IMG_17", "strip": 9, "photo": 17, "x": 391394.0, "y": 585118.0, "bounds": [391304.0, 585058.0, 391484.0, 585178.0]}, {"id": "STRIP_09_IMG_18", "strip": 9, "photo": 18, "x": 391394.0, "y": 585070.0, "bounds": [391304.0, 585010.0, 391484.0, 585130.0]}, {"id": "STRIP_09_IMG_19", "strip": 9, "photo": 19, "x": 391394.0, "y": 585022.0, "bounds": [391304.0, 584962.0, 391484.0, 585082.0]}, {"id": "STRIP_09_IMG_20", "strip": 9, "photo": 20, "x": 391394.0, "y": 584974.0, "bounds": [391304.0, 584914.0, 391484.0, 585034.0]}, {"id": "STRIP_09_IMG_21", "strip": 9, "photo": 21, "x": 391394.0, "y": 584926.0, "bounds": [391304.0, 584866.0, 391484.0, 584986.0]}, {"id": "STRIP_09_IMG_22", "strip": 9, "photo": 22, "x": 391394.0, "y": 584878.0, "bounds": [391304.0, 584818.0, 391484.0, 584938.0]}, {"id": "STRIP_09_IMG_23", "strip": 9, "photo": 23, "x": 391394.0, "y": 584830.0, "bounds": [391304.0, 584770.0, 391484.0, 584890.0]}, {"id": "STRIP_10_IMG_01", "strip": 10, "photo": 1, "x": 391502.0, "y": 584838.0, "bounds": [391412.0, 584778.0, 391592.0, 584898.0]}, {"id": "STRIP_10_IMG_02", "strip": 10, "photo": 2, "x": 391502.0, "y": 584886.0, "bounds": [391412.0, 584826.0, 391592.0, 584946.0]}, {"id": "STRIP_10_IMG_03", "strip": 10, "photo": 3, "x": 391502.0, "y": 584934.0, "bounds": [391412.0, 584874.0, 391592.0, 584994.0]}, {"id": "STRIP_10_IMG_04", "strip": 10, "photo": 4, "x": 391502.0, "y": 584982.0, "bounds": [391412.0, 584922.0, 391592.0, 585042.0]}, {"id": "STRIP_10_IMG_05", "strip": 10, "photo": 5, "x": 391502.0, "y": 585030.0, "bounds": [391412.0, 584970.0, 391592.0, 585090.0]}, {"id": "STRIP_10_IMG_06", "strip": 10, "photo": 6, "x": 391502.0, "y": 585078.0, "bounds": [391412.0, 585018.0, 391592.0, 585138.0]}, {"id": "STRIP_10_IMG_07", "strip": 10, "photo": 7, "x": 391502.0, "y": 585126.0, "bounds": [391412.0, 585066.0, 391592.0, 585186.0]}, {"id": "STRIP_10_IMG_08", "strip": 10, "photo": 8, "x": 391502.0, "y": 585174.0, "bounds": [391412.0, 585114.0, 391592.0, 585234.0]}, {"id": "STRIP_10_IMG_09", "strip": 10, "photo": 9, "x": 391502.0, "y": 585222.0, "bounds": [391412.0, 585162.0, 391592.0, 585282.0]}, {"id": "STRIP_10_IMG_10", "strip": 10, "photo": 10, "x": 391502.0, "y": 585270.0, "bounds": [391412.0, 585210.0, 391592.0, 585330.0]}, {"id": "STRIP_10_IMG_11", "strip": 10, "photo": 11, "x": 391502.0, "y": 585318.0, "bounds": [391412.0, 585258.0, 391592.0, 585378.0]}, {"id": "STRIP_10_IMG_12", "strip": 10, "photo": 12, "x": 391502.0, "y": 585366.0, "bounds": [391412.0, 585306.0, 391592.0, 585426.0]}, {"id": "STRIP_10_IMG_13", "strip": 10, "photo": 13, "x": 391502.0, "y": 585414.0, "bounds": [391412.0, 585354.0, 391592.0, 585474.0]}, {"id": "STRIP_10_IMG_14", "strip": 10, "photo": 14, "x": 391502.0, "y": 585462.0, "bounds": [391412.0, 585402.0, 391592.0, 585522.0]}, {"id": "STRIP_10_IMG_15", "strip": 10, "photo": 15, "x": 391502.0, "y": 585510.0, "bounds": [391412.0, 585450.0, 391592.0, 585570.0]}, {"id": "STRIP_10_IMG_16", "strip": 10, "photo": 16, "x": 391502.0, "y": 585558.0, "bounds": [391412.0, 585498.0, 391592.0, 585618.0]}, {"id": "STRIP_10_IMG_17", "strip": 10, "photo": 17, "x": 391502.0, "y": 585606.0, "bounds": [391412.0, 585546.0, 391592.0, 585666.0]}, {"id": "STRIP_10_IMG_18", "strip": 10, "photo": 18, "x": 391502.0, "y": 585654.0, "bounds": [391412.0, 585594.0, 391592.0, 585714.0]}, {"id": "STRIP_10_IMG_19", "strip": 10, "photo": 19, "x": 391502.0, "y": 585702.0, "bounds": [391412.0, 585642.0, 391592.0, 585762.0]}, {"id": "STRIP_10_IMG_20", "strip": 10, "photo": 20, "x": 391502.0, "y": 585750.0, "bounds": [391412.0, 585690.0, 391592.0, 585810.0]}, {"id": "STRIP_10_IMG_21", "strip": 10, "photo": 21, "x": 391502.0, "y": 585798.0, "bounds": [391412.0, 585738.0, 391592.0, 585858.0]}, {"id": "STRIP_10_IMG_22", "strip": 10, "photo": 22, "x": 391502.0, "y": 585846.0, "bounds": [391412.0, 585786.0, 391592.0, 585906.0]}, {"id": "STRIP_10_IMG_23", "strip": 10, "photo": 23, "x": 391502.0, "y": 585894.0, "bounds": [391412.0, 585834.0, 391592.0, 585954.0]}, {"id": "STRIP_11_IMG_01", "strip": 11, "photo": 1, "x": 391610.0, "y": 585886.0, "bounds": [391520.0, 585826.0, 391700.0, 585946.0]}, {"id": "STRIP_11_IMG_02", "strip": 11, "photo": 2, "x": 391610.0, "y": 585838.0, "bounds": [391520.0, 585778.0, 391700.0, 585898.0]}, {"id": "STRIP_11_IMG_03", "strip": 11, "photo": 3, "x": 391610.0, "y": 585790.0, "bounds": [391520.0, 585730.0, 391700.0, 585850.0]}, {"id": "STRIP_11_IMG_04", "strip": 11, "photo": 4, "x": 391610.0, "y": 585742.0, "bounds": [391520.0, 585682.0, 391700.0, 585802.0]}, {"id": "STRIP_11_IMG_05", "strip": 11, "photo": 5, "x": 391610.0, "y": 585694.0, "bounds": [391520.0, 585634.0, 391700.0, 585754.0]}, {"id": "STRIP_11_IMG_06", "strip": 11, "photo": 6, "x": 391610.0, "y": 585646.0, "bounds": [391520.0, 585586.0, 391700.0, 585706.0]}, {"id": "STRIP_11_IMG_07", "strip": 11, "photo": 7, "x": 391610.0, "y": 585598.0, "bounds": [391520.0, 585538.0, 391700.0, 585658.0]}, {"id": "STRIP_11_IMG_08", "strip": 11, "photo": 8, "x": 391610.0, "y": 585550.0, "bounds": [391520.0, 585490.0, 391700.0, 585610.0]}, {"id": "STRIP_11_IMG_09", "strip": 11, "photo": 9, "x": 391610.0, "y": 585502.0, "bounds": [391520.0, 585442.0, 391700.0, 585562.0]}, {"id": "STRIP_11_IMG_10", "strip": 11, "photo": 10, "x": 391610.0, "y": 585454.0, "bounds": [391520.0, 585394.0, 391700.0, 585514.0]}, {"id": "STRIP_11_IMG_11", "strip": 11, "photo": 11, "x": 391610.0, "y": 585406.0, "bounds": [391520.0, 585346.0, 391700.0, 585466.0]}, {"id": "STRIP_11_IMG_12", "strip": 11, "photo": 12, "x": 391610.0, "y": 585358.0, "bounds": [391520.0, 585298.0, 391700.0, 585418.0]}, {"id": "STRIP_11_IMG_13", "strip": 11, "photo": 13, "x": 391610.0, "y": 585310.0, "bounds": [391520.0, 585250.0, 391700.0, 585370.0]}, {"id": "STRIP_11_IMG_14", "strip": 11, "photo": 14, "x": 391610.0, "y": 585262.0, "bounds": [391520.0, 585202.0, 391700.0, 585322.0]}, {"id": "STRIP_11_IMG_15", "strip": 11, "photo": 15, "x": 391610.0, "y": 585214.0, "bounds": [391520.0, 585154.0, 391700.0, 585274.0]}, {"id": "STRIP_11_IMG_16", "strip": 11, "photo": 16, "x": 391610.0, "y": 585166.0, "bounds": [391520.0, 585106.0, 391700.0, 585226.0]}, {"id": "STRIP_11_IMG_17", "strip": 11, "photo": 17, "x": 391610.0, "y": 585118.0, "bounds": [391520.0, 585058.0, 391700.0, 585178.0]}, {"id": "STRIP_11_IMG_18", "strip": 11, "photo": 18, "x": 391610.0, "y": 585070.0, "bounds": [391520.0, 585010.0, 391700.0, 585130.0]}, {"id": "STRIP_11_IMG_19", "strip": 11, "photo": 19, "x": 391610.0, "y": 585022.0, "bounds": [391520.0, 584962.0, 391700.0, 585082.0]}, {"id": "STRIP_11_IMG_20", "strip": 11, "photo": 20, "x": 391610.0, "y": 584974.0, "bounds": [391520.0, 584914.0, 391700.0, 585034.0]}, {"id": "STRIP_11_IMG_21", "strip": 11, "photo": 21, "x": 391610.0, "y": 584926.0, "bounds": [391520.0, 584866.0, 391700.0, 584986.0]}, {"id": "STRIP_11_IMG_22", "strip": 11, "photo": 22, "x": 391610.0, "y": 584878.0, "bounds": [391520.0, 584818.0, 391700.0, 584938.0]}, {"id": "STRIP_11_IMG_23", "strip": 11, "photo": 23, "x": 391610.0, "y": 584830.0, "bounds": [391520.0, 584770.0, 391700.0, 584890.0]}];
+ctx.strokeStyle = '#38bdf8';
+ctx.lineWidth = 1.5;
+ctx.beginPath();
+for (let i = 0; i < stations.length; i++) {
+  const px = mapX(stations[i].x);
+  const py = mapY(stations[i].y);
+  if (i === 0) ctx.moveTo(px, py);
+  else ctx.lineTo(px, py);
+}
+ctx.stroke();
+
+// Centre de declansare foto
+ctx.fillStyle = '#ffffff';
+for (let i = 0; i < stations.length; i += 2) {
+  const px = mapX(stations[i].x);
+  const py = mapY(stations[i].y);
+  ctx.beginPath();
+  ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+// 3. Cladiri colorate dupa raze foto
+const buildings = [{"id": "OPT_B_003:C1", "area_m2": 151.53, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390664.2, 585479.8]}, {"id": "OPT_B_004:C1", "area_m2": 217.3, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390705.8, 585486.9]}, {"id": "OPT_B_007:C1", "area_m2": 67.35, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390845.8, 585411.2]}, {"id": "OPT_B_008:C1", "area_m2": 136.17, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390936.0, 585666.0]}, {"id": "OPT_B_009:C1", "area_m2": 136.18, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391036.3, 585601.9]}, {"id": "OPT_B_010:C1", "area_m2": 137.1, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391216.1, 585617.3]}, {"id": "OPT_B_011:C1", "area_m2": 483.06, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391204.4, 585549.1]}, {"id": "OPT_B_012:C1", "area_m2": 144.0, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391197.7, 585627.7]}, {"id": "OPT_B_013:C1", "area_m2": 125.14, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390783.5, 585668.9]}, {"id": "OPT_B_014:C1", "area_m2": 68.63, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391027.6, 585736.4]}, {"id": "OPT_B_016:C1", "area_m2": 53.85, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390934.0, 585772.3]}, {"id": "OPT_B_018:C1", "area_m2": 122.71, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390676.7, 585301.8]}, {"id": "OPT_B_022:C1", "area_m2": 68.25, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390839.6, 585661.1]}, {"id": "OPT_B_023:C1", "area_m2": 113.77, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390689.1, 585452.4]}, {"id": "OPT_B_024:C1", "area_m2": 110.31, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390945.7, 585504.7]}, {"id": "OPT_B_025:C1", "area_m2": 24.51, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390989.7, 585787.9]}, {"id": "OPT_B_026:C1", "area_m2": 36.1, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391179.7, 585707.7]}, {"id": "OPT_B_027:C1", "area_m2": 116.14, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390676.7, 585481.2]}, {"id": "OPT_B_028:C1", "area_m2": 177.16, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391292.8, 585544.2]}, {"id": "OPT_B_029:C1", "area_m2": 168.86, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390869.6, 585646.5]}, {"id": "OPT_B_030:C1", "area_m2": 66.56, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390704.3, 585619.1]}, {"id": "OPT_B_031:C1", "area_m2": 118.34, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390630.7, 585481.3]}, {"id": "OPT_B_181:C1", "area_m2": 148.17, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390939.2, 585785.9]}, {"id": "OPT_B_033:C1", "area_m2": 49.65, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391229.2, 585708.2]}, {"id": "OPT_B_035:C1", "area_m2": 85.76, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390829.3, 585678.1]}, {"id": "OPT_B_036:C1", "area_m2": 48.18, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390651.5, 585405.8]}, {"id": "OPT_B_037:C1", "area_m2": 235.94, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391337.0, 585548.6]}, {"id": "OPT_B_038:C1", "area_m2": 140.24, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391173.2, 585644.3]}, {"id": "OPT_B_039:C1", "area_m2": 150.35, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390744.2, 585401.1]}, {"id": "OPT_B_040:C1", "area_m2": 75.68, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390952.9, 585507.0]}, {"id": "OPT_B_042:C1", "area_m2": 126.46, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390604.1, 585473.8]}, {"id": "OPT_B_043:C1", "area_m2": 502.45, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390953.8, 585695.6]}, {"id": "OPT_B_044:C1", "area_m2": 48.29, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390701.2, 585628.7]}, {"id": "OPT_B_045:C1", "area_m2": 24.57, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390716.8, 585686.4]}, {"id": "OPT_B_047:C1", "area_m2": 250.47, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390908.2, 585495.0]}, {"id": "OPT_B_048:C1", "area_m2": 62.78, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390914.4, 585658.3]}, {"id": "OPT_B_049:C1", "area_m2": 220.91, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390895.8, 585684.8]}, {"id": "OPT_B_050:C1", "area_m2": 27.03, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391087.9, 585825.9]}, {"id": "OPT_B_051:C1", "area_m2": 33.66, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391104.2, 585861.3]}, {"id": "OPT_B_053:C1", "area_m2": 26.23, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391199.5, 585683.8]}, {"id": "OPT_B_054:C1", "area_m2": 87.29, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390711.0, 585420.5]}, {"id": "OPT_B_055:C1", "area_m2": 103.32, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391162.2, 585731.2]}, {"id": "OPT_B_056:C1", "area_m2": 78.75, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390601.2, 585481.9]}, {"id": "OPT_B_057:C1", "area_m2": 47.61, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391096.2, 585840.7]}, {"id": "OPT_B_058:C1", "area_m2": 135.25, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391116.0, 585852.2]}, {"id": "OPT_B_059:C1", "area_m2": 90.54, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391315.6, 585568.2]}, {"id": "OPT_B_060:C1", "area_m2": 161.69, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391346.8, 585536.1]}, {"id": "OPT_B_062:C1", "area_m2": 44.89, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390936.3, 585763.4]}, {"id": "OPT_B_063:C1", "area_m2": 86.94, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390710.5, 585631.9]}, {"id": "OPT_B_064:C1", "area_m2": 127.26, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391159.7, 585739.1]}, {"id": "OPT_B_066:C1", "area_m2": 70.46, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390939.2, 585493.2]}, {"id": "OPT_B_067:C1", "area_m2": 20.05, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390696.2, 585327.1]}, {"id": "OPT_B_068:C1", "area_m2": 189.38, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390984.7, 585790.9]}, {"id": "OPT_B_069:C1", "area_m2": 96.93, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390618.5, 585454.7]}, {"id": "OPT_B_070:C1", "area_m2": 98.5, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391223.3, 585655.2]}, {"id": "OPT_B_071:C1", "area_m2": 39.56, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390675.1, 585450.9]}, {"id": "OPT_B_072:C1", "area_m2": 80.0, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390880.3, 585696.6]}, {"id": "OPT_B_073:C1", "area_m2": 113.18, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391116.8, 585799.1]}, {"id": "OPT_B_074:C1", "area_m2": 22.35, "ray_count": 2, "stereo_grade": "RISC_STEREOSCOPIC (Sub 3 raze)", "grade_color": "#f87171", "centroid": [391184.7, 585712.1]}, {"id": "OPT_B_075:C1", "area_m2": 91.46, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391176.9, 585697.4]}, {"id": "OPT_B_076:C1", "area_m2": 31.46, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391113.4, 585793.1]}, {"id": "OPT_B_077:C1", "area_m2": 39.14, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391127.5, 585858.9]}, {"id": "OPT_B_078:C1", "area_m2": 47.03, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390713.3, 585624.0]}, {"id": "OPT_B_079:C1", "area_m2": 199.95, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391130.4, 585777.3]}, {"id": "OPT_B_080:C1", "area_m2": 43.61, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390664.5, 585452.6]}, {"id": "OPT_B_081:C1", "area_m2": 158.3, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391256.7, 585674.0]}, {"id": "OPT_B_082:C1", "area_m2": 151.6, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391337.3, 585473.0]}, {"id": "OPT_B_083:C1", "area_m2": 82.24, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391163.0, 585754.8]}, {"id": "OPT_B_084:C1", "area_m2": 34.59, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391274.2, 585698.6]}, {"id": "OPT_B_185:C1", "area_m2": 35.38, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390910.1, 585759.8]}, {"id": "OPT_B_085:C1", "area_m2": 57.6, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390697.4, 585649.8]}, {"id": "OPT_B_086:C1", "area_m2": 67.98, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390617.6, 585428.6]}, {"id": "OPT_B_087:C1", "area_m2": 24.35, "ray_count": 2, "stereo_grade": "RISC_STEREOSCOPIC (Sub 3 raze)", "grade_color": "#f87171", "centroid": [391187.0, 585761.9]}, {"id": "OPT_B_088:C1", "area_m2": 94.58, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390756.8, 585662.3]}, {"id": "OPT_B_046:C1", "area_m2": 178.51, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391283.5, 585554.5]}, {"id": "OPT_B_089:C1", "area_m2": 497.44, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390735.5, 585433.8]}, {"id": "OPT_B_090:C1", "area_m2": 225.06, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390646.7, 585416.0]}, {"id": "OPT_B_091:C1", "area_m2": 29.73, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391122.3, 585788.8]}, {"id": "OPT_B_092:C1", "area_m2": 21.9, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390684.5, 585299.2]}, {"id": "OPT_B_093:C1", "area_m2": 122.18, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391126.2, 585848.0]}, {"id": "OPT_B_094:C1", "area_m2": 81.36, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390867.1, 585728.9]}, {"id": "OPT_B_096:C1", "area_m2": 89.95, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391298.9, 585534.3]}, {"id": "OPT_B_097:C1", "area_m2": 52.35, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390836.0, 585729.4]}, {"id": "OPT_B_099:C1", "area_m2": 93.49, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390645.2, 585395.5]}, {"id": "OPT_B_100:C1", "area_m2": 1028.07, "ray_count": 7, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390875.1, 585663.7]}, {"id": "OPT_B_101:C1", "area_m2": 221.0, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391009.8, 585813.3]}, {"id": "OPT_B_102:C1", "area_m2": 29.19, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391175.7, 585753.2]}, {"id": "OPT_B_103:C1", "area_m2": 81.2, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390655.4, 585416.5]}, {"id": "OPT_B_104:C1", "area_m2": 65.99, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391098.1, 585867.1]}, {"id": "OPT_B_189:C1", "area_m2": 213.84, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391117.0, 585866.6]}, {"id": "OPT_B_105:C1", "area_m2": 20.25, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390780.4, 585406.7]}, {"id": "OPT_B_190:C1", "area_m2": 121.39, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390908.5, 585706.2]}, {"id": "OPT_B_192:C1", "area_m2": 59.84, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391154.6, 585510.3]}, {"id": "OPT_B_108:C1", "area_m2": 82.08, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390650.2, 585330.2]}, {"id": "OPT_B_109:C1", "area_m2": 113.3, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390669.4, 585604.0]}, {"id": "OPT_B_110:C1", "area_m2": 232.59, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390735.6, 585431.4]}, {"id": "OPT_B_111:C1", "area_m2": 104.24, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391174.9, 585704.9]}, {"id": "OPT_B_112:C1", "area_m2": 62.27, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390917.0, 585652.3]}, {"id": "OPT_B_113:C1", "area_m2": 62.18, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390741.0, 585645.7]}, {"id": "OPT_B_114:C1", "area_m2": 485.34, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390999.1, 585797.4]}, {"id": "OPT_B_115:C1", "area_m2": 29.53, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391151.7, 585771.1]}, {"id": "OPT_B_116:C1", "area_m2": 76.08, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390835.7, 585738.8]}, {"id": "OPT_B_117:C1", "area_m2": 76.14, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391166.1, 585716.6]}, {"id": "OPT_B_118:C1", "area_m2": 22.36, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391221.0, 585712.6]}, {"id": "OPT_B_119:C1", "area_m2": 144.78, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391323.9, 585558.5]}, {"id": "OPT_B_120:C1", "area_m2": 60.3, "ray_count": 2, "stereo_grade": "RISC_STEREOSCOPIC (Sub 3 raze)", "grade_color": "#f87171", "centroid": [390639.9, 585388.6]}, {"id": "OPT_B_121:C1", "area_m2": 51.93, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390902.2, 585755.4]}, {"id": "OPT_B_122:C1", "area_m2": 77.82, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391205.6, 585683.5]}, {"id": "OPT_B_123:C1", "area_m2": 76.84, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391245.9, 585660.5]}, {"id": "OPT_B_124:C1", "area_m2": 26.83, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390999.3, 585817.6]}, {"id": "OPT_B_125:C1", "area_m2": 84.69, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390702.6, 585681.4]}, {"id": "OPT_B_126:C1", "area_m2": 457.22, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390692.9, 585426.7]}, {"id": "OPT_B_127:C1", "area_m2": 22.38, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391239.5, 585717.9]}, {"id": "OPT_B_128:C1", "area_m2": 87.71, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390701.0, 585333.0]}, {"id": "OPT_B_129:C1", "area_m2": 109.92, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390859.2, 585692.6]}, {"id": "OPT_B_130:C1", "area_m2": 99.54, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390667.8, 585444.7]}, {"id": "OPT_B_131:C1", "area_m2": 25.74, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390676.8, 585423.2]}, {"id": "OPT_B_133:C1", "area_m2": 35.22, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391318.9, 585623.7]}, {"id": "OPT_B_134:C1", "area_m2": 96.75, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391100.5, 585831.6]}, {"id": "OPT_B_198:C1", "area_m2": 119.62, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391188.3, 585739.6]}, {"id": "OPT_B_135:C1", "area_m2": 65.74, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391266.7, 585692.4]}, {"id": "OPT_B_200:C1", "area_m2": 264.59, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391095.5, 585792.6]}, {"id": "OPT_B_202:C1", "area_m2": 273.44, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390903.2, 585490.8]}, {"id": "OPT_B_136:C1", "area_m2": 241.61, "ray_count": 7, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390660.6, 585619.9]}, {"id": "OPT_B_137:C1", "area_m2": 78.38, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391145.1, 585776.6]}, {"id": "OPT_B_138:C1", "area_m2": 29.52, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391197.5, 585675.5]}, {"id": "OPT_B_139:C1", "area_m2": 48.73, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390700.2, 585639.4]}, {"id": "OPT_B_203:C1", "area_m2": 67.13, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391227.4, 585699.9]}, {"id": "OPT_B_140:C1", "area_m2": 80.89, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391238.9, 585668.9]}, {"id": "OPT_B_141:C1", "area_m2": 79.44, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390840.3, 585723.5]}, {"id": "OPT_B_142:C1", "area_m2": 72.12, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391259.2, 585685.6]}, {"id": "OPT_B_143:C1", "area_m2": 146.81, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390859.5, 585749.2]}, {"id": "OPT_B_144:C1", "area_m2": 143.79, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391273.2, 585571.3]}, {"id": "OPT_B_205:C1", "area_m2": 138.11, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390873.6, 585699.1]}, {"id": "OPT_B_146:C1", "area_m2": 21.06, "ray_count": 2, "stereo_grade": "RISC_STEREOSCOPIC (Sub 3 raze)", "grade_color": "#f87171", "centroid": [391184.8, 585725.1]}, {"id": "OPT_B_206:C1", "area_m2": 108.97, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391101.9, 585794.3]}, {"id": "OPT_B_207:C1", "area_m2": 35.92, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390909.0, 585656.1]}, {"id": "OPT_B_147:C1", "area_m2": 396.01, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390862.6, 585739.7]}, {"id": "OPT_B_148:C1", "area_m2": 46.17, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390676.9, 585444.8]}, {"id": "OPT_B_149:C1", "area_m2": 24.33, "ray_count": 2, "stereo_grade": "RISC_STEREOSCOPIC (Sub 3 raze)", "grade_color": "#f87171", "centroid": [390758.8, 585627.7]}, {"id": "OPT_B_208:C1", "area_m2": 144.62, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391197.0, 585623.9]}, {"id": "OPT_B_150:C1", "area_m2": 74.33, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390749.7, 585440.9]}, {"id": "OPT_B_151:C1", "area_m2": 515.48, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390919.9, 585701.2]}, {"id": "OPT_B_209:C1", "area_m2": 50.16, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391252.7, 585721.3]}, {"id": "OPT_B_152:C1", "area_m2": 571.6, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390976.1, 585705.5]}, {"id": "OPT_B_153:C1", "area_m2": 131.3, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391098.1, 585798.4]}, {"id": "OPT_B_155:C1", "area_m2": 39.61, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391005.3, 585821.4]}, {"id": "OPT_B_156:C1", "area_m2": 26.65, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390922.5, 585692.3]}, {"id": "OPT_B_159:C1", "area_m2": 163.01, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390925.8, 585660.6]}, {"id": "OPT_B_160:C1", "area_m2": 70.65, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390749.8, 585643.7]}, {"id": "OPT_B_161:C1", "area_m2": 55.07, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391240.3, 585639.8]}, {"id": "OPT_B_162:C1", "area_m2": 71.8, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391218.6, 585642.3]}, {"id": "OPT_B_163:C1", "area_m2": 93.52, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390900.3, 585743.5]}, {"id": "OPT_B_164:C1", "area_m2": 275.23, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390932.9, 585755.2]}, {"id": "OPT_B_165:C1", "area_m2": 57.42, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391230.9, 585634.9]}, {"id": "OPT_B_166:C1", "area_m2": 35.11, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391285.7, 585499.2]}, {"id": "OPT_B_167:C1", "area_m2": 99.7, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390705.6, 585430.4]}, {"id": "OPT_B_168:C1", "area_m2": 138.98, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391251.4, 585708.7]}, {"id": "OPT_B_169:C1", "area_m2": 361.62, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390762.6, 585408.3]}, {"id": "OPT_B_170:C1", "area_m2": 54.8, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391254.6, 585705.8]}, {"id": "OPT_B_171:C1", "area_m2": 46.02, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391193.6, 585666.9]}, {"id": "OPT_B_172:C1", "area_m2": 162.5, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391305.9, 585525.0]}, {"id": "OPT_B_173:C1", "area_m2": 77.61, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391235.8, 585698.8]}, {"id": "OPT_B_174:C1", "area_m2": 263.73, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390690.6, 585426.6]}, {"id": "OPT_B_175:C1", "area_m2": 37.91, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390825.8, 585685.5]}, {"id": "OPT_B_176:C1", "area_m2": 39.79, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391122.7, 585804.3]}, {"id": "OPT_B_177:C1", "area_m2": 24.48, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390694.9, 585331.6]}, {"id": "OPT_B_178:C1", "area_m2": 52.8, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391162.9, 585639.8]}, {"id": "OPT_B_179:C1", "area_m2": 536.94, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391180.0, 585764.2]}, {"id": "OPT_B_021:C1", "area_m2": 510.06, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390970.0, 585802.8]}, {"id": "OPT_B_180:C1", "area_m2": 37.69, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390609.0, 585650.0]}, {"id": "OPT_B_182:C1", "area_m2": 73.75, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390976.0, 585812.8]}, {"id": "OPT_B_183:C1", "area_m2": 19.48, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390905.1, 585778.5]}, {"id": "OPT_B_184:C1", "area_m2": 141.36, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390688.9, 585683.3]}, {"id": "OPT_B_186:C1", "area_m2": 22.37, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391332.1, 585612.7]}, {"id": "OPT_B_095:C1", "area_m2": 190.14, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390956.6, 585767.5]}, {"id": "OPT_B_187:C1", "area_m2": 102.1, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390722.8, 585694.7]}, {"id": "OPT_B_188:C1", "area_m2": 64.95, "ray_count": 3, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390739.5, 585700.7]}, {"id": "OPT_B_107:C1", "area_m2": 850.34, "ray_count": 8, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390806.8, 585718.6]}, {"id": "OPT_B_191:C1", "area_m2": 73.75, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390672.4, 585677.5]}, {"id": "OPT_B_193:C1", "area_m2": 51.25, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391114.2, 585878.8]}, {"id": "OPT_B_194:C1", "area_m2": 22.88, "ray_count": 2, "stereo_grade": "RISC_STEREOSCOPIC (Sub 3 raze)", "grade_color": "#f87171", "centroid": [391282.9, 585685.1]}, {"id": "OPT_B_195:C1", "area_m2": 49.78, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390730.4, 585704.2]}, {"id": "OPT_B_196:C1", "area_m2": 35.84, "ray_count": 4, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390662.4, 585677.8]}, {"id": "OPT_B_197:C1", "area_m2": 314.11, "ray_count": 7, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390600.5, 585422.2]}, {"id": "OPT_B_199:C1", "area_m2": 92.99, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390703.4, 585692.3]}, {"id": "OPT_B_201:C1", "area_m2": 51.28, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390559.8, 585631.0]}, {"id": "OPT_B_204:C1", "area_m2": 53.83, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [391239.2, 585708.9]}, {"id": "OPT_B_157:C1", "area_m2": 138.05, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391152.9, 585824.1]}, {"id": "OPT_B_158:C1", "area_m2": 267.89, "ray_count": 7, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390825.7, 585724.7]}, {"id": "OPT_B_211:C1", "area_m2": 116.31, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390731.4, 585698.0]}, {"id": "OPT_B_212:C1", "area_m2": 72.73, "ray_count": 6, "stereo_grade": "EXCELENT_MULTI_CADRU (Model 3D dens)", "grade_color": "#38bdf8", "centroid": [390893.8, 585752.4]}, {"id": "OPT_B_213:C1", "area_m2": 42.34, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [390659.7, 585282.0]}, {"id": "OPT_B_214:C1", "area_m2": 85.5, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391264.2, 585716.9]}, {"id": "OPT_B_216:C1", "area_m2": 57.92, "ray_count": 5, "stereo_grade": "OPTIM_STANDARD (Stereorestitutie posibila)", "grade_color": "#34d399", "centroid": [391340.0, 585569.1]}];
+for (let b of buildings) {
+  const bx = mapX(b.centroid[0]);
+  const by = mapY(b.centroid[1]);
+  ctx.fillStyle = b.grade_color;
+  ctx.beginPath();
+  ctx.arc(bx, by, Math.max(3, Math.sqrt(b.area_m2)/2), 0, Math.PI * 2);
+  ctx.fill();
+}
+</script>
+</body>
+</html>

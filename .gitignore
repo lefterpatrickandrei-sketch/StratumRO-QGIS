@@ -149,9 +149,18 @@ opencode/
 *.qgs~
 *.qgz
 
+# Tools runtime and helper binaries
+tools/bin/
+
 # Workspace runtime outputs and heavy review caches
 workspace/output/
 workspace/reviews/
+!workspace/reviews/
+workspace/reviews/*
+!workspace/reviews/catalog_cladiri_ortofoto.html
+!workspace/reviews/simulare_drona_60_40.html
+!workspace/reviews/qr_cloudflare.png
+!workspace/reviews/ortho_chips/
 workspace/e2e/
 workspace/Subagent_*/
 workspace/subagent_*.md
