@@ -1628,6 +1628,7 @@ html_content = f"""<!DOCTYPE html>
         <footer>
             <div>StratumRO — Platformă Deschisă GeoAI & Cadastru Stereo 70 (EPSG:3844)</div>
             <div class="nav-links">
+                <a href="drone_flight_strips/flight_mission_simulator.html" class="nav-link" style="color:#00f0ff; font-weight:700;">🎥 Simulator Zbor Dronă & Benzi Live</a>
                 <a href="cadastral_errors_audit_20261019/index.html" class="nav-link">🚨 Raport Erori & Suprapuneri Reale</a>
                 <a href="scara_150_ultra_detaliu/index.html" class="nav-link">🔍 Galerie Ultra-Detaliu 1:150 (Înainte vs După)</a>
                 <a href="simulare_drona_60_40.html" class="nav-link">✈️ Simulare Zbor Dronă 60/40</a>
