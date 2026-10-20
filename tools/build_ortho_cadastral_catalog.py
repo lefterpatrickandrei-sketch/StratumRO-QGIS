@@ -1294,7 +1294,7 @@ html_content = f"""<!DOCTYPE html>
                 <div>
                     <strong style="color: #38bdf8;">Accesibil de pe Telefon / Tabletă via Cloudflare Tunnel:</strong>
                     <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #fff;">
-                        https://look-diesel-minerals-clerk.trycloudflare.com
+                        https://beast-convertible-spirits-realm.trycloudflare.com
                     </div>
                 </div>
             </div>
