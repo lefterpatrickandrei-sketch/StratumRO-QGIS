@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StratumRO — Hub Metode Inspecție Geodezică & Zbor WebGPU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="data.js"></script>
+    <style>
+        :root {
+            --bg-base: #06090f;
+            --bg-surface: #0c121e;
+            --bg-card: #121a2b;
+            --bg-card-hover: #18243c;
+            --border-dim: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(56, 189, 248, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --border-amber: rgba(245, 158, 11, 0.35);
+            --border-rose: rgba(244, 63, 94, 0.35);
+            --cyan: #00f0ff;
+            --cyan-glow: rgba(0, 240, 255, 0.4);
+            --emerald: #10b981;
+            --amber: #f59e0b;
+            --rose: #f43f5e;
+            --purple: #a855f7;
+            --blue: #38bdf8;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            line-height: 1.5;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Canvas Background */
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.45;
+        }
+
+        .container {
+            max-width: 1540px;
+            margin: 0 auto;
+            padding: 24px 20px 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Top Bar */
+        header {
+            background: rgba(12, 18, 30, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 18px 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-symbol {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--cyan), #3b82f6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+
+        .brand-text h1 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg, #ffffff, var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid var(--border-dim);
+            background: rgba(255,255,255,0.04);
+            color: var(--text-main);
+        }
+
+        .btn-nav:hover {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--blue);
+            transform: translateY(-1px);
+        }
+
+        .btn-nav-primary {
+            background: linear-gradient(135deg, rgba(6,182,212,0.25), rgba(59,130,246,0.35));
+            border-color: var(--cyan);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(6,182,212,0.25);
+        }
+
+        .btn-nav-primary:hover {
+            background: linear-gradient(135deg, rgba(6,182,212,0.4), rgba(59,130,246,0.5));
+            box-shadow: 0 0 20px rgba(6,182,212,0.4);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, rgba(18, 26, 43, 0.7) 0%, rgba(10, 15, 25, 0.9) 100%);
+            border: 1px solid var(--border-dim);
+            border-radius: 20px;
+            padding: 36px 32px;
+            margin-bottom: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(0,240,255,0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero-badge-cyan { background: rgba(0,240,255,0.12); color: var(--cyan); border: 1px solid rgba(0,240,255,0.3); }
+        .hero-badge-emerald { background: rgba(16,185,129,0.12); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
+        .hero-badge-purple { background: rgba(168,85,247,0.12); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+
+        .hero h2 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            background: linear-gradient(90deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p.lead {
+            font-size: 1.05rem;
+            color: var(--text-sub);
+            max-width: 960px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Telemetry Ticker */
+        .telemetry-ticker {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            background: rgba(6, 9, 15, 0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 16px 20px;
+        }
+
+        .tele-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tele-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 4px;
+        }
+
+        .tele-val {
+            font-size: 1.35rem;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+        }
+
+        .tele-val.c-cyan { color: var(--cyan); }
+        .tele-val.c-emerald { color: var(--emerald); }
+        .tele-val.c-amber { color: var(--amber); }
+
+        /* Paradigm Shift Section: Why Not Synthetic Crop? */
+        .paradigm-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-left: 4px solid var(--blue);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 36px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .paradigm-icon {
+            font-size: 28px;
+            line-height: 1;
+            flex-shrink: 0;
+            padding-top: 4px;
+        }
+
+        .paradigm-text h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .paradigm-text p {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+        }
+
+        /* 4 Methods Bento Grid */
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 1024px) {
+            .methods-grid { grid-template-columns: 1fr; }
+        }
+
+        .method-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-dim);
+            border-radius: 18px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .method-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6), 0 0 25px rgba(56, 189, 248, 0.15);
+        }
+
+        .method-card.card-m1:hover { border-color: rgba(0, 240, 255, 0.45); }
+        .method-card.card-m2:hover { border-color: rgba(16, 185, 129, 0.45); }
+        .method-card.card-m3:hover { border-color: rgba(245, 158, 11, 0.45); }
+        .method-card.card-m4:hover { border-color: rgba(168, 85, 247, 0.45); }
+
+        .card-num {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .card-badge-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .card-badge-m1 { background: rgba(0,240,255,0.12); color: var(--cyan); border: 1px solid rgba(0,240,255,0.3); }
+        .card-badge-m2 { background: rgba(16,185,129,0.12); color: var(--emerald); border: 1px solid rgba(16,185,129,0.3); }
+        .card-badge-m3 { background: rgba(245,158,11,0.12); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+        .card-badge-m4 { background: rgba(168,85,247,0.12); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+
+        .method-card h3 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .method-card p.card-desc {
+            font-size: 0.92rem;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Card Feature Pills */
+        .features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .features-list li {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-check {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+
+        .check-m1 { background: rgba(0,240,255,0.2); color: var(--cyan); }
+        .check-m2 { background: rgba(16,185,129,0.2); color: var(--emerald); }
+        .check-m3 { background: rgba(245,158,11,0.2); color: var(--amber); }
+        .check-m4 { background: rgba(168,85,247,0.2); color: var(--purple); }
+
+        /* Card Interactive Preview Thumbnail Box */
+        .preview-box {
+            height: 130px;
+            background: #04070d;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            bottom: 6px;
+            right: 8px;
+            background: rgba(6, 9, 14, 0.85);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-sub);
+            border: 1px solid var(--border-dim);
+            pointer-events: none;
+        }
+
+        /* Card Action Button */
+        .card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+        }
+
+        .btn-m1 { background: linear-gradient(135deg, #0284c7, #06b6d4); }
+        .btn-m1:hover { background: linear-gradient(135deg, #0369a1, #0891b2); box-shadow: 0 0 18px rgba(6, 182, 212, 0.4); }
+
+        .btn-m2 { background: linear-gradient(135deg, #059669, #10b981); }
+        .btn-m2:hover { background: linear-gradient(135deg, #047857, #059669); box-shadow: 0 0 18px rgba(16, 185, 129, 0.4); }
+
+        .btn-m3 { background: linear-gradient(135deg, #d97706, #f59e0b); }
+        .btn-m3:hover { background: linear-gradient(135deg, #b45309, #d97706); box-shadow: 0 0 18px rgba(245, 158, 11, 0.4); }
+
+        .btn-m4 { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+        .btn-m4:hover { background: linear-gradient(135deg, #6d28d9, #7c3aed); box-shadow: 0 0 18px rgba(168, 85, 247, 0.4); }
+
+        /* Architecture Flow Diagram */
+        .arch-section {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-dim);
+            border-radius: 18px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .arch-header {
+            margin-bottom: 24px;
+        }
+
+        .arch-header h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .arch-header p {
+            font-size: 0.88rem;
+            color: var(--text-sub);
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            position: relative;
+        }
+
+        .flow-step {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dim);
+            border-radius: 12px;
+            padding: 16px;
+            position: relative;
+        }
+
+        .step-tag {
+            font-size: 0.65rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--cyan);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .flow-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .flow-step p {
+            font-size: 0.78rem;
+            color: var(--text-sub);
+            line-height: 1.5;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-dim);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <div class="container">
+        <!-- Top Navigation Bar -->
+        <header>
+            <div class="brand-box">
+                <div class="logo-symbol">📐</div>
+                <div class="brand-text">
+                    <h1>StratumRO — Inspecție Cadastrală & Zbor WebGPU</h1>
+                    <p>SISTEMUL NAȚIONAL STEREO 70 (EPSG:3844) • AOI CLUJ-NAPOCA USAMV 1.05 KM × 1.05 KM</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <a href="../catalog_cladiri_ortofoto.html" class="btn-nav">
+                    <span>🗂️</span> Catalog Ortofoto 15cm
+                </a>
+                <a href="../scara_150_ultra_detaliu/index.html" class="btn-nav">
+                    <span>🔍</span> Scara 1:150 Detaliu
+                </a>
+                <a href="#metode" class="btn-nav btn-nav-primary">
+                    <span>🚀</span> Alege Metoda de Inspecție
+                </a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-badge-row">
+                <span class="hero-badge hero-badge-cyan" id="gpuStatusBadge">⚡ WebGPU Native Pipeline: Verificare...</span>
+                <span class="hero-badge hero-badge-emerald">🛡️ ANCPI Ordinul 600/2023 Compliant</span>
+                <span class="hero-badge hero-badge-purple">📡 QGIS 3.40 Socket Bridge (Port 9876)</span>
+            </div>
+            <h2>Inspecție Geodezică de Precizie: 4 Metode Tehnice Reale</h2>
+            <p class="lead">
+                Pentru a asigura fidelitatea datelor geodezice din zborul aerian fotogrammetric și scanarea LiDAR nDSM, StratumRO elimină decupajele sintetice artificiale și implementează cele 4 standarde consacrate din industria geodezică și fotogrammetrică modernă.
+            </p>
+
+            <div class="telemetry-ticker">
+                <div class="tele-stat">
+                    <span class="tele-label">Suprafață AOI</span>
+                    <span class="tele-val c-cyan" id="statArea">1.10 km²</span>
+                </div>
+                <div class="tele-stat">
+                    <span class="tele-label">Corpuri Clădire</span>
+                    <span class="tele-val c-emerald" id="statBldgs">457</span>
+                </div>
+                <div class="tele-stat">
+                    <span class="tele-label">Benzi / Stații Zbor</span>
+                    <span class="tele-val" id="statStrips">11 / 253</span>
+                </div>
+                <div class="tele-stat">
+                    <span class="tele-label">Rezoluție GSD</span>
+                    <span class="tele-val c-cyan">1.5 cm/px</span>
+                </div>
+                <div class="tele-stat">
+                    <span class="tele-label">RMSE Rețea GCP</span>
+                    <span class="tele-val c-emerald" id="statRmse">0.032 m</span>
+                </div>
+                <div class="tele-stat">
+                    <span class="tele-label">Rată Ortogonalitate</span>
+                    <span class="tele-val c-amber">100.0%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paradigm Note -->
+        <div class="paradigm-box">
+            <div class="paradigm-icon">💡</div>
+            <div class="paradigm-text">
+                <h3>De ce renunțăm la decuparea sintetică și folosim aceste 4 metode?</h3>
+                <p>
+                    Ortofotoplanul este deja un mozaic continuu asamblat cu precizie de 15 cm/pixel în Stereo 70. Decuparea în mii de imagini izolate distruge contextul urban, ascunde calcanele (zidurile comune de 0.00 m) și produce deformări la margini. Cele 4 metode de mai jos mențin integritatea geometrică a mozaicului original și permit inspecție la nivel milimetric.
+                </p>
+            </div>
+        </div>
+
+        <!-- The 4 Methods Grid -->
+        <div class="methods-grid" id="metode">
+
+            <!-- METODA 1 -->
+            <div class="method-card card-m1">
+                <div class="card-num">01</div>
+                <div>
+                    <div class="card-badge-row">
+                        <span class="card-badge card-badge-m1">WebGPU / Canvas 2D</span>
+                        <span class="card-badge card-badge-m1">Scară 1:150</span>
+                        <span class="card-badge card-badge-m1">15cm VRT Lossless</span>
+                    </div>
+                    <h3>Metoda 1: The Surveyor Flight Tour</h3>
+                    <p class="card-desc">
+                        Tur continuu pe canvas de înaltă rezoluție peste mozaicul ortofoto integral. Navigare fluidă de-a lungul celor 11 benzi de zbor fotogrammetric și auto-tour la scara cadastrală 1:150 (fereastră 44m × 25m) cu suprapunere vectorială live.
+                    </p>
+
+                    <div class="preview-box" id="prevBox1">
+                        <canvas id="prevCanvas1" class="preview-canvas"></canvas>
+                        <div class="preview-overlay">11 BENZI • 44×25m HUD</div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-check check-m1">✓</span>
+                            <span>Mozaic ortofoto complet 2800×2800 fără decupaje sintetice</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m1">✓</span>
+                            <span>Inspectare la scară 1:150 cu retragere de streașină de -0.40 m</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m1">✓</span>
+                            <span>Telemetrie cockpit zbor fotogrammetric (altitudine 120m, viteză 45 km/h)</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m1">✓</span>
+                            <span>Detectare și marcare vizuală a calcanelor (contact perete comun 0.00 m)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="metoda1_surveyor_tour.html" class="card-btn btn-m1">
+                    <span>Lansează Surveyor Flight Tour</span>
+                    <span>→</span>
+                </a>
+            </div>
+
+            <!-- METODA 2 -->
+            <div class="method-card card-m2">
+                <div class="card-num">02</div>
+                <div>
+                    <div class="card-badge-row">
+                        <span class="card-badge card-badge-m2">WebGPU / Three.js 3D</span>
+                        <span class="card-badge card-badge-m2">LiDAR nDSM</span>
+                        <span class="card-badge card-badge-m2">6-DoF Orbit & FPV</span>
+                    </div>
+                    <h3>Metoda 2: Zbor Volumetric 3D Real</h3>
+                    <p class="card-desc">
+                        Reconstituire volumetrică tridimensională prin extrudarea clădirilor la înălțimile reale furnizate de modelul de suprafață LiDAR nDSM (H = 3.5m - 28.0m). Simulare a umbrelor solare și orbită completă 3D pentru inspectarea calcanelor.
+                    </p>
+
+                    <div class="preview-box" id="prevBox2">
+                        <canvas id="prevCanvas2" class="preview-canvas"></canvas>
+                        <div class="preview-overlay">3D MESH • SOLAR SHADOWS</div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-check check-m2">✓</span>
+                            <span>Extrudare 3D la cotele reale LiDAR nDSM pentru toate cele 457 corpuri</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m2">✓</span>
+                            <span>Inspectare 3D a calcanelor: separare verticală fără intersecție ilegală</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m2">✓</span>
+                            <span>Mod dublu de cameră: Orbită 360° Geodezică & Dronă FPV la 120m</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m2">✓</span>
+                            <span>Texturare cu ortofoto la sol și umbre dinamice calculate după azimut solar</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="metoda2_volumetric_3d.html" class="card-btn btn-m2">
+                    <span>Lansează Zborul Volumetric 3D</span>
+                    <span>→</span>
+                </a>
+            </div>
+
+            <!-- METODA 3 -->
+            <div class="method-card card-m3">
+                <div class="card-num">03</div>
+                <div>
+                    <div class="card-badge-row">
+                        <span class="card-badge card-badge-m3">QGIS 3.40 Desktop</span>
+                        <span class="card-badge card-badge-m3">Socket Port 9876</span>
+                        <span class="card-badge card-badge-m3">HITL Stamp</span>
+                    </div>
+                    <h3>Metoda 3: Puntea Live cu QGIS Desktop</h3>
+                    <p class="card-desc">
+                        Cockpit geodezic profesional cu ecran dublu sincronizat în timp real cu QGIS Desktop 3.40 via protocolul socket local (port 9876). Permite saltul instant la orice corp cadastral și aplicarea deciziei umane asistate (Human-in-the-Loop).
+                    </p>
+
+                    <div class="preview-box" id="prevBox3">
+                        <canvas id="prevCanvas3" class="preview-canvas"></canvas>
+                        <div class="preview-overlay">LIVE QGIS SOCKET • HITL STAMP</div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-check check-m3">✓</span>
+                            <span>Conexiune socket bidirecțională cu instanța QGIS Desktop 3.40 pe portul 9876</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m3">✓</span>
+                            <span>Navigare sincronizată în Stereo 70 (`zoom_to_feature` la scara 1:150)</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m3">✓</span>
+                            <span>Panou de avizare HITL: Ștampilă oficială geodez autorizat conform Ord. 600/2023</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m3">✓</span>
+                            <span>Comparație straturi active: SAM 2 brut vs. 90° Orthogonal vs. Cadastru 1CC</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="metoda3_qgis_spectator.html" class="card-btn btn-m3">
+                    <span>Lansează Puntea Live QGIS Desktop</span>
+                    <span>→</span>
+                </a>
+            </div>
+
+            <!-- METODA 4 -->
+            <div class="method-card card-m4">
+                <div class="card-num">04</div>
+                <div>
+                    <div class="card-badge-row">
+                        <span class="card-badge card-badge-m4">SfM Multi-Ray</span>
+                        <span class="card-badge card-badge-m4">253 Stații / 11 Benzi</span>
+                        <span class="card-badge card-badge-m4">ANCPI Ord. 600/2023</span>
+                    </div>
+                    <h3>Metoda 4: Raportul Legal ANCPI Ordinul 600/2023</h3>
+                    <p class="card-desc">
+                        Vizualizator fotogrammetric complet al blocului de zbor: 253 de conuri de expunere, raze multiple de triangulație convergentă pe punctele de legătură (Tie Points), rețeaua celor 13 puncte de sprijin (GCP/PC) și fișă tehnică de recepție.
+                    </p>
+
+                    <div class="preview-box" id="prevBox4">
+                        <canvas id="prevCanvas4" class="preview-canvas"></canvas>
+                        <div class="preview-overlay">RMSE 0.032m ≤ 0.08m • CONFORM</div>
+                    </div>
+
+                    <ul class="features-list">
+                        <li>
+                            <span class="feature-check check-m4">✓</span>
+                            <span>Traiectorie GNSS PPK și piramide de expunere pentru toate cele 253 de stații</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m4">✓</span>
+                            <span>Rețea de 8 GCP-uri și 5 Puncte de Control (PC) cu vectori de eroare reziduală</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m4">✓</span>
+                            <span>Verificare automată a toleranței legale: RMSE_XY = 0.032 m ≤ 0.08 m (ADMIS)</span>
+                        </li>
+                        <li>
+                            <span class="feature-check check-m4">✓</span>
+                            <span>Generare Proces Verbal de Recepție conform anexelor Ordinului ANCPI 600/2023</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="metoda4_sfm_ancpi_report.html" class="card-btn btn-m4">
+                    <span>Lansează Raportul Fotogrammetric ANCPI</span>
+                    <span>→</span>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Architectural Workflow Overview -->
+        <div class="arch-section">
+            <div class="arch-header">
+                <h3>Arhitectura Tehnică Integrată StratumRO GeoAI</h3>
+                <p>Lanțul tehnologic complet de la zborul aerian până la livrabilul cadastral avizat</p>
+            </div>
+
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-tag">Etapa 01</div>
+                    <h4>Zbor UAV & SfM</h4>
+                    <p>11 benzi fotogrammetrice, 253 cadre, suprapunere 60/40, calibrare bundle adjustment în Stereo 70 cu RMSE ≤ 0.04m.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-tag">Etapa 02</div>
+                    <h4>Fuziune Ortofoto + LiDAR</h4>
+                    <p>Ortofotoplan de 15 cm/pixel combinat cu relieful digital nDSM (DSM - DTM) pentru filtrarea vegetației.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-tag">Etapa 03</div>
+                    <h4>Segmentare Meta SAM 2</h4>
+                    <p>Extragere automată a măștilor de acoperiș și separarea corpurilor fizice independente (T10 tiglă vs anexă vestică).</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-tag">Etapa 04</div>
+                    <h4>Regularizare 90° & Calcane</h4>
+                    <p>Ortogonalizare la 90°, rezolvarea calcanelor (contact 0.00 m fără goluri) și aplicarea retragerii -0.40 m pentru 1CC.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-tag">Etapa 05</div>
+                    <h4>QGIS HITL & Export CAD</h4>
+                    <p>Inspecție pe ecran dublu, validare și ștampilare de către geodez autorizat, export DXF TopoLT și tabele de coordonate .CP.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div>
+                <strong>StratumRO GeoAI Cadastral Platform</strong> • Proiect comun versionat: <code>inspectie_corectii.qgs</code>
+            </div>
+            <div>
+                Ordinul ANCPI 600/2023 • CRS: EPSG:3844 Stereo 70 • <a href="../catalog_cladiri_ortofoto.html">Înapoi la Catalog</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Interactive Script for Canvas Background & Card Previews -->
+    <script>
+        // Update stats from data.js
+        if (window.METODE_DATA) {
+            const d = window.METODE_DATA;
+            if (d.stats) {
+                document.getElementById('statArea').textContent = (d.stats.aoi_width_m * d.stats.aoi_height_m / 1000000).toFixed(2) + ' km²';
+                document.getElementById('statBldgs').textContent = d.stats.total_buildings;
+                document.getElementById('statStrips').textContent = d.stats.total_strips + ' / ' + d.stats.total_stations;
+                document.getElementById('statRmse').textContent = d.stats.rmse_xy + ' m';
+            }
+        }
+
+        // Ambient Background WebGPU / Canvas Pipeline
+        const bgCanvas = document.getElementById('bgCanvas');
+        let width, height;
+
+        function resizeBg() {
+            width = bgCanvas.width = window.innerWidth;
+            height = bgCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeBg);
+        resizeBg();
+
+        // WebGPU Hardware Pipeline with WGSL Shaders
+        async function initWebGPUBackground() {
+            const badge = document.getElementById('gpuStatusBadge');
+            if (!navigator.gpu) {
+                if (badge) badge.textContent = '⚡ WebGL2 / Canvas Fallback (No WebGPU)';
+                runCanvasFallback();
+                return;
+            }
+
+            try {
+                const adapter = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' });
+                if (!adapter) {
+                    if (badge) badge.textContent = '⚡ WebGL2 Canvas Fallback';
+                    runCanvasFallback();
+                    return;
+                }
+
+                const device = await adapter.requestDevice();
+                const context = bgCanvas.getContext('webgpu');
+                if (!context) {
+                    if (badge) badge.textContent = '⚡ WebGL2 Canvas Fallback';
+                    runCanvasFallback();
+                    return;
+                }
+
+                const format = navigator.gpu.getPreferredCanvasFormat();
+                context.configure({
+                    device: device,
+                    format: format,
+                    alphaMode: 'premultiplied'
+                });
+
+                if (badge) {
+                    const vendor = adapter.info?.vendor || 'GPU Hardware';
+                    const arch = adapter.info?.architecture || 'WGSL Accelerat';
+                    badge.textContent = `⚡ WebGPU Native: ${vendor} (${arch})`;
+                    badge.className = 'hero-badge hero-badge-cyan';
+                }
+
+                // WGSL Shader for dynamic geodetic cyber grid
+                const wgslCode = `
+                    struct Uniforms {
+                        resolution: vec2<f32>,
+                        time: f32,
+                        padding: f32,
+                    };
+                    @group(0) @binding(0) var<uniform> uniforms: Uniforms;
+
+                    struct VertexOutput {
+                        @builtin(position) position: vec4<f32>,
+                        @location(0) uv: vec2<f32>,
+                    };
+
+                    @vertex
+                    fn vs_main(@builtin(vertex_index) vertexIndex: u32) -> VertexOutput {
+                        var pos = array<vec2<f32>, 6>(
+                            vec2<f32>(-1.0, -1.0),
+                            vec2<f32>( 1.0, -1.0),
+                            vec2<f32>(-1.0,  1.0),
+                            vec2<f32>(-1.0,  1.0),
+                            vec2<f32>( 1.0, -1.0),
+                            vec2<f32>( 1.0,  1.0)
+                        );
+                        var output: VertexOutput;
+                        output.position = vec4<f32>(pos[vertexIndex], 0.0, 1.0);
+                        output.uv = (pos[vertexIndex] + 1.0) * 0.5;
+                        return output;
+                    }
+
+                    @fragment
+                    fn fs_main(in: VertexOutput) -> @location(0) vec4<f32> {
+                        let coord = in.uv * uniforms.resolution;
+                        let gridSpacing = 64.0;
+                        let grid = abs(fract(coord / gridSpacing - 0.5) - 0.5) / fwidth(coord / gridSpacing);
+                        let line = min(grid.x, grid.y);
+                        let gridIntensity = 1.0 - min(line, 1.0);
+
+                        // Geodetic crosshairs pulse
+                        let pulse = 0.5 + 0.5 * sin(uniforms.time * 1.5);
+                        let cell = floor(coord / gridSpacing);
+                        let isCross = f32((u32(cell.x) % 4u == 0u) && (u32(cell.y) % 4u == 0u));
+                        let distToCenter = length(fract(coord / gridSpacing) - 0.5);
+                        let crossGlow = smoothstep(0.12, 0.02, distToCenter) * isCross * pulse;
+
+                        let color = vec3<f32>(0.0, 0.94, 1.0) * (gridIntensity * 0.05 + crossGlow * 0.25);
+                        return vec4<f32>(color, max(gridIntensity * 0.04, crossGlow * 0.3));
+                    }
+                `;
+
+                const shaderModule = device.createShaderModule({ code: wgslCode });
+                const pipeline = device.createRenderPipeline({
+                    layout: 'auto',
+                    vertex: { module: shaderModule, entryPoint: 'vs_main' },
+                    fragment: {
+                        module: shaderModule,
+                        entryPoint: 'fs_main',
+                        targets: [{
+                            format: format,
+                            blend: {
+                                color: { srcFactor: 'src-alpha', dstFactor: 'one-minus-src-alpha', operation: 'add' },
+                                alpha: { srcFactor: 'one', dstFactor: 'one-minus-src-alpha', operation: 'add' }
+                            }
+                        }]
+                    },
+                    primitive: { topology: 'triangle-list' }
+                });
+
+                const uniformBuffer = device.createBuffer({
+                    size: 16,
+                    usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST
+                });
+
+                const bindGroup = device.createBindGroup({
+                    layout: pipeline.getBindGroupLayout(0),
+                    entries: [{ binding: 0, resource: { buffer: uniformBuffer } }]
+                });
+
+                let startTime = performance.now();
+                function renderWebGPU() {
+                    const elapsed = (performance.now() - startTime) / 1000.0;
+                    const uniformData = new Float32Array([bgCanvas.width, bgCanvas.height, elapsed, 0]);
+                    device.queue.writeBuffer(uniformBuffer, 0, uniformData);
+
+                    const commandEncoder = device.createCommandEncoder();
+                    const textureView = context.getCurrentTexture().createView();
+                    const renderPass = commandEncoder.beginRenderPass({
+                        colorAttachments: [{
+                            view: textureView,
+                            clearValue: { r: 0.02, g: 0.035, b: 0.06, a: 0.0 },
+                            loadOp: 'clear',
+                            storeOp: 'store'
+                        }]
+                    });
+                    renderPass.setPipeline(pipeline);
+                    renderPass.setBindGroup(0, bindGroup);
+                    renderPass.draw(6);
+                    renderPass.end();
+
+                    device.queue.submit([commandEncoder.finish()]);
+                    requestAnimationFrame(renderWebGPU);
+                }
+                requestAnimationFrame(renderWebGPU);
+
+            } catch (err) {
+                console.warn('WebGPU execution failed, activating Canvas fallback:', err);
+                if (badge) badge.textContent = '⚡ WebGL2 Canvas Fallback';
+                runCanvasFallback();
+            }
+        }
+
+        // Canvas 2D Fallback
+        function runCanvasFallback() {
+            const bgCtx = bgCanvas.getContext('2d');
+            if (!bgCtx) return;
+            const gridSpacing = 60;
+            let offset = 0;
+
+            function drawBg() {
+                bgCtx.clearRect(0, 0, width, height);
+                bgCtx.strokeStyle = 'rgba(56, 189, 248, 0.04)';
+                bgCtx.lineWidth = 1;
+
+                for (let x = 0; x < width; x += gridSpacing) {
+                    bgCtx.beginPath();
+                    bgCtx.moveTo(x, 0);
+                    bgCtx.lineTo(x, height);
+                    bgCtx.stroke();
+                }
+
+                for (let y = 0; y < height; y += gridSpacing) {
+                    bgCtx.beginPath();
+                    bgCtx.moveTo(0, y);
+                    bgCtx.lineTo(width, y);
+                    bgCtx.stroke();
+                }
+
+                offset += 0.2;
+                bgCtx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
+                for (let x = gridSpacing * 2; x < width; x += gridSpacing * 4) {
+                    for (let y = gridSpacing * 2; y < height; y += gridSpacing * 4) {
+                        const sz = 6;
+                        bgCtx.beginPath();
+                        bgCtx.moveTo(x - sz, y);
+                        bgCtx.lineTo(x + sz, y);
+                        bgCtx.moveTo(x, y - sz);
+                        bgCtx.lineTo(x, y + sz);
+                        bgCtx.stroke();
+                    }
+                }
+                requestAnimationFrame(drawBg);
+            }
+            drawBg();
+        }
+
+        initWebGPUBackground();
+
+        // Animated Mini Previews for Each Card
+        function initCardPreviews() {
+            // Preview 1: Flight strips with moving drone
+            const c1 = document.getElementById('prevCanvas1');
+            if (c1) {
+                const ctx1 = c1.getContext('2d');
+                c1.width = c1.offsetWidth;
+                c1.height = c1.offsetHeight;
+                let t1 = 0;
+                function drawP1() {
+                    ctx1.fillStyle = '#060a12';
+                    ctx1.fillRect(0, 0, c1.width, c1.height);
+                    // Draw 11 vertical flight strips
+                    const nStrips = 11;
+                    const sw = c1.width / (nStrips + 1);
+                    ctx1.strokeStyle = 'rgba(0, 240, 255, 0.2)';
+                    ctx1.lineWidth = 1;
+                    for (let i = 1; i <= nStrips; i++) {
+                        const sx = i * sw;
+                        ctx1.beginPath();
+                        ctx1.setLineDash([4, 4]);
+                        ctx1.moveTo(sx, 10);
+                        ctx1.lineTo(sx, c1.height - 10);
+                        ctx1.stroke();
+                    }
+                    ctx1.setLineDash([]);
+                    // Moving drone
+                    t1 += 0.02;
+                    const activeStrip = Math.floor(t1 % nStrips) + 1;
+                    const stripX = activeStrip * sw;
+                    const prog = (t1 % 1);
+                    const droneY = (activeStrip % 2 === 1) ? (10 + prog * (c1.height - 20)) : (c1.height - 10 - prog * (c1.height - 20));
+
+                    // Sensor footprint
+                    ctx1.fillStyle = 'rgba(0, 240, 255, 0.15)';
+                    ctx1.fillRect(stripX - 25, droneY - 18, 50, 36);
+                    ctx1.strokeStyle = '#00f0ff';
+                    ctx1.strokeRect(stripX - 25, droneY - 18, 50, 36);
+
+                    // Drone center
+                    ctx1.fillStyle = '#ffffff';
+                    ctx1.beginPath();
+                    ctx1.arc(stripX, droneY, 4, 0, Math.PI * 2);
+                    ctx1.fill();
+
+                    requestAnimationFrame(drawP1);
+                }
+                drawP1();
+            }
+
+            // Preview 2: 3D Wireframe / Extruded boxes
+            const c2 = document.getElementById('prevCanvas2');
+            if (c2) {
+                const ctx2 = c2.getContext('2d');
+                c2.width = c2.offsetWidth;
+                c2.height = c2.offsetHeight;
+                let t2 = 0;
+                function drawP2() {
+                    ctx2.fillStyle = '#060a12';
+                    ctx2.fillRect(0, 0, c2.width, c2.height);
+                    t2 += 0.015;
+                    const cx = c2.width / 2;
+                    const cy = c2.height / 2 + 10;
+                    // Isometric ground grid
+                    ctx2.strokeStyle = 'rgba(16, 185, 129, 0.2)';
+                    ctx2.lineWidth = 1;
+                    // Draw extruded building silhouettes in isometric
+                    const bldgs = [
+                        {x: -70, y: -20, w: 40, d: 30, h: 45, col: '#10b981'},
+                        {x: -25, y: -15, w: 35, d: 25, h: 25, col: '#059669'},
+                        {x: 20, y: -25, w: 55, d: 40, h: 55, col: '#10b981'},
+                        {x: 20, y: 20, w: 45, d: 20, h: 30, col: '#34d399'}
+                    ];
+                    bldgs.forEach(b => {
+                        const isoX = cx + (b.x - b.y) * 0.8;
+                        const isoY = cy + (b.x + b.y) * 0.4;
+                        // Base
+                        ctx2.fillStyle = 'rgba(16, 185, 129, 0.15)';
+                        ctx2.fillRect(isoX, isoY - b.h, b.w, b.h);
+                        ctx2.strokeStyle = b.col;
+                        ctx2.strokeRect(isoX, isoY - b.h, b.w, b.h);
+                        // Roof top
+                        ctx2.fillStyle = 'rgba(16, 185, 129, 0.35)';
+                        ctx2.fillRect(isoX, isoY - b.h, b.w, 12);
+                    });
+                    requestAnimationFrame(drawP2);
+                }
+                drawP2();
+            }
+
+            // Preview 3: Dual Screen QGIS
+            const c3 = document.getElementById('prevCanvas3');
+            if (c3) {
+                const ctx3 = c3.getContext('2d');
+                c3.width = c3.offsetWidth;
+                c3.height = c3.offsetHeight;
+                let t3 = 0;
+                function drawP3() {
+                    ctx3.fillStyle = '#060a12';
+                    ctx3.fillRect(0, 0, c3.width, c3.height);
+                    t3 += 0.02;
+                    // Split screen line
+                    const mid = c3.width / 2;
+                    ctx3.strokeStyle = 'rgba(245, 158, 11, 0.3)';
+                    ctx3.beginPath();
+                    ctx3.moveTo(mid, 10);
+                    ctx3.lineTo(mid, c3.height - 10);
+                    ctx3.stroke();
+
+                    // Left screen (QGIS Canvas simulation)
+                    ctx3.fillStyle = 'rgba(245, 158, 11, 0.1)';
+                    ctx3.fillRect(10, 15, mid - 20, c3.height - 30);
+                    ctx3.fillStyle = '#f59e0b';
+                    ctx3.font = '9px monospace';
+                    ctx3.fillText('QGIS CANVAS 1:150', 16, 30);
+                    ctx3.strokeStyle = '#f59e0b';
+                    ctx3.strokeRect(mid / 2 - 20, c3.height / 2 - 15, 40, 30);
+
+                    // Right screen (HITL Stamp)
+                    ctx3.fillStyle = 'rgba(245, 158, 11, 0.05)';
+                    ctx3.fillRect(mid + 10, 15, mid - 20, c3.height - 30);
+                    ctx3.fillText('HITL STAMP DOSSIER', mid + 16, 30);
+                    ctx3.fillStyle = (Math.sin(t3 * 3) > 0) ? '#10b981' : '#f59e0b';
+                    ctx3.fillText('● SOCKET PORT 9876: LIVE', mid + 16, 50);
+
+                    requestAnimationFrame(drawP3);
+                }
+                drawP3();
+            }
+
+            // Preview 4: SfM Multi-ray
+            const c4 = document.getElementById('prevCanvas4');
+            if (c4) {
+                const ctx4 = c4.getContext('2d');
+                c4.width = c4.offsetWidth;
+                c4.height = c4.offsetHeight;
+                let t4 = 0;
+                function drawP4() {
+                    ctx4.fillStyle = '#060a12';
+                    ctx4.fillRect(0, 0, c4.width, c4.height);
+                    t4 += 0.02;
+                    const cx = c4.width / 2;
+                    const cy = c4.height / 2 + 20;
+
+                    // Ground target (Tie point / GCP)
+                    ctx4.fillStyle = '#a855f7';
+                    ctx4.beginPath();
+                    ctx4.arc(cx, cy, 5, 0, Math.PI * 2);
+                    ctx4.fill();
+                    ctx4.strokeStyle = '#ffffff';
+                    ctx4.stroke();
+
+                    // 4 Camera stations projecting rays
+                    const cams = [
+                        {x: cx - 90, y: 25},
+                        {x: cx - 30, y: 20},
+                        {x: cx + 30, y: 22},
+                        {x: cx + 90, y: 28}
+                    ];
+
+                    ctx4.strokeStyle = 'rgba(168, 85, 247, 0.4)';
+                    ctx4.lineWidth = 1;
+                    cams.forEach(cam => {
+                        // Camera icon
+                        ctx4.fillStyle = '#c084fc';
+                        ctx4.fillRect(cam.x - 5, cam.y - 4, 10, 8);
+                        // Ray to tie point
+                        ctx4.beginPath();
+                        ctx4.moveTo(cam.x, cam.y + 4);
+                        ctx4.lineTo(cx, cy);
+                        ctx4.stroke();
+                    });
+
+                    ctx4.fillStyle = '#a855f7';
+                    ctx4.font = '9px monospace';
+                    ctx4.fillText('MULTIPLE CONVERGENT RAYS', 12, c4.height - 12);
+
+                    requestAnimationFrame(drawP4);
+                }
+                drawP4();
+            }
+        }
+
+        window.addEventListener('load', initCardPreviews);
+    </script>
+</body>
+</html>

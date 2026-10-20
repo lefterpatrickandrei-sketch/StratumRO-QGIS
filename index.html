@@ -2,15 +2,66 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=workspace/reviews/catalog_cladiri_ortofoto.html">
-    <title>StratumRO — Catalog Ortofoto Cadastru 15cm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0; url=workspace/reviews/metode_inspectie/index.html">
+    <title>StratumRO — GeoAI Cadastral Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
     <script>
-        // Ensure relative path navigation for both root domain and GitHub Pages repo path
-        window.location.replace("workspace/reviews/catalog_cladiri_ortofoto.html");
+        // Automatic client redirection to the primary WebGPU Hub
+        // Supports both local domain root and GitHub Pages (/StratumRO-QGIS/)
+        const targetPath = "workspace/reviews/metode_inspectie/index.html";
+        window.location.replace(targetPath);
     </script>
+    <style>
+        body {
+            background: #06090f;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .redirect-card {
+            background: #0c121e;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 540px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        h2 { margin-bottom: 12px; color: #fff; font-size: 1.4rem; }
+        p { color: #94a3b8; font-size: 0.9rem; margin-bottom: 24px; line-height: 1.5; }
+        .links-row { display: flex; flex-direction: column; gap: 10px; }
+        .btn-link {
+            display: block;
+            padding: 12px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .btn-primary { background: linear-gradient(135deg, #0284c7, #06b6d4); color: #fff; }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    </style>
 </head>
-<body style="background:#0a0d14; color:#f8fafc; font-family:sans-serif; text-align:center; padding:50px;">
-    <h2>Se încarcă Catalogul Ortofoto StratumRO...</h2>
-    <p>Dacă nu ești redirecționat automat, <a href="workspace/reviews/catalog_cladiri_ortofoto.html" style="color:#38bdf8;">apasă aici</a>.</p>
+<body>
+    <div class="redirect-card">
+        <h2>StratumRO GeoAI Cadastral Platform</h2>
+        <p>Se încarcă platforma de inspecție fotogrammetrică și zbor WebGPU...</p>
+        <div class="links-row">
+            <a href="workspace/reviews/metode_inspectie/index.html" class="btn-link btn-primary">
+                ⚡ Deschide Hub-ul Metode de Inspecție WebGPU (Cele 4 Metode)
+            </a>
+            <a href="workspace/reviews/catalog_cladiri_ortofoto.html" class="btn-link btn-secondary">
+                🗂️ Deschide Catalogul Ortofoto Real 15cm (242 Clădiri)
+            </a>
+        </div>
+    </div>
 </body>
 </html>

@@ -162,6 +162,7 @@ workspace/reviews/*
 !workspace/reviews/qr_cloudflare.png
 !workspace/reviews/ortho_chips/
 !workspace/reviews/drone_flight_strips/
+!workspace/reviews/metode_inspectie/
 workspace/e2e/
 workspace/Subagent_*/
 workspace/subagent_*.md

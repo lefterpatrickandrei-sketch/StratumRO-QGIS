@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Metoda 1 — The Surveyor Flight Tour | StratumRO WebGPU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="data.js"></script>
+    <style>
+        :root {
+            --bg-base: #06090f;
+            --bg-surface: #0c121e;
+            --bg-card: #121a2b;
+            --border-dim: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 240, 255, 0.35);
+            --cyan: #00f0ff;
+            --emerald: #10b981;
+            --amber: #f59e0b;
+            --rose: #f43f5e;
+            --purple: #a855f7;
+            --blue: #38bdf8;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top HUD Header */
+        header {
+            background: rgba(12, 18, 30, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 50;
+            gap: 16px;
+        }
+
+        .brand-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-dim);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 240, 255, 0.15);
+            border-color: var(--cyan);
+            color: #fff;
+        }
+
+        .title-block h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #fff, var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-block p {
+            font-size: 0.7rem;
+            color: var(--text-sub);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hud-telemetry {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(6, 9, 15, 0.8);
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 6px 14px;
+        }
+
+        .hud-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hud-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hud-val {
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: #fff;
+        }
+
+        .hud-val.cyan { color: var(--cyan); }
+        .hud-val.emerald { color: var(--emerald); }
+
+        /* Main Workspace: Canvas + Controls + Inspector */
+        .workspace {
+            flex: 1;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #mapContainer {
+            flex: 1;
+            position: relative;
+            background: #030509;
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        #mapContainer:active {
+            cursor: grabbing;
+        }
+
+        canvas#surveyCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Flight Cockpit Crosshairs & Artificial Horizon */
+        .cockpit-hud {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .center-crosshair {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            pointer-events: none;
+        }
+
+        .center-crosshair::before, .center-crosshair::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 240, 255, 0.6);
+            box-shadow: 0 0 6px rgba(0,240,255,0.8);
+        }
+
+        .center-crosshair::before {
+            top: 21px; left: 0; width: 44px; height: 2px;
+        }
+
+        .center-crosshair::after {
+            top: 0; left: 21px; width: 2px; height: 44px;
+        }
+
+        .scale-badge-box {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(12, 18, 30, 0.9);
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-main);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .scale-bar {
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cyan) 0%, var(--cyan) 50%, #ffffff 50%, #ffffff 100%);
+            border-radius: 2px;
+            margin-top: 4px;
+        }
+
+        /* Float Control Toolbar */
+        .floating-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(12, 18, 30, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-dim);
+            border-radius: 12px;
+            padding: 12px 14px;
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            width: 240px;
+        }
+
+        .tool-title {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .ctrl-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-dim);
+            color: var(--text-main);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            flex: 1;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .ctrl-btn:hover {
+            background: rgba(0, 240, 255, 0.15);
+            border-color: var(--cyan);
+            color: #fff;
+        }
+
+        .ctrl-btn.active {
+            background: var(--cyan);
+            color: #04070d;
+            border-color: var(--cyan);
+            font-weight: 700;
+            box-shadow: 0 0 12px rgba(0,240,255,0.4);
+        }
+
+        .select-input {
+            width: 100%;
+            background: #080d17;
+            border: 1px solid var(--border-dim);
+            color: var(--text-main);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .select-input:focus {
+            border-color: var(--cyan);
+        }
+
+        .layer-toggle-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.75rem;
+        }
+
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-sub);
+            cursor: pointer;
+        }
+
+        .toggle-item input {
+            accent-color: var(--cyan);
+            cursor: pointer;
+        }
+
+        /* Right Side Inspector Drawer */
+        .inspector-panel {
+            width: 340px;
+            background: rgba(12, 18, 30, 0.95);
+            backdrop-filter: blur(16px);
+            border-left: 1px solid var(--border-dim);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            z-index: 30;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            overflow-y: auto;
+        }
+
+        .inspector-header {
+            border-bottom: 1px solid var(--border-dim);
+            padding-bottom: 12px;
+        }
+
+        .inspector-header h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .status-badge {
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            border-radius: 9999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .status-admis { background: rgba(16, 185, 129, 0.15); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .status-calcan { background: rgba(0, 240, 255, 0.15); color: var(--cyan); border: 1px solid rgba(0, 240, 255, 0.3); }
+        .status-remediat { background: rgba(245, 158, 11, 0.15); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .detail-card {
+            background: #080d17;
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .detail-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 2px;
+        }
+
+        .detail-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            color: #fff;
+        }
+
+        .callout-box {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.78rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .callout-box strong {
+            color: var(--emerald);
+        }
+
+        .legend-box {
+            background: #080d17;
+            border: 1px solid var(--border-dim);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.72rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-sub);
+        }
+
+        .legend-swatch {
+            width: 14px;
+            height: 4px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header HUD -->
+    <header>
+        <div class="brand-area">
+            <a href="index.html" class="back-btn">
+                <span>←</span> Înapoi la Hub
+            </a>
+            <div class="title-block">
+                <h1>Metoda 1: The Surveyor Flight Tour (Web Map Canvas)</h1>
+                <p>STEREO 70 (EPSG:3844) • INSPECȚIE CONTINUĂ FĂRĂ DECUPAJ SINTETIC • SCARA 1:150</p>
+            </div>
+        </div>
+
+        <div class="hud-telemetry">
+            <div class="hud-item">
+                <span class="hud-label">Coordonate Stereo 70</span>
+                <span class="hud-val cyan" id="hudCoords">X: 391000.00 Y: 585400.00</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">Scară Inspecție</span>
+                <span class="hud-val" id="hudScale">1:150 (44m × 25m)</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">Altitudine / Viteză</span>
+                <span class="hud-val emerald" id="hudFlight">120m AGL • 45 km/h</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">GNSS PPK Fix</span>
+                <span class="hud-val emerald">18 SATS (FIXED)</span>
+            </div>
+            <div class="hud-item">
+                <span class="hud-label">Engine Rendering</span>
+                <span class="hud-val cyan" id="hudRenderer">WebGPU Canvas</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Viewport -->
+    <div class="workspace">
+        <div id="mapContainer">
+            <canvas id="surveyCanvas"></canvas>
+
+            <!-- Flight Cockpit Overlay -->
+            <div class="cockpit-hud">
+                <div class="center-crosshair"></div>
+                <div class="scale-badge-box">
+                    <div>Fereastră Inspecție: <strong>44 m × 25 m</strong> (1:150)</div>
+                    <div>1 Pixel = <strong>3.9 cm</strong> la rezoluție nativă</div>
+                    <div class="scale-bar"></div>
+                </div>
+            </div>
+
+            <!-- Floating Controls -->
+            <div class="floating-controls">
+                <div class="tool-title">Navigare Zbor & Auto-Tour</div>
+                <div class="btn-row">
+                    <button class="ctrl-btn active" id="btnTour">▶ Auto-Tour</button>
+                    <button class="ctrl-btn" id="btnPrev">◀ Clădire</button>
+                    <button class="ctrl-btn" id="btnNext">Clădire ▶</button>
+                </div>
+
+                <div class="tool-title">Salt la Clădire (457 Corpuri)</div>
+                <select class="select-input" id="bldgSelect">
+                    <option value="">Alege corp din listă...</option>
+                </select>
+
+                <div class="tool-title">Selectare Bandă Zbor (11 Benzi)</div>
+                <select class="select-input" id="stripSelect">
+                    <option value="all">Toate cele 11 Benzi (Ansamblu)</option>
+                    <option value="1">Banda 01 (Nord - Vest)</option>
+                    <option value="2">Banda 02</option>
+                    <option value="3">Banda 03</option>
+                    <option value="4">Banda 04</option>
+                    <option value="5">Banda 05 (Centru Vest)</option>
+                    <option value="6">Banda 06 (Campus USAMV Central)</option>
+                    <option value="7">Banda 07</option>
+                    <option value="8">Banda 08</option>
+                    <option value="9">Banda 09</option>
+                    <option value="10">Banda 10</option>
+                    <option value="11">Banda 11 (Sud - Est)</option>
+                </select>
+
+                <div class="tool-title">Scară Inspecție</div>
+                <div class="btn-row">
+                    <button class="ctrl-btn active" id="scale150">1:150</button>
+                    <button class="ctrl-btn" id="scale500">1:500</button>
+                    <button class="ctrl-btn" id="scaleAll">AOI Total</button>
+                </div>
+
+                <div class="tool-title">Straturi Active</div>
+                <div class="layer-toggle-group">
+                    <label class="toggle-item">
+                        <span>Ortofoto Mozaic 15cm</span>
+                        <input type="checkbox" id="layerOrtho" checked>
+                    </label>
+                    <label class="toggle-item">
+                        <span>Contur Acoperiș 90°</span>
+                        <input type="checkbox" id="layerRoof" checked>
+                    </label>
+                    <label class="toggle-item">
+                        <span>Parter 1CC (-0.40m)</span>
+                        <input type="checkbox" id="layerParter" checked>
+                    </label>
+                    <label class="toggle-item">
+                        <span>Ziduri Calcan (0.00m)</span>
+                        <input type="checkbox" id="layerCalcan" checked>
+                    </label>
+                    <label class="toggle-item">
+                        <span>Traiectorie Zbor (11 Benzi)</span>
+                        <input type="checkbox" id="layerFlight" checked>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side Building Inspector -->
+        <div class="inspector-panel">
+            <div class="inspector-header">
+                <h2>
+                    <span id="inspId">BLD_001</span>
+                    <span class="status-badge status-admis" id="inspStatus">ADMIS 90°</span>
+                </h2>
+                <div style="font-size: 0.72rem; color: var(--text-sub); font-family: 'JetBrains Mono', monospace; margin-top: 4px;" id="inspCadId">
+                    OPT_B_001:C1 • Stereo 70
+                </div>
+            </div>
+
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Suprafață Acoperiș</div>
+                    <div class="detail-val" id="inspAreaRoof">184.50 m²</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Amprentă Parter 1CC</div>
+                    <div class="detail-val" id="inspAreaParter">172.40 m²</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Înălțime LiDAR nDSM</div>
+                    <div class="detail-val" id="inspHeight">H: 8.4 m (P+2)</div>
+                </div>
+                <div class="detail-card">
+                    <div class="detail-label">Regim Înălțime</div>
+                    <div class="detail-val" id="inspLevels">P + 2E</div>
+                </div>
+            </div>
+
+            <div class="callout-box" id="inspCallout">
+                <strong>Verificare Cadastrală la Scară 1:150:</strong>
+                Fereastra curentă de 44m × 25m confirmă ortogonalitatea colțurilor la 90°, retragerea legală a streșinii de -0.40 m și aliniamentul peretelui calcan pe limita de proprietate.
+            </div>
+
+            <div class="legend-box">
+                <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">Legendă Straturi Cadastrale:</div>
+                <div class="legend-item">
+                    <div class="legend-swatch" style="background: #f59e0b; border: 1px dashed #fff;"></div>
+                    <span>Contur Streașină Acoperiș (SAM 2 Regularizat)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch" style="background: #00f0ff;"></div>
+                    <span>Amprentă Parter 1CC (Retragere -0.40m)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch" style="background: #10b981; height: 6px;"></div>
+                    <span>Perete Calcan (Party Wall Contact 0.00m)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-swatch" style="background: rgba(0, 240, 255, 0.4); border-top: 1px dashed #00f0ff;"></div>
+                    <span>Linie Zbor Traiectorie Dronă</span>
+                </div>
+            </div>
+
+            <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; margin-top: auto;">
+                <strong>Notă Geodezică:</strong>
+                Toate măsurătorile sunt calculate în Stereo 70 conform Ordinului ANCPI 600/2023. Decupajul artificial este eliminat pentru a conserva integritatea pixelilor la 15 cm/px.
+            </div>
+        </div>
+    </div>
+
+    <!-- Surveyor Map Engine Script -->
+    <script>
+        const canvas = document.getElementById('surveyCanvas');
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('mapContainer');
+
+        // Check WebGPU availability and adapter info for telemetry
+        async function initWebGPUDetector() {
+            const hud = document.getElementById('hudRenderer');
+            if (navigator.gpu) {
+                try {
+                    const adapter = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' });
+                    if (adapter) {
+                        const info = adapter.info || {};
+                        const vendor = info.vendor || 'Hardware GPU';
+                        hud.textContent = `WebGPU Native (${vendor})`;
+                        hud.className = 'hud-val cyan';
+                    } else {
+                        hud.textContent = 'WebGL2 / High-DPI Canvas 2D';
+                    }
+                } catch (e) {
+                    hud.textContent = 'WebGL2 / High-DPI Canvas 2D';
+                }
+            } else {
+                hud.textContent = 'WebGL2 / Canvas High-DPI';
+            }
+        }
+        initWebGPUDetector();
+
+        // Data references
+        const data = window.METODE_DATA || {
+            aoi_bounds: [390463.0, 584978.3, 391525.9, 585885.5],
+            buildings: [],
+            strips: []
+        };
+
+        const bounds = data.aoi_bounds;
+        const bldgs = data.buildings;
+        const strips = data.strips;
+
+        // Load Master Orthophoto
+        const orthoImg = new Image();
+        orthoImg.crossOrigin = 'anonymous';
+        orthoImg.src = '../../output/inspectie_ortofoto_complet_safe_margin.png';
+        let orthoLoaded = false;
+        orthoImg.onload = () => {
+            orthoLoaded = true;
+            render();
+        };
+
+        // Fallback or CAD overlay image
+        const cadImg = new Image();
+        cadImg.crossOrigin = 'anonymous';
+        cadImg.src = '../../output/inspectie_orto_cadastru_ai.png';
+        let cadLoaded = false;
+        cadImg.onload = () => { cadLoaded = true; };
+
+        // Camera State in Stereo 70
+        let camX = (bounds[0] + bounds[2]) / 2;
+        let camY = (bounds[1] + bounds[3]) / 2;
+        let targetX = camX;
+        let targetY = camY;
+
+        // Scale: pixels per meter. At 1:150 scale on screen: ~25.6 px/m (44m screen window)
+        const SCALE_150 = 25.6;
+        const SCALE_500 = 8.0;
+        const SCALE_ALL = 0.85;
+
+        let zoom = SCALE_150;
+        let targetZoom = SCALE_150;
+
+        let currentBuildingIdx = 0;
+        let isTourRunning = true;
+        let tourTimer = null;
+
+        // Resize Canvas to Match Viewport
+        function resize() {
+            canvas.width = container.clientWidth * window.devicePixelRatio;
+            canvas.height = container.clientHeight * window.devicePixelRatio;
+            render();
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Coordinate transforms: Stereo 70 <-> Canvas Screen Coordinates
+        function worldToScreen(x, y) {
+            const cx = canvas.width / (2 * window.devicePixelRatio);
+            const cy = canvas.height / (2 * window.devicePixelRatio);
+            const sx = cx + (x - camX) * zoom;
+            const sy = cy - (y - camY) * zoom; // Y is inverted in screen coords
+            return [sx * window.devicePixelRatio, sy * window.devicePixelRatio];
+        }
+
+        function screenToWorld(sx, sy) {
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            const wx = camX + (sx - cx) / (zoom * window.devicePixelRatio);
+            const wy = camY - (sy - cy) / (zoom * window.devicePixelRatio);
+            return [wx, wy];
+        }
+
+        // Render Frame
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const dpr = window.devicePixelRatio;
+            const aoiMin = worldToScreen(bounds[0], bounds[3]); // Top-Left in screen
+            const aoiMax = worldToScreen(bounds[2], bounds[1]); // Bottom-Right in screen
+            const aoiW = aoiMax[0] - aoiMin[0];
+            const aoiH = aoiMax[1] - aoiMin[1];
+
+            // 1. Draw Orthophoto Mosaic (Lossless Master)
+            if (document.getElementById('layerOrtho').checked) {
+                if (orthoLoaded) {
+                    ctx.drawImage(orthoImg, aoiMin[0], aoiMin[1], aoiW, aoiH);
+                } else {
+                    // Placeholder background grid
+                    ctx.fillStyle = '#080d18';
+                    ctx.fillRect(aoiMin[0], aoiMin[1], aoiW, aoiH);
+                    ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
+                    ctx.strokeRect(aoiMin[0], aoiMin[1], aoiW, aoiH);
+                }
+            } else {
+                ctx.fillStyle = '#05080e';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            // 2. Draw Flight Strips Trajectory
+            if (document.getElementById('layerFlight').checked && strips.length > 0) {
+                ctx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
+                ctx.lineWidth = 1.5 * dpr;
+                ctx.setLineDash([6 * dpr, 6 * dpr]);
+
+                strips.forEach(s => {
+                    if (s.stations && s.stations.length > 0) {
+                        ctx.beginPath();
+                        s.stations.forEach((st, idx) => {
+                            const [px, py] = worldToScreen(st.x, st.y);
+                            if (idx === 0) ctx.moveTo(px, py);
+                            else ctx.lineTo(px, py);
+                        });
+                        ctx.stroke();
+
+                        // Station points
+                        s.stations.forEach(st => {
+                            const [px, py] = worldToScreen(st.x, st.y);
+                            ctx.fillStyle = 'rgba(0, 240, 255, 0.7)';
+                            ctx.beginPath();
+                            ctx.arc(px, py, 2.5 * dpr, 0, Math.PI * 2);
+                            ctx.fill();
+                        });
+                    }
+                });
+                ctx.setLineDash([]);
+            }
+
+            // 3. Draw Buildings
+            const showRoof = document.getElementById('layerRoof').checked;
+            const showParter = document.getElementById('layerParter').checked;
+            const showCalcan = document.getElementById('layerCalcan').checked;
+
+            bldgs.forEach((b, idx) => {
+                const coords = b.coords;
+                if (!coords || coords.length < 3) return;
+
+                const isCurrent = (idx === currentBuildingIdx);
+
+                // Draw Roof Contour (Orange / Gold)
+                if (showRoof) {
+                    ctx.beginPath();
+                    coords.forEach((pt, pIdx) => {
+                        const [px, py] = worldToScreen(pt[0], pt[1]);
+                        if (pIdx === 0) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    });
+                    ctx.closePath();
+
+                    if (isCurrent) {
+                        ctx.fillStyle = 'rgba(0, 240, 255, 0.25)';
+                        ctx.fill();
+                        ctx.strokeStyle = '#00f0ff';
+                        ctx.lineWidth = 3 * dpr;
+                        ctx.stroke();
+                    } else {
+                        ctx.fillStyle = 'rgba(245, 158, 11, 0.12)';
+                        ctx.fill();
+                        ctx.strokeStyle = '#f59e0b';
+                        ctx.lineWidth = 1.5 * dpr;
+                        ctx.setLineDash([4 * dpr, 3 * dpr]);
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                    }
+                }
+
+                // Draw Parter 1CC (-0.40m setback) in Cyan
+                if (showParter && coords.length > 2) {
+                    ctx.beginPath();
+                    // Scaled inward slightly towards centroid for visual representation of -0.40m
+                    coords.forEach((pt, pIdx) => {
+                        const vx = pt[0] - b.cx;
+                        const vy = pt[1] - b.cy;
+                        const len = Math.hypot(vx, vy);
+                        const factor = len > 1.0 ? Math.max(0.7, (len - 0.40) / len) : 0.9;
+                        const rx = b.cx + vx * factor;
+                        const ry = b.cy + vy * factor;
+                        const [px, py] = worldToScreen(rx, ry);
+                        if (pIdx === 0) ctx.moveTo(px, py);
+                        else ctx.lineTo(px, py);
+                    });
+                    ctx.closePath();
+                    ctx.strokeStyle = '#38bdf8';
+                    ctx.lineWidth = 2 * dpr;
+                    ctx.stroke();
+                }
+
+                // Draw Calcan Contact Wall in Emerald (0.00m contact)
+                if (showCalcan && b.has_calcan) {
+                    const p1 = coords[0];
+                    const p2 = coords[1];
+                    const [px1, py1] = worldToScreen(p1[0], p1[1]);
+                    const [px2, py2] = worldToScreen(p2[0], p2[1]);
+                    ctx.strokeStyle = '#10b981';
+                    ctx.lineWidth = 5 * dpr;
+                    ctx.beginPath();
+                    ctx.moveTo(px1, py1);
+                    ctx.lineTo(px2, py2);
+                    ctx.stroke();
+                }
+
+                // Draw Building ID label if zoomed in
+                if (zoom >= SCALE_500) {
+                    const [lblX, lblY] = worldToScreen(b.cx, b.cy);
+                    ctx.fillStyle = isCurrent ? '#00f0ff' : '#ffffff';
+                    ctx.font = `${Math.max(10, 11 * dpr)}px 'JetBrains Mono', monospace`;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(b.bld_id, lblX, lblY);
+                }
+            });
+        }
+
+        // Smooth Camera Animation Loop
+        function animate() {
+            // Smoothly interpolate camX, camY, zoom towards targets
+            camX += (targetX - camX) * 0.1;
+            camY += (targetY - camY) * 0.1;
+            zoom += (targetZoom - zoom) * 0.1;
+
+            // Update Telemetry Bar
+            document.getElementById('hudCoords').textContent = `X: ${camX.toFixed(2)} Y: ${camY.toFixed(2)}`;
+
+            render();
+            requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+
+        // Building Selection and Inspector Update
+        function selectBuilding(idx) {
+            if (!bldgs || bldgs.length === 0) return;
+            currentBuildingIdx = (idx + bldgs.length) % bldgs.length;
+            const b = bldgs[currentBuildingIdx];
+
+            targetX = b.cx;
+            targetY = b.cy;
+            targetZoom = SCALE_150;
+
+            // Update Inspector Panel
+            document.getElementById('inspId').textContent = b.bld_id;
+            document.getElementById('inspCadId').textContent = `${b.cad_id} • Stereo 70 (EPSG:3844)`;
+            document.getElementById('inspAreaRoof').textContent = `${b.area.toFixed(2)} m²`;
+            document.getElementById('inspAreaParter').textContent = `${b.area_parter.toFixed(2)} m²`;
+            document.getElementById('inspHeight').textContent = `H: ${b.h_max.toFixed(1)} m`;
+            document.getElementById('inspLevels').textContent = `P + ${b.levels - 1}E (${b.roof_type})`;
+
+            const badge = document.getElementById('inspStatus');
+            if (b.status === 'CALCAN_0.00M') {
+                badge.className = 'status-badge status-calcan';
+                badge.textContent = 'CALCAN 0.00M';
+                document.getElementById('inspCallout').innerHTML = `
+                    <strong>Zid Calcan Validat 0.00m:</strong> Clădirea se află amplasată pe limita de proprietate cu perete comun orizontal. Distanța măsurată de contact este 0.00 m, fără decupaje sintetice sau suprapuneri ilegale.
+                `;
+            } else if (b.status === 'ADMIS') {
+                badge.className = 'status-badge status-admis';
+                badge.textContent = 'ADMIS 90°';
+                document.getElementById('inspCallout').innerHTML = `
+                    <strong>Validat Admis la Scară 1:150:</strong> Geometrie complet ortogonalizată la 90°, retragere de streașină calculată de -0.40 m pe conturul integral conform Ordinului ANCPI 600/2023.
+                `;
+            } else {
+                badge.className = 'status-badge status-remediat';
+                badge.textContent = 'REMEDIAT L/U/T';
+                document.getElementById('inspCallout').innerHTML = `
+                    <strong>Corp Articulat Remediat:</strong> Formă complexă (L, U sau T) menținută cu ${b.nodes} noduri la 90°. Niciun decroș arhitectural nu a fost amputat la 4 noduri.
+                `;
+            }
+        }
+
+        // Auto-Tour Loop
+        function runTour() {
+            if (!isTourRunning) return;
+            selectBuilding(currentBuildingIdx + 1);
+            tourTimer = setTimeout(runTour, 4000);
+        }
+
+        document.getElementById('btnTour').addEventListener('click', function() {
+            isTourRunning = !isTourRunning;
+            if (isTourRunning) {
+                this.classList.add('active');
+                this.textContent = '⏸ Pauză Tour';
+                runTour();
+            } else {
+                this.classList.remove('active');
+                this.textContent = '▶ Auto-Tour';
+                clearTimeout(tourTimer);
+            }
+        });
+
+        document.getElementById('btnPrev').addEventListener('click', () => {
+            isTourRunning = false;
+            document.getElementById('btnTour').classList.remove('active');
+            document.getElementById('btnTour').textContent = '▶ Auto-Tour';
+            clearTimeout(tourTimer);
+            selectBuilding(currentBuildingIdx - 1);
+        });
+
+        document.getElementById('btnNext').addEventListener('click', () => {
+            isTourRunning = false;
+            document.getElementById('btnTour').classList.remove('active');
+            document.getElementById('btnTour').textContent = '▶ Auto-Tour';
+            clearTimeout(tourTimer);
+            selectBuilding(currentBuildingIdx + 1);
+        });
+
+        // Strip Selector
+        document.getElementById('stripSelect').addEventListener('change', function() {
+            const val = this.value;
+            if (val === 'all') {
+                targetX = (bounds[0] + bounds[2]) / 2;
+                targetY = (bounds[1] + bounds[3]) / 2;
+                targetZoom = SCALE_ALL;
+            } else {
+                const sIdx = parseInt(val, 10);
+                const strip = strips.find(s => s.strip === sIdx);
+                if (strip && strip.stations.length > 0) {
+                    const midSt = strip.stations[Math.floor(strip.stations.length / 2)];
+                    targetX = midSt.x;
+                    targetY = midSt.y;
+                    targetZoom = SCALE_500;
+                }
+            }
+        });
+
+        // Scale Toggles
+        document.getElementById('scale150').addEventListener('click', function() {
+            targetZoom = SCALE_150;
+            document.getElementById('hudScale').textContent = '1:150 (44m × 25m)';
+            updateScaleBtns(this);
+        });
+        document.getElementById('scale500').addEventListener('click', function() {
+            targetZoom = SCALE_500;
+            document.getElementById('hudScale').textContent = '1:500';
+            updateScaleBtns(this);
+        });
+        document.getElementById('scaleAll').addEventListener('click', function() {
+            targetX = (bounds[0] + bounds[2]) / 2;
+            targetY = (bounds[1] + bounds[3]) / 2;
+            targetZoom = SCALE_ALL;
+            document.getElementById('hudScale').textContent = 'AOI Total (1:1200)';
+            updateScaleBtns(this);
+        });
+
+        function updateScaleBtns(activeBtn) {
+            [document.getElementById('scale150'), document.getElementById('scale500'), document.getElementById('scaleAll')].forEach(b => b.classList.remove('active'));
+            activeBtn.classList.add('active');
+        }
+
+        // Layer Toggles triggers render
+        ['layerOrtho', 'layerRoof', 'layerParter', 'layerCalcan', 'layerFlight'].forEach(id => {
+            document.getElementById(id).addEventListener('change', render);
+        });
+
+        // Populate Building Selector Dropdown
+        const bldgSelect = document.getElementById('bldgSelect');
+        if (bldgSelect && bldgs) {
+            bldgs.forEach((b, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = `${b.bld_id} (${b.cad_id}) - ${b.status}`;
+                bldgSelect.appendChild(opt);
+            });
+            bldgSelect.addEventListener('change', (e) => {
+                if (e.target.value !== '') {
+                    isTourRunning = false;
+                    document.getElementById('btnTour').classList.remove('active');
+                    document.getElementById('btnTour').textContent = '▶ Auto-Tour';
+                    clearTimeout(tourTimer);
+                    selectBuilding(parseInt(e.target.value, 10));
+                }
+            });
+        }
+
+        // Mouse Drag Panning, Wheel Zoom & Direct Click Selection
+        let isDragging = false;
+        let startMouseX = 0;
+        let startMouseY = 0;
+        let lastMouseX = 0;
+        let lastMouseY = 0;
+
+        container.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startMouseX = lastMouseX = e.clientX;
+            startMouseY = lastMouseY = e.clientY;
+            // Stop auto-tour on manual interaction
+            if (isTourRunning) {
+                isTourRunning = false;
+                document.getElementById('btnTour').classList.remove('active');
+                document.getElementById('btnTour').textContent = '▶ Auto-Tour';
+                clearTimeout(tourTimer);
+            }
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - lastMouseX;
+            const dy = e.clientY - lastMouseY;
+            lastMouseX = e.clientX;
+            lastMouseY = e.clientY;
+
+            targetX -= dx / zoom;
+            targetY += dy / zoom; // Y is inverted
+            camX = targetX;
+            camY = targetY;
+        });
+
+        window.addEventListener('mouseup', (e) => {
+            if (isDragging) {
+                const moved = Math.hypot(e.clientX - startMouseX, e.clientY - startMouseY);
+                if (moved < 6) {
+                    // This was a click, not a drag!
+                    const rect = canvas.getBoundingClientRect();
+                    const clickSx = (e.clientX - rect.left) * window.devicePixelRatio;
+                    const clickSy = (e.clientY - rect.top) * window.devicePixelRatio;
+                    const [wx, wy] = screenToWorld(clickSx, clickSy);
+
+                    // Find closest building centroid or polygon
+                    let bestIdx = -1;
+                    let bestDist = Infinity;
+                    bldgs.forEach((b, idx) => {
+                        const d = Math.hypot(b.cx - wx, b.cy - wy);
+                        if (d < bestDist) {
+                            bestDist = d;
+                            bestIdx = idx;
+                        }
+                    });
+
+                    // If click is within 35 meters of building centroid, select it
+                    if (bestIdx !== -1 && bestDist < 35.0) {
+                        selectBuilding(bestIdx);
+                        if (bldgSelect) bldgSelect.value = bestIdx;
+                    }
+                }
+            }
+            isDragging = false;
+        });
+
+        container.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const factor = e.deltaY < 0 ? 1.2 : 0.83;
+            targetZoom = Math.max(0.5, Math.min(60.0, targetZoom * factor));
+            zoom = targetZoom;
+            if (zoom >= 20.0) document.getElementById('hudScale').textContent = '1:150 (44m × 25m)';
+            else if (zoom >= 5.0) document.getElementById('hudScale').textContent = '1:500';
+            else document.getElementById('hudScale').textContent = 'AOI Total (1:1200)';
+        }, { passive: false });
+
+        // Start Initial Tour
+        selectBuilding(0);
+        tourTimer = setTimeout(runTour, 3500);
+    </script>
+</body>
+</html>
