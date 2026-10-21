@@ -116,16 +116,20 @@ def validate_ancpi(
             failed_count += 1
             warnings.append(f"Building #{idx}: area {area:.2f} m2 is below ANCPI 8 m2 annex threshold")
 
-        # 2. Edge lengths check
+        # 2. Edge lengths check (verifies Polygons and MultiPolygons for micro-facets < 0.5m)
         has_micro_edge = False
-        if hasattr(poly, "exterior") and poly.exterior:
-            coords = list(poly.exterior.coords)
-            for i in range(len(coords) - 1):
-                p1, p2 = coords[i], coords[i + 1]
-                length = ((p2[0] - p1[0])**2 + (p2[1] - p1[1])**2)**0.5
-                if length < 0.5:
-                    has_micro_edge = True
-                    break
+        sub_geoms = poly.geoms if hasattr(poly, "geoms") else [poly]
+        for sub_poly in sub_geoms:
+            if hasattr(sub_poly, "exterior") and sub_poly.exterior:
+                coords = list(sub_poly.exterior.coords)
+                for i in range(len(coords) - 1):
+                    p1, p2 = coords[i], coords[i + 1]
+                    length = ((p2[0] - p1[0])**2 + (p2[1] - p1[1])**2)**0.5
+                    if length < 0.5:
+                        has_micro_edge = True
+                        break
+            if has_micro_edge:
+                break
 
         if has_micro_edge:
             checks["min_edge_1m"]["failed"] += 1

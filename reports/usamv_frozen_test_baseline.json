@@ -1,0 +1,85 @@
+{
+  "dataset": "USAMV Cluj Frozen Test Split",
+  "spatial_buffer_m": 30.0,
+  "crs": "EPSG:3844",
+  "total_test_buildings": 31,
+  "system_1_fast_triage": {
+    "counts": {
+      "APPROVED": 24,
+      "REJECTED": 0,
+      "UNCERTAIN": 7
+    },
+    "percentages": {
+      "APPROVED": 77.42,
+      "REJECTED": 0.0,
+      "UNCERTAIN": 22.58
+    },
+    "avg_latency_ms_per_candidate": 0.032,
+    "total_batch_latency_ms": 2.885,
+    "latency_target_met": true
+  },
+  "ancpi_geometric_validation": {
+    "checks": {
+      "min_area_main_45m2": {
+        "passed": 25,
+        "failed": 0
+      },
+      "min_area_annex_8m2": {
+        "passed": 6,
+        "failed": 0
+      },
+      "min_edge_1m": {
+        "passed": 31,
+        "failed": 0
+      },
+      "stereo70_bounds": {
+        "passed": 31,
+        "failed": 0
+      }
+    },
+    "failed_count": 0,
+    "overall_passed": true
+  },
+  "verdicts_sample": [
+    {
+      "id": "OPT_B_033:C1",
+      "status": "APPROVED",
+      "confidence": 0.94,
+      "reason": "Detached main building with solid roof envelope and confirmed LiDAR height",
+      "escalate_to_vlm": false,
+      "latency_ms": 0.111
+    },
+    {
+      "id": "OPT_B_165:C1",
+      "status": "APPROVED",
+      "confidence": 0.94,
+      "reason": "Detached main building with solid roof envelope and confirmed LiDAR height",
+      "escalate_to_vlm": false,
+      "latency_ms": 0.034
+    },
+    {
+      "id": "OPT_B_173:C1",
+      "status": "UNCERTAIN",
+      "confidence": 0.6,
+      "reason": "Party wall (calcan) contact detected; requires visual audit",
+      "escalate_to_vlm": true,
+      "latency_ms": 0.03
+    },
+    {
+      "id": "OPT_B_140:C1",
+      "status": "UNCERTAIN",
+      "confidence": 0.6,
+      "reason": "Party wall (calcan) contact detected; requires visual audit",
+      "escalate_to_vlm": true,
+      "latency_ms": 0.03
+    },
+    {
+      "id": "OPT_B_204:C1",
+      "status": "APPROVED",
+      "confidence": 0.94,
+      "reason": "Detached main building with solid roof envelope and confirmed LiDAR height",
+      "escalate_to_vlm": false,
+      "latency_ms": 0.029
+    }
+  ]
+}
