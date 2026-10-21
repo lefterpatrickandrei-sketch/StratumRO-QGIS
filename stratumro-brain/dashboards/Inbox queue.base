@@ -1,0 +1,17 @@
+filters:
+  and:
+    - file.inFolder("inbox")
+    - 'file.ext == "md"'
+    - 'file.name != "README"'
+properties:
+  author:
+    displayName: Author
+views:
+  - type: table
+    name: Inbox queue
+    order:
+      - file.name
+      - type
+      - author
+      - confidence
+      - created

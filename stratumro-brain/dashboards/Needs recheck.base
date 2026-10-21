@@ -1,0 +1,15 @@
+filters:
+  and:
+    - 'recheck_by'
+    - 'date(recheck_by) < today() + "14 days"'
+    - not:
+        - file.inFolder("_templates")
+        - file.inFolder("archive")
+views:
+  - type: table
+    name: Re-check within 14 days or overdue
+    order:
+      - file.name
+      - status
+      - recheck_by
+      - author

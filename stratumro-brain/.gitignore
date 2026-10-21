@@ -1,0 +1,22 @@
+# Obsidian: keep settings, ignore per-machine state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/*/data.json.bak
+.trash/
+# Local link to the code repository (created per machine, never committed)
+code/
+*.tmp
+__pycache__/
+
+# Security & Secrets protection
+.env*
+*.token
+*.key
+*.pem
+*secret*
+*credential*
+*.log
+id_rsa*
+*.p12
+*.pfx

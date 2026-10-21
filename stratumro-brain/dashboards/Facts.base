@@ -1,0 +1,21 @@
+filters:
+  and:
+    - 'type == "fact"'
+    - not:
+        - file.inFolder("_templates")
+properties:
+  confidence:
+    displayName: Confidence
+  recheck_by:
+    displayName: Re-check by
+views:
+  - type: table
+    name: Facts
+    groupBy:
+      property: note.status
+      direction: ASC
+    order:
+      - file.name
+      - source_type
+      - confidence
+      - recheck_by

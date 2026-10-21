@@ -1,0 +1,51 @@
+/* StratumRO Brain look. Works on top of any theme; designed for Minimal.
+   Selectors used: cssclasses from note frontmatter, nav-folder-title[data-path], callouts. */
+
+body {
+  --sr-decision: 46, 125, 50;   /* green */
+  --sr-fact: 25, 118, 210;      /* blue */
+  --sr-lesson: 230, 140, 0;     /* amber */
+  --sr-handoff: 123, 31, 162;   /* purple */
+  --sr-model: 0, 121, 107;      /* teal */
+  --sr-codemap: 96, 125, 139;   /* slate */
+  --sr-guide: 84, 110, 122;
+}
+
+/* Note title bar by type */
+.note-decision .inline-title, .note-decision h1 { border-left: 6px solid rgb(var(--sr-decision)); padding-left: 0.5em; }
+.note-fact .inline-title, .note-fact h1         { border-left: 6px solid rgb(var(--sr-fact)); padding-left: 0.5em; }
+.note-lesson .inline-title, .note-lesson h1     { border-left: 6px solid rgb(var(--sr-lesson)); padding-left: 0.5em; }
+.note-handoff .inline-title, .note-handoff h1   { border-left: 6px solid rgb(var(--sr-handoff)); padding-left: 0.5em; }
+.note-model .inline-title, .note-model h1       { border-left: 6px solid rgb(var(--sr-model)); padding-left: 0.5em; }
+.note-codemap .inline-title, .note-codemap h1   { border-left: 6px solid rgb(var(--sr-codemap)); padding-left: 0.5em; }
+.note-guide .inline-title, .note-guide h1       { border-left: 6px solid rgb(var(--sr-guide)); padding-left: 0.5em; }
+
+/* Properties panel as a card */
+.metadata-container {
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin-bottom: 1em;
+}
+
+/* Tables: calmer header, zebra rows */
+.markdown-rendered table th { background: var(--background-secondary); text-transform: none; }
+.markdown-rendered table tr:nth-child(even) td { background: color-mix(in srgb, var(--background-secondary) 55%, transparent); }
+
+/* Folder tints in the file list */
+.nav-folder-title[data-path="canon"]       { color: rgb(var(--sr-decision)); font-weight: 600; }
+.nav-folder-title[data-path="inbox"]       { color: rgb(var(--sr-lesson)); font-weight: 600; }
+.nav-folder-title[data-path="agents"]      { color: var(--text-muted); }
+.nav-folder-title[data-path="archive"]     { color: var(--text-faint); }
+.nav-folder-title[data-path="dashboards"]  { color: rgb(var(--sr-fact)); font-weight: 600; }
+.nav-folder-title[data-path="code-map"]    { color: rgb(var(--sr-codemap)); }
+
+/* Custom callouts used in notes and dashboards */
+.callout[data-callout="decision"]   { --callout-color: var(--sr-decision);  --callout-icon: lucide-check-circle; }
+.callout[data-callout="unverified"] { --callout-color: var(--sr-lesson);    --callout-icon: lucide-help-circle; }
+.callout[data-callout="evidence"]   { --callout-color: var(--sr-fact);      --callout-icon: lucide-book-open-check; }
+.callout[data-callout="handoff"]    { --callout-color: var(--sr-handoff);   --callout-icon: lucide-arrow-right-left; }
+
+/* Embedded bases inside callouts: remove double borders */
+.callout .internal-embed.bases-embed { border: none; }

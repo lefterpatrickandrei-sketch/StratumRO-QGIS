@@ -1,0 +1,23 @@
+filters:
+  and:
+    - 'type == "decision"'
+    - not:
+        - file.inFolder("_templates")
+properties:
+  status:
+    displayName: Status
+  author:
+    displayName: Author
+  recheck_by:
+    displayName: Re-check by
+views:
+  - type: table
+    name: Decisions
+    groupBy:
+      property: note.status
+      direction: ASC
+    order:
+      - file.name
+      - author
+      - created
+      - recheck_by
