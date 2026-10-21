@@ -4,7 +4,7 @@ Motor de Evaluare și Consens Multi-Model bazat pe NVIDIA NIM API pentru Stratum
 Realizează un ciclu de autoevaluare (Build Reasoning Consensus) între modele LLM independente
 pentru a audita conformitatea celor două produse geospațiale cu legislația din România (2026):
   - Produsul 1: CADASTRU (Ordinul ANCPI nr. 600/2023 & Legea nr. 7/1996)
-  - Produsul 2: URBANISM & PUG (Legea nr. 350/2001, CATUC 2026 & Legea nr. 24/2007)
+  - Produsul 2: URBANISM & PUG (Legea nr. 169/2026 - CATUC, Ordinul MDLPA nr. 904/2023 & Legea nr. 24/2007)
 """
 
 import os

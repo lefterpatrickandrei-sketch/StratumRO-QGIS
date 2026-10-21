@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Modul Produs Urbanism & PUG (Plan Urbanistic General) pentru StratumRO.
-Conformitate legislativă:
-  - Legea nr. 350/2001 privind amenajarea teritoriului și urbanismul
+Conformitate legislativă actualizată (2026):
+  - Legea nr. 169/2026 (Codul Amenajării Teritoriului, Urbanismului și Construcțiilor - CATUC)
+  - Ordinul MDLPA nr. 904/2023 privind normele tehnice pentru seturile de date spațiale în urbanism
   - Legea nr. 24/2007 privind reglementarea și administrarea spațiilor verzi din intravilan
   - Ghidul național de elaborare și conținut-cadru al PUG
+
+Statut livrabil: Bază de situație existentă / Document de lucru (Neavizat, fără valoare de PUG aprobat fără ștampila RUR)
 
 Caracteristici fundamentale:
   1. Clădiri Volumetrice LOD1 cu atribute 3D: H_cornisa, H_coama, Regim înălțime (P..P+n),
@@ -280,7 +283,10 @@ class PugProductGenerator:
             "REGISTRU_ARBORI": registru_arbori,
             "CORONAMENTE_FOND_VEGETAL": canopy_polygons,
             "RETELE_UTILITATI": clean_poles,
-            "ZONIFICARE_POT_CUT": grid_cells
+            "ZONIFICARE_POT_CUT": grid_cells,
+            # Straturi conforme nomenclaturii Ordinului MDLPA nr. 904/2023
+            "ZFExistenta": grid_cells,
+            "ZonaReglementareSuplimentara": grid_cells,
         }
 
         try:
@@ -291,15 +297,18 @@ class PugProductGenerator:
 
         self.vectorizer.save_multicategory_geopackage(pug_layers, output_gpkg)
 
-        # 7. Generare Raport Sinteză Indicatori PUG
+        # 7. Generare Raport Sinteză Indicatori PUG (Conform CATUC 2026 & Ord. 904/2023)
         mean_pot = float(np.mean([c["pot_procent"] for c in grid_cells])) if grid_cells else 0.0
         mean_cut = float(np.mean([c["cut"] for c in grid_cells])) if grid_cells else 0.0
         mean_green = float(np.mean([c["procent_spatiu_verde"] for c in grid_cells])) if grid_cells else 0.0
 
         report = {
-            "titlu": "Raport Indicatori Urbanistici PUG & Registrul Spațiilor Verzi",
+            "titlu": "Plan de Situație Existentă & Bază de Lucru PUG (Conform Ord. 904/2023 & Legea 169/2026)",
+            "statut_document": "DOCUMENT_DE_LUCRU_NEAVIZAT",
+            "avertisment_legal": "Acest set de date reprezintă un document de lucru / bază tehnică existentă. Nu constituie PUG aprobat fără avizele legale, dezbaterea publică și ștampila urbaniștilor RUR / HCL.",
             "legislatie_aplicabila": [
-                "Legea nr. 350/2001 privind amenajarea teritoriului și urbanismul",
+                "Legea nr. 169/2026 (Codul Amenajării Teritoriului, Urbanismului și Construcțiilor - CATUC)",
+                "Ordinul MDLPA nr. 904/2023 privind normele tehnice ale seturilor de date spațiale în urbanism",
                 "Legea nr. 24/2007 privind reglementarea și administrarea spațiilor verzi"
             ],
             "statistici_fond_construit": {
