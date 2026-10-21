@@ -1,4 +1,13 @@
-# Handoff: UAT Iepurești — QGIS MCP + Headless Orchestration către "PUG" de lucru
+# Handoff: UAT Iepurești — [ARHIVAT / PROIECT FINALIZAT]
+
+> [!WARNING]
+> **STATUT: PROIECT FINALIZAT ȘI ARHIVAT**  
+> Cazul UAT Iepurești a avut ca scop exclusiv **extragerea de date deschise (harvesting)** din surse naționale și este **încheiat**.
+> Nu mai este în lucru activ. Vezi documentul oficial: [docs/STATUS_UAT_IEPURESTI_ARHIVAT.md](STATUS_UAT_IEPURESTI_ARHIVAT.md).
+> Focusul activ al depozitului este exclusiv **Cadastrul Cluj-Napoca**.
+
+---
+
 
 ## Rol
 
