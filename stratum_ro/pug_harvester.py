@@ -508,8 +508,26 @@ class PugQgisProjectBuilder:
             esc_src = escape(f'{rel_gpkg}|layername={l_name}')
             xml_lines.append(f'    <layer-tree-layer checked="Qt::Checked" expanded="1" id="{esc_id}" name="{escape(display_name)}" source="{esc_src}" providerKey="ogr"/>')
 
-        # Add Raster Ortofoto layer at the bottom of layer tree
-        xml_lines.append('    <layer-tree-layer checked="Qt::Checked" expanded="1" id="lyr_ortofoto_satelit" name="00. Ortofotoplan Satelitar de Înaltă Rezoluție" providerKey="wms" source="crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&amp;zmax=19&amp;zmin=0"/>')
+        # Check for local high-resolution Orthophoto (e.g. USAMV MrSID mosaic)
+        local_vrt_name = "Ortofoto_Cluj_USAMV_Mosaic.vrt"
+        local_vrt_path = qgs_path.parent / local_vrt_name
+        has_local_ortho = local_vrt_path.exists()
+        if not has_local_ortho:
+            sid_dir = Path(r"C:\Users\lefpa\Desktop\date\Z_VladP\OrtoFoto Cluj USAMV")
+            if sid_dir.exists():
+                try:
+                    # If VRT is already in cluj_regional_pug, copy it over
+                    existing_vrt = ROOT / "workspace" / "reviews" / "cluj_regional_pug" / local_vrt_name
+                    if existing_vrt.exists() and existing_vrt != local_vrt_path:
+                        local_vrt_path.write_bytes(existing_vrt.read_bytes())
+                        has_local_ortho = True
+                except Exception:
+                    pass
+
+        # Add Raster Ortofoto layers at the bottom of layer tree
+        if has_local_ortho:
+            xml_lines.append(f'    <layer-tree-layer checked="Qt::Checked" expanded="1" id="lyr_ortofoto_local_usamv" name="00. Ortofoto Local Cluj USAMV (Sub-decimetric 1cm/px)" providerKey="gdal" source="./{local_vrt_name}"/>')
+        xml_lines.append('    <layer-tree-layer checked="Qt::Checked" expanded="1" id="lyr_ortofoto_satelit" name="00. Ortofotoplan Satelitar Regional (Acoperire ZMC &amp; Național)" providerKey="wms" source="crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&amp;zmax=19&amp;zmin=0"/>')
 
         xml_lines.append('  </layer-tree-group>')
         xml_lines.append('  <projectlayers>')
@@ -737,12 +755,35 @@ class PugQgisProjectBuilder:
 
             xml_lines.append('    </maplayer>')
 
-        # 3. Add Raster Ortofoto Maplayer at the bottom
+        # 3. Add Local High-Res Orthophoto Maplayer (MrSID VRT) if available
+        if has_local_ortho:
+            xml_lines.append(f"""    <maplayer autoRefreshMode="Disabled" minScale="1e+08" refreshOnNotifyMessage="" type="raster" styleCategories="AllStyleCategories" maxScale="0" refreshOnNotifyEnabled="0" autoRefreshTime="0" legendPlaceholderImage="" hasScaleBasedVisibilityFlag="0">
+      <id>lyr_ortofoto_local_usamv</id>
+      <datasource>./{local_vrt_name}</datasource>
+      <keywordList><value></value></keywordList>
+      <layername>00. Ortofoto Local Cluj USAMV (Sub-decimetric 1cm/px)</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <wkt>{escape(STEREO70_WKT)}</wkt>
+          <proj4>{escape(STEREO70_PROJ4)}</proj4>
+          <srsid>100000</srsid>
+          <srid>3844</srid>
+          <authid>EPSG:3844</authid>
+          <description>Pulkovo 1942(58) / Stereo 70</description>
+          <projectionacronym>sterea</projectionacronym>
+          <ellipsoidacronym>krass</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <provider>gdal</provider>
+    </maplayer>""")
+
+        # 4. Add Regional Satellite Orthophoto Maplayer
         xml_lines.append("""    <maplayer autoRefreshMode="Disabled" minScale="1e+08" refreshOnNotifyMessage="" type="raster" styleCategories="AllStyleCategories" maxScale="0" refreshOnNotifyEnabled="0" autoRefreshTime="0" legendPlaceholderImage="" hasScaleBasedVisibilityFlag="0">
       <id>lyr_ortofoto_satelit</id>
       <datasource>crs=EPSG:3857&amp;format&amp;type=xyz&amp;url=https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D&amp;zmax=19&amp;zmin=0</datasource>
       <keywordList><value></value></keywordList>
-      <layername>00. Ortofotoplan Satelitar de Înaltă Rezoluție</layername>
+      <layername>00. Ortofotoplan Satelitar Regional (Acoperire ZMC &amp; Național)</layername>
       <srs>
         <spatialrefsys nativeFormat="Wkt">
           <wkt>PROJCRS["WGS 84 / Pseudo-Mercator",BASEGEOGCRS["WGS 84",DATUM["World Geodetic System 1984",ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["Popular Visualisation Pseudo-Mercator",METHOD["Popular Visualisation Pseudo Mercator",ID["EPSG",1024]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["False easting",0,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",0,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["easting (X)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["northing (Y)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Web mapping and visualization."],AREA["World between 85.06 S and 85.06 N."],BBOX[-85.06,-180,85.06,180]],ID["EPSG",3857]]</wkt>
@@ -760,6 +801,31 @@ class PugQgisProjectBuilder:
     </maplayer>""")
 
         xml_lines.append('  </projectlayers>')
+
+        # 5. Add MapCanvas element centered directly on the USAMV sector in Stereo 70
+        xml_lines.append(f"""  <mapcanvas>
+    <units>meters</units>
+    <extent>
+      <xmin>390500.0</xmin>
+      <ymin>585150.0</ymin>
+      <xmax>391500.0</xmax>
+      <ymax>585950.0</ymax>
+    </extent>
+    <rotation>0</rotation>
+    <destinationsrs>
+      <spatialrefsys nativeFormat="Wkt">
+        <wkt>{escape(STEREO70_WKT)}</wkt>
+        <proj4>{escape(STEREO70_PROJ4)}</proj4>
+        <srsid>100000</srsid>
+        <srid>3844</srid>
+        <authid>EPSG:3844</authid>
+        <description>Pulkovo 1942(58) / Stereo 70</description>
+        <projectionacronym>sterea</projectionacronym>
+        <ellipsoidacronym>krass</ellipsoidacronym>
+        <geographicflag>false</geographicflag>
+      </spatialrefsys>
+    </destinationsrs>
+  </mapcanvas>""")
         xml_lines.append('</qgis>')
 
         full_xml = "\n".join(xml_lines)
