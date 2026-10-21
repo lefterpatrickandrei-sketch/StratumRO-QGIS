@@ -1,0 +1,1304 @@
+{
+  "type": "FeatureCollection",
+  "name": "usamv_val",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::3844"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391154.582,
+              585773.65
+            ],
+            [
+              391147.643,
+              585772.704
+            ],
+            [
+              391148.105,
+              585769.317
+            ],
+            [
+              391150.799,
+              585769.684
+            ],
+            [
+              391150.975,
+              585768.39
+            ],
+            [
+              391155.22,
+              585768.969
+            ],
+            [
+              391154.582,
+              585773.65
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_115:C1",
+        "clean_id": "OPT_B_115_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "L",
+        "nodes": 6,
+        "area_roof": 29.53,
+        "area_sol": 20.79,
+        "area_diff": 8.74,
+        "eave_offset": -0.4,
+        "h_mean": 3.0,
+        "h_max": 6.8,
+        "h_min": 1.3,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": true,
+        "ai_verdict": "CALCAN_ERROR",
+        "ai_confidence": 0.96,
+        "ai_notes": "Necesită Corecție Calcan: Perete comun cu OPT_B_137:C1 pe 2.8m contact. Retragerea de -0.40m trebuie anulată strict pe latura de calcan (hotar fix), altfel creează o fantă falsă de 80 cm!",
+        "mean_contrast": 34.0,
+        "centroid_x": 391151.6589970611,
+        "centroid_y": 585771.0748428177,
+        "area_geo": 29.53447649999032
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391151.277,
+              585833.032
+            ],
+            [
+              391144.79,
+              585829.184
+            ],
+            [
+              391153.071,
+              585815.224
+            ],
+            [
+              391161.012,
+              585819.935
+            ],
+            [
+              391155.731,
+              585828.837
+            ],
+            [
+              391153.159,
+              585827.311
+            ],
+            [
+              391152.426,
+              585828.546
+            ],
+            [
+              391153.545,
+              585829.21
+            ],
+            [
+              391151.277,
+              585833.032
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_157:C1",
+        "clean_id": "OPT_B_157_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "OBLIQUE_OR_IRREGULAR",
+        "nodes": 8,
+        "area_roof": 138.05,
+        "area_sol": 117.28,
+        "area_diff": 20.77,
+        "eave_offset": -0.4,
+        "h_mean": 20.3,
+        "h_max": 25.0,
+        "h_min": 0.3,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (formă articulată în OBLIQUE_OR_IRREGULAR (8 noduri)), contrast margine 44.2, înălțime LiDAR 20.3m - 25.0m.",
+        "mean_contrast": 44.2,
+        "centroid_x": 391152.85144892515,
+        "centroid_y": 585824.0502480569,
+        "area_geo": 138.05579299993778
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391156.607,
+              585517.477
+            ],
+            [
+              391152.259,
+              585517.401
+            ],
+            [
+              391152.335,
+              585512.991
+            ],
+            [
+              391153.716,
+              585513.016
+            ],
+            [
+              391153.744,
+              585511.36
+            ],
+            [
+              391152.226,
+              585511.333
+            ],
+            [
+              391152.365,
+              585503.37
+            ],
+            [
+              391156.851,
+              585503.448
+            ],
+            [
+              391156.607,
+              585517.477
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_192:C1",
+        "clean_id": "OPT_B_192_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "COURTYARD",
+        "nodes": 8,
+        "area_roof": 59.84,
+        "area_sol": 44.56,
+        "area_diff": 15.28,
+        "eave_offset": -0.4,
+        "h_mean": 4.6,
+        "h_max": 6.0,
+        "h_min": 0.2,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (formă articulată în COURTYARD (8 noduri)), contrast margine 34.0, înălțime LiDAR 4.6m - 6.0m.",
+        "mean_contrast": 34.0,
+        "centroid_x": 391154.57250500453,
+        "centroid_y": 585510.3013243207,
+        "area_geo": 59.83298299998293
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391151.085,
+              585740.087
+            ],
+            [
+              391154.254,
+              585732.308
+            ],
+            [
+              391168.284,
+              585738.024
+            ],
+            [
+              391165.115,
+              585745.803
+            ],
+            [
+              391151.085,
+              585740.087
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_064:C1",
+        "clean_id": "OPT_B_064_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "RECTANGLE",
+        "nodes": 4,
+        "area_roof": 127.26,
+        "area_sol": 109.06,
+        "area_diff": 18.2,
+        "eave_offset": -0.4,
+        "h_mean": 6.2,
+        "h_max": 13.4,
+        "h_min": 0.0,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (dreptunghi pur), contrast margine 174.6, înălțime LiDAR 6.2m - 13.4m.",
+        "mean_contrast": 174.6,
+        "centroid_x": 391159.6845,
+        "centroid_y": 585739.0554999999,
+        "area_geo": 127.25337400013761
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391168.728,
+              585737.103
+            ],
+            [
+              391154.121,
+              585731.886
+            ],
+            [
+              391156.519,
+              585725.17
+            ],
+            [
+              391165.431,
+              585728.353
+            ],
+            [
+              391165.025,
+              585729.491
+            ],
+            [
+              391170.721,
+              585731.525
+            ],
+            [
+              391168.728,
+              585737.103
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_055:C1",
+        "clean_id": "OPT_B_055_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "L",
+        "nodes": 6,
+        "area_roof": 103.32,
+        "area_sol": 85.84,
+        "area_diff": 17.48,
+        "eave_offset": -0.4,
+        "h_mean": 4.5,
+        "h_max": 7.4,
+        "h_min": 0.0,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (formă articulată în L (6 noduri)), contrast margine 40.3, înălțime LiDAR 4.5m - 7.4m.",
+        "mean_contrast": 40.3,
+        "centroid_x": 391162.2382396946,
+        "centroid_y": 585731.2212759483,
+        "area_geo": 103.30909550019334
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391160.907,
+              585645.743
+            ],
+            [
+              391168.434,
+              585636.666
+            ],
+            [
+              391164.987,
+              585633.808
+            ],
+            [
+              391157.461,
+              585642.884
+            ],
+            [
+              391160.907,
+              585645.743
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_178:C1",
+        "clean_id": "OPT_B_178_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "OBLIQUE_OR_IRREGULAR",
+        "nodes": 4,
+        "area_roof": 52.8,
+        "area_sol": 40.42,
+        "area_diff": 12.38,
+        "eave_offset": -0.4,
+        "h_mean": 8.3,
+        "h_max": 20.5,
+        "h_min": 0.1,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.92,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (dreptunghi pur), contrast margine 16.7, înălțime LiDAR 8.3m - 20.5m.",
+        "mean_contrast": 16.7,
+        "centroid_x": 391162.9473027121,
+        "centroid_y": 585639.7752562414,
+        "area_geo": 52.79665750025809
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391167.094,
+              585759.743
+            ],
+            [
+              391154.866,
+              585755.948
+            ],
+            [
+              391156.2,
+              585751.649
+            ],
+            [
+              391162.942,
+              585753.741
+            ],
+            [
+              391164.212,
+              585749.649
+            ],
+            [
+              391169.698,
+              585751.352
+            ],
+            [
+              391167.094,
+              585759.743
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_083:C1",
+        "clean_id": "OPT_B_083_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "L",
+        "nodes": 6,
+        "area_roof": 82.24,
+        "area_sol": 65.61,
+        "area_diff": 16.63,
+        "eave_offset": -0.4,
+        "h_mean": 4.9,
+        "h_max": 10.0,
+        "h_min": 0.1,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (formă articulată în L (6 noduri)), contrast margine 80.6, înălțime LiDAR 4.9m - 10.0m.",
+        "mean_contrast": 80.6,
+        "centroid_x": 391163.0454427932,
+        "centroid_y": 585754.7534620864,
+        "area_geo": 82.24518199999972
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391159.08,
+              585716.713
+            ],
+            [
+              391170.614,
+              585721.973
+            ],
+            [
+              391173.106,
+              585716.508
+            ],
+            [
+              391161.573,
+              585711.248
+            ],
+            [
+              391159.08,
+              585716.713
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_117:C1",
+        "clean_id": "OPT_B_117_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "RECTANGLE",
+        "nodes": 4,
+        "area_roof": 76.14,
+        "area_sol": 61.83,
+        "area_diff": 14.31,
+        "eave_offset": -0.4,
+        "h_mean": 3.4,
+        "h_max": 7.1,
+        "h_min": 0.0,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (dreptunghi pur), contrast margine 54.0, înălțime LiDAR 3.4m - 7.1m.",
+        "mean_contrast": 54.0,
+        "centroid_x": 391166.0931686951,
+        "centroid_y": 585716.6105024064,
+        "area_geo": 76.14112749971741
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391171.61,
+              585652.506
+            ],
+            [
+              391164.913,
+              585643.066
+            ],
+            [
+              391174.796,
+              585636.055
+            ],
+            [
+              391181.493,
+              585645.496
+            ],
+            [
+              391171.61,
+              585652.506
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_038:C1",
+        "clean_id": "OPT_B_038_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "RECTANGLE",
+        "nodes": 4,
+        "area_roof": 140.24,
+        "area_sol": 121.93,
+        "area_diff": 18.31,
+        "eave_offset": -0.4,
+        "h_mean": 4.5,
+        "h_max": 19.1,
+        "h_min": 0.0,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (dreptunghi pur), contrast margine 33.5, înălțime LiDAR 4.5m - 19.1m.",
+        "mean_contrast": 33.5,
+        "centroid_x": 391173.20303138683,
+        "centroid_y": 585644.2806712668,
+        "area_geo": 140.24978000020752
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391165.996,
+              585703.552
+            ],
+            [
+              391168.962,
+              585698.165
+            ],
+            [
+              391183.81,
+              585706.34
+            ],
+            [
+              391180.844,
+              585711.727
+            ],
+            [
+              391165.996,
+              585703.552
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_111:C1",
+        "clean_id": "OPT_B_111_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "RECTANGLE",
+        "nodes": 4,
+        "area_roof": 104.24,
+        "area_sol": 88.54,
+        "area_diff": 15.7,
+        "eave_offset": -0.4,
+        "h_mean": 4.2,
+        "h_max": 7.6,
+        "h_min": 0.0,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": true,
+        "ai_verdict": "CALCAN_ERROR",
+        "ai_confidence": 0.96,
+        "ai_notes": "Necesită Corecție Calcan: Perete comun cu OPT_B_026:C1 pe 12.0m contact. Retragerea de -0.40m trebuie anulată strict pe latura de calcan (hotar fix), altfel creează o fantă falsă de 80 cm!",
+        "mean_contrast": 91.9,
+        "centroid_x": 391174.903,
+        "centroid_y": 585704.946,
+        "area_geo": 104.23322599972484
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391175.885,
+              585758.053
+            ],
+            [
+              391172.849,
+              585757.169
+            ],
+            [
+              391175.431,
+              585748.305
+            ],
+            [
+              391178.467,
+              585749.19
+            ],
+            [
+              391175.885,
+              585758.053
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_102:C1",
+        "clean_id": "OPT_B_102_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "RECTANGLE",
+        "nodes": 4,
+        "area_roof": 29.19,
+        "area_sol": 19.92,
+        "area_diff": 9.27,
+        "eave_offset": -0.4,
+        "h_mean": 13.7,
+        "h_max": 19.6,
+        "h_min": 9.1,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (dreptunghi pur), contrast margine 69.0, înălțime LiDAR 13.7m - 19.6m.",
+        "mean_contrast": 69.0,
+        "centroid_x": 391175.6579927193,
+        "centroid_y": 585753.179177007,
+        "area_geo": 29.193364999934033
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391168.379,
+              585695.758
+            ],
+            [
+              391181.629,
+              585703.775
+            ],
+            [
+              391185.035,
+              585698.146
+            ],
+            [
+              391179.532,
+              585694.816
+            ],
+            [
+              391178.935,
+              585695.802
+            ],
+            [
+              391171.188,
+              585691.115
+            ],
+            [
+              391168.379,
+              585695.758
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_075:C1",
+        "clean_id": "OPT_B_075_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "OBLIQUE_OR_IRREGULAR",
+        "nodes": 6,
+        "area_roof": 91.46,
+        "area_sol": 74.45,
+        "area_diff": 17.01,
+        "eave_offset": -0.4,
+        "h_mean": 3.4,
+        "h_max": 6.9,
+        "h_min": 0.0,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (formă articulată în OBLIQUE_OR_IRREGULAR (6 noduri)), contrast margine 55.5, înălțime LiDAR 3.4m - 6.9m.",
+        "mean_contrast": 55.5,
+        "centroid_x": 391176.8606948457,
+        "centroid_y": 585697.4067965831,
+        "area_geo": 91.4570440001504
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391175.574,
+              585708.906
+            ],
+            [
+              391178.455,
+              585703.651
+            ],
+            [
+              391183.737,
+              585706.547
+            ],
+            [
+              391180.855,
+              585711.802
+            ],
+            [
+              391175.574,
+              585708.906
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_026:C1",
+        "clean_id": "OPT_B_026_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "RECTANGLE",
+        "nodes": 4,
+        "area_roof": 36.1,
+        "area_sol": 33.7,
+        "area_diff": 2.4,
+        "eave_offset": -0.4,
+        "h_mean": 3.9,
+        "h_max": 6.7,
+        "h_min": 0.5,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": true,
+        "ai_verdict": "CALCAN_ERROR",
+        "ai_confidence": 0.96,
+        "ai_notes": "Necesită Corecție Calcan: Perete comun cu OPT_B_111:C1 pe 12.0m contact. Retragerea de -0.40m trebuie anulată strict pe latura de calcan (hotar fix), altfel creează o fantă falsă de 80 cm!",
+        "mean_contrast": 128.8,
+        "centroid_x": 391179.6553202637,
+        "centroid_y": 585707.7264556125,
+        "area_geo": 36.099106500175836
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391176.813,
+              585790.066
+            ],
+            [
+              391166.858,
+              585786.707
+            ],
+            [
+              391183.194,
+              585738.284
+            ],
+            [
+              391193.149,
+              585741.643
+            ],
+            [
+              391176.813,
+              585790.066
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_179:C1",
+        "clean_id": "OPT_B_179_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "UNRESOLVED",
+        "nodes": 4,
+        "area_roof": 536.94,
+        "area_sol": 488.29,
+        "area_diff": 48.65,
+        "eave_offset": -0.4,
+        "h_mean": 12.9,
+        "h_max": 21.5,
+        "h_min": 0.0,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": true,
+        "ai_verdict": "CALCAN_ERROR",
+        "ai_confidence": 0.96,
+        "ai_notes": "Necesită Corecție Calcan: Perete comun cu OPT_B_198:C1 pe 28.4m contact. Retragerea de -0.40m trebuie anulată strict pe latura de calcan (hotar fix), altfel creează o fantă falsă de 80 cm!",
+        "mean_contrast": 44.0,
+        "centroid_x": 391180.0035000001,
+        "centroid_y": 585764.1750000002,
+        "area_geo": 536.9235889993606
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391186.564,
+              585715.288
+            ],
+            [
+              391181.017,
+              585711.759
+            ],
+            [
+              391182.842,
+              585708.891
+            ],
+            [
+              391188.389,
+              585712.42
+            ],
+            [
+              391186.564,
+              585715.288
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_074:C1",
+        "clean_id": "OPT_B_074_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "RECTANGLE",
+        "nodes": 4,
+        "area_roof": 22.35,
+        "area_sol": 15.01,
+        "area_diff": 7.34,
+        "eave_offset": -0.4,
+        "h_mean": 3.4,
+        "h_max": 6.2,
+        "h_min": 0.2,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (dreptunghi pur), contrast margine 82.5, înălțime LiDAR 3.4m - 6.2m.",
+        "mean_contrast": 82.5,
+        "centroid_x": 391184.7029999999,
+        "centroid_y": 585712.0894999999,
+        "area_geo": 22.349220999940492
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391187.227,
+              585728.276
+            ],
+            [
+              391180.938,
+              585724.458
+            ],
+            [
+              391182.423,
+              585722.011
+            ],
+            [
+              391188.713,
+              585725.828
+            ],
+            [
+              391187.227,
+              585728.276
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_146:C1",
+        "clean_id": "OPT_B_146_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "OBLIQUE_OR_IRREGULAR",
+        "nodes": 4,
+        "area_roof": 21.06,
+        "area_sol": 13.53,
+        "area_diff": 7.53,
+        "eave_offset": -0.4,
+        "h_mean": 3.6,
+        "h_max": 6.6,
+        "h_min": 1.6,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (dreptunghi pur), contrast margine 54.3, înălțime LiDAR 3.6m - 6.6m.",
+        "mean_contrast": 54.3,
+        "centroid_x": 391184.8255071356,
+        "centroid_y": 585725.143393326,
+        "area_geo": 21.064447499500975
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391183.973,
+              585767.998
+            ],
+            [
+              391185.684,
+              585768.568
+            ],
+            [
+              391189.945,
+              585755.759
+            ],
+            [
+              391188.233,
+              585755.189
+            ],
+            [
+              391183.973,
+              585767.998
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_087:C1",
+        "clean_id": "OPT_B_087_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "OBLIQUE_OR_IRREGULAR",
+        "nodes": 4,
+        "area_roof": 24.35,
+        "area_sol": 12.75,
+        "area_diff": 11.6,
+        "eave_offset": -0.4,
+        "h_mean": 14.7,
+        "h_max": 19.9,
+        "h_min": 2.6,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": true,
+        "ai_verdict": "CALCAN_ERROR",
+        "ai_confidence": 0.96,
+        "ai_notes": "Necesită Corecție Calcan: Perete comun cu OPT_B_179:C1 pe 13.8m contact. Retragerea de -0.40m trebuie anulată strict pe latura de calcan (hotar fix), altfel creează o fantă falsă de 80 cm!",
+        "mean_contrast": 83.5,
+        "centroid_x": 391186.95894009515,
+        "centroid_y": 585761.8779396364,
+        "area_geo": 24.351088499861
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391181.075,
+              585743.4
+            ],
+            [
+              391181.075,
+              585734.25
+            ],
+            [
+              391188.9,
+              585734.25
+            ],
+            [
+              391188.9,
+              585737.623
+            ],
+            [
+              391196.075,
+              585737.623
+            ],
+            [
+              391196.075,
+              585740.85
+            ],
+            [
+              391198.65,
+              585740.85
+            ],
+            [
+              391198.65,
+              585743.4
+            ],
+            [
+              391196.165,
+              585743.4
+            ],
+            [
+              391196.165,
+              585743.4
+            ],
+            [
+              391195.012,
+              585743.4
+            ],
+            [
+              391195.012,
+              585743.4
+            ],
+            [
+              391181.075,
+              585743.4
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_198:C1",
+        "clean_id": "OPT_B_198_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "COURTYARD",
+        "nodes": 12,
+        "area_roof": 119.62,
+        "area_sol": 98.88,
+        "area_diff": 20.74,
+        "eave_offset": -0.4,
+        "h_mean": 11.6,
+        "h_max": 19.0,
+        "h_min": 0.2,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": true,
+        "ai_verdict": "CALCAN_ERROR",
+        "ai_confidence": 0.96,
+        "ai_notes": "Necesită Corecție Calcan: Perete comun cu OPT_B_179:C1 pe 14.6m contact. Retragerea de -0.40m trebuie anulată strict pe latura de calcan (hotar fix), altfel creează o fantă falsă de 80 cm!",
+        "mean_contrast": 32.6,
+        "centroid_x": 391188.2657864876,
+        "centroid_y": 585739.5905731054,
+        "area_geo": 119.61497500038442
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391193.819,
+              585670.543
+            ],
+            [
+              391188.725,
+              585667.946
+            ],
+            [
+              391191.471,
+              585662.562
+            ],
+            [
+              391198.666,
+              585666.231
+            ],
+            [
+              391196.459,
+              585670.56
+            ],
+            [
+              391194.357,
+              585669.488
+            ],
+            [
+              391193.819,
+              585670.543
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_171:C1",
+        "clean_id": "OPT_B_171_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "L",
+        "nodes": 6,
+        "area_roof": 46.02,
+        "area_sol": 35.37,
+        "area_diff": 10.65,
+        "eave_offset": -0.4,
+        "h_mean": 5.9,
+        "h_max": 8.3,
+        "h_min": 0.0,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (formă articulată în L (6 noduri)), contrast margine 37.5, înălțime LiDAR 5.9m - 8.3m.",
+        "mean_contrast": 37.5,
+        "centroid_x": 391193.608078758,
+        "centroid_y": 585666.8782045366,
+        "area_geo": 46.01883699986449
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391193.763,
+              585634.95
+            ],
+            [
+              391193.763,
+              585612.825
+            ],
+            [
+              391200.3,
+              585612.825
+            ],
+            [
+              391200.3,
+              585634.95
+            ],
+            [
+              391193.763,
+              585634.95
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_208:C1",
+        "clean_id": "OPT_B_208_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "OBLIQUE_OR_IRREGULAR",
+        "nodes": 4,
+        "area_roof": 144.62,
+        "area_sol": 122.34,
+        "area_diff": 22.28,
+        "eave_offset": -0.4,
+        "h_mean": 5.3,
+        "h_max": 12.6,
+        "h_min": 0.0,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": true,
+        "ai_verdict": "CALCAN_ERROR",
+        "ai_confidence": 0.96,
+        "ai_notes": "Necesită Corecție Calcan: Perete comun cu OPT_B_012:C1 pe 19.3m contact. Retragerea de -0.40m trebuie anulată strict pe latura de calcan (hotar fix), altfel creează o fantă falsă de 80 cm!",
+        "mean_contrast": 40.2,
+        "centroid_x": 391197.0314999999,
+        "centroid_y": 585623.8875,
+        "area_geo": 144.63112500024727
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391198.976,
+              585679.156
+            ],
+            [
+              391193.539,
+              585675.893
+            ],
+            [
+              391195.934,
+              585671.902
+            ],
+            [
+              391201.371,
+              585675.164
+            ],
+            [
+              391198.976,
+              585679.156
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_138:C1",
+        "clean_id": "OPT_B_138_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "OBLIQUE_OR_IRREGULAR",
+        "nodes": 4,
+        "area_roof": 29.52,
+        "area_sol": 21.36,
+        "area_diff": 8.16,
+        "eave_offset": -0.4,
+        "h_mean": 7.2,
+        "h_max": 9.3,
+        "h_min": 2.1,
+        "h_regime": "P+2+ (Înalt)",
+        "has_calcan": false,
+        "ai_verdict": "ADMIS",
+        "ai_confidence": 0.98,
+        "ai_notes": "Validat Admis: Geometrie ortogonală coerentă (dreptunghi pur), contrast margine 26.0, înălțime LiDAR 7.2m - 9.3m.",
+        "mean_contrast": 26.0,
+        "centroid_x": 391197.4550672668,
+        "centroid_y": 585675.5288270722,
+        "area_geo": 29.51547299989592
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              391189.27,
+              585627.253
+            ],
+            [
+              391198.175,
+              585619.209
+            ],
+            [
+              391206.219,
+              585628.115
+            ],
+            [
+              391197.314,
+              585636.158
+            ],
+            [
+              391189.27,
+              585627.253
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "OPT_B_012:C1",
+        "clean_id": "OPT_B_012_C1",
+        "status": "VALID",
+        "reject_reason": null,
+        "family": "RECTANGLE",
+        "nodes": 4,
+        "area_roof": 144.0,
+        "area_sol": 129.92,
+        "area_diff": 14.08,
+        "eave_offset": -0.4,
+        "h_mean": 4.8,
+        "h_max": 8.7,
+        "h_min": 0.0,
+        "h_regime": "P+1 / P+M",
+        "has_calcan": true,
+        "ai_verdict": "CALCAN_ERROR",
+        "ai_confidence": 0.96,
+        "ai_notes": "Necesită Corecție Calcan: Perete comun cu OPT_B_208:C1 pe 19.2m contact. Retragerea de -0.40m trebuie anulată strict pe latura de calcan (hotar fix), altfel creează o fantă falsă de 80 cm!",
+        "mean_contrast": 61.8,
+        "centroid_x": 391197.7445084448,
+        "centroid_y": 585627.6836670962,
+        "area_geo": 144.0053914998597
+      }
+    }
+  ]
+}

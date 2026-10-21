@@ -136,7 +136,6 @@ class TestEvaluationEngine(unittest.TestCase):
         t_def = pyproj.Transformer.from_crs("EPSG:4326", "EPSG:3844", always_xy=True)
         x_def, y_def = t_def.transform(lon, lat)
 
-        # Pipeline explicit EPSG:15995
         pipe_inv = (
             "+proj=pipeline +step +proj=unitconvert +xy_in=deg +xy_out=rad +step +proj=push +v_3 "
             "+step +proj=cart +ellps=WGS84 +step +inv +proj=helmert +x=2.329 +y=-147.042 +z=-92.08 "
@@ -154,7 +153,26 @@ class TestEvaluationEngine(unittest.TestCase):
         self.assertAlmostEqual(x_def, 390896.060, places=2)
         self.assertAlmostEqual(y_def, 585256.749, places=2)
 
+    def test_tier2_usamv_building_evaluation_separation(self):
+        """
+        Faza 2: Separă explicit evaluarea Tier 1 (parcele) de Tier 2 (acoperișuri).
+        Verifică încărcarea și metrica pe tier2_cladiri_usamv.geojson.
+        """
+        import os
+        tier2_path = "data/ground_truth/tier2_cladiri_usamv.geojson"
+        self.assertTrue(os.path.exists(tier2_path), f"Lipseste fisierul {tier2_path}")
+        gdf_tier2 = gpd.read_file(tier2_path)
+        self.assertGreaterEqual(len(gdf_tier2), 180, "Tier 2 USAMV trebuie sa contina minim 180 cladiri validate")
+
+        # Identity test pe Tier 2
+        summary = evaluate_dataset(gdf_tier2, gdf_tier2)
+        self.assertEqual(summary.true_positives, len(gdf_tier2))
+        self.assertAlmostEqual(summary.precision, 1.0, places=3)
+        self.assertAlmostEqual(summary.recall, 1.0, places=3)
+        self.assertAlmostEqual(summary.f1_score, 1.0, places=3)
+
 
 if __name__ == "__main__":
     unittest.main()
+
 

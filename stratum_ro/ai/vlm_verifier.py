@@ -126,49 +126,49 @@ def build_cadastral_prompt(
     Constructs the specialized Romanian cadastral audit prompt for VLM inference.
     """
     system_prompt = (
-        "Ești un expert inginer geodez autorizat ANCPI (Ordinul 600/2023) specializat în recunoaștere fotogrammetrică aeriană.\n"
-        "Misiunea ta este să auditezi măștile de clădiri generate automat de modelul AI SAM (Segment Anything Model).\n"
-        "Trebuie să confirmi dacă poligonul roz suprapus pe imagine este o clădire reală, să identifici fals-pozitivele "
-        "(copaci, terase, umbre, pietre funerare) și să atribui codul de destinație ANCPI corect.\n"
-        "Răspunde STRICT în format JSON valid fără alt text."
+        "Ești un auditor fotogrammetric și cadastral strict pentru România conform ANCPI Ordinul 600/2023 (Stereo 70 EPSG:3844).\n"
+        "Nu presupune că poligonul indicat este o clădire. Multe contururi automate sunt alarme false "
+        "(copaci, curți pavate, mașini, umbre, teren viran).\n"
+        "Metodă obligatorie de lucru DESCRIBE-FIRST:\n"
+        "PASUL 1: Descrie obiectiv ce se află în interiorul conturului (textură, umbre de înălțime, vegetație, drum).\n"
+        "PASUL 2: Clasifică materialul dominant (țiglă, tablă, beton, sol, coroană arbore, asfalt).\n"
+        "PASUL 3: Emite verdictul:\n"
+        "  - 'APPROVED' doar dacă este clar și fără dubiu un acoperiș de construcție permanentă.\n"
+        "  - 'REJECTED' dacă este vegetație, sol, drum, umbră sau anexă temporară/vehicul.\n"
+        "  - 'UNCERTAIN' dacă imaginea este neclară sau obstrucționată.\n"
+        "Răspunde STRICT în format JSON valid conform schemei."
     )
 
     h_info = f"- Înălțime medie LiDAR nDSM: {ndsm_height_m:.1f} m\n" if ndsm_height_m is not None else ""
 
     user_prompt = (
-        f"Analizează decupajul aerian ortofoto pentru elementul '{building_id}'.\n"
-        f"Conturul roz reprezintă masca generată automat de modelul de segmentare SAM.\n"
-        f"Date geometrice:\n"
+        f"Auditează decupajul aerian pentru elementul '{building_id}'.\n"
+        f"Conturul roz reprezintă propunerea de mască geometrică.\n"
+        f"Date măsurate:\n"
         f"- Suprafață amprentă: {area_m2:.1f} mp\n"
         f"- Perimetru: {perimeter_m:.1f} m\n"
         f"{h_info}\n"
-        "Instrucțiuni de clasificare ANCPI Ordinul 600/2023:\n"
-        "1. is_real_building: true (dacă este o construcție fizică acoperită) sau false.\n"
-        "2. ancpi_code:\n"
-        "   - '1CC': Construcție Principală (casă rezidențială, bloc, sediu administrativ, corp școală/universitate).\n"
-        "   - '2CC': Construcție Anexă (garaj, magazie, șopron, bucătărie vară).\n"
-        "   - 'SERA': Seră agricolă sau structură ușoară transparentă.\n"
-        "   - 'SPECIALA': Construcție cu regim special (edificiu de cult, post trafo, hală mare).\n"
-        "   - 'FALSE_POSITIVE': Copac/vegetație densă, terasă sol, umbră, vehicul, piatră funerară.\n"
-        "3. verdict: 'APPROVED' (sigur clădire), 'REVIEW_NEEDED' (obstrucție parțială / calcan), 'REJECTED' (fals pozitiv).\n"
-        "4. confidence: număr între 0.0 și 1.0.\n"
-        "5. roof_type: tip acoperiș (ex: 'în 2 ape', 'terasă plană', 'în 4 ape', 'ușor/tablă').\n"
-        "6. eave_visible: true dacă streașina/ieșitura acoperișului e vizibilă peste perete.\n"
-        "7. has_calcan: true dacă se lipește de o altă clădire (perete comun la calcan).\n"
-        "8. vegetation_occlusion: true dacă coroana unui copac acoperă o parte din acoperiș.\n"
-        "9. reasoning: explicație scurtă în limba română a verdictului geodezic.\n\n"
+        "Instrucțiuni Describe-First:\n"
+        "1. scene_description: Descriere obiectivă a ceea ce se vede în contur înainte de decizie.\n"
+        "2. is_real_building: true (doar dacă e clădire certă) sau false.\n"
+        "3. ancpi_code: '1CC' (clădire principală), '2CC' (anexă), 'SPECIALA', 'UNCERTAIN' sau 'FALSE_POSITIVE'.\n"
+        "4. verdict: 'APPROVED', 'REJECTED', 'UNCERTAIN' sau 'REVIEW_NEEDED'.\n"
+        "5. confidence: probabilitate calibrată între 0.0 și 1.0.\n"
+        "6. roof_type: material/formă acoperiș sau 'niciunul'.\n"
+        "7. reasoning: argumentație tehnică.\n\n"
         "Răspunde DOAR cu obiectul JSON următor:\n"
         "{\n"
+        '  "scene_description": "Contur rectangular cu textură uniformă de țiglă ceramică și streașină vizibilă...",\n'
         '  "is_real_building": true,\n'
         '  "ancpi_code": "1CC",\n'
-        '  "typology": "Construcție Principală (Locuință)",\n'
+        '  "typology": "Construcție Principală",\n'
         '  "confidence": 0.95,\n'
         '  "verdict": "APPROVED",\n'
         '  "roof_type": "în 2 ape",\n'
         '  "eave_visible": true,\n'
         '  "has_calcan": false,\n'
         '  "vegetation_occlusion": false,\n'
-        '  "reasoning": "Acoperiș vizibil cu versanți simetrici..."\n'
+        '  "reasoning": "Acoperiș cert cu versanți și înălțime nDSM conformă..."\n'
         "}"
     )
 
@@ -199,7 +199,7 @@ class VLMVerifier:
         building_id: str = "bldg_0",
         ndsm_height_m: Optional[float] = None,
         padding_m: float = 6.0,
-        timeout: float = 12.0
+        timeout: float = 60.0
     ) -> VLMVerificationResult:
         """
         Verifies a single building footprint candidate.
@@ -280,23 +280,27 @@ class VLMVerifier:
 
         if resp.is_ok() and resp.parsed_json:
             p = resp.parsed_json
+            raw_verdict = str(p.get("verdict", "")).strip().upper()
+            if raw_verdict not in ["APPROVED", "REJECTED", "REVIEW_NEEDED", "UNCERTAIN"]:
+                raw_verdict = "UNCERTAIN"  # Fail-closed for unknown status
+
             return VLMVerificationResult(
                 building_id=building_id,
-                is_real_building=bool(p.get("is_real_building", True)),
-                ancpi_code=str(p.get("ancpi_code", "1CC")),
-                typology=str(p.get("typology", "Construcție")),
-                confidence=float(p.get("confidence", 0.90)),
-                verdict=str(p.get("verdict", "APPROVED")),
-                roof_type=str(p.get("roof_type", "în 2 ape")),
-                eave_visible=bool(p.get("eave_visible", True)),
+                is_real_building=bool(p.get("is_real_building", False if raw_verdict in ["REJECTED", "UNCERTAIN"] else True)),
+                ancpi_code=str(p.get("ancpi_code", "UNCERTAIN")),
+                typology=str(p.get("typology", "Nedeterminat")),
+                confidence=float(p.get("confidence", 0.0)),
+                verdict=raw_verdict,
+                roof_type=str(p.get("roof_type", "nedeterminat")),
+                eave_visible=bool(p.get("eave_visible", False)),
                 has_calcan=bool(p.get("has_calcan", False)),
                 vegetation_occlusion=bool(p.get("vegetation_occlusion", False)),
-                reasoning=str(p.get("reasoning", "Validat cu succes prin VLM.")),
+                reasoning=str(p.get("reasoning", "Evaluare VLM finalizata.")),
                 provider_used=f"{self.provider.name} ({resp.model_name})",
                 duration_sec=resp.duration_sec
             )
 
-        # Fallback if VLM call failed
+        # Fallback if VLM call failed: FAIL-CLOSED default is UNCERTAIN (never silently APPROVED)
         if self.fallback_to_heuristic:
             return self._heuristic_fallback(
                 building_id=building_id,
@@ -305,22 +309,23 @@ class VLMVerifier:
                 perim_m=perim_m,
                 ndsm_height_m=ndsm_height_m,
                 chip=chip,
-                reason=f"Apel VLM eșuat ({resp.error or 'fără răspuns JSON'}). S-a activat fallback-ul determinist."
+                reason=f"Apel VLM eșuat ({resp.error_msg or 'fără răspuns JSON'}). S-a activat fallback-ul determinist."
             )
 
         return VLMVerificationResult(
             building_id=building_id,
             is_real_building=False,
-            ancpi_code="FALSE_POSITIVE",
-            typology="Eroare Inspecție VLM",
+            ancpi_code="UNCERTAIN",
+            typology="Eroare / Lipsa raspuns VLM",
             confidence=0.0,
-            verdict="REJECTED",
-            roof_type="necunoscut",
+            verdict="UNCERTAIN",
+            roof_type="nedeterminat",
             eave_visible=False,
             has_calcan=False,
             vegetation_occlusion=False,
-            reasoning=f"Eroare răspuns VLM: {resp.error}",
-            provider_used=self.provider.name
+            reasoning=f"Fail-closed: VLM request failed or returned invalid JSON ({resp.error_msg})",
+            provider_used=self.provider.name,
+            duration_sec=resp.duration_sec
         )
 
     def _heuristic_fallback(
