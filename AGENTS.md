@@ -97,3 +97,7 @@ Publicarea pe GitHub este separată de commitul local. Nu face push, merge, forc
 Raportează schimbările reale, integrarea, comenzile executate, verificările, limitările, fișierele utile și commiturile. Distinge rezultat real, model de test și plan. Actualizează documentația de stare odată cu codul. Nu completa acest fișier cu un nou jurnal lung: folosește handoff-ul sarcinii și actualizează indexul.
 
 Documentele originale anterioare consolidării din 2026-10-18 sunt păstrate în [junk/](junk/README.md). Ele sunt istoric, nu reguli active.
+
+## Shared memory
+Project memory is located in stratumro-brain (also an Obsidian vault at C:\Users\lefpa\Downloads\QGIS-AI\stratumro-brain). Read INDEX.md there at the start of a task.
+Write proposals only to inbox/ on your own branch; never edit canon/. Follow MEMORY_RULES.md.
