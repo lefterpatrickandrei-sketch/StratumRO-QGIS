@@ -1,3 +1,6 @@
 {
-  "enabledCssSnippets": ["stratumro"]
+  "enabledCssSnippets": [
+    "stratumro"
+  ],
+  "cssTheme": "Minimal"
 }
