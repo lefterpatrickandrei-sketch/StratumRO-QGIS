@@ -142,8 +142,19 @@ class Order904TopologyAuditor:
         if not p.exists():
             return {"status": "FAILED", "error": f"File not found: {gpkg_path}"}
 
-        import fiona
-        layers = fiona.listlayers(str(p))
+        try:
+            import pyogrio
+            layers = [l[0] for l in pyogrio.list_layers(str(p))]
+        except Exception:
+            try:
+                import fiona
+                layers = fiona.listlayers(str(p))
+            except Exception:
+                import sqlite3
+                con = sqlite3.connect(str(p))
+                cur = con.cursor()
+                layers = [r[0] for r in cur.execute("SELECT table_name FROM gpkg_contents").fetchall()]
+                con.close()
 
         checks = []
         overall_passed = True

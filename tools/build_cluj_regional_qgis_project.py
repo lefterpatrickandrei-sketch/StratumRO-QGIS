@@ -10,6 +10,7 @@ symbology and layer hierarchy conforming to Order MDLPA nr. 904/2023.
 import sys
 import os
 from pathlib import Path
+from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
@@ -70,18 +71,25 @@ def build_qgis_project():
     </customproperties>
 """
     for cfg in layers_config:
-        qgs_xml += f'    <layer-tree-layer checked="Qt::Checked" expanded="1" id="{cfg["id"]}" name="{cfg["name"]}" source="{rel_gpkg}|layername={cfg["layer"]}" providerKey="ogr"/>\n'
+        escaped_id = escape(cfg["id"])
+        escaped_name = escape(cfg["name"])
+        escaped_src = escape(f'{rel_gpkg}|layername={cfg["layer"]}')
+        qgs_xml += f'    <layer-tree-layer checked="Qt::Checked" expanded="1" id="{escaped_id}" name="{escaped_name}" source="{escaped_src}" providerKey="ogr"/>\n'
 
     qgs_xml += """  </layer-tree-group>
   <projectlayers>
 """
 
     for cfg in layers_config:
-        qgs_xml += f"""    <maplayer autoRefreshTime="0" autoRefreshMode="Disabled" geometry="{cfg['geom']}" hasScaleBasedVisibilityFlag="0" id="{cfg['id']}" maxScale="0" minScale="1e+08" refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" styleCategories="AllStyleCategories" type="vector" wktType="{cfg['geom']}">
-      <id>{cfg['id']}</id>
-      <datasource>{rel_gpkg}|layername={cfg['layer']}</datasource>
+        escaped_id = escape(cfg["id"])
+        escaped_name = escape(cfg["name"])
+        escaped_src = escape(f'{rel_gpkg}|layername={cfg["layer"]}')
+        escaped_geom = escape(cfg["geom"])
+        qgs_xml += f"""    <maplayer autoRefreshTime="0" autoRefreshMode="Disabled" geometry="{escaped_geom}" hasScaleBasedVisibilityFlag="0" id="{escaped_id}" maxScale="0" minScale="1e+08" refreshOnNotifyEnabled="0" refreshOnNotifyMessage="" styleCategories="AllStyleCategories" type="vector" wktType="{escaped_geom}">
+      <id>{escaped_id}</id>
+      <datasource>{escaped_src}</datasource>
       <keywordList><value></value></keywordList>
-      <layername>{cfg['name']}</layername>
+      <layername>{escaped_name}</layername>
       <srs>
         <spatialrefsys>
           <authid>EPSG:3844</authid>
