@@ -5,3 +5,8 @@ Citește [AGENTS.md](AGENTS.md) (inclusiv secțiunea *Quick Orientation for AI A
 Lucrează în repository-ul comun și păstrează modificările altor agenți. Folosește instrumentele existente, inclusiv QGIS, conform sarcinii și verifică rezultatele reale. Nu presupune acces la conversațiile altor agenți sau disponibilitatea actuală a unui furnizor AI dintr-un raport vechi.
 
 Versiunea anterioară este arhivată în [junk/](junk/README.md).
+
+
+@AGENTS.md
+
+Hybrid toolchain (Claude Pro role: architecture, hard bugs, review): see [docs/HYBRID_DEV_WORKFLOW.md](docs/HYBRID_DEV_WORKFLOW.md).

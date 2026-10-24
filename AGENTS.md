@@ -101,3 +101,6 @@ Documentele originale anterioare consolidării din 2026-10-18 sunt păstrate în
 ## Shared memory
 Project memory is located in stratumro-brain (also an Obsidian vault at C:\Users\lefpa\Downloads\QGIS-AI\stratumro-brain). Read INDEX.md there at the start of a task.
 Write proposals only to inbox/ on your own branch; never edit canon/. Follow MEMORY_RULES.md.
+
+## Hybrid toolchain (added 2026-10-24, additive)
+Development is hybrid: Antigravity IDE/2.0 (Gemini Flash, `/goal` `/plan` `/browser`), Claude Pro, GitHub Copilot (Student) and Google Colab (via `google-colab-cli` in WSL2) for heavy GPU jobs. Roles, layer mapping, handoff and quota rules: [docs/HYBRID_DEV_WORKFLOW.md](docs/HYBRID_DEV_WORKFLOW.md); diagram: [docs/architecture_v2_dev_plane.md](docs/architecture_v2_dev_plane.md); Colab job cards: [compute/colab/README.md](compute/colab/README.md). Colab output is a proposal only; starting a job or uploading data needs explicit owner approval.

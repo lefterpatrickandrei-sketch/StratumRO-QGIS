@@ -1,0 +1,14 @@
+name: vlm_eval
+description: Evaluate L5 describe-first VLM candidates (Qwen-VL) on a frozen review set. Evaluation only; never an approval path.
+status: card-only
+gpu: L4
+time_limit_minutes: 120
+script: ""
+crs: EPSG:3844
+requires_owner_approval: true
+inputs:
+  review_set: "Drive: StratumRO/vlm/review_set/ (image crops + owner verdicts, no coordinates sent to the model)"
+outputs:
+  metrics: "metrics.json (fail-closed behaviour: timeouts and JSON errors must map to UNCERTAIN, never APPROVED)"
+checkpoint: "none (stateless evaluation)"
+note: "Script not written yet. L5 stays fail-closed and the router forbids the LLM from CRS and coordinates."

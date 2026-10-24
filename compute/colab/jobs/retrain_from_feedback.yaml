@@ -1,0 +1,16 @@
+name: retrain_from_feedback
+description: Retrain L2a (and later L4 triage gates) from owner-reviewed feedback. Reuses train_l2a.py with a new split manifest.
+status: card-only
+gpu: L4
+time_limit_minutes: 240
+script: compute/colab/scripts/train_l2a.py
+crs: EPSG:3844
+requires_owner_approval: true
+inputs:
+  manifest: "Drive: StratumRO/feedback/manifest.json (only owner-ACCEPTED or owner-REJECTED labels; PENDING_OWNER_REVIEW excluded)"
+  tiles: "Drive: StratumRO/feedback/tiles/"
+outputs:
+  checkpoints: "Drive: StratumRO/runs/retrain_from_feedback/<UTC timestamp>/checkpoints/"
+  metrics: "metrics.json (must be evaluated on the frozen USAMV benchmark, never on retraining data)"
+checkpoint: "Drive: StratumRO/runs/retrain_from_feedback/<UTC timestamp>/checkpoints/latest.pt"
+note: "Mixed GMW references and unaccepted predictions are not clean labels (AGENTS.md). Blocked until a clean-label manifest exists."

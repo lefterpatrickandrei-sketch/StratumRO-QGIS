@@ -5,3 +5,6 @@ Citește [AGENTS.md](AGENTS.md) (inclusiv secțiunea *Quick Orientation for AI A
 Deschide proiectul `C:/Users/lefpa/Downloads/QGIS-AI`; confirmă copia, branch-ul și fișierele proprii înainte de editare. Păstrează proiectul QGIS comun. Nu presupune că ai citit conversația proprietarului doar pentru că există acest fișier; folosește feedback-ul versionat și cere informațiile care lipsesc.
 
 Acest document nu configurează o conexiune cu Antigravity și nu garantează încărcarea automată de către toate versiunile clienților. Dacă nu este descoperit automat, indică explicit `AGENTS.md` la începutul sarcinii.
+
+
+Hybrid toolchain (Antigravity + Gemini Flash role: routine bulk work, `/goal` `/plan` `/browser`, Colab job cards): see [docs/HYBRID_DEV_WORKFLOW.md](docs/HYBRID_DEV_WORKFLOW.md).

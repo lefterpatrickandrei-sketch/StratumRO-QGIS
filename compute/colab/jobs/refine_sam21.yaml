@@ -1,0 +1,17 @@
+name: refine_sam21
+description: Batch SAM 2.1 Tiny boundary refinement of L2a / nDSM candidates. One set_image per tile, batched box prompts. Proposal output only.
+status: scaffolded
+gpu: T4
+time_limit_minutes: 180
+script: compute/colab/scripts/refine_sam21.py
+crs: EPSG:3844
+requires_owner_approval: true
+inputs:
+  tiles: "Drive: StratumRO/sam21/tiles/ (RGB uint8 GeoTIFF per tile)"
+  candidates: "Drive: StratumRO/sam21/candidates/<tile id>.npy (binary candidate mask from L2a or nDSM)"
+outputs:
+  masks: "Drive: StratumRO/runs/refine_sam21/<UTC timestamp>/masks/<tile id>.npz"
+  metrics: "metrics.json (tiles, boxes, peak VRAM per tile, seconds per tile, git SHA)"
+  log: "run.log"
+checkpoint: "Drive: StratumRO/runs/refine_sam21/<UTC timestamp>/progress.json (finished tile ids; resume skips them)"
+weights: "sam2.1_hiera_tiny.pt with configs/sam2.1/sam2.1_hiera_t.yaml (downloaded on the VM)"

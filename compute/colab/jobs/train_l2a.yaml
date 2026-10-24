@@ -1,0 +1,22 @@
+name: train_l2a
+description: Train the L2a roof segmenter (UNet++ with 4 input channels RGB + nDSM) on Colab. Proposal output only.
+status: scaffolded
+gpu: L4
+time_limit_minutes: 240
+script: compute/colab/scripts/train_l2a.py
+crs: EPSG:3844
+requires_owner_approval: true
+inputs:
+  manifest: "Drive: StratumRO/l2a/manifest.json (tiles, SHA-256, CRS, spatial split, buffer)"
+  tiles: "Drive: StratumRO/l2a/tiles/ (4-band GeoTIFF image + 1-band mask per tile)"
+outputs:
+  checkpoints: "Drive: StratumRO/runs/train_l2a/<UTC timestamp>/checkpoints/"
+  metrics: "metrics.json (val IoU per epoch, split counts, git SHA, peak VRAM)"
+  log: "run.log"
+checkpoint: "Drive: StratumRO/runs/train_l2a/<UTC timestamp>/checkpoints/latest.pt"
+split:
+  train: 126
+  val: 22
+  test: 31
+  buffer_m: 30
+gate: "D-001: stays a recommended stage only if it beats the SAM baseline on the frozen test area"
