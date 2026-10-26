@@ -925,16 +925,16 @@
                     ⚡ Hub Metode Inspecție WebGPU (4 Metode Reale)
                 </a>
             </div>
-            <h1>Catalog Ortofoto Real: Decizii Orchestrate AI & Audit Cadastral</h1>
+            <h1>Catalog Ortofoto Real: Deciziile Tale Umane & Verificare Cadastrală (242 Clădiri)</h1>
             <p class="subtitle">
-                Inspectează deciziile formulate de modelul cu raționament înalt și feedback-ul vizual pentru fiecare dintre cele 242 de clădiri.
-                Poți aproba, corecta sau adăuga propriile tale instrucțiuni geodezice de pe orice dispozitiv.
+                Baza oficială de validare umană (HITL) încărcată direct din <code>user_verified_feedback_20261026.json</code>.
+                Toate cele 242 de clădiri sunt validate de tine (99 Admis, 93 Ajustare Contur, 3 Mutilate, 47 Rebut).
             </p>
 
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-val" style="color: var(--emerald);">99</div>
-                    <div class="stat-label">Recomandate ADMIS</div>
+                    <div class="stat-label">Admis de Tine</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-val" style="color: var(--amber);">93</div>
@@ -950,7 +950,7 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-val" style="color: #38bdf8;" id="reviewedCountVal">0 / 242</div>
-                    <div class="stat-label">Revizuite de Tine</div>
+                    <div class="stat-label">Verificate de Tine</div>
                 </div>
             </div>
         </header>
@@ -969,7 +969,7 @@
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 <a href="drone_flight_strips/flight_mission_simulator.html" class="pill-btn active" style="background: rgba(168, 85, 247, 0.25); border-color: #a855f7; color: #d8b4fe; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">🚁 Simulator Zbor Dronă (11 Benzi)</a>
                 <button class="pill-btn active" style="background: rgba(56, 189, 248, 0.25); border-color: #38bdf8; color: #7dd3fc; font-weight:700;" onclick="forceReloadAllVerified()">🔄 Reîncarcă Cele 242 Verificate</button>
-                <a href="raport_sincronizare_laya.html?v=20261026_v6" target="_blank" class="pill-btn active" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(56, 189, 248, 0.3)); border-color: #c084fc; color: #f3e8ff; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">⚡ Raport Sincronizare Laya</a>
+                <a href="raport_sincronizare_laya.html?v=20261026_v7" target="_blank" class="pill-btn active" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(56, 189, 248, 0.3)); border-color: #c084fc; color: #f3e8ff; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">⚡ Raport Sincronizare Laya</a>
                 <button class="pill-btn active" style="background: rgba(16, 185, 129, 0.25); border-color: #10b981; color: #10b981; font-weight:700;" id="btnShowCharts">📊 Panou Grafice Cadastrale</button>
                 <button class="pill-btn active" id="btnShowQR">📱 Deschide pe Telefon (QR)</button>
             </div>
@@ -1016,11 +1016,11 @@
             </div>
 
             <div class="filter-pills">
-                <button class="pill-btn pill-emerald" data-filter="ai_admis">🤖 AI: Admis (99)</button>
-                <button class="pill-btn pill-amber" data-filter="ai_calcan">⚠️ AI: Necesită Ajustare (93)</button>
-                <button class="pill-btn" data-filter="ai_mutilated">✂️ AI: Mutilate (3)</button>
-                <button class="pill-btn pill-danger" data-filter="ai_rebut">🚫 AI: Rebuturi (47)</button>
-                <button class="pill-btn active" data-filter="all">Toate Categoriile (242)</button>
+                <button class="pill-btn pill-emerald" data-filter="user_admis">✅ Admis de Tine (99)</button>
+                <button class="pill-btn pill-amber" data-filter="user_calcan">⚠️ Necesită Ajustare Contur (93)</button>
+                <button class="pill-btn" data-filter="user_mutilated">✂️ Mutilate (3)</button>
+                <button class="pill-btn pill-danger" data-filter="user_rebut">🚫 Rebuturi (47)</button>
+                <button class="pill-btn active" data-filter="all">Toate Cele 242 Verificate</button>
             </div>
         </div>
 
@@ -1394,6 +1394,14 @@
                 console.warn("Could not fetch remote JSON, using embedded VERIFIED_BASELINE", err);
             }
 
+            // Asigură că userFeedback are întotdeauna toate cele 242 de clădiri din baseline
+            if (Object.keys(userFeedback).length < 242) {
+                userFeedback = Object.assign({}, VERIFIED_BASELINE, userFeedback);
+                try {
+                    localStorage.setItem("stratumro_user_feedback", JSON.stringify(userFeedback));
+                } catch(e) {}
+            }
+
             // Always ensure reviewed tab is default
             reviewFilter = "reviewed";
             document.querySelectorAll(".wf-tab").forEach(t => {
@@ -1448,11 +1456,13 @@
                 // Căutare după ID
                 if (searchQuery && !b.id.toLowerCase().includes(searchQuery)) return false;
                 
-                // Categorie AI
-                if (currentFilter === "ai_admis" && b.ai_verdict !== "ADMIS") return false;
-                if (currentFilter === "ai_calcan" && b.ai_verdict !== "CALCAN_ERROR") return false;
-                if (currentFilter === "ai_mutilated" && b.ai_verdict !== "MUTILATED") return false;
-                if (currentFilter === "ai_rebut" && !["FALSE_POS", "DUPLICATE", "BORDER_INCOMPLETE"].includes(b.ai_verdict)) return false;
+                // Categorie Decizie Utilizator (din user_verified_feedback_20261026.json)
+                const myFeedback = userFeedback[b.id];
+                const myV = (myFeedback && myFeedback.verdict) ? myFeedback.verdict : b.ai_verdict;
+                if ((currentFilter === "user_admis" || currentFilter === "ai_admis") && myV !== "ADMIS") return false;
+                if ((currentFilter === "user_calcan" || currentFilter === "ai_calcan") && myV !== "CALCAN_ERROR") return false;
+                if ((currentFilter === "user_mutilated" || currentFilter === "ai_mutilated") && myV !== "MUTILATED") return false;
+                if ((currentFilter === "user_rebut" || currentFilter === "ai_rebut") && !["FALSE_POS", "DUPLICATE", "BORDER_INCOMPLETE"].includes(myV)) return false;
                 
                 return true;
             });
@@ -1627,7 +1637,7 @@
                     onClick: (evt, elements) => {
                         if (elements.length > 0) {
                             const idx = elements[0].index;
-                            const filterMap = ["ai_admis", "ai_calcan", "ai_mutilated", "ai_rebut", "ai_rebut", "ai_rebut"];
+                            const filterMap = ["user_admis", "user_calcan", "user_mutilated", "user_rebut", "user_rebut", "user_rebut"];
                             currentFilter = filterMap[idx];
                             document.querySelectorAll(".pill-btn").forEach(btn => {
                                 btn.classList.toggle("active", btn.dataset.filter === currentFilter);
@@ -1915,8 +1925,7 @@
                 else if (myV === "MUTILATED") { myColor = "purple"; myLabel = "MUTILAT"; }
                 else if (myV === "FALSE_POS") { myColor = "rose"; myLabel = "REBUT / FALS"; }
 
-                const userBadgeHtml = `<span class="badge badge-${myColor}" style="font-size:0.62rem; padding:2px 7px; font-weight:800; border:1px solid currentColor; box-shadow:0 0 8px rgba(0,0,0,0.3);">👤 TĂU: ${myLabel}</span>`;
-                const aiBadgeHtml = `<span class="badge" style="font-size:0.52rem; padding:1px 5px; opacity:0.5; background:rgba(255,255,255,0.06); color:#94a3b8;">AI: ${b.ai_verdict === "CALCAN_ERROR" ? "DE AJUSTAT" : b.ai_verdict}</span>`;
+                const userBadgeHtml = `<span class="badge badge-${myColor}" style="font-size:0.65rem; padding:2px 8px; font-weight:800; border:1px solid currentColor; box-shadow:0 0 8px rgba(0,0,0,0.3);">✅ ${myLabel}</span>`;
 
                 item.innerHTML = `
                     <img src="${b.chip_img}" class="bld-thumb" alt="${b.id}">
@@ -1924,7 +1933,6 @@
                         <div class="bld-title-row">
                             <span class="bld-name">${b.id}</span>
                             ${userBadgeHtml}
-                            ${aiBadgeHtml}
                         </div>
                         <div class="bld-sub">
                             <span>📐 ${b.area_roof} m²</span>
