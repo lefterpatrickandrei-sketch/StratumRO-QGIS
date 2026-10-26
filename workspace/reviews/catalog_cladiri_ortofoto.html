@@ -968,7 +968,7 @@
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 <a href="drone_flight_strips/flight_mission_simulator.html" class="pill-btn active" style="background: rgba(168, 85, 247, 0.25); border-color: #a855f7; color: #d8b4fe; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">🚁 Simulator Zbor Dronă (11 Benzi)</a>
-                <a href="raport_sincronizare_laya.html?v=20261026_v2" target="_blank" class="pill-btn active" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(56, 189, 248, 0.3)); border-color: #c084fc; color: #f3e8ff; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">⚡ Raport Sincronizare Laya</a>
+                <a href="raport_sincronizare_laya.html?v=20261026_v3" target="_blank" class="pill-btn active" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(56, 189, 248, 0.3)); border-color: #c084fc; color: #f3e8ff; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">⚡ Raport Sincronizare Laya</a>
                 <button class="pill-btn active" style="background: rgba(16, 185, 129, 0.25); border-color: #10b981; color: #10b981; font-weight:700;" id="btnShowCharts">📊 Panou Grafice Cadastrale</button>
                 <button class="pill-btn active" id="btnShowQR">📱 Deschide pe Telefon (QR)</button>
             </div>
@@ -1119,15 +1119,18 @@
                                 <span>🎓 Confirmă sau Modifică Verdictul AI</span>
                                 <span id="hitlStatusPill" style="font-size:0.7rem; padding:2px 8px; border-radius:12px; background:rgba(245,158,11,0.2); color:#fbbf24; border:1px solid #f59e0b;">⏳ Neverificată</span>
                             </div>
-                            <div class="verdict-buttons">
-                                <div class="v-btn" data-verdict="ADMIS" onclick="setVerdict('ADMIS')">✅ Corect / Admis</div>
-                                <div class="v-btn" data-verdict="CALCAN_ERROR" onclick="setVerdict('CALCAN_ERROR')">⚠️ Necesită Ajustare</div>
-                                <div class="v-btn" data-verdict="MUTILATED" onclick="setVerdict('MUTILATED')">✂️ Decroș Tăiat</div>
-                                <div class="v-btn" data-verdict="FALSE_POS" onclick="setVerdict('FALSE_POS')">🚫 Fals Pozitiv</div>
+                            <div style="font-size:0.73rem; color:#94a3b8; margin: 4px 0 10px 0; background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:6px; border-left:3px solid #38bdf8;">
+                                ⚡ <b>1-Click Triage:</b> Apasă direct pe opțiunea dorită pentru salvare automată și trecere la următoarea clădire!
                             </div>
-                            <textarea class="hitl-notes" id="hitlNotes" placeholder="Instrucțiune corectură (ex: 'lasă peretele nord lipit pe hotar', 'lipseste veranda')..."></textarea>
+                            <div class="verdict-buttons">
+                                <div class="v-btn" data-verdict="ADMIS" onclick="applyVerdictAndSave('ADMIS')">✅ Corect / Admis</div>
+                                <div class="v-btn" data-verdict="CALCAN_ERROR" onclick="applyVerdictAndSave('CALCAN_ERROR')">⚠️ Necesită Ajustare</div>
+                                <div class="v-btn" data-verdict="MUTILATED" onclick="applyVerdictAndSave('MUTILATED')">✂️ Decroș Tăiat</div>
+                                <div class="v-btn" data-verdict="FALSE_POS" onclick="applyVerdictAndSave('FALSE_POS')">🚫 Fals Pozitiv</div>
+                            </div>
+                            <textarea class="hitl-notes" id="hitlNotes" placeholder="Instrucțiune corectură opțională (ex: 'lasă peretele nord lipit pe hotar', 'lipseste veranda')..."></textarea>
                             <div class="hitl-actions">
-                                <button class="save-verdict-btn" id="btnSaveVerdict">💾 Salvează Decizia Ta</button>
+                                <button class="save-verdict-btn" id="btnSaveVerdict">💾 Salvează Notițe / Decizie</button>
                                 <button class="btn-undo" id="btnResetVerdict" title="Șterge verdictul tău pentru această clădire și trimite-o înapoi la Neverificate">↩️ Trimite la Neverificate</button>
                                 <button class="export-btn" id="btnExportFeedback">📥 Export JSON</button>
                             </div>
@@ -1221,7 +1224,7 @@
                     </div>
                     <div class="kpi-mini">
                         <span class="kpi-mini-val" style="color:var(--amber);" id="kpiCalcan">93</span>
-                        <span class="kpi-mini-lbl">Calcan 0.00m Fix</span>
+                        <span class="kpi-mini-lbl">Necesită Ajustare</span>
                     </div>
                     <div class="kpi-mini">
                         <span class="kpi-mini-val" style="color:var(--cyan);">+387.6 m²</span>
@@ -1660,7 +1663,7 @@
             chartInstances.area = new Chart(ctxArea, {
                 type: 'bar',
                 data: {
-                    labels: ['Acoperiș Streașină (Sa)', 'Sol 1CC Standard', 'Sol 1CC + Calcan Fix'],
+                    labels: ['Acoperiș Streașină (Sa)', 'Sol 1CC Standard', 'Sol 1CC + Ajustare Contur'],
                     datasets: [{
                         label: 'Suprafață Totală (m²)',
                         data: [totRoof, totSol - calcanGain, totSol],
@@ -1735,9 +1738,8 @@
             });
         }
 
-        function saveCurrentVerdict() {
-            const selectedBtn = document.querySelector(".v-btn.selected-admis, .v-btn.selected-calcan, .v-btn.selected-mutilat, .v-btn.selected-fals");
-            const verdict = selectedBtn ? selectedBtn.dataset.verdict : "CUSTOM_NOTE";
+        function applyVerdictAndSave(verdict) {
+            setVerdict(verdict);
             const notes = document.getElementById("hitlNotes").value.trim();
 
             userFeedback[currentBuilding.id] = {
@@ -1748,10 +1750,17 @@
             };
 
             localStorage.setItem("stratumro_user_feedback", JSON.stringify(userFeedback));
+            try { window.dispatchEvent(new Event("storage")); } catch(e) {}
+            
             updateReviewedCounts();
             updateHitlChart();
             
-            showToast(`Decizie <strong>${verdict}</strong> salvată pentru <strong>${currentBuilding.id}</strong>! Clădirea a trecut la "Verificate".`);
+            let label = "ADMIS";
+            if (verdict === "CALCAN_ERROR") label = "DE AJUSTAT";
+            else if (verdict === "MUTILATED") label = "MUTILAT";
+            else if (verdict === "FALSE_POS") label = "FALS / REBUT";
+
+            showToast(`Decizie <strong>${label}</strong> salvată pentru <strong>${currentBuilding.id}</strong>!`);
 
             // Auto-advance la următoarea clădire dacă suntem pe tab-ul Neverificate
             if (reviewFilter === "unreviewed") {
@@ -1764,6 +1773,12 @@
             }
             
             renderBuildingList();
+        }
+
+        function saveCurrentVerdict() {
+            const selectedBtn = document.querySelector(".v-btn.selected-admis, .v-btn.selected-calcan, .v-btn.selected-mutilat, .v-btn.selected-fals");
+            const verdict = selectedBtn ? selectedBtn.dataset.verdict : (currentBuilding.ai_verdict || "ADMIS");
+            applyVerdictAndSave(verdict);
         }
 
         function resetCurrentVerdict() {
@@ -1938,20 +1953,26 @@
                     hitlPill.style.background = "rgba(16, 185, 129, 0.2)";
                     hitlPill.style.borderColor = "#10b981";
                     hitlPill.style.color = "#34d399";
-                    hitlPill.innerHTML = `✅ Confirmată de tine (${prevFeedback.verdict})`;
+                    let pLabel = prevFeedback.verdict;
+                    if (pLabel === "CALCAN_ERROR") pLabel = "DE AJUSTAT";
+                    else if (pLabel === "MUTILATED") pLabel = "MUTILAT";
+                    else if (pLabel === "FALSE_POS") pLabel = "FALS/REBUT";
+                    hitlPill.innerHTML = `✅ Confirmată de tine (${pLabel})`;
                 }
             } else {
-                if (b.ai_verdict === "ADMIS") setVerdict("ADMIS");
-                else if (b.ai_verdict === "CALCAN_ERROR") setVerdict("CALCAN_ERROR");
-                else if (b.ai_verdict === "MUTILATED") setVerdict("MUTILATED");
-                else setVerdict("FALSE_POS");
+                // Neutral buttons for unreviewed buildings: 1-click to choose
+                document.querySelectorAll(".v-btn").forEach(btn => btn.classList.remove("selected-admis", "selected-calcan", "selected-mutilat", "selected-fals"));
                 document.getElementById("hitlNotes").value = "";
                 if (resetBtn) resetBtn.style.display = "none";
                 if (hitlPill) {
                     hitlPill.style.background = "rgba(245, 158, 11, 0.2)";
                     hitlPill.style.borderColor = "#f59e0b";
                     hitlPill.style.color = "#fbbf24";
-                    hitlPill.innerHTML = `⏳ Neverificată`;
+                    let aiSug = b.ai_verdict;
+                    if (aiSug === "CALCAN_ERROR") aiSug = "DE AJUSTAT";
+                    else if (aiSug === "MUTILATED") aiSug = "MUTILAT";
+                    else if (aiSug === "FALSE_POS" || aiSug === "DUPLICATE" || aiSug === "BORDER_INCOMPLETE") aiSug = "REBUT";
+                    hitlPill.innerHTML = `⏳ Neverificată (Sugestie AI: ${aiSug})`;
                 }
             }
 
