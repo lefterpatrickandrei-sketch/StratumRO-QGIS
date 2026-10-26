@@ -72,3 +72,11 @@ Cititi [predarea corectiilor locale](../workspace/option_b_repair_20261019/READM
     - `python scripts/validate_project.py --mode fast`: 17 teste Golden Geometry trecute în 2.67s.
     - `python -m unittest discover stratum_ro/test`: 536 teste trecute (0 eșecuri, 0 erori, 9 omise pentru context GUI QGIS).
 
+
+## Ultimul checkpoint: Orchestrare Laya, HITL 1-Click & Sincronizare 242 Clădiri (2026-10-26)
+
+- **Integrare Model Decizie Laya (ModernBERT 421M)**: Rulat prin `tools/laya_building_evaluator.py` pe toate cele 242 de clădiri, livrat în `workspace/reviews/laya_decisions_20261026.json` (99 Admis, 93 Ajustare Contur, 3 Mutilate, 47 Rebut).
+- **Set de date verificat de proprietar**: `workspace/reviews/user_verified_feedback_20261026.json` integrat și versionat oficial în repository.
+- **Interfață HITL 1-Click Triage**: Salvare automată fără buton secundar în `workspace/reviews/catalog_cladiri_ortofoto.html`, cu suport complet pentru Dublă Verificare.
+- **Raport interactiv de sincronizare**: `workspace/reviews/raport_sincronizare_laya.html` afișează comparația binară/multiclase Laya vs Uman cu suport pentru sincronizare live cross-tab.
+- **Publicare completă**: Ambele branch-uri `main` și `feat/hybrid-dev-workflow` sunt sincronizate la zi cu GitHub și GitHub Pages (fără cache).
