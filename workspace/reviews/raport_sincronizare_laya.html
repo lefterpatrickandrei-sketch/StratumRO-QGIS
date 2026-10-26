@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StratumRO — Raport Sincronizare Laya vs Feedback Uman</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #111827;
+            --bg-card-hover: #1e293b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-focus: #38bdf8;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --emerald: #10b981;
+            --amber: #f59e0b;
+            --purple: #c084fc;
+            --rose: #f43f5e;
+            --cyan: #06b6d4;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            padding: 24px;
+            line-height: 1.5;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        header {
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .badge-purple { background: rgba(192, 132, 252, 0.15); color: var(--purple); border: 1px solid var(--purple); }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: var(--emerald); border: 1px solid var(--emerald); }
+        .badge-cyan { background: rgba(6, 182, 212, 0.15); color: var(--cyan); border: 1px solid var(--cyan); }
+
+        h1 { font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+        .subtitle { font-size: 0.85rem; color: var(--text-secondary); max-width: 800px; }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .kpi-val { font-size: 1.8rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
+        .kpi-lbl { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; }
+
+        /* Action Banner */
+        .action-banner {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(56, 189, 248, 0.12));
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .action-btn {
+            background: #a855f7;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .action-btn:hover { background: #9333ea; }
+
+        /* Charts Layout */
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 850px) {
+            .charts-row { grid-template-columns: 1fr; }
+        }
+        .chart-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+        }
+        .chart-box h3 {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chart-canvas-wrapper { height: 260px; position: relative; }
+
+        /* Table */
+        .table-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 30px;
+        }
+        .table-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .search-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            outline: none;
+            width: 240px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 8px 10px;
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+        .data-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+        }
+        .data-table tr:hover td { background: var(--bg-card-hover); }
+
+        .tag {
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .tag-admis { background: rgba(16, 185, 129, 0.15); color: var(--emerald); border: 1px solid var(--emerald); }
+        .tag-ajustare { background: rgba(245, 158, 11, 0.15); color: var(--amber); border: 1px solid var(--amber); }
+        .tag-mutilat { background: rgba(192, 132, 252, 0.15); color: var(--purple); border: 1px solid var(--purple); }
+        .tag-rebut { background: rgba(244, 63, 94, 0.15); color: var(--rose); border: 1px solid var(--rose); }
+
+        .sync-match { color: var(--emerald); font-weight: 700; }
+        .sync-diff { color: var(--rose); font-weight: 700; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge-row">
+                <span class="badge badge-purple">⚡ Laya System 1 Decision Model</span>
+                <span class="badge badge-emerald">🤖 242 Clădiri Evaluate</span>
+                <span class="badge badge-cyan">🎯 Sincronizare vs Feedback Uman</span>
+            </div>
+            <h1>Raport Comparativ & Sincronizare: Laya vs Feedback-ul Tău</h1>
+            <p class="subtitle">
+                Acest raport compară deciziile formulate de modelul deschis Laya (ModernBERT 421M non-autoregresiv)
+                cu verdictele tale umane salvate în catalog.
+            </p>
+        </header>
+
+        <!-- KPI Grid -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: #c084fc;" id="valTotal">242</div>
+                <div class="kpi-lbl">Total Clădiri Laya</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: #38bdf8;" id="valHumanReviewed">0</div>
+                <div class="kpi-lbl">Verificate de Tine</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: var(--emerald);" id="valSyncRate">--%</div>
+                <div class="kpi-lbl">Rată Sincronizare (Acord)</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val" style="color: var(--rose);" id="valDiscrepancies">0</div>
+                <div class="kpi-lbl">Divergențe (Dezacorduri)</div>
+            </div>
+        </div>
+
+        <!-- Action / Connect Banner -->
+        <div class="action-banner">
+            <div>
+                <strong style="color: #fff; font-size: 0.9rem;">Sincronizare în timp real cu browserul tău:</strong>
+                <div style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px;">
+                    Datele se încarcă automat din memoria locală a browserului (`localStorage`) sau poți încărca un fișier exportat.
+                </div>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <input type="file" id="fileInput" accept=".json" style="display:none;">
+                <button class="action-btn" onclick="document.getElementById('fileInput').click()">📥 Încarcă Export JSON</button>
+                <a href="catalog_cladiri_ortofoto.html" class="action-btn" style="background:#0284c7;">🔍 Înapoi în Catalog</a>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-row">
+            <!-- Chart 1: Distribution Comparison -->
+            <div class="chart-box">
+                <h3><span>📊</span> 1. Distribuție Decizii: Laya vs Feedback-ul Tău</h3>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="chartDistribution"></canvas>
+                </div>
+            </div>
+
+            <!-- Chart 2: Agreement Matrix Donut -->
+            <div class="chart-box">
+                <h3><span>🎯</span> 2. Gradul de Sincronizare (Concordantă)</h3>
+                <div class="chart-canvas-wrapper">
+                    <canvas id="chartConcordance"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Box -->
+        <div class="table-box">
+            <div class="table-header-row">
+                <h3 style="font-size:0.95rem; display:flex; align-items:center; gap:8px;">
+                    <span>📋</span> Tabel Detaliat Clădiri & Comparare Decizii
+                </h3>
+                <input type="text" id="filterInput" class="search-input" placeholder="Caută ID clădire (ex: B004)...">
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID Clădire</th>
+                        <th>Decizie Laya</th>
+                        <th>Încredere Laya</th>
+                        <th>Verdictul Tău Uman</th>
+                        <th>Status Sincronizare</th>
+                        <th>Note Feedback</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Data Injection -->
+    <script id="layaDataJson" type="application/json">
+        {
+  "model": "laya-decision-v1",
+  "total_buildings": 242,
+  "summary": {
+    "admis": 99,
+    "ajustare": 93,
+    "mutilat": 3,
+    "rebut": 2
+  },
+  "decisions": [
+    {
+      "building_id": "OPT_B_003:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_004:C1",
+      "laya_verdict": "MUTILATED",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.94
+    },
+    {
+      "building_id": "OPT_B_007:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_008:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_009:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_010:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_011:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_012:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_013:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_014:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_016:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_018:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_021:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_022:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_023:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_024:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_025:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_026:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_027:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_028:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_029:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_030:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_031:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_033:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_035:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_036:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_037:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_038:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_039:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_040:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_042:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_043:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_044:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_045:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_046:C1",
+      "laya_verdict": "MUTILATED",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.94
+    },
+    {
+      "building_id": "OPT_B_047:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_048:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_049:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_050:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_051:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_053:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_054:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_055:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_056:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_057:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_058:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_059:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_060:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_062:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_063:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_064:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_066:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_067:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_068:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_069:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_070:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_071:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_072:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_073:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_074:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_075:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_076:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_077:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_078:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_079:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_080:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_081:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_082:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_083:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_084:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_085:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_086:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_087:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_088:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_089:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_090:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_091:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_092:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_093:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_094:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_095:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_096:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_097:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_099:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_100:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_101:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_102:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_103:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_104:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_105:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_107:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_108:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_109:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_110:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_111:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_112:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_113:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_114:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_115:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_116:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_117:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_118:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_119:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_120:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_121:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_122:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_123:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_124:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_125:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_126:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_127:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_128:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_129:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_130:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_131:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_133:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_134:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_135:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_136:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_137:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_138:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_139:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_140:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_141:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_142:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_143:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_144:C1",
+      "laya_verdict": "MUTILATED",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.94
+    },
+    {
+      "building_id": "OPT_B_146:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_147:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_148:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_149:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_150:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_151:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_152:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_153:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_155:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_156:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_157:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_158:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_159:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_160:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_161:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_162:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_163:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_164:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_165:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_166:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_167:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_168:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_169:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_170:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_171:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_172:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_173:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_174:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_175:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_176:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_177:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_178:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.92
+    },
+    {
+      "building_id": "OPT_B_179:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_180:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_181:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_182:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_183:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_184:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_185:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_186:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_187:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_188:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_189:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_190:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_191:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_192:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_193:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_194:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_195:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_196:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_197:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_198:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_199:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.92
+    },
+    {
+      "building_id": "OPT_B_200:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_201:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_202:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_203:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_204:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_205:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_206:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_207:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_208:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_209:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_211:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_212:C1",
+      "laya_verdict": "CALCAN_ERROR",
+      "laya_confidence": "HIGH",
+      "needs_inspection": true,
+      "calibrated_prob": 0.96
+    },
+    {
+      "building_id": "OPT_B_213:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_214:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_216:C1",
+      "laya_verdict": "ADMIS",
+      "laya_confidence": "HIGH",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_001:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_002:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_005:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_006:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_015:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_017:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_019:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_020:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_021:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_032:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_034:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_041:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_052:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_061:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_065:C1_FALS",
+      "laya_verdict": "FALSE_POS",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.97
+    },
+    {
+      "building_id": "OPT_B_083:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_098:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_106:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_107:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_132:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_145:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_154:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_157:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_158:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_179:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_180:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_182:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_183:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_184:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_186:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_187:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_188:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_191:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_193:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_194:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_195:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_196:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_197:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_199:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_201:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_204:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_210:C1_FALS",
+      "laya_verdict": "FALSE_POS",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.97
+    },
+    {
+      "building_id": "OPT_B_212:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_213:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_214:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    },
+    {
+      "building_id": "OPT_B_215:C1_DUP",
+      "laya_verdict": "DUPLICATE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.99
+    },
+    {
+      "building_id": "OPT_B_216:C1_INCOMPLET",
+      "laya_verdict": "BORDER_INCOMPLETE",
+      "laya_confidence": "LOW",
+      "needs_inspection": false,
+      "calibrated_prob": 0.98
+    }
+  ]
+}
+    </script>
+
+    <script>
+        let layaDecisions = {};
+        let userFeedback = {};
+        let chartDistInstance = null;
+        let chartConcInstance = null;
+
+        // Initialize Data
+        function initData() {
+            try {
+                const rawLaya = document.getElementById("layaDataJson").textContent.trim();
+                const parsed = JSON.parse(rawLaya);
+                parsed.decisions.forEach(d => {
+                    layaDecisions[d.building_id] = d;
+                });
+            } catch (e) {
+                console.error("Could not load Laya data:", e);
+            }
+
+            // Load user feedback from localStorage
+            try {
+                const stored = localStorage.getItem("stratumro_user_feedback");
+                if (stored) {
+                    userFeedback = JSON.parse(stored);
+                }
+            } catch (e) {
+                console.warn("Could not read localStorage:", e);
+            }
+
+            setupFileLoader();
+            setupSearch();
+            refreshDashboard();
+        }
+
+        function setupFileLoader() {
+            document.getElementById("fileInput").addEventListener("change", (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const imported = JSON.parse(event.target.result);
+                        userFeedback = imported;
+                        refreshDashboard();
+                        alert(`Feedback încărcat cu succes pentru ${Object.keys(userFeedback).length} clădiri!`);
+                    } catch (err) {
+                        alert("Fișier JSON invalid.");
+                    }
+                };
+                reader.readAsText(file);
+            });
+        }
+
+        function setupSearch() {
+            document.getElementById("filterInput").addEventListener("input", (e) => {
+                renderTable(e.target.value.toLowerCase().trim());
+            });
+        }
+
+        function refreshDashboard() {
+            const layaIds = Object.keys(layaDecisions);
+            const userReviewedIds = Object.keys(userFeedback);
+            
+            document.getElementById("valTotal").innerText = layaIds.length;
+            document.getElementById("valHumanReviewed").innerText = userReviewedIds.length;
+
+            let matches = 0;
+            let discrepancies = 0;
+
+            userReviewedIds.forEach(id => {
+                if (layaDecisions[id]) {
+                    const lVerdict = layaDecisions[id].laya_verdict;
+                    const uVerdict = userFeedback[id].verdict;
+                    if (lVerdict === uVerdict) {
+                        matches++;
+                    } else {
+                        discrepancies++;
+                    }
+                }
+            });
+
+            const syncRate = userReviewedIds.length > 0 
+                ? Math.round((matches / userReviewedIds.length) * 100) 
+                : 100;
+
+            document.getElementById("valSyncRate").innerText = userReviewedIds.length > 0 ? `${syncRate}%` : "--%";
+            document.getElementById("valDiscrepancies").innerText = discrepancies;
+
+            renderCharts(matches, discrepancies);
+            renderTable("");
+        }
+
+        function renderCharts(matches, discrepancies) {
+            // Chart 1: Distribution
+            const countsLaya = { ADMIS: 0, CALCAN: 0, MUTILAT: 0, REBUT: 0 };
+            const countsUser = { ADMIS: 0, CALCAN: 0, MUTILAT: 0, REBUT: 0 };
+
+            Object.values(layaDecisions).forEach(d => {
+                if (d.laya_verdict === "ADMIS") countsLaya.ADMIS++;
+                else if (d.laya_verdict === "CALCAN_ERROR") countsLaya.CALCAN++;
+                else if (d.laya_verdict === "MUTILATED") countsLaya.MUTILAT++;
+                else countsLaya.REBUT++;
+            });
+
+            Object.values(userFeedback).forEach(u => {
+                if (u.verdict === "ADMIS") countsUser.ADMIS++;
+                else if (u.verdict === "CALCAN_ERROR") countsUser.CALCAN++;
+                else if (u.verdict === "MUTILATED") countsUser.MUTILAT++;
+                else countsUser.REBUT++;
+            });
+
+            const ctxDist = document.getElementById("chartDistribution").getContext("2d");
+            if (chartDistInstance) chartDistInstance.destroy();
+
+            chartDistInstance = new Chart(ctxDist, {
+                type: 'bar',
+                data: {
+                    labels: ['Admis', 'Ajustare Contur', 'Decroș Mutilat', 'Rebut / Fals'],
+                    datasets: [
+                        {
+                            label: 'Laya Model (Toate 242)',
+                            data: [countsLaya.ADMIS, countsLaya.CALCAN, countsLaya.MUTILAT, countsLaya.REBUT],
+                            backgroundColor: 'rgba(168, 85, 247, 0.6)',
+                            borderColor: '#a855f7',
+                            borderWidth: 1,
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Verdictul Tău Uman',
+                            data: [countsUser.ADMIS, countsUser.CALCAN, countsUser.MUTILAT, countsUser.REBUT],
+                            backgroundColor: 'rgba(16, 185, 129, 0.6)',
+                            borderColor: '#10b981',
+                            borderWidth: 1,
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#94a3b8' } } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Chart 2: Concordance
+            const ctxConc = document.getElementById("chartConcordance").getContext("2d");
+            if (chartConcInstance) chartConcInstance.destroy();
+
+            const reviewedCount = Object.keys(userFeedback).length;
+            const dataValues = reviewedCount > 0 ? [matches, discrepancies] : [242, 0];
+            const labels = reviewedCount > 0 
+                ? [`Sincronizat (${matches})`, `Dezacord (${discrepancies})`]
+                : ['În Așteptare Feedback (242)', ''];
+
+            chartConcInstance = new Chart(ctxConc, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: dataValues,
+                        backgroundColor: reviewedCount > 0 ? ['#10b981', '#f43f5e'] : ['#3b82f6', '#334155'],
+                        borderWidth: 2,
+                        borderColor: '#111827'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#94a3b8' } }
+                    }
+                }
+            });
+        }
+
+        function renderTable(filter) {
+            const tbody = document.getElementById("tableBody");
+            tbody.innerHTML = "";
+
+            const ids = Object.keys(layaDecisions);
+            const filteredIds = ids.filter(id => !filter || id.toLowerCase().includes(filter));
+
+            filteredIds.forEach(id => {
+                const l = layaDecisions[id];
+                const u = userFeedback[id];
+
+                const tr = document.createElement("tr");
+
+                let tagLayaClass = "tag-admis";
+                let layaLabel = "ADMIS";
+                if (l.laya_verdict === "CALCAN_ERROR") { tagLayaClass = "tag-ajustare"; layaLabel = "AJUSTARE CONTUR"; }
+                else if (l.laya_verdict === "MUTILATED") { tagLayaClass = "tag-mutilat"; layaLabel = "DECROȘ MUTILAT"; }
+                else if (l.laya_verdict === "FALSE_POS") { tagLayaClass = "tag-rebut"; layaLabel = "REBUT"; }
+
+                let userHtml = `<span style="color:var(--text-muted);">⏳ În așteptare</span>`;
+                let syncStatus = `<span style="color:var(--text-muted);">--</span>`;
+                let notesText = "--";
+
+                if (u) {
+                    let tagUserClass = "tag-admis";
+                    let userLabel = "ADMIS";
+                    if (u.verdict === "CALCAN_ERROR") { tagUserClass = "tag-ajustare"; userLabel = "AJUSTARE CONTUR"; }
+                    else if (u.verdict === "MUTILATED") { tagUserClass = "tag-mutilat"; userLabel = "DECROȘ MUTILAT"; }
+                    else if (u.verdict === "FALSE_POS") { tagUserClass = "tag-rebut"; userLabel = "REBUT"; }
+
+                    userHtml = `<span class="tag ${tagUserClass}">${userLabel}</span>`;
+                    notesText = u.notes ? `"${u.notes}"` : "--";
+
+                    if (l.laya_verdict === u.verdict) {
+                        syncStatus = `<span class="sync-match">✅ Sincronizat</span>`;
+                    } else {
+                        syncStatus = `<span class="sync-diff">⚠️ Divergență</span>`;
+                    }
+                }
+
+                tr.innerHTML = `
+                    <td style="font-family:'JetBrains Mono',monospace; font-weight:700;">${id}</td>
+                    <td><span class="tag ${tagLayaClass}">${layaLabel}</span></td>
+                    <td style="color:${l.laya_confidence === 'HIGH' ? 'var(--emerald)' : 'var(--amber)'}; font-weight:600;">${l.laya_confidence} (${Math.round((l.calibrated_prob || 0.9)*100)}%)</td>
+                    <td>${userHtml}</td>
+                    <td>${syncStatus}</td>
+                    <td style="color:var(--text-secondary); max-width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${notesText}</td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        window.onload = initData;
+    </script>
+</body>
+</html>

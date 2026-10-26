@@ -207,6 +207,122 @@
         .pill-btn.pill-danger.active { background: rgba(244, 63, 94, 0.2); border-color: var(--rose); color: var(--rose); }
 
         /* Main Workspace Layout */
+                /* HITL Workflow Tabs & Separation */
+        .workflow-tabs-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 14px;
+            background: var(--bg-card);
+            padding: 8px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+
+        .workflow-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .wf-tab {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .wf-tab:hover {
+            background: var(--bg-card-hover);
+            color: var(--text-primary);
+        }
+
+        .wf-tab.active {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: #38bdf8;
+            color: #38bdf8;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+        }
+
+        .wf-tab[data-review="unreviewed"].active {
+            background: rgba(245, 158, 11, 0.18);
+            border-color: #f59e0b;
+            color: #fbbf24;
+            box-shadow: 0 0 12px rgba(245, 158, 11, 0.15);
+        }
+
+        .wf-tab[data-review="reviewed"].active {
+            background: rgba(16, 185, 129, 0.18);
+            border-color: #10b981;
+            color: #34d399;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.15);
+        }
+
+        .wf-count {
+            background: rgba(0, 0, 0, 0.35);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .wf-info-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .btn-undo {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.5);
+            color: #fb7185;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: none;
+        }
+        .btn-undo:hover {
+            background: rgba(244, 63, 94, 0.25);
+            color: #fff;
+        }
+
+        .toast-notice {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #0f172a;
+            border: 1px solid #10b981;
+            color: #ecfdf5;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.3);
+            z-index: 9999;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all 0.25s ease;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .toast-notice.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .inspector-layout {
             display: grid;
             grid-template-columns: 420px 1fr;
@@ -793,7 +909,7 @@
             <div class="badge-row">
                 <span class="badge badge-cyan">📸 Ortofoto Real 15 cm</span>
                 <span class="badge badge-emerald">🤖 AI: 99 Admis</span>
-                <span class="badge badge-amber">⚠️ AI: 93 Calcan Fix</span>
+                <span class="badge badge-amber">⚠️ AI: 93 Necesită Ajustare</span>
                 <span class="badge badge-purple">✂️ AI: 3 Mutilate</span>
                 <span class="badge badge-rose">🚫 AI: 47 Rebuturi</span>
                 <a href="https://beast-convertible-spirits-realm.trycloudflare.com" target="_blank" class="badge badge-cf">
@@ -819,7 +935,7 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-val" style="color: var(--amber);">93</div>
-                    <div class="stat-label">Necesită Calcan Fix</div>
+                    <div class="stat-label">Necesită Ajustare Contur</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-val" style="color: var(--purple);">3</div>
@@ -849,27 +965,46 @@
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
                 <a href="drone_flight_strips/flight_mission_simulator.html" class="pill-btn active" style="background: rgba(168, 85, 247, 0.25); border-color: #a855f7; color: #d8b4fe; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">🚁 Simulator Zbor Dronă (11 Benzi)</a>
+                <a href="raport_sincronizare_laya.html" target="_blank" class="pill-btn active" style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(56, 189, 248, 0.3)); border-color: #c084fc; color: #f3e8ff; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">⚡ Raport Sincronizare Laya</a>
                 <button class="pill-btn active" style="background: rgba(16, 185, 129, 0.25); border-color: #10b981; color: #10b981; font-weight:700;" id="btnShowCharts">📊 Panou Grafice Cadastrale</button>
                 <button class="pill-btn active" id="btnShowQR">📱 Deschide pe Telefon (QR)</button>
             </div>
         </div>
 
-        <!-- Calcan Explainer Callout -->
+                <!-- Detection Quality Review Guide -->
         <div class="calcan-explainer">
-            <div class="calcan-icon">💡</div>
+            <div class="calcan-icon">🎯</div>
             <div class="calcan-text">
-                <h3>Ce este un Zid de CALCAN și de ce este esențial în Cadastru?</h3>
+                <h3>Ghid Simplu: Evaluarea Calității Detecției Clădirilor</h3>
                 <p>
-                    <strong>Zidul de Calcan</strong> (în engleză <em>party wall / blind wall</em>) este peretele exterior <strong>fără ferestre sau uși (perete orb)</strong>,
-                    construit exact pe limita de proprietate (pe hotar), lipit direct de clădirea vecină (case înșiruite, anexe alipite).<br>
-                    <strong>De ce contează la vectorizare?</strong> La o clădire normală există streașină (retragere $-0.40	ext{ m}$ la sol).
-                    <strong>La CALCAN NU există streașină!</strong> Dacă retragi orbește conturul cu $0.40	ext{ m}$, se creează o fantă falsă de $80	ext{ cm}$ de aer între două clădiri lipite.
-                    La calcan, peretele de contact trebuie păstrat fix pe hotar!
+                    Scopul acestei etape este <strong>evaluarea calității detecției</strong>: dacă amprenta este bună sau dacă necesită corecții înainte de antrenarea SAM 2 / Colab:<br>
+                    • <strong>✅ Corect / Admis</strong>: Clădirea este detectată bine, acoperișul și poziția sunt corecte.<br>
+                    • <strong>⚠️ Necesită Ajustare Contur</strong>: Clădirea există și e validă, dar conturul trebuie ajustat pe muchii sau alipiri.<br>
+                    • <strong>✂️ Decroș Tăiat</strong>: Modelul a fost prea agresiv și a tăiat o verandă, anexă sau aripă în L a casei.<br>
+                    • <strong>🚫 Fals Pozitiv / Rebut</strong>: Detecție greșită (teren gol, umbră, copac sau dublură).
                 </p>
             </div>
         </div>
 
         <!-- Controls & Filter Bar -->
+        <!-- Primary Review Status Tabs (HITL Workflow) -->
+        <div class="workflow-tabs-bar">
+            <div class="workflow-tabs">
+                <button class="wf-tab active" data-review="unreviewed" id="tabUnreviewed">
+                    ⏳ De Revizuit (Neverificate): <span class="wf-count" id="countUnreviewed">--</span>
+                </button>
+                <button class="wf-tab" data-review="reviewed" id="tabReviewed">
+                    ✅ Verificate de mine (Dublă Verificare): <span class="wf-count" id="countReviewed">--</span>
+                </button>
+                <button class="wf-tab" data-review="all" id="tabAll">
+                    📁 Toate Clădirile: <span class="wf-count" id="countTotal">242</span>
+                </button>
+            </div>
+            <div class="wf-info-hint" id="wfHintText">
+                Mod: <strong>Clădiri rămase fără verdict</strong>. Salvarea mută clădirea la "Verificate" și trece automat la următoarea.
+            </div>
+        </div>
+
         <div class="controls-bar">
             <div class="search-box">
                 <span class="search-icon">🔍</span>
@@ -877,11 +1012,11 @@
             </div>
 
             <div class="filter-pills">
-                <button class="pill-btn pill-emerald active" data-filter="ai_admis">🤖 AI: Admis (99)</button>
-                <button class="pill-btn pill-amber" data-filter="ai_calcan">⚠️ AI: Calcan Fix (93)</button>
+                <button class="pill-btn pill-emerald" data-filter="ai_admis">🤖 AI: Admis (99)</button>
+                <button class="pill-btn pill-amber" data-filter="ai_calcan">⚠️ AI: Necesită Ajustare (93)</button>
                 <button class="pill-btn" data-filter="ai_mutilated">✂️ AI: Mutilate (3)</button>
                 <button class="pill-btn pill-danger" data-filter="ai_rebut">🚫 AI: Rebuturi (47)</button>
-                <button class="pill-btn" data-filter="all">Toate (242)</button>
+                <button class="pill-btn active" data-filter="all">Toate Categoriile (242)</button>
             </div>
         </div>
 
@@ -977,18 +1112,20 @@
 
                         <!-- HITL Module -->
                         <div class="hitl-box">
-                            <div class="hitl-title">
+                            <div class="hitl-title" style="display:flex; justify-content:space-between; align-items:center;">
                                 <span>🎓 Confirmă sau Modifică Verdictul AI</span>
+                                <span id="hitlStatusPill" style="font-size:0.7rem; padding:2px 8px; border-radius:12px; background:rgba(245,158,11,0.2); color:#fbbf24; border:1px solid #f59e0b;">⏳ Neverificată</span>
                             </div>
                             <div class="verdict-buttons">
                                 <div class="v-btn" data-verdict="ADMIS" onclick="setVerdict('ADMIS')">✅ Corect / Admis</div>
-                                <div class="v-btn" data-verdict="CALCAN_ERROR" onclick="setVerdict('CALCAN_ERROR')">⚠️ Eroare Calcan</div>
+                                <div class="v-btn" data-verdict="CALCAN_ERROR" onclick="setVerdict('CALCAN_ERROR')">⚠️ Necesită Ajustare</div>
                                 <div class="v-btn" data-verdict="MUTILATED" onclick="setVerdict('MUTILATED')">✂️ Decroș Tăiat</div>
                                 <div class="v-btn" data-verdict="FALSE_POS" onclick="setVerdict('FALSE_POS')">🚫 Fals Pozitiv</div>
                             </div>
                             <textarea class="hitl-notes" id="hitlNotes" placeholder="Instrucțiune corectură (ex: 'lasă peretele nord lipit pe hotar', 'lipseste veranda')..."></textarea>
                             <div class="hitl-actions">
                                 <button class="save-verdict-btn" id="btnSaveVerdict">💾 Salvează Decizia Ta</button>
+                                <button class="btn-undo" id="btnResetVerdict" title="Șterge verdictul tău pentru această clădire și trimite-o înapoi la Neverificate">↩️ Trimite la Neverificate</button>
                                 <button class="export-btn" id="btnExportFeedback">📥 Export JSON</button>
                             </div>
                         </div>
@@ -1193,7 +1330,8 @@
 
     <script>
         let currentBuilding = BUILDINGS.find(b => b.id.includes("046")) || BUILDINGS[0];
-        let currentFilter = "ai_admis";
+        let currentFilter = "all";
+        let reviewFilter = "unreviewed"; // "unreviewed" | "reviewed" | "all" 
         let searchQuery = "";
 
         let userFeedback = JSON.parse(localStorage.getItem("stratumro_user_feedback") || "{}");
@@ -1216,9 +1354,54 @@
             setupEventListeners();
         }
 
+        function showToast(msg, isSuccess = true) {
+            let toast = document.getElementById("toastNotice");
+            if (!toast) return;
+            toast.innerHTML = (isSuccess ? "✅ " : "ℹ️ ") + msg;
+            toast.style.borderColor = isSuccess ? "#10b981" : "#38bdf8";
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2300);
+        }
+
         function updateReviewedCounts() {
-            const count = Object.keys(userFeedback).length;
-            document.getElementById("reviewedCountVal").innerText = `${count} / ${BUILDINGS.length}`;
+            const reviewed = Object.keys(userFeedback).length;
+            const total = BUILDINGS.length;
+            const unreviewed = total - reviewed;
+            
+            const countVal = document.getElementById("reviewedCountVal");
+            if (countVal) countVal.innerText = `${reviewed} / ${total}`;
+            
+            const unrevEl = document.getElementById("countUnreviewed");
+            if (unrevEl) unrevEl.innerText = unreviewed;
+            
+            const revEl = document.getElementById("countReviewed");
+            if (revEl) revEl.innerText = reviewed;
+            
+            const totEl = document.getElementById("countTotal");
+            if (totEl) totEl.innerText = total;
+        }
+
+        function getFilteredBuildings() {
+            return BUILDINGS.filter(b => {
+                const hasFeedback = !!userFeedback[b.id];
+                
+                // Review Status (Neverificate vs Verificate vs Toate)
+                if (reviewFilter === "unreviewed" && hasFeedback) return false;
+                if (reviewFilter === "reviewed" && !hasFeedback) return false;
+                
+                // Căutare după ID
+                if (searchQuery && !b.id.toLowerCase().includes(searchQuery)) return false;
+                
+                // Categorie AI
+                if (currentFilter === "ai_admis" && b.ai_verdict !== "ADMIS") return false;
+                if (currentFilter === "ai_calcan" && b.ai_verdict !== "CALCAN_ERROR") return false;
+                if (currentFilter === "ai_mutilated" && b.ai_verdict !== "MUTILATED") return false;
+                if (currentFilter === "ai_rebut" && !["FALSE_POS", "DUPLICATE", "BORDER_INCOMPLETE"].includes(b.ai_verdict)) return false;
+                
+                return true;
+            });
         }
 
         function setupEventListeners() {
@@ -1227,12 +1410,44 @@
                 renderBuildingList();
             });
 
+            document.querySelectorAll(".wf-tab").forEach(tab => {
+                tab.addEventListener("click", () => {
+                    document.querySelectorAll(".wf-tab").forEach(t => t.classList.remove("active"));
+                    tab.classList.add("active");
+                    reviewFilter = tab.dataset.review;
+                    const hintEl = document.getElementById("wfHintText");
+                    if (hintEl) {
+                        if (reviewFilter === "unreviewed") {
+                            hintEl.innerHTML = "Mod: <strong>Clădiri rămase fără verdict</strong>. Salvarea mută clădirea la Verificate și trece la următoarea.";
+                        } else if (reviewFilter === "reviewed") {
+                            hintEl.innerHTML = "Mod: <strong>Dublă Verificare (Revizuite de tine)</strong>. Aici poți re-inspecta, schimba decizia sau reseta.";
+                        } else {
+                            hintEl.innerHTML = "Mod: <strong>Toate clădirile (242)</strong> indiferent de statusul de audit.";
+                        }
+                    }
+                    renderBuildingList();
+                    const visible = getFilteredBuildings();
+                    if (visible.length > 0 && !visible.some(b => b.id === currentBuilding.id)) {
+                        selectBuilding(visible[0]);
+                    }
+                });
+            });
+
+            const resetBtn = document.getElementById("btnResetVerdict");
+            if (resetBtn) {
+                resetBtn.addEventListener("click", resetCurrentVerdict);
+            }
+
             document.querySelectorAll(".pill-btn").forEach(btn => {
                 btn.addEventListener("click", () => {
                     document.querySelectorAll(".pill-btn").forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
                     currentFilter = btn.dataset.filter;
                     renderBuildingList();
+                    const visible = getFilteredBuildings();
+                    if (visible.length > 0 && !visible.some(b => b.id === currentBuilding.id)) {
+                        selectBuilding(visible[0]);
+                    }
                 });
             });
 
@@ -1336,7 +1551,7 @@
                 data: {
                     labels: [
                         `Admis (${counts.ADMIS})`,
-                        `Calcan Fix (${counts.CALCAN})`,
+                        `Necesită Ajustare (${counts.CALCAN})`,
                         `Mutilate (${counts.MUTILAT})`,
                         `Fals Sol (${counts.FALS})`,
                         `Duplicate (${counts.DUP})`,
@@ -1532,8 +1747,41 @@
             localStorage.setItem("stratumro_user_feedback", JSON.stringify(userFeedback));
             updateReviewedCounts();
             updateHitlChart();
+            
+            showToast(`Decizie <strong>${verdict}</strong> salvată pentru <strong>${currentBuilding.id}</strong>! Clădirea a trecut la "Verificate".`);
+
+            // Auto-advance la următoarea clădire dacă suntem pe tab-ul Neverificate
+            if (reviewFilter === "unreviewed") {
+                const remaining = getFilteredBuildings();
+                if (remaining.length > 0) {
+                    selectBuilding(remaining[0]);
+                }
+            } else {
+                selectBuilding(currentBuilding);
+            }
+            
             renderBuildingList();
-            alert(`Verdict salvat pentru ${currentBuilding.id}!`);
+        }
+
+        function resetCurrentVerdict() {
+            if (!userFeedback[currentBuilding.id]) return;
+            const bId = currentBuilding.id;
+            delete userFeedback[bId];
+            localStorage.setItem("stratumro_user_feedback", JSON.stringify(userFeedback));
+            updateReviewedCounts();
+            updateHitlChart();
+            showToast(`Verdictul pentru <strong>${bId}</strong> a fost anulat. A revenit la "Neverificate"!`, false);
+            
+            if (reviewFilter === "reviewed") {
+                const remaining = getFilteredBuildings();
+                if (remaining.length > 0) {
+                    selectBuilding(remaining[0]);
+                }
+            } else {
+                selectBuilding(currentBuilding);
+            }
+            
+            renderBuildingList();
         }
 
         function exportFeedbackJSON() {
@@ -1548,16 +1796,36 @@
             const listEl = document.getElementById("buildingList");
             listEl.innerHTML = "";
 
-            const filtered = BUILDINGS.filter(b => {
-                if (searchQuery && !b.id.toLowerCase().includes(searchQuery)) return false;
-                if (currentFilter === "ai_admis" && b.ai_verdict !== "ADMIS") return false;
-                if (currentFilter === "ai_calcan" && b.ai_verdict !== "CALCAN_ERROR") return false;
-                if (currentFilter === "ai_mutilated" && b.ai_verdict !== "MUTILATED") return false;
-                if (currentFilter === "ai_rebut" && !["FALSE_POS", "DUPLICATE", "BORDER_INCOMPLETE"].includes(b.ai_verdict)) return false;
-                return true;
-            });
-
+            const filtered = getFilteredBuildings();
             document.getElementById("visibleCount").innerText = filtered.length;
+
+            if (filtered.length === 0) {
+                if (reviewFilter === "unreviewed") {
+                    listEl.innerHTML = `
+                        <div style="padding: 36px 18px; text-align: center; color: var(--text-muted);">
+                            <div style="font-size: 2.2rem; margin-bottom: 8px;">🎉</div>
+                            <div style="font-weight: 700; color: #10b981; font-size: 0.95rem; margin-bottom: 6px;">Nicio clădire rămasă de revizuit!</div>
+                            <div style="font-size: 0.78rem; line-height: 1.4;">Ai revizuit toate clădirile din această selecție.<br>Comută pe tab-ul <b>"Verificate de mine"</b> pentru dublă verificare sau descarcă <b>Export JSON</b>.</div>
+                        </div>
+                    `;
+                } else if (reviewFilter === "reviewed") {
+                    listEl.innerHTML = `
+                        <div style="padding: 36px 18px; text-align: center; color: var(--text-muted);">
+                            <div style="font-size: 2.2rem; margin-bottom: 8px;">📋</div>
+                            <div style="font-weight: 700; color: #38bdf8; font-size: 0.95rem; margin-bottom: 6px;">Nicio clădire verificată încă</div>
+                            <div style="font-size: 0.78rem; line-height: 1.4;">Comută pe tab-ul <b>"De Revizuit"</b> pentru a începe inspectarea clădirilor.</div>
+                        </div>
+                    `;
+                } else {
+                    listEl.innerHTML = `
+                        <div style="padding: 36px 18px; text-align: center; color: var(--text-muted);">
+                            <div style="font-size: 1.8rem; margin-bottom: 6px;">🔍</div>
+                            <div>Nicio clădire găsită pentru filtrele curente.</div>
+                        </div>
+                    `;
+                }
+                return;
+            }
 
             filtered.forEach(b => {
                 const item = document.createElement("div");
@@ -1576,9 +1844,20 @@
                 
                 let badgeHtml = "";
                 if (b.ai_verdict === "ADMIS") badgeHtml = '<span class="badge badge-emerald" style="font-size:0.55rem; padding:1px 5px;">AI: ADMIS</span>';
-                else if (b.ai_verdict === "CALCAN_ERROR") badgeHtml = '<span class="badge badge-amber" style="font-size:0.55rem; padding:1px 5px;">AI: CALCAN</span>';
+                else if (b.ai_verdict === "CALCAN_ERROR") badgeHtml = '<span class="badge badge-amber" style="font-size:0.55rem; padding:1px 5px;">AI: DE AJUSTAT</span>';
                 else if (b.ai_verdict === "MUTILATED") badgeHtml = '<span class="badge badge-purple" style="font-size:0.55rem; padding:1px 5px;">AI: MUTILAT</span>';
                 else badgeHtml = '<span class="badge badge-rose" style="font-size:0.55rem; padding:1px 5px;">AI: REBUT</span>';
+
+                let userBadgeHtml = "";
+                if (hasVerdict) {
+                    const uv = userFeedback[b.id].verdict;
+                    let uvColor = "emerald";
+                    let uvText = "ADMIS";
+                    if (uv === "CALCAN_ERROR") { uvColor = "amber"; uvText = "DE AJUSTAT"; }
+                    else if (uv === "MUTILATED") { uvColor = "purple"; uvText = "MUTILAT"; }
+                    else if (uv === "FALSE_POS") { uvColor = "rose"; uvText = "FALS"; }
+                    userBadgeHtml = `<span class="badge badge-${uvColor}" style="font-size:0.55rem; padding:1px 5px; border:1px solid currentColor;">👤 TĂU: ${uvText}</span>`;
+                }
 
                 item.innerHTML = `
                     <img src="${b.chip_img}" class="bld-thumb" alt="${b.id}">
@@ -1586,6 +1865,7 @@
                         <div class="bld-title-row">
                             <span class="bld-name">${b.id}</span>
                             ${badgeHtml}
+                            ${userBadgeHtml}
                         </div>
                         <div class="bld-sub">
                             <span>📐 ${b.area_roof} m²</span>
@@ -1644,15 +1924,32 @@
 
             document.querySelectorAll(".v-btn").forEach(btn => btn.classList.remove("selected-admis", "selected-calcan", "selected-mutilat", "selected-fals"));
             const prevFeedback = userFeedback[b.id];
+            const resetBtn = document.getElementById("btnResetVerdict");
+            const hitlPill = document.getElementById("hitlStatusPill");
+
             if (prevFeedback) {
                 setVerdict(prevFeedback.verdict);
                 document.getElementById("hitlNotes").value = prevFeedback.notes || "";
+                if (resetBtn) resetBtn.style.display = "inline-flex";
+                if (hitlPill) {
+                    hitlPill.style.background = "rgba(16, 185, 129, 0.2)";
+                    hitlPill.style.borderColor = "#10b981";
+                    hitlPill.style.color = "#34d399";
+                    hitlPill.innerHTML = `✅ Confirmată de tine (${prevFeedback.verdict})`;
+                }
             } else {
                 if (b.ai_verdict === "ADMIS") setVerdict("ADMIS");
                 else if (b.ai_verdict === "CALCAN_ERROR") setVerdict("CALCAN_ERROR");
                 else if (b.ai_verdict === "MUTILATED") setVerdict("MUTILATED");
                 else setVerdict("FALSE_POS");
                 document.getElementById("hitlNotes").value = "";
+                if (resetBtn) resetBtn.style.display = "none";
+                if (hitlPill) {
+                    hitlPill.style.background = "rgba(245, 158, 11, 0.2)";
+                    hitlPill.style.borderColor = "#f59e0b";
+                    hitlPill.style.color = "#fbbf24";
+                    hitlPill.innerHTML = `⏳ Neverificată`;
+                }
             }
 
             document.getElementById("mRoofArea").innerText = `${b.area_roof} m²`;
@@ -1810,5 +2107,6 @@
 
         window.onload = init;
     </script>
+<div id="toastNotice" class="toast-notice"></div>
 </body>
 </html>
