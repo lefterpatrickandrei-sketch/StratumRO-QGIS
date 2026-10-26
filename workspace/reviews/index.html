@@ -1,1 +1,290 @@
-<!doctype html><html lang="ro"><meta charset="utf-8"><title>StratumRO — Portal Inspecție & Revizie Cadastrală</title><style>body{font:16px/1.6 system-ui,-apple-system,sans-serif;max-width:960px;margin:40px auto;padding:24px;color:#1e293b;background:#f8fafc}a{color:#0284c7;text-decoration:none;font-weight:600}a:hover{text-decoration:underline}li{margin:14px 0}h1{color:#0f172a;border-bottom:2px solid #e2e8f0;padding-bottom:12px}.badge{background:#0284c7;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;margin-left:8px;font-weight:normal}.badge-green{background:#10b981;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;margin-left:8px}.card{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:16px 0;box-shadow:0 1px 3px rgba(0,0,0,0.05)}</style><h1>StratumRO — Portal Inspecție & Audit Cadastral</h1><p>Platformă de revizie vizuală și verificare analitică pentru segmentarea și regularizarea clădirilor în Stereo 70 (EPSG:3844).</p><div class="card"><h2 style="margin-top:0">🚀 Inspecție Fotogrammetrică la Scară 1:150 & Grafice Interactive</h2><ul><li><a href="scara_150_ultra_detaliu/charts.html">📊 Dashboard Interactiv Chart.js: Metrici, 9 Categorii de Defecte & Rata 90°</a><span class="badge-green">NOU</span></li><li><a href="scara_150_ultra_detaliu/index.html">🔍 Galerie Comparativă Înainte vs După la Scară 1:150 (Rezoluție 3.9 cm/px)</a><span class="badge-green">NOU</span></li><li><a href="drone_flight_strips/index.html">🛸 Zbor Fotogrammetric Simulat: 25 Benzi de Inspecție pe Tot Ortofotoplanul</a><span class="badge">100% AOI</span></li><li><a href="cadastral_audit_remediation_20261019/index.html">📋 Auditul General de Remediere Cadastrală (Opțiunea B Consolidată)</a></li></ul></div><div class="card"><h2 style="margin-top:0">📁 Rapoarte Anterioare și Istoric Opțiunea B</h2><ul><li><a href="option_b_visual_audit_20261019/index.html">Audit vizual integral: 216 cazuri, observații individuale și erori identificate</a></li><li><a href="option_b_repair_20261019_v2/index.html">B activ: corecții locale, 152 propuneri și 64 diagnostice, toate cele 216 cazuri păstrate</a></li><li><a href="option_b_refinement_20261018_final/index.html">Etapa sursă: observații și rafinare</a></li></ul></div><p style="color:#64748b;font-size:14px">Proiect master QGIS: <code>workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs</code> · Livrabil curat: <code>workspace/option_b_validation_20261019/b_proposals_cleaned.gpkg</code></p></html>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StratumRO — Portal Inspecție & Revizie Cadastrală</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #06090f;
+            --bg-card: #0c121e;
+            --bg-card-hover: #141d2e;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-focus: #38bdf8;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --emerald: #10b981;
+            --amber: #f59e0b;
+            --purple: #c084fc;
+            --cyan: #06b6d4;
+            --blue: #3b82f6;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            padding: 30px 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1040px; margin: 0 auto; }
+
+        header {
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .badge-cyan { background: rgba(6, 182, 212, 0.15); color: var(--cyan); border: 1px solid var(--cyan); }
+        .badge-emerald { background: rgba(16, 185, 129, 0.15); color: var(--emerald); border: 1px solid var(--emerald); }
+        .badge-purple { background: rgba(192, 132, 252, 0.15); color: var(--purple); border: 1px solid var(--purple); }
+
+        h1 { font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+        .subtitle { font-size: 0.9rem; color: var(--text-secondary); max-width: 820px; }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 28px 0 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+        }
+
+        /* Grid */
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .portal-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .portal-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-focus);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .card-icon { font-size: 1.6rem; }
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-text {
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Archive Box */
+        .archive-box {
+            background: rgba(12, 18, 30, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-top: 20px;
+        }
+
+        .archive-box h3 {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .archive-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 8px;
+        }
+
+        .archive-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.15s;
+        }
+
+        .archive-list a:hover { color: #38bdf8; text-decoration: underline; }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge-row">
+                <span class="badge badge-cyan">🌐 GitHub Pages Live</span>
+                <span class="badge badge-emerald">🚀 Faza 1 Operațională</span>
+                <span class="badge badge-purple">🎯 Stereo 70 (EPSG:3844)</span>
+            </div>
+            <h1>StratumRO — Portal Inspecție & Audit Cadastral</h1>
+            <p class="subtitle">
+                Hub integrat de unelte deschise GeoAI, inspecție fotogrammetrică pe canvas live și validare asistată uman (Human-in-the-Loop) conform normelor ANCPI Ordinul 600/2023.
+            </p>
+        </header>
+
+        <!-- Active Production Tools -->
+        <div class="section-title">
+            <span>⚡</span> Aplicații Interactive & Inspecție Live
+        </div>
+
+        <div class="portal-grid">
+            <!-- Card 1: Catalog Clădiri -->
+            <a href="catalog_cladiri_ortofoto.html" class="portal-card" style="border-left: 4px solid #10b981;">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🗂️</span>
+                        <span class="badge badge-emerald">ACTIV • 242 Clădiri</span>
+                    </div>
+                    <div class="card-title">Catalog Ortofoto Real 15 cm & Dublă Verificare</div>
+                    <div class="card-desc">
+                        Inspecție interactivă pentru toate cele 242 de clădiri din Cluj-Napoca. Moduri de triage: <em>De Revizuit (Neverificate)</em> vs <em>Verificate de mine</em>, deducții streașină și export JSON decizii.
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span style="color:var(--text-muted);">Rezoluție 15 cm/px</span>
+                    <span class="btn-text">Deschide Catalogul →</span>
+                </div>
+            </a>
+
+            <!-- Card 2: Laya Sync Report -->
+            <a href="raport_sincronizare_laya.html" class="portal-card" style="border-left: 4px solid #c084fc;">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">⚡</span>
+                        <span class="badge badge-purple">MODEL DECIZIE LAYA</span>
+                    </div>
+                    <div class="card-title">Raport Sincronizare Laya vs Feedback Uman</div>
+                    <div class="card-desc">
+                        Tablou de bord comparativ: evaluează acordul decizional între modelul deschis Laya (ModernBERT System 1) și verdictele tale umane. Grafice de distribuție și analiză divergențe.
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span style="color:var(--text-muted);">Concordantă Live</span>
+                    <span class="btn-text">Vezi Graficele Laya →</span>
+                </div>
+            </a>
+
+            <!-- Card 3: WebGPU Hub -->
+            <a href="metode_inspectie/index.html" class="portal-card" style="border-left: 4px solid #06b6d4;">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🎮</span>
+                        <span class="badge badge-cyan">WEBGPU 60 FPS</span>
+                    </div>
+                    <div class="card-title">Hub Metode de Inspecție Fotogrammetrică</div>
+                    <div class="card-desc">
+                        Patru instrumente de inspecție de nivel înalt: Lens Lupă 8x, Split Slider Înainte/După, Edge Detection și Comparație Multi-Fereastră.
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span style="color:var(--text-muted);">Shader Accelerated</span>
+                    <span class="btn-text">Explorează Metodele →</span>
+                </div>
+            </a>
+
+            <!-- Card 4: Flight Simulator -->
+            <a href="drone_flight_strips/flight_mission_simulator.html" class="portal-card" style="border-left: 4px solid #3b82f6;">
+                <div>
+                    <div class="card-header">
+                        <span class="card-icon">🚁</span>
+                        <span class="badge" style="background:rgba(59,130,246,0.2); color:#60a5fa; border:1px solid #3b82f6;">11 BENZI STEREO</span>
+                    </div>
+                    <div class="card-title">Simulator Misiune Zbor Dronă 60/40</div>
+                    <div class="card-desc">
+                        Simulare completă a zborului fotogrammetric peste zona de studiu cu 253 de cadre ortofoto reale, calcul unghiuri de vizualizare stereoscopică și redundanță.
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span style="color:var(--text-muted);">Acoperire 100% AOI</span>
+                    <span class="btn-text">Pornește Zborul →</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Historical Archive Box -->
+        <div class="archive-box">
+            <h3>📁 Arhivă Rapoarte & Etape Anterioare</h3>
+            <ul class="archive-list">
+                <li><a href="scara_150_ultra_detaliu/index.html">🔍 Galerie Scară 1:150 (Înainte vs După 3.9 cm/px)</a></li>
+                <li><a href="scara_150_ultra_detaliu/charts.html">📊 Dashboard Istoric Defecte & Rata 90°</a></li>
+                <li><a href="cadastral_audit_remediation_20261019/index.html">📋 Audit Remediere Cadastrală (Opțiunea B)</a></li>
+                <li><a href="cadastral_errors_audit_20261019/index.html">🚨 Raport Erori & Suprapuneri Reale</a></li>
+                <li><a href="simulare_drona_60_40.html">✈️ Simulare Statică Dronă 60/40</a></li>
+            </ul>
+        </div>
+
+        <footer>
+            StratumRO — Platformă Deschisă GeoAI & Geodezie Stereo 70 (EPSG:3844) · Proiect QGIS: <code>workspace/reviews/body_recovery_20261013/inspectie_corectii.qgs</code>
+        </footer>
+    </div>
+</body>
+</html>
