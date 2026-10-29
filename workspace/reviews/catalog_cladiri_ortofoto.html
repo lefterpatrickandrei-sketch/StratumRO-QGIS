@@ -942,11 +942,11 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-val" style="color: var(--purple);">1</div>
-                    <div class="stat-label">Decroșuri Mutilate</div>
+                    <div class="stat-label">Mutilate (Deformații Model)</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-val" style="color: var(--rose);">23</div>
-                    <div class="stat-label">Rebuturi Confirmate</div>
+                    <div class="stat-label">Eliminate / Erori Majore</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-val" style="color: #38bdf8;" id="reviewedCountVal">242 / 242</div>
@@ -984,8 +984,8 @@
                     Scopul acestei etape este <strong>evaluarea calității detecției</strong>: dacă amprenta este bună sau dacă necesită corecții înainte de antrenarea SAM 2 / Colab:<br>
                     • <strong>✅ Corect / Admis</strong>: Clădirea este detectată bine, acoperișul și poziția sunt corecte.<br>
                     • <strong>⚠️ Necesită Ajustare Contur</strong>: Clădirea există și e validă, dar conturul trebuie ajustat pe muchii sau alipiri.<br>
-                    • <strong>✂️ Decroș Tăiat</strong>: Modelul a fost prea agresiv și a tăiat o verandă, anexă sau aripă în L a casei.<br>
-                    • <strong>🚫 Fals Pozitiv / Rebut</strong>: Detecție greșită (teren gol, umbră, copac sau dublură).
+                    • <strong>✂️ Mutilat (Deformație Model)</strong>: Greșeală a modelului care a considerat deformații fotogrammetrice / de margine drept clădiri.<br>
+                    • <strong>🚫 Eliminat / Eroare Majoră</strong>: Clădiri cu erori majore de vectorizare sau posibile eliminări (teren gol, copac, dublură).
                 </p>
             </div>
         </div>
@@ -1041,7 +1041,7 @@
                     <div class="viewer-title">
                         <h2 id="activeBuildingId">OPT_B_046:C1</h2>
                         <span class="badge badge-cyan" id="activeFamily">FORMA L</span>
-                        <span class="badge badge-amber" id="activeCalcanBadge" style="display:none;">CALCAN</span>
+                        <span class="badge badge-amber" id="activeCalcanBadge" style="display:none;">AJUSTARE CONTUR</span>
                         <span class="badge badge-rose" id="activeStatusBadge" style="display:none;">RESPINS</span>
                     </div>
 
@@ -1053,7 +1053,7 @@
                             <span>●</span> Sol 1CC (-0.40m)
                         </button>
                         <button class="toggle-btn active layer-calcan" id="toggleCalcan">
-                            <span>●</span> Zid Calcan
+                            <span>●</span> Latură Ajustare
                         </button>
                         <button class="toggle-btn active" id="toggleDims">
                             <span>📏</span> Cote Laturi
@@ -1122,9 +1122,9 @@
                             </div>
                             <div class="verdict-buttons">
                                 <div class="v-btn" data-verdict="ADMIS" onclick="applyVerdictAndSave('ADMIS')">✅ Corect / Admis</div>
-                                <div class="v-btn" data-verdict="CALCAN_ERROR" onclick="applyVerdictAndSave('CALCAN_ERROR')">⚠️ Necesită Ajustare</div>
-                                <div class="v-btn" data-verdict="MUTILATED" onclick="applyVerdictAndSave('MUTILATED')">✂️ Decroș Tăiat</div>
-                                <div class="v-btn" data-verdict="FALSE_POS" onclick="applyVerdictAndSave('FALSE_POS')">🚫 Fals Pozitiv</div>
+                                <div class="v-btn" data-verdict="CALCAN_ERROR" onclick="applyVerdictAndSave('CALCAN_ERROR')">⚠️ Ajustare Contur</div>
+                                <div class="v-btn" data-verdict="MUTILATED" onclick="applyVerdictAndSave('MUTILATED')">✂️ Mutilat (Deformație)</div>
+                                <div class="v-btn" data-verdict="FALSE_POS" onclick="applyVerdictAndSave('FALSE_POS')">🚫 Eliminat / Eroare Majoră</div>
                             </div>
                             <textarea class="hitl-notes" id="hitlNotes" placeholder="Instrucțiune corectură opțională (ex: 'lasă peretele nord lipit pe hotar', 'lipseste veranda')..."></textarea>
                             <div class="hitl-actions">
@@ -1460,9 +1460,9 @@
                 const myFeedback = userFeedback[b.id];
                 const myV = (myFeedback && myFeedback.verdict) ? myFeedback.verdict : b.ai_verdict;
                 if ((currentFilter === "user_admis" || currentFilter === "ai_admis") && myV !== "ADMIS") return false;
-                if ((currentFilter === "user_calcan" || currentFilter === "ai_calcan") && myV !== "CALCAN_ERROR") return false;
-                if ((currentFilter === "user_mutilated" || currentFilter === "ai_mutilated") && myV !== "MUTILATED") return false;
-                if ((currentFilter === "user_rebut" || currentFilter === "ai_rebut") && !["FALSE_POS", "DUPLICATE", "BORDER_INCOMPLETE"].includes(myV)) return false;
+                if ((currentFilter === "user_calcan" || currentFilter === "ai_calcan") && !["CALCAN_ERROR", "AJUSTARE_CONTUR"].includes(myV)) return false;
+                if ((currentFilter === "user_mutilated" || currentFilter === "ai_mutilated") && !["MUTILATED", "MUTILAT_DEFORMATIE_MODEL"].includes(myV)) return false;
+                if ((currentFilter === "user_rebut" || currentFilter === "ai_rebut") && !["FALSE_POS", "ELIMINAT_EROARE_MAJORA", "DUPLICATE", "BORDER_INCOMPLETE"].includes(myV)) return false;
                 
                 return true;
             });
@@ -1963,15 +1963,15 @@
             const myDecision = userFeedback[b.id] || { verdict: b.ai_verdict, notes: b.ai_notes };
             const vBadge = document.getElementById("aiVerdictBadge");
             let vText = myDecision.verdict;
-            if (vText === "CALCAN_ERROR") {
+            if (vText === "CALCAN_ERROR" || vText === "AJUSTARE_CONTUR") {
                 vBadge.className = "badge badge-amber";
                 vBadge.innerText = "DE AJUSTAT CONTUR";
-            } else if (vText === "MUTILATED") {
+            } else if (vText === "MUTILATED" || vText === "MUTILAT_DEFORMATIE_MODEL") {
                 vBadge.className = "badge badge-purple";
-                vBadge.innerText = "DECROȘ MUTILAT";
-            } else if (vText === "FALSE_POS") {
+                vBadge.innerText = "MUTILAT (DEFORMAȚIE)";
+            } else if (vText === "FALSE_POS" || vText === "ELIMINAT_EROARE_MAJORA") {
                 vBadge.className = "badge badge-rose";
-                vBadge.innerText = "REBUT / FALS";
+                vBadge.innerText = "ELIMINAT / EROARE MAJORĂ";
             } else {
                 vBadge.className = "badge badge-emerald";
                 vBadge.innerText = "ADMIS";
@@ -2169,7 +2169,7 @@
                 ctx.fillStyle = "#f59e0b";
                 ctx.shadowColor = "#000000";
                 ctx.shadowBlur = 6;
-                ctx.fillText(`⚠️ ZID CALCAN COMUN`, 12, 22);
+                ctx.fillText(`⚠️ NECESITĂ AJUSTARE CONTUR`, 12, 22);
                 ctx.restore();
             }
 

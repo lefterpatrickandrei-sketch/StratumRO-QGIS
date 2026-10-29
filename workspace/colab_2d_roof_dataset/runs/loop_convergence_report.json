@@ -1,0 +1,73 @@
+{
+  "crs": "EPSG:3844",
+  "phase": "Phase 1 — 2D Cadastral Roof Shape Extraction (Generalizable RGB)",
+  "validation_protocol": "Simultaneous 6-Form Validation (V1..V6)",
+  "gpu_target": "A100",
+  "device_used": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "has_cuda": true,
+  "iterations_run": 2,
+  "final_mean_v1_to_v6_confidence": 0.9629,
+  "total_promoted_ajustare_ids": [
+    "OPT_B_048:C1",
+    "OPT_B_075:C1",
+    "OPT_B_090:C1",
+    "OPT_B_113:C1",
+    "OPT_B_122:C1",
+    "OPT_B_127:C1",
+    "OPT_B_128:C1",
+    "OPT_B_130:C1",
+    "OPT_B_133:C1",
+    "OPT_B_135:C1",
+    "OPT_B_137:C1",
+    "OPT_B_138:C1",
+    "OPT_B_141:C1",
+    "OPT_B_144:C1",
+    "OPT_B_163:C1",
+    "OPT_B_166:C1",
+    "OPT_B_173:C1",
+    "OPT_B_177:C1",
+    "OPT_B_202:C1"
+  ],
+  "history": [
+    {
+      "iteration": 1,
+      "gpu_device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+      "evaluated_roof_candidates": 177,
+      "all_six_forms_passed_count": 150,
+      "mean_v1_to_v6_confidence": 0.9629,
+      "newly_promoted_from_ajustare": [
+        "OPT_B_202:C1",
+        "OPT_B_090:C1",
+        "OPT_B_144:C1",
+        "OPT_B_130:C1",
+        "OPT_B_163:C1",
+        "OPT_B_075:C1",
+        "OPT_B_128:C1",
+        "OPT_B_141:C1",
+        "OPT_B_137:C1",
+        "OPT_B_122:C1",
+        "OPT_B_173:C1",
+        "OPT_B_135:C1",
+        "OPT_B_048:C1",
+        "OPT_B_113:C1",
+        "OPT_B_133:C1",
+        "OPT_B_166:C1",
+        "OPT_B_138:C1",
+        "OPT_B_177:C1",
+        "OPT_B_127:C1"
+      ],
+      "total_promoted_from_ajustare": 19,
+      "elapsed_sec": 2.838
+    },
+    {
+      "iteration": 2,
+      "gpu_device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+      "evaluated_roof_candidates": 177,
+      "all_six_forms_passed_count": 150,
+      "mean_v1_to_v6_confidence": 0.9629,
+      "newly_promoted_from_ajustare": [],
+      "total_promoted_from_ajustare": 19,
+      "elapsed_sec": 2.635
+    }
+  ]
+}

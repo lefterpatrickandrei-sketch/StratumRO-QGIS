@@ -174,5 +174,55 @@ class McpMirrorTests(unittest.TestCase):
         self.assertEqual(s.check(REPO), [])
 
 
+class Continuous2DA100Tests(unittest.TestCase):
+    def test_continuous_2d_a100_card_is_valid_a100(self):
+        card = job_plan.load_card("continuous_2d_a100")
+        self.assertEqual(job_plan.validate(card), [])
+        self.assertEqual(card["gpu"], "A100")
+        self.assertEqual(card["crs"], "EPSG:3844")
+        self.assertTrue(card["requires_owner_approval"])
+
+    def test_build_2d_roof_dataset_masks_and_rgb_only_tensor(self):
+        import build_2d_roof_dataset as b2d
+
+        rgb = np.full((64, 64, 3), 120, dtype=np.uint8)
+        rgb[:4, :] = 0  # Black NoData border
+        t = b2d.prepare_rgb_2d_tensor(rgb)
+        self.assertEqual(t.shape, (3, 64, 64))
+        self.assertEqual(t.dtype, np.float32)
+
+        roof_px = [[16.0, 16.0], [48.0, 16.0], [48.0, 48.0], [16.0, 48.0], [16.0, 16.0]]
+        r_admis, e_admis, c_admis = b2d.build_multitask_masks_for_chip(rgb, roof_px, "ADMIS")
+        self.assertEqual(int(r_admis[32, 32]), 1)
+        self.assertEqual(int(r_admis[1, 1]), 255)  # NoData border masked as ignore_index=255
+        self.assertGreater(int(e_admis.sum()), 10)
+        self.assertGreater(int(c_admis.sum()), 4)
+
+        r_aj, _, _ = b2d.build_multitask_masks_for_chip(rgb, roof_px, "AJUSTARE_TINTA_A100")
+        self.assertEqual(int(r_aj[32, 32]), 255)  # Incomplete roof masked as ignore_index=255
+
+    def test_multitask_2d_loss_ignores_255(self):
+        import continuous_2d_roof_loop as loop2d
+
+        target_r = np.zeros((16, 16), dtype=np.uint8)
+        target_r[4:12, 4:12] = 1
+        target_r[0:2, :] = 255
+        target_e = np.zeros((16, 16), dtype=np.uint8)
+        target_c = np.zeros((16, 16), dtype=np.uint8)
+
+        pred_good = (target_r == 1).astype(np.float32) * 0.98 + 0.01
+        pred_bad = 1.0 - pred_good
+        zeros = np.full((16, 16), 0.01, dtype=np.float32)
+
+        l_good = loop2d.compute_multitask_2d_loss_numpy(
+            pred_good, zeros, zeros, target_r, target_e, target_c
+        )
+        l_bad = loop2d.compute_multitask_2d_loss_numpy(
+            pred_bad, zeros, zeros, target_r, target_e, target_c
+        )
+        self.assertLess(l_good["total_loss"], 0.15)
+        self.assertGreater(l_bad["total_loss"], 1.5)
+
+
 if __name__ == "__main__":
     unittest.main()

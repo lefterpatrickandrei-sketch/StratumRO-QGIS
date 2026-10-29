@@ -1,0 +1,23 @@
+name: continuous_2d_a100
+description: Continuous 2D roof shape extraction, SAM 2.1 LoRA reprompting, and Simultaneous 6-Form Validation (V1..V6) loop on Colab Pro A100 (RGB-only, generalizable to any zone/UAT, Stereo 70 EPSG:3844).
+status: scaffolded
+gpu: A100
+time_limit_minutes: 360
+script: compute/colab/scripts/continuous_2d_roof_loop.py
+crs: EPSG:3844
+requires_owner_approval: true
+inputs:
+  manifest: "Drive: StratumRO/colab_2d_roof_dataset/manifest_2d_roofs.json (189 deduplicated RGB tiles, SHA-256, EPSG:3844)"
+  deduplicated_gpkg: "Drive: StratumRO/reviews/opera_review_deduplicated_20261029.gpkg (4 layers: ADMIS, REPAIRED, TINTA_A100, HARD_NEGATIVES)"
+  tiles: "Drive: StratumRO/colab_2d_roof_dataset/ (rgb/, roof_mask/, edge_mask/, corner_mask/)"
+outputs:
+  checkpoints: "Drive: StratumRO/runs/continuous_2d_a100/<UTC timestamp>/checkpoints/"
+  convergence_report: "loop_convergence_report.json (V1..V6 simultaneous scores per iteration, promoted IDs)"
+  repaired_gpkg: "final_2d_roofs_epsg3844.gpkg (Proposal for owner visual + QGIS review)"
+checkpoint: "Drive: StratumRO/runs/continuous_2d_a100/<UTC timestamp>/checkpoints/latest_2d_a100.pt"
+split:
+  admis_gold_2d: 137
+  repaired_v1_v6: 9
+  ajustare_tinta_a100: 31
+  eliminat_hard_negative: 12
+gate: "All 6 Validation Forms (V1..V6) must pass simultaneously before any roof polygon is promoted; owner visual confirmation remains final."

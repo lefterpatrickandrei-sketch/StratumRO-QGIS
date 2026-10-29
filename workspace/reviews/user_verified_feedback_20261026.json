@@ -15,1453 +15,1714 @@
       "building_id": "OPT_B_001:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:35.248Z"
+      "timestamp": "2026-10-26T16:00:35.248Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_002:C1_DUP": {
       "building_id": "OPT_B_002:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:44.502Z"
+      "timestamp": "2026-10-26T16:00:44.502Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_003:C1": {
       "building_id": "OPT_B_003:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T14:59:18.892Z"
+      "timestamp": "2026-10-26T14:59:18.892Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_004:C1": {
       "building_id": "OPT_B_004:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:14:38.987Z"
+      "timestamp": "2026-10-26T15:14:38.987Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_005:C1_DUP": {
       "building_id": "OPT_B_005:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:50.856Z"
+      "timestamp": "2026-10-26T16:00:50.856Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_006:C1_DUP": {
       "building_id": "OPT_B_006:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:58.119Z"
+      "timestamp": "2026-10-26T16:00:58.119Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_007:C1": {
       "building_id": "OPT_B_007:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T14:59:43.773Z"
+      "timestamp": "2026-10-26T14:59:43.773Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_008:C1": {
       "building_id": "OPT_B_008:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T14:59:54.817Z"
+      "timestamp": "2026-10-26T14:59:54.817Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_009:C1": {
       "building_id": "OPT_B_009:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:00:12.252Z"
+      "timestamp": "2026-10-26T15:00:12.252Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_010:C1": {
       "building_id": "OPT_B_010:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:00:25.864Z"
+      "timestamp": "2026-10-26T15:00:25.864Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_011:C1": {
       "building_id": "OPT_B_011:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:00:32.390Z"
+      "timestamp": "2026-10-26T15:00:32.390Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_012:C1": {
       "building_id": "OPT_B_012:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:23:18.543Z"
+      "timestamp": "2026-10-26T15:23:18.543Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_013:C1": {
       "building_id": "OPT_B_013:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:00:42.126Z"
+      "timestamp": "2026-10-26T15:00:42.126Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_014:C1": {
       "building_id": "OPT_B_014:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:00:49.723Z"
+      "timestamp": "2026-10-26T15:00:49.723Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_015:C1_DUP": {
       "building_id": "OPT_B_015:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:06.252Z"
+      "timestamp": "2026-10-26T16:01:06.252Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_016:C1": {
       "building_id": "OPT_B_016:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:23:29.122Z"
+      "timestamp": "2026-10-26T15:23:29.122Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_017:C1_DUP": {
       "building_id": "OPT_B_017:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:13.539Z"
+      "timestamp": "2026-10-26T16:01:13.539Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_018:C1": {
       "building_id": "OPT_B_018:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:23:48.662Z"
+      "timestamp": "2026-10-26T15:23:48.662Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_019:C1_DUP": {
       "building_id": "OPT_B_019:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:15.626Z"
+      "timestamp": "2026-10-26T16:01:15.626Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_020:C1_DUP": {
       "building_id": "OPT_B_020:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:18.057Z"
+      "timestamp": "2026-10-26T16:01:18.057Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_021:C1": {
       "building_id": "OPT_B_021:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:24:04.499Z"
+      "timestamp": "2026-10-26T15:24:04.499Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_021:C1_INCOMPLET": {
       "building_id": "OPT_B_021:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:20.529Z"
+      "timestamp": "2026-10-26T16:01:20.529Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_022:C1": {
       "building_id": "OPT_B_022:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:24:17.660Z"
+      "timestamp": "2026-10-26T15:24:17.660Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_023:C1": {
       "building_id": "OPT_B_023:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:24:25.196Z"
+      "timestamp": "2026-10-26T15:24:25.196Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_024:C1": {
       "building_id": "OPT_B_024:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:24:39.006Z"
+      "timestamp": "2026-10-26T15:24:39.006Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_025:C1": {
       "building_id": "OPT_B_025:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:24:50.209Z"
+      "timestamp": "2026-10-26T15:24:50.209Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_026:C1": {
       "building_id": "OPT_B_026:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:07.155Z"
+      "timestamp": "2026-10-26T15:25:07.155Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_027:C1": {
       "building_id": "OPT_B_027:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:21.627Z"
+      "timestamp": "2026-10-26T15:25:21.627Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_028:C1": {
       "building_id": "OPT_B_028:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:23.621Z"
+      "timestamp": "2026-10-26T15:25:23.621Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_029:C1": {
       "building_id": "OPT_B_029:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:25.005Z"
+      "timestamp": "2026-10-26T15:25:25.005Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_030:C1": {
       "building_id": "OPT_B_030:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:30.324Z"
+      "timestamp": "2026-10-26T15:25:30.324Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_031:C1": {
       "building_id": "OPT_B_031:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:33.776Z"
+      "timestamp": "2026-10-26T15:25:33.776Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_032:C1_DUP": {
       "building_id": "OPT_B_032:C1_DUP",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:39.025Z"
+      "timestamp": "2026-10-26T16:01:39.025Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_033:C1": {
       "building_id": "OPT_B_033:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:37.866Z"
+      "timestamp": "2026-10-26T15:25:37.866Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_034:C1_DUP": {
       "building_id": "OPT_B_034:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:45.748Z"
+      "timestamp": "2026-10-26T16:01:45.748Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_035:C1": {
       "building_id": "OPT_B_035:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:43.478Z"
+      "timestamp": "2026-10-26T15:25:43.478Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_036:C1": {
       "building_id": "OPT_B_036:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:44.917Z"
+      "timestamp": "2026-10-26T15:25:44.917Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_037:C1": {
       "building_id": "OPT_B_037:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:46.347Z"
+      "timestamp": "2026-10-26T15:25:46.347Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_038:C1": {
       "building_id": "OPT_B_038:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:47.625Z"
+      "timestamp": "2026-10-26T15:25:47.625Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_039:C1": {
       "building_id": "OPT_B_039:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:50.933Z"
+      "timestamp": "2026-10-26T15:25:50.933Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_040:C1": {
       "building_id": "OPT_B_040:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:25:58.290Z"
+      "timestamp": "2026-10-26T15:25:58.290Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_041:C1_DUP": {
       "building_id": "OPT_B_041:C1_DUP",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:51.895Z"
+      "timestamp": "2026-10-26T16:01:51.895Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_042:C1": {
       "building_id": "OPT_B_042:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:26:03.581Z"
+      "timestamp": "2026-10-26T15:26:03.581Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_043:C1": {
       "building_id": "OPT_B_043:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:26:07.631Z"
+      "timestamp": "2026-10-26T15:26:07.631Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_044:C1": {
       "building_id": "OPT_B_044:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:26:12.073Z"
+      "timestamp": "2026-10-26T15:26:12.073Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_045:C1": {
       "building_id": "OPT_B_045:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:26:19.902Z"
+      "timestamp": "2026-10-26T15:26:19.902Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_046:C1": {
       "building_id": "OPT_B_046:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:26:23.497Z"
+      "timestamp": "2026-10-26T15:26:23.497Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_047:C1": {
       "building_id": "OPT_B_047:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:26:38.681Z"
+      "timestamp": "2026-10-26T15:26:38.681Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_048:C1": {
       "building_id": "OPT_B_048:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:26:49.202Z"
+      "timestamp": "2026-10-26T15:26:49.202Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_049:C1": {
       "building_id": "OPT_B_049:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:26:59.146Z"
+      "timestamp": "2026-10-26T15:26:59.146Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_050:C1": {
       "building_id": "OPT_B_050:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:27:08.698Z"
+      "timestamp": "2026-10-26T15:27:08.698Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_051:C1": {
       "building_id": "OPT_B_051:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:28:07.721Z"
+      "timestamp": "2026-10-26T15:28:07.721Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_052:C1_DUP": {
       "building_id": "OPT_B_052:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:01:59.078Z"
+      "timestamp": "2026-10-26T16:01:59.078Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_053:C1": {
       "building_id": "OPT_B_053:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:28:22.308Z"
+      "timestamp": "2026-10-26T15:28:22.308Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_054:C1": {
       "building_id": "OPT_B_054:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:28:30.211Z"
+      "timestamp": "2026-10-26T15:28:30.211Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_055:C1": {
       "building_id": "OPT_B_055:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:28:48.379Z"
+      "timestamp": "2026-10-26T15:28:48.379Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_056:C1": {
       "building_id": "OPT_B_056:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:28:57.446Z"
+      "timestamp": "2026-10-26T15:28:57.446Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_057:C1": {
       "building_id": "OPT_B_057:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:29:06.056Z"
+      "timestamp": "2026-10-26T15:29:06.056Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_058:C1": {
       "building_id": "OPT_B_058:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:29:35.055Z"
+      "timestamp": "2026-10-26T15:29:35.055Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_059:C1": {
       "building_id": "OPT_B_059:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:29:45.319Z"
+      "timestamp": "2026-10-26T15:29:45.319Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_060:C1": {
       "building_id": "OPT_B_060:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:29:53.129Z"
+      "timestamp": "2026-10-26T15:29:53.129Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_061:C1_DUP": {
       "building_id": "OPT_B_061:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:02.093Z"
+      "timestamp": "2026-10-26T16:02:02.093Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_062:C1": {
       "building_id": "OPT_B_062:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:30:12.705Z"
+      "timestamp": "2026-10-26T15:30:12.705Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_063:C1": {
       "building_id": "OPT_B_063:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:30:31.181Z"
+      "timestamp": "2026-10-26T15:30:31.181Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_064:C1": {
       "building_id": "OPT_B_064:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:30:38.953Z"
+      "timestamp": "2026-10-26T15:30:38.953Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_065:C1_FALS": {
       "building_id": "OPT_B_065:C1_FALS",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:06.632Z"
+      "timestamp": "2026-10-26T16:02:06.632Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_066:C1": {
       "building_id": "OPT_B_066:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:30:48.129Z"
+      "timestamp": "2026-10-26T15:30:48.129Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_067:C1": {
       "building_id": "OPT_B_067:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:31:06.502Z"
+      "timestamp": "2026-10-26T15:31:06.502Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_068:C1": {
       "building_id": "OPT_B_068:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:31:12.812Z"
+      "timestamp": "2026-10-26T15:31:12.812Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_069:C1": {
       "building_id": "OPT_B_069:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:31:22.660Z"
+      "timestamp": "2026-10-26T15:31:22.660Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_070:C1": {
       "building_id": "OPT_B_070:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:31:26.466Z"
+      "timestamp": "2026-10-26T15:31:26.466Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_071:C1": {
       "building_id": "OPT_B_071:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:31:35.663Z"
+      "timestamp": "2026-10-26T15:31:35.663Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_072:C1": {
       "building_id": "OPT_B_072:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:31:48.401Z"
+      "timestamp": "2026-10-26T15:31:48.401Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_073:C1": {
       "building_id": "OPT_B_073:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:32:00.604Z"
+      "timestamp": "2026-10-26T15:32:00.604Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_074:C1": {
       "building_id": "OPT_B_074:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:33:55.534Z"
+      "timestamp": "2026-10-26T15:33:55.534Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_075:C1": {
       "building_id": "OPT_B_075:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:34:08.013Z"
+      "timestamp": "2026-10-26T15:34:08.013Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_076:C1": {
       "building_id": "OPT_B_076:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:34:31.184Z"
+      "timestamp": "2026-10-26T15:34:31.184Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_077:C1": {
       "building_id": "OPT_B_077:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:34:41.786Z"
+      "timestamp": "2026-10-26T15:34:41.786Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_078:C1": {
       "building_id": "OPT_B_078:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:34:55.828Z"
+      "timestamp": "2026-10-26T15:34:55.828Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_079:C1": {
       "building_id": "OPT_B_079:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:35:05.845Z"
+      "timestamp": "2026-10-26T15:35:05.845Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_080:C1": {
       "building_id": "OPT_B_080:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:35:35.065Z"
+      "timestamp": "2026-10-26T15:35:35.065Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_081:C1": {
       "building_id": "OPT_B_081:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:35:47.471Z"
+      "timestamp": "2026-10-26T15:35:47.471Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_082:C1": {
       "building_id": "OPT_B_082:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:35:52.821Z"
+      "timestamp": "2026-10-26T15:35:52.821Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_083:C1": {
       "building_id": "OPT_B_083:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:36:07.547Z"
+      "timestamp": "2026-10-26T15:36:07.547Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_083:C1_INCOMPLET": {
       "building_id": "OPT_B_083:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:10.023Z"
+      "timestamp": "2026-10-26T16:02:10.023Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_084:C1": {
       "building_id": "OPT_B_084:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:36:20.561Z"
+      "timestamp": "2026-10-26T15:36:20.561Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_085:C1": {
       "building_id": "OPT_B_085:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:36:54.574Z"
+      "timestamp": "2026-10-26T15:36:54.574Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_086:C1": {
       "building_id": "OPT_B_086:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:37:01.409Z"
+      "timestamp": "2026-10-26T15:37:01.409Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_087:C1": {
       "building_id": "OPT_B_087:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:37:08.383Z"
+      "timestamp": "2026-10-26T15:37:08.383Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_088:C1": {
       "building_id": "OPT_B_088:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:37:17.152Z"
+      "timestamp": "2026-10-26T15:37:17.152Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_089:C1": {
       "building_id": "OPT_B_089:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:37:26.331Z"
+      "timestamp": "2026-10-26T15:37:26.331Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_090:C1": {
       "building_id": "OPT_B_090:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:37:29.811Z"
+      "timestamp": "2026-10-26T15:37:29.811Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_091:C1": {
       "building_id": "OPT_B_091:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:37:58.014Z"
+      "timestamp": "2026-10-26T15:37:58.014Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_092:C1": {
       "building_id": "OPT_B_092:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:38:05.470Z"
+      "timestamp": "2026-10-26T15:38:05.470Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_093:C1": {
       "building_id": "OPT_B_093:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:39:12.986Z"
+      "timestamp": "2026-10-26T15:39:12.986Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_094:C1": {
       "building_id": "OPT_B_094:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:39:22.637Z"
+      "timestamp": "2026-10-26T15:39:22.637Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_095:C1": {
       "building_id": "OPT_B_095:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:39:36.278Z"
+      "timestamp": "2026-10-26T15:39:36.278Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_096:C1": {
       "building_id": "OPT_B_096:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:39:40.942Z"
+      "timestamp": "2026-10-26T15:39:40.942Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_097:C1": {
       "building_id": "OPT_B_097:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:39:48.241Z"
+      "timestamp": "2026-10-26T15:39:48.241Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_098:C1_DUP": {
       "building_id": "OPT_B_098:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:20.856Z"
+      "timestamp": "2026-10-26T16:02:20.856Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_099:C1": {
       "building_id": "OPT_B_099:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:39:52.986Z"
+      "timestamp": "2026-10-26T15:39:52.986Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_100:C1": {
       "building_id": "OPT_B_100:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:39:55.392Z"
+      "timestamp": "2026-10-26T15:39:55.392Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_101:C1": {
       "building_id": "OPT_B_101:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:40:18.292Z"
+      "timestamp": "2026-10-26T15:40:18.292Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_102:C1": {
       "building_id": "OPT_B_102:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:40:35.242Z"
+      "timestamp": "2026-10-26T15:40:35.242Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_103:C1": {
       "building_id": "OPT_B_103:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:40:48.038Z"
+      "timestamp": "2026-10-26T15:40:48.038Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_104:C1": {
       "building_id": "OPT_B_104:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:10.890Z"
+      "timestamp": "2026-10-26T15:41:10.890Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_105:C1": {
       "building_id": "OPT_B_105:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:18.403Z"
+      "timestamp": "2026-10-26T15:41:18.403Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_106:C1_DUP": {
       "building_id": "OPT_B_106:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:24.449Z"
+      "timestamp": "2026-10-26T16:02:24.449Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_107:C1": {
       "building_id": "OPT_B_107:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:20.882Z"
+      "timestamp": "2026-10-26T15:41:20.882Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_107:C1_INCOMPLET": {
       "building_id": "OPT_B_107:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:30.512Z"
+      "timestamp": "2026-10-26T16:02:30.512Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_108:C1": {
       "building_id": "OPT_B_108:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:23.168Z"
+      "timestamp": "2026-10-26T15:41:23.168Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_109:C1": {
       "building_id": "OPT_B_109:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:29.107Z"
+      "timestamp": "2026-10-26T15:41:29.107Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_110:C1": {
       "building_id": "OPT_B_110:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:31.446Z"
+      "timestamp": "2026-10-26T15:41:31.446Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_111:C1": {
       "building_id": "OPT_B_111:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:38.514Z"
+      "timestamp": "2026-10-26T15:41:38.514Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_112:C1": {
       "building_id": "OPT_B_112:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:48.196Z"
+      "timestamp": "2026-10-26T15:41:48.196Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_113:C1": {
       "building_id": "OPT_B_113:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:53.105Z"
+      "timestamp": "2026-10-26T15:41:53.105Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_114:C1": {
       "building_id": "OPT_B_114:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:41:55.512Z"
+      "timestamp": "2026-10-26T15:41:55.512Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_115:C1": {
       "building_id": "OPT_B_115:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:42:05.127Z"
+      "timestamp": "2026-10-26T15:42:05.127Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_116:C1": {
       "building_id": "OPT_B_116:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:42:09.868Z"
+      "timestamp": "2026-10-26T15:42:09.868Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_117:C1": {
       "building_id": "OPT_B_117:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:42:13.979Z"
+      "timestamp": "2026-10-26T15:42:13.979Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_118:C1": {
       "building_id": "OPT_B_118:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:42:20.571Z"
+      "timestamp": "2026-10-26T15:42:20.571Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_119:C1": {
       "building_id": "OPT_B_119:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:42:23.232Z"
+      "timestamp": "2026-10-26T15:42:23.232Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_120:C1": {
       "building_id": "OPT_B_120:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:42:26.484Z"
+      "timestamp": "2026-10-26T15:42:26.484Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_121:C1": {
       "building_id": "OPT_B_121:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:42:40.438Z"
+      "timestamp": "2026-10-26T15:42:40.438Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_122:C1": {
       "building_id": "OPT_B_122:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:42:53.283Z"
+      "timestamp": "2026-10-26T15:42:53.283Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_123:C1": {
       "building_id": "OPT_B_123:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:43:00.239Z"
+      "timestamp": "2026-10-26T15:43:00.239Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_124:C1": {
       "building_id": "OPT_B_124:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:44:41.717Z"
+      "timestamp": "2026-10-26T15:44:41.717Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_125:C1": {
       "building_id": "OPT_B_125:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:45:39.500Z"
+      "timestamp": "2026-10-26T15:45:39.500Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_126:C1": {
       "building_id": "OPT_B_126:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:45:54.268Z"
+      "timestamp": "2026-10-26T15:45:54.268Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_127:C1": {
       "building_id": "OPT_B_127:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:46:38.113Z"
+      "timestamp": "2026-10-26T15:46:38.113Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_128:C1": {
       "building_id": "OPT_B_128:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:46:58.594Z"
+      "timestamp": "2026-10-26T15:46:58.594Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_129:C1": {
       "building_id": "OPT_B_129:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:47:05.438Z"
+      "timestamp": "2026-10-26T15:47:05.438Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_130:C1": {
       "building_id": "OPT_B_130:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:47:07.856Z"
+      "timestamp": "2026-10-26T15:47:07.856Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_131:C1": {
       "building_id": "OPT_B_131:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:47:16.245Z"
+      "timestamp": "2026-10-26T15:47:16.245Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_132:C1_DUP": {
       "building_id": "OPT_B_132:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:38.312Z"
+      "timestamp": "2026-10-26T16:02:38.312Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_133:C1": {
       "building_id": "OPT_B_133:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:47:25.040Z"
+      "timestamp": "2026-10-26T15:47:25.040Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_134:C1": {
       "building_id": "OPT_B_134:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:47:34.193Z"
+      "timestamp": "2026-10-26T15:47:34.193Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_135:C1": {
       "building_id": "OPT_B_135:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:47:54.587Z"
+      "timestamp": "2026-10-26T15:47:54.587Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_136:C1": {
       "building_id": "OPT_B_136:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:47:57.227Z"
+      "timestamp": "2026-10-26T15:47:57.227Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_137:C1": {
       "building_id": "OPT_B_137:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:48:13.539Z"
+      "timestamp": "2026-10-26T15:48:13.539Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_138:C1": {
       "building_id": "OPT_B_138:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:48:22.201Z"
+      "timestamp": "2026-10-26T15:48:22.201Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_139:C1": {
       "building_id": "OPT_B_139:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:48:30.010Z"
+      "timestamp": "2026-10-26T15:48:30.010Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_140:C1": {
       "building_id": "OPT_B_140:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:48:46.241Z"
+      "timestamp": "2026-10-26T15:48:46.241Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_141:C1": {
       "building_id": "OPT_B_141:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:48:55.164Z"
+      "timestamp": "2026-10-26T15:48:55.164Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_142:C1": {
       "building_id": "OPT_B_142:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:49:00.694Z"
+      "timestamp": "2026-10-26T15:49:00.694Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_143:C1": {
       "building_id": "OPT_B_143:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:49:48.060Z"
+      "timestamp": "2026-10-26T15:49:48.060Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_144:C1": {
       "building_id": "OPT_B_144:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:50:13.945Z"
+      "timestamp": "2026-10-26T15:50:13.945Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_145:C1_DUP": {
       "building_id": "OPT_B_145:C1_DUP",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:44.758Z"
+      "timestamp": "2026-10-26T16:02:44.758Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_146:C1": {
       "building_id": "OPT_B_146:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:50:30.818Z"
+      "timestamp": "2026-10-26T15:50:30.818Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_147:C1": {
       "building_id": "OPT_B_147:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:50:39.190Z"
+      "timestamp": "2026-10-26T15:50:39.190Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_148:C1": {
       "building_id": "OPT_B_148:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:50:44.952Z"
+      "timestamp": "2026-10-26T15:50:44.952Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_149:C1": {
       "building_id": "OPT_B_149:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:50:51.656Z"
+      "timestamp": "2026-10-26T15:50:51.656Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_150:C1": {
       "building_id": "OPT_B_150:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:51:00.696Z"
+      "timestamp": "2026-10-26T15:51:00.696Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_151:C1": {
       "building_id": "OPT_B_151:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:51:07.399Z"
+      "timestamp": "2026-10-26T15:51:07.399Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_152:C1": {
       "building_id": "OPT_B_152:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:51:12.844Z"
+      "timestamp": "2026-10-26T15:51:12.844Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_153:C1": {
       "building_id": "OPT_B_153:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:51:21.763Z"
+      "timestamp": "2026-10-26T15:51:21.763Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_154:C1_DUP": {
       "building_id": "OPT_B_154:C1_DUP",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:52.956Z"
+      "timestamp": "2026-10-26T16:02:52.956Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_155:C1": {
       "building_id": "OPT_B_155:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:51:33.295Z"
+      "timestamp": "2026-10-26T15:51:33.295Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_156:C1": {
       "building_id": "OPT_B_156:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:51:41.103Z"
+      "timestamp": "2026-10-26T15:51:41.103Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_157:C1": {
       "building_id": "OPT_B_157:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:03.673Z"
+      "timestamp": "2026-10-26T15:52:03.673Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_157:C1_INCOMPLET": {
       "building_id": "OPT_B_157:C1_INCOMPLET",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T16:02:58.280Z"
+      "timestamp": "2026-10-26T16:02:58.280Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_158:C1": {
       "building_id": "OPT_B_158:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:11.609Z"
+      "timestamp": "2026-10-26T15:52:11.609Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_158:C1_INCOMPLET": {
       "building_id": "OPT_B_158:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:03:08.865Z"
+      "timestamp": "2026-10-26T16:03:08.865Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_159:C1": {
       "building_id": "OPT_B_159:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:14.009Z"
+      "timestamp": "2026-10-26T15:52:14.009Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_160:C1": {
       "building_id": "OPT_B_160:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:23.099Z"
+      "timestamp": "2026-10-26T15:52:23.099Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_161:C1": {
       "building_id": "OPT_B_161:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:31.823Z"
+      "timestamp": "2026-10-26T15:52:31.823Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_162:C1": {
       "building_id": "OPT_B_162:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:40.348Z"
+      "timestamp": "2026-10-26T15:52:40.348Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_163:C1": {
       "building_id": "OPT_B_163:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:45.688Z"
+      "timestamp": "2026-10-26T15:52:45.688Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_164:C1": {
       "building_id": "OPT_B_164:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:48.887Z"
+      "timestamp": "2026-10-26T15:52:48.887Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_165:C1": {
       "building_id": "OPT_B_165:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:52:55.930Z"
+      "timestamp": "2026-10-26T15:52:55.930Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_166:C1": {
       "building_id": "OPT_B_166:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:04.785Z"
+      "timestamp": "2026-10-26T15:53:04.785Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_167:C1": {
       "building_id": "OPT_B_167:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:07.767Z"
+      "timestamp": "2026-10-26T15:53:07.767Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_168:C1": {
       "building_id": "OPT_B_168:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:10.990Z"
+      "timestamp": "2026-10-26T15:53:10.990Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_169:C1": {
       "building_id": "OPT_B_169:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:13.249Z"
+      "timestamp": "2026-10-26T15:53:13.249Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_170:C1": {
       "building_id": "OPT_B_170:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:14.972Z"
+      "timestamp": "2026-10-26T15:53:14.972Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_171:C1": {
       "building_id": "OPT_B_171:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:23.872Z"
+      "timestamp": "2026-10-26T15:53:23.872Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_172:C1": {
       "building_id": "OPT_B_172:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:31.271Z"
+      "timestamp": "2026-10-26T15:53:31.271Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_173:C1": {
       "building_id": "OPT_B_173:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:39.914Z"
+      "timestamp": "2026-10-26T15:53:39.914Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_174:C1": {
       "building_id": "OPT_B_174:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:46.283Z"
+      "timestamp": "2026-10-26T15:53:46.283Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_175:C1": {
       "building_id": "OPT_B_175:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:53:54.959Z"
+      "timestamp": "2026-10-26T15:53:54.959Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_176:C1": {
       "building_id": "OPT_B_176:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:54:19.929Z"
+      "timestamp": "2026-10-26T15:54:19.929Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_177:C1": {
       "building_id": "OPT_B_177:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:54:27.769Z"
+      "timestamp": "2026-10-26T15:54:27.769Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_178:C1": {
       "building_id": "OPT_B_178:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:54:43.819Z"
+      "timestamp": "2026-10-26T15:54:43.819Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_179:C1": {
       "building_id": "OPT_B_179:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:54:46.753Z"
+      "timestamp": "2026-10-26T15:54:46.753Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_179:C1_INCOMPLET": {
       "building_id": "OPT_B_179:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:03:11.391Z"
+      "timestamp": "2026-10-26T16:03:11.391Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_180:C1": {
       "building_id": "OPT_B_180:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:55:07.425Z"
+      "timestamp": "2026-10-26T15:55:07.425Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_180:C1_INCOMPLET": {
       "building_id": "OPT_B_180:C1_INCOMPLET",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:03:20.652Z"
+      "timestamp": "2026-10-26T16:03:20.652Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_181:C1": {
       "building_id": "OPT_B_181:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:55:13.911Z"
+      "timestamp": "2026-10-26T15:55:13.911Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_182:C1": {
       "building_id": "OPT_B_182:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:55:22.054Z"
+      "timestamp": "2026-10-26T15:55:22.054Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_182:C1_INCOMPLET": {
       "building_id": "OPT_B_182:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:03:53.734Z"
+      "timestamp": "2026-10-26T16:03:53.734Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_183:C1": {
       "building_id": "OPT_B_183:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:55:26.431Z"
+      "timestamp": "2026-10-26T15:55:26.431Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_183:C1_INCOMPLET": {
       "building_id": "OPT_B_183:C1_INCOMPLET",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:00.390Z"
+      "timestamp": "2026-10-26T16:04:00.390Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_184:C1": {
       "building_id": "OPT_B_184:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:55:34.754Z"
+      "timestamp": "2026-10-26T15:55:34.754Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_184:C1_INCOMPLET": {
       "building_id": "OPT_B_184:C1_INCOMPLET",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:03.992Z"
+      "timestamp": "2026-10-26T16:04:03.992Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_185:C1": {
       "building_id": "OPT_B_185:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:55:46.131Z"
+      "timestamp": "2026-10-26T15:55:46.131Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_186:C1": {
       "building_id": "OPT_B_186:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:55:53.333Z"
+      "timestamp": "2026-10-26T15:55:53.333Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_186:C1_INCOMPLET": {
       "building_id": "OPT_B_186:C1_INCOMPLET",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:08.379Z"
+      "timestamp": "2026-10-26T16:04:08.379Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_187:C1": {
       "building_id": "OPT_B_187:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:56:11.534Z"
+      "timestamp": "2026-10-26T15:56:11.534Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_187:C1_INCOMPLET": {
       "building_id": "OPT_B_187:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:12.746Z"
+      "timestamp": "2026-10-26T16:04:12.746Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_188:C1": {
       "building_id": "OPT_B_188:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:56:21.226Z"
+      "timestamp": "2026-10-26T15:56:21.226Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_188:C1_INCOMPLET": {
       "building_id": "OPT_B_188:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:23.420Z"
+      "timestamp": "2026-10-26T16:04:23.420Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_189:C1": {
       "building_id": "OPT_B_189:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:56:28.769Z"
+      "timestamp": "2026-10-26T15:56:28.769Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_190:C1": {
       "building_id": "OPT_B_190:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:56:31.481Z"
+      "timestamp": "2026-10-26T15:56:31.481Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_191:C1": {
       "building_id": "OPT_B_191:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:56:38.408Z"
+      "timestamp": "2026-10-26T15:56:38.408Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_191:C1_INCOMPLET": {
       "building_id": "OPT_B_191:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:33.331Z"
+      "timestamp": "2026-10-26T16:04:33.331Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_192:C1": {
       "building_id": "OPT_B_192:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:56:41.291Z"
+      "timestamp": "2026-10-26T15:56:41.291Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_193:C1": {
       "building_id": "OPT_B_193:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:56:50.766Z"
+      "timestamp": "2026-10-26T15:56:50.766Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_193:C1_INCOMPLET": {
       "building_id": "OPT_B_193:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:46.242Z"
+      "timestamp": "2026-10-26T16:04:46.242Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_194:C1": {
       "building_id": "OPT_B_194:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:56:55.434Z"
+      "timestamp": "2026-10-26T15:56:55.434Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_194:C1_INCOMPLET": {
       "building_id": "OPT_B_194:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:53.324Z"
+      "timestamp": "2026-10-26T16:04:53.324Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_195:C1": {
       "building_id": "OPT_B_195:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:57:02.316Z"
+      "timestamp": "2026-10-26T15:57:02.316Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_195:C1_INCOMPLET": {
       "building_id": "OPT_B_195:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:04:57.731Z"
+      "timestamp": "2026-10-26T16:04:57.731Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_196:C1": {
       "building_id": "OPT_B_196:C1",
       "verdict": "MUTILATED",
       "notes": "",
-      "timestamp": "2026-10-26T15:57:12.307Z"
+      "timestamp": "2026-10-26T15:57:12.307Z",
+      "canonical_verdict": "MUTILAT_DEFORMATIE_MODEL"
     },
     "OPT_B_196:C1_INCOMPLET": {
       "building_id": "OPT_B_196:C1_INCOMPLET",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T16:05:08.341Z"
+      "timestamp": "2026-10-26T16:05:08.341Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_197:C1": {
       "building_id": "OPT_B_197:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:57:17.072Z"
+      "timestamp": "2026-10-26T15:57:17.072Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_197:C1_INCOMPLET": {
       "building_id": "OPT_B_197:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:05:12.450Z"
+      "timestamp": "2026-10-26T16:05:12.450Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_198:C1": {
       "building_id": "OPT_B_198:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:57:26.165Z"
+      "timestamp": "2026-10-26T15:57:26.165Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_199:C1": {
       "building_id": "OPT_B_199:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:57:29.973Z"
+      "timestamp": "2026-10-26T15:57:29.973Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_199:C1_INCOMPLET": {
       "building_id": "OPT_B_199:C1_INCOMPLET",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T16:05:16.613Z"
+      "timestamp": "2026-10-26T16:05:16.613Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_200:C1": {
       "building_id": "OPT_B_200:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:57:33.951Z"
+      "timestamp": "2026-10-26T15:57:33.951Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_201:C1": {
       "building_id": "OPT_B_201:C1",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T15:57:43.901Z"
+      "timestamp": "2026-10-26T15:57:43.901Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_201:C1_INCOMPLET": {
       "building_id": "OPT_B_201:C1_INCOMPLET",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T16:05:21.213Z"
+      "timestamp": "2026-10-26T16:05:21.213Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_202:C1": {
       "building_id": "OPT_B_202:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:59:32.177Z"
+      "timestamp": "2026-10-26T15:59:32.177Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_203:C1": {
       "building_id": "OPT_B_203:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:59:36.093Z"
+      "timestamp": "2026-10-26T15:59:36.093Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_204:C1": {
       "building_id": "OPT_B_204:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:59:38.516Z"
+      "timestamp": "2026-10-26T15:59:38.516Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_204:C1_INCOMPLET": {
       "building_id": "OPT_B_204:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:05:29.839Z"
+      "timestamp": "2026-10-26T16:05:29.839Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_205:C1": {
       "building_id": "OPT_B_205:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:59:39.968Z"
+      "timestamp": "2026-10-26T15:59:39.968Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_206:C1": {
       "building_id": "OPT_B_206:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:59:42.400Z"
+      "timestamp": "2026-10-26T15:59:42.400Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_207:C1": {
       "building_id": "OPT_B_207:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:59:47.493Z"
+      "timestamp": "2026-10-26T15:59:47.493Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_208:C1": {
       "building_id": "OPT_B_208:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T15:59:50.481Z"
+      "timestamp": "2026-10-26T15:59:50.481Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_209:C1": {
       "building_id": "OPT_B_209:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T15:59:53.864Z"
+      "timestamp": "2026-10-26T15:59:53.864Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_210:C1_FALS": {
       "building_id": "OPT_B_210:C1_FALS",
       "verdict": "FALSE_POS",
       "notes": "",
-      "timestamp": "2026-10-26T16:05:35.143Z"
+      "timestamp": "2026-10-26T16:05:35.143Z",
+      "canonical_verdict": "ELIMINAT_EROARE_MAJORA"
     },
     "OPT_B_211:C1": {
       "building_id": "OPT_B_211:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:00.754Z"
+      "timestamp": "2026-10-26T16:00:00.754Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_212:C1": {
       "building_id": "OPT_B_212:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:08.651Z"
+      "timestamp": "2026-10-26T16:00:08.651Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_212:C1_INCOMPLET": {
       "building_id": "OPT_B_212:C1_INCOMPLET",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:05:42.458Z"
+      "timestamp": "2026-10-26T16:05:42.458Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_213:C1": {
       "building_id": "OPT_B_213:C1",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:19.543Z"
+      "timestamp": "2026-10-26T16:00:19.543Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_213:C1_INCOMPLET": {
       "building_id": "OPT_B_213:C1_INCOMPLET",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:05:47.777Z"
+      "timestamp": "2026-10-26T16:05:47.777Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_214:C1": {
       "building_id": "OPT_B_214:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:24.670Z"
+      "timestamp": "2026-10-26T16:00:24.670Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_214:C1_INCOMPLET": {
       "building_id": "OPT_B_214:C1_INCOMPLET",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:06:00.722Z"
+      "timestamp": "2026-10-26T16:06:00.722Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_215:C1_DUP": {
       "building_id": "OPT_B_215:C1_DUP",
       "verdict": "CALCAN_ERROR",
       "notes": "",
-      "timestamp": "2026-10-26T16:06:04.433Z"
+      "timestamp": "2026-10-26T16:06:04.433Z",
+      "canonical_verdict": "AJUSTARE_CONTUR"
     },
     "OPT_B_216:C1": {
       "building_id": "OPT_B_216:C1",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:00:29.183Z"
+      "timestamp": "2026-10-26T16:00:29.183Z",
+      "canonical_verdict": "ADMIS"
     },
     "OPT_B_216:C1_INCOMPLET": {
       "building_id": "OPT_B_216:C1_INCOMPLET",
       "verdict": "ADMIS",
       "notes": "",
-      "timestamp": "2026-10-26T16:06:07.327Z"
+      "timestamp": "2026-10-26T16:06:07.327Z",
+      "canonical_verdict": "ADMIS"
     }
+  },
+  "terminology_schema": {
+    "ADMIS": "Formă 2D bună de acoperiș (dreptunghiulară sau articulată L/U/T)",
+    "AJUSTARE_CONTUR": "Înlocuiește 'CALCAN_ERROR' — clădire reală al cărei contur necesită ajustare (sub copac sau versant lipsă)",
+    "MUTILAT_DEFORMATIE_MODEL": "Înlocuiește 'MUTILATED' — deformație a modelului la marginea NoData considerată greșit drept clădire",
+    "ELIMINAT_EROARE_MAJORA": "Înlocuiește 'FALSE_POS' — clădire cu erori majore de vectorizare sau fals pozitiv de eliminat"
+  },
+  "deduplicated_2d_summary": {
+    "raw_total_cards": 242,
+    "suppressed_overlaps_count": 53,
+    "unique_physical_candidates": 189,
+    "unique_by_canonical_verdict": {
+      "ADMIS": 137,
+      "AJUSTARE_CONTUR": 40,
+      "MUTILAT_DEFORMATIE_MODEL": 1,
+      "ELIMINAT_EROARE_MAJORA": 11
+    },
+    "ajustari_repaired_by_v1_v6": 9,
+    "ajustari_remaining_for_a100_loop": 31
   }
 }
