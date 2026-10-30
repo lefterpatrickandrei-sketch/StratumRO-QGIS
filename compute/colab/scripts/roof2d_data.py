@@ -154,6 +154,10 @@ def augment_photometric(rgb01: np.ndarray, rng: np.random.Generator) -> np.ndarr
         x[..., 1] = np.where(green, x[..., 1] * (1 - 0.15 * a), x[..., 1])
     gray = x.mean(axis=2, keepdims=True)
     x = gray + (x - gray) * float(rng.uniform(0.6, 1.4))  # saturation
+    if rng.random() < 0.25:  # rotate hue: light / grey / dark roofs that the red-tile owner set lacks
+        x = x[..., rng.permutation(3)]
+    if rng.random() < 0.15:
+        x = np.repeat(x.mean(axis=2, keepdims=True), 3, axis=2)
     x = (x - 0.5) * float(rng.uniform(0.75, 1.25)) + 0.5 + float(rng.uniform(-0.12, 0.12))
     x = np.clip(x, 0.0, 1.0) ** float(rng.uniform(0.7, 1.4))
     if rng.random() < 0.4:  # hard cast shadow

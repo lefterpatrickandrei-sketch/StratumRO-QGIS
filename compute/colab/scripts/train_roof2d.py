@@ -96,10 +96,10 @@ def build_model(pretrained: bool = True, arch: str = "resnet34"):
     raise ValueError(f"unknown arch {arch!r}, expected one of {ARCHS}")
 
 
-def multitask_loss(logits, target):
+def multitask_loss(logits, target, contact_weight: float = 5.0):
     """logits (N,3,H,W) float; target (N,3|4,H,W) uint8: roof {0,1,255}, edge/corner {0,1}, optional contact {0,1}.
 
-    Contact pixels (shared walls between two owner roofs) weigh 5x in the outline loss.
+    Contact pixels (shared walls between two owner roofs) weigh ``contact_weight`` x in the outline loss.
     """
     import torch
     import torch.nn.functional as F
@@ -119,7 +119,7 @@ def multitask_loss(logits, target):
 
     t_edge = target[:, 1].float()
     pw = torch.tensor(4.0, device=logits.device)
-    w_edge = valid * (1.0 + 4.0 * target[:, 3].float()) if target.shape[1] > 3 else valid
+    w_edge = valid * (1.0 + (contact_weight - 1.0) * target[:, 3].float()) if target.shape[1] > 3 else valid
     edge_loss = (F.binary_cross_entropy_with_logits(logits[:, 1], t_edge, pos_weight=pw, reduction="none") * w_edge).sum() / n_valid
 
     t_c = target[:, 2].float()
@@ -228,7 +228,7 @@ def evaluate(model, crops, device, dtype):
 
 def train(data_dir: Path, out: Path, epochs: int, samples_per_epoch: int, batch_size: int, lr: float,
           init: Path | None = None, pseudo: Path | None = None, workers: int = 2, seed: int = 0,
-          arch: str = "resnet34") -> dict:
+          arch: str = "resnet34", contact_weight: float = 5.0) -> dict:
     import torch
     from torch.utils.data import DataLoader
 
@@ -260,7 +260,7 @@ def train(data_dir: Path, out: Path, epochs: int, samples_per_epoch: int, batch_
             x, y = x.to(device, non_blocking=True), y.to(device, non_blocking=True)
             with torch.autocast(device, dtype=dtype, enabled=device == "cuda"):
                 logits = model(x)
-            loss, comp = multitask_loss(logits.float(), y)
+            loss, comp = multitask_loss(logits.float(), y, contact_weight)
             opt.zero_grad(set_to_none=True)
             loss.backward()
             opt.step()
@@ -290,6 +290,7 @@ def train(data_dir: Path, out: Path, epochs: int, samples_per_epoch: int, batch_
         "pseudo_labels": str(pseudo) if pseudo else None,
         "init": str(init) if init else "imagenet",
         "arch": arch,
+        "contact_weight": contact_weight,
         "peak_vram_mib": round(torch.cuda.max_memory_allocated() / 2**20, 1) if device == "cuda" else None,
         "history": history,
     }

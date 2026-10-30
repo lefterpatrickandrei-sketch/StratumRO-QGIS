@@ -101,7 +101,7 @@ def git_sha() -> str:
 
 def run_loop(data: Path, out: Path, max_iterations: int, epochs_first: int, epochs_next: int,
              samples_per_epoch: int, batch_size: int, workers: int, lr: float,
-             arch: str = "resnet34", seed: int = 0) -> Dict[str, Any]:
+             arch: str = "resnet34", seed: int = 0, contact_weight: float = 5.0) -> Dict[str, Any]:
     from scan_roof2d_aoi import scan
     from train_roof2d import train
 
@@ -118,7 +118,8 @@ def run_loop(data: Path, out: Path, max_iterations: int, epochs_first: int, epoc
             tm = json.loads(done_train.read_text(encoding="utf-8"))
         else:
             tm = train(data, it_dir, epochs_first if it == 1 else epochs_next, samples_per_epoch, batch_size,
-                       lr if it == 1 else lr * 0.5, init, pseudo, workers, seed=seed + it, arch=arch)
+                       lr if it == 1 else lr * 0.5, init, pseudo, workers, seed=seed + it, arch=arch,
+                       contact_weight=contact_weight)
         if done_scan.is_file():
             sm = json.loads(done_scan.read_text(encoding="utf-8"))
         else:
@@ -217,6 +218,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--lr", type=float, default=5e-4)
     parser.add_argument("--arch", default="resnet34", help="resnet34 | convnext_tiny | convnext_small")
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--contact-weight", type=float, default=5.0)
     parser.add_argument("--export-final", type=Path, help="write the best iteration of --out to this GeoPackage and exit")
     args = parser.parse_args(argv)
     if args.export_final:
@@ -224,7 +226,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         return 0
     report = run_loop(args.data, args.out, args.max_iterations, args.epochs_first, args.epochs_next,
                       args.samples_per_epoch, args.batch_size, args.workers, args.lr, arch=args.arch,
-                      seed=args.seed)
+                      seed=args.seed, contact_weight=args.contact_weight)
     print(json.dumps({k: report[k] for k in ("stop_reason", "iterations_run", "best_iteration")}))
     return 0
 

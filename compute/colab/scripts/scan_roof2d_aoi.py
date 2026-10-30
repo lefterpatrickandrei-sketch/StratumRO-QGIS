@@ -180,6 +180,68 @@ def snap_rectilinear(poly, simplify_m: float = 0.5):
     return rotate(out, ang, origin=c)
 
 
+def zone_mean(prob: np.ndarray, transform, geom) -> float:
+    """Mean of a probability raster inside a (small) geometry, computed on its bounding window only."""
+    from rasterio.transform import Affine
+
+    minx, miny, maxx, maxy = geom.bounds
+    c0, r0 = ~transform * (minx, maxy)
+    c1, r1 = ~transform * (maxx, miny)
+    c0, r0 = max(int(np.floor(c0)), 0), max(int(np.floor(r0)), 0)
+    c1, r1 = min(int(np.ceil(c1)) + 1, prob.shape[1]), min(int(np.ceil(r1)) + 1, prob.shape[0])
+    if c1 <= c0 or r1 <= r0:
+        return 1.0
+    m = rasterize([geom], transform * Affine.translation(c0, r0), (r1 - r0, c1 - c0), all_touched=True)
+    return float(prob[r0:r1, c0:c1][m].mean()) if m.any() else 1.0
+
+
+def merge_fragments(items, edge_p: np.ndarray, transform, gap_m: float = 0.4, wall_thr: float = 0.5):
+    """Union touching pieces of one roof that the outline head split on an internal ridge.
+
+    Two raw instances closer than ``gap_m`` merge when the mean outline probability on their shared border
+    is below ``wall_thr``: a trained wall between two houses scores high, a roof ridge scores low.
+    ``items`` is [(polygon, prob)]; returns the same shape (prob = area-weighted mean).
+    """
+    from shapely.geometry import Polygon
+    from shapely.ops import unary_union
+    from shapely.strtree import STRtree
+
+    n = len(items)
+    parent = list(range(n))
+
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    geoms = [g for g, _ in items]
+    tree = STRtree(geoms) if geoms else None
+    for i, g in enumerate(geoms):
+        for j in tree.query(g.buffer(gap_m)):
+            if j <= i or g.distance(geoms[j]) > gap_m:
+                continue
+            border = g.buffer(gap_m).intersection(geoms[j].buffer(gap_m))
+            if border.is_empty or border.area < 0.5:
+                continue
+            if zone_mean(edge_p, transform, border) < wall_thr:
+                parent[find(i)] = find(j)
+    groups: dict = {}
+    for i in range(n):
+        groups.setdefault(find(i), []).append(i)
+    out = []
+    for idx in groups.values():
+        if len(idx) == 1:
+            out.append(items[idx[0]])
+            continue
+        u = unary_union([geoms[i].buffer(gap_m / 2) for i in idx]).buffer(-gap_m / 2)
+        if u.geom_type != "Polygon":
+            u = max(u.geoms, key=lambda x: x.area)
+        area = sum(geoms[i].area for i in idx)
+        out.append((Polygon(u.exterior.coords), sum(items[i][1] * geoms[i].area for i in idx) / area))
+    return out
+
+
 def regularize(poly):
     """simplify(0.6 m) -> orthogonalize_cad; jagged results try snap_rectilinear, then the MRR."""
     from shapely.geometry import Polygon
@@ -291,7 +353,8 @@ def iou_against(ref, preds, tree):
 
 
 def scan(data_dir: Path, ckpt: Path | None, out: Path, thr: float = 0.45, pseudo_min_prob: float = 0.75,
-         probs_path: Path | None = None, edge_thr: float = 0.25) -> dict:
+         probs_path: Path | None = None, edge_thr: float = 0.25, wall_thr: float = 0.5,
+         min_prob: float = 0.0) -> dict:
     import geopandas as gpd
     import rasterio
     import torch
@@ -323,6 +386,11 @@ def scan(data_dir: Path, ckpt: Path | None, out: Path, thr: float = 0.45, pseudo
     fp_known = float((painted & (owner_roof == 0)).sum() / max(painted.sum(), 1))
     roof_share = float(painted.mean())
     raw = vectorize(probs[0].astype(np.float32), probs[1].astype(np.float32), transform, thr, edge_thr=edge_thr)
+    n_raw = len(raw)
+    if wall_thr > 0:
+        raw = merge_fragments(raw, probs[1].astype(np.float32), transform, wall_thr=wall_thr)
+    n_low = sum(1 for _, prob in raw if prob < min_prob)
+    raw = [(p, prob) for p, prob in raw if prob >= min_prob]
     resolved, n_dropped = resolve_overlaps([(regularize(p), prob) for p, prob in raw])
     records = []
     for i, (poly, prob, clipped) in enumerate(resolved):
@@ -408,7 +476,11 @@ def scan(data_dir: Path, ckpt: Path | None, out: Path, thr: float = 0.45, pseudo
 
     metrics = {
         "status": "PROPOSAL_PENDING_OWNER_REVIEW",
-        "params": {"roof_thr": thr, "edge_thr": edge_thr, "probs_from_file": str(probs_path) if probs_path else None},
+        "params": {"roof_thr": thr, "edge_thr": edge_thr, "wall_thr": wall_thr, "min_prob": min_prob,
+                   "probs_from_file": str(probs_path) if probs_path else None},
+        "raw_instances": n_raw,
+        "merged_fragments": n_raw - len(raw) - n_low,
+        "dropped_low_probability": n_low,
         "proposals": len(records),
         "roof_pixel_share_of_aoi": round(roof_share, 4),
         "roof_pixels_on_known_background": round(fp_known, 4),
@@ -502,10 +574,13 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--thr", type=float, default=0.45)
     ap.add_argument("--edge-thr", type=float, default=0.25)
+    ap.add_argument("--wall-thr", type=float, default=0.5, help="merge pieces whose shared border scores below this; 0 = off")
+    ap.add_argument("--min-prob", type=float, default=0.0, help="drop proposals with lower mean roof probability")
     args = ap.parse_args(argv)
     if not args.ckpt and not args.probs:
         ap.error("--ckpt or --probs is required")
-    print(json.dumps(scan(args.data, args.ckpt, args.out, args.thr, probs_path=args.probs, edge_thr=args.edge_thr), indent=2))
+    print(json.dumps(scan(args.data, args.ckpt, args.out, args.thr, probs_path=args.probs, edge_thr=args.edge_thr,
+                          wall_thr=args.wall_thr, min_prob=args.min_prob), indent=2))
     return 0
 
 
