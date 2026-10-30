@@ -1,0 +1,13 @@
+{
+  "source_proposals": "workspace\\colab_runs\\loop_b1\\final_postproc\\roof2d_proposals_epsg3844.gpkg",
+  "rest_hypotheses": 264,
+  "filter": {
+    "in_review": 174,
+    "no_model_match": 84,
+    "not_elevated": 2,
+    "v1_v6_fail": 3,
+    "kept": 1
+  },
+  "tree_negative_polygons": 644,
+  "tree_negative_m2": 37510.0
+}

@@ -1,0 +1,312 @@
+[
+  {
+    "building_id": "OPT_B_202:C1",
+    "split": "train",
+    "match": "R2D_00334",
+    "all_six": true,
+    "iou_with_before": 0.2678,
+    "area_before_m2": 273.4,
+    "area_after_m2": 829.8,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_090:C1",
+    "split": "train",
+    "match": "R2D_00234",
+    "all_six": false,
+    "iou_with_before": 0.2732,
+    "area_before_m2": 225.1,
+    "area_after_m2": 365.8,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_144:C1",
+    "split": "train",
+    "match": "R2D_00147",
+    "all_six": false,
+    "iou_with_before": 0.177,
+    "area_before_m2": 143.8,
+    "area_after_m2": 361.9,
+    "summary": "V1=X | V2=OK | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_205:C1",
+    "split": "train",
+    "match": "R2D_00200",
+    "all_six": false,
+    "iou_with_before": 0.1035,
+    "area_before_m2": 138.1,
+    "area_after_m2": 601.3,
+    "summary": "V1=X | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_157:C1",
+    "split": "val",
+    "match": "R2D_00284",
+    "all_six": false,
+    "iou_with_before": 0.2356,
+    "area_before_m2": 138.1,
+    "area_after_m2": 464.5,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_130:C1",
+    "split": "train",
+    "match": "R2D_00175",
+    "all_six": true,
+    "iou_with_before": 0.3732,
+    "area_before_m2": 99.5,
+    "area_after_m2": 49.8,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_163:C1",
+    "split": "val",
+    "match": "R2D_00285",
+    "all_six": false,
+    "iou_with_before": 0.167,
+    "area_before_m2": 93.5,
+    "area_after_m2": 560.1,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_075:C1",
+    "split": "train",
+    "match": "R2D_00111",
+    "all_six": false,
+    "iou_with_before": 0.6698,
+    "area_before_m2": 91.5,
+    "area_after_m2": 65.9,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_128:C1",
+    "split": "train",
+    "match": "R2D_00201",
+    "all_six": true,
+    "iou_with_before": 0.1943,
+    "area_before_m2": 87.7,
+    "area_after_m2": 192.1,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_141:C1",
+    "split": "buffer",
+    "match": "R2D_00263",
+    "all_six": false,
+    "iou_with_before": 0.027,
+    "area_before_m2": 79.4,
+    "area_after_m2": 1480.9,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=X | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_137:C1",
+    "split": "val",
+    "match": "R2D_00351",
+    "all_six": false,
+    "iou_with_before": 0.3937,
+    "area_before_m2": 78.4,
+    "area_after_m2": 39.0,
+    "summary": "V1=OK | V2=X | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_122:C1",
+    "split": "train",
+    "match": "R2D_00315",
+    "all_six": false,
+    "iou_with_before": 0.0344,
+    "area_before_m2": 77.8,
+    "area_after_m2": 990.4,
+    "summary": "V1=X | V2=OK | V3=X | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_173:C1",
+    "split": "train",
+    "match": "R2D_00180",
+    "all_six": false,
+    "iou_with_before": 0.3856,
+    "area_before_m2": 77.6,
+    "area_after_m2": 189.1,
+    "summary": "V1=X | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_135:C1",
+    "split": "train",
+    "match": "R2D_00218",
+    "all_six": true,
+    "iou_with_before": 0.2496,
+    "area_before_m2": 65.7,
+    "area_after_m2": 61.5,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_048:C1",
+    "split": "train",
+    "match": "R2D_00183",
+    "all_six": false,
+    "iou_with_before": 0.4441,
+    "area_before_m2": 62.8,
+    "area_after_m2": 37.8,
+    "summary": "V1=X | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_113:C1",
+    "split": "train",
+    "match": "R2D_00198",
+    "all_six": false,
+    "iou_with_before": 0.2994,
+    "area_before_m2": 62.2,
+    "area_after_m2": 18.6,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_192:C1",
+    "split": "train",
+    "match": "R2D_00397",
+    "all_six": true,
+    "iou_with_before": 0.4236,
+    "area_before_m2": 59.8,
+    "area_after_m2": 26.1,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_139:C1",
+    "split": "train",
+    "match": "R2D_00222",
+    "all_six": false,
+    "iou_with_before": 0.1048,
+    "area_before_m2": 48.7,
+    "area_after_m2": 215.3,
+    "summary": "V1=X | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_041:C1_DUP",
+    "split": "train",
+    "match": "R2D_00121",
+    "all_six": true,
+    "iou_with_before": 0.1235,
+    "area_before_m2": 44.7,
+    "area_after_m2": 221.5,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_213:C1",
+    "split": "train",
+    "match": "R2D_00063",
+    "all_six": false,
+    "iou_with_before": 0.7594,
+    "area_before_m2": 42.3,
+    "area_after_m2": 44.7,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=X | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_071:C1",
+    "split": "train",
+    "match": "R2D_00132",
+    "all_six": false,
+    "iou_with_before": 0.6976,
+    "area_before_m2": 39.6,
+    "area_after_m2": 46.8,
+    "summary": "V1=X | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_175:C1",
+    "split": "train",
+    "match": "R2D_00224",
+    "all_six": false,
+    "iou_with_before": 0.1149,
+    "area_before_m2": 37.9,
+    "area_after_m2": 280.6,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_180:C1",
+    "split": "train",
+    "match": "R2D_00207",
+    "all_six": false,
+    "iou_with_before": 0.5069,
+    "area_before_m2": 37.7,
+    "area_after_m2": 67.7,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_133:C1",
+    "split": "train",
+    "match": "R2D_00298",
+    "all_six": false,
+    "iou_with_before": 0.0342,
+    "area_before_m2": 35.2,
+    "area_after_m2": 481.1,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=X | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_166:C1",
+    "split": "train",
+    "match": "R2D_00281",
+    "all_six": false,
+    "iou_with_before": 0.0311,
+    "area_before_m2": 35.1,
+    "area_after_m2": 1128.0,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_138:C1",
+    "split": "train",
+    "match": "R2D_00271",
+    "all_six": false,
+    "iou_with_before": 0.2811,
+    "area_before_m2": 29.5,
+    "area_after_m2": 87.1,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_177:C1",
+    "split": "train",
+    "match": "R2D_00139",
+    "all_six": false,
+    "iou_with_before": 0.1806,
+    "area_before_m2": 24.5,
+    "area_after_m2": 47.4,
+    "summary": "V1=X | V2=X | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_127:C1",
+    "split": "buffer",
+    "match": "R2D_00283",
+    "all_six": false,
+    "iou_with_before": 0.0312,
+    "area_before_m2": 22.4,
+    "area_after_m2": 717.7,
+    "summary": "V1=X | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_032:C1_DUP",
+    "split": "train",
+    "match": "R2D_00332",
+    "all_six": true,
+    "iou_with_before": 0.4764,
+    "area_before_m2": 21.4,
+    "area_after_m2": 31.8,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_146:C1",
+    "split": "buffer",
+    "match": "R2D_00254",
+    "all_six": false,
+    "iou_with_before": 0.0984,
+    "area_before_m2": 21.1,
+    "area_after_m2": 201.0,
+    "summary": "V1=X | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_183:C1",
+    "split": "val",
+    "match": null,
+    "all_six": false,
+    "iou_with_before": 0.0,
+    "area_before_m2": 19.5,
+    "area_after_m2": 0.0,
+    "summary": "NOT_DETECTED"
+  }
+]

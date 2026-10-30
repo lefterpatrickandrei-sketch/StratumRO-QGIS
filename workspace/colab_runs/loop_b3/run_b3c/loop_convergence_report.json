@@ -1,0 +1,63 @@
+{
+  "crs": "EPSG:3844",
+  "phase": "Phase 1 - 2D roof outlines from RGB orthophoto (no LiDAR input)",
+  "status": "PROPOSAL_PENDING_OWNER_REVIEW",
+  "git_sha": "f6159b52ce9f67689a665b8c36cf173263a28ddd",
+  "data_manifest": "workspace/colab_2d_roof_dataset_v3/manifest.json",
+  "targets": {
+    "admis_val_mean_iou": 0.9,
+    "ortho_45_90_share": 0.98,
+    "nodata_contact": 0,
+    "overlaps": 0
+  },
+  "stop_reason": "max_iterations",
+  "iterations_run": 1,
+  "best_iteration": 1,
+  "history": [
+    {
+      "iteration": 1,
+      "device": "NVIDIA A100-SXM4-40GB",
+      "best_val_pixel_iou": 0.685,
+      "pseudo_labels_in": null,
+      "roof_pixel_share_of_aoi": 0.0936,
+      "roof_pixels_on_known_background": 0.0365,
+      "proposals": 495,
+      "all_six_passed": 138,
+      "gate_pass_rates": {
+        "V1_VISUAL_CHIP": 0.6626,
+        "V2_WHOLE_ROOF": 0.6727,
+        "V3_TREE_OCCLUSION_L_SHAPE": 0.9717,
+        "V4_ORTHO_SHAPE": 0.6303,
+        "V5_ANTI_ARTIFACT_NODATA": 0.804,
+        "V6_PLANAR_NMS_OVERLAP": 1.0
+      },
+      "angles": {
+        "vertices": 4751,
+        "ortho_45_90_share": 0.5395
+      },
+      "admis_iou_val": {
+        "n": 31,
+        "mean_iou": 0.4154,
+        "median_iou": 0.3688,
+        "share_iou_ge_0_90": 0.0,
+        "detected_iou_ge_0_50": 0.3548
+      },
+      "admis_iou_train_seen": {
+        "n": 93,
+        "mean_iou": 0.8257,
+        "median_iou": 0.9141,
+        "share_iou_ge_0_90": 0.5806,
+        "detected_iou_ge_0_50": 0.8817
+      },
+      "targets_detected": 30,
+      "targets_all_six": 7,
+      "hard_negatives_hit": 3,
+      "v5_nodata_touching_proposals": 102,
+      "v6_overlapping_proposals": 12,
+      "new_proposals_not_in_review": 324,
+      "new_proposals_all_six": 56,
+      "pseudo_roofs": 82,
+      "minutes": 13.7
+    }
+  ]
+}
