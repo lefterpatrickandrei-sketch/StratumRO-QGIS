@@ -112,9 +112,16 @@ def run_loop(data: Path, out: Path, max_iterations: int, epochs_first: int, epoc
     for it in range(1, max_iterations + 1):
         t0 = time.time()
         it_dir = out / f"iter_{it:02d}"
-        tm = train(data, it_dir, epochs_first if it == 1 else epochs_next, samples_per_epoch, batch_size,
-                   lr if it == 1 else lr * 0.5, init, pseudo, workers)
-        sm = scan(data, it_dir / "best.pt", it_dir / "scan")
+        done_train, done_scan = it_dir / "train_metrics.json", it_dir / "scan" / "scan_metrics.json"
+        if done_train.is_file():  # resume after a crash or a recycled VM
+            tm = json.loads(done_train.read_text(encoding="utf-8"))
+        else:
+            tm = train(data, it_dir, epochs_first if it == 1 else epochs_next, samples_per_epoch, batch_size,
+                       lr if it == 1 else lr * 0.5, init, pseudo, workers)
+        if done_scan.is_file():
+            sm = json.loads(done_scan.read_text(encoding="utf-8"))
+        else:
+            sm = scan(data, it_dir / "best.pt", it_dir / "scan")
         rec = {
             "iteration": it,
             "device": tm["device"],
