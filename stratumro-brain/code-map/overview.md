@@ -3,14 +3,14 @@ type: code-map
 status: verified
 author: scripts/code_map.py
 source_type: repo
-created: 2026-10-29
+created: 2026-10-30
 cssclasses:
   - note-codemap
 ---
 # Repository overview
 
 > [!info] Generated page
-> Built from commit `e31f00d` on 2026-10-29. 3396 tracked files. Do not edit by hand; run `python scripts/code_map.py` again.
+> Built from commit `4a9ec9c` on 2026-10-30. 3405 tracked files. Do not edit by hand; run `python scripts/code_map.py` again.
 
 | Folder | Tracked files | Size (MB) | Python lines |
 |---|---:|---:|---:|
@@ -18,17 +18,17 @@ cssclasses:
 | junk | 424 | 71.1 | 0 |
 | stratum_ro | 246 | 1.5 | 34907 |
 | tools | 235 | 1.9 | 42606 |
-| docs | 130 | 21.1 | 0 |
+| docs | 131 | 21.1 | 0 |
 | reports | 121 | 4.9 | 1515 |
-| stratumro-brain | 72 | 1.4 | 334 |
+| stratumro-brain | 75 | 1.4 | 334 |
 | national_server | 63 | 9.1 | 0 |
 | .agents | 46 | 0.2 | 0 |
 | scripts | 41 | 0.2 | 4264 |
 | projects | 36 | 0.3 | 1504 |
 | (root files) | 29 | 0.2 | 1471 |
 | data | 23 | 1.8 | 0 |
+| compute | 20 | 0.1 | 2464 |
 | perplexity AI | 16 | 4.8 | 0 |
-| compute | 15 | 0.1 | 1386 |
 | mcp | 7 | 0.0 | 674 |
 | engine | 6 | 0.1 | 2039 |
 | .github | 3 | 0.0 | 0 |
@@ -37,4 +37,4 @@ cssclasses:
 | models | 1 | 15.8 | 0 |
 | tasks | 1 | 0.0 | 0 |
 
-Total: 3396 files. Repository: https://lefterpatrickandrei-sketch@github.com/lefterpatrickandrei-sketch/StratumRO-QGIS.
+Total: 3405 files. Repository: https://lefterpatrickandrei-sketch@github.com/lefterpatrickandrei-sketch/StratumRO-QGIS.

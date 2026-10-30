@@ -1,0 +1,39 @@
+{
+  "status": "PROPOSAL_PENDING_OWNER_REVIEW",
+  "proposals": 594,
+  "all_six_passed": 109,
+  "gate_pass_rates": {
+    "V1_VISUAL_CHIP": 0.7475,
+    "V2_WHOLE_ROOF": 0.8098,
+    "V3_TREE_OCCLUSION_L_SHAPE": 0.9579,
+    "V4_ORTHO_SHAPE": 0.4899,
+    "V5_ANTI_ARTIFACT_NODATA": 0.8232,
+    "V6_PLANAR_NMS_OVERLAP": 1.0
+  },
+  "v6_overlapping_proposals": 218,
+  "v5_nodata_touching_proposals": 94,
+  "angles": {
+    "vertices": 4760,
+    "ortho_45_90_share": 0.4221
+  },
+  "admis_iou_val": {
+    "n": 31,
+    "mean_iou": 0.5281,
+    "median_iou": 0.5443,
+    "share_iou_ge_0_90": 0.129,
+    "detected_iou_ge_0_50": 0.5161
+  },
+  "admis_iou_train_seen": {
+    "n": 93,
+    "mean_iou": 0.8096,
+    "median_iou": 0.8575,
+    "share_iou_ge_0_90": 0.3118,
+    "detected_iou_ge_0_50": 0.9247
+  },
+  "targets_detected": 26,
+  "targets_all_six": 5,
+  "hard_negatives_hit": 2,
+  "new_proposals_not_in_review": 388,
+  "new_proposals_all_six": 51,
+  "pseudo_roofs": 103
+}

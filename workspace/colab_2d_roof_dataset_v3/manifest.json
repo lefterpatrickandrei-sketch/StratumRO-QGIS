@@ -1,0 +1,85 @@
+{
+  "schema_version": "3.0.0-phase1-2d-rgb-aoi",
+  "crs": "EPSG:3844",
+  "gsd_m": 0.15,
+  "input_channels": [
+    "R",
+    "G",
+    "B"
+  ],
+  "uses_lidar_heights_as_input": false,
+  "lidar_ndsm_used_for_labels": true,
+  "label_policy": "1=owner ADMIS; 0=owner hard negatives + 0.3..1.2m ring outside ADMIS + nDSM<1m ground (eroded 2m, >1m from any candidate); 255=everything else incl. AJUSTARE, heuristic repairs, other catalog candidates, NoData, split buffer",
+  "split": {
+    "rule": "north/south on Stereo70 Y",
+    "val_min_y": 585715.0,
+    "buffer_m": 30.0
+  },
+  "shape_hw": [
+    6991,
+    6991
+  ],
+  "transform": [
+    0.15,
+    0.0,
+    390529.390651,
+    0.0,
+    -0.15,
+    585886.305047
+  ],
+  "sources": {
+    "tiles": [
+      "workspace/output/cache_tile_Cluj-0-0.tif",
+      "workspace/output/cache_tile_Cluj-0-1.tif",
+      "workspace/output/cache_tile_Cluj-0-2.tif",
+      "workspace/output/cache_tile_Cluj-1-0.tif",
+      "workspace/output/cache_tile_Cluj-1-1.tif",
+      "workspace/output/cache_tile_Cluj-1-2.tif",
+      "workspace/output/cache_tile_Cluj-2-0.tif",
+      "workspace/output/cache_tile_Cluj-2-1.tif"
+    ],
+    "gpkg": "workspace/reviews/opera_review_deduplicated_20261029.gpkg",
+    "gpkg_sha256": "596c760241177311358bb9fe42451b8fc00ad7a6bdbe065dcffb8e3dc8ceb8fa",
+    "catalog_html": "workspace/reviews/catalog_cladiri_ortofoto.html",
+    "ndsm": "workspace/derived/cluj_ndsm_1m.tif"
+  },
+  "counts": {
+    "positives_admis": 137,
+    "positives_by_split": {
+      "train": 93,
+      "val": 31
+    },
+    "targets_ajustare": 31,
+    "targets_by_split": {
+      "train": 24,
+      "val": 4
+    },
+    "repaired_ignored": 9,
+    "hard_negatives": 12,
+    "other_catalog_ignored": 3
+  },
+  "pixel_fractions": {
+    "roof_1": 0.0199,
+    "roof_0": 0.1035,
+    "ignore_255": 0.8766,
+    "train_known": 0.1086,
+    "val_known": 0.0101
+  },
+  "files": {
+    "aoi_rgb.tif": {
+      "sha256": "410a3f67ec3aaeddefbba94237c16697fb07804c94e83e615a4e62e578a6041a"
+    },
+    "label_roof.tif": {
+      "sha256": "3f99179a4bef9827b4306eb4402553e7156ffdc486dfa13bf92bc22db8605d6f"
+    },
+    "label_edge.tif": {
+      "sha256": "eabbbda8fa91055ec5e3ee04e69e6ef10741142f6d28b2f50cac5643a6792edb"
+    },
+    "label_corner.tif": {
+      "sha256": "63038fde220daf4b50bc75a42dc5dcb842acf8fb171f15edc52702d72e533830"
+    },
+    "split.tif": {
+      "sha256": "43746feae829455d59d1628de974f8c9a56bdc31c02a96070a50462e5e051e3a"
+    }
+  }
+}

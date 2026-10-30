@@ -3,14 +3,14 @@ type: code-map
 status: verified
 author: scripts/code_map.py
 source_type: repo
-created: 2026-10-29
+created: 2026-10-30
 cssclasses:
   - note-codemap
 ---
 # Python packages
 
 > [!info] Generated page
-> Built from commit `e31f00d` on 2026-10-29. One row per sub-package. Do not edit by hand; run `python scripts/code_map.py` again.
+> Built from commit `4a9ec9c` on 2026-10-30. One row per sub-package. Do not edit by hand; run `python scripts/code_map.py` again.
 
 ## engine
 
