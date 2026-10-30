@@ -10,8 +10,10 @@ Roof label raster (uint8):
   255 everything else (ignore_index): AJUSTARE targets (layer 3), heuristic repairs (layer 2, no owner
       verdict yet), other catalog candidates, unreviewed area, orthophoto NoData, split buffer.
 
-Edge / corner rasters are 1 on ADMIS outlines (~0.3 m band) / vertices (~0.45 m disks), else 0. They are
-only supervised where the roof label is not 255.
+Edge / corner rasters are 1 on ADMIS outlines (~0.5 m band) / vertices (~0.45 m disks), else 0. The contact
+raster is 1 where two distinct ADMIS roofs come within 0.6 m (shared walls of terraced houses); training puts
+extra weight on the outline there so touching roofs stay separate instances. Edge / corner / contact are only
+supervised where the roof label is not 255.
 """
 from __future__ import annotations
 
@@ -71,14 +73,15 @@ def build_label_rasters(
     negatives: list,
     ignore: list,
     ground: np.ndarray | None = None,
-) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Return (roof, edge, corner) uint8 rasters for the partial-label policy in the module docstring.
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Return (roof, edge, corner, contact) uint8 rasters for the partial-label policy in the module docstring.
 
     positives / negatives / ignore are shapely polygons in the grid CRS (metres). ``ground`` is an optional
     boolean raster of confident ground pixels (already eroded) on the same grid.
     """
     from shapely.geometry import Point
     from shapely.ops import unary_union
+    from shapely.strtree import STRtree
 
     shape = rgb.shape[:2]
     roof = np.full(shape, IGNORE, dtype=np.uint8)
@@ -101,16 +104,27 @@ def build_label_rasters(
 
     edge = np.zeros(shape, dtype=np.uint8)
     corner = np.zeros(shape, dtype=np.uint8)
+    contact = np.zeros(shape, dtype=np.uint8)
     if positives:
-        edge[rasterize([p.exterior.buffer(0.18) for p in positives], transform, shape, all_touched=True)] = 1
+        edge[rasterize([p.exterior.buffer(0.25) for p in positives], transform, shape, all_touched=True)] = 1
         pts = [Point(xy).buffer(0.45) for p in positives for xy in corner_points(p)]
         corner[rasterize(pts, transform, shape, all_touched=True)] = 1
+        tree = STRtree(positives)
+        zones = []
+        for i, p in enumerate(positives):
+            for j in tree.query(p.buffer(0.6)):
+                if j > i and p.distance(positives[j]) < 0.6:
+                    zones.append(p.buffer(0.6).intersection(positives[j].buffer(0.6)))
+        if zones:
+            contact[rasterize(zones, transform, shape, all_touched=True)] = 1
+            edge[contact == 1] = 1
 
     nodata = rgb.astype(np.int32).sum(axis=2) <= 15
     roof[nodata] = IGNORE
     edge[nodata] = 0
     corner[nodata] = 0
-    return roof, edge, corner
+    contact[nodata] = 0
+    return roof, edge, corner, contact
 
 
 def split_raster(transform, shape, val_min_y: float, buffer_m: float = 30.0) -> np.ndarray:

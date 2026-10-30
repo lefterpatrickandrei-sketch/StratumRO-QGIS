@@ -69,7 +69,8 @@ def predict_aoi(model, rgb: np.ndarray, device: str, tile: int = 512, overlap: i
     return out.astype(np.float16)
 
 
-def vectorize(roof_p: np.ndarray, edge_p: np.ndarray, transform, thr: float = 0.5, min_area_m2: float = 12.0):
+def vectorize(roof_p: np.ndarray, edge_p: np.ndarray, transform, thr: float = 0.45, min_area_m2: float = 12.0,
+              edge_thr: float = 0.25):
     """Split touching roofs on the outline head, grow seeds back over the roof mask, trace outlines.
 
     Returns a list of (shapely Polygon in EPSG:3844, mean roof probability).
@@ -88,7 +89,7 @@ def vectorize(roof_p: np.ndarray, edge_p: np.ndarray, transform, thr: float = 0.
         sub_roof = roof[sl] & (comps[sl] > 0)
         if sub_roof.sum() * px_area < min_area_m2:
             continue
-        seeds, n = ndimage.label(sub_roof & (edge_p[sl] < 0.5))
+        seeds, n = ndimage.label(sub_roof & (edge_p[sl] < edge_thr))
         if n > 1:
             sizes = ndimage.sum(np.ones_like(seeds), seeds, index=np.arange(1, n + 1))
             for k, s in enumerate(sizes, start=1):
@@ -116,8 +117,57 @@ def vectorize(roof_p: np.ndarray, edge_p: np.ndarray, transform, thr: float = 0.
     return out
 
 
+def snap_rectilinear(poly, simplify_m: float = 0.5):
+    """Strict 90-degree outline in the polygon's dominant (MRR) frame, or None.
+
+    Each simplified edge is classed horizontal / vertical in the rotated frame; runs of one class merge into
+    a single line at their length-weighted mean offset; consecutive lines intersect into the new corners.
+    Used when orthogonalize_cad keeps a model blob on its curved-shape branch.
+    """
+    import math
+
+    from shapely.affinity import rotate
+    from shapely.geometry import Polygon
+
+    mrr = np.asarray(poly.minimum_rotated_rectangle.exterior.coords)
+    d = mrr[1] - mrr[0]
+    ang = math.degrees(math.atan2(d[1], d[0]))
+    c = poly.centroid
+    rp = rotate(poly, -ang, origin=c).simplify(simplify_m, preserve_topology=True)
+    if rp.geom_type != "Polygon" or rp.is_empty:
+        return None
+    pts = np.asarray(rp.exterior.coords)[:-1]
+    lines = []  # (cls, offset, weight); cls 0 = horizontal (y const), 1 = vertical (x const)
+    for i in range(len(pts)):
+        a, b = pts[i], pts[(i + 1) % len(pts)]
+        dx, dy = b - a
+        length = math.hypot(dx, dy)
+        if length < 1e-6:
+            continue
+        cls = 0 if abs(dx) >= abs(dy) else 1
+        off = (a[1] + b[1]) / 2 if cls == 0 else (a[0] + b[0]) / 2
+        if lines and lines[-1][0] == cls:
+            pc, po, pw = lines[-1]
+            lines[-1] = (cls, (po * pw + off * length) / (pw + length), pw + length)
+        else:
+            lines.append((cls, off, length))
+    if len(lines) > 1 and lines[0][0] == lines[-1][0]:
+        (c0, o0, w0), (c1, o1, w1) = lines[0], lines.pop()
+        lines[0] = (c0, (o0 * w0 + o1 * w1) / (w0 + w1), w0 + w1)
+    if len(lines) < 4 or len(lines) % 2:
+        return None
+    corners = []
+    for i in range(len(lines)):
+        l1, l2 = lines[i], lines[(i + 1) % len(lines)]
+        corners.append((l2[1], l1[1]) if l1[0] == 0 else (l1[1], l2[1]))
+    out = Polygon(corners)
+    if not out.is_valid or out.is_empty:
+        return None
+    return rotate(out, ang, origin=c)
+
+
 def regularize(poly):
-    """simplify(0.6 m) -> orthogonalize_cad; near-rectangles that stay jagged fall back to their MRR."""
+    """simplify(0.6 m) -> orthogonalize_cad; jagged results try snap_rectilinear, then the MRR."""
     from shapely.geometry import Polygon
 
     from stratum_ro.core.geometry.regularizer import compute_orthogonality_ratio, orthogonalize_cad
@@ -130,10 +180,49 @@ def regularize(poly):
         reg = simple
     reg = Polygon(reg.exterior.coords)
     if compute_orthogonality_ratio(reg) < 0.95 or len(reg.exterior.coords) - 1 > 16:
+        rect = snap_rectilinear(poly)
+        if rect is not None and len(rect.exterior.coords) - 1 <= 16 and \
+                poly.intersection(rect).area / max(poly.union(rect).area, 1e-6) >= 0.80:
+            return Polygon(rect.exterior.coords)
         mrr = poly.minimum_rotated_rectangle
-        if poly.intersection(mrr).area / max(poly.union(mrr).area, 1e-6) >= 0.80:
+        if poly.intersection(mrr).area / max(poly.union(mrr).area, 1e-6) >= 0.75:
             return Polygon(mrr.exterior.coords)
     return reg
+
+
+def resolve_overlaps(items, min_keep: float = 0.5, min_area_m2: float = 12.0):
+    """Planar partition: walk proposals by descending probability, clip each by the ones already kept.
+
+    ``items`` is a list of (polygon, prob). A proposal that keeps less than ``min_keep`` of its area (or less
+    than ``min_area_m2``) is dropped as a double vectorization. Returns (kept [(poly, prob, clipped)], dropped).
+    """
+    from shapely.geometry import Polygon
+    from shapely.ops import unary_union
+    from shapely.strtree import STRtree
+
+    order = sorted(range(len(items)), key=lambda k: -items[k][1])
+    tree = STRtree([g for g, _ in items]) if items else None
+    kept, dropped, kept_geoms = [], 0, {}
+    for k in order:
+        g, prob = items[k]
+        near = [kept_geoms[j] for j in (tree.query(g) if tree else []) if j in kept_geoms]
+        clipped = False
+        if near:
+            blocker = unary_union(near)
+            if g.intersection(blocker).area > 0.05:
+                rest = g.difference(blocker.buffer(0.02))
+                if rest.geom_type != "Polygon":
+                    rest = max(getattr(rest, "geoms", [Polygon()]), key=lambda x: x.area)
+                if rest.is_empty or rest.area < max(min_area_m2, min_keep * g.area):
+                    dropped += 1
+                    continue
+                g, clipped = Polygon(rest.exterior.coords).simplify(0.05), True
+                reg = regularize(g)  # re-square the cut, unless that re-enters the stronger neighbour
+                if reg.is_valid and reg.intersection(blocker).area < 0.25:
+                    g = reg
+        kept_geoms[k] = g
+        kept.append((g, prob, clipped))
+    return kept, dropped
 
 
 def chip_for(poly, rgb: np.ndarray, transform, margin_m: float = 6.0):
@@ -182,7 +271,8 @@ def iou_against(ref, preds, tree):
     return float(u.intersection(ref).area / max(u.union(ref).area, 1e-6)), hits
 
 
-def scan(data_dir: Path, ckpt: Path, out: Path, thr: float = 0.5, pseudo_min_prob: float = 0.75) -> dict:
+def scan(data_dir: Path, ckpt: Path | None, out: Path, thr: float = 0.45, pseudo_min_prob: float = 0.75,
+         probs_path: Path | None = None, edge_thr: float = 0.25) -> dict:
     import geopandas as gpd
     import rasterio
     import torch
@@ -197,17 +287,22 @@ def scan(data_dir: Path, ckpt: Path, out: Path, thr: float = 0.5, pseudo_min_pro
         rgb = np.moveaxis(src.read(), 0, -1)
         transform, profile = src.transform, src.profile
     split = rasterio.open(data_dir / "split.tif").read(1)
-    model = build_model(pretrained=False).to(device)
-    model.load_state_dict(torch.load(ckpt, map_location=device)["model"])
-    probs = predict_aoi(model, rgb, device)
-    prof1 = {**profile, "count": 3, "dtype": "uint8"}
-    with rasterio.open(out / "probs_roof_edge_corner.tif", "w", **prof1) as dst:
-        dst.write((probs.astype(np.float32) * 255).round().astype(np.uint8))
+    if probs_path is not None:  # re-vectorize a saved probability raster, no GPU needed
+        with rasterio.open(probs_path) as src:
+            probs = src.read().astype(np.float32) / 255.0
+    else:
+        model = build_model(pretrained=False).to(device)
+        model.load_state_dict(torch.load(ckpt, map_location=device)["model"])
+        probs = predict_aoi(model, rgb, device)
+        prof1 = {**profile, "count": 3, "dtype": "uint8"}
+        with rasterio.open(out / "probs_roof_edge_corner.tif", "w", **prof1) as dst:
+            dst.write((probs.astype(np.float32) * 255).round().astype(np.uint8))
 
-    raw = vectorize(probs[0].astype(np.float32), probs[1].astype(np.float32), transform, thr)
+    raw = vectorize(probs[0].astype(np.float32), probs[1].astype(np.float32), transform, thr, edge_thr=edge_thr)
+    resolved, n_dropped = resolve_overlaps([(regularize(p), prob) for p, prob in raw])
     records = []
-    for i, (poly_raw, prob) in enumerate(raw):
-        poly = regularize(poly_raw)
+    for i, (poly, prob, clipped) in enumerate(resolved):
+        poly_raw = poly
         chip, px, ext, chip_t = chip_for(poly, rgb, transform)
         touches = bool((rasterize([poly.buffer(1.0)], chip_t, chip.shape[:2], all_touched=True) & (chip.max(axis=2) == 0)).any())
         rep = evaluate_building_simultaneously(
@@ -216,7 +311,16 @@ def scan(data_dir: Path, ckpt: Path, out: Path, thr: float = 0.5, pseudo_min_pro
         )
         final = rep.repaired_polygon_s70 or poly
         records.append({"id": f"R2D_{i:05d}", "poly_raw": poly_raw, "geometry": final, "mean_prob": prob, "rep": rep,
-                        "repaired": rep.repaired_polygon_s70 is not None})
+                        "repaired": rep.repaired_polygon_s70 is not None, "clipped": clipped})
+
+    # V1..V6 auto-repairs (MRR corner completion) may re-grow into a stronger neighbour: undo those repairs
+    rtree = STRtree([r["geometry"] for r in records]) if records else None
+    for k in sorted(range(len(records)), key=lambda k: -records[k]["mean_prob"]):
+        r = records[k]
+        if r["repaired"] and any(j != k and records[j]["mean_prob"] >= r["mean_prob"]
+                                 and r["geometry"].intersection(records[j]["geometry"]).area >= 0.25
+                                 for j in rtree.query(r["geometry"])):
+            r["geometry"], r["repaired"] = r["poly_raw"], False
 
     # V6: planar overlap against higher-probability proposals
     order = sorted(range(len(records)), key=lambda k: -records[k]["mean_prob"])
@@ -280,7 +384,10 @@ def scan(data_dir: Path, ckpt: Path, out: Path, thr: float = 0.5, pseudo_min_pro
 
     metrics = {
         "status": "PROPOSAL_PENDING_OWNER_REVIEW",
+        "params": {"roof_thr": thr, "edge_thr": edge_thr, "probs_from_file": str(probs_path) if probs_path else None},
         "proposals": len(records),
+        "dropped_double_vectorizations": n_dropped,
+        "clipped_by_stronger_neighbour": sum(r["clipped"] for r in records),
         "all_six_passed": sum(r["all_six"] for r in records),
         "gate_pass_rates": {g: round(float(np.mean([r["rep"].gates[g].passed for r in records])), 4)
                             for g in (records[0]["rep"].gates if records else {})},
@@ -364,11 +471,15 @@ def render_target_sheet(rgb, transform, targets, by_id, target_rows, path: Path,
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data", type=Path, required=True)
-    ap.add_argument("--ckpt", type=Path, required=True)
+    ap.add_argument("--ckpt", type=Path)
+    ap.add_argument("--probs", type=Path, help="saved probs_roof_edge_corner.tif instead of running the model")
     ap.add_argument("--out", type=Path, required=True)
-    ap.add_argument("--thr", type=float, default=0.5)
+    ap.add_argument("--thr", type=float, default=0.45)
+    ap.add_argument("--edge-thr", type=float, default=0.25)
     args = ap.parse_args(argv)
-    print(json.dumps(scan(args.data, args.ckpt, args.out, args.thr), indent=2))
+    if not args.ckpt and not args.probs:
+        ap.error("--ckpt or --probs is required")
+    print(json.dumps(scan(args.data, args.ckpt, args.out, args.thr, probs_path=args.probs, edge_thr=args.edge_thr), indent=2))
     return 0
 
 

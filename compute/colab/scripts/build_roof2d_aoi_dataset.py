@@ -6,7 +6,7 @@ bbox instead of the chip extent. Here everything shares the orthophoto grid (0.1
 for the label policy.
 
     python compute/colab/scripts/build_roof2d_aoi_dataset.py            # defaults below
-Outputs (out-dir): aoi_rgb.tif, label_roof.tif, label_edge.tif, label_corner.tif, split.tif, manifest.json
+Outputs (out-dir): aoi_rgb.tif, label_{roof,edge,corner,contact}.tif, split.tif, manifest.json
 """
 from __future__ import annotations
 
@@ -91,7 +91,7 @@ def build(tiles: list[Path], gpkg: Path, html: Path, ndsm: Path | None, out_dir:
     ignore = layers["repaired"] + layers["target"] + others
     ground = ground_mask(ndsm, transform, shape) if ndsm else None
 
-    roof, edge, corner = build_label_rasters(rgb, transform, positives, layers["negative"], ignore, ground)
+    roof, edge, corner, contact = build_label_rasters(rgb, transform, positives, layers["negative"], ignore, ground)
     split = split_raster(transform, shape, val_min_y)
     roof_train = roof.copy()
     roof_train[split != SPLIT_TRAIN] = IGNORE  # what training is allowed to see
@@ -103,6 +103,7 @@ def build(tiles: list[Path], gpkg: Path, html: Path, ndsm: Path | None, out_dir:
         "label_roof.tif": roof[None],
         "label_edge.tif": edge[None],
         "label_corner.tif": corner[None],
+        "label_contact.tif": contact[None],
         "split.tif": split[None],
     }
     for name, arr in files.items():
@@ -147,6 +148,7 @@ def build(tiles: list[Path], gpkg: Path, html: Path, ndsm: Path | None, out_dir:
         },
         "pixel_fractions": {
             "roof_1": round(float(np.mean(roof == 1)), 4),
+            "contact_1": round(float(np.mean(contact == 1)), 5),
             "roof_0": round(float(np.mean(roof == 0)), 4),
             "ignore_255": round(float(np.mean(roof == IGNORE)), 4),
             "train_known": round(float(np.mean(roof_train != IGNORE)), 4),

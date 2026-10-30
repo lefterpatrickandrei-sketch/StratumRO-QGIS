@@ -67,7 +67,10 @@ def build_model(pretrained: bool = True):
 
 
 def multitask_loss(logits, target):
-    """logits (N,3,H,W) float; target (N,3,H,W) uint8 with roof in {0,1,255}, edge/corner in {0,1}."""
+    """logits (N,3,H,W) float; target (N,3|4,H,W) uint8: roof {0,1,255}, edge/corner {0,1}, optional contact {0,1}.
+
+    Contact pixels (shared walls between two owner roofs) weigh 5x in the outline loss.
+    """
     import torch
     import torch.nn.functional as F
 
@@ -86,7 +89,8 @@ def multitask_loss(logits, target):
 
     t_edge = target[:, 1].float()
     pw = torch.tensor(4.0, device=logits.device)
-    edge_loss = (F.binary_cross_entropy_with_logits(logits[:, 1], t_edge, pos_weight=pw, reduction="none") * valid).sum() / n_valid
+    w_edge = valid * (1.0 + 4.0 * target[:, 3].float()) if target.shape[1] > 3 else valid
+    edge_loss = (F.binary_cross_entropy_with_logits(logits[:, 1], t_edge, pos_weight=pw, reduction="none") * w_edge).sum() / n_valid
 
     t_c = target[:, 2].float()
     pc = torch.sigmoid(logits[:, 2])
@@ -100,13 +104,14 @@ def multitask_loss(logits, target):
 
 
 def load_rasters(data_dir: Path):
-    """Return rgb (H,W,3), owner labels (3,H,W) [roof, edge, corner], split (H,W), transform."""
+    """Return rgb (H,W,3), owner labels (C,H,W) [roof, edge, corner(, contact)], split (H,W), transform."""
     import rasterio
 
     with rasterio.open(data_dir / "aoi_rgb.tif") as src:
         rgb = np.moveaxis(src.read(), 0, -1)
         transform = src.transform
-    labels = np.stack([rasterio.open(data_dir / f"label_{k}.tif").read(1) for k in ("roof", "edge", "corner")])
+    names = [k for k in ("roof", "edge", "corner", "contact") if (data_dir / f"label_{k}.tif").is_file()]
+    labels = np.stack([rasterio.open(data_dir / f"label_{k}.tif").read(1) for k in names])
     split = rasterio.open(data_dir / "split.tif").read(1)
     return rgb, labels, split, transform
 
