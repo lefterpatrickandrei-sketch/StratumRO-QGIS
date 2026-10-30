@@ -1,59 +1,39 @@
 # -*- coding: utf-8 -*-
 """
-StratumRO — Colab Pro A100 Continuous 2D Roof Training, Reprompting & 6-Form Validation Loop
-=============================================================================================
-Executes the iterative loop for Phase 1 (2D Cadastral Roof Shape Extraction from RGB Orthophotos,
-Domain-Generalizable to Any Zone/UAT without LiDAR dependency):
+StratumRO - Phase 1 continuous 2D roof loop (RGB only, EPSG:3844), local RTX 4050 or Colab A100.
 
-For each iteration k = 1 .. max_iterations:
-  1. Multi-Task 2D Roof + Boundary Edge + Corner Vertex Training (bfloat16 on A100):
-     - Trains only on 3-channel RGB tiles with hierarchical labels:
-       1 = ADMIS + REPAIRED (Gold 2D Roofs)
-       0 = Background + Non-Overlapping Hard Negatives (ELIMINAT / MUTILAT)
-       255 = ignore_index on incomplete AJUSTARE_TINTA_A100 & black NoData borders
-     - Heavy photometric & seasonal augmentation (Summer Green <-> Autumn Rust, shadows,
-       0.10m..0.25m GSD rescaling) so weights transfer to any city/village in Romania.
-  2. Targeted Multi-Box & Negative-Point Reprompting on `AJUSTARE_TINTA_A100`:
-     - Generates asymmetric directional search boxes and negative foliage/border prompts
-       for incomplete roofs (e.g., single-slope fragments, complex roofs).
-  3. Simultaneous 6-Form Validation (V1..V6 in parallel):
-     - Evaluates every candidate simultaneously on:
-       * V1: Visual Chip & Photometric Edge SNR
-       * V2: Whole-Roof Structural Continuation (Anti-Single-Slope)
-       * V3: Tree-Crown Occlusion vs. Real Architectural L/U/T Shape
-       * V4: 90°/45° Cadastral Orthogonality & Minimum Edge Length
-       * V5: Anti-Deformation NoData Border & Semantic Purity
-       * V6: Hierarchical Planar NMS & Zero Double-Vectorization
-  4. Active Curriculum Promotion & Convergence Check:
-     - Candidates passing all 6 forms (V1..V6) simultaneously are promoted to `ADMIS_GOLD_2D`
-       for iteration k+1.
-     - Loop terminates when convergence thresholds are achieved or `max_iterations` is reached.
+Each iteration k:
+  1. Train the multi-task roof / outline / corner UNet (train_roof2d.py) on owner labels plus the
+     pseudo roofs of iteration k-1 (they only fill pixels that are still ignore_index=255).
+  2. Scan the whole AOI (scan_roof2d_aoi.py): sliding-window inference, instance split on the outline
+     head, regularization, and the simultaneous V1..V6 gates (stratum_ro.core.qa_qc) on every polygon.
+  3. Proposals that pass all six gates with mean roof probability >= 0.75 become the pseudo roofs of
+     iteration k+1 (PSEUDO_GOLD_2D, status PENDING_OWNER_REVIEW - never ADMIS).
+  4. Stop on the convergence targets (val ADMIS mean IoU >= 0.90, >= 98 % 45/90 deg vertices, no NoData
+     contact, no overlaps), on a plateau (val IoU gain < 0.01 and pseudo set change < 5 %), or at
+     ``--max-iterations``.
+
+Writes <out>/loop_convergence_report.json and one folder per iteration (checkpoints, GeoPackage,
+before/after sheet for the AJUSTARE targets). Everything is a proposal for owner review.
+
+Earlier versions evaluated V3/V4 on the building bbox instead of the polygon and did no training;
+that heuristic loop was removed.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import math
+import subprocess
 import sys
 import time
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 import numpy as np
-from PIL import Image, ImageDraw
-from shapely.geometry import Point, Polygon
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 REPO_ROOT = Path(__file__).resolve().parents[3]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
-
-from stratum_ro.core.qa_qc.simultaneous_2d_validator import (
-    evaluate_building_simultaneously,
-    validate_v1_visual_chip,
-    validate_v2_whole_roof_continuation,
-    validate_v3_tree_occlusion_vs_l_shape,
-)
 
 
 def compute_multitask_2d_loss_numpy(
@@ -99,252 +79,100 @@ def compute_multitask_2d_loss_numpy(
     }
 
 
-def generate_reprompt_boxes_and_points(
-    rgb: np.ndarray,
-    roof_px: List[List[float]],
-    bounds_s70: List[float],
-    iteration: int,
-) -> Tuple[Polygon, List[List[float]], Dict[str, Any]]:
-    """
-    Iterative Multi-Prompt Proposal Generator for `AJUSTARE_TINTA_A100` buildings:
-    Uses directional gradient & bilateral roof-plane search across the RGB chip
-    (simulating / driving SAM 2.1 multi-box + positive second-slope prompt + negative
-    tree/ground point prompt) and selects the candidate contour that maximizes the
-    Simultaneous 6-Form Validation score (V1..V6).
-    """
-    h, w = rgb.shape[:2]
-    poly_px = Polygon(roof_px)
-    if not poly_px.is_valid:
-        poly_px = poly_px.buffer(0)
-    mrr_px = poly_px.minimum_rotated_rectangle
-    coords = list(mrr_px.exterior.coords)[:-1]
-    if len(coords) != 4:
-        minx, miny, maxx, maxy = bounds_s70
-        return Polygon([(minx, miny), (maxx, miny), (maxx, maxy), (minx, maxy)]), roof_px, {"prompt_type": "noop"}
-
-    # Compute gradient magnitude on the chip to find strong parallel roof eaves
-    gray = (
-        0.299 * rgb[:, :, 0].astype(np.float32)
-        + 0.587 * rgb[:, :, 1].astype(np.float32)
-        + 0.114 * rgb[:, :, 2].astype(np.float32)
+def converged(m: Dict[str, Any]) -> bool:
+    val = m["admis_iou_val"]["mean_iou"] or 0.0
+    return (
+        val >= 0.90
+        and m["angles"]["ortho_45_90_share"] >= 0.98
+        and m["v5_nodata_touching_proposals"] == 0
+        and m["v6_overlapping_proposals"] == 0
     )
-    gy = np.gradient(gray, axis=0)
-    gx = np.gradient(gray, axis=1)
-    grad_mag = np.hypot(gx, gy)
-
-    pts_base = [np.array(c, dtype=np.float64) for c in coords]
-    best_pts = [p.copy() for p in pts_base]
-    best_v1 = validate_v1_visual_chip(rgb, [(p[0], p[1]) for p in roof_px]).score
-
-    # Search outward along the 4 oriented rectangle normals for strong parallel eave edges
-    search_reach = min(20 + iteration * 12, 56)
-    applied_shifts: List[str] = []
-
-    for i in range(4):
-        p1, p2 = best_pts[i], best_pts[(i + 1) % 4]
-        seg = p2 - p1
-        seg_len = float(np.linalg.norm(seg))
-        if seg_len < 14.0:
-            continue
-        t_vec = seg / seg_len
-        n_cand = np.array([-t_vec[1], t_vec[0]])
-        mid = 0.5 * (p1 + p2)
-        out_n = n_cand if not mrr_px.contains(Point(mid[0] + n_cand[0] * 3.0, mid[1] + n_cand[1] * 3.0)) else -n_cand
-
-        best_d = 0.0
-        best_edge_strength = 0.0
-        for d in range(6, search_reach, 3):
-            ts = np.linspace(0.15, 0.85, 9)
-            g_vals = []
-            dark_count = 0
-            for t in ts:
-                bx, by = p1 + t * seg + out_n * float(d)
-                ix, iy = int(round(bx)), int(round(by))
-                if 6 <= ix < w - 6 and 6 <= iy < h - 6:
-                    if int(rgb[iy, ix, 0]) + int(rgb[iy, ix, 1]) + int(rgb[iy, ix, 2]) <= 30:
-                        dark_count += 1
-                    g_vals.append(float(grad_mag[iy, ix]))
-            if dark_count > 1 or len(g_vals) < 6:
-                break
-            mean_g = float(np.mean(g_vals))
-            if mean_g > best_edge_strength and mean_g >= 18.0:
-                # Test candidate polygon with V1..V6 simultaneous gates
-                cand_pts = [p.copy() for p in best_pts]
-                cand_pts[i] = cand_pts[i] + out_n * float(d)
-                cand_pts[(i + 1) % 4] = cand_pts[(i + 1) % 4] + out_n * float(d)
-                cand_ring = [(float(p[0]), float(p[1])) for p in cand_pts] + [
-                    (float(cand_pts[0][0]), float(cand_pts[0][1]))
-                ]
-                v1_cand = validate_v1_visual_chip(rgb, cand_ring)
-                v2_cand = validate_v2_whole_roof_continuation(rgb, cand_ring)
-                if v1_cand.score >= best_v1 + 0.02 and v2_cand.passed:
-                    best_edge_strength = mean_g
-                    best_d = float(d)
-                    best_v1 = v1_cand.score
-
-        if best_d >= 6.0:
-            best_pts[i] = best_pts[i] + out_n * best_d
-            best_pts[(i + 1) % 4] = best_pts[(i + 1) % 4] + out_n * best_d
-            applied_shifts.append(f"edge_{i}+={best_d:.0f}px")
-
-    new_px = [[round(float(p[0]), 1), round(float(p[1]), 1)] for p in best_pts]
-    new_px.append(new_px[0])
-
-    minx, miny, maxx, maxy = bounds_s70
-    s70_ring = []
-    for px_x, px_y in new_px:
-        sx = minx + (px_x / float(w)) * (maxx - minx)
-        sy = maxy - (px_y / float(h)) * (maxy - miny)
-        s70_ring.append((round(sx, 3), round(sy, 3)))
-    new_poly_s70 = Polygon(s70_ring)
-
-    return new_poly_s70, new_px, {
-        "iteration": iteration,
-        "applied_shifts": applied_shifts,
-        "v1_score_after": round(best_v1, 4),
-    }
 
 
-def run_continuous_2d_loop(
-    manifest_path: Path,
-    out_dir: Path,
-    max_iterations: int = 3,
-    target_confidence: float = 0.85,
-) -> Dict[str, Any]:
-    """
-    Executes the Continuous 2D Roof Training, Reprompting & Simultaneous 6-Form Validation Loop.
-    """
-    out_dir.mkdir(parents=True, exist_ok=True)
-    dataset_dir = manifest_path.parent
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    tiles = manifest["tiles"]
-
-    has_cuda = False
-    gpu_name = "CPU-Deterministic-Verifier (Colab Pro A100 Ready)"
+def git_sha() -> str:
+    for p in (Path("/content/GIT_SHA"), REPO_ROOT / "GIT_SHA"):
+        if p.is_file():
+            return p.read_text().strip()
     try:
-        import torch
-        if torch.cuda.is_available():
-            has_cuda = True
-            gpu_name = torch.cuda.get_device_name(0)
-    except ImportError:
-        pass
+        return subprocess.check_output(["git", "-C", str(REPO_ROOT), "rev-parse", "HEAD"], text=True).strip()
+    except Exception:
+        return "unknown"
 
+
+def run_loop(data: Path, out: Path, max_iterations: int, epochs_first: int, epochs_next: int,
+             samples_per_epoch: int, batch_size: int, workers: int, lr: float) -> Dict[str, Any]:
+    from scan_roof2d_aoi import scan
+    from train_roof2d import train
+
+    out.mkdir(parents=True, exist_ok=True)
     history: List[Dict[str, Any]] = []
-    promoted_ids: Dict[str, Dict[str, Any]] = {}
-
+    init: Optional[Path] = None
+    pseudo: Optional[Path] = None
+    stop_reason = "max_iterations"
     for it in range(1, max_iterations + 1):
         t0 = time.time()
-        all_passed_count = 0
-        conf_scores: List[float] = []
-        newly_promoted_this_iter: List[str] = []
-
-        for tile in tiles:
-            bid = tile["id"]
-            cat = tile["category"]
-            if cat == "ELIMINAT":
-                continue
-
-            rgb_path = dataset_dir / tile["rgb"]
-            if not rgb_path.is_file():
-                continue
-            rgb = np.array(Image.open(rgb_path).convert("RGB"))
-            roof_px = tile["roof_px"]
-            bounds_s70 = tile["bounds_s70"]
-            minx, miny, maxx, maxy = bounds_s70
-            poly_s70 = Polygon([(minx, miny), (maxx, miny), (maxx, maxy), (minx, maxy)])
-
-            if bid in promoted_ids:
-                roof_px = promoted_ids[bid]["roof_px"]
-                poly_s70 = promoted_ids[bid]["poly_s70"]
-            elif cat == "AJUSTARE_TINTA_A100":
-                poly_s70, roof_px, prompt_meta = generate_reprompt_boxes_and_points(
-                    rgb, roof_px, bounds_s70, iteration=it
-                )
-
-            report = evaluate_building_simultaneously(
-                building_id=bid,
-                raw_verdict="ADMIS" if cat in ("ADMIS", "REPAIRED") else "AJUSTARE_CONTUR",
-                rgb=rgb,
-                roof_px=roof_px,
-                poly_s70=poly_s70,
-                bounds_s70=bounds_s70,
-                touches_nodata_flag=1 if "_INCOMPLET" in bid else 0,
-                auto_repair=True,
-            )
-
-            conf_scores.append(report.composite_confidence)
-            if report.all_six_passed:
-                all_passed_count += 1
-                if cat == "AJUSTARE_TINTA_A100" and bid not in promoted_ids:
-                    promoted_ids[bid] = {
-                        "roof_px": report.repaired_roof_px or roof_px,
-                        "poly_s70": report.repaired_polygon_s70 or poly_s70,
-                        "promoted_at_iter": it,
-                        "confidence": round(report.composite_confidence, 4),
-                    }
-                    newly_promoted_this_iter.append(bid)
-
-        mean_conf = float(np.mean(conf_scores)) if conf_scores else 0.0
-        iter_summary = {
+        it_dir = out / f"iter_{it:02d}"
+        tm = train(data, it_dir, epochs_first if it == 1 else epochs_next, samples_per_epoch, batch_size,
+                   lr if it == 1 else lr * 0.5, init, pseudo, workers)
+        sm = scan(data, it_dir / "best.pt", it_dir / "scan")
+        rec = {
             "iteration": it,
-            "gpu_device": gpu_name,
-            "evaluated_roof_candidates": len(conf_scores),
-            "all_six_forms_passed_count": all_passed_count,
-            "mean_v1_to_v6_confidence": round(mean_conf, 4),
-            "newly_promoted_from_ajustare": newly_promoted_this_iter,
-            "total_promoted_from_ajustare": len(promoted_ids),
-            "elapsed_sec": round(time.time() - t0, 3),
+            "device": tm["device"],
+            "best_val_pixel_iou": tm["best_val_pixel_iou"],
+            "pseudo_labels_in": str(pseudo) if pseudo else None,
+            **{k: sm[k] for k in ("proposals", "all_six_passed", "gate_pass_rates", "angles", "admis_iou_val",
+                                  "admis_iou_train_seen", "targets_detected", "targets_all_six",
+                                  "hard_negatives_hit", "v5_nodata_touching_proposals",
+                                  "v6_overlapping_proposals", "new_proposals_not_in_review",
+                                  "new_proposals_all_six", "pseudo_roofs")},
+            "minutes": round((time.time() - t0) / 60, 1),
         }
-        history.append(iter_summary)
-        print(
-            f"[Loop Iter {it}/{max_iterations}] Device={gpu_name} | "
-            f"V1..V6 All Passed={all_passed_count}/{len(conf_scores)} | "
-            f"Mean Conf={mean_conf:.4f} | Promoted={len(promoted_ids)}"
-        )
-
-        if mean_conf >= target_confidence and not newly_promoted_this_iter and it >= 2:
+        history.append(rec)
+        print(json.dumps(rec), flush=True)
+        init, pseudo = it_dir / "best.pt", it_dir / "scan" / "pseudo_roofs.tif"
+        if converged(sm):
+            stop_reason = "converged_all_targets"
             break
+        if len(history) >= 2:
+            a, b = history[-2], history[-1]
+            gain = (b["admis_iou_val"]["mean_iou"] or 0) - (a["admis_iou_val"]["mean_iou"] or 0)
+            change = abs(b["pseudo_roofs"] - a["pseudo_roofs"]) / max(a["pseudo_roofs"], 1)
+            if gain < 0.01 and change < 0.05:
+                stop_reason = "plateau"
+                break
 
-    convergence_report = {
+    best = max(history, key=lambda h: h["admis_iou_val"]["mean_iou"] or 0)
+    report = {
         "crs": "EPSG:3844",
-        "phase": "Phase 1 — 2D Cadastral Roof Shape Extraction (Generalizable RGB)",
-        "validation_protocol": "Simultaneous 6-Form Validation (V1..V6)",
-        "gpu_target": "A100",
-        "device_used": gpu_name,
-        "has_cuda": has_cuda,
+        "phase": "Phase 1 - 2D roof outlines from RGB orthophoto (no LiDAR input)",
+        "status": "PROPOSAL_PENDING_OWNER_REVIEW",
+        "git_sha": git_sha(),
+        "data_manifest": str(data / "manifest.json"),
+        "targets": {"admis_val_mean_iou": 0.90, "ortho_45_90_share": 0.98, "nodata_contact": 0, "overlaps": 0},
+        "stop_reason": stop_reason,
         "iterations_run": len(history),
-        "final_mean_v1_to_v6_confidence": history[-1]["mean_v1_to_v6_confidence"] if history else 0.0,
-        "total_promoted_ajustare_ids": sorted(promoted_ids.keys()),
+        "best_iteration": best["iteration"],
         "history": history,
     }
-
-    report_path = out_dir / "loop_convergence_report.json"
-    report_path.write_text(json.dumps(convergence_report, indent=2, ensure_ascii=False), encoding="utf-8")
-    return convergence_report
+    (out / "loop_convergence_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    return report
 
 
 def main(argv: Optional[List[str]] = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--manifest",
-        type=Path,
-        default=REPO_ROOT / "workspace" / "colab_2d_roof_dataset" / "manifest_2d_roofs.json",
-    )
-    parser.add_argument(
-        "--out-dir",
-        type=Path,
-        default=REPO_ROOT / "workspace" / "colab_2d_roof_dataset" / "runs",
-    )
-    parser.add_argument("--max-iterations", type=int, default=3)
-    parser.add_argument("--target-confidence", type=float, default=0.88)
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--data", type=Path, default=REPO_ROOT / "workspace" / "colab_2d_roof_dataset_v3")
+    parser.add_argument("--out", type=Path, default=REPO_ROOT / "workspace" / "colab_runs" / "continuous_2d")
+    parser.add_argument("--max-iterations", type=int, default=4)
+    parser.add_argument("--epochs-first", type=int, default=40)
+    parser.add_argument("--epochs-next", type=int, default=15)
+    parser.add_argument("--samples-per-epoch", type=int, default=640)
+    parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--workers", type=int, default=0)
+    parser.add_argument("--lr", type=float, default=5e-4)
     args = parser.parse_args(argv)
-
-    run_continuous_2d_loop(
-        manifest_path=args.manifest,
-        out_dir=args.out_dir,
-        max_iterations=args.max_iterations,
-        target_confidence=args.target_confidence,
-    )
+    report = run_loop(args.data, args.out, args.max_iterations, args.epochs_first, args.epochs_next,
+                      args.samples_per_epoch, args.batch_size, args.workers, args.lr)
+    print(json.dumps({k: report[k] for k in ("stop_reason", "iterations_run", "best_iteration")}))
     return 0
 
 
