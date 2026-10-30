@@ -96,7 +96,7 @@ def multitask_loss(logits, target):
     corner_loss = (alpha * (1 - pt) ** 2 * ce * valid).sum() / n_valid * 10.0
 
     total = 1.0 * roof_loss + 0.5 * edge_loss + 0.5 * corner_loss
-    return total, {"roof": float(roof_loss), "edge": float(edge_loss), "corner": float(corner_loss)}
+    return total, {"roof": float(roof_loss.detach()), "edge": float(edge_loss.detach()), "corner": float(corner_loss.detach())}
 
 
 def load_rasters(data_dir: Path):

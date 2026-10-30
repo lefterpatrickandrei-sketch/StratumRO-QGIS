@@ -165,6 +165,43 @@ def run_loop(data: Path, out: Path, max_iterations: int, epochs_first: int, epoc
     return report
 
 
+def export_final(run_dir: Path, out_gpkg: Path) -> Dict[str, Any]:
+    """Copy the best iteration's proposals into one review GeoPackage, plus AJUSTARE targets before/after.
+
+    Every feature keeps status PENDING_OWNER_REVIEW; ``touches_nodata`` and ``v6_overlap_m2`` flag what the
+    owner should check first.
+    """
+    import geopandas as gpd
+
+    from scan_roof2d_aoi import GPKG_REVIEW
+
+    report = json.loads((run_dir / "loop_convergence_report.json").read_text(encoding="utf-8"))
+    scan_dir = run_dir / f"iter_{report['best_iteration']:02d}" / "scan"
+    props = gpd.read_file(scan_dir / "roof2d_proposals_epsg3844.gpkg", layer="proposals_all")
+    props["touches_nodata"] = props["audit_summary"].str.contains("V5_ANTI_ARTIFACT_NODATA=FAIL").astype(int)
+    props["source_iteration"] = report["best_iteration"]
+    pairs = json.loads((scan_dir / "targets_before_after.json").read_text(encoding="utf-8"))
+    by_id = {p["building_id"]: p for p in pairs}
+    before = gpd.read_file(GPKG_REVIEW, layer="3_AJUSTARI_TINTA_LOOP_A100")[["building_id", "geometry"]]
+    for col in ("match", "all_six", "iou_with_before", "summary"):
+        before[col] = [by_id[b][col] for b in before.building_id]
+    before["all_six"] = before["all_six"].astype(int)
+    after = props[props.proposal_id.isin([p["match"] for p in pairs if p["match"]])].copy()
+    after["target_ids"] = [",".join(p["building_id"] for p in pairs if p["match"] == pid) for pid in after.proposal_id]
+    if out_gpkg.exists():
+        out_gpkg.unlink()
+    layers = {
+        "proposals_all": props,
+        "proposals_v1_v6_passed": props[props.all_six_passed == 1],
+        "proposals_new_vs_review": props[props.is_new_vs_review == 1],
+        "ajustare_targets_before": before,
+        "ajustare_targets_after": after,
+    }
+    for name, gdf in layers.items():
+        gdf.to_file(out_gpkg, layer=name, driver="GPKG")
+    return {name: len(gdf) for name, gdf in layers.items()}
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--data", type=Path, default=REPO_ROOT / "workspace" / "colab_2d_roof_dataset_v3")
@@ -176,7 +213,11 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--workers", type=int, default=0)
     parser.add_argument("--lr", type=float, default=5e-4)
+    parser.add_argument("--export-final", type=Path, help="write the best iteration of --out to this GeoPackage and exit")
     args = parser.parse_args(argv)
+    if args.export_final:
+        print(json.dumps(export_final(args.out, args.export_final)))
+        return 0
     report = run_loop(args.data, args.out, args.max_iterations, args.epochs_first, args.epochs_next,
                       args.samples_per_epoch, args.batch_size, args.workers, args.lr)
     print(json.dumps({k: report[k] for k in ("stop_reason", "iterations_run", "best_iteration")}))

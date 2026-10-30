@@ -7,7 +7,15 @@ laptop (RTX 4050, 6 GB) keeps QGIS, L1, L3, L4 and inference. Process and rules:
 
 > Nothing here starts a job or uploads data by itself. The wrapper refuses to run without `-Confirm`.
 
-## One-time setup (Windows -> WSL2)
+## Native Windows CLI (2026-10-30)
+
+`colab` 0.7.5 is installed natively at `C:\Users\lefpa\.local\bin\colab.exe` and created an A100
+session on 2026-10-30 without WSL2 (`colab new --gpu A100 -s s2d`, `colab upload`, `colab exec -f`,
+`colab download`, `colab stop`). Scripts sent with `colab exec -f` must be UTF-8 **without BOM**
+(PowerShell `Set-Content -Encoding utf8` adds one and the kernel rejects it).
+The 2D roof loop (`continuous_2d_a100.yaml`) was run this way; `colab_job.ps1` still uses the WSL2 path.
+
+## One-time setup (Windows -> WSL2, older path)
 
 `google-colab-cli` is **Linux/macOS only** and needs **Python >= 3.12**. WSL2 was **not installed**
 on this machine on 2026-10-24.
@@ -37,6 +45,7 @@ and runs: `colab new` -> upload -> `colab exec` -> download -> `colab stop` (alw
 | `refine_sam21.yaml` | `scripts/refine_sam21.py` | scaffolded, not run |
 | `retrain_from_feedback.yaml` | `scripts/train_l2a.py` (new split manifest) | card only |
 | `vlm_eval.yaml` | not written yet | card only |
+| `continuous_2d_a100.yaml` | `scripts/continuous_2d_roof_loop.py` (+ `train_roof2d.py`, `scan_roof2d_aoi.py`, `roof2d_data.py`) | run on A100 2026-10-30, outputs are proposals |
 
 ## Running (after the owner approves a job)
 

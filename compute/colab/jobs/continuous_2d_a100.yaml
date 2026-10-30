@@ -1,23 +1,18 @@
 name: continuous_2d_a100
-description: Continuous 2D roof shape extraction, SAM 2.1 LoRA reprompting, and Simultaneous 6-Form Validation (V1..V6) loop on Colab Pro A100 (RGB-only, generalizable to any zone/UAT, Stereo 70 EPSG:3844).
+description: Phase 1 continuous 2D roof loop (RGB-only input, EPSG:3844) - train multi-task roof/outline/corner UNet, scan the whole AOI, gate every polygon with V1..V6, feed V1..V6-passing pseudo roofs into the next iteration.
 status: scaffolded
 gpu: A100
-time_limit_minutes: 360
+time_limit_minutes: 180
 script: compute/colab/scripts/continuous_2d_roof_loop.py
 crs: EPSG:3844
 requires_owner_approval: true
 inputs:
-  manifest: "Drive: StratumRO/colab_2d_roof_dataset/manifest_2d_roofs.json (189 deduplicated RGB tiles, SHA-256, EPSG:3844)"
-  deduplicated_gpkg: "Drive: StratumRO/reviews/opera_review_deduplicated_20261029.gpkg (4 layers: ADMIS, REPAIRED, TINTA_A100, HARD_NEGATIVES)"
-  tiles: "Drive: StratumRO/colab_2d_roof_dataset/ (rgb/, roof_mask/, edge_mask/, corner_mask/)"
+  dataset: "workspace/colab_2d_roof_dataset_v3/ (aoi_rgb.tif 0.15 m mosaic, label_roof/edge/corner.tif, split.tif, manifest.json with SHA-256) built by compute/colab/scripts/build_roof2d_aoi_dataset.py"
+  review_gpkg: "workspace/reviews/opera_review_deduplicated_20261029.gpkg (ADMIS 137, heuristic repairs 9, AJUSTARE targets 31, hard negatives 12)"
+  code: "git archive <sha> stratum_ro compute/colab (no uncommitted work of other agents)"
 outputs:
-  checkpoints: "Drive: StratumRO/runs/continuous_2d_a100/<UTC timestamp>/checkpoints/"
-  convergence_report: "loop_convergence_report.json (V1..V6 simultaneous scores per iteration, promoted IDs)"
-  repaired_gpkg: "final_2d_roofs_epsg3844.gpkg (Proposal for owner visual + QGIS review)"
-checkpoint: "Drive: StratumRO/runs/continuous_2d_a100/<UTC timestamp>/checkpoints/latest_2d_a100.pt"
-split:
-  admis_gold_2d: 137
-  repaired_v1_v6: 9
-  ajustare_tinta_a100: 31
-  eliminat_hard_negative: 12
-gate: "All 6 Validation Forms (V1..V6) must pass simultaneously before any roof polygon is promoted; owner visual confirmation remains final."
+  per_iteration: "iter_NN/{best.pt, latest.pt, train_metrics.json, scan/{roof2d_proposals_epsg3844.gpkg, scan_metrics.json, targets_before_after.json, admis_iou.json, pseudo_roofs.tif, probs_roof_edge_corner.tif, sheet_targets_before_after.jpg}}"
+  convergence_report: "loop_convergence_report.json"
+checkpoint: "/content/run_a100/iter_NN/latest.pt (downloaded to workspace/colab_runs/continuous_2d_a100/<UTC timestamp>/)"
+run: "colab new --gpu A100 -s s2d; colab upload -s s2d roof2d_pkg.zip /content/roof2d_pkg.zip; colab exec (unzip, pip install rasterio, start loop with --batch-size 16 --workers 8 --samples-per-epoch 1280); poll; download; colab stop -s s2d"
+gate: "All six gates V1..V6 must pass before a polygon becomes a pseudo roof. Pseudo roofs and every output polygon stay PENDING_OWNER_REVIEW; only the owner sets ADMIS."
