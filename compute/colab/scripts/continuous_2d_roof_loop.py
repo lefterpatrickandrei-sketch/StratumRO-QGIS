@@ -100,7 +100,8 @@ def git_sha() -> str:
 
 
 def run_loop(data: Path, out: Path, max_iterations: int, epochs_first: int, epochs_next: int,
-             samples_per_epoch: int, batch_size: int, workers: int, lr: float) -> Dict[str, Any]:
+             samples_per_epoch: int, batch_size: int, workers: int, lr: float,
+             arch: str = "resnet34") -> Dict[str, Any]:
     from scan_roof2d_aoi import scan
     from train_roof2d import train
 
@@ -117,7 +118,7 @@ def run_loop(data: Path, out: Path, max_iterations: int, epochs_first: int, epoc
             tm = json.loads(done_train.read_text(encoding="utf-8"))
         else:
             tm = train(data, it_dir, epochs_first if it == 1 else epochs_next, samples_per_epoch, batch_size,
-                       lr if it == 1 else lr * 0.5, init, pseudo, workers)
+                       lr if it == 1 else lr * 0.5, init, pseudo, workers, arch=arch)
         if done_scan.is_file():
             sm = json.loads(done_scan.read_text(encoding="utf-8"))
         else:
@@ -213,13 +214,14 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--workers", type=int, default=0)
     parser.add_argument("--lr", type=float, default=5e-4)
+    parser.add_argument("--arch", default="resnet34", help="resnet34 | convnext_tiny | convnext_small")
     parser.add_argument("--export-final", type=Path, help="write the best iteration of --out to this GeoPackage and exit")
     args = parser.parse_args(argv)
     if args.export_final:
         print(json.dumps(export_final(args.out, args.export_final)))
         return 0
     report = run_loop(args.data, args.out, args.max_iterations, args.epochs_first, args.epochs_next,
-                      args.samples_per_epoch, args.batch_size, args.workers, args.lr)
+                      args.samples_per_epoch, args.batch_size, args.workers, args.lr, arch=args.arch)
     print(json.dumps({k: report[k] for k in ("stop_reason", "iterations_run", "best_iteration")}))
     return 0
 

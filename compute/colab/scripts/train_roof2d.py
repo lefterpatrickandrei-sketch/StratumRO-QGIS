@@ -1,6 +1,6 @@
 """Phase 1 multi-task 2D roof segmenter (RGB only): roof mask + outline + corner heads.
 
-UNet with a torchvision ResNet-34 ImageNet encoder (no extra pip packages on Colab). Losses ignore 255:
+UNet with a torchvision ImageNet encoder (ResNet-34 or ConvNeXt-Tiny/Small; no extra pip packages on Colab). Losses ignore 255:
     L = 1.0 * (0.5 BCE + 0.5 Dice)_roof + 0.5 * BCE_edge(pos_weight 4) + 0.5 * focal_corner
 Augmentation: rot90/flip, GSD 0.10..0.25 m (scale 0.67..1.67 of the 0.15 m grid), seasonal colour,
 hard shadows, blur, noise (roof2d_data.augment_photometric). bfloat16 autocast on CUDA.
@@ -25,7 +25,11 @@ from roof2d_data import IGNORE, SPLIT_TRAIN, SPLIT_VAL, augment_photometric, nor
 CROP = 512
 
 
-def build_model(pretrained: bool = True):
+ARCHS = ("resnet34", "convnext_tiny", "convnext_small")
+
+
+def build_model(pretrained: bool = True, arch: str = "resnet34"):
+    """UNet with a torchvision ImageNet encoder; logits (N, 3, H, W): channel 0 roof, 1 edge, 2 corner."""
     import torch
     import torch.nn as nn
     import torchvision
@@ -43,8 +47,6 @@ def build_model(pretrained: bool = True):
             return self.conv(torch.cat([x, skip], 1) if skip is not None else x)
 
     class RoofUNet(nn.Module):
-        """Outputs logits (N, 3, H, W): channel 0 roof, 1 edge, 2 corner."""
-
         def __init__(self):
             super().__init__()
             weights = torchvision.models.ResNet34_Weights.IMAGENET1K_V1 if pretrained else None
@@ -63,7 +65,35 @@ def build_model(pretrained: bool = True):
             s4 = self.l4(s3)
             return self.head(self.u0(self.u1(self.u2(self.u3(self.u4(s4, s3), s2), s1), s0)))
 
-    return RoofUNet()
+    class ConvNeXtUNet(nn.Module):
+        """ConvNeXt stages give /4../32 skips; a small conv stem supplies the /2 skip for sharp outlines."""
+
+        def __init__(self, name):
+            super().__init__()
+            wcls = {"convnext_tiny": torchvision.models.ConvNeXt_Tiny_Weights,
+                    "convnext_small": torchvision.models.ConvNeXt_Small_Weights}[name]
+            f = getattr(torchvision.models, name)(weights=wcls.IMAGENET1K_V1 if pretrained else None).features
+            self.s4, self.s8 = nn.Sequential(f[0], f[1]), nn.Sequential(f[2], f[3])
+            self.s16, self.s32 = nn.Sequential(f[4], f[5]), nn.Sequential(f[6], f[7])
+            self.stem2 = nn.Sequential(nn.Conv2d(3, 32, 3, stride=2, padding=1, bias=False), nn.BatchNorm2d(32),
+                                      nn.ReLU(inplace=True))
+            self.u4, self.u3 = Up(768, 384, 256), Up(256, 192, 128)
+            self.u2, self.u1, self.u0 = Up(128, 96, 64), Up(64, 32, 32), Up(32, 0, 32)
+            self.head = nn.Conv2d(32, 3, 1)
+
+        def forward(self, x):
+            h = self.stem2(x)
+            a = self.s4(x)
+            b = self.s8(a)
+            c = self.s16(b)
+            d = self.s32(c)
+            return self.head(self.u0(self.u1(self.u2(self.u3(self.u4(d, c), b), a), h)))
+
+    if arch == "resnet34":
+        return RoofUNet()
+    if arch in ("convnext_tiny", "convnext_small"):
+        return ConvNeXtUNet(arch)
+    raise ValueError(f"unknown arch {arch!r}, expected one of {ARCHS}")
 
 
 def multitask_loss(logits, target):
@@ -190,7 +220,8 @@ def evaluate(model, crops, device, dtype):
 
 
 def train(data_dir: Path, out: Path, epochs: int, samples_per_epoch: int, batch_size: int, lr: float,
-          init: Path | None = None, pseudo: Path | None = None, workers: int = 2, seed: int = 0) -> dict:
+          init: Path | None = None, pseudo: Path | None = None, workers: int = 2, seed: int = 0,
+          arch: str = "resnet34") -> dict:
     import torch
     from torch.utils.data import DataLoader
 
@@ -209,7 +240,7 @@ def train(data_dir: Path, out: Path, epochs: int, samples_per_epoch: int, batch_
                     persistent_workers=workers > 0)
     vcrops = val_crops(rgb, labels, split)
 
-    model = build_model(pretrained=init is None).to(device)
+    model = build_model(pretrained=init is None, arch=arch).to(device)
     if init is not None:
         model.load_state_dict(torch.load(init, map_location=device)["model"])
     opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
@@ -234,7 +265,7 @@ def train(data_dir: Path, out: Path, epochs: int, samples_per_epoch: int, batch_
                **{k: round(v, 4) for k, v in m.items()}, "seconds": round(time.time() - t0, 1)}
         history.append(rec)
         print(json.dumps(rec), flush=True)
-        state = {"model": model.state_dict(), "epoch": epoch, "history": history}
+        state = {"model": model.state_dict(), "epoch": epoch, "history": history, "arch": arch}
         torch.save(state, out / "latest.pt")
         if m["val_pixel_iou"] > best:
             best = m["val_pixel_iou"]
@@ -251,6 +282,7 @@ def train(data_dir: Path, out: Path, epochs: int, samples_per_epoch: int, batch_
         "val_crops": len(vcrops),
         "pseudo_labels": str(pseudo) if pseudo else None,
         "init": str(init) if init else "imagenet",
+        "arch": arch,
         "peak_vram_mib": round(torch.cuda.max_memory_allocated() / 2**20, 1) if device == "cuda" else None,
         "history": history,
     }
@@ -269,9 +301,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--init", type=Path)
     ap.add_argument("--pseudo", type=Path)
     ap.add_argument("--workers", type=int, default=2)
+    ap.add_argument("--arch", choices=ARCHS, default="resnet34")
     args = ap.parse_args(argv)
     m = train(args.data, args.out, args.epochs, args.samples_per_epoch, args.batch_size, args.lr,
-              args.init, args.pseudo, args.workers)
+              args.init, args.pseudo, args.workers, arch=args.arch)
     print("best_val_pixel_iou", m["best_val_pixel_iou"])
     return 0
 

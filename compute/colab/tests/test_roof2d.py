@@ -159,9 +159,10 @@ class LossTests(unittest.TestCase):
 
         from train_roof2d import build_model
 
-        m = build_model(pretrained=False).eval()
-        with torch.no_grad():
-            self.assertEqual(tuple(m(torch.zeros(1, 3, 64, 64)).shape), (1, 3, 64, 64))
+        for arch in ("resnet34", "convnext_tiny"):
+            m = build_model(pretrained=False, arch=arch).eval()
+            with torch.no_grad():
+                self.assertEqual(tuple(m(torch.zeros(1, 3, 64, 64)).shape), (1, 3, 64, 64), arch)
 
 
 @unittest.skipUnless(HAS_GEO, "rasterio/shapely/cv2/scipy missing")

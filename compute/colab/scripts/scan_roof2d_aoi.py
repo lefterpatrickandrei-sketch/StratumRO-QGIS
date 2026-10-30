@@ -310,8 +310,9 @@ def scan(data_dir: Path, ckpt: Path | None, out: Path, thr: float = 0.45, pseudo
         with rasterio.open(probs_path) as src:
             probs = src.read().astype(np.float32) / 255.0
     else:
-        model = build_model(pretrained=False).to(device)
-        model.load_state_dict(torch.load(ckpt, map_location=device)["model"])
+        state = torch.load(ckpt, map_location=device)
+        model = build_model(pretrained=False, arch=state.get("arch", "resnet34")).to(device)
+        model.load_state_dict(state["model"])
         probs = predict_aoi(model, rgb, device)
         prof1 = {**profile, "count": 3, "dtype": "uint8"}
         with rasterio.open(out / "probs_roof_edge_corner.tif", "w", **prof1) as dst:
