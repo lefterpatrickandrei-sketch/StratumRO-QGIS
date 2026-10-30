@@ -20,7 +20,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from roof2d_data import IGNORE, SPLIT_TRAIN, SPLIT_VAL, build_label_rasters, sha256_file, split_raster  # noqa: E402
+from roof2d_data import IGNORE, SPLIT_TRAIN, SPLIT_VAL, build_label_rasters, rasterize, sha256_file, split_raster  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 GPKG_LAYERS = {
@@ -67,7 +67,8 @@ def ground_mask(ndsm_path: Path, transform, shape, threshold_m: float = 1.0, ero
     return ndimage.binary_erosion(ground, structure=(xx * xx + yy * yy) <= radius * radius)
 
 
-def build(tiles: list[Path], gpkg: Path, html: Path, ndsm: Path | None, out_dir: Path, val_min_y: float) -> dict:
+def build(tiles: list[Path], gpkg: Path, html: Path, ndsm: Path | None, out_dir: Path, val_min_y: float,
+          consensus: Path | None = None) -> dict:
     import geopandas as gpd
     import rasterio
     from rasterio.merge import merge
@@ -92,6 +93,16 @@ def build(tiles: list[Path], gpkg: Path, html: Path, ndsm: Path | None, out_dir:
     ground = ground_mask(ndsm, transform, shape) if ndsm else None
 
     roof, edge, corner, contact = build_label_rasters(rgb, transform, positives, layers["negative"], ignore, ground)
+    extra = {"consensus_positive": 0, "tree_negative": 0}
+    if consensus is not None:  # agent-built labels (build_consensus_labels.py): only fill pixels still 255
+        cpos = list(gpd.read_file(consensus, layer="consensus_positive").geometry)
+        tneg = list(gpd.read_file(consensus, layer="tree_negative").geometry)
+        free = roof == IGNORE
+        if tneg:
+            roof[free & rasterize(tneg, transform, shape)] = 0
+        if cpos:
+            roof[(roof == IGNORE) & rasterize(cpos, transform, shape)] = 1
+        extra = {"consensus_positive": len(cpos), "tree_negative": len(tneg)}
     split = split_raster(transform, shape, val_min_y)
     roof_train = roof.copy()
     roof_train[split != SPLIT_TRAIN] = IGNORE  # what training is allowed to see
@@ -136,6 +147,7 @@ def build(tiles: list[Path], gpkg: Path, html: Path, ndsm: Path | None, out_dir:
             "gpkg_sha256": sha256_file(gpkg),
             "catalog_html": str(html.relative_to(REPO_ROOT)).replace("\\", "/"),
             "ndsm": str(ndsm.relative_to(REPO_ROOT)).replace("\\", "/") if ndsm else None,
+            "consensus": str(consensus) if consensus else None,
         },
         "counts": {
             "positives_admis": len(positives),
@@ -145,6 +157,7 @@ def build(tiles: list[Path], gpkg: Path, html: Path, ndsm: Path | None, out_dir:
             "repaired_ignored": len(layers["repaired"]),
             "hard_negatives": len(layers["negative"]),
             "other_catalog_ignored": len(others),
+            "agent_consensus_labels": extra,
         },
         "pixel_fractions": {
             "roof_1": round(float(np.mean(roof == 1)), 4),
@@ -167,6 +180,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--html", type=Path, default=REPO_ROOT / "workspace/reviews/catalog_cladiri_ortofoto.html")
     ap.add_argument("--ndsm", type=Path, default=REPO_ROOT / "workspace/derived/cluj_ndsm_1m.tif")
     ap.add_argument("--no-ndsm", action="store_true", help="skip LiDAR ground negatives (RGB-only UATs)")
+    ap.add_argument("--consensus", type=Path, help="consensus_labels.gpkg from build_consensus_labels.py")
     ap.add_argument("--val-min-y", type=float, default=585650.0)
     ap.add_argument("--out-dir", type=Path, default=REPO_ROOT / "workspace/colab_2d_roof_dataset_v3")
     args = ap.parse_args(argv)
@@ -174,7 +188,8 @@ def main(argv: list[str] | None = None) -> int:
     if not tiles:
         print(f"no tiles match {args.tiles_glob}", file=sys.stderr)
         return 1
-    m = build(tiles, args.gpkg, args.html, None if args.no_ndsm else args.ndsm, args.out_dir, args.val_min_y)
+    m = build(tiles, args.gpkg, args.html, None if args.no_ndsm else args.ndsm, args.out_dir, args.val_min_y,
+              args.consensus)
     print(json.dumps({k: m[k] for k in ("shape_hw", "counts", "pixel_fractions")}, indent=2))
     return 0
 

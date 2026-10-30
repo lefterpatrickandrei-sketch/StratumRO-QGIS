@@ -318,6 +318,10 @@ def scan(data_dir: Path, ckpt: Path | None, out: Path, thr: float = 0.45, pseudo
         with rasterio.open(out / "probs_roof_edge_corner.tif", "w", **prof1) as dst:
             dst.write((probs.astype(np.float32) * 255).round().astype(np.uint8))
 
+    owner_roof = rasterio.open(data_dir / "label_roof.tif").read(1)
+    painted = probs[0] > thr
+    fp_known = float((painted & (owner_roof == 0)).sum() / max(painted.sum(), 1))
+    roof_share = float(painted.mean())
     raw = vectorize(probs[0].astype(np.float32), probs[1].astype(np.float32), transform, thr, edge_thr=edge_thr)
     resolved, n_dropped = resolve_overlaps([(regularize(p), prob) for p, prob in raw])
     records = []
@@ -406,6 +410,8 @@ def scan(data_dir: Path, ckpt: Path | None, out: Path, thr: float = 0.45, pseudo
         "status": "PROPOSAL_PENDING_OWNER_REVIEW",
         "params": {"roof_thr": thr, "edge_thr": edge_thr, "probs_from_file": str(probs_path) if probs_path else None},
         "proposals": len(records),
+        "roof_pixel_share_of_aoi": round(roof_share, 4),
+        "roof_pixels_on_known_background": round(fp_known, 4),
         "dropped_double_vectorizations": n_dropped,
         "clipped_by_stronger_neighbour": sum(r["clipped"] for r in records),
         "all_six_passed": sum(r["all_six"] for r in records),

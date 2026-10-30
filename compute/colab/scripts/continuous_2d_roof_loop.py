@@ -128,6 +128,7 @@ def run_loop(data: Path, out: Path, max_iterations: int, epochs_first: int, epoc
             "device": tm["device"],
             "best_val_pixel_iou": tm["best_val_pixel_iou"],
             "pseudo_labels_in": str(pseudo) if pseudo else None,
+            **{k: sm.get(k) for k in ("roof_pixel_share_of_aoi", "roof_pixels_on_known_background")},
             **{k: sm[k] for k in ("proposals", "all_six_passed", "gate_pass_rates", "angles", "admis_iou_val",
                                   "admis_iou_train_seen", "targets_detected", "targets_all_six",
                                   "hard_negatives_hit", "v5_nodata_touching_proposals",

@@ -191,9 +191,16 @@ class CropDataset:
 
 
 def val_crops(rgb, labels, split):
-    """Fixed, non-augmented 512 crops anchored on val roofs (owner labels only, at most 64)."""
+    """Fixed, non-augmented 512 crops: up to 40 anchored on val roofs and up to 40 on val known background.
+
+    The background half makes the pixel IoU drop when the model paints roofs over trees or fields, which
+    roof-anchored crops alone cannot see.
+    """
+    roof_pts = centers_of(labels[0], split, SPLIT_VAL, step=192)[:40]
+    sub = (labels[0][::256, ::256] == 0) & (split[::256, ::256] == SPLIT_VAL)
+    bg_pts = (np.argwhere(sub) * 256)[:40]
     out = []
-    for r, c in centers_of(labels[0], split, SPLIT_VAL, step=192)[:64]:
+    for r, c in list(roof_pts) + list(bg_pts):
         img, lab = sample_crop(rgb, labels, (r, c), CROP, 1.0, None)
         out.append((normalize_rgb(img), lab))
     return out

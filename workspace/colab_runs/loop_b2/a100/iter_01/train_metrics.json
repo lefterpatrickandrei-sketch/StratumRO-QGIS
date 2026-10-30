@@ -1,0 +1,266 @@
+{
+  "status": "PROPOSAL_NOT_ACCEPTED",
+  "device": "NVIDIA A100-SXM4-40GB",
+  "autocast_dtype": "bfloat16",
+  "epochs": 25,
+  "samples_per_epoch": 1280,
+  "batch_size": 16,
+  "best_val_pixel_iou": 0.7804,
+  "val_crops": 6,
+  "pseudo_labels": null,
+  "init": "imagenet",
+  "arch": "convnext_small",
+  "peak_vram_mib": 11785.9,
+  "history": [
+    {
+      "epoch": 0,
+      "loss": 1.0645,
+      "roof": 0.5465,
+      "edge": 0.7836,
+      "corner": 0.2525,
+      "val_pixel_iou": 0.7219,
+      "val_roof_recall": 0.9468,
+      "seconds": 29.5
+    },
+    {
+      "epoch": 1,
+      "loss": 0.6332,
+      "roof": 0.2843,
+      "edge": 0.5306,
+      "corner": 0.1673,
+      "val_pixel_iou": 0.6711,
+      "val_roof_recall": 0.999,
+      "seconds": 19.7
+    },
+    {
+      "epoch": 2,
+      "loss": 0.4442,
+      "roof": 0.2046,
+      "edge": 0.3801,
+      "corner": 0.099,
+      "val_pixel_iou": 0.7804,
+      "val_roof_recall": 0.9331,
+      "seconds": 19.4
+    },
+    {
+      "epoch": 3,
+      "loss": 0.3168,
+      "roof": 0.144,
+      "edge": 0.2831,
+      "corner": 0.0626,
+      "val_pixel_iou": 0.6859,
+      "val_roof_recall": 0.8923,
+      "seconds": 19.7
+    },
+    {
+      "epoch": 4,
+      "loss": 0.2631,
+      "roof": 0.1208,
+      "edge": 0.232,
+      "corner": 0.0526,
+      "val_pixel_iou": 0.7722,
+      "val_roof_recall": 0.969,
+      "seconds": 19.5
+    },
+    {
+      "epoch": 5,
+      "loss": 0.1952,
+      "roof": 0.0799,
+      "edge": 0.1887,
+      "corner": 0.042,
+      "val_pixel_iou": 0.7109,
+      "val_roof_recall": 0.9257,
+      "seconds": 19.7
+    },
+    {
+      "epoch": 6,
+      "loss": 0.1602,
+      "roof": 0.0613,
+      "edge": 0.1621,
+      "corner": 0.0357,
+      "val_pixel_iou": 0.7163,
+      "val_roof_recall": 0.9658,
+      "seconds": 19.5
+    },
+    {
+      "epoch": 7,
+      "loss": 0.1331,
+      "roof": 0.0453,
+      "edge": 0.1448,
+      "corner": 0.0309,
+      "val_pixel_iou": 0.6783,
+      "val_roof_recall": 0.8821,
+      "seconds": 19.6
+    },
+    {
+      "epoch": 8,
+      "loss": 0.1144,
+      "roof": 0.0388,
+      "edge": 0.1244,
+      "corner": 0.0269,
+      "val_pixel_iou": 0.6974,
+      "val_roof_recall": 0.929,
+      "seconds": 19.4
+    },
+    {
+      "epoch": 9,
+      "loss": 0.1063,
+      "roof": 0.0325,
+      "edge": 0.1216,
+      "corner": 0.026,
+      "val_pixel_iou": 0.7066,
+      "val_roof_recall": 0.9108,
+      "seconds": 19.4
+    },
+    {
+      "epoch": 10,
+      "loss": 0.09,
+      "roof": 0.0275,
+      "edge": 0.1031,
+      "corner": 0.022,
+      "val_pixel_iou": 0.6834,
+      "val_roof_recall": 0.8844,
+      "seconds": 19.5
+    },
+    {
+      "epoch": 11,
+      "loss": 0.0805,
+      "roof": 0.023,
+      "edge": 0.0946,
+      "corner": 0.0205,
+      "val_pixel_iou": 0.6638,
+      "val_roof_recall": 0.9934,
+      "seconds": 19.7
+    },
+    {
+      "epoch": 12,
+      "loss": 0.0798,
+      "roof": 0.0228,
+      "edge": 0.0942,
+      "corner": 0.0198,
+      "val_pixel_iou": 0.7325,
+      "val_roof_recall": 0.9624,
+      "seconds": 19.5
+    },
+    {
+      "epoch": 13,
+      "loss": 0.0699,
+      "roof": 0.0175,
+      "edge": 0.0864,
+      "corner": 0.0183,
+      "val_pixel_iou": 0.7185,
+      "val_roof_recall": 0.9629,
+      "seconds": 19.4
+    },
+    {
+      "epoch": 14,
+      "loss": 0.0651,
+      "roof": 0.0153,
+      "edge": 0.0826,
+      "corner": 0.0171,
+      "val_pixel_iou": 0.7176,
+      "val_roof_recall": 0.958,
+      "seconds": 19.4
+    },
+    {
+      "epoch": 15,
+      "loss": 0.0619,
+      "roof": 0.0145,
+      "edge": 0.0785,
+      "corner": 0.0163,
+      "val_pixel_iou": 0.7158,
+      "val_roof_recall": 0.9489,
+      "seconds": 19.5
+    },
+    {
+      "epoch": 16,
+      "loss": 0.0578,
+      "roof": 0.0138,
+      "edge": 0.0728,
+      "corner": 0.0152,
+      "val_pixel_iou": 0.714,
+      "val_roof_recall": 0.938,
+      "seconds": 19.7
+    },
+    {
+      "epoch": 17,
+      "loss": 0.0561,
+      "roof": 0.0131,
+      "edge": 0.0713,
+      "corner": 0.0148,
+      "val_pixel_iou": 0.705,
+      "val_roof_recall": 0.9605,
+      "seconds": 19.6
+    },
+    {
+      "epoch": 18,
+      "loss": 0.0551,
+      "roof": 0.013,
+      "edge": 0.0697,
+      "corner": 0.0144,
+      "val_pixel_iou": 0.7095,
+      "val_roof_recall": 0.9633,
+      "seconds": 19.5
+    },
+    {
+      "epoch": 19,
+      "loss": 0.0523,
+      "roof": 0.0122,
+      "edge": 0.0665,
+      "corner": 0.0138,
+      "val_pixel_iou": 0.7049,
+      "val_roof_recall": 0.9612,
+      "seconds": 19.6
+    },
+    {
+      "epoch": 20,
+      "loss": 0.0518,
+      "roof": 0.0109,
+      "edge": 0.0678,
+      "corner": 0.014,
+      "val_pixel_iou": 0.7069,
+      "val_roof_recall": 0.9508,
+      "seconds": 19.5
+    },
+    {
+      "epoch": 21,
+      "loss": 0.0502,
+      "roof": 0.0106,
+      "edge": 0.0656,
+      "corner": 0.0136,
+      "val_pixel_iou": 0.7131,
+      "val_roof_recall": 0.9629,
+      "seconds": 19.7
+    },
+    {
+      "epoch": 22,
+      "loss": 0.0497,
+      "roof": 0.0116,
+      "edge": 0.063,
+      "corner": 0.0131,
+      "val_pixel_iou": 0.7139,
+      "val_roof_recall": 0.962,
+      "seconds": 19.6
+    },
+    {
+      "epoch": 23,
+      "loss": 0.0503,
+      "roof": 0.011,
+      "edge": 0.0649,
+      "corner": 0.0135,
+      "val_pixel_iou": 0.7161,
+      "val_roof_recall": 0.962,
+      "seconds": 19.6
+    },
+    {
+      "epoch": 24,
+      "loss": 0.0499,
+      "roof": 0.0103,
+      "edge": 0.0657,
+      "corner": 0.0136,
+      "val_pixel_iou": 0.7148,
+      "val_roof_recall": 0.9554,
+      "seconds": 19.7
+    }
+  ]
+}
