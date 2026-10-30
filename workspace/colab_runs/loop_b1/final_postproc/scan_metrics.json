@@ -1,0 +1,46 @@
+{
+  "status": "PROPOSAL_PENDING_OWNER_REVIEW",
+  "params": {
+    "roof_thr": 0.45,
+    "edge_thr": 0.25,
+    "probs_from_file": "workspace\\colab_runs\\loop_b1\\a100\\iter_01\\scan\\probs_roof_edge_corner.tif"
+  },
+  "proposals": 586,
+  "dropped_double_vectorizations": 175,
+  "clipped_by_stronger_neighbour": 137,
+  "all_six_passed": 218,
+  "gate_pass_rates": {
+    "V1_VISUAL_CHIP": 0.7713,
+    "V2_WHOLE_ROOF": 0.7491,
+    "V3_TREE_OCCLUSION_L_SHAPE": 0.9863,
+    "V4_ORTHO_SHAPE": 0.5939,
+    "V5_ANTI_ARTIFACT_NODATA": 0.7884,
+    "V6_PLANAR_NMS_OVERLAP": 1.0
+  },
+  "v6_overlapping_proposals": 14,
+  "v5_nodata_touching_proposals": 118,
+  "angles": {
+    "vertices": 5677,
+    "ortho_45_90_share": 0.5131
+  },
+  "admis_iou_val": {
+    "n": 31,
+    "mean_iou": 0.7289,
+    "median_iou": 0.8271,
+    "share_iou_ge_0_90": 0.1935,
+    "detected_iou_ge_0_50": 0.8065
+  },
+  "admis_iou_train_seen": {
+    "n": 93,
+    "mean_iou": 0.8167,
+    "median_iou": 0.8751,
+    "share_iou_ge_0_90": 0.3871,
+    "detected_iou_ge_0_50": 0.9355
+  },
+  "targets_detected": 30,
+  "targets_all_six": 16,
+  "hard_negatives_hit": 3,
+  "new_proposals_not_in_review": 366,
+  "new_proposals_all_six": 98,
+  "pseudo_roofs": 181
+}

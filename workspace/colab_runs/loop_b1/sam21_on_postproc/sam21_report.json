@@ -1,0 +1,144 @@
+{
+  "status": "PROPOSAL_PENDING_OWNER_REVIEW",
+  "sam": "large",
+  "checkpoint": "models\\sam2\\sam2.1_hiera_large.pt",
+  "min_agree": 0.6,
+  "decisions": {
+    "kept_model_disagree": 95,
+    "kept_model_v1": 158,
+    "sam": 368
+  },
+  "val_n": 31,
+  "val_mean_iou_model": 0.7075,
+  "val_mean_iou_sam": 0.7159,
+  "val_median_iou_model": 0.8052,
+  "val_median_iou_sam": 0.8074,
+  "val_share_ge_0_90_model": 0.2258,
+  "val_share_ge_0_90_sam": 0.2258,
+  "per_building": [
+    {
+      "iou_model": 0.9237,
+      "iou_sam": 0.9237
+    },
+    {
+      "iou_model": 0.9579,
+      "iou_sam": 0.9584
+    },
+    {
+      "iou_model": 0.3835,
+      "iou_sam": 0.3881
+    },
+    {
+      "iou_model": 0.8738,
+      "iou_sam": 0.867
+    },
+    {
+      "iou_model": 0.8645,
+      "iou_sam": 0.895
+    },
+    {
+      "iou_model": 0.1763,
+      "iou_sam": 0.1706
+    },
+    {
+      "iou_model": 0.9069,
+      "iou_sam": 0.9182
+    },
+    {
+      "iou_model": 0.8074,
+      "iou_sam": 0.8074
+    },
+    {
+      "iou_model": 0.4691,
+      "iou_sam": 0.468
+    },
+    {
+      "iou_model": 0.9324,
+      "iou_sam": 0.9324
+    },
+    {
+      "iou_model": 0.7345,
+      "iou_sam": 0.7345
+    },
+    {
+      "iou_model": 0.9038,
+      "iou_sam": 0.8548
+    },
+    {
+      "iou_model": 0.5947,
+      "iou_sam": 0.9186
+    },
+    {
+      "iou_model": 0.8894,
+      "iou_sam": 0.8894
+    },
+    {
+      "iou_model": 0.8503,
+      "iou_sam": 0.914
+    },
+    {
+      "iou_model": 0.6303,
+      "iou_sam": 0.6303
+    },
+    {
+      "iou_model": 0.9231,
+      "iou_sam": 0.8415
+    },
+    {
+      "iou_model": 0.6905,
+      "iou_sam": 0.7464
+    },
+    {
+      "iou_model": 0.8758,
+      "iou_sam": 0.8809
+    },
+    {
+      "iou_model": 0.8645,
+      "iou_sam": 0.7145
+    },
+    {
+      "iou_model": 0.9099,
+      "iou_sam": 0.9416
+    },
+    {
+      "iou_model": 0.8843,
+      "iou_sam": 0.891
+    },
+    {
+      "iou_model": 0.8052,
+      "iou_sam": 0.8395
+    },
+    {
+      "iou_model": 0.7482,
+      "iou_sam": 0.7523
+    },
+    {
+      "iou_model": 0.7617,
+      "iou_sam": 0.796
+    },
+    {
+      "iou_model": 0.315,
+      "iou_sam": 0.315
+    },
+    {
+      "iou_model": 0.2589,
+      "iou_sam": 0.2305
+    },
+    {
+      "iou_model": 0.8007,
+      "iou_sam": 0.7768
+    },
+    {
+      "iou_model": 0.0578,
+      "iou_sam": 0.0578
+    },
+    {
+      "iou_model": 0.5061,
+      "iou_sam": 0.5061
+    },
+    {
+      "iou_model": 0.6324,
+      "iou_sam": 0.6324
+    }
+  ]
+}

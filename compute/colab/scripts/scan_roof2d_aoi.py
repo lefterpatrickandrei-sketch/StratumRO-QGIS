@@ -151,9 +151,23 @@ def snap_rectilinear(poly, simplify_m: float = 0.5):
             lines[-1] = (cls, (po * pw + off * length) / (pw + length), pw + length)
         else:
             lines.append((cls, off, length))
-    if len(lines) > 1 and lines[0][0] == lines[-1][0]:
-        (c0, o0, w0), (c1, o1, w1) = lines[0], lines.pop()
-        lines[0] = (c0, (o0 * w0 + o1 * w1) / (w0 + w1), w0 + w1)
+    def merge_same_class(ls):
+        out = []
+        for cls, off, w in ls:
+            if out and out[-1][0] == cls:
+                pc, po, pw = out[-1]
+                out[-1] = (cls, (po * pw + off * w) / (pw + w), pw + w)
+            else:
+                out.append((cls, off, w))
+        if len(out) > 1 and out[0][0] == out[-1][0]:
+            (c0, o0, w0), (c1, o1, w1) = out[0], out.pop()
+            out[0] = (c0, (o0 * w0 + o1 * w1) / (w0 + w1), w0 + w1)
+        return out
+
+    lines = merge_same_class(lines)
+    while len(lines) % 2 and len(lines) > 4:  # a diagonal run left an odd cycle: drop the shortest line
+        lines.pop(int(np.argmin([w for _, _, w in lines])))
+        lines = merge_same_class(lines)
     if len(lines) < 4 or len(lines) % 2:
         return None
     corners = []
@@ -187,6 +201,11 @@ def regularize(poly):
         mrr = poly.minimum_rotated_rectangle
         if poly.intersection(mrr).area / max(poly.union(mrr).area, 1e-6) >= 0.75:
             return Polygon(mrr.exterior.coords)
+        for simp in (1.0, 1.5):  # coarser squaring before giving up on a jagged blob
+            rect = snap_rectilinear(poly, simplify_m=simp)
+            if rect is not None and len(rect.exterior.coords) - 1 <= 12 and \
+                    poly.intersection(rect).area / max(poly.union(rect).area, 1e-6) >= 0.60:
+                return Polygon(rect.exterior.coords)
     return reg
 
 

@@ -1,0 +1,32 @@
+Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /root/.cache/torch/hub/checkpoints/resnet34-b627a593.pth
+  0%|          | 0.00/83.3M [00:00<?, ?B/s] 12%|█▏        | 10.2M/83.3M [00:00<00:00, 107MB/s] 31%|███       | 25.5M/83.3M [00:00<00:00, 138MB/s] 52%|█████▏    | 43.2M/83.3M [00:00<00:00, 159MB/s] 73%|███████▎  | 61.0M/83.3M [00:00<00:00, 170MB/s] 95%|█████████▌| 79.1M/83.3M [00:00<00:00, 177MB/s]100%|██████████| 83.3M/83.3M [00:00<00:00, 165MB/s]
+/content/repo/compute/colab/scripts/train_roof2d.py:230: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  parts.append([float(loss)] + list(comp.values()))
+{"epoch": 0, "loss": 1.0992, "roof": 0.5048, "edge": 0.7485, "corner": 0.4404, "val_pixel_iou": 0.6975, "val_roof_recall": 0.9438, "seconds": 18.0}
+{"epoch": 1, "loss": 0.674, "roof": 0.3071, "edge": 0.5287, "corner": 0.205, "val_pixel_iou": 0.5063, "val_roof_recall": 0.5372, "seconds": 15.0}
+{"epoch": 2, "loss": 0.4892, "roof": 0.2211, "edge": 0.3995, "corner": 0.1367, "val_pixel_iou": 0.6548, "val_roof_recall": 0.7127, "seconds": 14.9}
+{"epoch": 3, "loss": 0.3128, "roof": 0.1331, "edge": 0.2786, "corner": 0.0807, "val_pixel_iou": 0.7597, "val_roof_recall": 0.8291, "seconds": 14.9}
+{"epoch": 4, "loss": 0.2886, "roof": 0.1318, "edge": 0.2468, "corner": 0.0667, "val_pixel_iou": 0.5329, "val_roof_recall": 0.5949, "seconds": 14.9}
+{"epoch": 5, "loss": 0.2489, "roof": 0.1097, "edge": 0.2248, "corner": 0.0537, "val_pixel_iou": 0.6141, "val_roof_recall": 0.8357, "seconds": 14.9}
+{"epoch": 6, "loss": 0.2308, "roof": 0.105, "edge": 0.2067, "corner": 0.0448, "val_pixel_iou": 0.8188, "val_roof_recall": 0.8983, "seconds": 15.0}
+{"epoch": 7, "loss": 0.202, "roof": 0.0854, "edge": 0.1921, "corner": 0.041, "val_pixel_iou": 0.7571, "val_roof_recall": 0.8104, "seconds": 15.0}
+{"epoch": 8, "loss": 0.1603, "roof": 0.0603, "edge": 0.1665, "corner": 0.0333, "val_pixel_iou": 0.753, "val_roof_recall": 0.791, "seconds": 15.0}
+{"epoch": 9, "loss": 0.1389, "roof": 0.0487, "edge": 0.1504, "corner": 0.03, "val_pixel_iou": 0.7754, "val_roof_recall": 0.8554, "seconds": 14.9}
+{"epoch": 10, "loss": 0.1458, "roof": 0.0545, "edge": 0.1528, "corner": 0.0298, "val_pixel_iou": 0.8114, "val_roof_recall": 0.8859, "seconds": 14.8}
+{"epoch": 11, "loss": 0.1337, "roof": 0.0456, "edge": 0.1478, "corner": 0.0283, "val_pixel_iou": 0.6782, "val_roof_recall": 0.7269, "seconds": 14.8}
+{"epoch": 12, "loss": 0.1181, "roof": 0.0386, "edge": 0.1333, "corner": 0.0257, "val_pixel_iou": 0.6442, "val_roof_recall": 0.6826, "seconds": 15.0}
+{"epoch": 13, "loss": 0.1115, "roof": 0.034, "edge": 0.1303, "corner": 0.0247, "val_pixel_iou": 0.6767, "val_roof_recall": 0.7123, "seconds": 15.0}
+{"epoch": 14, "loss": 0.103, "roof": 0.0324, "edge": 0.1187, "corner": 0.0224, "val_pixel_iou": 0.7144, "val_roof_recall": 0.7479, "seconds": 14.9}
+{"epoch": 15, "loss": 0.1001, "roof": 0.0273, "edge": 0.1226, "corner": 0.023, "val_pixel_iou": 0.5923, "val_roof_recall": 0.6179, "seconds": 14.9}
+{"epoch": 16, "loss": 0.0968, "roof": 0.0265, "edge": 0.1181, "corner": 0.0225, "val_pixel_iou": 0.6169, "val_roof_recall": 0.6529, "seconds": 15.0}
+{"epoch": 17, "loss": 0.0862, "roof": 0.0219, "edge": 0.1082, "corner": 0.0206, "val_pixel_iou": 0.5054, "val_roof_recall": 0.534, "seconds": 14.8}
+{"epoch": 18, "loss": 0.0866, "roof": 0.0222, "edge": 0.1078, "corner": 0.0209, "val_pixel_iou": 0.652, "val_roof_recall": 0.6972, "seconds": 15.1}
+{"epoch": 19, "loss": 0.0822, "roof": 0.0199, "edge": 0.1044, "corner": 0.0203, "val_pixel_iou": 0.6549, "val_roof_recall": 0.6991, "seconds": 14.8}
+{"epoch": 20, "loss": 0.0771, "roof": 0.0189, "edge": 0.0974, "corner": 0.0191, "val_pixel_iou": 0.6621, "val_roof_recall": 0.7055, "seconds": 14.9}
+{"epoch": 21, "loss": 0.0765, "roof": 0.0177, "edge": 0.0982, "corner": 0.0193, "val_pixel_iou": 0.6246, "val_roof_recall": 0.6631, "seconds": 14.8}
+{"epoch": 22, "loss": 0.0766, "roof": 0.018, "edge": 0.0978, "corner": 0.0194, "val_pixel_iou": 0.667, "val_roof_recall": 0.7123, "seconds": 14.9}
+{"epoch": 23, "loss": 0.0729, "roof": 0.0173, "edge": 0.0928, "corner": 0.0184, "val_pixel_iou": 0.6781, "val_roof_recall": 0.723, "seconds": 14.9}
+{"epoch": 24, "loss": 0.0726, "roof": 0.0175, "edge": 0.0918, "corner": 0.0184, "val_pixel_iou": 0.6776, "val_roof_recall": 0.7236, "seconds": 15.0}
+{"iteration": 1, "device": "NVIDIA A100-SXM4-40GB", "best_val_pixel_iou": 0.8188, "pseudo_labels_in": null, "proposals": 573, "all_six_passed": 189, "gate_pass_rates": {"V1_VISUAL_CHIP": 0.7993, "V2_WHOLE_ROOF": 0.7208, "V3_TREE_OCCLUSION_L_SHAPE": 0.9878, "V4_ORTHO_SHAPE": 0.4939, "V5_ANTI_ARTIFACT_NODATA": 0.8272, "V6_PLANAR_NMS_OVERLAP": 1.0}, "angles": {"vertices": 5373, "ortho_45_90_share": 0.4342}, "admis_iou_val": {"n": 31, "mean_iou": 0.7258, "median_iou": 0.8083, "share_iou_ge_0_90": 0.2258, "detected_iou_ge_0_50": 0.8387}, "admis_iou_train_seen": {"n": 93, "mean_iou": 0.8306, "median_iou": 0.8889, "share_iou_ge_0_90": 0.4409, "detected_iou_ge_0_50": 0.957}, "targets_detected": 30, "targets_all_six": 12, "hard_negatives_hit": 3, "v5_nodata_touching_proposals": 111, "v6_overlapping_proposals": 11, "new_proposals_not_in_review": 356, "new_proposals_all_six": 86, "pseudo_roofs": 166, "minutes": 6.9}
+{"stop_reason": "max_iterations", "iterations_run": 1, "best_iteration": 1}
