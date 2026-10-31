@@ -55,7 +55,7 @@ def load_models(hrch: Path):
     torch.serialization.add_safe_globals([RNet])  # the normaliser checkpoint pickles Meta's own RNet class
     sat = SSLModule(ssl_path=str(hrch / "SSLhuge_satellite.pth")).to("cuda").eval()
     aerial = SSLModule(ssl_path=str(hrch / "compressed_SSLhuge_aerial.pth")).eval()
-    ck = torch.load(hrch / "aerial_normalization_quantiles_predictor.ckpt", map_location="cpu")["state_dict"]
+    ck = torch.load(hrch / "aerial_normalization_quantiles_predictor.ckpt", map_location="cpu", weights_only=False)["state_dict"]
     ck = {k.replace("backbone.", ""): v for k, v in ck.items()}
     rnet = RNet(n_classes=6).eval()
     rnet.load_state_dict(ck)

@@ -1,0 +1,312 @@
+[
+  {
+    "building_id": "OPT_B_202:C1",
+    "split": "train",
+    "match": "R2D_00190",
+    "all_six": false,
+    "iou_with_before": 0.4821,
+    "area_before_m2": 273.4,
+    "area_after_m2": 306.3,
+    "summary": "V1=OK | V2=X | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_090:C1",
+    "split": "train",
+    "match": "R2D_00037",
+    "all_six": true,
+    "iou_with_before": 0.7604,
+    "area_before_m2": 225.1,
+    "area_after_m2": 293.4,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_144:C1",
+    "split": "train",
+    "match": "R2D_00049",
+    "all_six": true,
+    "iou_with_before": 0.8305,
+    "area_before_m2": 143.8,
+    "area_after_m2": 169.3,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_205:C1",
+    "split": "train",
+    "match": "R2D_00100",
+    "all_six": true,
+    "iou_with_before": 0.3498,
+    "area_before_m2": 138.1,
+    "area_after_m2": 118.6,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_157:C1",
+    "split": "val",
+    "match": "R2D_00312",
+    "all_six": false,
+    "iou_with_before": 0.0753,
+    "area_before_m2": 138.1,
+    "area_after_m2": 15.6,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_130:C1",
+    "split": "train",
+    "match": "R2D_00010",
+    "all_six": true,
+    "iou_with_before": 0.8992,
+    "area_before_m2": 99.5,
+    "area_after_m2": 109.4,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_163:C1",
+    "split": "val",
+    "match": "R2D_00154",
+    "all_six": false,
+    "iou_with_before": 0.1389,
+    "area_before_m2": 93.5,
+    "area_after_m2": 670.4,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_075:C1",
+    "split": "train",
+    "match": "R2D_00182",
+    "all_six": true,
+    "iou_with_before": 0.7226,
+    "area_before_m2": 91.5,
+    "area_after_m2": 126.6,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_128:C1",
+    "split": "train",
+    "match": "R2D_00057",
+    "all_six": true,
+    "iou_with_before": 0.6121,
+    "area_before_m2": 87.7,
+    "area_after_m2": 143.3,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_141:C1",
+    "split": "buffer",
+    "match": "R2D_00098",
+    "all_six": true,
+    "iou_with_before": 0.7991,
+    "area_before_m2": 79.4,
+    "area_after_m2": 90.5,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_137:C1",
+    "split": "val",
+    "match": "R2D_00203",
+    "all_six": false,
+    "iou_with_before": 0.197,
+    "area_before_m2": 78.4,
+    "area_after_m2": 234.6,
+    "summary": "V1=OK | V2=X | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_122:C1",
+    "split": "train",
+    "match": "R2D_00108",
+    "all_six": true,
+    "iou_with_before": 0.2033,
+    "area_before_m2": 77.8,
+    "area_after_m2": 374.0,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_173:C1",
+    "split": "train",
+    "match": "R2D_00087",
+    "all_six": true,
+    "iou_with_before": 0.3,
+    "area_before_m2": 77.6,
+    "area_after_m2": 234.8,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_135:C1",
+    "split": "train",
+    "match": "R2D_00204",
+    "all_six": true,
+    "iou_with_before": 0.186,
+    "area_before_m2": 65.7,
+    "area_after_m2": 318.3,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_048:C1",
+    "split": "train",
+    "match": "R2D_00184",
+    "all_six": false,
+    "iou_with_before": 0.1754,
+    "area_before_m2": 62.8,
+    "area_after_m2": 357.9,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_113:C1",
+    "split": "train",
+    "match": "R2D_00055",
+    "all_six": true,
+    "iou_with_before": 0.1608,
+    "area_before_m2": 62.2,
+    "area_after_m2": 386.2,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_192:C1",
+    "split": "train",
+    "match": null,
+    "all_six": false,
+    "iou_with_before": 0.0,
+    "area_before_m2": 59.8,
+    "area_after_m2": 0.0,
+    "summary": "NOT_DETECTED"
+  },
+  {
+    "building_id": "OPT_B_139:C1",
+    "split": "train",
+    "match": "R2D_00147",
+    "all_six": false,
+    "iou_with_before": 0.4076,
+    "area_before_m2": 48.7,
+    "area_after_m2": 39.3,
+    "summary": "V1=X | V2=X | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_041:C1_DUP",
+    "split": "train",
+    "match": "R2D_00161",
+    "all_six": true,
+    "iou_with_before": 0.8546,
+    "area_before_m2": 44.7,
+    "area_after_m2": 40.4,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_213:C1",
+    "split": "train",
+    "match": "R2D_00256",
+    "all_six": false,
+    "iou_with_before": 0.6509,
+    "area_before_m2": 42.3,
+    "area_after_m2": 54.2,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=X | V5=X | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_071:C1",
+    "split": "train",
+    "match": "R2D_00178",
+    "all_six": true,
+    "iou_with_before": 0.7525,
+    "area_before_m2": 39.6,
+    "area_after_m2": 47.9,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_175:C1",
+    "split": "train",
+    "match": "R2D_00095",
+    "all_six": true,
+    "iou_with_before": 0.0024,
+    "area_before_m2": 37.9,
+    "area_after_m2": 115.8,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_180:C1",
+    "split": "train",
+    "match": "R2D_00207",
+    "all_six": false,
+    "iou_with_before": 0.6964,
+    "area_before_m2": 37.7,
+    "area_after_m2": 36.3,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=X | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_133:C1",
+    "split": "train",
+    "match": "R2D_00259",
+    "all_six": true,
+    "iou_with_before": 0.1409,
+    "area_before_m2": 35.2,
+    "area_after_m2": 241.4,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_166:C1",
+    "split": "train",
+    "match": "R2D_00253",
+    "all_six": true,
+    "iou_with_before": 0.4917,
+    "area_before_m2": 35.1,
+    "area_after_m2": 55.9,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_138:C1",
+    "split": "train",
+    "match": "R2D_00108",
+    "all_six": true,
+    "iou_with_before": 0.0763,
+    "area_before_m2": 29.5,
+    "area_after_m2": 374.0,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_177:C1",
+    "split": "train",
+    "match": "R2D_00057",
+    "all_six": true,
+    "iou_with_before": 0.1527,
+    "area_before_m2": 24.5,
+    "area_after_m2": 143.3,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_127:C1",
+    "split": "buffer",
+    "match": "R2D_00132",
+    "all_six": false,
+    "iou_with_before": 0.6824,
+    "area_before_m2": 22.4,
+    "area_after_m2": 30.2,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=X | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_032:C1_DUP",
+    "split": "train",
+    "match": "R2D_00262",
+    "all_six": true,
+    "iou_with_before": 0.7995,
+    "area_before_m2": 21.4,
+    "area_after_m2": 19.3,
+    "summary": "V1=OK | V2=OK | V3=OK | V4=OK | V5=OK | V6=OK"
+  },
+  {
+    "building_id": "OPT_B_146:C1",
+    "split": "buffer",
+    "match": null,
+    "all_six": false,
+    "iou_with_before": 0.0,
+    "area_before_m2": 21.1,
+    "area_after_m2": 0.0,
+    "summary": "NOT_DETECTED"
+  },
+  {
+    "building_id": "OPT_B_183:C1",
+    "split": "val",
+    "match": null,
+    "all_six": false,
+    "iou_with_before": 0.0,
+    "area_before_m2": 19.5,
+    "area_after_m2": 0.0,
+    "summary": "NOT_DETECTED"
+  }
+]

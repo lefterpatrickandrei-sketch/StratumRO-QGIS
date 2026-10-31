@@ -157,7 +157,7 @@ def build_model(pretrained: bool = True, arch: str = "resnet34"):
             a = self.s2(x)
             b = self.s4(a)
             c = self.s8(b)
-            t = nn.functional.interpolate(t, size=c.shape[-2:], mode="bilinear", align_corners=False)
+            t = self.u16(t)
             t = self.u4(self.u8(t, c), b)
             out = self.head(self.u1(self.u2(t, a)))
             return nn.functional.interpolate(out, size=(h, w), mode="bilinear", align_corners=False)

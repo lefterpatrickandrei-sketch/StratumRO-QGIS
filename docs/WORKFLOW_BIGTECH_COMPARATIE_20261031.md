@@ -48,11 +48,59 @@ Ce am învățat:
 | Tip acoperiș | profil LiDAR + VLM | același, plus clasificator mic pe DINOv3 după ce validezi tipuri | mai puține „o apă” greșite | mic |
 
 Ordinea testelor, fiecare pe aceeași validare (31 ADMIS din nord + cele 29 ELIMINAT ale tale) și fiecare încheiat cu verificare în QGIS:
-1. DINOv3-SAT.
-2. Canopy height.
+1. DINOv3-SAT / Meta SSL ViT-H/16 SAT (`SSLhuge_satellite.pth`).
+2. Canopy height (`HighResCanopyHeight` sat & aerial).
 3. SAM 3.
 4. Fine-tuning SAM 2.1, doar dacă 1 nu atinge ținta.
 
 Un model se păstrează numai dacă bate ansamblul actual.
 
+## Rezultate măsurate pe Colab A100 (2026-10-31)
+
+### Test 1: Meta SSL ViT-H/16 Satellite (`meta_sat_vith`, `SSLhuge_satellite.pth` înghețat + decodor UNet + stem CNN)
+Raport complet: `workspace/colab_runs/run_metasat/loop_convergence_report.json` (20 epoci × 1280 cropuri, 6,3 min pe A100):
+
+| Metrică (același split: 31 ADMIS val, 93 train) | Ansamblu ResNet-34 (actual) | ConvNeXt-Small | Meta SSL ViT-H/16 SAT (`meta_sat_vith`) | Verdict |
+|---|---|---|---|---|
+| **IoU pe pixel (val), model singur** | 0,78–0,82 (4 rulări ResNet-34) | 0,685 | 0,806 | la nivelul ResNet-34 |
+| **IoU mediu pe poligon (`admis_iou_val`, n=31)** | model singur 0,58–0,73; ansamblu **0,71** | 0,42 | **0,5254** (median 0,5295) | pierde conturul fin la 0,15 m (patch 16 la 0,30 m = 4,8 m/token) |
+| **Clădiri val cu IoU ≥ 0,90** | 13–23 % singur, 26 % ansamblu | 0 % | 6,45 % | sub ResNet-34 |
+| **Clădiri val detectate (IoU ≥ 0,50)** | 65–84 % singur | 35,5 % | 54,84 % | sub ResNet-34 |
+| **90°/45° (`ortho_45_90_share`)** | **91 %** | – | 78,76 % | – |
+| **Negative grele atinse (`hard_negatives_hit`)** | **1–3** | – | 6 | – |
+
+**Concluzie Test 1:** Preantrenarea pe satelit (Maxar 0,5 m) a ajutat clar față de ConvNeXt-Small ImageNet (`0,53` vs `0,42` IoU poligon val; `0,806` vs `0,68` IoU pixel), însă token-urile ViT-H/16 rămân prea grosiere pentru marginile de streașină la 0,15 m. **Nu bate ansamblul ResNet-34 (0,71 IoU poligon val) -> nu înlocuiește segmentatorul actual.**
+
+### Test 2: Meta + WRI High-Resolution Canopy Height din RGB vs LiDAR nDSM Cluj
+Raport complet: `workspace/colab_runs/run_canopy/canopy_report.json` (evaluat față de `cluj_ndsm_1m.tif` pe întregul AOI):
+
+| Variantă model & GSD | MAE pe copaci (m) | Bias pe copaci (m) | Corelație Pearson `r` | Înălțime medie pe sol / pe acoperiș ADMIS (m) | Mască vegetație înaltă (`CHM ≥ 2,5 m`) vs LiDAR: Precizie / Recall / IoU | Baseline doar culoare (fără CHM): Precizie / Recall / IoU | Timp AOI |
+|---|---|---|---|---|---|---|---|
+| `sat_0.50m` (GPU) | 6,95 m | -4,47 m | 0,461 | 0,15 m / 0,06 m | **P = 0,753** / R = 0,492 / **IoU = 0,423** | P = 0,399 / R = 1,000 / IoU = 0,399 | 3,3 s |
+| `aerial_0.50m` + RNet (CPU int8) | 7,00 m | -6,52 m | **0,540** | 0,07 m / **0,02 m** | **P = 0,790** / R = 0,472 / IoU = 0,419 | P = 0,399 / R = 1,000 / IoU = 0,399 | 26,5 s |
+| `sat_0.30m` (GPU) | 7,75 m | -2,39 m | 0,415 | 0,22 m / 0,05 m | P = 0,742 / **R = 0,529** / **IoU = 0,447** | P = 0,381 / R = 1,000 / IoU = 0,381 | 6,6 s |
+| `aerial_0.30m` + RNet (CPU int8) | 6,83 m | -5,42 m | 0,419 | 0,08 m / **0,02 m** | P = 0,750 / R = 0,518 / IoU = 0,442 | P = 0,381 / R = 1,000 / IoU = 0,381 | 62,2 s |
+
+**Concluzie Test 2:**
+- **Punct tare critic:** Modelul dă aproape **zero fals-pozitive pe acoperișurile ADMIS** (`owner_roof_mean_chm_m = 0,02–0,06 m`) și pe sol (`0,07–0,22 m`), și dublează precizia măștii de copac față de simpla culoare verde (`0,75–0,79` vs `0,38–0,40`), separând iarba joasă de coroanele de copaci.
+- **Limită:** Subestimează sistematic înălțimea absolută a copacilor urbani din Cluj cu `-2,4 .. -6,5 m` (MAE ~6,9 m), deci la pragul `CHM >= 2,5 m` prinde doar ~50 % din coroane (`recall = 0,49–0,53`). Pentru UAT-urile fără LiDAR este util ca **filtru de separare iarbă vs arbore** (cu prag coborât la `1,0–1,5 m`), dar unde există LiDAR nDSM, LiDAR-ul rămâne net superior.
+
 Surse: [DINOv3 SAT-493M](https://huggingface.co/facebook/dinov3-vitl16-pretrain-sat493m), [Meta canopy height](https://gishub.org/blog/canopy-height), [SAM 3](https://docs.ultralytics.com/models/sam-3), [TerraTorch](https://research.ibm.com/publications/terratorch-an-open-source-framework-for-fine-tuning-geospatial-foundation-models), [TerraMind NYC](https://huggingface.co/msradam/TerraMind-base-Flood-NYC), [TorchGeo](https://torchgeo.readthedocs.io/en/stable/tutorials/pretrained_weights.html), [Florence-2 DOTA](https://huggingface.co/Qingyun/Florence-2-large-DOTA-v1.0-lmmrotate), [SegFormer building extraction](https://pubmed.ncbi.nlm.nih.gov/41359638/), [VFM building comparison](https://avesis.ktu.edu.tr/yayin/b5ae33a7-1be8-421f-9f54-0e28b2986525/comparative-analysis-of-vision-foundation-models-for-building-segmentation-in-aerial-imagery), [Google Earth AI](https://arxiv.org/pdf/2510.18318), [Microsoft footprints](https://github.com/microsoft/globalmlbuildingfootprints).
+
+### Verificare independentă (Claude Code, 2026-10-31, după rularea continuată de agentul Antigravity)
+
+- Cifrele din cele două teste corespund fișierelor din `workspace/colab_runs/run_metasat` și `run_canopy`. Tabelul de mai sus a fost corectat față de varianta inițială:
+  - valorile ConvNeXt erau 35,5 % detectate și 0 % la IoU ≥ 0,9, nu 45 % și 6,5 %;
+  - 0,83 pe pixel aparținea unei singure rulări, nu ansamblului.
+- **Comparația corectă e model singur contra model singur.** Meta ViT-H, cu 0,525, e sub cea mai slabă rulare ResNet-34 (0,58). La pixel e egal (0,806), deci pierde la contur: un token ViT acoperă 4,8 m.
+- **Recall-ul 1,000 al bazei pe culoare nu e un rezultat.** Referința LiDAR folosea și condiția de culoare. Remăsurat față de o referință fără culoare (LiDAR ≥ 2,5 m, în afara acoperișurilor tale):
+
+| Mască (sat 0,30 m) | Precizie | Recall | IoU | Pe acoperișurile tale |
+|---|---|---|---|---|
+| doar culoare | 0,379 | 0,534 | 0,285 | 3,3 % |
+| CHM ≥ 1,0 m | 0,712 | 0,365 | 0,318 | 1,9 % |
+| CHM ≥ 1,5 m | 0,721 | 0,351 | 0,309 | 1,5 % |
+| CHM ≥ 2,5 m | 0,731 | 0,331 | 0,295 | 1,1 % |
+
+- Precizia se dublează, ceea ce e real și util. Coborârea pragului la 1,0–1,5 m **nu** recuperează recall-ul (0,33 → 0,37), deci recomandarea inițială nu se confirmă.
+- Concluzie: modelul de înălțime poate *confirma* un copac fără LiDAR, dar ratează ~2/3 din coroane. Nu înlocuiește LiDAR-ul pentru ocluzie.

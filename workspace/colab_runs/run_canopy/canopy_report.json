@@ -1,0 +1,81 @@
+{
+  "source": "facebookresearch/HighResCanopyHeight (Apache-2.0)",
+  "runs": {
+    "sat_0.50m": {
+      "tree_px": 272869,
+      "tree_mae_m": 6.95,
+      "tree_bias_m": -4.47,
+      "tree_pearson_r": 0.461,
+      "ground_mean_chm_m": 0.15,
+      "owner_roof_mean_chm_m": 0.06,
+      "tall_veg_from_rgb_vs_lidar_trees": {
+        "precision": 0.753,
+        "recall": 0.492,
+        "iou": 0.423
+      },
+      "colour_only_baseline_vs_lidar_trees": {
+        "precision": 0.399,
+        "recall": 1.0,
+        "iou": 0.399
+      },
+      "seconds": 3.3
+    },
+    "aerial_0.50m": {
+      "tree_px": 272869,
+      "tree_mae_m": 7.0,
+      "tree_bias_m": -6.52,
+      "tree_pearson_r": 0.54,
+      "ground_mean_chm_m": 0.07,
+      "owner_roof_mean_chm_m": 0.02,
+      "tall_veg_from_rgb_vs_lidar_trees": {
+        "precision": 0.79,
+        "recall": 0.472,
+        "iou": 0.419
+      },
+      "colour_only_baseline_vs_lidar_trees": {
+        "precision": 0.399,
+        "recall": 1.0,
+        "iou": 0.399
+      },
+      "seconds": 26.5
+    },
+    "sat_0.30m": {
+      "tree_px": 737391,
+      "tree_mae_m": 7.75,
+      "tree_bias_m": -2.39,
+      "tree_pearson_r": 0.415,
+      "ground_mean_chm_m": 0.22,
+      "owner_roof_mean_chm_m": 0.05,
+      "tall_veg_from_rgb_vs_lidar_trees": {
+        "precision": 0.742,
+        "recall": 0.529,
+        "iou": 0.447
+      },
+      "colour_only_baseline_vs_lidar_trees": {
+        "precision": 0.381,
+        "recall": 1.0,
+        "iou": 0.381
+      },
+      "seconds": 6.6
+    },
+    "aerial_0.30m": {
+      "tree_px": 737391,
+      "tree_mae_m": 6.83,
+      "tree_bias_m": -5.42,
+      "tree_pearson_r": 0.419,
+      "ground_mean_chm_m": 0.08,
+      "owner_roof_mean_chm_m": 0.02,
+      "tall_veg_from_rgb_vs_lidar_trees": {
+        "precision": 0.75,
+        "recall": 0.518,
+        "iou": 0.442
+      },
+      "colour_only_baseline_vs_lidar_trees": {
+        "precision": 0.381,
+        "recall": 1.0,
+        "iou": 0.381
+      },
+      "seconds": 62.2
+    }
+  }
+}
