@@ -284,10 +284,12 @@ class FinalizeTests(unittest.TestCase):
         wx, wy = xs + 0.5, 21 - (ys + 0.5)
         du = 7 - np.abs(wx - 10)
         dv = 4 - np.abs(wy - 7)
-        for name, h in {"FLAT": np.full(wx.shape, 6.0), "GABLE": 4 + 0.8 * dv, "HIP": 4 + 0.8 * np.minimum(du, dv)}.items():
+        hip_off = 4 + 0.8 * np.minimum(7 - np.abs(wx - 10.8), 4 - np.abs(wy - 7.7))  # ridge 0.8 m off-centre
+        for name, h in {"FLAT": np.full(wx.shape, 6.0), "GABLE": 4 + 0.8 * dv, "HIP": 4 + 0.8 * np.minimum(du, dv),
+                        "HIP_OFFSET": hip_off}.items():
             g = self.grids(shape=(140, 140), ndsm_px=1.0)
             g.ndsm = h.astype(np.float32)
-            self.assertEqual(lidar_roof_shape(g, poly), name, name)
+            self.assertEqual(lidar_roof_shape(g, poly), name.replace("_OFFSET", ""), name)
 
     def test_occluded_corner_is_completed_courtyard_is_kept(self):
         from shapely.geometry import box

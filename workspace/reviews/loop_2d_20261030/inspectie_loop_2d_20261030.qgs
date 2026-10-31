@@ -1,5 +1,5 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
-<qgis saveUserFull="Patrick Lefter" version="3.40.0-Bratislava" saveUser="lefpa" projectname="StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie" saveDateTime="2026-10-31T10:28:19">
+<qgis saveUserFull="Patrick Lefter" version="3.40.0-Bratislava" saveUser="lefpa" projectname="StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie" saveDateTime="2026-10-31T12:29:34">
   <homePath path=""/>
   <title>StratumRO - Lot1/Lot2, Lot3 si Lot4 in revizie</title>
   <transaction mode="Disabled"/>
@@ -35,7 +35,17 @@
     <customproperties>
       <Option/>
     </customproperties>
-    <layer-tree-group name="LOOP_2D_A100_20261030 (PENDING_OWNER_REVIEW)" expanded="1" groupLayer="" checked="Qt::Checked">
+    <layer-tree-group name="CLADIRI_2D_FINAL (un singur strat)" expanded="1" groupLayer="" checked="Qt::Checked">
+      <customproperties>
+        <Option/>
+      </customproperties>
+      <layer-tree-layer patch_size="-1,-1" id="CLADIRI_2D_FINAL_R3__albastru_ADMIS___galben_ADMIS_PROPUS___magenta_INCERT__75490e8c_2186_4bf4_9536_7d27fb6d2b75" name="CLADIRI 2D FINAL R3 (albastru ADMIS / galben ADMIS_PROPUS / magenta INCERT)" providerKey="ogr" source="../cladiri_2d_final_r3_epsg3844.gpkg|layername=cladiri_2d" expanded="1" legend_exp="" checked="Qt::Checked" legend_split_behavior="0">
+        <customproperties>
+          <Option/>
+        </customproperties>
+      </layer-tree-layer>
+    </layer-tree-group>
+    <layer-tree-group name="LOOP_2D_A100_20261030 (PENDING_OWNER_REVIEW)" expanded="1" groupLayer="" checked="Qt::Unchecked">
       <customproperties>
         <Option/>
       </customproperties>
@@ -796,6 +806,7 @@
       </layer-tree-layer>
     </layer-tree-group>
     <custom-order enabled="1">
+      <item>CLADIRI_2D_FINAL_R3__albastru_ADMIS___galben_ADMIS_PROPUS___magenta_INCERT__75490e8c_2186_4bf4_9536_7d27fb6d2b75</item>
       <item>VLM_V3_final_94f53210_62a7_4035_b91f_15ddf583a157</item>
       <item>VLM_V2_lora_746cdb3d_e706_411d_aeb2_a515cdf6aeb9</item>
       <item>VLM_V1_zeroshot_4ca29317_7faa_4228_9f3a_8b91d7091620</item>
@@ -977,6 +988,7 @@
       <layer-setting tolerance="12" maxScale="0" id="LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92" enabled="0" minScale="0" units="1" type="1"/>
       <layer-setting tolerance="12" maxScale="0" id="LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43" enabled="0" minScale="0" units="1" type="1"/>
       <layer-setting tolerance="12" maxScale="0" id="SAM2___componente_vectorizate__scoruri_si_motive_dc394b70_659b_4935_97dc_883be6cd1022" enabled="0" minScale="0" units="1" type="1"/>
+      <layer-setting tolerance="12" maxScale="0" id="CLADIRI_2D_FINAL_R3__albastru_ADMIS___galben_ADMIS_PROPUS___magenta_INCERT__75490e8c_2186_4bf4_9536_7d27fb6d2b75" enabled="0" minScale="0" units="1" type="1"/>
       <layer-setting tolerance="12" maxScale="0" id="OPT_B___Amprenta_Sol_1CC_ANCPI__0_40m__Mov_Solid__cb23063b_46c6_44c1_bb52_0a61371b3902" enabled="0" minScale="0" units="1" type="1"/>
       <layer-setting tolerance="12" maxScale="0" id="LOT3___Amprenta_Sol_ANCPI__0_40m__Verde__bb3d9a20_4a45_4d05_b9ce_a41e09d43195" enabled="0" minScale="0" units="1" type="1"/>
       <layer-setting tolerance="12" maxScale="0" id="LOT3___Masca_initiala_inainte_de_regularizare__Galben__932fe9f9_bca3_443b_9d26_0b937f38c317" enabled="0" minScale="0" units="1" type="1"/>
@@ -1029,10 +1041,10 @@
   <mapcanvas annotationsVisible="1" name="theMapCanvas">
     <units>meters</units>
     <extent>
-      <xmin>390960</xmin>
-      <ymin>585640</ymin>
-      <xmax>391140</xmax>
-      <ymax>585760</ymax>
+      <xmin>390840</xmin>
+      <ymin>585400</ymin>
+      <xmax>390960</xmax>
+      <ymax>585480</ymax>
     </extent>
     <rotation>0</rotation>
     <destinationsrs>
@@ -1053,218 +1065,225 @@
   </mapcanvas>
   <projectModels/>
   <legend updateDrawingOrder="false">
-    <legendgroup open="true" name="LOOP_2D_A100_20261030 (PENDING_OWNER_REVIEW)" checked="Qt::Checked">
-      <legendlayer showFeatureCount="0" drawingOrder="0" open="true" name="FINAL VLM - verde ADMIS_PROPUS / magenta INCERT - eticheta = tip acoperis (PENDING_OWNER_REVIEW)" checked="Qt::Checked">
+    <legendgroup open="true" name="CLADIRI_2D_FINAL (un singur strat)" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="0" open="true" name="CLADIRI 2D FINAL R3 (albastru ADMIS / galben ADMIS_PROPUS / magenta INCERT)" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
-          <legendlayerfile isInOverview="0" layerid="VLM_V3_final_94f53210_62a7_4035_b91f_15ddf583a157" visible="1"/>
+          <legendlayerfile isInOverview="0" layerid="CLADIRI_2D_FINAL_R3__albastru_ADMIS___galben_ADMIS_PROPUS___magenta_INCERT__75490e8c_2186_4bf4_9536_7d27fb6d2b75" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="1" open="true" name="VLM V2_lora" checked="Qt::Unchecked">
+    </legendgroup>
+    <legendgroup open="true" name="LOOP_2D_A100_20261030 (PENDING_OWNER_REVIEW)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="1" open="true" name="FINAL VLM - verde ADMIS_PROPUS / magenta INCERT - eticheta = tip acoperis (PENDING_OWNER_REVIEW)" checked="Qt::Checked">
+        <filegroup hidden="false" open="true">
+          <legendlayerfile isInOverview="0" layerid="VLM_V3_final_94f53210_62a7_4035_b91f_15ddf583a157" visible="0"/>
+        </filegroup>
+      </legendlayer>
+      <legendlayer showFeatureCount="0" drawingOrder="2" open="true" name="VLM V2_lora" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="VLM_V2_lora_746cdb3d_e706_411d_aeb2_a515cdf6aeb9" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="2" open="true" name="VLM V1_zeroshot" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="3" open="true" name="VLM V1_zeroshot" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="VLM_V1_zeroshot_4ca29317_7faa_4228_9f3a_8b91d7091620" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="3" open="true" name="FINAL bucla 4 - verde V1..V6 / portocaliu pica / magenta INCERT (PENDING_OWNER_REVIEW)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="4" open="true" name="FINAL bucla 4 - verde V1..V6 / portocaliu pica / magenta INCERT (PENDING_OWNER_REVIEW)" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="REVIZIE_FINAL_L4_abae1edb_3617_49c3_b13d_14f7aa7e0bd8" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="4" open="true" name="REVIZIE L3L4_ens3" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="5" open="true" name="REVIZIE L3L4_ens3" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="REVIZIE_L3L4_ens3_e0331602_99f7_46b1_acff_3c0cce1f457d" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="5" open="true" name="REVIZIE L2_filtru075" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="6" open="true" name="REVIZIE L2_filtru075" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="REVIZIE_L2_filtru075_b80b01b0_8a13_47b1_a2dd_f7df6a8f8957" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="6" open="true" name="REVIZIE L1_lipire" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="7" open="true" name="REVIZIE L1_lipire" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="REVIZIE_L1_lipire_72803a63_e93d_4905_9e64_0402018ec5c6" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="125" open="true" name="REVIZIE L0_ansamblu" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="126" open="true" name="REVIZIE L0_ansamblu" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="REVIZIE_L0_ansamblu_60d15097_0a5a_4da1_b08f_2cc978501ce0" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="7" open="true" name="BUCLA4 tinte AJUSTARE - DUPA (verde)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="8" open="true" name="BUCLA4 tinte AJUSTARE - DUPA (verde)" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="BUCLA4_tinte_AJUSTARE___DUPA__verde__69dbfc72_ab12_48bd_bfdb_8179e9ed806c" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="9" open="true" name="BUCLA4 ansamblu ResNet (B1+B3) prag0.5 - PROPUNERI" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="10" open="true" name="BUCLA4 ansamblu ResNet (B1+B3) prag0.5 - PROPUNERI" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="BUCLA4_ansamblu_ResNet__B1_B3__prag0_5___PROPUNERI_758f5408_a17d_4ddd_9d80_acdcdb7ed103" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="10" open="true" name="LOOP_B1 proposals_all" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="11" open="true" name="LOOP_B1 proposals_all" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOOP_B1_proposals_all_127cfb38_a5d8_471f_be94_1f0e77b8e635" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="8" open="true" name="ADMIS owner (loop review)" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="9" open="true" name="ADMIS owner (loop review)" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
-          <legendlayerfile isInOverview="0" layerid="ADMIS_owner__loop_review__a371eb73_73b9_4283_977b_f04bcc0f67cd" visible="1"/>
+          <legendlayerfile isInOverview="0" layerid="ADMIS_owner__loop_review__a371eb73_73b9_4283_977b_f04bcc0f67cd" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="11" open="true" name="2D_A100 ajustare_targets_before" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="12" open="true" name="2D_A100 ajustare_targets_before" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="2D_A100_ajustare_targets_before_9c1b3b14_929f_4c92_9785_170d9aa12a8e" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="12" open="true" name="2D_A100 ajustare_targets_after" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="13" open="true" name="2D_A100 ajustare_targets_after" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="2D_A100_ajustare_targets_after_a8a34155_2d87_48a7_ad9b_1025eef58312" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="13" open="true" name="2D_A100 proposals_v1_v6_passed" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="14" open="true" name="2D_A100 proposals_v1_v6_passed" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="2D_A100_proposals_v1_v6_passed_10caf68a_2cfe_4f81_8f4f_36f2649a3310" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="14" open="true" name="2D_A100 proposals_new_vs_review" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="15" open="true" name="2D_A100 proposals_new_vs_review" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="2D_A100_proposals_new_vs_review_64b41d53_3dff_4668_b38a_21e397d73f3e" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="15" open="true" name="2D_A100 proposals_all" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="16" open="true" name="2D_A100 proposals_all" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="2D_A100_proposals_all_3014207f_39f9_4128_9c3c_80aca197ffd2" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="95" open="true" name="2D_A100 probs roof/edge/corner (iter 1)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="96" open="true" name="2D_A100 probs roof/edge/corner (iter 1)" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="2D_A100_probs_roof_edge_corner__iter_1__efa7e274_2ab8_4864_aedf_bda576f7e241" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="true" name="OPTIUNEA_B_REMEDIATA_20261019" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="16" open="true" name="OPT_B - Acoperis Propuneri Remediate (Mov Dash)" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="17" open="true" name="OPT_B - Acoperis Propuneri Remediate (Mov Dash)" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="OPT_B___Acoperis_Propuneri_Remediate__Mov_Dash__28582e95_1941_43a0_a5f7_86958bc6345f" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="17" open="true" name="OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="18" open="true" name="OPT_B - Amprenta Sol 1CC ANCPI -0.40m (Mov Solid)" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="OPT_B___Amprenta_Sol_1CC_ANCPI__0_40m__Mov_Solid__cb23063b_46c6_44c1_bb52_0a61371b3902" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="18" open="true" name="OPT_B - Avertizare Limita Zbor NoData (Mov Dotted)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="19" open="true" name="OPT_B - Avertizare Limita Zbor NoData (Mov Dotted)" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="OPT_B___Avertizare_Limita_Zbor_NoData__Mov_Dotted__bcf807fa_3e15_4322_be43_3d515156b4cf" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="19" open="true" name="OPT_B - Duplicate Conținere Suprimate (Mov Subțire)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="20" open="true" name="OPT_B - Duplicate Conținere Suprimate (Mov Subțire)" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="OPT_B___Duplicate_Con_inere_Suprimate__Mov_Sub_ire__c9235340_851d_4791_94fd_ef4db6812d80" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="true" name="CLADIRI_RESTANTE_ORTHO90" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="20" open="true" name="REST - Acoperisuri Noi 90° (Portocaliu Dash)" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="21" open="true" name="REST - Acoperisuri Noi 90° (Portocaliu Dash)" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="REST___Acoperisuri_Noi_90___Portocaliu_Dash__e0799037_811a_4d86_b3b9_761454696140" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="21" open="true" name="REST - Amprenta Sol 1CC ANCPI -0.40m (Portocaliu Solid)" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="22" open="true" name="REST - Amprenta Sol 1CC ANCPI -0.40m (Portocaliu Solid)" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="REST___Amprenta_Sol_1CC_ANCPI__0_40m__Portocaliu_Solid__e69bb91a_4208_42c3_892a_7b96eed98a5c" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="true" name="B_CORECTII_20261019" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="22" open="true" name="B - acoperisuri in revizie / corectii locale" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="23" open="true" name="B - acoperisuri in revizie / corectii locale" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="B___acoperisuri_in_revizie___corectii_locale_0306de4f_2b61_48f9_a4da_be40caeb855a" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="23" open="true" name="B - false sau incomplete / necesita recuperare" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="24" open="true" name="B - false sau incomplete / necesita recuperare" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="B___false_sau_incomplete___necesita_recuperare_bbee29e2_db33_4745_98fa_851b498c6064" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="24" open="true" name="B - inainte de corectii" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="25" open="true" name="B - inainte de corectii" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="B___inainte_de_corectii_5673db42_4aaa_41ea_9955_24067f29a522" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="true" name="B_FORME_SIMPLE_SI_VARIATII_20261018" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="25" open="true" name="B - FORME SIMPLE / necesita verificare" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="26" open="true" name="B - FORME SIMPLE / necesita verificare" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="B___FORME_SIMPLE___necesita_verificare_a50ce9e1_3ce8_492b_b876_ce82a6e89d6f" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="26" open="true" name="B - ALTERNATIVE / eligibile si respinse" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="27" open="true" name="B - ALTERNATIVE / eligibile si respinse" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="B___ALTERNATIVE___eligibile_si_respinse_2f66227b_e1a1_4795_bc1c_a55eaa31fb48" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="27" open="true" name="B - ETAPA ANTERIOARA" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="28" open="true" name="B - ETAPA ANTERIOARA" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="B___ETAPA_ANTERIOARA_70df4cdd_6c7f_488f_af29_f2a4d73e6290" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="true" name="B_RAFINARE_20261018 - ETAPE SI REVIZIE" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="28" open="true" name="6. PROPUNERI - cyan simplu / portocaliu revizie" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="29" open="true" name="6. PROPUNERI - cyan simplu / portocaliu revizie" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="6__PROPUNERI___cyan_simplu___portocaliu_revizie_b2b1f1da_047b_4f65_a654_6662809738fc" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="29" open="true" name="QA - cazuri nerezolvate (nu livrabile finale)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="30" open="true" name="QA - cazuri nerezolvate (nu livrabile finale)" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="QA___cazuri_nerezolvate__nu_livrabile_finale__dba0a63c_921b_438f_9655_798f92e3a40f" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="30" open="true" name="5. SAM2 - incercari, inclusiv nepromovate" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="31" open="true" name="5. SAM2 - incercari, inclusiv nepromovate" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="5__SAM2___incercari__inclusiv_nepromovate_713437f6_b311_421a_b84b_88c7fd9438b3" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="31" open="true" name="4. QA inainte de SAM2" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="32" open="true" name="4. QA inainte de SAM2" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="4__QA_inainte_de_SAM2_f36a213d_a45c_4d36_89b9_da60e0e7ec89" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="32" open="true" name="3. Simplificare cu garduri" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="33" open="true" name="3. Simplificare cu garduri" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="3__Simplificare_cu_garduri_28f92587_4b04_47de_ba65_ead8f1a4dbd3" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="33" open="true" name="2. Observatii dupa deduplicare" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="34" open="true" name="2. Observatii dupa deduplicare" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="2__Observatii_dupa_deduplicare_0e5d9d42_f55b_47cb_8bad_19298dc5d77d" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="34" open="true" name="1. Observatii optice originale" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="35" open="true" name="1. Observatii optice originale" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="1__Observatii_optice_originale_077759d7_610c_4dbd_9576_19284bc395e4" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="35" open="true" name="0. B initial - 216 propuneri" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="36" open="true" name="0. B initial - 216 propuneri" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="0__B_initial___216_propuneri_4c71e384_25d6_42c3_a5d7_9657c339139e" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="36" open="true" name="Recall - cei 71 respinsi anterior, neverificati" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="37" open="true" name="Recall - cei 71 respinsi anterior, neverificati" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Recall___cei_71_respinsi_anterior__neverificati_c1f8d7df_4a91_46ec_92e1_9adc1413e7b6" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="37" open="true" name="Context - alte loturi (copii pentru QA)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="38" open="true" name="Context - alte loturi (copii pentru QA)" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Context___alte_loturi__copii_pentru_QA__2138348d_54f5_4933_90b1_d7f8d7771782" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="38" open="true" name="SAM2 - componente vectorizate, scoruri si motive" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="39" open="true" name="SAM2 - componente vectorizate, scoruri si motive" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="SAM2___componente_vectorizate__scoruri_si_motive_dc394b70_659b_4935_97dc_883be6cd1022" visible="0"/>
         </filegroup>
@@ -1272,30 +1291,30 @@
     </legendgroup>
     <legendgroup open="true" name="STRATUMRO_COMPARATIE_A_VS_B" checked="Qt::Unchecked">
       <legendgroup open="true" name="OPTIUNEA_A_LOT5_TINTIT (1/4 Zona)" checked="Qt::Checked">
-        <legendlayer showFeatureCount="0" drawingOrder="39" open="true" name="LOT5 - Acoperis Ortho90 (Cyan)" checked="Qt::Checked">
+        <legendlayer showFeatureCount="0" drawingOrder="40" open="true" name="LOT5 - Acoperis Ortho90 (Cyan)" checked="Qt::Checked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT5___Acoperis_Ortho90__Cyan__dbf9128a_860e_47a3_beaf_d83acb46bd45" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="40" open="true" name="LOT5 - Amprenta Sol ANCPI -0.40m (Verde)" checked="Qt::Checked">
+        <legendlayer showFeatureCount="0" drawingOrder="41" open="true" name="LOT5 - Amprenta Sol ANCPI -0.40m (Verde)" checked="Qt::Checked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT5___Amprenta_Sol_ANCPI__0_40m__Verde__c2d0103d_0c60_4e9f_b27f_f863418f9452" visible="0"/>
           </filegroup>
         </legendlayer>
       </legendgroup>
       <legendgroup open="true" name="OPTIUNEA_B_REGIONAL_FILTRAT (2/4 Zona)" checked="Qt::Checked">
-        <legendlayer showFeatureCount="0" drawingOrder="41" open="true" name="OPT_B - Cladiri Validate nDSM (Portocaliu)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="42" open="true" name="OPT_B - Cladiri Validate nDSM (Portocaliu)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="OPT_B___Cladiri_Validate_nDSM__Portocaliu__3135407f_3336_4d65_8b1e_e552991eb065" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="42" open="true" name="OPT_B - Amprenta Sol -0.40m (Verde)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="43" open="true" name="OPT_B - Amprenta Sol -0.40m (Verde)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="OPT_B___Amprenta_Sol__0_40m__Verde__6a2a1cdf_4471_4f13_b936_ea29ac115261" visible="0"/>
           </filegroup>
         </legendlayer>
       </legendgroup>
-      <legendlayer showFeatureCount="0" drawingOrder="43" open="true" name="OPT_B - Falsuri Pozitive Eliminate (Gri)" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="44" open="true" name="OPT_B - Falsuri Pozitive Eliminate (Gri)" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="OPT_B___Falsuri_Pozitive_Eliminate__Gri__176fe6c7_5ea2_4924_9333_c709bb645b71" visible="0"/>
         </filegroup>
@@ -1303,61 +1322,61 @@
     </legendgroup>
     <legendgroup open="true" name="STRATUMRO_RECTIFICARI_CANONICE_ORTHO90" checked="Qt::Unchecked">
       <legendgroup open="true" name="LOT_REST_REGIONAL_ORTHO90" checked="Qt::Unchecked">
-        <legendlayer showFeatureCount="0" drawingOrder="44" open="true" name="REST - Acoperis Ortho90 (Cyan)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="45" open="true" name="REST - Acoperis Ortho90 (Cyan)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="REST___Acoperis_Ortho90__Cyan__d07bcdb9_db5a_4768_9d2e_1ce2a57b28d9" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="45" open="true" name="REST - Amprenta Sol ANCPI -0.40m (Verde)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="46" open="true" name="REST - Amprenta Sol ANCPI -0.40m (Verde)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="REST___Amprenta_Sol_ANCPI__0_40m__Verde__ca09e659_d04b_4396_8302_26a28c1ff7d1" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="46" open="true" name="REST - Masca initiala inainte de regularizare (Galben)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="47" open="true" name="REST - Masca initiala inainte de regularizare (Galben)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="REST___Masca_initiala_inainte_de_regularizare__Galben__96a33735_0304_439a_8aa9_95d1a2dd750a" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="47" open="true" name="REST - Candidati Deduplicati/Omisi (Gri)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="48" open="true" name="REST - Candidati Deduplicati/Omisi (Gri)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="REST___Candidati_Deduplicati_Omisi__Gri__248b2c72_4902_462d_8531_e39cfadf806a" visible="0"/>
           </filegroup>
         </legendlayer>
       </legendgroup>
       <legendgroup open="true" name="LOT4_RECTIFICAT_20261018" checked="Qt::Checked">
-        <legendlayer showFeatureCount="0" drawingOrder="48" open="true" name="LOT4 - Acoperis Ortho90 (Cyan)" checked="Qt::Checked">
+        <legendlayer showFeatureCount="0" drawingOrder="49" open="true" name="LOT4 - Acoperis Ortho90 (Cyan)" checked="Qt::Checked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT4___Acoperis_Ortho90__Cyan__a3816a73_4d66_4bec_bcfe_017641837e58" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="49" open="true" name="LOT4 - Amprenta Sol ANCPI -0.40m (Verde)" checked="Qt::Checked">
+        <legendlayer showFeatureCount="0" drawingOrder="50" open="true" name="LOT4 - Amprenta Sol ANCPI -0.40m (Verde)" checked="Qt::Checked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT4___Amprenta_Sol_ANCPI__0_40m__Verde__239b1f8b_1ef7_42d7_9032_ba099fa69a36" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="50" open="true" name="LOT4 - T22 Diagnostic LiDAR nDSM (Magenta)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="51" open="true" name="LOT4 - T22 Diagnostic LiDAR nDSM (Magenta)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT4___T22_Diagnostic_LiDAR_nDSM__Magenta__acfec04d_9e70_48af_bea1_910c65ef7a82" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="51" open="true" name="LOT4 - Masca initiala inainte de regularizare (Galben)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="52" open="true" name="LOT4 - Masca initiala inainte de regularizare (Galben)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT4___Masca_initiala_inainte_de_regularizare__Galben__cbb94b3d_1217_454a_b403_156011b0210c" visible="0"/>
           </filegroup>
         </legendlayer>
       </legendgroup>
       <legendgroup open="true" name="LOT3_RECTIFICAT_20261018" checked="Qt::Checked">
-        <legendlayer showFeatureCount="0" drawingOrder="52" open="true" name="LOT3 - Acoperis Ortho90 (Cyan)" checked="Qt::Checked">
+        <legendlayer showFeatureCount="0" drawingOrder="53" open="true" name="LOT3 - Acoperis Ortho90 (Cyan)" checked="Qt::Checked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT3___Acoperis_Ortho90__Cyan__16f61bcb_e830_4943_a759_95af5e7b28b9" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="53" open="true" name="LOT3 - Amprenta Sol ANCPI -0.40m (Verde)" checked="Qt::Checked">
+        <legendlayer showFeatureCount="0" drawingOrder="54" open="true" name="LOT3 - Amprenta Sol ANCPI -0.40m (Verde)" checked="Qt::Checked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT3___Amprenta_Sol_ANCPI__0_40m__Verde__bb3d9a20_4a45_4d05_b9ce_a41e09d43195" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="54" open="true" name="LOT3 - Masca initiala inainte de regularizare (Galben)" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="55" open="true" name="LOT3 - Masca initiala inainte de regularizare (Galben)" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT3___Masca_initiala_inainte_de_regularizare__Galben__932fe9f9_bca3_443b_9d26_0b937f38c317" visible="0"/>
           </filegroup>
@@ -1365,107 +1384,107 @@
       </legendgroup>
     </legendgroup>
     <legendgroup open="true" name="ACOPERISURI_AUTOMAT_REGIONAL_20261017_NEVALIDAT" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="55" open="true" name="AUTO - candidati acoperis / NEVALIDATI" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="56" open="true" name="AUTO - candidati acoperis / NEVALIDATI" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="AUTO___candidati_acoperis___NEVALIDATI_01914983_c1f9_4273_b7fc_ae1d5dfabc1e" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="56" open="true" name="AUTO - obiecte optice INCERTE / nu presupune cladiri" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="57" open="true" name="AUTO - obiecte optice INCERTE / nu presupune cladiri" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="AUTO___obiecte_optice_INCERTE___nu_presupune_cladiri_a3557864_ce7f_422b_9d59_cb25c5e93e4b" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="57" open="true" name="AUTO - vegetatie probabila / diagnostic" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="58" open="true" name="AUTO - vegetatie probabila / diagnostic" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="AUTO___vegetatie_probabila___diagnostic_4b760f1c_1d67_43cb_9015_7f50404d66c2" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="58" open="true" name="AUTO - acoperire scanare / nu parcele" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="59" open="true" name="AUTO - acoperire scanare / nu parcele" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="AUTO___acoperire_scanare___nu_parcele_e513b9e9_eb4d_4b0a_8f60_b938762de518" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="59" open="true" name="AUTO - observatii brute / diagnostic" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="60" open="true" name="AUTO - observatii brute / diagnostic" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="AUTO___observatii_brute___diagnostic_dfef8d34_0cee_4d77_9d3a_b275f4b8d801" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="60" open="true" name="T10 BACKUP - retrageri PRESUPUSE / NU masuratori" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="61" open="true" name="T10 BACKUP - retrageri PRESUPUSE / NU masuratori" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T10_BACKUP___retrageri_PRESUPUSE___NU_masuratori_01589b46_fb61_4776_9786_50f6f3b20f4c" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="true" name="LOT4_T21_T30_IN_REVIZIE" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="61" open="true" name="LOT4 - 9 contururi / in revizie" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="62" open="true" name="LOT4 - 9 contururi / in revizie" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT4___9_contururi___in_revizie_b7f25a38_85f2_45e6_b1c4_283e635bdf31" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="62" open="true" name="LOT4 - T22 nerezolvat" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="63" open="true" name="LOT4 - T22 nerezolvat" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT4___T22_nereZolvat_af6f4b76_33f9_44ac_b26f_51fad9d36c43" visible="0"/>
         </filegroup>
       </legendlayer>
       <legendgroup open="false" name="DIAGNOSTIC / ferestre si incercari respinse" checked="Qt::Unchecked">
-        <legendlayer showFeatureCount="0" drawingOrder="63" open="true" name="LOT4 - ferestre de cautare / NU contur final" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="64" open="true" name="LOT4 - ferestre de cautare / NU contur final" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT4___ferestre_de_cautare___NU_contur_final_00e0d01f_705d_4551_ad86_8b9eae205f49" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="64" open="true" name="LOT4 - T22 masca respinsa de agent" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="65" open="true" name="LOT4 - T22 masca respinsa de agent" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="LOT4___T22_masca_respinsa_de_agent_c7f4cb6e_73a7_41cf_9637_bd8815e7dcc9" visible="0"/>
           </filegroup>
         </legendlayer>
       </legendgroup>
       <legendgroup open="false" name="Lot4 - detalii ortofoto 5cm / CRS interpretat" checked="Qt::Checked">
-        <legendlayer showFeatureCount="0" drawingOrder="96" open="true" name="Lot4 / T21_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="97" open="true" name="Lot4 / T21_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T21_5cm_298db82e_ed7a_4f53_af20_70f196750509" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="97" open="true" name="Lot4 / T22_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="98" open="true" name="Lot4 / T22_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T22_5cm_a59d8b5f_8762_4733_afdc_90e2eebeff93" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="98" open="true" name="Lot4 / T23_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="99" open="true" name="Lot4 / T23_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T23_5cm_d8b73275_c136_4fbf_8285_c3dd6d411a79" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="99" open="true" name="Lot4 / T24_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="100" open="true" name="Lot4 / T24_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T24_5cm_64bad868_2e5d_4dc1_96a5_8ecb886ccfa2" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="100" open="true" name="Lot4 / T25_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="101" open="true" name="Lot4 / T25_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T25_5cm_fcef8985_b080_4d36_841c_fc38d56b0564" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="101" open="true" name="Lot4 / T26_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="102" open="true" name="Lot4 / T26_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T26_5cm_af73392a_a1af_48a6_82f6_1ae703c8141b" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="102" open="true" name="Lot4 / T27_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="103" open="true" name="Lot4 / T27_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T27_5cm_14f491c1_04e4_463c_aa60_60afa89ddeb5" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="103" open="true" name="Lot4 / T28_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="104" open="true" name="Lot4 / T28_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T28_5cm_d635dc6e_6b36_4228_87dc_320a83923852" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="104" open="true" name="Lot4 / T29_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="105" open="true" name="Lot4 / T29_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T29_5cm_f9dfa074_33e7_4d67_a509_b5800235e0b8" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="105" open="true" name="Lot4 / T30_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="106" open="true" name="Lot4 / T30_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="Lot4___T30_5cm_1c50aec5_e092_4883_8976_532b07c1b3c8" visible="0"/>
           </filegroup>
@@ -1473,53 +1492,53 @@
       </legendgroup>
     </legendgroup>
     <legendgroup open="true" name="LOT3_REPARAT_20261017_NEVALIDAT" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="65" open="false" name="LOT3 - 20 ipoteze / NECESITA VERDICT" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="66" open="false" name="LOT3 - 20 ipoteze / NECESITA VERDICT" checked="Qt::Unchecked">
         <filegroup hidden="false" open="false">
           <legendlayerfile isInOverview="0" layerid="LOT3___18_ipoteze___NECESITA_VERDICT_1238eaca_9136_45d6_b634_8c73c4d951c9" visible="0"/>
         </filegroup>
       </legendlayer>
       <legendgroup open="false" name="DETALII SID 5cm / interpretare CRS proiect" checked="Qt::Checked">
-        <legendlayer showFeatureCount="0" drawingOrder="106" open="true" name="T11_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="107" open="true" name="T11_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T11_5cm_6c88d654_fa11_4736_b037_dfd0e37c8471" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="107" open="true" name="T12_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="108" open="true" name="T12_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T12_5cm_75bd1002_6557_49a3_9fa0_95b2ea4bcd88" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="108" open="true" name="T13_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="109" open="true" name="T13_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T13_5cm_11db7616_b226_442f_ab9a_3c4d29d741f6" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="109" open="true" name="T14_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="110" open="true" name="T14_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T14_5cm_b012d662_864e_4468_b730_9b65d939af22" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="110" open="true" name="T15_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="111" open="true" name="T15_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T15_5cm_9860cb9c_705f_4e04_a486_ca2afb9c88a6" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="111" open="true" name="T16_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="112" open="true" name="T16_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T16_5cm_e6257cf3_53e7_4d0a_bc7d_939e1544e46b" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="112" open="true" name="T18_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="113" open="true" name="T18_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T18_5cm_25f3e210_9ef7_433b_9d5b_9b2f3ee3201a" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="113" open="true" name="T19_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="114" open="true" name="T19_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T19_5cm_2ed3ce64_c9f4_470a_8d34_26540cdcdc4a" visible="0"/>
           </filegroup>
         </legendlayer>
-        <legendlayer showFeatureCount="0" drawingOrder="114" open="true" name="T20_5cm" checked="Qt::Unchecked">
+        <legendlayer showFeatureCount="0" drawingOrder="115" open="true" name="T20_5cm" checked="Qt::Unchecked">
           <filegroup hidden="false" open="true">
             <legendlayerfile isInOverview="0" layerid="T20_5cm_c4ba247e_4511_401f_83ad_a7bb8f1bd49c" visible="0"/>
           </filegroup>
@@ -1527,209 +1546,209 @@
       </legendgroup>
     </legendgroup>
     <legendgroup open="true" name="LOT3_T18_MUCHII_OBSERVATE_20261017" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="66" open="true" name="T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="67" open="true" name="T18:C1 - MUCHIE OBSERVATA / DE VERIFICAT" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T18_C1___MUCHIE_OBSERVATA___DE_VERIFICAT_0291f035_7c23_4e76_8872_8b63c90cacfd" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="67" open="true" name="T18:C2 - MUCHIE OBSERVATA / DE VERIFICAT" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="68" open="true" name="T18:C2 - MUCHIE OBSERVATA / DE VERIFICAT" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T18_C2___MUCHIE_OBSERVATA___DE_VERIFICAT_4b9910b0_88c4_45da_93a9_44e2a76df8b5" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="115" open="true" name="T18 - DETALIU SID 5cm" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="116" open="true" name="T18 - DETALIU SID 5cm" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T18___DETALIU_SID_5cm_df19f540_3a6b_48ad_a4b6_ce96b75c88bb" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="116" open="true" name="T18 - SURSA NATIVA / detaliu muchie" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="117" open="true" name="T18 - SURSA NATIVA / detaliu muchie" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T18___SURSA_NATIVA___detaliu_muchie_ef0642d3_c4dd_4100_8d69_f70ea59d0c5c" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="false" name="LOT3_T18_ANEXA_IPOTEZA_20261017" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="68" open="true" name="T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="69" open="true" name="T18 - CONFLICT MUCHIE 5.8 m2 / NEVERIFICAT" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T18___CONFLICT_MUCHIE_5_8_m2___NEVERIFICAT_23d0294a_800a_49d5_9894_6f19b43a8364" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="69" open="true" name="T18:C2 - IPOTEZA ANEXA / MUCHIE DE VERIFICAT" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="70" open="true" name="T18:C2 - IPOTEZA ANEXA / MUCHIE DE VERIFICAT" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T18_C2___IPOTEZA_ANEXA___MUCHIE_DE_VERIFICAT_78b2b5ca_71c4_4b0d_a3aa_952fdcfe8260" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="false" name="LOT3_FINISARE_T17_T18_20261017" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="70" open="true" name="T17:C1 - FINISARE NEVERIFICATA" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="71" open="true" name="T17:C1 - FINISARE NEVERIFICATA" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T17_C1___FINISARE_NEVERIFICATA_3bfe043b_2907_4ee2_80a7_8935a34ca472" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="71" open="true" name="T17:C2 - FINISARE NEVERIFICATA" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="72" open="true" name="T17:C2 - FINISARE NEVERIFICATA" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T17_C2___FINISARE_NEVERIFICATA_d2ed98fe_a060_4fda_8998_23041c15b18c" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="72" open="true" name="T18:C1 - FINISARE NEVERIFICATA" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="73" open="true" name="T18:C1 - FINISARE NEVERIFICATA" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="T18_C1___FINISARE_NEVERIFICATA_107457f8_155a_4529_a9e9_83dbabea38dd" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="73" open="true" name="MASTI_BRUTE_FINISARE - mov" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="74" open="true" name="MASTI_BRUTE_FINISARE - mov" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="MASTI_BRUTE_FINISARE___mov_06c7364b_82d1_4e48_bfdf_71ebcaafe258" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="false" name="LOT3_REVIZIE_V3_T11_T20" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="74" open="true" name="LOT3_V3_CORPURI_EXTRASE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="75" open="true" name="LOT3_V3_CORPURI_EXTRASE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_V3_CORPURI_EXTRASE_e38ee6f4_9b22_4f6d_a21e_cc503cd87212" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="75" open="true" name="LOT3_V3_CAZURI_NERECUPERATE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="76" open="true" name="LOT3_V3_CAZURI_NERECUPERATE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_V3_CAZURI_NERECUPERATE_aa675c0b_fb1c_4dc3_8564_12cf5f16e16f" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="76" open="true" name="LOT3_V3_FERESTRE_SELECTIE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="77" open="true" name="LOT3_V3_FERESTRE_SELECTIE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_V3_FERESTRE_SELECTIE_998ff327_1619_483c_8d61_5b47a3f33a8e" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="77" open="true" name="LOT3_V3_MASCA_BRUTA" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="78" open="true" name="LOT3_V3_MASCA_BRUTA" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_V3_MASCA_BRUTA_79964992_98c0_4166_b2c7_3237ca28a9ce" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="false" name="LOT3_REVIZIE_20261013_ISTORIC" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="78" open="true" name="LOT3_REV_CORPURI_EXTRASE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="79" open="true" name="LOT3_REV_CORPURI_EXTRASE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_REV_CORPURI_EXTRASE_652609a6_c5ac_4da3_9d1f_01201a92b83a" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="79" open="true" name="LOT3_REV_CAZURI_NERECUPERATE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="80" open="true" name="LOT3_REV_CAZURI_NERECUPERATE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_REV_CAZURI_NERECUPERATE_a8edfdfe_047e_4637_8fe3_4ef3c0cbe732" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="80" open="true" name="LOT3_REV_FERESTRE_SELECTIE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="81" open="true" name="LOT3_REV_FERESTRE_SELECTIE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_REV_FERESTRE_SELECTIE_e6690a76_a618_46e3_938b_4b7bee58704b" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="81" open="true" name="LOT3_REV_MASCA_BRUTA" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="82" open="true" name="LOT3_REV_MASCA_BRUTA" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_REV_MASCA_BRUTA_131eeae8_d0f1_46c1_9127_30678941d90d" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
     <legendgroup open="false" name="LOT3_ISTORIC_INITIAL_NEACCEPTAT" checked="Qt::Unchecked">
-      <legendlayer showFeatureCount="0" drawingOrder="82" open="true" name="LOT3_CORPURI_EXTRASE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="83" open="true" name="LOT3_CORPURI_EXTRASE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_CORPURI_EXTRASE_378493a5_24db_41b0_ba57_948403fb9b92" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="83" open="true" name="LOT3_CAZURI_NERECUPERATE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="84" open="true" name="LOT3_CAZURI_NERECUPERATE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_CAZURI_NERECUPERATE_ada7c386_4522_4f56_924e_726a6c38b990" visible="0"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="84" open="true" name="LOT3_FERESTRE_SELECTIE" checked="Qt::Unchecked">
+      <legendlayer showFeatureCount="0" drawingOrder="85" open="true" name="LOT3_FERESTRE_SELECTIE" checked="Qt::Unchecked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="LOT3_FERESTRE_SELECTIE_a554dd54_03da_46f3_b154_d3a72019e14a" visible="0"/>
         </filegroup>
       </legendlayer>
     </legendgroup>
-    <legendlayer showFeatureCount="0" drawingOrder="85" open="true" name="T10_ISTORIC_PARTIAL (Incomplet anterior)" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="86" open="true" name="T10_ISTORIC_PARTIAL (Incomplet anterior)" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="T10_ISTORIC_PARTIAL__Incomplet_anterior__93b1d00e_97ee_408a_9600_f7b40cc8317d" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="86" open="true" name="RESPINSE_ANTERIOR_SASE" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="87" open="true" name="RESPINSE_ANTERIOR_SASE" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="RESPINSE_ANTERIOR_SASE_bd332c36_4829_458b_b374_6f633c63a18d" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="87" open="true" name="RECTIFICARI_T05_T06_T07_T10" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="88" open="true" name="RECTIFICARI_T05_T06_T07_T10" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="RECTIFICARI_T05_T06_T07_T10_3a19f33e_d679_4f2f_ac71_e59e9c594eb4" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="88" open="true" name="B5_DOUA_CORPURI" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="89" open="true" name="B5_DOUA_CORPURI" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="B5_DOUA_CORPURI_7b3e84ed_694c_4c7b_82d6_c634c8dcc145" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="89" open="true" name="TESTE_10_REZULTATE" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="90" open="true" name="TESTE_10_REZULTATE" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="TESTE_10_REZULTATE_e4723ac6_69ff_40bc_9831_3aacc7499cd6" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="90" open="true" name="ACOPERISURI_SIMPLE" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="91" open="true" name="ACOPERISURI_SIMPLE" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="ACOPERISURI_SIMPLE_8122dbf9_3eb9_427d_a49a_2b1912439e3f" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="91" open="true" name="SOL_ESTIMAT_NEVERIFICAT" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="92" open="true" name="SOL_ESTIMAT_NEVERIFICAT" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="SOL_ESTIMAT_NEVERIFICAT_b9f6f6c0_8f05_4898_a452_97c4c9cb9c3f" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="92" open="true" name="REFERINTE_UTILIZATOR" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="93" open="true" name="REFERINTE_UTILIZATOR" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="REFERINTE_UTILIZATOR_5e655e0d_0041_4683_b16e_5605591087ae" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="93" open="true" name="PROPUNERI_SELECTATE" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="94" open="true" name="PROPUNERI_SELECTATE" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="PROPUNERI_SELECTATE_0bb56959_d9ae_4dc3_84f9_2dfbf231ecad" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer showFeatureCount="0" drawingOrder="94" open="true" name="REVIZUIRE_COMPLEXA" checked="Qt::Unchecked">
+    <legendlayer showFeatureCount="0" drawingOrder="95" open="true" name="REVIZUIRE_COMPLEXA" checked="Qt::Unchecked">
       <filegroup hidden="false" open="true">
         <legendlayerfile isInOverview="0" layerid="REVIZUIRE_COMPLEXA_3ac9d5d1_9f0a_4850_b115_8955bfedfe3f" visible="0"/>
       </filegroup>
     </legendlayer>
     <legendgroup open="true" name="ORTOFOTO COMPLETE - 8 tile-uri" checked="Qt::Checked">
-      <legendlayer showFeatureCount="0" drawingOrder="117" open="true" name="Cluj-0-0" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="118" open="true" name="Cluj-0-0" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Cluj_0_0_0ae645e8_7e13_4584_b531_5ac41eccdd4d" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="118" open="true" name="Cluj-0-1" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="119" open="true" name="Cluj-0-1" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Cluj_0_1_2fbad42d_94bf_4f79_a2f4_c905897040ba" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="119" open="true" name="Cluj-0-2" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="120" open="true" name="Cluj-0-2" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Cluj_0_2_5ab7f7db_d77a_4793_a1a8_cd9a6f0b9551" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="120" open="true" name="Cluj-1-0" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="121" open="true" name="Cluj-1-0" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Cluj_1_0_93f6da64_c796_455e_b937_a4b8123e0d86" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="121" open="true" name="Cluj-1-1" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="122" open="true" name="Cluj-1-1" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Cluj_1_1_682f36ee_2559_4d31_9839_93f7197e2b8c" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="122" open="true" name="Cluj-1-2" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="123" open="true" name="Cluj-1-2" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Cluj_1_2_59b111dc_c922_420a_81b1_ce0df49b4e17" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="123" open="true" name="Cluj-2-0" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="124" open="true" name="Cluj-2-0" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Cluj_2_0_a583d669_0ae6_4f9d_8e71_3a4842d6286b" visible="1"/>
         </filegroup>
       </legendlayer>
-      <legendlayer showFeatureCount="0" drawingOrder="124" open="true" name="Cluj-2-1" checked="Qt::Checked">
+      <legendlayer showFeatureCount="0" drawingOrder="125" open="true" name="Cluj-2-1" checked="Qt::Checked">
         <filegroup hidden="false" open="true">
           <legendlayerfile isInOverview="0" layerid="Cluj_2_1_3a1cc238_37b5_430f_9fdd_b7a0a98355f4" visible="1"/>
         </filegroup>
@@ -15622,6 +15641,781 @@
       <constraintExpressions>
         <constraint exp="" desc="" field="fid"/>
         <constraint exp="" desc="" field="candidate_id"/>
+      </constraintExpressions>
+      <expressionfields/>
+      <attributeactions/>
+      <attributetableconfig sortExpression="" actionWidgetStyle="dropDown" sortOrder="0">
+        <columns/>
+      </attributetableconfig>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <storedexpressions/>
+      <editform tolerant="1"></editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>generatedlayout</editorlayout>
+      <editable/>
+      <labelOnTop/>
+      <reuseLastValue/>
+      <dataDefinedFieldProperties/>
+      <widgets/>
+      <previewExpression></previewExpression>
+      <mapTip enabled="1"></mapTip>
+    </maplayer>
+    <maplayer simplifyDrawingTol="1" legendPlaceholderImage="" labelsEnabled="1" symbologyReferenceScale="-1" refreshOnNotifyMessage="" minScale="100000000" refreshOnNotifyEnabled="0" simplifyMaxScale="1" simplifyAlgorithm="0" simplifyLocal="1" readOnly="0" styleCategories="AllStyleCategories" type="vector" autoRefreshTime="0" hasScaleBasedVisibilityFlag="0" wkbType="Polygon" autoRefreshMode="Disabled" geometry="Polygon" simplifyDrawingHints="1" maxScale="0">
+      <id>CLADIRI_2D_FINAL_R3__albastru_ADMIS___galben_ADMIS_PROPUS___magenta_INCERT__75490e8c_2186_4bf4_9536_7d27fb6d2b75</id>
+      <datasource>../cladiri_2d_final_r3_epsg3844.gpkg|layername=cladiri_2d</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>CLADIRI 2D FINAL R3 (albastru ADMIS / galben ADMIS_PROPUS / magenta INCERT)</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <wkt>PROJCRS["Pulkovo 1942(58) / Stereo70",BASEGEOGCRS["Pulkovo 1942(58)",DATUM["Pulkovo 1942(58)",ELLIPSOID["Krassowsky 1940",6378245,298.3,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4179]],CONVERSION["Stereo 70",METHOD["Oblique Stereographic",ID["EPSG",9809]],PARAMETER["Latitude of natural origin",46,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",25,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.99975,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",500000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["northing (X)",north,ORDER[1],LENGTHUNIT["metre",1]],AXIS["easting (Y)",east,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping."],AREA["Romania - onshore and offshore."],BBOX[43.44,20.26,48.27,31.41]],ID["EPSG",3844]]</wkt>
+          <proj4>+proj=sterea +lat_0=46 +lon_0=25 +k=0.99975 +x_0=500000 +y_0=500000 +ellps=krass +units=m +no_defs</proj4>
+          <srsid>27265</srsid>
+          <srid>3844</srid>
+          <authid>EPSG:3844</authid>
+          <description>Pulkovo 1942(58) / Stereo70</description>
+          <projectionacronym>sterea</projectionacronym>
+          <ellipsoidacronym>EPSG:7024</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type>dataset</type>
+        <title></title>
+        <abstract></abstract>
+        <links/>
+        <dates/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys nativeFormat="Wkt">
+            <wkt>PROJCRS["Pulkovo 1942(58) / Stereo70",BASEGEOGCRS["Pulkovo 1942(58)",DATUM["Pulkovo 1942(58)",ELLIPSOID["Krassowsky 1940",6378245,298.3,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4179]],CONVERSION["Stereo 70",METHOD["Oblique Stereographic",ID["EPSG",9809]],PARAMETER["Latitude of natural origin",46,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",25,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.99975,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",500000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["northing (X)",north,ORDER[1],LENGTHUNIT["metre",1]],AXIS["easting (Y)",east,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping."],AREA["Romania - onshore and offshore."],BBOX[43.44,20.26,48.27,31.41]],ID["EPSG",3844]]</wkt>
+            <proj4>+proj=sterea +lat_0=46 +lon_0=25 +k=0.99975 +x_0=500000 +y_0=500000 +ellps=krass +units=m +no_defs</proj4>
+            <srsid>27265</srsid>
+            <srid>3844</srid>
+            <authid>EPSG:3844</authid>
+            <description>Pulkovo 1942(58) / Stereo70</description>
+            <projectionacronym>sterea</projectionacronym>
+            <ellipsoidacronym>EPSG:7024</ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent/>
+      </resourceMetadata>
+      <provider encoding="UTF-8">ogr</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <metadataUrls/>
+      <flags>
+        <Identifiable>1</Identifiable>
+        <Removable>1</Removable>
+        <Searchable>1</Searchable>
+        <Private>0</Private>
+      </flags>
+      <temporal accumulate="0" startField="" startExpression="" durationField="" mode="0" endExpression="" limitMode="0" durationUnit="min" enabled="0" fixedDuration="0" endField="">
+        <fixedRange>
+          <start></start>
+          <end></end>
+        </fixedRange>
+      </temporal>
+      <elevation showMarkerSymbolInSurfacePlots="0" zscale="1" symbology="Line" extrusion="0" binding="Centroid" respectLayerSymbol="1" extrusionEnabled="0" type="IndividualFeatures" clamping="Terrain" zoffset="0">
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" type="QString" name="name"/>
+            <Option name="properties"/>
+            <Option value="collection" type="QString" name="type"/>
+          </Option>
+        </data-defined-properties>
+        <profileLineSymbol>
+          <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="line" name="" force_rhr="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </data_defined_properties>
+            <layer class="SimpleLine" locked="0" id="{ae62b090-3aa0-4aac-a3b3-310d30c28008}" enabled="1" pass="0">
+              <Option type="Map">
+                <Option value="0" type="QString" name="align_dash_pattern"/>
+                <Option value="square" type="QString" name="capstyle"/>
+                <Option value="5;2" type="QString" name="customdash"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="customdash_map_unit_scale"/>
+                <Option value="MM" type="QString" name="customdash_unit"/>
+                <Option value="0" type="QString" name="dash_pattern_offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="dash_pattern_offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="dash_pattern_offset_unit"/>
+                <Option value="0" type="QString" name="draw_inside_polygon"/>
+                <Option value="bevel" type="QString" name="joinstyle"/>
+                <Option value="229,182,54,255,rgb:0.89803921568627454,0.71372549019607845,0.21176470588235294,1" type="QString" name="line_color"/>
+                <Option value="solid" type="QString" name="line_style"/>
+                <Option value="0.6" type="QString" name="line_width"/>
+                <Option value="MM" type="QString" name="line_width_unit"/>
+                <Option value="0" type="QString" name="offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="offset_unit"/>
+                <Option value="0" type="QString" name="ring_filter"/>
+                <Option value="0" type="QString" name="trim_distance_end"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="trim_distance_end_map_unit_scale"/>
+                <Option value="MM" type="QString" name="trim_distance_end_unit"/>
+                <Option value="0" type="QString" name="trim_distance_start"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="trim_distance_start_map_unit_scale"/>
+                <Option value="MM" type="QString" name="trim_distance_start_unit"/>
+                <Option value="0" type="QString" name="tweak_dash_pattern_on_corners"/>
+                <Option value="0" type="QString" name="use_custom_dash"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="width_map_unit_scale"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" type="QString" name="name"/>
+                  <Option name="properties"/>
+                  <Option value="collection" type="QString" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileLineSymbol>
+        <profileFillSymbol>
+          <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="fill" name="" force_rhr="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </data_defined_properties>
+            <layer class="SimpleFill" locked="0" id="{3ecf5d63-a28f-4e2a-a178-aee98614d873}" enabled="1" pass="0">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="border_width_map_unit_scale"/>
+                <Option value="229,182,54,255,rgb:0.89803921568627454,0.71372549019607845,0.21176470588235294,1" type="QString" name="color"/>
+                <Option value="bevel" type="QString" name="joinstyle"/>
+                <Option value="0,0" type="QString" name="offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="offset_unit"/>
+                <Option value="164,130,39,255,rgb:0.64144350347142753,0.50983443961242081,0.15126268406195162,1" type="QString" name="outline_color"/>
+                <Option value="solid" type="QString" name="outline_style"/>
+                <Option value="0.2" type="QString" name="outline_width"/>
+                <Option value="MM" type="QString" name="outline_width_unit"/>
+                <Option value="solid" type="QString" name="style"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" type="QString" name="name"/>
+                  <Option name="properties"/>
+                  <Option value="collection" type="QString" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileFillSymbol>
+        <profileMarkerSymbol>
+          <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="marker" name="" force_rhr="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </data_defined_properties>
+            <layer class="SimpleMarker" locked="0" id="{60a87177-90aa-4d05-aca3-05a0e704896e}" enabled="1" pass="0">
+              <Option type="Map">
+                <Option value="0" type="QString" name="angle"/>
+                <Option value="square" type="QString" name="cap_style"/>
+                <Option value="229,182,54,255,rgb:0.89803921568627454,0.71372549019607845,0.21176470588235294,1" type="QString" name="color"/>
+                <Option value="1" type="QString" name="horizontal_anchor_point"/>
+                <Option value="bevel" type="QString" name="joinstyle"/>
+                <Option value="diamond" type="QString" name="name"/>
+                <Option value="0,0" type="QString" name="offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="offset_unit"/>
+                <Option value="164,130,39,255,rgb:0.64144350347142753,0.50983443961242081,0.15126268406195162,1" type="QString" name="outline_color"/>
+                <Option value="solid" type="QString" name="outline_style"/>
+                <Option value="0.2" type="QString" name="outline_width"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="outline_width_map_unit_scale"/>
+                <Option value="MM" type="QString" name="outline_width_unit"/>
+                <Option value="diameter" type="QString" name="scale_method"/>
+                <Option value="3" type="QString" name="size"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="size_map_unit_scale"/>
+                <Option value="MM" type="QString" name="size_unit"/>
+                <Option value="1" type="QString" name="vertical_anchor_point"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" type="QString" name="name"/>
+                  <Option name="properties"/>
+                  <Option value="collection" type="QString" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileMarkerSymbol>
+      </elevation>
+      <renderer-v2 forceraster="0" type="RuleRenderer" symbollevels="0" referencescale="-1" enableorderby="0">
+        <rules key="{55f0abcf-a817-4823-bd04-265c70f5b459}">
+          <rule filter="&quot;stare&quot;='ADMIS'" key="{b4d2a8db-f4ee-4fc0-ba86-54fc36e523f2}" label="ADMIS (proprietar)" symbol="0"/>
+          <rule filter="&quot;stare&quot;='ADMIS_PROPUS'" key="{c737fed4-e7fe-491d-a883-b6c98ab81ba1}" label="ADMIS_PROPUS" symbol="1"/>
+          <rule filter="&quot;stare&quot;='INCERT'" key="{46ccbde2-48b9-4c51-aae6-572777a2c8b9}" label="INCERT" symbol="2"/>
+        </rules>
+        <symbols>
+          <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="fill" name="0" force_rhr="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </data_defined_properties>
+            <layer class="SimpleFill" locked="0" id="{1332b0d9-25e0-49d9-9b98-a2b10b8490fd}" enabled="1" pass="0">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="border_width_map_unit_scale"/>
+                <Option value="0,0,255,255,rgb:0,0,1,1" type="QString" name="color"/>
+                <Option value="bevel" type="QString" name="joinstyle"/>
+                <Option value="0,0" type="QString" name="offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="offset_unit"/>
+                <Option value="0,220,255,255,rgb:0,0.86274509803921573,1,1" type="QString" name="outline_color"/>
+                <Option value="solid" type="QString" name="outline_style"/>
+                <Option value="0.7" type="QString" name="outline_width"/>
+                <Option value="MM" type="QString" name="outline_width_unit"/>
+                <Option value="no" type="QString" name="style"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" type="QString" name="name"/>
+                  <Option name="properties"/>
+                  <Option value="collection" type="QString" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+          <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="fill" name="1" force_rhr="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </data_defined_properties>
+            <layer class="SimpleFill" locked="0" id="{5f85ce0d-abb3-47f6-b10d-8ec72fac410a}" enabled="1" pass="0">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="border_width_map_unit_scale"/>
+                <Option value="0,0,255,255,rgb:0,0,1,1" type="QString" name="color"/>
+                <Option value="bevel" type="QString" name="joinstyle"/>
+                <Option value="0,0" type="QString" name="offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="offset_unit"/>
+                <Option value="255,230,0,255,rgb:1,0.90196078431372551,0,1" type="QString" name="outline_color"/>
+                <Option value="solid" type="QString" name="outline_style"/>
+                <Option value="0.7" type="QString" name="outline_width"/>
+                <Option value="MM" type="QString" name="outline_width_unit"/>
+                <Option value="no" type="QString" name="style"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" type="QString" name="name"/>
+                  <Option name="properties"/>
+                  <Option value="collection" type="QString" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+          <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="fill" name="2" force_rhr="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </data_defined_properties>
+            <layer class="SimpleFill" locked="0" id="{43b0814a-ca19-4cb4-a52e-b17022699684}" enabled="1" pass="0">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="border_width_map_unit_scale"/>
+                <Option value="0,0,255,255,rgb:0,0,1,1" type="QString" name="color"/>
+                <Option value="bevel" type="QString" name="joinstyle"/>
+                <Option value="0,0" type="QString" name="offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="offset_unit"/>
+                <Option value="255,0,255,255,rgb:1,0,1,1" type="QString" name="outline_color"/>
+                <Option value="dash" type="QString" name="outline_style"/>
+                <Option value="0.6" type="QString" name="outline_width"/>
+                <Option value="MM" type="QString" name="outline_width_unit"/>
+                <Option value="no" type="QString" name="style"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" type="QString" name="name"/>
+                  <Option name="properties"/>
+                  <Option value="collection" type="QString" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" type="QString" name="name"/>
+            <Option name="properties"/>
+            <Option value="collection" type="QString" name="type"/>
+          </Option>
+        </data-defined-properties>
+      </renderer-v2>
+      <selection mode="Default">
+        <selectionColor invalid="1"/>
+      </selection>
+      <labeling type="simple">
+        <settings calloutType="simple">
+          <text-style previewBkgrdColor="255,255,255,255,rgb:1,1,1,1" textOpacity="1" fontSizeUnit="Point" fontSize="10" fontSizeMapUnitScale="3x:0,0,0,0,0,0" forcedBold="0" fontItalic="0" useSubstitutions="0" fontKerning="1" tabStopDistanceUnit="Percentage" textOrientation="horizontal" fontLetterSpacing="0" fontWeight="50" isExpression="0" legendString="Aa" namedStyle="" fontStrikeout="0" tabStopDistanceMapUnitScale="3x:0,0,0,0,0,0" multilineHeight="1" allowHtml="0" forcedItalic="0" fontUnderline="0" fontFamily="Arial" blendMode="0" fieldName="tip_acoperis" fontWordSpacing="0" textColor="255,255,255,255,rgb:1,1,1,1" tabStopDistance="6" multilineHeightUnit="Percentage" capitalization="0">
+            <families/>
+            <text-buffer bufferOpacity="1" bufferSize="0.80000000000000004" bufferNoFill="1" bufferColor="0,0,0,255,rgb:0,0,0,1" bufferSizeUnits="MM" bufferJoinStyle="128" bufferBlendMode="0" bufferDraw="1" bufferSizeMapUnitScale="3x:0,0,0,0,0,0"/>
+            <text-mask maskEnabled="0" maskJoinStyle="128" maskSizeMapUnitScale="3x:0,0,0,0,0,0" maskSize2="1.5" maskSizeUnits="MM" maskOpacity="1" maskSize="1.5" maskType="0" maskedSymbolLayers=""/>
+            <background shapeType="0" shapeFillColor="255,255,255,255,rgb:1,1,1,1" shapeBorderColor="128,128,128,255,rgb:0.50196078431372548,0.50196078431372548,0.50196078431372548,1" shapeSVGFile="" shapeJoinStyle="64" shapeDraw="0" shapeBorderWidth="0" shapeRadiiY="0" shapeRotation="0" shapeRadiiX="0" shapeSizeUnit="MM" shapeBorderWidthUnit="MM" shapeSizeY="0" shapeSizeMapUnitScale="3x:0,0,0,0,0,0" shapeOffsetUnit="MM" shapeOffsetMapUnitScale="3x:0,0,0,0,0,0" shapeRadiiMapUnitScale="3x:0,0,0,0,0,0" shapeBorderWidthMapUnitScale="3x:0,0,0,0,0,0" shapeOpacity="1" shapeRotationType="0" shapeOffsetY="0" shapeOffsetX="0" shapeRadiiUnit="MM" shapeSizeX="0" shapeBlendMode="0" shapeSizeType="0">
+              <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="fill" name="fillSymbol" force_rhr="0">
+                <data_defined_properties>
+                  <Option type="Map">
+                    <Option value="" type="QString" name="name"/>
+                    <Option name="properties"/>
+                    <Option value="collection" type="QString" name="type"/>
+                  </Option>
+                </data_defined_properties>
+                <layer class="SimpleFill" locked="0" id="" enabled="1" pass="0">
+                  <Option type="Map">
+                    <Option value="3x:0,0,0,0,0,0" type="QString" name="border_width_map_unit_scale"/>
+                    <Option value="255,255,255,255,rgb:1,1,1,1" type="QString" name="color"/>
+                    <Option value="bevel" type="QString" name="joinstyle"/>
+                    <Option value="0,0" type="QString" name="offset"/>
+                    <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                    <Option value="MM" type="QString" name="offset_unit"/>
+                    <Option value="128,128,128,255,rgb:0.50196078431372548,0.50196078431372548,0.50196078431372548,1" type="QString" name="outline_color"/>
+                    <Option value="no" type="QString" name="outline_style"/>
+                    <Option value="0" type="QString" name="outline_width"/>
+                    <Option value="MM" type="QString" name="outline_width_unit"/>
+                    <Option value="solid" type="QString" name="style"/>
+                  </Option>
+                  <data_defined_properties>
+                    <Option type="Map">
+                      <Option value="" type="QString" name="name"/>
+                      <Option name="properties"/>
+                      <Option value="collection" type="QString" name="type"/>
+                    </Option>
+                  </data_defined_properties>
+                </layer>
+              </symbol>
+            </background>
+            <shadow shadowDraw="0" shadowOffsetUnit="MM" shadowScale="100" shadowBlendMode="6" shadowOffsetAngle="135" shadowRadiusUnit="MM" shadowOffsetDist="1" shadowOffsetMapUnitScale="3x:0,0,0,0,0,0" shadowRadiusAlphaOnly="0" shadowUnder="0" shadowRadius="1.5" shadowOffsetGlobal="1" shadowRadiusMapUnitScale="3x:0,0,0,0,0,0" shadowColor="0,0,0,255,rgb:0,0,0,1" shadowOpacity="0.69999999999999996"/>
+            <dd_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </dd_properties>
+            <substitutions/>
+          </text-style>
+          <text-format reverseDirectionSymbol="0" plussign="0" placeDirectionSymbol="0" leftDirectionSymbol="&lt;" rightDirectionSymbol=">" formatNumbers="0" decimals="3" addDirectionSymbol="0" autoWrapLength="0" multilineAlign="3" useMaxLineLengthForAutoWrap="1" wrapChar=""/>
+          <placement centroidWhole="0" geometryGeneratorEnabled="0" overlapHandling="PreventOverlap" layerType="UnknownGeometry" allowDegraded="0" lineAnchorClipping="0" fitInPolygonOnly="0" placementFlags="10" overrunDistanceMapUnitScale="3x:0,0,0,0,0,0" overrunDistanceUnit="MM" lineAnchorTextPoint="FollowPlacement" centroidInside="0" preserveRotation="1" placement="0" geometryGeneratorType="PointGeometry" maximumDistance="0" maxCurvedCharAngleOut="-25" labelOffsetMapUnitScale="3x:0,0,0,0,0,0" offsetType="0" repeatDistance="0" priority="5" rotationAngle="0" xOffset="0" repeatDistanceMapUnitScale="3x:0,0,0,0,0,0" maximumDistanceUnit="MM" lineAnchorType="0" rotationUnit="AngleDegrees" prioritization="PreferCloser" maxCurvedCharAngleIn="25" repeatDistanceUnits="MM" distMapUnitScale="3x:0,0,0,0,0,0" dist="0" offsetUnits="MM" distUnits="MM" quadOffset="4" lineAnchorPercent="0.5" maximumDistanceMapUnitScale="3x:0,0,0,0,0,0" yOffset="0" overrunDistance="0" polygonPlacementFlags="2" predefinedPositionOrder="TR,TL,BR,BL,R,L,TSR,BSR" geometryGenerator=""/>
+          <rendering obstacleFactor="1" obstacleType="1" labelPerPart="0" mergeLines="0" maxNumLabels="2000" fontLimitPixelSize="0" obstacle="1" scaleMax="0" fontMaxPixelSize="10000" zIndex="0" limitNumLabels="0" scaleMin="0" minFeatureSize="0" upsidedownLabels="0" fontMinPixelSize="0" scaleVisibility="0" drawLabels="1" unplacedVisibility="0"/>
+          <dd_properties>
+            <Option type="Map">
+              <Option value="" type="QString" name="name"/>
+              <Option name="properties"/>
+              <Option value="collection" type="QString" name="type"/>
+            </Option>
+          </dd_properties>
+          <callout type="simple">
+            <Option type="Map">
+              <Option value="pole_of_inaccessibility" type="QString" name="anchorPoint"/>
+              <Option value="0" type="int" name="blendMode"/>
+              <Option type="Map" name="ddProperties">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+              <Option value="false" type="bool" name="drawToAllParts"/>
+              <Option value="0" type="QString" name="enabled"/>
+              <Option value="point_on_exterior" type="QString" name="labelAnchorPoint"/>
+              <Option value="&lt;symbol is_animated=&quot;0&quot; frame_rate=&quot;10&quot; clip_to_extent=&quot;1&quot; alpha=&quot;1&quot; type=&quot;line&quot; name=&quot;symbol&quot; force_rhr=&quot;0&quot;>&lt;data_defined_properties>&lt;Option type=&quot;Map&quot;>&lt;Option value=&quot;&quot; type=&quot;QString&quot; name=&quot;name&quot;/>&lt;Option name=&quot;properties&quot;/>&lt;Option value=&quot;collection&quot; type=&quot;QString&quot; name=&quot;type&quot;/>&lt;/Option>&lt;/data_defined_properties>&lt;layer class=&quot;SimpleLine&quot; locked=&quot;0&quot; id=&quot;{13f990d7-a183-402c-a13a-0cf39a5081be}&quot; enabled=&quot;1&quot; pass=&quot;0&quot;>&lt;Option type=&quot;Map&quot;>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;align_dash_pattern&quot;/>&lt;Option value=&quot;square&quot; type=&quot;QString&quot; name=&quot;capstyle&quot;/>&lt;Option value=&quot;5;2&quot; type=&quot;QString&quot; name=&quot;customdash&quot;/>&lt;Option value=&quot;3x:0,0,0,0,0,0&quot; type=&quot;QString&quot; name=&quot;customdash_map_unit_scale&quot;/>&lt;Option value=&quot;MM&quot; type=&quot;QString&quot; name=&quot;customdash_unit&quot;/>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;dash_pattern_offset&quot;/>&lt;Option value=&quot;3x:0,0,0,0,0,0&quot; type=&quot;QString&quot; name=&quot;dash_pattern_offset_map_unit_scale&quot;/>&lt;Option value=&quot;MM&quot; type=&quot;QString&quot; name=&quot;dash_pattern_offset_unit&quot;/>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;draw_inside_polygon&quot;/>&lt;Option value=&quot;bevel&quot; type=&quot;QString&quot; name=&quot;joinstyle&quot;/>&lt;Option value=&quot;60,60,60,255,rgb:0.23529411764705882,0.23529411764705882,0.23529411764705882,1&quot; type=&quot;QString&quot; name=&quot;line_color&quot;/>&lt;Option value=&quot;solid&quot; type=&quot;QString&quot; name=&quot;line_style&quot;/>&lt;Option value=&quot;0.3&quot; type=&quot;QString&quot; name=&quot;line_width&quot;/>&lt;Option value=&quot;MM&quot; type=&quot;QString&quot; name=&quot;line_width_unit&quot;/>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;offset&quot;/>&lt;Option value=&quot;3x:0,0,0,0,0,0&quot; type=&quot;QString&quot; name=&quot;offset_map_unit_scale&quot;/>&lt;Option value=&quot;MM&quot; type=&quot;QString&quot; name=&quot;offset_unit&quot;/>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;ring_filter&quot;/>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;trim_distance_end&quot;/>&lt;Option value=&quot;3x:0,0,0,0,0,0&quot; type=&quot;QString&quot; name=&quot;trim_distance_end_map_unit_scale&quot;/>&lt;Option value=&quot;MM&quot; type=&quot;QString&quot; name=&quot;trim_distance_end_unit&quot;/>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;trim_distance_start&quot;/>&lt;Option value=&quot;3x:0,0,0,0,0,0&quot; type=&quot;QString&quot; name=&quot;trim_distance_start_map_unit_scale&quot;/>&lt;Option value=&quot;MM&quot; type=&quot;QString&quot; name=&quot;trim_distance_start_unit&quot;/>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;tweak_dash_pattern_on_corners&quot;/>&lt;Option value=&quot;0&quot; type=&quot;QString&quot; name=&quot;use_custom_dash&quot;/>&lt;Option value=&quot;3x:0,0,0,0,0,0&quot; type=&quot;QString&quot; name=&quot;width_map_unit_scale&quot;/>&lt;/Option>&lt;data_defined_properties>&lt;Option type=&quot;Map&quot;>&lt;Option value=&quot;&quot; type=&quot;QString&quot; name=&quot;name&quot;/>&lt;Option name=&quot;properties&quot;/>&lt;Option value=&quot;collection&quot; type=&quot;QString&quot; name=&quot;type&quot;/>&lt;/Option>&lt;/data_defined_properties>&lt;/layer>&lt;/symbol>" type="QString" name="lineSymbol"/>
+              <Option value="0" type="double" name="minLength"/>
+              <Option value="3x:0,0,0,0,0,0" type="QString" name="minLengthMapUnitScale"/>
+              <Option value="MM" type="QString" name="minLengthUnit"/>
+              <Option value="0" type="double" name="offsetFromAnchor"/>
+              <Option value="3x:0,0,0,0,0,0" type="QString" name="offsetFromAnchorMapUnitScale"/>
+              <Option value="MM" type="QString" name="offsetFromAnchorUnit"/>
+              <Option value="0" type="double" name="offsetFromLabel"/>
+              <Option value="3x:0,0,0,0,0,0" type="QString" name="offsetFromLabelMapUnitScale"/>
+              <Option value="MM" type="QString" name="offsetFromLabelUnit"/>
+            </Option>
+          </callout>
+        </settings>
+      </labeling>
+      <customproperties>
+        <Option/>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <geometryOptions removeDuplicateNodes="0" geometryPrecision="0">
+        <activeChecks type="StringList">
+          <Option value="" type="QString"/>
+        </activeChecks>
+        <checkConfiguration/>
+      </geometryOptions>
+      <legend showLabelLegend="0" type="default-vector"/>
+      <referencedLayers/>
+      <fieldConfiguration>
+        <field configurationFlags="NoFlag" name="fid">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="cladire_id">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="sursa">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="stare">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="owner_verdict">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="tip_acoperis">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="tip_sursa">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="tip_incredere">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="h_streasina_m">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="h_coama_m">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="h_relief_m">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="tip_ndsm">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="area_m2">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="ajustare_m">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="ocluzie_m2">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="geom_ajustata_agent">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="veg_frac">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="nodata_frac">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="lidar_elev_frac">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="score">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="rectilinear_evidenta">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="suprapunere_proprietar_m2">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="vlm_admis">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="fragmente_unite">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field configurationFlags="NoFlag" name="decizie_agent">
+          <editWidget type="">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias field="fid" index="0" name=""/>
+        <alias field="cladire_id" index="1" name=""/>
+        <alias field="sursa" index="2" name=""/>
+        <alias field="stare" index="3" name=""/>
+        <alias field="owner_verdict" index="4" name=""/>
+        <alias field="tip_acoperis" index="5" name=""/>
+        <alias field="tip_sursa" index="6" name=""/>
+        <alias field="tip_incredere" index="7" name=""/>
+        <alias field="h_streasina_m" index="8" name=""/>
+        <alias field="h_coama_m" index="9" name=""/>
+        <alias field="h_relief_m" index="10" name=""/>
+        <alias field="tip_ndsm" index="11" name=""/>
+        <alias field="area_m2" index="12" name=""/>
+        <alias field="ajustare_m" index="13" name=""/>
+        <alias field="ocluzie_m2" index="14" name=""/>
+        <alias field="geom_ajustata_agent" index="15" name=""/>
+        <alias field="veg_frac" index="16" name=""/>
+        <alias field="nodata_frac" index="17" name=""/>
+        <alias field="lidar_elev_frac" index="18" name=""/>
+        <alias field="score" index="19" name=""/>
+        <alias field="rectilinear_evidenta" index="20" name=""/>
+        <alias field="suprapunere_proprietar_m2" index="21" name=""/>
+        <alias field="vlm_admis" index="22" name=""/>
+        <alias field="fragmente_unite" index="23" name=""/>
+        <alias field="decizie_agent" index="24" name=""/>
+      </aliases>
+      <splitPolicies>
+        <policy field="fid" policy="Duplicate"/>
+        <policy field="cladire_id" policy="Duplicate"/>
+        <policy field="sursa" policy="Duplicate"/>
+        <policy field="stare" policy="Duplicate"/>
+        <policy field="owner_verdict" policy="Duplicate"/>
+        <policy field="tip_acoperis" policy="Duplicate"/>
+        <policy field="tip_sursa" policy="Duplicate"/>
+        <policy field="tip_incredere" policy="Duplicate"/>
+        <policy field="h_streasina_m" policy="Duplicate"/>
+        <policy field="h_coama_m" policy="Duplicate"/>
+        <policy field="h_relief_m" policy="Duplicate"/>
+        <policy field="tip_ndsm" policy="Duplicate"/>
+        <policy field="area_m2" policy="Duplicate"/>
+        <policy field="ajustare_m" policy="Duplicate"/>
+        <policy field="ocluzie_m2" policy="Duplicate"/>
+        <policy field="geom_ajustata_agent" policy="Duplicate"/>
+        <policy field="veg_frac" policy="Duplicate"/>
+        <policy field="nodata_frac" policy="Duplicate"/>
+        <policy field="lidar_elev_frac" policy="Duplicate"/>
+        <policy field="score" policy="Duplicate"/>
+        <policy field="rectilinear_evidenta" policy="Duplicate"/>
+        <policy field="suprapunere_proprietar_m2" policy="Duplicate"/>
+        <policy field="vlm_admis" policy="Duplicate"/>
+        <policy field="fragmente_unite" policy="Duplicate"/>
+        <policy field="decizie_agent" policy="Duplicate"/>
+      </splitPolicies>
+      <duplicatePolicies>
+        <policy field="fid" policy="Duplicate"/>
+        <policy field="cladire_id" policy="Duplicate"/>
+        <policy field="sursa" policy="Duplicate"/>
+        <policy field="stare" policy="Duplicate"/>
+        <policy field="owner_verdict" policy="Duplicate"/>
+        <policy field="tip_acoperis" policy="Duplicate"/>
+        <policy field="tip_sursa" policy="Duplicate"/>
+        <policy field="tip_incredere" policy="Duplicate"/>
+        <policy field="h_streasina_m" policy="Duplicate"/>
+        <policy field="h_coama_m" policy="Duplicate"/>
+        <policy field="h_relief_m" policy="Duplicate"/>
+        <policy field="tip_ndsm" policy="Duplicate"/>
+        <policy field="area_m2" policy="Duplicate"/>
+        <policy field="ajustare_m" policy="Duplicate"/>
+        <policy field="ocluzie_m2" policy="Duplicate"/>
+        <policy field="geom_ajustata_agent" policy="Duplicate"/>
+        <policy field="veg_frac" policy="Duplicate"/>
+        <policy field="nodata_frac" policy="Duplicate"/>
+        <policy field="lidar_elev_frac" policy="Duplicate"/>
+        <policy field="score" policy="Duplicate"/>
+        <policy field="rectilinear_evidenta" policy="Duplicate"/>
+        <policy field="suprapunere_proprietar_m2" policy="Duplicate"/>
+        <policy field="vlm_admis" policy="Duplicate"/>
+        <policy field="fragmente_unite" policy="Duplicate"/>
+        <policy field="decizie_agent" policy="Duplicate"/>
+      </duplicatePolicies>
+      <defaults>
+        <default applyOnUpdate="0" field="fid" expression=""/>
+        <default applyOnUpdate="0" field="cladire_id" expression=""/>
+        <default applyOnUpdate="0" field="sursa" expression=""/>
+        <default applyOnUpdate="0" field="stare" expression=""/>
+        <default applyOnUpdate="0" field="owner_verdict" expression=""/>
+        <default applyOnUpdate="0" field="tip_acoperis" expression=""/>
+        <default applyOnUpdate="0" field="tip_sursa" expression=""/>
+        <default applyOnUpdate="0" field="tip_incredere" expression=""/>
+        <default applyOnUpdate="0" field="h_streasina_m" expression=""/>
+        <default applyOnUpdate="0" field="h_coama_m" expression=""/>
+        <default applyOnUpdate="0" field="h_relief_m" expression=""/>
+        <default applyOnUpdate="0" field="tip_ndsm" expression=""/>
+        <default applyOnUpdate="0" field="area_m2" expression=""/>
+        <default applyOnUpdate="0" field="ajustare_m" expression=""/>
+        <default applyOnUpdate="0" field="ocluzie_m2" expression=""/>
+        <default applyOnUpdate="0" field="geom_ajustata_agent" expression=""/>
+        <default applyOnUpdate="0" field="veg_frac" expression=""/>
+        <default applyOnUpdate="0" field="nodata_frac" expression=""/>
+        <default applyOnUpdate="0" field="lidar_elev_frac" expression=""/>
+        <default applyOnUpdate="0" field="score" expression=""/>
+        <default applyOnUpdate="0" field="rectilinear_evidenta" expression=""/>
+        <default applyOnUpdate="0" field="suprapunere_proprietar_m2" expression=""/>
+        <default applyOnUpdate="0" field="vlm_admis" expression=""/>
+        <default applyOnUpdate="0" field="fragmente_unite" expression=""/>
+        <default applyOnUpdate="0" field="decizie_agent" expression=""/>
+      </defaults>
+      <constraints>
+        <constraint exp_strength="0" unique_strength="1" field="fid" constraints="3" notnull_strength="1"/>
+        <constraint exp_strength="0" unique_strength="0" field="cladire_id" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="sursa" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="stare" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="owner_verdict" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="tip_acoperis" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="tip_sursa" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="tip_incredere" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="h_streasina_m" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="h_coama_m" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="h_relief_m" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="tip_ndsm" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="area_m2" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="ajustare_m" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="ocluzie_m2" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="geom_ajustata_agent" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="veg_frac" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="nodata_frac" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="lidar_elev_frac" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="score" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="rectilinear_evidenta" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="suprapunere_proprietar_m2" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="vlm_admis" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="fragmente_unite" constraints="0" notnull_strength="0"/>
+        <constraint exp_strength="0" unique_strength="0" field="decizie_agent" constraints="0" notnull_strength="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint exp="" desc="" field="fid"/>
+        <constraint exp="" desc="" field="cladire_id"/>
+        <constraint exp="" desc="" field="sursa"/>
+        <constraint exp="" desc="" field="stare"/>
+        <constraint exp="" desc="" field="owner_verdict"/>
+        <constraint exp="" desc="" field="tip_acoperis"/>
+        <constraint exp="" desc="" field="tip_sursa"/>
+        <constraint exp="" desc="" field="tip_incredere"/>
+        <constraint exp="" desc="" field="h_streasina_m"/>
+        <constraint exp="" desc="" field="h_coama_m"/>
+        <constraint exp="" desc="" field="h_relief_m"/>
+        <constraint exp="" desc="" field="tip_ndsm"/>
+        <constraint exp="" desc="" field="area_m2"/>
+        <constraint exp="" desc="" field="ajustare_m"/>
+        <constraint exp="" desc="" field="ocluzie_m2"/>
+        <constraint exp="" desc="" field="geom_ajustata_agent"/>
+        <constraint exp="" desc="" field="veg_frac"/>
+        <constraint exp="" desc="" field="nodata_frac"/>
+        <constraint exp="" desc="" field="lidar_elev_frac"/>
+        <constraint exp="" desc="" field="score"/>
+        <constraint exp="" desc="" field="rectilinear_evidenta"/>
+        <constraint exp="" desc="" field="suprapunere_proprietar_m2"/>
+        <constraint exp="" desc="" field="vlm_admis"/>
+        <constraint exp="" desc="" field="fragmente_unite"/>
+        <constraint exp="" desc="" field="decizie_agent"/>
       </constraintExpressions>
       <expressionfields/>
       <attributeactions/>
@@ -55042,8 +55836,233 @@
       <previewExpression></previewExpression>
       <mapTip enabled="1"></mapTip>
     </maplayer>
+    <maplayer legendPlaceholderImage="" styleCategories="AllStyleCategories" refreshOnNotifyMessage="" autoRefreshTime="0" maxScale="0" hasScaleBasedVisibilityFlag="0" minScale="1e+08" refreshOnNotifyEnabled="0" type="raster" autoRefreshMode="Disabled">
+      <extent>
+        <xmin>390478.53999999997904524</xmin>
+        <ymin>584980.65700000000651926</ymin>
+        <xmax>391522.53999999997904524</xmax>
+        <ymax>585877.65700000000651926</ymax>
+      </extent>
+      <wgs84extent>
+        <xmin>23.56438773210969018</xmin>
+        <ymin>46.75544848141043985</ymin>
+        <xmax>23.57826483898797321</xmax>
+        <ymax>46.76368679068220757</ymax>
+      </wgs84extent>
+      <id>nDSM_1m__verificare__b72adbd5_ea12_464a_9ecd_79fb62518c7e</id>
+      <datasource>../../derived/cluj_ndsm_1m.tif</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>nDSM 1m (verificare)</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <wkt>PROJCRS["Pulkovo 1942(58) / Stereo70",BASEGEOGCRS["Pulkovo 1942(58)",DATUM["Pulkovo 1942(58)",ELLIPSOID["Krassowsky 1940",6378245,298.3,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4179]],CONVERSION["Stereo 70",METHOD["Oblique Stereographic",ID["EPSG",9809]],PARAMETER["Latitude of natural origin",46,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",25,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.99975,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",500000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["northing (X)",north,ORDER[1],LENGTHUNIT["metre",1]],AXIS["easting (Y)",east,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping."],AREA["Romania - onshore and offshore."],BBOX[43.44,20.26,48.27,31.41]],ID["EPSG",3844]]</wkt>
+          <proj4>+proj=sterea +lat_0=46 +lon_0=25 +k=0.99975 +x_0=500000 +y_0=500000 +ellps=krass +units=m +no_defs</proj4>
+          <srsid>27265</srsid>
+          <srid>3844</srid>
+          <authid>EPSG:3844</authid>
+          <description>Pulkovo 1942(58) / Stereo70</description>
+          <projectionacronym>sterea</projectionacronym>
+          <ellipsoidacronym>EPSG:7024</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type>dataset</type>
+        <title></title>
+        <abstract></abstract>
+        <links/>
+        <dates/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys nativeFormat="Wkt">
+            <wkt>PROJCRS["Pulkovo 1942(58) / Stereo70",BASEGEOGCRS["Pulkovo 1942(58)",DATUM["Pulkovo 1942(58)",ELLIPSOID["Krassowsky 1940",6378245,298.3,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4179]],CONVERSION["Stereo 70",METHOD["Oblique Stereographic",ID["EPSG",9809]],PARAMETER["Latitude of natural origin",46,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",25,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.99975,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",500000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["northing (X)",north,ORDER[1],LENGTHUNIT["metre",1]],AXIS["easting (Y)",east,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Cadastre, engineering survey, topographic mapping."],AREA["Romania - onshore and offshore."],BBOX[43.44,20.26,48.27,31.41]],ID["EPSG",3844]]</wkt>
+            <proj4>+proj=sterea +lat_0=46 +lon_0=25 +k=0.99975 +x_0=500000 +y_0=500000 +ellps=krass +units=m +no_defs</proj4>
+            <srsid>27265</srsid>
+            <srid>3844</srid>
+            <authid>EPSG:3844</authid>
+            <description>Pulkovo 1942(58) / Stereo70</description>
+            <projectionacronym>sterea</projectionacronym>
+            <ellipsoidacronym>EPSG:7024</ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent/>
+      </resourceMetadata>
+      <provider>gdal</provider>
+      <noData>
+        <noDataList useSrcNoData="0" bandNo="1"/>
+      </noData>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <metadataUrls/>
+      <flags>
+        <Identifiable>1</Identifiable>
+        <Removable>1</Removable>
+        <Searchable>1</Searchable>
+        <Private>0</Private>
+      </flags>
+      <temporal bandNumber="1" mode="0" fetchMode="0" enabled="0">
+        <fixedRange>
+          <start></start>
+          <end></end>
+        </fixedRange>
+      </temporal>
+      <elevation zscale="1" mode="RepresentsElevationSurface" band="1" symbology="Line" enabled="0" zoffset="0">
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" type="QString" name="name"/>
+            <Option name="properties"/>
+            <Option value="collection" type="QString" name="type"/>
+          </Option>
+        </data-defined-properties>
+        <profileLineSymbol>
+          <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="line" name="" force_rhr="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </data_defined_properties>
+            <layer class="SimpleLine" locked="0" id="{e9784d42-e2e6-4dff-b44f-a8486c7d4b61}" enabled="1" pass="0">
+              <Option type="Map">
+                <Option value="0" type="QString" name="align_dash_pattern"/>
+                <Option value="square" type="QString" name="capstyle"/>
+                <Option value="5;2" type="QString" name="customdash"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="customdash_map_unit_scale"/>
+                <Option value="MM" type="QString" name="customdash_unit"/>
+                <Option value="0" type="QString" name="dash_pattern_offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="dash_pattern_offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="dash_pattern_offset_unit"/>
+                <Option value="0" type="QString" name="draw_inside_polygon"/>
+                <Option value="bevel" type="QString" name="joinstyle"/>
+                <Option value="141,90,153,255,rgb:0.55294117647058827,0.35294117647058826,0.59999999999999998,1" type="QString" name="line_color"/>
+                <Option value="solid" type="QString" name="line_style"/>
+                <Option value="0.6" type="QString" name="line_width"/>
+                <Option value="MM" type="QString" name="line_width_unit"/>
+                <Option value="0" type="QString" name="offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="offset_unit"/>
+                <Option value="0" type="QString" name="ring_filter"/>
+                <Option value="0" type="QString" name="trim_distance_end"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="trim_distance_end_map_unit_scale"/>
+                <Option value="MM" type="QString" name="trim_distance_end_unit"/>
+                <Option value="0" type="QString" name="trim_distance_start"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="trim_distance_start_map_unit_scale"/>
+                <Option value="MM" type="QString" name="trim_distance_start_unit"/>
+                <Option value="0" type="QString" name="tweak_dash_pattern_on_corners"/>
+                <Option value="0" type="QString" name="use_custom_dash"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="width_map_unit_scale"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" type="QString" name="name"/>
+                  <Option name="properties"/>
+                  <Option value="collection" type="QString" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileLineSymbol>
+        <profileFillSymbol>
+          <symbol is_animated="0" frame_rate="10" clip_to_extent="1" alpha="1" type="fill" name="" force_rhr="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" type="QString" name="name"/>
+                <Option name="properties"/>
+                <Option value="collection" type="QString" name="type"/>
+              </Option>
+            </data_defined_properties>
+            <layer class="SimpleFill" locked="0" id="{9f6e5428-8987-458b-a45d-55d8ac60c968}" enabled="1" pass="0">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="border_width_map_unit_scale"/>
+                <Option value="141,90,153,255,rgb:0.55294117647058827,0.35294117647058826,0.59999999999999998,1" type="QString" name="color"/>
+                <Option value="bevel" type="QString" name="joinstyle"/>
+                <Option value="0,0" type="QString" name="offset"/>
+                <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
+                <Option value="MM" type="QString" name="offset_unit"/>
+                <Option value="35,35,35,255,rgb:0.13725490196078433,0.13725490196078433,0.13725490196078433,1" type="QString" name="outline_color"/>
+                <Option value="no" type="QString" name="outline_style"/>
+                <Option value="0.26" type="QString" name="outline_width"/>
+                <Option value="MM" type="QString" name="outline_width_unit"/>
+                <Option value="solid" type="QString" name="style"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" type="QString" name="name"/>
+                  <Option name="properties"/>
+                  <Option value="collection" type="QString" name="type"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileFillSymbol>
+      </elevation>
+      <customproperties>
+        <Option type="Map">
+          <Option value="Value" type="QString" name="identify/format"/>
+        </Option>
+      </customproperties>
+      <mapTip enabled="1"></mapTip>
+      <pipe-data-defined-properties>
+        <Option type="Map">
+          <Option value="" type="QString" name="name"/>
+          <Option name="properties"/>
+          <Option value="collection" type="QString" name="type"/>
+        </Option>
+      </pipe-data-defined-properties>
+      <pipe>
+        <provider>
+          <resampling zoomedOutResamplingMethod="nearestNeighbour" enabled="false" maxOversampling="2" zoomedInResamplingMethod="nearestNeighbour"/>
+        </provider>
+        <rasterrenderer classificationMax="nan" opacity="1" band="1" alphaBand="-1" type="singlebandpseudocolor" nodataColor="" classificationMin="nan">
+          <minMaxOrigin>
+            <limits>None</limits>
+            <extent>WholeRaster</extent>
+            <statAccuracy>Estimated</statAccuracy>
+            <cumulativeCutLower>0.02</cumulativeCutLower>
+            <cumulativeCutUpper>0.98</cumulativeCutUpper>
+            <stdDevFactor>2</stdDevFactor>
+          </minMaxOrigin>
+          <rastershader>
+            <colorrampshader minimumValue="0" maximumValue="255" clip="0" classificationMode="1" labelPrecision="6" colorRampType="INTERPOLATED">
+              <item alpha="0" color="#000000" value="0" label="0"/>
+              <item alpha="0" color="#0000ff" value="1" label="1"/>
+              <item alpha="150" color="#00ffff" value="2.5" label="2.5"/>
+              <item alpha="170" color="#ff0000" value="12" label="12"/>
+              <rampLegendSettings suffix="" useContinuousLegend="1" maximumLabel="" prefix="" direction="0" orientation="2" minimumLabel="">
+                <numericFormat id="basic">
+                  <Option type="Map">
+                    <Option type="invalid" name="decimal_separator"/>
+                    <Option value="6" type="int" name="decimals"/>
+                    <Option value="0" type="int" name="rounding_type"/>
+                    <Option value="false" type="bool" name="show_plus"/>
+                    <Option value="true" type="bool" name="show_thousand_separator"/>
+                    <Option value="false" type="bool" name="show_trailing_zeros"/>
+                    <Option type="invalid" name="thousand_separator"/>
+                  </Option>
+                </numericFormat>
+              </rampLegendSettings>
+            </colorrampshader>
+          </rastershader>
+        </rasterrenderer>
+        <brightnesscontrast contrast="0" brightness="0" gamma="1"/>
+        <huesaturation saturation="0" colorizeRed="255" colorizeStrength="100" grayscaleMode="0" colorizeBlue="128" invertColors="0" colorizeOn="0" colorizeGreen="128"/>
+        <rasterresampler maxOversampling="2"/>
+        <resamplingStage>resamplingFilter</resamplingStage>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
   </projectlayers>
   <layerorder>
+    <layer id="CLADIRI_2D_FINAL_R3__albastru_ADMIS___galben_ADMIS_PROPUS___magenta_INCERT__75490e8c_2186_4bf4_9536_7d27fb6d2b75"/>
     <layer id="VLM_V3_final_94f53210_62a7_4035_b91f_15ddf583a157"/>
     <layer id="VLM_V2_lora_746cdb3d_e706_411d_aeb2_a515cdf6aeb9"/>
     <layer id="VLM_V1_zeroshot_4ca29317_7faa_4228_9f3a_8b91d7091620"/>

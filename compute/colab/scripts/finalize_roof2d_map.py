@@ -327,18 +327,26 @@ def lidar_roof_shape(g: Grids, poly) -> str | None:
     c = box.mean(axis=0)
     u = (np.column_stack([wx, wy]) - c) @ (e1 / ul)
     v = (np.column_stack([wx, wy]) - c) @ (e2 / vl)
-    du, dv = ul / 2 - np.abs(u), vl / 2 - np.abs(v)
-
     def r2(x):
         a = np.column_stack([np.ones_like(x), x])
         res = np.linalg.lstsq(a, h, rcond=None)[1]
         tot = float(((h - h.mean()) ** 2).sum())
         return 1 - float(res[0]) / tot if res.size and tot > 0 else 0.0
 
-    fits = {"GABLE": max(r2(dv), r2(du)), "HIP": r2(np.minimum(du, dv)), "SHED": max(r2(v), r2(u))}
+    # the ridge is searched up to +-1.5 m off-centre: a centred ridge on a 0.5-1 m shifted LiDAR made hip roofs
+    # fit a single slope better (R2D_00135 hip 0.18 -> 0.94 with the search, shed 0.72), 2026-10-31 roof sheet
+    ou = np.arange(-min(1.5, ul / 4), min(1.5, ul / 4) + 1e-9, 0.25)
+    ov = np.arange(-min(1.5, vl / 4), min(1.5, vl / 4) + 1e-9, 0.25)
+    fits = {
+        "GABLE": max(max(r2(-np.abs(v - o)) for o in ov), max(r2(-np.abs(u - o)) for o in ou)),
+        "HIP": max(r2(np.minimum(ul / 2 - np.abs(u - a), vl / 2 - np.abs(v - b))) for a in ou for b in ov),
+        "SHED": max(r2(v), r2(u)),
+    }
     best = max(fits, key=fits.get)
     if fits[best] < 0.45:
         return None
+    if best == "SHED" and fits["SHED"] < max(fits["GABLE"], fits["HIP"]) + 0.1:
+        best = "GABLE" if fits["GABLE"] >= fits["HIP"] else "HIP"  # one slope only when clearly better
     if best == "HIP" and fits["HIP"] < fits["GABLE"] + 0.05:
         best = "GABLE"
     return best
@@ -598,6 +606,14 @@ def build(vlm_gpkg: Path, data: Path, ndsm: Path, probs: Path, decisions: Path |
         else:
             r["tip_acoperis"] = "COMPLEX" if len(r["geometry"].exterior.coords) - 1 > 4 else "NEDETERMINAT"
             r["tip_sursa"] = "FORMA_2D"
+        # confidence for 3D: LiDAR and VLM agree, or only one source, or they disagree (check visually)
+        vlm_tip = None if p is None else p.tip_acoperis
+        if r["tip_sursa"] == "LIDAR_PROFIL" and vlm_tip is not None:
+            r["tip_incredere"] = "LIDAR_SI_VLM" if vlm_tip == r["tip_acoperis"] else f"DE_VERIFICAT_VLM_{vlm_tip}"
+        elif r["tip_acoperis"] in ("O_APA", "NEDETERMINAT") or r["tip_sursa"] == "FORMA_2D":
+            r["tip_incredere"] = "DE_VERIFICAT"  # a single slope from the image alone is the weakest call
+        else:
+            r["tip_incredere"] = "O_SINGURA_SURSA"
         r.update(ndsm_attrs(r["geometry"], g.ndsm, g.ndsm_t))
         r["area_m2"] = round(r["geometry"].area, 2)
     stats["buildings"] = len(rows)
@@ -671,7 +687,7 @@ def merge_fragments(g: Grids, rows: list[dict], max_area: float = 30.0, dh: floa
 def write(rows: list[dict], out: Path) -> None:
     import geopandas as gpd
 
-    cols = ["cladire_id", "sursa", "stare", "owner_verdict", "tip_acoperis", "tip_sursa", "h_streasina_m",
+    cols = ["cladire_id", "sursa", "stare", "owner_verdict", "tip_acoperis", "tip_sursa", "tip_incredere", "h_streasina_m",
             "h_coama_m", "h_relief_m", "tip_ndsm", "area_m2", "ajustare_m", "ocluzie_m2", "geom_ajustata_agent",
             "veg_frac", "nodata_frac", "lidar_elev_frac", "score", "rectilinear_evidenta", "suprapunere_proprietar_m2"]
     recs = []

@@ -1,0 +1,28 @@
+{
+  "manual_decisions": {
+    "elimina": 31,
+    "incert": 22,
+    "admis_propus": 2,
+    "uneste": 1
+  },
+  "dropped_owner_negative": 2,
+  "dropped_fp": {
+    "VEGETATIE": 4,
+    "CANDIDAT_LIDAR_NECONFIRMAT": 1,
+    "FASIE_NODATA": 4,
+    "VLM_NU_E_CLADIRE": 20
+  },
+  "dropped_manual": 31,
+  "merged_groups": {
+    "CAPELA_CIMITIR": 6
+  },
+  "occlusion_completed": 27,
+  "fragments_merged": 22,
+  "dropped_overlap": 0,
+  "buildings": 357,
+  "by_state": {
+    "ADMIS": 137,
+    "ADMIS_PROPUS": 154,
+    "INCERT": 66
+  }
+}
