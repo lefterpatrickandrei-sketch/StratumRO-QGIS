@@ -25,7 +25,7 @@ from roof2d_data import IGNORE, SPLIT_TRAIN, SPLIT_VAL, augment_photometric, nor
 CROP = 512
 
 
-ARCHS = ("resnet34", "convnext_tiny", "convnext_small")
+ARCHS = ("resnet34", "convnext_tiny", "convnext_small", "meta_sat_vith")
 
 
 def build_model(pretrained: bool = True, arch: str = "resnet34"):
@@ -89,10 +89,82 @@ def build_model(pretrained: bool = True, arch: str = "resnet34"):
             d = self.s32(c)
             return self.head(self.u0(self.u1(self.u2(self.u3(self.u4(d, c), b), a), h)))
 
+    class MetaSatViTUNet(nn.Module):
+        """Frozen Meta SSL ViT-H/16 (DINOv2-style, self-supervised on Maxar satellite RGB; HighResCanopyHeight,
+        Apache-2.0) + a trainable decoder and a small full-resolution CNN stem for sharp eaves.
+
+        The 0.15 m crop is resized x0.5 (0.30 m, closer to the 0.5 m pretraining) for the ViT; tokens of blocks
+        9/16/22/29 are fused at 1/32 and upsampled with stem skips to full resolution. Needs HRCH_DIR (repo clone)
+        and HRCH_SAT_CKPT (SSLhuge_satellite.pth). The frozen backbone is left out of state_dict so checkpoints
+        stay small; it is always reloaded from HRCH_SAT_CKPT.
+        """
+
+        def __init__(self):
+            super().__init__()
+            import os
+
+            sys.path.insert(0, os.environ.get("HRCH_DIR", "/content/hrch"))
+            from models.backbone import SSLVisionTransformer
+
+            self.vit = SSLVisionTransformer(embed_dim=1280, num_heads=20, out_indices=(9, 16, 22, 29), depth=32)
+            sd = torch.load(os.environ.get("HRCH_SAT_CKPT", "/content/hrch/SSLhuge_satellite.pth"),
+                            map_location="cpu")["state_dict"]
+            sd = {k.split("backbone.", 1)[1]: v for k, v in sd.items() if "backbone." in k}
+            missing, _ = self.vit.load_state_dict(sd, strict=False)
+            if len(missing) > 5:
+                raise RuntimeError(f"satellite backbone weights did not load: {missing[:5]}")
+            for p in self.vit.parameters():
+                p.requires_grad = False
+            self.vit.eval()
+            mean_in = torch.tensor([0.485, 0.456, 0.406]).view(1, 3, 1, 1)
+            std_in = torch.tensor([0.229, 0.224, 0.225]).view(1, 3, 1, 1)
+            mean_m = torch.tensor([0.420, 0.411, 0.296]).view(1, 3, 1, 1)
+            std_m = torch.tensor([0.213, 0.156, 0.143]).view(1, 3, 1, 1)
+            self.register_buffer("scale", std_in / std_m, persistent=False)
+            self.register_buffer("shift", (mean_in - mean_m) / std_m, persistent=False)
+            self.proj = nn.ModuleList([nn.Conv2d(1280, 128, 1) for _ in range(4)])
+            self.fuse = nn.Sequential(nn.Conv2d(512, 256, 3, padding=1, bias=False), nn.BatchNorm2d(256),
+                                      nn.ReLU(inplace=True))
+            stem = lambda cin, cout: nn.Sequential(nn.Conv2d(cin, cout, 3, stride=2, padding=1, bias=False),  # noqa: E731
+                                                   nn.BatchNorm2d(cout), nn.ReLU(inplace=True))
+            self.s2, self.s4, self.s8 = stem(3, 32), stem(32, 64), stem(64, 128)
+            self.u16 = Up(256, 0, 256)
+            self.u8, self.u4 = Up(256, 128, 128), Up(128, 64, 64)
+            self.u2, self.u1 = Up(64, 32, 32), Up(32, 0, 32)
+            self.head = nn.Conv2d(32, 3, 1)
+
+        def train(self, mode: bool = True):
+            super().train(mode)
+            self.vit.eval()  # frozen backbone always in eval mode
+            return self
+
+        def state_dict(self, *args, **kwargs):
+            return {k: v for k, v in super().state_dict(*args, **kwargs).items() if not k.startswith("vit.")}
+
+        def load_state_dict(self, state_dict, strict: bool = True):
+            return super().load_state_dict(state_dict, strict=False)
+
+        def forward(self, x):
+            h, w = x.shape[-2:]
+            xm = x * self.scale + self.shift  # ImageNet normalisation -> Meta normalisation
+            small = nn.functional.interpolate(xm, scale_factor=0.5, mode="bilinear", align_corners=False)
+            with torch.no_grad():
+                feats = [f[0] for f in self.vit(small)]
+            t = self.fuse(torch.cat([p(f.float()) for p, f in zip(self.proj, feats)], 1))
+            a = self.s2(x)
+            b = self.s4(a)
+            c = self.s8(b)
+            t = nn.functional.interpolate(t, size=c.shape[-2:], mode="bilinear", align_corners=False)
+            t = self.u4(self.u8(t, c), b)
+            out = self.head(self.u1(self.u2(t, a)))
+            return nn.functional.interpolate(out, size=(h, w), mode="bilinear", align_corners=False)
+
     if arch == "resnet34":
         return RoofUNet()
     if arch in ("convnext_tiny", "convnext_small"):
         return ConvNeXtUNet(arch)
+    if arch == "meta_sat_vith":
+        return MetaSatViTUNet()
     raise ValueError(f"unknown arch {arch!r}, expected one of {ARCHS}")
 
 
