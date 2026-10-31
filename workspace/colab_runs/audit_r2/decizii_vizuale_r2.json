@@ -1,0 +1,74 @@
+{
+ "_meta": {
+  "author": "claude-opus-5.5 (agent visual check V1, NOT an owner verdict)",
+  "date": "2026-10-31",
+  "input": "workspace/reviews/cladiri_2d_final_r1_epsg3844.gpkg (385 buildings), sheets audit_r1/review_00..09.jpg",
+  "method": "every building inspected on a 5 m-margin orthophoto chip with neighbours outlined",
+  "round": "R2 = R1 decisions + R2 visual checks"
+ },
+ "elimina": {
+  "R2D_00406": "suprafata de santier langa NoData",
+  "NOU_cand_0004": "moloz pe santier, contur zimtat",
+  "NOU_cand_0000": "triunghi pe marginea NoData",
+  "R2D_00400": "fasie lipita de NoData / zid",
+  "NOU_cand_0021": "parcare si copaci",
+  "R2D_00364": "fasie pe marginea acoperisului langa NoData",
+  "R2D_00363": "fasie-fragment pe acoperisul bej (cladirea vecina R2D_00329)",
+  "NOU_cand_0035": "obiecte de santier / masini",
+  "R2D_00328": "fasie langa NoData",
+  "R2D_00396": "fasie pe iarba",
+  "R2D_00341": "fragment in interiorul altui acoperis",
+  "NOU_cand_0037": "artefact NoData",
+  "R2D_00382": "triunghi pe zona deschisa langa NoData",
+  "NOU_cand_0055": "gradina cu copaci",
+  "R2D_00377": "teren verde (sport/gradina), nu acoperis",
+  "R2D_00392": "fasie in copaci",
+  "NOU_cand_0119": "gradina / teren",
+  "NOU_cand_0141": "gradina",
+  "NOU_cand_0146": "morminte",
+  "R2D_00403": "zona alba supraexpusa la marginea NoData",
+  "NOU_cand_0186": "dungi supraexpuse langa NoData",
+  "R2D_00388": "zona alba supraexpusa",
+  "R2D_00421": "dunga supraexpusa",
+  "R2D_00143": "R2: dreptunghi pe gradina (sheet OCCLUDED recheck), nu acoperis",
+  "NOU_cand_0105": "R2: dreptunghi pe gradina cu copaci (occlusion_check)"
+ },
+ "incert": {
+  "R2D_00409": "patrat mic pe terasa intunecata, neclar",
+  "NOU_cand_0008": "contur zimtat peste mai multe case lipite",
+  "R2D_00160": "posibil mai multe case unite intr-un poligon",
+  "R2D_00366": "suprafata gri: parcare sau terasa",
+  "R2D_00353": "forma neregulata langa santier",
+  "R2D_00182": "L peste doua acoperisuri",
+  "OPT_B_152:C1": "trapez lung, forma dubioasa",
+  "R2D_00343": "patrat intunecat intre acoperisuri",
+  "R2D_00168": "parte din complexul gri, contur ciudat",
+  "R2D_00268": "fasie pe marginea acoperisului rosu mare",
+  "NOU_cand_0071": "parte de acoperis cu instalatii, contur zimtat",
+  "R2D_00175": "doua materiale (rosu + alb), posibil doua cladiri",
+  "NOU_cand_0110": "forma V pe suprafata neclara",
+  "R2D_00260": "suprafata albastra: acoperis sau teren de sport",
+  "R2D_00327": "forma de bumerang",
+  "R2D_00404": "peste mai multe acoperisuri de tabla",
+  "NOU_cand_0170": "platou gri, posibil sol",
+  "R2D_00339": "T mare pe platou gri",
+  "R2D_00414": "platou gri",
+  "R2D_00395": "fasie ingusta langa strada (copertina?)",
+  "R2D_00216": "R2: forma U pe acoperis gri, posibil 2 cladiri",
+  "R2D_00303": "R2: fasie in trepte intre acoperisuri rosii"
+ },
+ "admis_propus": {
+  "R2D_00292": "acoperis plat real, cu echipamente",
+  "R2D_00135": "casa reala in patru ape"
+ },
+ "uneste": {
+  "CAPELA_CIMITIR": [
+   "OPT_B_128:C1",
+   "R2D_00239",
+   "R2D_00200",
+   "OPT_B_177:C1",
+   "R2D_00178",
+   "R2D_00199"
+  ]
+ }
+}

@@ -40,8 +40,10 @@ def foliage(rgb: np.ndarray) -> np.ndarray:
     """Vegetation pixels from RGB only: green (ExG > 12) or warm autumn colour that is also textured.
 
     Warm colour alone also matches terracotta tiles (13 % of owner ADMIS roof pixels on 2026-10-31); crowns are
-    mottled (7x7 grey std median 9.4) while tiles are smooth (4.2), so warm pixels need std > 8. Measured on owner
-    ADMIS roofs vs LiDAR+colour tree polygons: roofs 2.5 % / trees 90 % (was 13.4 % / 92 %).
+    mottled (7x7 grey std median 9.4) while tiles are smooth (4.2), so warm pixels need std > 8. A roof edge is
+    also "textured", but only as a thin band, so both masks are opened (5x5 green, 11x11 warm) to keep only 2-D
+    blobs. Owner ADMIS roofs vs LiDAR+colour tree polygons: roof pixels 0.2 % / tree pixels 88.6 %; median share
+    of an owner outline lying on vegetation 0.04 (it was 0.59 without the opening, 13.4 % / 92 % originally).
     """
     import cv2
 
@@ -51,7 +53,11 @@ def foliage(rgb: np.ndarray) -> np.ndarray:
     grey = (0.299 * r + 0.587 * g + 0.114 * b).astype(np.float32)
     mean = cv2.blur(grey, (7, 7))
     std = np.sqrt(np.maximum(cv2.blur(grey * grey, (7, 7)) - mean * mean, 0.0))
-    return (exg > 12) | (warm & (std > 8))
+    green = cv2.morphologyEx((exg > 12).astype(np.uint8), cv2.MORPH_OPEN,
+                             cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))
+    autumn = cv2.morphologyEx((warm & (std > 8)).astype(np.uint8), cv2.MORPH_OPEN,
+                              cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (11, 11)))
+    return green.astype(bool) | autumn.astype(bool)
 
 
 def build(proposals: Path, data: Path, ndsm_path: Path, out: Path) -> dict:

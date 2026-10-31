@@ -33,7 +33,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from build_consensus_labels import foliage  # noqa: E402
 from roof2d_data import rasterize  # noqa: E402
-from scan_roof2d_aoi import regularize, snap_rectilinear  # noqa: E402
+from scan_roof2d_aoi import angle_stats, regularize, snap_rectilinear  # noqa: E402
 from vlm_merge_finish import ROOF_RO, ndsm_attrs, snap_edges  # noqa: E402
 
 REVIEW = REPO_ROOT / "workspace/reviews/opera_review_deduplicated_20261029.gpkg"
@@ -58,9 +58,19 @@ class Grids:
             reproject(src.read(1).astype(np.float32), self.h, src_transform=src.transform, src_crs=src.crs,
                       dst_transform=self.t, dst_crs="EPSG:3844", resampling=Resampling.nearest, dst_nodata=np.nan)
             self.ndsm, self.ndsm_t = src.read(1).astype(np.float32), src.transform
-        self.edge = None
+        # LiDAR roughness (3x3 std on the 1 m nDSM): roofs are planar (owner roofs median 0.46 m), crowns are not
+        # (tree polygons median 1.01 m); separates a hidden roof from a crown of the same height
+        import cv2
+
+        mu = cv2.blur(self.ndsm, (3, 3))
+        rough = np.sqrt(np.maximum(cv2.blur(self.ndsm * self.ndsm, (3, 3)) - mu * mu, 0.0)).astype(np.float32)
+        self.rough = np.full(self.shape, np.nan, dtype=np.float32)
+        reproject(rough, self.rough, src_transform=self.ndsm_t, src_crs="EPSG:3844", dst_transform=self.t,
+                  dst_crs="EPSG:3844", resampling=Resampling.nearest, dst_nodata=np.nan)
+        self.edge = self.roof = None
         if probs is not None:
             with rasterio.open(probs) as src:
+                self.roof = src.read(1).astype(np.float32) / 255.0
                 self.edge = src.read(2).astype(np.float32) / 255.0
 
     def mask(self, geom):
@@ -86,6 +96,13 @@ class Grids:
         v = self.h[w][m]
         return v[np.isfinite(v)]
 
+    def smooth(self, geom) -> bool:
+        """LiDAR surface under geom is planar like a roof (median 3x3 std < 0.8 m)."""
+        m, w = self.mask(geom)
+        v = self.rough[w][m]
+        v = v[np.isfinite(v)]
+        return v.size >= 5 and float(np.median(v)) < 0.8
+
 
 # ----------------------------------------------------------------------------------------------- E4
 def roof_height(g: Grids, poly) -> float | None:
@@ -107,7 +124,7 @@ def occluded_ok(g: Grids, region, roof_h: float, others, small_corner: bool = Fa
     if v.size < 10:
         return False
     veg, elevated = g.frac(g.veg, region), float((v >= 2.0).mean())
-    if veg >= 0.5 and elevated >= 0.7 and float((np.abs(v - roof_h) <= 1.5).mean()) >= 0.4:
+    if veg >= 0.5 and elevated >= 0.7 and float((np.abs(v - roof_h) <= 1.5).mean()) >= 0.4 and g.smooth(region):
         return True
     return small_corner and veg >= 0.6 and elevated >= 0.8 and float(np.median(v)) >= roof_h + 1.0
 
@@ -158,6 +175,125 @@ def complete_occluded(g: Grids, poly, others, max_extend_m: float = 5.0):
     sq = snap_rectilinear(out) or regularize(out)
     sq = sq if sq is not None and sq.is_valid else out
     return Polygon(sq.exterior.coords), round(added, 2)
+
+
+def dominant_angle(poly) -> float:
+    """Building orientation (deg, mod 90) from the length-weighted histogram of its edge directions."""
+    c = np.asarray(poly.exterior.coords)
+    d = np.diff(c, axis=0)
+    lengths = np.hypot(d[:, 0], d[:, 1])
+    ang = np.degrees(np.arctan2(d[:, 1], d[:, 0])) % 90.0
+    hist = np.zeros(90)
+    for a, w in zip(ang, lengths):
+        for k in range(-2, 3):  # +-2 deg smoothing
+            hist[int(round(a + k)) % 90] += w
+    return float(np.argmax(hist))
+
+
+def rectilinear_from_evidence(g: Grids, poly, others, cell: float = 0.25, close_m: float = 1.0):
+    """Manhattan outline rebuilt from image evidence in the building frame (E4 + overshoot + diagonals).
+
+    Cells = visible roof (ensemble roof probability >= 0.5) near the proposal, plus tall-crown cells
+    (vegetation and nDSM >= 2.5 m) that touch the roof and lie inside the visible roof's extent in the building
+    frame: hidden corners are filled, the outline cannot run off under a park. Closing/opening by 1 m removes
+    steps shorter than the ANCPI 1 m edge; tracing pixel borders gives exact 90-degree edges.
+    Returns (polygon, added m2 under crowns) or (poly, 0.0) when the evidence disagrees with the proposal.
+    """
+    from rasterio.features import shapes
+    from rasterio.transform import Affine
+    from scipy import ndimage
+    from shapely import contains_xy
+    from shapely.affinity import rotate
+    from shapely.geometry import Polygon, shape
+
+    if g.roof is None:
+        return poly, 0.0
+    theta = dominant_angle(poly)
+    c = poly.centroid
+    rp = rotate(poly, -theta, origin=c)
+    minx, miny, maxx, maxy = rp.buffer(3.0).bounds
+    ncol, nrow = int(math.ceil((maxx - minx) / cell)), int(math.ceil((maxy - miny) / cell))
+    gt = Affine(cell, 0, minx, 0, -cell, maxy)  # rotated-frame grid
+    cols, rows = np.meshgrid(np.arange(ncol) + 0.5, np.arange(nrow) + 0.5)
+    fx, fy = minx + cols * cell, maxy - rows * cell
+    t = math.radians(theta)
+    wx = c.x + (fx - c.x) * math.cos(t) - (fy - c.y) * math.sin(t)  # back to the world frame
+    wy = c.y + (fx - c.x) * math.sin(t) + (fy - c.y) * math.cos(t)
+    pc, pr = ~g.t * (wx, wy)
+    pr, pc = np.clip(pr.astype(int), 0, g.shape[0] - 1), np.clip(pc.astype(int), 0, g.shape[1] - 1)
+    roof = g.roof[pr, pc] >= 0.5
+    crown = g.veg[pr, pc] & (np.nan_to_num(g.h[pr, pc]) >= 2.5)
+    near = contains_xy(poly.buffer(1.5), wx, wy)
+    blocked = np.zeros_like(near)
+    for o in others:
+        blocked |= contains_xy(o, wx, wy)
+    seed = roof & near & ~blocked
+    lab, n = ndimage.label(seed)
+    if n == 0:
+        return poly, 0.0
+    inside = contains_xy(poly, wx, wy)
+    k = int(np.argmax(ndimage.sum(inside, lab, index=np.arange(1, n + 1)))) + 1
+    body = lab == k
+    rr, cc = np.nonzero(body)
+    box = np.zeros_like(body)
+    box[rr.min() : rr.max() + 1, cc.min() : cc.max() + 1] = True
+    crown_ok = crown & box & ~blocked
+    clab, _ = ndimage.label(crown_ok)
+    touching = np.unique(clab[ndimage.binary_dilation(body, iterations=2) & (clab > 0)])
+    # each crown patch is judged on its own (R2: between the wings of an L/T building the frame box holds
+    # courtyard trees): tier A LiDAR at roof height, tier B small bite under a taller crown
+    hb = np.nan_to_num(g.h[pr, pc])
+    roof_h = float(np.median(hb[body & (hb >= 2.0)])) if (body & (hb >= 2.0)).sum() >= 20 else None
+    keep_ids = []
+    # tier B only for simple buildings (<= 8 vertices) and capped at 12 % of the visible roof in total: dozens of
+    # small crown patches around a large complex are courtyards and gardens, not one hidden corner (R2D_00177).
+    # (A convex-hull test was tried and rejected: it covers only half of a bitten rectangle corner.)
+    simple = len(poly.exterior.coords) - 1 <= 8
+    budget_b = 0.12 * body.sum()
+    for k_id in touching[touching > 0]:
+        patch = clab == k_id
+        if roof_h is None:
+            break
+        hp = hb[patch]
+        rp = g.rough[pr, pc][patch]
+        rp = rp[np.isfinite(rp)]
+        tier_a = float((np.abs(hp - roof_h) <= 1.5).mean()) >= 0.4 and rp.size >= 5 and float(np.median(rp)) < 0.8
+        tier_b = simple and patch.sum() <= budget_b and float(np.median(hp)) >= roof_h + 1.0
+        if tier_a and patch.sum() <= 0.25 * body.sum():
+            keep_ids.append(k_id)
+        elif tier_b:
+            keep_ids.append(k_id)
+            budget_b -= patch.sum()
+    filled = body | np.isin(clab, keep_ids)
+    s = max(1, int(round(close_m / cell)))
+    st = np.ones((s, s), bool)
+    filled = ndimage.binary_opening(ndimage.binary_closing(filled, st), st)
+    filled = ndimage.binary_fill_holes(filled)
+    lab2, n2 = ndimage.label(filled)
+    if n2 == 0:
+        return poly, 0.0
+    big = lab2 == (int(np.argmax(ndimage.sum(filled, lab2, index=np.arange(1, n2 + 1)))) + 1)
+    parts = [shape(geom) for geom, v in shapes(big.astype(np.uint8), mask=big, transform=gt) if v == 1]
+    if not parts:
+        return poly, 0.0
+    out = max(parts, key=lambda q: q.area)
+    out = Polygon(out.exterior.coords).simplify(0.01)
+    # a blob edge that is not parallel to the frame traces as a 0.25 m staircase; merge it into H/V lines
+    for simp in (0.5, 0.75, 1.0):
+        sq = snap_rectilinear(out, simplify_m=simp)
+        if sq is not None and sq.is_valid and sq.intersection(out).area / max(sq.union(out).area, 1e-6) >= 0.9:
+            out = Polygon(sq.exterior.coords)
+            break
+    else:
+        return poly, 0.0
+    out = rotate(out, theta, origin=c)
+    if not out.is_valid or out.is_empty:
+        return poly, 0.0
+    iou = out.intersection(poly).area / max(out.union(poly).area, 1e-6)
+    if iou < 0.6 or not 0.7 <= out.area / poly.area <= 1.4:
+        return poly, 0.0
+    added = float((crown_ok & big & ~body).sum() * cell * cell)
+    return out, round(added, 2)
 
 
 # ----------------------------------------------------------------------------------------------- E6
@@ -266,7 +402,13 @@ def partition(rows: list[dict]) -> int:
         near = [done[j] for j in tree.query(geom.buffer(0.1)) if j in done]
         if near:
             blocker = unary_union(near)
-            if geom.intersection(blocker).area > 0.0:
+            inter = geom.intersection(blocker).area
+            if rows[i]["stare"] == "ADMIS" and 0.0 < inter <= 1.0:
+                # owner vs owner sliver (the review itself has 14 such pairs, most < 1 m2): cutting it would
+                # put a 0.05 m step into an owner outline; keep the owner geometry and report it instead
+                rows[i]["suprapunere_proprietar_m2"] = round(inter, 3)
+                inter = 0.0
+            if inter > 0.0:
                 rest = geom.difference(blocker)
                 if rest.geom_type != "Polygon":
                     rest = max(getattr(rest, "geoms", [Polygon()]), key=lambda x: x.area)
@@ -275,6 +417,19 @@ def partition(rows: list[dict]) -> int:
                     dropped += 1
                     continue
                 geom = remove_micro_edges(Polygon(rest.exterior.coords).simplify(0.05), avoid=blocker)
+                # the cut edge follows the neighbour's frame; re-square it in this building's own frame,
+                # shrinking (never growing into the neighbour) when the frames differ
+                sq = snap_rectilinear(geom, simplify_m=0.5)
+                if sq is not None and sq.is_valid:
+                    sq = sq.difference(blocker)
+                    sq = sq if sq.geom_type == "Polygon" else max(getattr(sq, "geoms", [Polygon()]), key=lambda x: x.area)
+                    if not sq.is_empty and sq.area >= 0.9 * geom.area and len(sq.exterior.coords) <= len(geom.exterior.coords) + 2:
+                        geom = Polygon(sq.exterior.coords)
+                # the cut can still leave a sub-metre step where the two frames meet: collapse it inward
+                # (``avoid`` keeps the outline out of the neighbour), keep the step when that slants a wall
+                cleaned = remove_micro_edges(geom, avoid=blocker)
+                if angle_stats([cleaned])["ortho_45_90_share"] >= angle_stats([geom])["ortho_45_90_share"]:
+                    geom = cleaned
                 rows[i]["clipped"] = True
         rows[i]["geometry"] = geom
         done[i] = geom
@@ -294,6 +449,7 @@ def best_match(geom, cands, tree):
 
 def build(vlm_gpkg: Path, data: Path, ndsm: Path, probs: Path, decisions: Path | None) -> tuple[list[dict], dict]:
     import geopandas as gpd
+    from shapely.geometry import Polygon
     from shapely.strtree import STRtree
 
     g = Grids(data, ndsm, probs)
@@ -319,11 +475,13 @@ def build(vlm_gpkg: Path, data: Path, ndsm: Path, probs: Path, decisions: Path |
 
     # E1: owner ADMIS first, their duplicates removed from the proposals
     for _, a in owner["admis"].iterrows():
+        dup = [k for k in ptree.query(a.geometry) if pgeoms[k].intersection(a.geometry).area > 0.3 * pgeoms[k].area]
+        used.update(dup)
+        # the dropped duplicate still carries the VLM roof-shape advice for this owner roof
+        best = max(dup, key=lambda k: pgeoms[k].intersection(a.geometry).area, default=None)
         rows.append({"cladire_id": a.building_id, "sursa": "PROPRIETAR_OPERA", "stare": "ADMIS",
-                     "owner_verdict": "ADMIS", "geometry": a.geometry, "score": 2.0, "vlm": None, "prop": None})
-        for k in ptree.query(a.geometry):
-            if pgeoms[k].intersection(a.geometry).area > 0.3 * pgeoms[k].area:
-                used.add(k)
+                     "owner_verdict": "ADMIS", "geometry": a.geometry, "score": 2.0,
+                     "vlm": None if best is None else props.iloc[best], "prop": None})
     for layer in ("target", "repaired"):  # owner said: real building, contour to adjust
         for _, t in owner[layer].iterrows():
             k, iou = best_match(t.geometry, pgeoms, ptree)
@@ -393,8 +551,12 @@ def build(vlm_gpkg: Path, data: Path, ndsm: Path, probs: Path, decisions: Path |
     for i, r in enumerate(rows):
         others = [geoms[k] for k in tree.query(r["geometry"].buffer(6)) if k != i]
         r["ocluzie_m2"] = 0.0
-        if not r["sursa"].startswith("PROPRIETAR"):
-            r["geometry"], r["ocluzie_m2"] = complete_occluded(g, r["geometry"], others)
+        if not r["sursa"].startswith("PROPRIETAR") and not r.get("tip_force"):
+            rect, added = rectilinear_from_evidence(g, r["geometry"], others)
+            r["rectilinear_evidenta"] = int(rect is not r["geometry"])
+            r["geometry"], r["ocluzie_m2"] = rect, added
+            if not r["rectilinear_evidenta"]:
+                r["geometry"], r["ocluzie_m2"] = complete_occluded(g, r["geometry"], others)
         snapped, shift = snap_edges(r["geometry"], sample_edge,
                                     max_shift=0.45 if r["sursa"].startswith("PROPRIETAR") else 0.9)
         r["geometry"], r["ajustare_m"] = snapped, round(shift, 2)
@@ -405,14 +567,28 @@ def build(vlm_gpkg: Path, data: Path, ndsm: Path, probs: Path, decisions: Path |
     stats["fragments_merged"] = merged
     rows = [r for r in rows if not r.get("drop")]
     for r in rows:
-        r["geometry"] = remove_micro_edges(r["geometry"])
+        cleaned = remove_micro_edges(r["geometry"])
+        if cleaned is not r["geometry"] and angle_stats([cleaned])["ortho_45_90_share"] < \
+                angle_stats([r["geometry"]])["ortho_45_90_share"]:
+            # collapsing a step onto its midpoint slants two walls; re-square in the building frame instead
+            sq = snap_rectilinear(cleaned, simplify_m=0.3)
+            if sq is not None and sq.is_valid and sq.intersection(cleaned).area / max(sq.union(cleaned).area, 1e-6) >= 0.95:
+                cleaned = Polygon(sq.exterior.coords)
+            else:
+                cleaned = r["geometry"]  # keep the step: an orthogonal 0.5 m step beats a slanted wall
+        r["geometry"] = cleaned
     stats["dropped_overlap"] = partition(rows)
     rows = [r for r in rows if not r.get("drop")]
 
     # E6 + heights + attributes
     for r in rows:
-        shape = lidar_roof_shape(g, r["geometry"])
+        shape = "COMPLEX_FORTAT" if r.get("tip_force") else lidar_roof_shape(g, r["geometry"])
         p = r["vlm"]
+        if shape == "COMPLEX_FORTAT":
+            r["tip_acoperis"], r["tip_sursa"] = r["tip_force"], "UNIRE_VIZUALA"
+            r.update(ndsm_attrs(r["geometry"], g.ndsm, g.ndsm_t))
+            r["area_m2"] = round(r["geometry"].area, 2)
+            continue
         if shape is not None:
             r["tip_acoperis"] = ROOF_RO[shape]
             r["tip_sursa"] = "LIDAR_PROFIL"
@@ -446,6 +622,7 @@ def merge_groups(rows: list[dict], groups: dict, stats: dict) -> list[dict]:
         keep["decizie_agent"] = f"V1: unit {name} din {len(parts)} parti ({', '.join(ids)})"
         keep["fragmente_unite"] = len(parts) - 1
         keep["stare"] = max((p["stare"] for p in parts), key=lambda s: PRIORITY[s])
+        keep["tip_force"] = "COMPLEX"  # several roof bodies under one building
         for p in parts[1:]:
             p["drop"] = "UNIT_IN_" + keep["cladire_id"]
         stats.setdefault("merged_groups", {})[name] = len(parts)
@@ -496,7 +673,7 @@ def write(rows: list[dict], out: Path) -> None:
 
     cols = ["cladire_id", "sursa", "stare", "owner_verdict", "tip_acoperis", "tip_sursa", "h_streasina_m",
             "h_coama_m", "h_relief_m", "tip_ndsm", "area_m2", "ajustare_m", "ocluzie_m2", "geom_ajustata_agent",
-            "veg_frac", "nodata_frac", "lidar_elev_frac", "score"]
+            "veg_frac", "nodata_frac", "lidar_elev_frac", "score", "rectilinear_evidenta", "suprapunere_proprietar_m2"]
     recs = []
     for r in rows:
         rec = {c: r.get(c) for c in cols}

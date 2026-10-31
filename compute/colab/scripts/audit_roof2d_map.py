@@ -5,7 +5,7 @@ the whole AOI (not over a few hand-picked views) and contact sheets per class fe
 
   V2 under-segmentation   cont_frac: share of a 0.3..1.2 m outer ring that is NOT foliage, NOT another
                           building and sits within 1 m of the roof's LiDAR height  -> roof continues outside
-  V3 tree occlusion       occl_frac: share of the same ring that is foliage AND >= 2 m high (crown over the eave)
+  V3 tree occlusion       occl_frac: share of outline samples with a tall crown 0.6 m outside (crown_on_outline)
   V4 shape                ortho_share (vertices within 5 deg of 45/90), min_edge_m, nodes
   V5 artefact / semantic  nodata_frac (1 m buffer), foliage_frac inside, lidar_cov, elev_frac (nDSM >= 2 m),
                           ndsm_median_m
@@ -49,6 +49,33 @@ def _window(geom, transform, shape):
     return r0, c0, r1, c1, transform * Affine.translation(c0, r0)
 
 
+def crown_on_outline(poly, fol, h, wt, step: float = 0.3, out_m: float = 0.6) -> float:
+    """Share of outline samples whose point 0.6 m outside is a tall crown (vegetation and nDSM >= 2.5 m).
+
+    A crown touching or covering the eave there means the true corner may be hidden; a crown 3 m away does not
+    count (the ring-based measure of R0/R1 flagged every building with a tree nearby).
+    """
+    from shapely.geometry.polygon import orient
+
+    coords = np.asarray(orient(poly, 1.0).exterior.coords)
+    inv = ~wt
+    hits = total = 0
+    for a, b in zip(coords[:-1], coords[1:]):
+        d = b - a
+        length = float(np.hypot(*d))
+        if length < 1e-6:
+            continue
+        normal = np.array([d[1], -d[0]]) / length  # outward for a counter-clockwise ring
+        for t in np.arange(step / 2, length, step):
+            x, y = a + d * (t / length) + normal * out_m
+            c, r = inv * (x, y)
+            r, c = int(r), int(c)
+            if 0 <= r < fol.shape[0] and 0 <= c < fol.shape[1]:
+                total += 1
+                hits += bool(fol[r, c] and h[r, c] >= 2.5)
+    return hits / max(total, 1)
+
+
 def measure(poly, others, rgb, transform, ndsm_up, nodata):
     """Measurements for one polygon. ndsm_up is the nDSM resampled to the orthophoto grid (NaN = no LiDAR)."""
     from shapely.ops import unary_union
@@ -73,11 +100,10 @@ def measure(poly, others, rgb, transform, ndsm_up, nodata):
     med = float(np.nanmedian(nd[inner])) if inner.any() else np.nan
     elev = float((nd[inner] >= 2.0).mean()) if inner.any() else np.nan
     ring_free = ringm & ~other
-    occl = cont = 0.0
-    if ring_free.any():
-        occl = float((fol & has & (np.nan_to_num(nd) >= 2.0))[ring_free].mean())
-        if np.isfinite(med) and med >= 2.0:
-            cont = float((~fol & has & (np.abs(np.nan_to_num(nd) - med) <= 1.0))[ring_free].mean())
+    cont = 0.0
+    if ring_free.any() and np.isfinite(med) and med >= 2.0:
+        cont = float((~fol & has & (np.abs(np.nan_to_num(nd) - med) <= 1.0))[ring_free].mean())
+    occl = crown_on_outline(poly, fol, np.nan_to_num(nd), wt)
     ang = angle_stats([poly])
     coords = np.asarray(poly.exterior.coords)
     edges = np.hypot(*np.diff(coords, axis=0).T)
@@ -102,7 +128,7 @@ def flags_for(m: dict, overlap: float, touching: int) -> list[str]:
         f.append("FP_VEG")
     if m["nodata_frac"] >= 0.15:
         f.append("NODATA_EDGE")
-    if m["occl_frac"] >= 0.2:
+    if m["occl_frac"] >= 0.25:
         f.append("OCCLUDED")
     if m["cont_frac"] >= 0.3:
         f.append("UNDERSEG")

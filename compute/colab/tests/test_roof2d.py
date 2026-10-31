@@ -255,7 +255,8 @@ class FinalizeTests(unittest.TestCase):
         n = int(shape[0] * px / ndsm_px)
         g.ndsm_t = Affine(ndsm_px, 0, 0, 0, -ndsm_px, n * ndsm_px)
         g.ndsm = np.zeros((n, n), np.float32)
-        g.edge = None
+        g.rough = np.zeros(shape, np.float32)  # planar LiDAR surface unless a test says otherwise
+        g.edge = g.roof = None
         return g
 
     def test_foliage_ignores_smooth_terracotta_but_finds_textured_crowns(self):
@@ -263,7 +264,11 @@ class FinalizeTests(unittest.TestCase):
 
         rng = np.random.default_rng(0)
         tile = np.clip(np.array([180, 110, 80]) + rng.normal(0, 2, (60, 60, 3)), 0, 255).astype(np.uint8)
-        crown = np.clip(np.array([170, 120, 60]) + rng.normal(0, 25, (60, 60, 3)), 0, 255).astype(np.uint8)
+        import cv2
+
+        blotch = cv2.GaussianBlur(rng.normal(0, 1, (60, 60)).astype(np.float32), (0, 0), 1.5)
+        blotch = 22 * blotch / blotch.std()  # leaf clusters: spatially correlated brightness texture
+        crown = np.clip(np.array([180, 125, 50]) + blotch[..., None], 0, 255).astype(np.uint8)
         green = np.full((60, 60, 3), (70, 120, 60), np.uint8)
         self.assertLess(foliage(tile).mean(), 0.05)
         self.assertGreater(foliage(crown).mean(), 0.5)
@@ -347,3 +352,83 @@ class OcclusionTierBTests(unittest.TestCase):
             g.veg[m], g.h[m] = True, 11.0  # crown 5 m above the roof
             out, added = complete_occluded(g, full.difference(cut), [])
             self.assertEqual(added > 0, expect)
+
+
+@unittest.skipUnless(HAS_GEO, "rasterio/shapely/cv2/scipy missing")
+class RectilinearEvidenceTests(unittest.TestCase):
+    def test_hidden_corner_restored_and_ground_overshoot_cut(self):
+        from shapely.affinity import rotate
+        from shapely.geometry import Polygon, box
+
+        from finalize_roof2d_map import rectilinear_from_evidence
+        from roof2d_data import rasterize
+        from scan_roof2d_aoi import angle_stats
+
+        house = rotate(box(4, 4, 16, 12), 20, origin=(10, 8))  # 12 x 8 m, rotated 20 deg
+        crown = rotate(box(13, 9, 17, 13), 20, origin=(10, 8))  # tree over the NE corner
+        g = FinalizeTests.grids()
+        g.roof = np.zeros(g.shape, np.float32)
+        g.roof[rasterize([house.difference(crown)], g.t, g.shape)] = 1.0
+        g.h[rasterize([house], g.t, g.shape)] = 6.0  # LiDAR roof height (no height evidence = no corner added)
+        m = rasterize([crown], g.t, g.shape)
+        g.veg[m], g.h[m] = True, 9.0
+        # proposal follows the crown with a diagonal (NE) and overshoots 1.5 m onto ground (W)
+        proposal = rotate(Polygon([(2.5, 4), (16, 4), (16, 9), (13, 12), (2.5, 12)]), 20, origin=(10, 8))
+        out, added = rectilinear_from_evidence(g, proposal, [])
+        self.assertGreater(out.intersection(house).area / out.union(house).area, 0.9)
+        self.assertGreater(added, 0)
+        self.assertEqual(angle_stats([out])["ortho_45_90_share"], 1.0)
+
+    def test_rounded_blob_becomes_rectilinear_not_a_curve(self):
+        from shapely.geometry import Point, box
+
+        from finalize_roof2d_map import rectilinear_from_evidence
+        from roof2d_data import rasterize
+        from scan_roof2d_aoi import angle_stats
+
+        house = box(5, 5, 15, 12)
+        blob = house.buffer(-0.8).buffer(0.8)  # model probability blob with rounded corners
+        g = FinalizeTests.grids()
+        g.roof = np.zeros(g.shape, np.float32)
+        g.roof[rasterize([blob], g.t, g.shape)] = 1.0
+        out, _ = rectilinear_from_evidence(g, blob, [])
+        self.assertEqual(angle_stats([out])["ortho_45_90_share"], 1.0)
+        self.assertLessEqual(len(out.exterior.coords) - 1, 8)
+        self.assertGreater(out.intersection(house).area / out.union(house).area, 0.9)
+
+    def test_courtyard_trees_between_wings_are_not_filled(self):
+        from shapely.geometry import box
+
+        from finalize_roof2d_map import rectilinear_from_evidence
+        from roof2d_data import rasterize
+
+        l_shape = box(2, 2, 18, 7).union(box(2, 2, 7, 18))  # L building, 155 m2
+        yard = box(7, 7, 18, 18)  # tree-filled courtyard inside its bounding box
+        g = FinalizeTests.grids()
+        g.roof = np.zeros(g.shape, np.float32)
+        g.roof[rasterize([l_shape], g.t, g.shape)] = 1.0
+        g.h[rasterize([l_shape], g.t, g.shape)] = 7.0
+        m = rasterize([yard], g.t, g.shape)
+        g.veg[m], g.h[m] = True, 14.0
+        out, added = rectilinear_from_evidence(g, l_shape, [])
+        self.assertEqual(added, 0.0)
+        self.assertLess(out.area, 1.1 * l_shape.area)
+
+
+@unittest.skipUnless(HAS_GEO, "rasterio/shapely/cv2/scipy missing")
+class RoughnessTests(unittest.TestCase):
+    def test_rough_crown_at_roof_height_is_not_taken_as_hidden_roof(self):
+        from shapely.geometry import box
+
+        from finalize_roof2d_map import complete_occluded
+        from roof2d_data import rasterize
+
+        full = box(3, 3, 15, 12)
+        cut = box(9, 7.5, 15, 12)  # large quadrant: only tier A could add it
+        for rough, expect in ((0.3, True), (1.4, False)):
+            g = FinalizeTests.grids()
+            g.h[rasterize([full], g.t, g.shape)] = 6.0
+            m = rasterize([cut], g.t, g.shape)
+            g.veg[m], g.h[m], g.rough[m] = True, 6.2, rough
+            _, added = complete_occluded(g, full.difference(cut), [])
+            self.assertEqual(added > 0, expect, rough)
