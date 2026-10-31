@@ -215,3 +215,22 @@ class VectorizeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipUnless(HAS_GEO, "rasterio/shapely/cv2/scipy missing")
+class EaveSnapTests(unittest.TestCase):
+    def test_edge_moves_parallel_onto_the_eave_and_keeps_right_angles(self):
+        from shapely.geometry import box
+
+        from scan_roof2d_aoi import angle_stats
+        from vlm_merge_finish import snap_edges
+
+        truth = box(0, 0, 10.45, 8)  # real eave on the east side is 0.45 m further out
+
+        def sample(xy):
+            return 1.0 if truth.exterior.distance(__import__("shapely.geometry", fromlist=["Point"]).Point(xy)) < 0.08 else 0.0
+
+        snapped, shift = snap_edges(box(0, 0, 10, 8), sample)
+        self.assertAlmostEqual(snapped.bounds[2], 10.45, delta=0.08)
+        self.assertGreater(shift, 0.3)
+        self.assertEqual(angle_stats([snapped])["ortho_45_90_share"], 1.0)

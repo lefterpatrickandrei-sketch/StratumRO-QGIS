@@ -4,6 +4,8 @@ Chips: crop around a polygon (+6 m), upscale 2x (0.075 m/px, at most 768 px), dr
 Sets:
   owner      owner-reviewed polygons (ADMIS / AJUSTARE targets / hard negatives) - VLM calibration only
   proposal   loop proposals (final GPKG)
+  agent_neg  tree crowns confirmed by LiDAR + foliage (build_consensus_labels.py), labelled ELIMINAT; they give
+             the VLM negatives the owner set lacks (12 owner negatives only). Agent-built, never owner verdicts.
   candidate  elevated (nDSM >= 2.5 m), non-foliage blobs >= 15 m2 that no proposal or review polygon covers;
              outlined from the ensemble roof probability (>= 0.25) or, failing that, the nDSM blob
 
@@ -86,7 +88,7 @@ def find_candidates(rgb, transform, probs_roof, ndsm, ndsm_t, covered, min_m2: f
     return out
 
 
-def build(final_gpkg: Path, data: Path, probs: Path, ndsm_path: Path, out: Path) -> dict:
+def build(final_gpkg: Path, data: Path, probs: Path, ndsm_path: Path, out: Path, n_agent_neg: int = 160) -> dict:
     import geopandas as gpd
     import rasterio
 
@@ -104,6 +106,12 @@ def build(final_gpkg: Path, data: Path, probs: Path, ndsm_path: Path, out: Path)
             cid = "owner_" + r.building_id.replace(":", "_")
             render_chip(r.geometry, rgb, transform, out / "chips" / f"{cid}.png")
             manifest.append({"id": cid, "set": "owner", "owner_verdict": verdict, "ref": r.building_id})
+    tree = gpd.read_file(data / "consensus_labels.gpkg", layer="tree_negative")
+    tree = tree[tree.area >= 15.0].sample(n=min(n_agent_neg, int((tree.area >= 15.0).sum())), random_state=0)
+    for i, (_, r) in enumerate(tree.iterrows()):
+        cid = f"agentneg_{i:04d}"
+        render_chip(regularize(r.geometry.buffer(0)), rgb, transform, out / "chips" / f"{cid}.png")
+        manifest.append({"id": cid, "set": "agent_neg", "owner_verdict": "ELIMINAT", "ref": cid})
     props = gpd.read_file(final_gpkg, layer="proposals_all")
     for _, r in props.iterrows():
         cid = "prop_" + r.proposal_id
@@ -122,7 +130,7 @@ def build(final_gpkg: Path, data: Path, probs: Path, ndsm_path: Path, out: Path)
     gpd.GeoDataFrame(rows, geometry="geometry", crs="EPSG:3844").to_file(out / "candidates_epsg3844.gpkg",
                                                                         layer="candidates", driver="GPKG")
     (out / "chips_manifest.json").write_text(json.dumps(manifest, indent=1), encoding="utf-8")
-    counts = {s: sum(1 for m in manifest if m["set"] == s) for s in ("owner", "proposal", "candidate")}
+    counts = {s: sum(1 for m in manifest if m["set"] == s) for s in ("owner", "agent_neg", "proposal", "candidate")}
     return {"chips": len(manifest), **counts}
 
 

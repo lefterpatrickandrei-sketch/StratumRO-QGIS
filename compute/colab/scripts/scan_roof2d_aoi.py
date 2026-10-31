@@ -271,11 +271,12 @@ def regularize(poly):
     return reg
 
 
-def resolve_overlaps(items, min_keep: float = 0.5, min_area_m2: float = 12.0):
+def resolve_overlaps(items, min_keep: float = 0.5, min_area_m2: float = 12.0, with_index: bool = False):
     """Planar partition: walk proposals by descending probability, clip each by the ones already kept.
 
     ``items`` is a list of (polygon, prob). A proposal that keeps less than ``min_keep`` of its area (or less
-    than ``min_area_m2``) is dropped as a double vectorization. Returns (kept [(poly, prob, clipped)], dropped).
+    than ``min_area_m2``) is dropped as a double vectorization. Returns (kept [(poly, prob, clipped)], dropped);
+    with ``with_index`` each kept tuple also carries the index of its input item.
     """
     from shapely.geometry import Polygon
     from shapely.ops import unary_union
@@ -302,7 +303,7 @@ def resolve_overlaps(items, min_keep: float = 0.5, min_area_m2: float = 12.0):
                 if reg.is_valid and reg.intersection(blocker).area < 0.25:
                     g = reg
         kept_geoms[k] = g
-        kept.append((g, prob, clipped))
+        kept.append((g, prob, clipped, k) if with_index else (g, prob, clipped))
     return kept, dropped
 
 

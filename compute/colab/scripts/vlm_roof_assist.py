@@ -99,7 +99,7 @@ def owner_split(manifest: list[dict], seed: int = 0) -> dict:
     rng = random.Random(seed)
     split = {}
     for lab in VERDICTS:
-        ids = sorted(m["id"] for m in manifest if m["set"] == "owner" and m["owner_verdict"] == lab)
+        ids = sorted(m["id"] for m in manifest if m["set"] in ("owner", "agent_neg") and m["owner_verdict"] == lab)
         rng.shuffle(ids)
         k = int(round(0.6 * len(ids)))
         split.update({i: "train" for i in ids[:k]})
@@ -149,7 +149,7 @@ def train_lora(vlm: VLM, manifest, img, split: dict, epochs: int, lr: float) -> 
     model.enable_input_require_grads()
     vlm.model = model
     opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad], lr=lr)
-    owner = {m["id"]: m for m in manifest if m["set"] == "owner"}
+    owner = {m["id"]: m for m in manifest if m["set"] in ("owner", "agent_neg")}
     train = [i for i, s in split.items() if s == "train"]
     val = {i for i, s in split.items() if s == "val"}
     freq = {lab: sum(1 for i in train if owner[i]["owner_verdict"] == lab) for lab in VERDICTS}
@@ -208,11 +208,14 @@ def main(argv: list[str] | None = None) -> int:
     report["calibration_owner_all"] = calibration(preds, manifest)
     report["calibration_owner_val"] = calibration(preds, manifest, {i for i, s in split.items() if s == "val"})
     report["owner_split"] = split
+    neg = [m for m in manifest if m["set"] == "agent_neg"]
+    report["agent_negative_recall"] = round(sum(
+        1 for m in neg if max(preds[m["id"]]["verdict"], key=preds[m["id"]]["verdict"].get) == "ELIMINAT") / max(len(neg), 1), 3)
     report["minutes"] = round((time.time() - t0) / 60, 1)
     report["peak_vram_gb"] = round(torch.cuda.max_memory_allocated() / 2**30, 1)
     (args.out / "vlm_predictions.json").write_text(json.dumps(preds), encoding="utf-8")
     (args.out / "vlm_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
-    log(json.dumps({k: report[k] for k in ("calibration_owner_all", "calibration_owner_val", "minutes")}))
+    log(json.dumps({k: report[k] for k in ("calibration_owner_all", "calibration_owner_val", "agent_negative_recall", "minutes")}))
     return 0
 
 
