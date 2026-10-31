@@ -227,4 +227,6 @@ def allow_meta_checkpoint_globals() -> None:
     import torch
 
     dtypes = [type(_np.dtype(t)) for t in ("float64", "float32", "int64", "int32", "bool")]
-    torch.serialization.add_safe_globals([_np.core.multiarray.scalar, _np.dtype] + dtypes)
+    scalar = _np.core.multiarray.scalar
+    # numpy 2 renamed numpy.core -> numpy._core; the checkpoints reference the old path, so register it by name
+    torch.serialization.add_safe_globals([scalar, (scalar, "numpy.core.multiarray.scalar"), _np.dtype] + dtypes)
