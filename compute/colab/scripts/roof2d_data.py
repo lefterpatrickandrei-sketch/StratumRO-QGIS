@@ -218,3 +218,13 @@ def sample_crop(
 
 def load_manifest(path: Path) -> dict:
     return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def allow_meta_checkpoint_globals() -> None:
+    """Meta's HighResCanopyHeight checkpoints store Lightning metadata with numpy scalars; torch >= 2.6 loads
+    with weights_only=True and rejects them. Allow-list only those numpy types (no arbitrary pickles)."""
+    import numpy as _np
+    import torch
+
+    dtypes = [type(_np.dtype(t)) for t in ("float64", "float32", "int64", "int32", "bool")]
+    torch.serialization.add_safe_globals([_np.core.multiarray.scalar, _np.dtype] + dtypes)

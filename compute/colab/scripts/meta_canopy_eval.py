@@ -29,7 +29,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_consensus_labels import foliage  # noqa: E402
-from roof2d_data import rasterize  # noqa: E402
+from roof2d_data import allow_meta_checkpoint_globals, rasterize  # noqa: E402
 
 BASE = "https://dataforgood-fb-data.s3.amazonaws.com/forests/v1/models/saved_checkpoints/"
 MEAN, STD = (0.420, 0.411, 0.296), (0.213, 0.156, 0.143)
@@ -46,6 +46,7 @@ def fetch(hrch: Path) -> None:
 def load_models(hrch: Path):
     import torch
 
+    allow_meta_checkpoint_globals()
     sys.path.insert(0, str(hrch))
     os.chdir(hrch)  # inference.py imports local modules relative to the repo
     from inference import SSLModule

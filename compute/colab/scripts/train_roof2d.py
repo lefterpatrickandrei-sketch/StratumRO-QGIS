@@ -106,6 +106,9 @@ def build_model(pretrained: bool = True, arch: str = "resnet34"):
             sys.path.insert(0, os.environ.get("HRCH_DIR", "/content/hrch"))
             from models.backbone import SSLVisionTransformer
 
+            from roof2d_data import allow_meta_checkpoint_globals
+
+            allow_meta_checkpoint_globals()
             self.vit = SSLVisionTransformer(embed_dim=1280, num_heads=20, out_indices=(9, 16, 22, 29), depth=32)
             sd = torch.load(os.environ.get("HRCH_SAT_CKPT", "/content/hrch/SSLhuge_satellite.pth"),
                             map_location="cpu")["state_dict"]
