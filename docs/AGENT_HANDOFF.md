@@ -80,3 +80,11 @@ Cititi [predarea corectiilor locale](../workspace/option_b_repair_20261019/READM
 - **Interfață HITL 1-Click Triage**: Salvare automată fără buton secundar în `workspace/reviews/catalog_cladiri_ortofoto.html`, cu suport complet pentru Dublă Verificare.
 - **Raport interactiv de sincronizare**: `workspace/reviews/raport_sincronizare_laya.html` afișează comparația binară/multiclase Laya vs Uman cu suport pentru sincronizare live cross-tab.
 - **Publicare completă**: Ambele branch-uri `main` și `feat/hybrid-dev-workflow` sunt sincronizate la zi cu GitHub și GitHub Pages (fără cache).
+
+## Ultimul checkpoint: pipeline 2D de acoperișuri, Colab A100 + QGIS (2026-10-31)
+
+Punctul de intrare pentru continuare: [SESSION_HANDOFF_ROOF2D_20261031.md](SESSION_HANDOFF_ROOF2D_20261031.md). Conține starea, scripturile, modelele, rezultatele măsurate, regulile proprietarului, capcanele tehnice și pașii următori.
+
+- Livrabilul curent: `workspace/reviews/cladiri_2d_final_r3_epsg3844.gpkg`, 328 de clădiri, 137 ADMIS ale proprietarului.
+- Verdictele noi ale proprietarului: `workspace/reviews/verdicte_proprietar/verdicte_20261031.gpkg`, 29 ELIMINAT.
+- Git: 31 de commituri locale peste `origin/main`, nepublicate. Modelele sunt doar pe discul local.
