@@ -87,7 +87,11 @@ def load(chips: Path):
     from PIL import Image
 
     manifest = json.loads((chips / "chips_manifest.json").read_text(encoding="utf-8"))
-    return manifest, (lambda cid: Image.open(chips / "chips" / f"{cid}.png").convert("RGB"))
+    def img(cid):
+        p = chips / "chips" / f"{cid}.jpg"
+        return Image.open(p if p.is_file() else chips / "chips" / f"{cid}.png").convert("RGB")
+
+    return manifest, img
 
 
 def owner_split(manifest: list[dict], seed: int = 0) -> dict:
