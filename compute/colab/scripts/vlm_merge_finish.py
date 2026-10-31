@@ -1,7 +1,8 @@
 """Merge VLM advice into the 2D roof proposals and prepare them for 3D cadastre (local, no GPU).
 
 Per building:
-  stare            ADMIS_PROPUS (VLM p(ADMIS) >= --admis-thr) or INCERT; owner_verdict stays PENDING_OWNER_REVIEW
+  stare            ADMIS_PROPUS (VLM p(ADMIS) >= --admis-thr and p(ELIMINAT) < 0.3) or INCERT;
+                   owner_verdict stays PENDING_OWNER_REVIEW
   tip_acoperis     roof shape (TERASA_PLAT, O_APA, DOUA_APE, PATRU_APE, MANSARDA, COMPLEX, ALTUL): LiDAR decides
                    flat vs pitched where it covers the roof, the VLM picks the shape among the allowed ones
   tip_ndsm         independent LiDAR hint: PLAT when the nDSM relief inside the roof is < 1 m, otherwise INCLINAT
@@ -87,14 +88,16 @@ def snap_edges(poly, sample, max_shift: float = 0.9, step: float = 0.15, min_gai
 
 
 def ndsm_attrs(poly, ndsm, ndsm_t) -> dict:
-    inner = poly.buffer(-0.5)
+    """Eave / ridge heights and a flat-vs-pitched hint; eroded 1 m and p10..p90 so walls and roof kit do not count."""
+    inner = poly.buffer(-1.0)
     m = rasterize([inner if not inner.is_empty else poly], ndsm_t, ndsm.shape, all_touched=True)
     v = ndsm[m & np.isfinite(ndsm)]
     if v.size < 3:
         return {"h_streasina_m": None, "h_coama_m": None, "h_relief_m": None, "tip_ndsm": "FARA_LIDAR"}
     lo, hi = float(np.percentile(v, 15)), float(np.percentile(v, 98))
-    return {"h_streasina_m": round(lo, 2), "h_coama_m": round(hi, 2), "h_relief_m": round(hi - lo, 2),
-            "tip_ndsm": "PLAT" if hi - lo < 1.0 else "INCLINAT"}
+    rel = float(np.percentile(v, 90) - np.percentile(v, 10))
+    hint = "PLAT" if rel < 0.8 else ("INCLINAT" if rel >= 1.5 else "NEDECIS")
+    return {"h_streasina_m": round(lo, 2), "h_coama_m": round(hi, 2), "h_relief_m": round(rel, 2), "tip_ndsm": hint}
 
 
 def merge(final_gpkg: Path, chips_dir: Path, preds_path: Path, probs: Path, ndsm_path: Path, out: Path,
@@ -143,7 +146,7 @@ def merge(final_gpkg: Path, chips_dir: Path, preds_path: Path, probs: Path, ndsm
         rt = max(allowed, key=lambda k: roof.get(k, 0.0)) if roof else "OTHER"
         rows.append({
             "proposal_id": it["id"], "sursa": it["sursa"],
-            "stare": "ADMIS_PROPUS" if v["ADMIS"] >= admis_thr else "INCERT",
+            "stare": "ADMIS_PROPUS" if v["ADMIS"] >= admis_thr and v["ELIMINAT"] < 0.3 else "INCERT",
             "owner_verdict": "PENDING_OWNER_REVIEW",
             "vlm_admis": v["ADMIS"], "vlm_ajustare": v["AJUSTARE"], "vlm_eliminat": v["ELIMINAT"],
             "tip_acoperis": ROOF_RO[rt], "tip_acoperis_prob": roof.get(rt), "mean_roof_prob": it["mean_roof_prob"],
@@ -182,7 +185,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--preds", type=Path, required=True)
     ap.add_argument("--probs", type=Path, default=REPO_ROOT / "workspace/colab_runs/loop_q/ens_b1_b3r_l3.tif")
     ap.add_argument("--ndsm", type=Path, default=REPO_ROOT / "workspace/derived/cluj_ndsm_1m.tif")
-    ap.add_argument("--admis-thr", type=float, default=0.5)
+    ap.add_argument("--admis-thr", type=float, default=0.3,
+                    help="0.3 = 90 %% of owner ADMIS roofs recovered at 0.82 precision (VLM loop 2 calibration)")
     ap.add_argument("--drop-elim-thr", type=float, default=0.5)
     ap.add_argument("--out", type=Path, required=True)
     args = ap.parse_args(argv)

@@ -129,8 +129,13 @@ def classify(vlm: VLM, manifest, img, roof_too: bool = True) -> dict:
         try:
             im = img(m["id"])
             rec = {"verdict": vlm.probs(im, VERDICT_PROMPT, "Label:", VERDICTS)}
-            if roof_too:
-                rec["roof_type"] = vlm.probs(im, ROOF_PROMPT, "Roof:", ROOFS)
+            if roof_too:  # roof shape from the base model: the verdict LoRA erased hip-roof recognition (loop 2)
+                no_adapter = getattr(vlm.model, "disable_adapter", None)
+                if no_adapter is not None:
+                    with no_adapter():
+                        rec["roof_type"] = vlm.probs(im, ROOF_PROMPT, "Roof:", ROOFS)
+                else:
+                    rec["roof_type"] = vlm.probs(im, ROOF_PROMPT, "Roof:", ROOFS)
         except Exception as exc:  # noqa: BLE001 - fail closed per chip
             rec = {"verdict": {"ADMIS": 0.0, "AJUSTARE": 1.0, "ELIMINAT": 0.0}, "error": repr(exc)}
         preds[m["id"]] = rec
