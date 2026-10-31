@@ -234,3 +234,116 @@ class EaveSnapTests(unittest.TestCase):
         self.assertAlmostEqual(snapped.bounds[2], 10.45, delta=0.08)
         self.assertGreater(shift, 0.3)
         self.assertEqual(angle_stats([snapped])["ortho_45_90_share"], 1.0)
+
+
+@unittest.skipUnless(HAS_GEO, "rasterio/shapely/cv2/scipy missing")
+class FinalizeTests(unittest.TestCase):
+    """Root-cause fixes of 2026-10-31 (finalize_roof2d_map.py, foliage)."""
+
+    @staticmethod
+    def grids(shape=(140, 140), px=0.15, ndsm_px=1.0):
+        from rasterio.transform import Affine
+
+        from finalize_roof2d_map import Grids
+
+        g = Grids.__new__(Grids)
+        g.t, g.shape = Affine(px, 0, 0, 0, -px, shape[0] * px), shape
+        g.rgb = np.full(shape + (3,), 120, np.uint8)
+        g.veg = np.zeros(shape, bool)
+        g.nodata = np.zeros(shape, bool)
+        g.h = np.zeros(shape, np.float32)
+        n = int(shape[0] * px / ndsm_px)
+        g.ndsm_t = Affine(ndsm_px, 0, 0, 0, -ndsm_px, n * ndsm_px)
+        g.ndsm = np.zeros((n, n), np.float32)
+        g.edge = None
+        return g
+
+    def test_foliage_ignores_smooth_terracotta_but_finds_textured_crowns(self):
+        from build_consensus_labels import foliage
+
+        rng = np.random.default_rng(0)
+        tile = np.clip(np.array([180, 110, 80]) + rng.normal(0, 2, (60, 60, 3)), 0, 255).astype(np.uint8)
+        crown = np.clip(np.array([170, 120, 60]) + rng.normal(0, 25, (60, 60, 3)), 0, 255).astype(np.uint8)
+        green = np.full((60, 60, 3), (70, 120, 60), np.uint8)
+        self.assertLess(foliage(tile).mean(), 0.05)
+        self.assertGreater(foliage(crown).mean(), 0.5)
+        self.assertGreater(foliage(green).mean(), 0.95)
+
+    def test_lidar_profile_tells_flat_gable_hip(self):
+        from shapely.geometry import box
+
+        from finalize_roof2d_map import lidar_roof_shape
+
+        poly = box(3, 3, 17, 11)  # 14 x 8 m, long axis along x
+        ys, xs = np.mgrid[0:21, 0:21]
+        wx, wy = xs + 0.5, 21 - (ys + 0.5)
+        du = 7 - np.abs(wx - 10)
+        dv = 4 - np.abs(wy - 7)
+        for name, h in {"FLAT": np.full(wx.shape, 6.0), "GABLE": 4 + 0.8 * dv, "HIP": 4 + 0.8 * np.minimum(du, dv)}.items():
+            g = self.grids(shape=(140, 140), ndsm_px=1.0)
+            g.ndsm = h.astype(np.float32)
+            self.assertEqual(lidar_roof_shape(g, poly), name, name)
+
+    def test_occluded_corner_is_completed_courtyard_is_kept(self):
+        from shapely.geometry import box
+
+        from finalize_roof2d_map import complete_occluded
+        from roof2d_data import rasterize
+
+        full = box(3, 3, 15, 12)
+        bitten = full.difference(box(12, 9, 15, 12))
+        for crown_height, expect_full in ((6.3, True), (0.0, False)):  # roof under a crown vs a real courtyard
+            g = self.grids()
+            g.h[rasterize([full], g.t, g.shape)] = 6.0
+            notch = rasterize([box(12, 9, 15, 12)], g.t, g.shape)
+            g.veg[notch] = True
+            g.h[notch] = crown_height
+            out, added = complete_occluded(g, bitten, [])
+            self.assertEqual(out.area > 0.97 * full.area, expect_full, crown_height)
+            self.assertEqual(added > 0, expect_full)
+
+    def test_partition_leaves_no_overlap_and_owner_wins(self):
+        from shapely.geometry import box
+
+        from finalize_roof2d_map import partition
+
+        rows = [{"stare": "ADMIS_PROPUS", "score": 0.9, "geometry": box(0, 0, 10, 10)},
+                {"stare": "ADMIS", "score": 2.0, "geometry": box(8, 0, 18, 10)},
+                {"stare": "INCERT", "score": 0.1, "geometry": box(1, 1, 9, 9)}]
+        dropped = partition(rows)
+        live = [r for r in rows if not r.get("drop")]
+        self.assertEqual(dropped, 1)
+        self.assertEqual(live[1]["geometry"].area, 100.0)  # owner untouched
+        self.assertEqual(live[0]["geometry"].intersection(live[1]["geometry"]).area, 0.0)
+
+
+@unittest.skipUnless(HAS_GEO, "rasterio/shapely/cv2/scipy missing")
+class MicroEdgeTests(unittest.TestCase):
+    def test_small_step_collapses_and_stays_near_orthogonal(self):
+        from shapely.geometry import Polygon
+
+        from finalize_roof2d_map import remove_micro_edges
+
+        stepped = Polygon([(0, 0), (10, 0), (10, 5), (10.3, 5), (10.3, 8), (0, 8)])  # 0.3 m step
+        out = remove_micro_edges(stepped)
+        edges = np.hypot(*np.diff(np.asarray(out.exterior.coords), axis=0).T)
+        self.assertGreaterEqual(edges.min(), 1.0)
+        self.assertLess(abs(out.area - stepped.area), 0.05 * stepped.area)
+
+
+@unittest.skipUnless(HAS_GEO, "rasterio/shapely/cv2/scipy missing")
+class OcclusionTierBTests(unittest.TestCase):
+    def test_tall_crown_small_corner_completed_large_quadrant_kept(self):
+        from shapely.geometry import box
+
+        from finalize_roof2d_map import complete_occluded
+        from roof2d_data import rasterize
+
+        full = box(3, 3, 15, 12)  # 108 m2
+        for cut, expect in ((box(13, 10, 15, 12), True), (box(9, 7.5, 15, 12), False)):  # 4 m2 bite vs 27 m2 quadrant
+            g = FinalizeTests.grids()
+            g.h[rasterize([full], g.t, g.shape)] = 6.0
+            m = rasterize([cut], g.t, g.shape)
+            g.veg[m], g.h[m] = True, 11.0  # crown 5 m above the roof
+            out, added = complete_occluded(g, full.difference(cut), [])
+            self.assertEqual(added > 0, expect)

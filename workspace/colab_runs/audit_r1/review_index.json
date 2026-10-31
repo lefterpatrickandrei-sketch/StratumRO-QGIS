@@ -1,0 +1,3303 @@
+[
+ {
+  "sheet": 0,
+  "cell": 0,
+  "id": "OPT_B_193:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 1,
+  "id": "R2D_00206",
+  "state": "INCERT",
+  "flags": [
+   "NODATA_EDGE",
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 2,
+  "id": "R2D_00345",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 3,
+  "id": "OPT_B_182:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 4,
+  "id": "R2D_00409",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 5,
+  "id": "R2D_00292",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 6,
+  "id": "R2D_00321",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 7,
+  "id": "OPT_B_101:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 8,
+  "id": "NOU_cand_0006",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 9,
+  "id": "R2D_00398",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 10,
+  "id": "R2D_00406",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 11,
+  "id": "R2D_00353",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 12,
+  "id": "R2D_00358",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 13,
+  "id": "NOU_cand_0004",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 14,
+  "id": "NOU_cand_0007",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 15,
+  "id": "NOU_cand_0002",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 16,
+  "id": "OPT_B_057:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 17,
+  "id": "OPT_B_104:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 18,
+  "id": "OPT_B_134:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 19,
+  "id": "OPT_B_051:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 20,
+  "id": "OPT_B_058:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 21,
+  "id": "OPT_B_189:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 22,
+  "id": "NOU_cand_0000",
+  "state": "INCERT",
+  "flags": [
+   "NODATA_EDGE",
+   "UNDERSEG",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 23,
+  "id": "OPT_B_093:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 24,
+  "id": "NOU_cand_0008",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 25,
+  "id": "OPT_B_157:C1",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 26,
+  "id": "R2D_00367",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 27,
+  "id": "R2D_00400",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 28,
+  "id": "OPT_B_212:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 29,
+  "id": "OPT_B_121:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OVERLAP"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 30,
+  "id": "OPT_B_183:C1",
+  "state": "INCERT",
+  "flags": [
+   "NODATA_EDGE",
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 31,
+  "id": "R2D_00160",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 32,
+  "id": "R2D_00241",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 33,
+  "id": "OPT_B_164:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 34,
+  "id": "OPT_B_016:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 35,
+  "id": "OPT_B_181:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 0,
+  "cell": 36,
+  "id": "R2D_00359",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 37,
+  "id": "R2D_00223",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 38,
+  "id": "R2D_00276",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 0,
+  "cell": 39,
+  "id": "OPT_B_095:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 0,
+  "id": "OPT_B_021:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 1,
+  "id": "R2D_00031",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 2,
+  "id": "OPT_B_068:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 3,
+  "id": "OPT_B_114:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 4,
+  "id": "R2D_00274",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 5,
+  "id": "R2D_00269",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 6,
+  "id": "R2D_00314",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 7,
+  "id": "R2D_00277",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 8,
+  "id": "R2D_00076",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 9,
+  "id": "OPT_B_200:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 10,
+  "id": "R2D_00122",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 11,
+  "id": "R2D_00216",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OVERLAP",
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 12,
+  "id": "R2D_00143",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 13,
+  "id": "OPT_B_076:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OVERLAP",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 14,
+  "id": "OPT_B_073:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 15,
+  "id": "OPT_B_091:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 16,
+  "id": "OPT_B_176:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 17,
+  "id": "R2D_00086",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 18,
+  "id": "OPT_B_079:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 19,
+  "id": "NOU_cand_0021",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 20,
+  "id": "R2D_00275",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 21,
+  "id": "OPT_B_137:C1",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 22,
+  "id": "R2D_00186",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 23,
+  "id": "R2D_00236",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND",
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 24,
+  "id": "R2D_00365",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 25,
+  "id": "OPT_B_115:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED",
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 26,
+  "id": "R2D_00149",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 27,
+  "id": "R2D_00218",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 28,
+  "id": "OPT_B_083:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 29,
+  "id": "R2D_00372",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 30,
+  "id": "R2D_00366",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 31,
+  "id": "OPT_B_179:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 32,
+  "id": "R2D_00364",
+  "state": "INCERT",
+  "flags": [
+   "NODATA_EDGE",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 33,
+  "id": "R2D_00329",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 34,
+  "id": "R2D_00363",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 35,
+  "id": "OPT_B_187:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 36,
+  "id": "OPT_B_211:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 1,
+  "cell": 37,
+  "id": "OPT_B_188:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 38,
+  "id": "NOU_cand_0035",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 1,
+  "cell": 39,
+  "id": "R2D_00337",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 0,
+  "id": "R2D_00295",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND",
+   "NODATA_EDGE",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 1,
+  "id": "OPT_B_107:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 2,
+  "id": "R2D_00300",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 3,
+  "id": "OPT_B_097:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 4,
+  "id": "OPT_B_116:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 5,
+  "id": "R2D_00257",
+  "state": "INCERT",
+  "flags": [
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 6,
+  "id": "OPT_B_141:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 7,
+  "id": "R2D_00328",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 8,
+  "id": "OPT_B_129:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 9,
+  "id": "OPT_B_147:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 10,
+  "id": "R2D_00237",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 11,
+  "id": "OPT_B_205:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 12,
+  "id": "R2D_00111",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 13,
+  "id": "OPT_B_163:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OVERLAP"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 14,
+  "id": "R2D_00190",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 15,
+  "id": "OPT_B_151:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 16,
+  "id": "R2D_00368",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 17,
+  "id": "OPT_B_043:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 18,
+  "id": "R2D_00232",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 19,
+  "id": "R2D_00396",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 20,
+  "id": "OPT_B_152:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 21,
+  "id": "R2D_00350",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 22,
+  "id": "R2D_00341",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 23,
+  "id": "R2D_00018",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 24,
+  "id": "OPT_B_014:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 25,
+  "id": "R2D_00007",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 26,
+  "id": "R2D_00379",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 27,
+  "id": "OPT_B_064:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 28,
+  "id": "OPT_B_055:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 29,
+  "id": "OPT_B_117:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 30,
+  "id": "OPT_B_111:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 31,
+  "id": "OPT_B_075:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 2,
+  "cell": 32,
+  "id": "R2D_00112",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 33,
+  "id": "OPT_B_074:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 34,
+  "id": "OPT_B_146:C1",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 35,
+  "id": "R2D_00299",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 36,
+  "id": "R2D_00244",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 37,
+  "id": "R2D_00338",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 38,
+  "id": "R2D_00289",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 2,
+  "cell": 39,
+  "id": "R2D_00402",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 0,
+  "id": "OPT_B_118:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED",
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 1,
+  "id": "OPT_B_203:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 2,
+  "id": "OPT_B_033:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 3,
+  "id": "R2D_00380",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 4,
+  "id": "OPT_B_173:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 5,
+  "id": "OPT_B_204:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 6,
+  "id": "OPT_B_168:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 7,
+  "id": "OPT_B_209:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 8,
+  "id": "R2D_00343",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND",
+   "OCCLUDED",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 9,
+  "id": "R2D_00203",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 10,
+  "id": "OPT_B_214:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 11,
+  "id": "OPT_B_084:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 12,
+  "id": "NOU_cand_0037",
+  "state": "INCERT",
+  "flags": [
+   "NODATA_EDGE",
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 13,
+  "id": "OPT_B_180:C1",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 14,
+  "id": "R2D_00382",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 15,
+  "id": "OPT_B_191:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 16,
+  "id": "R2D_00197",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 17,
+  "id": "OPT_B_184:C1",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 18,
+  "id": "R2D_00417",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 19,
+  "id": "OPT_B_085:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 20,
+  "id": "OPT_B_139:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 21,
+  "id": "R2D_00064",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 22,
+  "id": "OPT_B_063:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 23,
+  "id": "R2D_00251",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 24,
+  "id": "OPT_B_045:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 25,
+  "id": "OPT_B_106:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 26,
+  "id": "R2D_00182",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OVERLAP"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 27,
+  "id": "OPT_B_113:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 28,
+  "id": "R2D_00294",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OVERLAP"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 29,
+  "id": "R2D_00376",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 30,
+  "id": "OPT_B_160:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 31,
+  "id": "OPT_B_088:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 32,
+  "id": "OPT_B_061:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 33,
+  "id": "R2D_00119",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 34,
+  "id": "OPT_B_034:C1_DUP",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 35,
+  "id": "R2D_00342",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 36,
+  "id": "NOU_cand_0055",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 37,
+  "id": "R2D_00091",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 3,
+  "cell": 38,
+  "id": "OPT_B_013:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 3,
+  "cell": 39,
+  "id": "OPT_B_015:C1_DUP",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 0,
+  "id": "R2D_00369",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 1,
+  "id": "R2D_00123",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 2,
+  "id": "OPT_B_175:C1",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 3,
+  "id": "OPT_B_035:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 4,
+  "id": "R2D_00248",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 5,
+  "id": "OPT_B_022:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 6,
+  "id": "R2D_00215",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 7,
+  "id": "OPT_B_029:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 8,
+  "id": "OPT_B_100:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 9,
+  "id": "R2D_00323",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 10,
+  "id": "OPT_B_049:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 11,
+  "id": "R2D_00395",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 12,
+  "id": "OPT_B_048:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 13,
+  "id": "OPT_B_112:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 14,
+  "id": "OPT_B_159:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 15,
+  "id": "OPT_B_008:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 16,
+  "id": "OPT_B_178:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 17,
+  "id": "OPT_B_038:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 18,
+  "id": "OPT_B_171:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 19,
+  "id": "OPT_B_053:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 20,
+  "id": "R2D_00172",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 21,
+  "id": "OPT_B_122:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 22,
+  "id": "R2D_00134",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 23,
+  "id": "R2D_00384",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 24,
+  "id": "OPT_B_162:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 25,
+  "id": "OPT_B_070:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 26,
+  "id": "R2D_00290",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 27,
+  "id": "OPT_B_165:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 28,
+  "id": "R2D_00224",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 29,
+  "id": "OPT_B_140:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 30,
+  "id": "OPT_B_161:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 31,
+  "id": "OPT_B_123:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 32,
+  "id": "R2D_00340",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 33,
+  "id": "R2D_00250",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "UNDERSEG",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 34,
+  "id": "OPT_B_081:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 4,
+  "cell": 35,
+  "id": "OPT_B_142:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 36,
+  "id": "R2D_00312",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 37,
+  "id": "R2D_00301",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 38,
+  "id": "OPT_B_135:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 4,
+  "cell": 39,
+  "id": "R2D_00291",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 0,
+  "id": "R2D_00245",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 1,
+  "id": "OPT_B_194:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 2,
+  "id": "R2D_00040",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 3,
+  "id": "R2D_00168",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 4,
+  "id": "R2D_00029",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 5,
+  "id": "R2D_00254",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 6,
+  "id": "R2D_00066",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 7,
+  "id": "R2D_00377",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 8,
+  "id": "OPT_B_136:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 9,
+  "id": "R2D_00047",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 10,
+  "id": "OPT_B_109:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 11,
+  "id": "NOU_cand_0071",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 12,
+  "id": "R2D_00333",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 13,
+  "id": "R2D_00278",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 14,
+  "id": "OPT_B_044:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 15,
+  "id": "OPT_B_030:C1",
+  "state": "ADMIS",
+  "flags": [
+   "FP_VEG"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 16,
+  "id": "OPT_B_078:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 17,
+  "id": "OPT_B_019:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 18,
+  "id": "OPT_B_006:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 19,
+  "id": "OPT_B_149:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 20,
+  "id": "OPT_B_145:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 21,
+  "id": "R2D_00268",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 22,
+  "id": "R2D_00011",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 23,
+  "id": "OPT_B_009:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 24,
+  "id": "R2D_00392",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 25,
+  "id": "R2D_00177",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 26,
+  "id": "R2D_00307",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 27,
+  "id": "OPT_B_012:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 28,
+  "id": "R2D_00346",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 29,
+  "id": "OPT_B_010:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 30,
+  "id": "R2D_00113",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 31,
+  "id": "R2D_00131",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 32,
+  "id": "R2D_00038",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 33,
+  "id": "OPT_B_144:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 34,
+  "id": "R2D_00034",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 35,
+  "id": "R2D_00355",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 36,
+  "id": "R2D_00050",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 37,
+  "id": "R2D_00316",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 5,
+  "cell": 38,
+  "id": "R2D_00233",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 5,
+  "cell": 39,
+  "id": "R2D_00322",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 0,
+  "id": "OPT_B_133:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 1,
+  "id": "R2D_00308",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 2,
+  "id": "R2D_00330",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 3,
+  "id": "R2D_00266",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 4,
+  "id": "R2D_00071",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 5,
+  "id": "R2D_00088",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 6,
+  "id": "OPT_B_052:C1_DUP",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 7,
+  "id": "R2D_00175",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 8,
+  "id": "R2D_00075",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 9,
+  "id": "R2D_00249",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "UNDERSEG",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 10,
+  "id": "OPT_B_005:C1_DUP",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 11,
+  "id": "R2D_00156",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 12,
+  "id": "R2D_00262",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 13,
+  "id": "R2D_00055",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 14,
+  "id": "R2D_00165",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 15,
+  "id": "R2D_00005",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 16,
+  "id": "R2D_00078",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 17,
+  "id": "R2D_00238",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 18,
+  "id": "R2D_00288",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND",
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 19,
+  "id": "R2D_00164",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 20,
+  "id": "R2D_00272",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 21,
+  "id": "R2D_00014",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 22,
+  "id": "R2D_00009",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 23,
+  "id": "OPT_B_020:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 24,
+  "id": "NOU_cand_0110",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 25,
+  "id": "OPT_B_192:C1",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 26,
+  "id": "OPT_B_011:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 27,
+  "id": "R2D_00196",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 28,
+  "id": "OPT_B_046:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 29,
+  "id": "OPT_B_028:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 30,
+  "id": "OPT_B_096:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 31,
+  "id": "OPT_B_172:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 32,
+  "id": "OPT_B_059:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 33,
+  "id": "OPT_B_119:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 34,
+  "id": "OPT_B_037:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 35,
+  "id": "OPT_B_216:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 36,
+  "id": "R2D_00265",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 37,
+  "id": "OPT_B_060:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 6,
+  "cell": 38,
+  "id": "R2D_00184",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 6,
+  "cell": 39,
+  "id": "R2D_00098",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 0,
+  "id": "R2D_00260",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 1,
+  "id": "OPT_B_056:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 2,
+  "id": "OPT_B_042:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 3,
+  "id": "R2D_00252",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 4,
+  "id": "R2D_00213",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 5,
+  "id": "OPT_B_069:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 6,
+  "id": "NOU_cand_0129",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 7,
+  "id": "OPT_B_132:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 8,
+  "id": "OPT_B_031:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 9,
+  "id": "OPT_B_098:C1_DUP",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 10,
+  "id": "NOU_cand_0119",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 11,
+  "id": "OPT_B_003:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 12,
+  "id": "OPT_B_080:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 13,
+  "id": "OPT_B_071:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 14,
+  "id": "OPT_B_027:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 15,
+  "id": "OPT_B_023:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 16,
+  "id": "R2D_00192",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 17,
+  "id": "R2D_00155",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 18,
+  "id": "OPT_B_004:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 19,
+  "id": "R2D_00101",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 20,
+  "id": "R2D_00006",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 21,
+  "id": "R2D_00221",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 22,
+  "id": "R2D_00303",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 23,
+  "id": "R2D_00247",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 24,
+  "id": "R2D_00286",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 25,
+  "id": "R2D_00084",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 26,
+  "id": "OPT_B_202:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 27,
+  "id": "OPT_B_024:C1",
+  "state": "INCERT",
+  "flags": [
+   "FP_VEG"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 28,
+  "id": "OPT_B_040:C1",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 29,
+  "id": "R2D_00234",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 30,
+  "id": "OPT_B_166:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 31,
+  "id": "R2D_00375",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 32,
+  "id": "R2D_00386",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 33,
+  "id": "R2D_00226",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 34,
+  "id": "OPT_B_082:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 35,
+  "id": "R2D_00120",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 36,
+  "id": "R2D_00169",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 37,
+  "id": "OPT_B_197:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 7,
+  "cell": 38,
+  "id": "OPT_B_086:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 7,
+  "cell": 39,
+  "id": "NOU_cand_0141",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 0,
+  "id": "R2D_00407",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 1,
+  "id": "OPT_B_099:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 2,
+  "id": "OPT_B_090:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 3,
+  "id": "OPT_B_036:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED",
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 4,
+  "id": "OPT_B_103:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 5,
+  "id": "OPT_B_130:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 6,
+  "id": "OPT_B_148:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 7,
+  "id": "OPT_B_126:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 8,
+  "id": "OPT_B_054:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 9,
+  "id": "OPT_B_089:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OVERLAP",
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 10,
+  "id": "R2D_00191",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 11,
+  "id": "OPT_B_039:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 12,
+  "id": "OPT_B_169:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 13,
+  "id": "OPT_B_001:C1_DUP",
+  "state": "ADMIS",
+  "flags": [
+   "OVERLAP",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 14,
+  "id": "OPT_B_105:C1",
+  "state": "ADMIS",
+  "flags": [
+   "FP_VEG",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 15,
+  "id": "OPT_B_041:C1_DUP",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 16,
+  "id": "OPT_B_017:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 17,
+  "id": "OPT_B_002:C1_DUP",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 18,
+  "id": "R2D_00004",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 19,
+  "id": "OPT_B_007:C1",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 20,
+  "id": "R2D_00302",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 21,
+  "id": "R2D_00202",
+  "state": "INCERT",
+  "flags": [
+   "FP_GROUND",
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 22,
+  "id": "R2D_00326",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 23,
+  "id": "R2D_00222",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 24,
+  "id": "OPT_B_120:C1",
+  "state": "ADMIS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 25,
+  "id": "R2D_00200",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 26,
+  "id": "OPT_B_177:C1",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED",
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 27,
+  "id": "R2D_00178",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 28,
+  "id": "OPT_B_128:C1",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OVERLAP",
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 29,
+  "id": "R2D_00239",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 30,
+  "id": "R2D_00199",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 31,
+  "id": "NOU_cand_0146",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 32,
+  "id": "R2D_00399",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 33,
+  "id": "R2D_00317",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 34,
+  "id": "R2D_00069",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 35,
+  "id": "R2D_00418",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 36,
+  "id": "R2D_00401",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 37,
+  "id": "R2D_00413",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 8,
+  "cell": 38,
+  "id": "OPT_B_108:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 8,
+  "cell": 39,
+  "id": "OPT_B_213:C1",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 9,
+  "cell": 0,
+  "id": "R2D_00024",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FP_GROUND"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 1,
+  "id": "R2D_00327",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 2,
+  "id": "OPT_B_092:C1",
+  "state": "ADMIS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 3,
+  "id": "OPT_B_067:C1",
+  "state": "ADMIS",
+  "flags": [
+   "OVERLAP",
+   "UNDERSEG",
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 4,
+  "id": "R2D_00259",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 5,
+  "id": "R2D_00404",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 6,
+  "id": "R2D_00118",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 7,
+  "id": "R2D_00068",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 8,
+  "id": "NOU_cand_0168",
+  "state": "INCERT",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 9,
+  "id": "NOU_cand_0170",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 10,
+  "id": "NOU_cand_0169",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 11,
+  "id": "OPT_B_065:C1_FALS",
+  "state": "ADMIS",
+  "flags": []
+ },
+ {
+  "sheet": 9,
+  "cell": 12,
+  "id": "R2D_00403",
+  "state": "INCERT",
+  "flags": [
+   "NODATA_EDGE"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 13,
+  "id": "R2D_00135",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 9,
+  "cell": 14,
+  "id": "NOU_cand_0186",
+  "state": "INCERT",
+  "flags": []
+ },
+ {
+  "sheet": 9,
+  "cell": 15,
+  "id": "R2D_00388",
+  "state": "INCERT",
+  "flags": [
+   "NODATA_EDGE"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 16,
+  "id": "R2D_00421",
+  "state": "INCERT",
+  "flags": [
+   "NODATA_EDGE",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 17,
+  "id": "R2D_00339",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 18,
+  "id": "R2D_00357",
+  "state": "INCERT",
+  "flags": [
+   "FRAGMENT"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 19,
+  "id": "R2D_00087",
+  "state": "ADMIS_PROPUS",
+  "flags": []
+ },
+ {
+  "sheet": 9,
+  "cell": 20,
+  "id": "NOU_cand_0191",
+  "state": "INCERT",
+  "flags": [
+   "UNDERSEG",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 21,
+  "id": "R2D_00217",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "FRAGMENT",
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 22,
+  "id": "R2D_00414",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "OCCLUDED"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 23,
+  "id": "R2D_00393",
+  "state": "INCERT",
+  "flags": [
+   "NONORTHO"
+  ]
+ },
+ {
+  "sheet": 9,
+  "cell": 24,
+  "id": "R2D_00256",
+  "state": "ADMIS_PROPUS",
+  "flags": [
+   "UNDERSEG"
+  ]
+ }
+]

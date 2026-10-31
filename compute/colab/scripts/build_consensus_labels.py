@@ -37,10 +37,21 @@ def ndsm_stats(poly, ndsm, ndsm_t):
 
 
 def foliage(rgb: np.ndarray) -> np.ndarray:
+    """Vegetation pixels from RGB only: green (ExG > 12) or warm autumn colour that is also textured.
+
+    Warm colour alone also matches terracotta tiles (13 % of owner ADMIS roof pixels on 2026-10-31); crowns are
+    mottled (7x7 grey std median 9.4) while tiles are smooth (4.2), so warm pixels need std > 8. Measured on owner
+    ADMIS roofs vs LiDAR+colour tree polygons: roofs 2.5 % / trees 90 % (was 13.4 % / 92 %).
+    """
+    import cv2
+
     r, g, b = (rgb[..., i].astype(np.float32) for i in range(3))
     exg = 2 * g - r - b
-    autumn = (r > g * 0.95) & (g > b * 1.15) & (r > 60) & (r < 210) & ((r - b) > 35)
-    return (exg > 18) | autumn
+    warm = (r > g * 0.95) & (g > b * 1.15) & (r > 60) & (r < 210) & ((r - b) > 35)
+    grey = (0.299 * r + 0.587 * g + 0.114 * b).astype(np.float32)
+    mean = cv2.blur(grey, (7, 7))
+    std = np.sqrt(np.maximum(cv2.blur(grey * grey, (7, 7)) - mean * mean, 0.0))
+    return (exg > 12) | (warm & (std > 8))
 
 
 def build(proposals: Path, data: Path, ndsm_path: Path, out: Path) -> dict:

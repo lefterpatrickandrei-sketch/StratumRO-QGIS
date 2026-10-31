@@ -80,7 +80,9 @@ def snap_edges(poly, sample, max_shift: float = 0.9, step: float = 0.15, min_gai
         cand = pts.copy()
         cand[i], cand[(i + 1) % n] = new_a, new_b
         cp = Polygon(cand)
-        if cp.is_valid and abs(cp.area - Polygon(pts).area) < 0.3 * Polygon(pts).area:
+        # a shift that shortens a neighbouring edge below 1 m leaves a micro-edge (ANCPI min edge 1 m)
+        short = min(np.hypot(*(cand[i] - cand[i - 1])), np.hypot(*(cand[(i + 2) % n] - cand[(i + 1) % n])))
+        if cp.is_valid and short >= 1.0 and abs(cp.area - Polygon(pts).area) < 0.3 * Polygon(pts).area:
             pts = cand
             shifts.append(abs(off))
     out = Polygon(pts)

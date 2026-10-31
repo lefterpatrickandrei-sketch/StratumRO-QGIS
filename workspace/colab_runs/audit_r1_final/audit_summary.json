@@ -1,0 +1,15 @@
+{
+  "buildings": 358,
+  "flag_counts": {
+    "OVERLAP": 6,
+    "FP_GROUND": 35,
+    "FP_VEG": 3,
+    "NODATA_EDGE": 3,
+    "OCCLUDED": 76,
+    "UNDERSEG": 54,
+    "FRAGMENT": 19,
+    "NONORTHO": 104
+  },
+  "clean": 131,
+  "overlap_total_m2": 0.09
+}
