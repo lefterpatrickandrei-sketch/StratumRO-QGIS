@@ -1,0 +1,45 @@
+{
+ "date": "2026-10-31",
+ "storage": "local disk only (not in git, no LFS, no Drive)",
+ "files": {
+  "ensemble_member_B1_resnet34_contact5": {
+   "path": "workspace/colab_runs/loop_b1/a100/iter_01/best.pt",
+   "exists": true,
+   "mb": 93.7,
+   "sha256": "2629a2ce4ecf48ff445cd30e97670eeb683279ba31b31119921131781c200bbb"
+  },
+  "ensemble_member_B3_resnet34_treeneg": {
+   "path": "workspace/colab_runs/loop_b3/run_b3r/iter_01/best.pt",
+   "exists": true,
+   "mb": 93.7,
+   "sha256": "432906e3debeb04114928af5faf19ff9e94afe3f28f6149965306a5c6966afc7"
+  },
+  "ensemble_member_L3_resnet34_contact10_colouraug": {
+   "path": "workspace/colab_runs/loop_q/run_l3/iter_01/best.pt",
+   "exists": true,
+   "mb": 93.7,
+   "sha256": "d720fcc35de8ad33785f73953fb4132b35c5e2b285dc410e9f50d4ceeec6152d"
+  },
+  "ensemble_probs_used_by_final": {
+   "path": "workspace/colab_runs/loop_q/ens_b1_b3r_l3.tif",
+   "exists": true,
+   "mb": 20.6,
+   "sha256": "def3ebe0906f5787ffcb17fa4e1b03858c341de0821fccc2470d133f3ae24272"
+  },
+  "sam2.1_hiera_large (tested, not in final)": {
+   "path": "models/sam2/sam2.1_hiera_large.pt",
+   "exists": true,
+   "mb": 856.5,
+   "sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318"
+  },
+  "convnext_small_B2 (rejected)": {
+   "path": "workspace/colab_runs/loop_b2/a100/iter_01/best.pt",
+   "exists": true,
+   "mb": 204.5,
+   "sha256": "bc0045d4dd905bbf4c659d9b63434820fc9a154bfb981b4cccf1468e702e51aa"
+  }
+ },
+ "not_saved": {
+  "qwen3_vl_lora_adapter": "trained on Colab in VLM loops 2-3, adapter not written (vlm_roof_assist.py has no save step); base model Qwen/Qwen3-VL-8B-Instruct is reproducible from Hugging Face, predictions are saved in workspace/colab_runs/vlm_v*/vlm*/vlm_predictions.json"
+ }
+}
