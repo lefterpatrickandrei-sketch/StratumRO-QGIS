@@ -1,0 +1,5122 @@
+[
+ {
+  "id": "owner_OPT_B_006_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_006:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_020_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_020:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_100_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_100:C1"
+ },
+ {
+  "id": "owner_OPT_B_107_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_107:C1"
+ },
+ {
+  "id": "owner_OPT_B_179_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_179:C1"
+ },
+ {
+  "id": "owner_OPT_B_151_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_151:C1"
+ },
+ {
+  "id": "owner_OPT_B_021_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_021:C1"
+ },
+ {
+  "id": "owner_OPT_B_043_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_043:C1"
+ },
+ {
+  "id": "owner_OPT_B_089_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_089:C1"
+ },
+ {
+  "id": "owner_OPT_B_114_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_114:C1"
+ },
+ {
+  "id": "owner_OPT_B_011_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_011:C1"
+ },
+ {
+  "id": "owner_OPT_B_001_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_001:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_126_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_126:C1"
+ },
+ {
+  "id": "owner_OPT_B_147_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_147:C1"
+ },
+ {
+  "id": "owner_OPT_B_169_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_169:C1"
+ },
+ {
+  "id": "owner_OPT_B_197_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_197:C1"
+ },
+ {
+  "id": "owner_OPT_B_002_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_002:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_164_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_164:C1"
+ },
+ {
+  "id": "owner_OPT_B_136_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_136:C1"
+ },
+ {
+  "id": "owner_OPT_B_037_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_037:C1"
+ },
+ {
+  "id": "owner_OPT_B_101_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_101:C1"
+ },
+ {
+  "id": "owner_OPT_B_049_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_049:C1"
+ },
+ {
+  "id": "owner_OPT_B_004_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_004:C1"
+ },
+ {
+  "id": "owner_OPT_B_189_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_189:C1"
+ },
+ {
+  "id": "owner_OPT_B_015_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_015:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_095_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_095:C1"
+ },
+ {
+  "id": "owner_OPT_B_017_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_017:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_068_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_068:C1"
+ },
+ {
+  "id": "owner_OPT_B_046_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_046:C1"
+ },
+ {
+  "id": "owner_OPT_B_028_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_028:C1"
+ },
+ {
+  "id": "owner_OPT_B_029_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_029:C1"
+ },
+ {
+  "id": "owner_OPT_B_019_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_019:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_159_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_159:C1"
+ },
+ {
+  "id": "owner_OPT_B_172_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_172:C1"
+ },
+ {
+  "id": "owner_OPT_B_060_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_060:C1"
+ },
+ {
+  "id": "owner_OPT_B_081_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_081:C1"
+ },
+ {
+  "id": "owner_OPT_B_082_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_082:C1"
+ },
+ {
+  "id": "owner_OPT_B_003_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_003:C1"
+ },
+ {
+  "id": "owner_OPT_B_039_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_039:C1"
+ },
+ {
+  "id": "owner_OPT_B_181_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_181:C1"
+ },
+ {
+  "id": "owner_OPT_B_119_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_119:C1"
+ },
+ {
+  "id": "owner_OPT_B_012_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_012:C1"
+ },
+ {
+  "id": "owner_OPT_B_038_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_038:C1"
+ },
+ {
+  "id": "owner_OPT_B_168_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_168:C1"
+ },
+ {
+  "id": "owner_OPT_B_010_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_010:C1"
+ },
+ {
+  "id": "owner_OPT_B_008_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_008:C1"
+ },
+ {
+  "id": "owner_OPT_B_058_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_058:C1"
+ },
+ {
+  "id": "owner_OPT_B_064_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_064:C1"
+ },
+ {
+  "id": "owner_OPT_B_042_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_042:C1"
+ },
+ {
+  "id": "owner_OPT_B_013_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_013:C1"
+ },
+ {
+  "id": "owner_OPT_B_093_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_093:C1"
+ },
+ {
+  "id": "owner_OPT_B_106_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_106:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_031_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_031:C1"
+ },
+ {
+  "id": "owner_OPT_B_211_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_211:C1"
+ },
+ {
+  "id": "owner_OPT_B_027_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_027:C1"
+ },
+ {
+  "id": "owner_OPT_B_145_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_145:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_023_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_023:C1"
+ },
+ {
+  "id": "owner_OPT_B_109_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_109:C1"
+ },
+ {
+  "id": "owner_OPT_B_073_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_073:C1"
+ },
+ {
+  "id": "owner_OPT_B_129_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_129:C1"
+ },
+ {
+  "id": "owner_OPT_B_111_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_111:C1"
+ },
+ {
+  "id": "owner_OPT_B_055_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_055:C1"
+ },
+ {
+  "id": "owner_OPT_B_132_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_132:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_187_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_187:C1"
+ },
+ {
+  "id": "owner_OPT_B_070_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_070:C1"
+ },
+ {
+  "id": "owner_OPT_B_069_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_069:C1"
+ },
+ {
+  "id": "owner_OPT_B_134_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_134:C1"
+ },
+ {
+  "id": "owner_OPT_B_065_C1_FALS",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_065:C1_FALS"
+ },
+ {
+  "id": "owner_OPT_B_088_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_088:C1"
+ },
+ {
+  "id": "owner_OPT_B_099_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_099:C1"
+ },
+ {
+  "id": "owner_OPT_B_059_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_059:C1"
+ },
+ {
+  "id": "owner_OPT_B_096_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_096:C1"
+ },
+ {
+  "id": "owner_OPT_B_054_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_054:C1"
+ },
+ {
+  "id": "owner_OPT_B_063_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_063:C1"
+ },
+ {
+  "id": "owner_OPT_B_035_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_035:C1"
+ },
+ {
+  "id": "owner_OPT_B_214_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_214:C1"
+ },
+ {
+  "id": "owner_OPT_B_061_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_061:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_083_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_083:C1"
+ },
+ {
+  "id": "owner_OPT_B_108_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_108:C1"
+ },
+ {
+  "id": "owner_OPT_B_103_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_103:C1"
+ },
+ {
+  "id": "owner_OPT_B_140_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_140:C1"
+ },
+ {
+  "id": "owner_OPT_B_034_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_034:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_056_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_056:C1"
+ },
+ {
+  "id": "owner_OPT_B_123_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_123:C1"
+ },
+ {
+  "id": "owner_OPT_B_117_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_117:C1"
+ },
+ {
+  "id": "owner_OPT_B_116_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_116:C1"
+ },
+ {
+  "id": "owner_OPT_B_005_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_005:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_191_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_191:C1"
+ },
+ {
+  "id": "owner_OPT_B_182_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_182:C1"
+ },
+ {
+  "id": "owner_OPT_B_212_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_212:C1"
+ },
+ {
+  "id": "owner_OPT_B_142_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_142:C1"
+ },
+ {
+  "id": "owner_OPT_B_162_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_162:C1"
+ },
+ {
+  "id": "owner_OPT_B_160_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_160:C1"
+ },
+ {
+  "id": "owner_OPT_B_014_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_014:C1"
+ },
+ {
+  "id": "owner_OPT_B_098_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_098:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_022_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_022:C1"
+ },
+ {
+  "id": "owner_OPT_B_086_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_086:C1"
+ },
+ {
+  "id": "owner_OPT_B_007_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_007:C1"
+ },
+ {
+  "id": "owner_OPT_B_030_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_030:C1"
+ },
+ {
+  "id": "owner_OPT_B_104_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_104:C1"
+ },
+ {
+  "id": "owner_OPT_B_188_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_188:C1"
+ },
+ {
+  "id": "owner_OPT_B_112_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_112:C1"
+ },
+ {
+  "id": "owner_OPT_B_120_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_120:C1"
+ },
+ {
+  "id": "owner_OPT_B_216_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_216:C1"
+ },
+ {
+  "id": "owner_OPT_B_085_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_085:C1"
+ },
+ {
+  "id": "owner_OPT_B_165_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_165:C1"
+ },
+ {
+  "id": "owner_OPT_B_016_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_016:C1"
+ },
+ {
+  "id": "owner_OPT_B_204_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_204:C1"
+ },
+ {
+  "id": "owner_OPT_B_178_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_178:C1"
+ },
+ {
+  "id": "owner_OPT_B_097_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_097:C1"
+ },
+ {
+  "id": "owner_OPT_B_121_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_121:C1"
+ },
+ {
+  "id": "owner_OPT_B_193_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_193:C1"
+ },
+ {
+  "id": "owner_OPT_B_209_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_209:C1"
+ },
+ {
+  "id": "owner_OPT_B_033_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_033:C1"
+ },
+ {
+  "id": "owner_OPT_B_044_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_044:C1"
+ },
+ {
+  "id": "owner_OPT_B_036_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_036:C1"
+ },
+ {
+  "id": "owner_OPT_B_057_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_057:C1"
+ },
+ {
+  "id": "owner_OPT_B_078_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_078:C1"
+ },
+ {
+  "id": "owner_OPT_B_148_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_148:C1"
+ },
+ {
+  "id": "owner_OPT_B_171_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_171:C1"
+ },
+ {
+  "id": "owner_OPT_B_080_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_080:C1"
+ },
+ {
+  "id": "owner_OPT_B_052_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_052:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_176_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_176:C1"
+ },
+ {
+  "id": "owner_OPT_B_084_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_084:C1"
+ },
+ {
+  "id": "owner_OPT_B_051_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_051:C1"
+ },
+ {
+  "id": "owner_OPT_B_076_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_076:C1"
+ },
+ {
+  "id": "owner_OPT_B_091_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_091:C1"
+ },
+ {
+  "id": "owner_OPT_B_115_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_115:C1"
+ },
+ {
+  "id": "owner_OPT_B_053_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_053:C1"
+ },
+ {
+  "id": "owner_OPT_B_045_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_045:C1"
+ },
+ {
+  "id": "owner_OPT_B_149_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_149:C1"
+ },
+ {
+  "id": "owner_OPT_B_194_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_194:C1"
+ },
+ {
+  "id": "owner_OPT_B_118_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_118:C1"
+ },
+ {
+  "id": "owner_OPT_B_074_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_074:C1"
+ },
+ {
+  "id": "owner_OPT_B_092_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_092:C1"
+ },
+ {
+  "id": "owner_OPT_B_105_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_105:C1"
+ },
+ {
+  "id": "owner_OPT_B_067_C1",
+  "set": "owner",
+  "owner_verdict": "ADMIS",
+  "ref": "OPT_B_067:C1"
+ },
+ {
+  "id": "owner_OPT_B_202_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_202:C1"
+ },
+ {
+  "id": "owner_OPT_B_090_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_090:C1"
+ },
+ {
+  "id": "owner_OPT_B_144_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_144:C1"
+ },
+ {
+  "id": "owner_OPT_B_205_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_205:C1"
+ },
+ {
+  "id": "owner_OPT_B_157_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_157:C1"
+ },
+ {
+  "id": "owner_OPT_B_130_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_130:C1"
+ },
+ {
+  "id": "owner_OPT_B_163_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_163:C1"
+ },
+ {
+  "id": "owner_OPT_B_075_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_075:C1"
+ },
+ {
+  "id": "owner_OPT_B_128_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_128:C1"
+ },
+ {
+  "id": "owner_OPT_B_141_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_141:C1"
+ },
+ {
+  "id": "owner_OPT_B_137_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_137:C1"
+ },
+ {
+  "id": "owner_OPT_B_122_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_122:C1"
+ },
+ {
+  "id": "owner_OPT_B_173_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_173:C1"
+ },
+ {
+  "id": "owner_OPT_B_135_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_135:C1"
+ },
+ {
+  "id": "owner_OPT_B_048_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_048:C1"
+ },
+ {
+  "id": "owner_OPT_B_113_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_113:C1"
+ },
+ {
+  "id": "owner_OPT_B_192_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_192:C1"
+ },
+ {
+  "id": "owner_OPT_B_139_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_139:C1"
+ },
+ {
+  "id": "owner_OPT_B_041_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_041:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_213_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_213:C1"
+ },
+ {
+  "id": "owner_OPT_B_071_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_071:C1"
+ },
+ {
+  "id": "owner_OPT_B_175_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_175:C1"
+ },
+ {
+  "id": "owner_OPT_B_180_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_180:C1"
+ },
+ {
+  "id": "owner_OPT_B_133_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_133:C1"
+ },
+ {
+  "id": "owner_OPT_B_166_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_166:C1"
+ },
+ {
+  "id": "owner_OPT_B_138_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_138:C1"
+ },
+ {
+  "id": "owner_OPT_B_177_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_177:C1"
+ },
+ {
+  "id": "owner_OPT_B_127_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_127:C1"
+ },
+ {
+  "id": "owner_OPT_B_032_C1_DUP",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_032:C1_DUP"
+ },
+ {
+  "id": "owner_OPT_B_146_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_146:C1"
+ },
+ {
+  "id": "owner_OPT_B_183_C1",
+  "set": "owner",
+  "owner_verdict": "AJUSTARE",
+  "ref": "OPT_B_183:C1"
+ },
+ {
+  "id": "owner_OPT_B_196_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_196:C1"
+ },
+ {
+  "id": "owner_OPT_B_210_C1_FALS",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_210:C1_FALS"
+ },
+ {
+  "id": "owner_OPT_B_199_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_199:C1"
+ },
+ {
+  "id": "owner_OPT_B_125_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_125:C1"
+ },
+ {
+  "id": "owner_OPT_B_066_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_066:C1"
+ },
+ {
+  "id": "owner_OPT_B_201_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_201:C1"
+ },
+ {
+  "id": "owner_OPT_B_155_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_155:C1"
+ },
+ {
+  "id": "owner_OPT_B_185_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_185:C1"
+ },
+ {
+  "id": "owner_OPT_B_102_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_102:C1"
+ },
+ {
+  "id": "owner_OPT_B_124_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_124:C1"
+ },
+ {
+  "id": "owner_OPT_B_087_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_087:C1"
+ },
+ {
+  "id": "owner_OPT_B_186_C1",
+  "set": "owner",
+  "owner_verdict": "ELIMINAT",
+  "ref": "OPT_B_186:C1"
+ },
+ {
+  "id": "agentneg_0000",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0000"
+ },
+ {
+  "id": "agentneg_0001",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0001"
+ },
+ {
+  "id": "agentneg_0002",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0002"
+ },
+ {
+  "id": "agentneg_0003",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0003"
+ },
+ {
+  "id": "agentneg_0004",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0004"
+ },
+ {
+  "id": "agentneg_0005",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0005"
+ },
+ {
+  "id": "agentneg_0006",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0006"
+ },
+ {
+  "id": "agentneg_0007",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0007"
+ },
+ {
+  "id": "agentneg_0008",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0008"
+ },
+ {
+  "id": "agentneg_0009",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0009"
+ },
+ {
+  "id": "agentneg_0010",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0010"
+ },
+ {
+  "id": "agentneg_0011",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0011"
+ },
+ {
+  "id": "agentneg_0012",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0012"
+ },
+ {
+  "id": "agentneg_0013",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0013"
+ },
+ {
+  "id": "agentneg_0014",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0014"
+ },
+ {
+  "id": "agentneg_0015",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0015"
+ },
+ {
+  "id": "agentneg_0016",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0016"
+ },
+ {
+  "id": "agentneg_0017",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0017"
+ },
+ {
+  "id": "agentneg_0018",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0018"
+ },
+ {
+  "id": "agentneg_0019",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0019"
+ },
+ {
+  "id": "agentneg_0020",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0020"
+ },
+ {
+  "id": "agentneg_0021",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0021"
+ },
+ {
+  "id": "agentneg_0022",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0022"
+ },
+ {
+  "id": "agentneg_0023",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0023"
+ },
+ {
+  "id": "agentneg_0024",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0024"
+ },
+ {
+  "id": "agentneg_0025",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0025"
+ },
+ {
+  "id": "agentneg_0026",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0026"
+ },
+ {
+  "id": "agentneg_0027",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0027"
+ },
+ {
+  "id": "agentneg_0028",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0028"
+ },
+ {
+  "id": "agentneg_0029",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0029"
+ },
+ {
+  "id": "agentneg_0030",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0030"
+ },
+ {
+  "id": "agentneg_0031",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0031"
+ },
+ {
+  "id": "agentneg_0032",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0032"
+ },
+ {
+  "id": "agentneg_0033",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0033"
+ },
+ {
+  "id": "agentneg_0034",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0034"
+ },
+ {
+  "id": "agentneg_0035",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0035"
+ },
+ {
+  "id": "agentneg_0036",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0036"
+ },
+ {
+  "id": "agentneg_0037",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0037"
+ },
+ {
+  "id": "agentneg_0038",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0038"
+ },
+ {
+  "id": "agentneg_0039",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0039"
+ },
+ {
+  "id": "agentneg_0040",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0040"
+ },
+ {
+  "id": "agentneg_0041",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0041"
+ },
+ {
+  "id": "agentneg_0042",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0042"
+ },
+ {
+  "id": "agentneg_0043",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0043"
+ },
+ {
+  "id": "agentneg_0044",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0044"
+ },
+ {
+  "id": "agentneg_0045",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0045"
+ },
+ {
+  "id": "agentneg_0046",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0046"
+ },
+ {
+  "id": "agentneg_0047",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0047"
+ },
+ {
+  "id": "agentneg_0048",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0048"
+ },
+ {
+  "id": "agentneg_0049",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0049"
+ },
+ {
+  "id": "agentneg_0050",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0050"
+ },
+ {
+  "id": "agentneg_0051",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0051"
+ },
+ {
+  "id": "agentneg_0052",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0052"
+ },
+ {
+  "id": "agentneg_0053",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0053"
+ },
+ {
+  "id": "agentneg_0054",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0054"
+ },
+ {
+  "id": "agentneg_0055",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0055"
+ },
+ {
+  "id": "agentneg_0056",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0056"
+ },
+ {
+  "id": "agentneg_0057",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0057"
+ },
+ {
+  "id": "agentneg_0058",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0058"
+ },
+ {
+  "id": "agentneg_0059",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0059"
+ },
+ {
+  "id": "agentneg_0060",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0060"
+ },
+ {
+  "id": "agentneg_0061",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0061"
+ },
+ {
+  "id": "agentneg_0062",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0062"
+ },
+ {
+  "id": "agentneg_0063",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0063"
+ },
+ {
+  "id": "agentneg_0064",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0064"
+ },
+ {
+  "id": "agentneg_0065",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0065"
+ },
+ {
+  "id": "agentneg_0066",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0066"
+ },
+ {
+  "id": "agentneg_0067",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0067"
+ },
+ {
+  "id": "agentneg_0068",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0068"
+ },
+ {
+  "id": "agentneg_0069",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0069"
+ },
+ {
+  "id": "agentneg_0070",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0070"
+ },
+ {
+  "id": "agentneg_0071",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0071"
+ },
+ {
+  "id": "agentneg_0072",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0072"
+ },
+ {
+  "id": "agentneg_0073",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0073"
+ },
+ {
+  "id": "agentneg_0074",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0074"
+ },
+ {
+  "id": "agentneg_0075",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0075"
+ },
+ {
+  "id": "agentneg_0076",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0076"
+ },
+ {
+  "id": "agentneg_0077",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0077"
+ },
+ {
+  "id": "agentneg_0078",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0078"
+ },
+ {
+  "id": "agentneg_0079",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0079"
+ },
+ {
+  "id": "agentneg_0080",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0080"
+ },
+ {
+  "id": "agentneg_0081",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0081"
+ },
+ {
+  "id": "agentneg_0082",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0082"
+ },
+ {
+  "id": "agentneg_0083",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0083"
+ },
+ {
+  "id": "agentneg_0084",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0084"
+ },
+ {
+  "id": "agentneg_0085",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0085"
+ },
+ {
+  "id": "agentneg_0086",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0086"
+ },
+ {
+  "id": "agentneg_0087",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0087"
+ },
+ {
+  "id": "agentneg_0088",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0088"
+ },
+ {
+  "id": "agentneg_0089",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0089"
+ },
+ {
+  "id": "agentneg_0090",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0090"
+ },
+ {
+  "id": "agentneg_0091",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0091"
+ },
+ {
+  "id": "agentneg_0092",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0092"
+ },
+ {
+  "id": "agentneg_0093",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0093"
+ },
+ {
+  "id": "agentneg_0094",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0094"
+ },
+ {
+  "id": "agentneg_0095",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0095"
+ },
+ {
+  "id": "agentneg_0096",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0096"
+ },
+ {
+  "id": "agentneg_0097",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0097"
+ },
+ {
+  "id": "agentneg_0098",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0098"
+ },
+ {
+  "id": "agentneg_0099",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0099"
+ },
+ {
+  "id": "agentneg_0100",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0100"
+ },
+ {
+  "id": "agentneg_0101",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0101"
+ },
+ {
+  "id": "agentneg_0102",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0102"
+ },
+ {
+  "id": "agentneg_0103",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0103"
+ },
+ {
+  "id": "agentneg_0104",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0104"
+ },
+ {
+  "id": "agentneg_0105",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0105"
+ },
+ {
+  "id": "agentneg_0106",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0106"
+ },
+ {
+  "id": "agentneg_0107",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0107"
+ },
+ {
+  "id": "agentneg_0108",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0108"
+ },
+ {
+  "id": "agentneg_0109",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0109"
+ },
+ {
+  "id": "agentneg_0110",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0110"
+ },
+ {
+  "id": "agentneg_0111",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0111"
+ },
+ {
+  "id": "agentneg_0112",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0112"
+ },
+ {
+  "id": "agentneg_0113",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0113"
+ },
+ {
+  "id": "agentneg_0114",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0114"
+ },
+ {
+  "id": "agentneg_0115",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0115"
+ },
+ {
+  "id": "agentneg_0116",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0116"
+ },
+ {
+  "id": "agentneg_0117",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0117"
+ },
+ {
+  "id": "agentneg_0118",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0118"
+ },
+ {
+  "id": "agentneg_0119",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0119"
+ },
+ {
+  "id": "agentneg_0120",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0120"
+ },
+ {
+  "id": "agentneg_0121",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0121"
+ },
+ {
+  "id": "agentneg_0122",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0122"
+ },
+ {
+  "id": "agentneg_0123",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0123"
+ },
+ {
+  "id": "agentneg_0124",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0124"
+ },
+ {
+  "id": "agentneg_0125",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0125"
+ },
+ {
+  "id": "agentneg_0126",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0126"
+ },
+ {
+  "id": "agentneg_0127",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0127"
+ },
+ {
+  "id": "agentneg_0128",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0128"
+ },
+ {
+  "id": "agentneg_0129",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0129"
+ },
+ {
+  "id": "agentneg_0130",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0130"
+ },
+ {
+  "id": "agentneg_0131",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0131"
+ },
+ {
+  "id": "agentneg_0132",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0132"
+ },
+ {
+  "id": "agentneg_0133",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0133"
+ },
+ {
+  "id": "agentneg_0134",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0134"
+ },
+ {
+  "id": "agentneg_0135",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0135"
+ },
+ {
+  "id": "agentneg_0136",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0136"
+ },
+ {
+  "id": "agentneg_0137",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0137"
+ },
+ {
+  "id": "agentneg_0138",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0138"
+ },
+ {
+  "id": "agentneg_0139",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0139"
+ },
+ {
+  "id": "agentneg_0140",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0140"
+ },
+ {
+  "id": "agentneg_0141",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0141"
+ },
+ {
+  "id": "agentneg_0142",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0142"
+ },
+ {
+  "id": "agentneg_0143",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0143"
+ },
+ {
+  "id": "agentneg_0144",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0144"
+ },
+ {
+  "id": "agentneg_0145",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0145"
+ },
+ {
+  "id": "agentneg_0146",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0146"
+ },
+ {
+  "id": "agentneg_0147",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0147"
+ },
+ {
+  "id": "agentneg_0148",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0148"
+ },
+ {
+  "id": "agentneg_0149",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0149"
+ },
+ {
+  "id": "agentneg_0150",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0150"
+ },
+ {
+  "id": "agentneg_0151",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0151"
+ },
+ {
+  "id": "agentneg_0152",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0152"
+ },
+ {
+  "id": "agentneg_0153",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0153"
+ },
+ {
+  "id": "agentneg_0154",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0154"
+ },
+ {
+  "id": "agentneg_0155",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0155"
+ },
+ {
+  "id": "agentneg_0156",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0156"
+ },
+ {
+  "id": "agentneg_0157",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0157"
+ },
+ {
+  "id": "agentneg_0158",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0158"
+ },
+ {
+  "id": "agentneg_0159",
+  "set": "agent_neg",
+  "owner_verdict": "ELIMINAT",
+  "ref": "agentneg_0159"
+ },
+ {
+  "id": "prop_R2D_00000",
+  "set": "proposal",
+  "ref": "R2D_00000"
+ },
+ {
+  "id": "prop_R2D_00001",
+  "set": "proposal",
+  "ref": "R2D_00001"
+ },
+ {
+  "id": "prop_R2D_00002",
+  "set": "proposal",
+  "ref": "R2D_00002"
+ },
+ {
+  "id": "prop_R2D_00003",
+  "set": "proposal",
+  "ref": "R2D_00003"
+ },
+ {
+  "id": "prop_R2D_00004",
+  "set": "proposal",
+  "ref": "R2D_00004"
+ },
+ {
+  "id": "prop_R2D_00005",
+  "set": "proposal",
+  "ref": "R2D_00005"
+ },
+ {
+  "id": "prop_R2D_00006",
+  "set": "proposal",
+  "ref": "R2D_00006"
+ },
+ {
+  "id": "prop_R2D_00007",
+  "set": "proposal",
+  "ref": "R2D_00007"
+ },
+ {
+  "id": "prop_R2D_00008",
+  "set": "proposal",
+  "ref": "R2D_00008"
+ },
+ {
+  "id": "prop_R2D_00009",
+  "set": "proposal",
+  "ref": "R2D_00009"
+ },
+ {
+  "id": "prop_R2D_00010",
+  "set": "proposal",
+  "ref": "R2D_00010"
+ },
+ {
+  "id": "prop_R2D_00011",
+  "set": "proposal",
+  "ref": "R2D_00011"
+ },
+ {
+  "id": "prop_R2D_00012",
+  "set": "proposal",
+  "ref": "R2D_00012"
+ },
+ {
+  "id": "prop_R2D_00013",
+  "set": "proposal",
+  "ref": "R2D_00013"
+ },
+ {
+  "id": "prop_R2D_00014",
+  "set": "proposal",
+  "ref": "R2D_00014"
+ },
+ {
+  "id": "prop_R2D_00015",
+  "set": "proposal",
+  "ref": "R2D_00015"
+ },
+ {
+  "id": "prop_R2D_00016",
+  "set": "proposal",
+  "ref": "R2D_00016"
+ },
+ {
+  "id": "prop_R2D_00017",
+  "set": "proposal",
+  "ref": "R2D_00017"
+ },
+ {
+  "id": "prop_R2D_00018",
+  "set": "proposal",
+  "ref": "R2D_00018"
+ },
+ {
+  "id": "prop_R2D_00019",
+  "set": "proposal",
+  "ref": "R2D_00019"
+ },
+ {
+  "id": "prop_R2D_00020",
+  "set": "proposal",
+  "ref": "R2D_00020"
+ },
+ {
+  "id": "prop_R2D_00021",
+  "set": "proposal",
+  "ref": "R2D_00021"
+ },
+ {
+  "id": "prop_R2D_00022",
+  "set": "proposal",
+  "ref": "R2D_00022"
+ },
+ {
+  "id": "prop_R2D_00023",
+  "set": "proposal",
+  "ref": "R2D_00023"
+ },
+ {
+  "id": "prop_R2D_00024",
+  "set": "proposal",
+  "ref": "R2D_00024"
+ },
+ {
+  "id": "prop_R2D_00025",
+  "set": "proposal",
+  "ref": "R2D_00025"
+ },
+ {
+  "id": "prop_R2D_00026",
+  "set": "proposal",
+  "ref": "R2D_00026"
+ },
+ {
+  "id": "prop_R2D_00027",
+  "set": "proposal",
+  "ref": "R2D_00027"
+ },
+ {
+  "id": "prop_R2D_00028",
+  "set": "proposal",
+  "ref": "R2D_00028"
+ },
+ {
+  "id": "prop_R2D_00029",
+  "set": "proposal",
+  "ref": "R2D_00029"
+ },
+ {
+  "id": "prop_R2D_00030",
+  "set": "proposal",
+  "ref": "R2D_00030"
+ },
+ {
+  "id": "prop_R2D_00031",
+  "set": "proposal",
+  "ref": "R2D_00031"
+ },
+ {
+  "id": "prop_R2D_00032",
+  "set": "proposal",
+  "ref": "R2D_00032"
+ },
+ {
+  "id": "prop_R2D_00033",
+  "set": "proposal",
+  "ref": "R2D_00033"
+ },
+ {
+  "id": "prop_R2D_00034",
+  "set": "proposal",
+  "ref": "R2D_00034"
+ },
+ {
+  "id": "prop_R2D_00035",
+  "set": "proposal",
+  "ref": "R2D_00035"
+ },
+ {
+  "id": "prop_R2D_00036",
+  "set": "proposal",
+  "ref": "R2D_00036"
+ },
+ {
+  "id": "prop_R2D_00037",
+  "set": "proposal",
+  "ref": "R2D_00037"
+ },
+ {
+  "id": "prop_R2D_00038",
+  "set": "proposal",
+  "ref": "R2D_00038"
+ },
+ {
+  "id": "prop_R2D_00039",
+  "set": "proposal",
+  "ref": "R2D_00039"
+ },
+ {
+  "id": "prop_R2D_00040",
+  "set": "proposal",
+  "ref": "R2D_00040"
+ },
+ {
+  "id": "prop_R2D_00041",
+  "set": "proposal",
+  "ref": "R2D_00041"
+ },
+ {
+  "id": "prop_R2D_00042",
+  "set": "proposal",
+  "ref": "R2D_00042"
+ },
+ {
+  "id": "prop_R2D_00043",
+  "set": "proposal",
+  "ref": "R2D_00043"
+ },
+ {
+  "id": "prop_R2D_00044",
+  "set": "proposal",
+  "ref": "R2D_00044"
+ },
+ {
+  "id": "prop_R2D_00045",
+  "set": "proposal",
+  "ref": "R2D_00045"
+ },
+ {
+  "id": "prop_R2D_00046",
+  "set": "proposal",
+  "ref": "R2D_00046"
+ },
+ {
+  "id": "prop_R2D_00047",
+  "set": "proposal",
+  "ref": "R2D_00047"
+ },
+ {
+  "id": "prop_R2D_00048",
+  "set": "proposal",
+  "ref": "R2D_00048"
+ },
+ {
+  "id": "prop_R2D_00049",
+  "set": "proposal",
+  "ref": "R2D_00049"
+ },
+ {
+  "id": "prop_R2D_00050",
+  "set": "proposal",
+  "ref": "R2D_00050"
+ },
+ {
+  "id": "prop_R2D_00051",
+  "set": "proposal",
+  "ref": "R2D_00051"
+ },
+ {
+  "id": "prop_R2D_00052",
+  "set": "proposal",
+  "ref": "R2D_00052"
+ },
+ {
+  "id": "prop_R2D_00053",
+  "set": "proposal",
+  "ref": "R2D_00053"
+ },
+ {
+  "id": "prop_R2D_00054",
+  "set": "proposal",
+  "ref": "R2D_00054"
+ },
+ {
+  "id": "prop_R2D_00055",
+  "set": "proposal",
+  "ref": "R2D_00055"
+ },
+ {
+  "id": "prop_R2D_00056",
+  "set": "proposal",
+  "ref": "R2D_00056"
+ },
+ {
+  "id": "prop_R2D_00057",
+  "set": "proposal",
+  "ref": "R2D_00057"
+ },
+ {
+  "id": "prop_R2D_00058",
+  "set": "proposal",
+  "ref": "R2D_00058"
+ },
+ {
+  "id": "prop_R2D_00059",
+  "set": "proposal",
+  "ref": "R2D_00059"
+ },
+ {
+  "id": "prop_R2D_00060",
+  "set": "proposal",
+  "ref": "R2D_00060"
+ },
+ {
+  "id": "prop_R2D_00061",
+  "set": "proposal",
+  "ref": "R2D_00061"
+ },
+ {
+  "id": "prop_R2D_00062",
+  "set": "proposal",
+  "ref": "R2D_00062"
+ },
+ {
+  "id": "prop_R2D_00063",
+  "set": "proposal",
+  "ref": "R2D_00063"
+ },
+ {
+  "id": "prop_R2D_00064",
+  "set": "proposal",
+  "ref": "R2D_00064"
+ },
+ {
+  "id": "prop_R2D_00065",
+  "set": "proposal",
+  "ref": "R2D_00065"
+ },
+ {
+  "id": "prop_R2D_00066",
+  "set": "proposal",
+  "ref": "R2D_00066"
+ },
+ {
+  "id": "prop_R2D_00067",
+  "set": "proposal",
+  "ref": "R2D_00067"
+ },
+ {
+  "id": "prop_R2D_00068",
+  "set": "proposal",
+  "ref": "R2D_00068"
+ },
+ {
+  "id": "prop_R2D_00069",
+  "set": "proposal",
+  "ref": "R2D_00069"
+ },
+ {
+  "id": "prop_R2D_00070",
+  "set": "proposal",
+  "ref": "R2D_00070"
+ },
+ {
+  "id": "prop_R2D_00071",
+  "set": "proposal",
+  "ref": "R2D_00071"
+ },
+ {
+  "id": "prop_R2D_00072",
+  "set": "proposal",
+  "ref": "R2D_00072"
+ },
+ {
+  "id": "prop_R2D_00073",
+  "set": "proposal",
+  "ref": "R2D_00073"
+ },
+ {
+  "id": "prop_R2D_00074",
+  "set": "proposal",
+  "ref": "R2D_00074"
+ },
+ {
+  "id": "prop_R2D_00075",
+  "set": "proposal",
+  "ref": "R2D_00075"
+ },
+ {
+  "id": "prop_R2D_00076",
+  "set": "proposal",
+  "ref": "R2D_00076"
+ },
+ {
+  "id": "prop_R2D_00077",
+  "set": "proposal",
+  "ref": "R2D_00077"
+ },
+ {
+  "id": "prop_R2D_00078",
+  "set": "proposal",
+  "ref": "R2D_00078"
+ },
+ {
+  "id": "prop_R2D_00079",
+  "set": "proposal",
+  "ref": "R2D_00079"
+ },
+ {
+  "id": "prop_R2D_00080",
+  "set": "proposal",
+  "ref": "R2D_00080"
+ },
+ {
+  "id": "prop_R2D_00081",
+  "set": "proposal",
+  "ref": "R2D_00081"
+ },
+ {
+  "id": "prop_R2D_00082",
+  "set": "proposal",
+  "ref": "R2D_00082"
+ },
+ {
+  "id": "prop_R2D_00083",
+  "set": "proposal",
+  "ref": "R2D_00083"
+ },
+ {
+  "id": "prop_R2D_00084",
+  "set": "proposal",
+  "ref": "R2D_00084"
+ },
+ {
+  "id": "prop_R2D_00085",
+  "set": "proposal",
+  "ref": "R2D_00085"
+ },
+ {
+  "id": "prop_R2D_00086",
+  "set": "proposal",
+  "ref": "R2D_00086"
+ },
+ {
+  "id": "prop_R2D_00087",
+  "set": "proposal",
+  "ref": "R2D_00087"
+ },
+ {
+  "id": "prop_R2D_00088",
+  "set": "proposal",
+  "ref": "R2D_00088"
+ },
+ {
+  "id": "prop_R2D_00089",
+  "set": "proposal",
+  "ref": "R2D_00089"
+ },
+ {
+  "id": "prop_R2D_00090",
+  "set": "proposal",
+  "ref": "R2D_00090"
+ },
+ {
+  "id": "prop_R2D_00091",
+  "set": "proposal",
+  "ref": "R2D_00091"
+ },
+ {
+  "id": "prop_R2D_00092",
+  "set": "proposal",
+  "ref": "R2D_00092"
+ },
+ {
+  "id": "prop_R2D_00093",
+  "set": "proposal",
+  "ref": "R2D_00093"
+ },
+ {
+  "id": "prop_R2D_00094",
+  "set": "proposal",
+  "ref": "R2D_00094"
+ },
+ {
+  "id": "prop_R2D_00095",
+  "set": "proposal",
+  "ref": "R2D_00095"
+ },
+ {
+  "id": "prop_R2D_00096",
+  "set": "proposal",
+  "ref": "R2D_00096"
+ },
+ {
+  "id": "prop_R2D_00097",
+  "set": "proposal",
+  "ref": "R2D_00097"
+ },
+ {
+  "id": "prop_R2D_00098",
+  "set": "proposal",
+  "ref": "R2D_00098"
+ },
+ {
+  "id": "prop_R2D_00099",
+  "set": "proposal",
+  "ref": "R2D_00099"
+ },
+ {
+  "id": "prop_R2D_00100",
+  "set": "proposal",
+  "ref": "R2D_00100"
+ },
+ {
+  "id": "prop_R2D_00101",
+  "set": "proposal",
+  "ref": "R2D_00101"
+ },
+ {
+  "id": "prop_R2D_00102",
+  "set": "proposal",
+  "ref": "R2D_00102"
+ },
+ {
+  "id": "prop_R2D_00103",
+  "set": "proposal",
+  "ref": "R2D_00103"
+ },
+ {
+  "id": "prop_R2D_00104",
+  "set": "proposal",
+  "ref": "R2D_00104"
+ },
+ {
+  "id": "prop_R2D_00105",
+  "set": "proposal",
+  "ref": "R2D_00105"
+ },
+ {
+  "id": "prop_R2D_00106",
+  "set": "proposal",
+  "ref": "R2D_00106"
+ },
+ {
+  "id": "prop_R2D_00107",
+  "set": "proposal",
+  "ref": "R2D_00107"
+ },
+ {
+  "id": "prop_R2D_00108",
+  "set": "proposal",
+  "ref": "R2D_00108"
+ },
+ {
+  "id": "prop_R2D_00109",
+  "set": "proposal",
+  "ref": "R2D_00109"
+ },
+ {
+  "id": "prop_R2D_00110",
+  "set": "proposal",
+  "ref": "R2D_00110"
+ },
+ {
+  "id": "prop_R2D_00111",
+  "set": "proposal",
+  "ref": "R2D_00111"
+ },
+ {
+  "id": "prop_R2D_00112",
+  "set": "proposal",
+  "ref": "R2D_00112"
+ },
+ {
+  "id": "prop_R2D_00113",
+  "set": "proposal",
+  "ref": "R2D_00113"
+ },
+ {
+  "id": "prop_R2D_00114",
+  "set": "proposal",
+  "ref": "R2D_00114"
+ },
+ {
+  "id": "prop_R2D_00115",
+  "set": "proposal",
+  "ref": "R2D_00115"
+ },
+ {
+  "id": "prop_R2D_00116",
+  "set": "proposal",
+  "ref": "R2D_00116"
+ },
+ {
+  "id": "prop_R2D_00117",
+  "set": "proposal",
+  "ref": "R2D_00117"
+ },
+ {
+  "id": "prop_R2D_00118",
+  "set": "proposal",
+  "ref": "R2D_00118"
+ },
+ {
+  "id": "prop_R2D_00119",
+  "set": "proposal",
+  "ref": "R2D_00119"
+ },
+ {
+  "id": "prop_R2D_00120",
+  "set": "proposal",
+  "ref": "R2D_00120"
+ },
+ {
+  "id": "prop_R2D_00121",
+  "set": "proposal",
+  "ref": "R2D_00121"
+ },
+ {
+  "id": "prop_R2D_00122",
+  "set": "proposal",
+  "ref": "R2D_00122"
+ },
+ {
+  "id": "prop_R2D_00123",
+  "set": "proposal",
+  "ref": "R2D_00123"
+ },
+ {
+  "id": "prop_R2D_00124",
+  "set": "proposal",
+  "ref": "R2D_00124"
+ },
+ {
+  "id": "prop_R2D_00125",
+  "set": "proposal",
+  "ref": "R2D_00125"
+ },
+ {
+  "id": "prop_R2D_00126",
+  "set": "proposal",
+  "ref": "R2D_00126"
+ },
+ {
+  "id": "prop_R2D_00127",
+  "set": "proposal",
+  "ref": "R2D_00127"
+ },
+ {
+  "id": "prop_R2D_00128",
+  "set": "proposal",
+  "ref": "R2D_00128"
+ },
+ {
+  "id": "prop_R2D_00129",
+  "set": "proposal",
+  "ref": "R2D_00129"
+ },
+ {
+  "id": "prop_R2D_00130",
+  "set": "proposal",
+  "ref": "R2D_00130"
+ },
+ {
+  "id": "prop_R2D_00131",
+  "set": "proposal",
+  "ref": "R2D_00131"
+ },
+ {
+  "id": "prop_R2D_00132",
+  "set": "proposal",
+  "ref": "R2D_00132"
+ },
+ {
+  "id": "prop_R2D_00133",
+  "set": "proposal",
+  "ref": "R2D_00133"
+ },
+ {
+  "id": "prop_R2D_00134",
+  "set": "proposal",
+  "ref": "R2D_00134"
+ },
+ {
+  "id": "prop_R2D_00135",
+  "set": "proposal",
+  "ref": "R2D_00135"
+ },
+ {
+  "id": "prop_R2D_00136",
+  "set": "proposal",
+  "ref": "R2D_00136"
+ },
+ {
+  "id": "prop_R2D_00137",
+  "set": "proposal",
+  "ref": "R2D_00137"
+ },
+ {
+  "id": "prop_R2D_00138",
+  "set": "proposal",
+  "ref": "R2D_00138"
+ },
+ {
+  "id": "prop_R2D_00139",
+  "set": "proposal",
+  "ref": "R2D_00139"
+ },
+ {
+  "id": "prop_R2D_00140",
+  "set": "proposal",
+  "ref": "R2D_00140"
+ },
+ {
+  "id": "prop_R2D_00141",
+  "set": "proposal",
+  "ref": "R2D_00141"
+ },
+ {
+  "id": "prop_R2D_00142",
+  "set": "proposal",
+  "ref": "R2D_00142"
+ },
+ {
+  "id": "prop_R2D_00143",
+  "set": "proposal",
+  "ref": "R2D_00143"
+ },
+ {
+  "id": "prop_R2D_00144",
+  "set": "proposal",
+  "ref": "R2D_00144"
+ },
+ {
+  "id": "prop_R2D_00145",
+  "set": "proposal",
+  "ref": "R2D_00145"
+ },
+ {
+  "id": "prop_R2D_00146",
+  "set": "proposal",
+  "ref": "R2D_00146"
+ },
+ {
+  "id": "prop_R2D_00147",
+  "set": "proposal",
+  "ref": "R2D_00147"
+ },
+ {
+  "id": "prop_R2D_00148",
+  "set": "proposal",
+  "ref": "R2D_00148"
+ },
+ {
+  "id": "prop_R2D_00149",
+  "set": "proposal",
+  "ref": "R2D_00149"
+ },
+ {
+  "id": "prop_R2D_00150",
+  "set": "proposal",
+  "ref": "R2D_00150"
+ },
+ {
+  "id": "prop_R2D_00151",
+  "set": "proposal",
+  "ref": "R2D_00151"
+ },
+ {
+  "id": "prop_R2D_00152",
+  "set": "proposal",
+  "ref": "R2D_00152"
+ },
+ {
+  "id": "prop_R2D_00153",
+  "set": "proposal",
+  "ref": "R2D_00153"
+ },
+ {
+  "id": "prop_R2D_00154",
+  "set": "proposal",
+  "ref": "R2D_00154"
+ },
+ {
+  "id": "prop_R2D_00155",
+  "set": "proposal",
+  "ref": "R2D_00155"
+ },
+ {
+  "id": "prop_R2D_00156",
+  "set": "proposal",
+  "ref": "R2D_00156"
+ },
+ {
+  "id": "prop_R2D_00157",
+  "set": "proposal",
+  "ref": "R2D_00157"
+ },
+ {
+  "id": "prop_R2D_00158",
+  "set": "proposal",
+  "ref": "R2D_00158"
+ },
+ {
+  "id": "prop_R2D_00159",
+  "set": "proposal",
+  "ref": "R2D_00159"
+ },
+ {
+  "id": "prop_R2D_00160",
+  "set": "proposal",
+  "ref": "R2D_00160"
+ },
+ {
+  "id": "prop_R2D_00161",
+  "set": "proposal",
+  "ref": "R2D_00161"
+ },
+ {
+  "id": "prop_R2D_00162",
+  "set": "proposal",
+  "ref": "R2D_00162"
+ },
+ {
+  "id": "prop_R2D_00163",
+  "set": "proposal",
+  "ref": "R2D_00163"
+ },
+ {
+  "id": "prop_R2D_00164",
+  "set": "proposal",
+  "ref": "R2D_00164"
+ },
+ {
+  "id": "prop_R2D_00165",
+  "set": "proposal",
+  "ref": "R2D_00165"
+ },
+ {
+  "id": "prop_R2D_00166",
+  "set": "proposal",
+  "ref": "R2D_00166"
+ },
+ {
+  "id": "prop_R2D_00167",
+  "set": "proposal",
+  "ref": "R2D_00167"
+ },
+ {
+  "id": "prop_R2D_00168",
+  "set": "proposal",
+  "ref": "R2D_00168"
+ },
+ {
+  "id": "prop_R2D_00169",
+  "set": "proposal",
+  "ref": "R2D_00169"
+ },
+ {
+  "id": "prop_R2D_00170",
+  "set": "proposal",
+  "ref": "R2D_00170"
+ },
+ {
+  "id": "prop_R2D_00171",
+  "set": "proposal",
+  "ref": "R2D_00171"
+ },
+ {
+  "id": "prop_R2D_00172",
+  "set": "proposal",
+  "ref": "R2D_00172"
+ },
+ {
+  "id": "prop_R2D_00173",
+  "set": "proposal",
+  "ref": "R2D_00173"
+ },
+ {
+  "id": "prop_R2D_00174",
+  "set": "proposal",
+  "ref": "R2D_00174"
+ },
+ {
+  "id": "prop_R2D_00175",
+  "set": "proposal",
+  "ref": "R2D_00175"
+ },
+ {
+  "id": "prop_R2D_00176",
+  "set": "proposal",
+  "ref": "R2D_00176"
+ },
+ {
+  "id": "prop_R2D_00177",
+  "set": "proposal",
+  "ref": "R2D_00177"
+ },
+ {
+  "id": "prop_R2D_00178",
+  "set": "proposal",
+  "ref": "R2D_00178"
+ },
+ {
+  "id": "prop_R2D_00179",
+  "set": "proposal",
+  "ref": "R2D_00179"
+ },
+ {
+  "id": "prop_R2D_00180",
+  "set": "proposal",
+  "ref": "R2D_00180"
+ },
+ {
+  "id": "prop_R2D_00181",
+  "set": "proposal",
+  "ref": "R2D_00181"
+ },
+ {
+  "id": "prop_R2D_00182",
+  "set": "proposal",
+  "ref": "R2D_00182"
+ },
+ {
+  "id": "prop_R2D_00183",
+  "set": "proposal",
+  "ref": "R2D_00183"
+ },
+ {
+  "id": "prop_R2D_00184",
+  "set": "proposal",
+  "ref": "R2D_00184"
+ },
+ {
+  "id": "prop_R2D_00185",
+  "set": "proposal",
+  "ref": "R2D_00185"
+ },
+ {
+  "id": "prop_R2D_00186",
+  "set": "proposal",
+  "ref": "R2D_00186"
+ },
+ {
+  "id": "prop_R2D_00187",
+  "set": "proposal",
+  "ref": "R2D_00187"
+ },
+ {
+  "id": "prop_R2D_00188",
+  "set": "proposal",
+  "ref": "R2D_00188"
+ },
+ {
+  "id": "prop_R2D_00189",
+  "set": "proposal",
+  "ref": "R2D_00189"
+ },
+ {
+  "id": "prop_R2D_00190",
+  "set": "proposal",
+  "ref": "R2D_00190"
+ },
+ {
+  "id": "prop_R2D_00191",
+  "set": "proposal",
+  "ref": "R2D_00191"
+ },
+ {
+  "id": "prop_R2D_00192",
+  "set": "proposal",
+  "ref": "R2D_00192"
+ },
+ {
+  "id": "prop_R2D_00193",
+  "set": "proposal",
+  "ref": "R2D_00193"
+ },
+ {
+  "id": "prop_R2D_00194",
+  "set": "proposal",
+  "ref": "R2D_00194"
+ },
+ {
+  "id": "prop_R2D_00195",
+  "set": "proposal",
+  "ref": "R2D_00195"
+ },
+ {
+  "id": "prop_R2D_00196",
+  "set": "proposal",
+  "ref": "R2D_00196"
+ },
+ {
+  "id": "prop_R2D_00197",
+  "set": "proposal",
+  "ref": "R2D_00197"
+ },
+ {
+  "id": "prop_R2D_00198",
+  "set": "proposal",
+  "ref": "R2D_00198"
+ },
+ {
+  "id": "prop_R2D_00199",
+  "set": "proposal",
+  "ref": "R2D_00199"
+ },
+ {
+  "id": "prop_R2D_00200",
+  "set": "proposal",
+  "ref": "R2D_00200"
+ },
+ {
+  "id": "prop_R2D_00201",
+  "set": "proposal",
+  "ref": "R2D_00201"
+ },
+ {
+  "id": "prop_R2D_00202",
+  "set": "proposal",
+  "ref": "R2D_00202"
+ },
+ {
+  "id": "prop_R2D_00203",
+  "set": "proposal",
+  "ref": "R2D_00203"
+ },
+ {
+  "id": "prop_R2D_00204",
+  "set": "proposal",
+  "ref": "R2D_00204"
+ },
+ {
+  "id": "prop_R2D_00205",
+  "set": "proposal",
+  "ref": "R2D_00205"
+ },
+ {
+  "id": "prop_R2D_00206",
+  "set": "proposal",
+  "ref": "R2D_00206"
+ },
+ {
+  "id": "prop_R2D_00207",
+  "set": "proposal",
+  "ref": "R2D_00207"
+ },
+ {
+  "id": "prop_R2D_00208",
+  "set": "proposal",
+  "ref": "R2D_00208"
+ },
+ {
+  "id": "prop_R2D_00209",
+  "set": "proposal",
+  "ref": "R2D_00209"
+ },
+ {
+  "id": "prop_R2D_00210",
+  "set": "proposal",
+  "ref": "R2D_00210"
+ },
+ {
+  "id": "prop_R2D_00211",
+  "set": "proposal",
+  "ref": "R2D_00211"
+ },
+ {
+  "id": "prop_R2D_00212",
+  "set": "proposal",
+  "ref": "R2D_00212"
+ },
+ {
+  "id": "prop_R2D_00213",
+  "set": "proposal",
+  "ref": "R2D_00213"
+ },
+ {
+  "id": "prop_R2D_00214",
+  "set": "proposal",
+  "ref": "R2D_00214"
+ },
+ {
+  "id": "prop_R2D_00215",
+  "set": "proposal",
+  "ref": "R2D_00215"
+ },
+ {
+  "id": "prop_R2D_00216",
+  "set": "proposal",
+  "ref": "R2D_00216"
+ },
+ {
+  "id": "prop_R2D_00217",
+  "set": "proposal",
+  "ref": "R2D_00217"
+ },
+ {
+  "id": "prop_R2D_00218",
+  "set": "proposal",
+  "ref": "R2D_00218"
+ },
+ {
+  "id": "prop_R2D_00219",
+  "set": "proposal",
+  "ref": "R2D_00219"
+ },
+ {
+  "id": "prop_R2D_00220",
+  "set": "proposal",
+  "ref": "R2D_00220"
+ },
+ {
+  "id": "prop_R2D_00221",
+  "set": "proposal",
+  "ref": "R2D_00221"
+ },
+ {
+  "id": "prop_R2D_00222",
+  "set": "proposal",
+  "ref": "R2D_00222"
+ },
+ {
+  "id": "prop_R2D_00223",
+  "set": "proposal",
+  "ref": "R2D_00223"
+ },
+ {
+  "id": "prop_R2D_00224",
+  "set": "proposal",
+  "ref": "R2D_00224"
+ },
+ {
+  "id": "prop_R2D_00225",
+  "set": "proposal",
+  "ref": "R2D_00225"
+ },
+ {
+  "id": "prop_R2D_00226",
+  "set": "proposal",
+  "ref": "R2D_00226"
+ },
+ {
+  "id": "prop_R2D_00227",
+  "set": "proposal",
+  "ref": "R2D_00227"
+ },
+ {
+  "id": "prop_R2D_00228",
+  "set": "proposal",
+  "ref": "R2D_00228"
+ },
+ {
+  "id": "prop_R2D_00229",
+  "set": "proposal",
+  "ref": "R2D_00229"
+ },
+ {
+  "id": "prop_R2D_00230",
+  "set": "proposal",
+  "ref": "R2D_00230"
+ },
+ {
+  "id": "prop_R2D_00231",
+  "set": "proposal",
+  "ref": "R2D_00231"
+ },
+ {
+  "id": "prop_R2D_00232",
+  "set": "proposal",
+  "ref": "R2D_00232"
+ },
+ {
+  "id": "prop_R2D_00233",
+  "set": "proposal",
+  "ref": "R2D_00233"
+ },
+ {
+  "id": "prop_R2D_00234",
+  "set": "proposal",
+  "ref": "R2D_00234"
+ },
+ {
+  "id": "prop_R2D_00235",
+  "set": "proposal",
+  "ref": "R2D_00235"
+ },
+ {
+  "id": "prop_R2D_00236",
+  "set": "proposal",
+  "ref": "R2D_00236"
+ },
+ {
+  "id": "prop_R2D_00237",
+  "set": "proposal",
+  "ref": "R2D_00237"
+ },
+ {
+  "id": "prop_R2D_00238",
+  "set": "proposal",
+  "ref": "R2D_00238"
+ },
+ {
+  "id": "prop_R2D_00239",
+  "set": "proposal",
+  "ref": "R2D_00239"
+ },
+ {
+  "id": "prop_R2D_00240",
+  "set": "proposal",
+  "ref": "R2D_00240"
+ },
+ {
+  "id": "prop_R2D_00241",
+  "set": "proposal",
+  "ref": "R2D_00241"
+ },
+ {
+  "id": "prop_R2D_00242",
+  "set": "proposal",
+  "ref": "R2D_00242"
+ },
+ {
+  "id": "prop_R2D_00243",
+  "set": "proposal",
+  "ref": "R2D_00243"
+ },
+ {
+  "id": "prop_R2D_00244",
+  "set": "proposal",
+  "ref": "R2D_00244"
+ },
+ {
+  "id": "prop_R2D_00245",
+  "set": "proposal",
+  "ref": "R2D_00245"
+ },
+ {
+  "id": "prop_R2D_00246",
+  "set": "proposal",
+  "ref": "R2D_00246"
+ },
+ {
+  "id": "prop_R2D_00247",
+  "set": "proposal",
+  "ref": "R2D_00247"
+ },
+ {
+  "id": "prop_R2D_00248",
+  "set": "proposal",
+  "ref": "R2D_00248"
+ },
+ {
+  "id": "prop_R2D_00249",
+  "set": "proposal",
+  "ref": "R2D_00249"
+ },
+ {
+  "id": "prop_R2D_00250",
+  "set": "proposal",
+  "ref": "R2D_00250"
+ },
+ {
+  "id": "prop_R2D_00251",
+  "set": "proposal",
+  "ref": "R2D_00251"
+ },
+ {
+  "id": "prop_R2D_00252",
+  "set": "proposal",
+  "ref": "R2D_00252"
+ },
+ {
+  "id": "prop_R2D_00253",
+  "set": "proposal",
+  "ref": "R2D_00253"
+ },
+ {
+  "id": "prop_R2D_00254",
+  "set": "proposal",
+  "ref": "R2D_00254"
+ },
+ {
+  "id": "prop_R2D_00255",
+  "set": "proposal",
+  "ref": "R2D_00255"
+ },
+ {
+  "id": "prop_R2D_00256",
+  "set": "proposal",
+  "ref": "R2D_00256"
+ },
+ {
+  "id": "prop_R2D_00257",
+  "set": "proposal",
+  "ref": "R2D_00257"
+ },
+ {
+  "id": "prop_R2D_00258",
+  "set": "proposal",
+  "ref": "R2D_00258"
+ },
+ {
+  "id": "prop_R2D_00259",
+  "set": "proposal",
+  "ref": "R2D_00259"
+ },
+ {
+  "id": "prop_R2D_00260",
+  "set": "proposal",
+  "ref": "R2D_00260"
+ },
+ {
+  "id": "prop_R2D_00261",
+  "set": "proposal",
+  "ref": "R2D_00261"
+ },
+ {
+  "id": "prop_R2D_00262",
+  "set": "proposal",
+  "ref": "R2D_00262"
+ },
+ {
+  "id": "prop_R2D_00263",
+  "set": "proposal",
+  "ref": "R2D_00263"
+ },
+ {
+  "id": "prop_R2D_00264",
+  "set": "proposal",
+  "ref": "R2D_00264"
+ },
+ {
+  "id": "prop_R2D_00265",
+  "set": "proposal",
+  "ref": "R2D_00265"
+ },
+ {
+  "id": "prop_R2D_00266",
+  "set": "proposal",
+  "ref": "R2D_00266"
+ },
+ {
+  "id": "prop_R2D_00267",
+  "set": "proposal",
+  "ref": "R2D_00267"
+ },
+ {
+  "id": "prop_R2D_00268",
+  "set": "proposal",
+  "ref": "R2D_00268"
+ },
+ {
+  "id": "prop_R2D_00269",
+  "set": "proposal",
+  "ref": "R2D_00269"
+ },
+ {
+  "id": "prop_R2D_00270",
+  "set": "proposal",
+  "ref": "R2D_00270"
+ },
+ {
+  "id": "prop_R2D_00271",
+  "set": "proposal",
+  "ref": "R2D_00271"
+ },
+ {
+  "id": "prop_R2D_00272",
+  "set": "proposal",
+  "ref": "R2D_00272"
+ },
+ {
+  "id": "prop_R2D_00273",
+  "set": "proposal",
+  "ref": "R2D_00273"
+ },
+ {
+  "id": "prop_R2D_00274",
+  "set": "proposal",
+  "ref": "R2D_00274"
+ },
+ {
+  "id": "prop_R2D_00275",
+  "set": "proposal",
+  "ref": "R2D_00275"
+ },
+ {
+  "id": "prop_R2D_00276",
+  "set": "proposal",
+  "ref": "R2D_00276"
+ },
+ {
+  "id": "prop_R2D_00277",
+  "set": "proposal",
+  "ref": "R2D_00277"
+ },
+ {
+  "id": "prop_R2D_00278",
+  "set": "proposal",
+  "ref": "R2D_00278"
+ },
+ {
+  "id": "prop_R2D_00279",
+  "set": "proposal",
+  "ref": "R2D_00279"
+ },
+ {
+  "id": "prop_R2D_00280",
+  "set": "proposal",
+  "ref": "R2D_00280"
+ },
+ {
+  "id": "prop_R2D_00281",
+  "set": "proposal",
+  "ref": "R2D_00281"
+ },
+ {
+  "id": "prop_R2D_00282",
+  "set": "proposal",
+  "ref": "R2D_00282"
+ },
+ {
+  "id": "prop_R2D_00283",
+  "set": "proposal",
+  "ref": "R2D_00283"
+ },
+ {
+  "id": "prop_R2D_00284",
+  "set": "proposal",
+  "ref": "R2D_00284"
+ },
+ {
+  "id": "prop_R2D_00285",
+  "set": "proposal",
+  "ref": "R2D_00285"
+ },
+ {
+  "id": "prop_R2D_00286",
+  "set": "proposal",
+  "ref": "R2D_00286"
+ },
+ {
+  "id": "prop_R2D_00287",
+  "set": "proposal",
+  "ref": "R2D_00287"
+ },
+ {
+  "id": "prop_R2D_00288",
+  "set": "proposal",
+  "ref": "R2D_00288"
+ },
+ {
+  "id": "prop_R2D_00289",
+  "set": "proposal",
+  "ref": "R2D_00289"
+ },
+ {
+  "id": "prop_R2D_00290",
+  "set": "proposal",
+  "ref": "R2D_00290"
+ },
+ {
+  "id": "prop_R2D_00291",
+  "set": "proposal",
+  "ref": "R2D_00291"
+ },
+ {
+  "id": "prop_R2D_00292",
+  "set": "proposal",
+  "ref": "R2D_00292"
+ },
+ {
+  "id": "prop_R2D_00293",
+  "set": "proposal",
+  "ref": "R2D_00293"
+ },
+ {
+  "id": "prop_R2D_00294",
+  "set": "proposal",
+  "ref": "R2D_00294"
+ },
+ {
+  "id": "prop_R2D_00295",
+  "set": "proposal",
+  "ref": "R2D_00295"
+ },
+ {
+  "id": "prop_R2D_00296",
+  "set": "proposal",
+  "ref": "R2D_00296"
+ },
+ {
+  "id": "prop_R2D_00297",
+  "set": "proposal",
+  "ref": "R2D_00297"
+ },
+ {
+  "id": "prop_R2D_00298",
+  "set": "proposal",
+  "ref": "R2D_00298"
+ },
+ {
+  "id": "prop_R2D_00299",
+  "set": "proposal",
+  "ref": "R2D_00299"
+ },
+ {
+  "id": "prop_R2D_00300",
+  "set": "proposal",
+  "ref": "R2D_00300"
+ },
+ {
+  "id": "prop_R2D_00301",
+  "set": "proposal",
+  "ref": "R2D_00301"
+ },
+ {
+  "id": "prop_R2D_00302",
+  "set": "proposal",
+  "ref": "R2D_00302"
+ },
+ {
+  "id": "prop_R2D_00303",
+  "set": "proposal",
+  "ref": "R2D_00303"
+ },
+ {
+  "id": "prop_R2D_00304",
+  "set": "proposal",
+  "ref": "R2D_00304"
+ },
+ {
+  "id": "prop_R2D_00305",
+  "set": "proposal",
+  "ref": "R2D_00305"
+ },
+ {
+  "id": "prop_R2D_00306",
+  "set": "proposal",
+  "ref": "R2D_00306"
+ },
+ {
+  "id": "prop_R2D_00307",
+  "set": "proposal",
+  "ref": "R2D_00307"
+ },
+ {
+  "id": "prop_R2D_00308",
+  "set": "proposal",
+  "ref": "R2D_00308"
+ },
+ {
+  "id": "prop_R2D_00309",
+  "set": "proposal",
+  "ref": "R2D_00309"
+ },
+ {
+  "id": "prop_R2D_00310",
+  "set": "proposal",
+  "ref": "R2D_00310"
+ },
+ {
+  "id": "prop_R2D_00311",
+  "set": "proposal",
+  "ref": "R2D_00311"
+ },
+ {
+  "id": "prop_R2D_00312",
+  "set": "proposal",
+  "ref": "R2D_00312"
+ },
+ {
+  "id": "prop_R2D_00313",
+  "set": "proposal",
+  "ref": "R2D_00313"
+ },
+ {
+  "id": "prop_R2D_00314",
+  "set": "proposal",
+  "ref": "R2D_00314"
+ },
+ {
+  "id": "prop_R2D_00315",
+  "set": "proposal",
+  "ref": "R2D_00315"
+ },
+ {
+  "id": "prop_R2D_00316",
+  "set": "proposal",
+  "ref": "R2D_00316"
+ },
+ {
+  "id": "prop_R2D_00317",
+  "set": "proposal",
+  "ref": "R2D_00317"
+ },
+ {
+  "id": "prop_R2D_00318",
+  "set": "proposal",
+  "ref": "R2D_00318"
+ },
+ {
+  "id": "prop_R2D_00319",
+  "set": "proposal",
+  "ref": "R2D_00319"
+ },
+ {
+  "id": "prop_R2D_00320",
+  "set": "proposal",
+  "ref": "R2D_00320"
+ },
+ {
+  "id": "prop_R2D_00321",
+  "set": "proposal",
+  "ref": "R2D_00321"
+ },
+ {
+  "id": "prop_R2D_00322",
+  "set": "proposal",
+  "ref": "R2D_00322"
+ },
+ {
+  "id": "prop_R2D_00323",
+  "set": "proposal",
+  "ref": "R2D_00323"
+ },
+ {
+  "id": "prop_R2D_00324",
+  "set": "proposal",
+  "ref": "R2D_00324"
+ },
+ {
+  "id": "prop_R2D_00325",
+  "set": "proposal",
+  "ref": "R2D_00325"
+ },
+ {
+  "id": "prop_R2D_00326",
+  "set": "proposal",
+  "ref": "R2D_00326"
+ },
+ {
+  "id": "prop_R2D_00327",
+  "set": "proposal",
+  "ref": "R2D_00327"
+ },
+ {
+  "id": "prop_R2D_00328",
+  "set": "proposal",
+  "ref": "R2D_00328"
+ },
+ {
+  "id": "prop_R2D_00329",
+  "set": "proposal",
+  "ref": "R2D_00329"
+ },
+ {
+  "id": "prop_R2D_00330",
+  "set": "proposal",
+  "ref": "R2D_00330"
+ },
+ {
+  "id": "prop_R2D_00331",
+  "set": "proposal",
+  "ref": "R2D_00331"
+ },
+ {
+  "id": "prop_R2D_00332",
+  "set": "proposal",
+  "ref": "R2D_00332"
+ },
+ {
+  "id": "prop_R2D_00333",
+  "set": "proposal",
+  "ref": "R2D_00333"
+ },
+ {
+  "id": "prop_R2D_00334",
+  "set": "proposal",
+  "ref": "R2D_00334"
+ },
+ {
+  "id": "prop_R2D_00335",
+  "set": "proposal",
+  "ref": "R2D_00335"
+ },
+ {
+  "id": "prop_R2D_00336",
+  "set": "proposal",
+  "ref": "R2D_00336"
+ },
+ {
+  "id": "prop_R2D_00337",
+  "set": "proposal",
+  "ref": "R2D_00337"
+ },
+ {
+  "id": "prop_R2D_00338",
+  "set": "proposal",
+  "ref": "R2D_00338"
+ },
+ {
+  "id": "prop_R2D_00339",
+  "set": "proposal",
+  "ref": "R2D_00339"
+ },
+ {
+  "id": "prop_R2D_00340",
+  "set": "proposal",
+  "ref": "R2D_00340"
+ },
+ {
+  "id": "prop_R2D_00341",
+  "set": "proposal",
+  "ref": "R2D_00341"
+ },
+ {
+  "id": "prop_R2D_00342",
+  "set": "proposal",
+  "ref": "R2D_00342"
+ },
+ {
+  "id": "prop_R2D_00343",
+  "set": "proposal",
+  "ref": "R2D_00343"
+ },
+ {
+  "id": "prop_R2D_00344",
+  "set": "proposal",
+  "ref": "R2D_00344"
+ },
+ {
+  "id": "prop_R2D_00345",
+  "set": "proposal",
+  "ref": "R2D_00345"
+ },
+ {
+  "id": "prop_R2D_00346",
+  "set": "proposal",
+  "ref": "R2D_00346"
+ },
+ {
+  "id": "prop_R2D_00347",
+  "set": "proposal",
+  "ref": "R2D_00347"
+ },
+ {
+  "id": "prop_R2D_00348",
+  "set": "proposal",
+  "ref": "R2D_00348"
+ },
+ {
+  "id": "prop_R2D_00349",
+  "set": "proposal",
+  "ref": "R2D_00349"
+ },
+ {
+  "id": "prop_R2D_00350",
+  "set": "proposal",
+  "ref": "R2D_00350"
+ },
+ {
+  "id": "prop_R2D_00351",
+  "set": "proposal",
+  "ref": "R2D_00351"
+ },
+ {
+  "id": "prop_R2D_00352",
+  "set": "proposal",
+  "ref": "R2D_00352"
+ },
+ {
+  "id": "prop_R2D_00353",
+  "set": "proposal",
+  "ref": "R2D_00353"
+ },
+ {
+  "id": "prop_R2D_00354",
+  "set": "proposal",
+  "ref": "R2D_00354"
+ },
+ {
+  "id": "prop_R2D_00355",
+  "set": "proposal",
+  "ref": "R2D_00355"
+ },
+ {
+  "id": "prop_R2D_00356",
+  "set": "proposal",
+  "ref": "R2D_00356"
+ },
+ {
+  "id": "prop_R2D_00357",
+  "set": "proposal",
+  "ref": "R2D_00357"
+ },
+ {
+  "id": "prop_R2D_00358",
+  "set": "proposal",
+  "ref": "R2D_00358"
+ },
+ {
+  "id": "prop_R2D_00359",
+  "set": "proposal",
+  "ref": "R2D_00359"
+ },
+ {
+  "id": "prop_R2D_00360",
+  "set": "proposal",
+  "ref": "R2D_00360"
+ },
+ {
+  "id": "prop_R2D_00361",
+  "set": "proposal",
+  "ref": "R2D_00361"
+ },
+ {
+  "id": "prop_R2D_00362",
+  "set": "proposal",
+  "ref": "R2D_00362"
+ },
+ {
+  "id": "prop_R2D_00363",
+  "set": "proposal",
+  "ref": "R2D_00363"
+ },
+ {
+  "id": "prop_R2D_00364",
+  "set": "proposal",
+  "ref": "R2D_00364"
+ },
+ {
+  "id": "prop_R2D_00365",
+  "set": "proposal",
+  "ref": "R2D_00365"
+ },
+ {
+  "id": "prop_R2D_00366",
+  "set": "proposal",
+  "ref": "R2D_00366"
+ },
+ {
+  "id": "prop_R2D_00367",
+  "set": "proposal",
+  "ref": "R2D_00367"
+ },
+ {
+  "id": "prop_R2D_00368",
+  "set": "proposal",
+  "ref": "R2D_00368"
+ },
+ {
+  "id": "prop_R2D_00369",
+  "set": "proposal",
+  "ref": "R2D_00369"
+ },
+ {
+  "id": "prop_R2D_00370",
+  "set": "proposal",
+  "ref": "R2D_00370"
+ },
+ {
+  "id": "prop_R2D_00371",
+  "set": "proposal",
+  "ref": "R2D_00371"
+ },
+ {
+  "id": "prop_R2D_00372",
+  "set": "proposal",
+  "ref": "R2D_00372"
+ },
+ {
+  "id": "prop_R2D_00373",
+  "set": "proposal",
+  "ref": "R2D_00373"
+ },
+ {
+  "id": "prop_R2D_00374",
+  "set": "proposal",
+  "ref": "R2D_00374"
+ },
+ {
+  "id": "prop_R2D_00375",
+  "set": "proposal",
+  "ref": "R2D_00375"
+ },
+ {
+  "id": "prop_R2D_00376",
+  "set": "proposal",
+  "ref": "R2D_00376"
+ },
+ {
+  "id": "prop_R2D_00377",
+  "set": "proposal",
+  "ref": "R2D_00377"
+ },
+ {
+  "id": "prop_R2D_00378",
+  "set": "proposal",
+  "ref": "R2D_00378"
+ },
+ {
+  "id": "prop_R2D_00379",
+  "set": "proposal",
+  "ref": "R2D_00379"
+ },
+ {
+  "id": "prop_R2D_00380",
+  "set": "proposal",
+  "ref": "R2D_00380"
+ },
+ {
+  "id": "prop_R2D_00381",
+  "set": "proposal",
+  "ref": "R2D_00381"
+ },
+ {
+  "id": "prop_R2D_00382",
+  "set": "proposal",
+  "ref": "R2D_00382"
+ },
+ {
+  "id": "prop_R2D_00383",
+  "set": "proposal",
+  "ref": "R2D_00383"
+ },
+ {
+  "id": "prop_R2D_00384",
+  "set": "proposal",
+  "ref": "R2D_00384"
+ },
+ {
+  "id": "prop_R2D_00385",
+  "set": "proposal",
+  "ref": "R2D_00385"
+ },
+ {
+  "id": "prop_R2D_00386",
+  "set": "proposal",
+  "ref": "R2D_00386"
+ },
+ {
+  "id": "prop_R2D_00387",
+  "set": "proposal",
+  "ref": "R2D_00387"
+ },
+ {
+  "id": "prop_R2D_00388",
+  "set": "proposal",
+  "ref": "R2D_00388"
+ },
+ {
+  "id": "prop_R2D_00389",
+  "set": "proposal",
+  "ref": "R2D_00389"
+ },
+ {
+  "id": "prop_R2D_00390",
+  "set": "proposal",
+  "ref": "R2D_00390"
+ },
+ {
+  "id": "prop_R2D_00391",
+  "set": "proposal",
+  "ref": "R2D_00391"
+ },
+ {
+  "id": "prop_R2D_00392",
+  "set": "proposal",
+  "ref": "R2D_00392"
+ },
+ {
+  "id": "prop_R2D_00393",
+  "set": "proposal",
+  "ref": "R2D_00393"
+ },
+ {
+  "id": "prop_R2D_00394",
+  "set": "proposal",
+  "ref": "R2D_00394"
+ },
+ {
+  "id": "prop_R2D_00395",
+  "set": "proposal",
+  "ref": "R2D_00395"
+ },
+ {
+  "id": "prop_R2D_00396",
+  "set": "proposal",
+  "ref": "R2D_00396"
+ },
+ {
+  "id": "prop_R2D_00397",
+  "set": "proposal",
+  "ref": "R2D_00397"
+ },
+ {
+  "id": "prop_R2D_00398",
+  "set": "proposal",
+  "ref": "R2D_00398"
+ },
+ {
+  "id": "prop_R2D_00399",
+  "set": "proposal",
+  "ref": "R2D_00399"
+ },
+ {
+  "id": "prop_R2D_00400",
+  "set": "proposal",
+  "ref": "R2D_00400"
+ },
+ {
+  "id": "prop_R2D_00401",
+  "set": "proposal",
+  "ref": "R2D_00401"
+ },
+ {
+  "id": "prop_R2D_00402",
+  "set": "proposal",
+  "ref": "R2D_00402"
+ },
+ {
+  "id": "prop_R2D_00403",
+  "set": "proposal",
+  "ref": "R2D_00403"
+ },
+ {
+  "id": "prop_R2D_00404",
+  "set": "proposal",
+  "ref": "R2D_00404"
+ },
+ {
+  "id": "prop_R2D_00405",
+  "set": "proposal",
+  "ref": "R2D_00405"
+ },
+ {
+  "id": "prop_R2D_00406",
+  "set": "proposal",
+  "ref": "R2D_00406"
+ },
+ {
+  "id": "prop_R2D_00407",
+  "set": "proposal",
+  "ref": "R2D_00407"
+ },
+ {
+  "id": "prop_R2D_00408",
+  "set": "proposal",
+  "ref": "R2D_00408"
+ },
+ {
+  "id": "prop_R2D_00409",
+  "set": "proposal",
+  "ref": "R2D_00409"
+ },
+ {
+  "id": "prop_R2D_00410",
+  "set": "proposal",
+  "ref": "R2D_00410"
+ },
+ {
+  "id": "prop_R2D_00411",
+  "set": "proposal",
+  "ref": "R2D_00411"
+ },
+ {
+  "id": "prop_R2D_00412",
+  "set": "proposal",
+  "ref": "R2D_00412"
+ },
+ {
+  "id": "prop_R2D_00413",
+  "set": "proposal",
+  "ref": "R2D_00413"
+ },
+ {
+  "id": "prop_R2D_00414",
+  "set": "proposal",
+  "ref": "R2D_00414"
+ },
+ {
+  "id": "prop_R2D_00415",
+  "set": "proposal",
+  "ref": "R2D_00415"
+ },
+ {
+  "id": "prop_R2D_00416",
+  "set": "proposal",
+  "ref": "R2D_00416"
+ },
+ {
+  "id": "prop_R2D_00417",
+  "set": "proposal",
+  "ref": "R2D_00417"
+ },
+ {
+  "id": "prop_R2D_00418",
+  "set": "proposal",
+  "ref": "R2D_00418"
+ },
+ {
+  "id": "prop_R2D_00419",
+  "set": "proposal",
+  "ref": "R2D_00419"
+ },
+ {
+  "id": "prop_R2D_00420",
+  "set": "proposal",
+  "ref": "R2D_00420"
+ },
+ {
+  "id": "prop_R2D_00421",
+  "set": "proposal",
+  "ref": "R2D_00421"
+ },
+ {
+  "id": "prop_R2D_00422",
+  "set": "proposal",
+  "ref": "R2D_00422"
+ },
+ {
+  "id": "cand_0000",
+  "set": "candidate",
+  "ref": "cand_0000"
+ },
+ {
+  "id": "cand_0001",
+  "set": "candidate",
+  "ref": "cand_0001"
+ },
+ {
+  "id": "cand_0002",
+  "set": "candidate",
+  "ref": "cand_0002"
+ },
+ {
+  "id": "cand_0003",
+  "set": "candidate",
+  "ref": "cand_0003"
+ },
+ {
+  "id": "cand_0004",
+  "set": "candidate",
+  "ref": "cand_0004"
+ },
+ {
+  "id": "cand_0005",
+  "set": "candidate",
+  "ref": "cand_0005"
+ },
+ {
+  "id": "cand_0006",
+  "set": "candidate",
+  "ref": "cand_0006"
+ },
+ {
+  "id": "cand_0007",
+  "set": "candidate",
+  "ref": "cand_0007"
+ },
+ {
+  "id": "cand_0008",
+  "set": "candidate",
+  "ref": "cand_0008"
+ },
+ {
+  "id": "cand_0009",
+  "set": "candidate",
+  "ref": "cand_0009"
+ },
+ {
+  "id": "cand_0010",
+  "set": "candidate",
+  "ref": "cand_0010"
+ },
+ {
+  "id": "cand_0011",
+  "set": "candidate",
+  "ref": "cand_0011"
+ },
+ {
+  "id": "cand_0012",
+  "set": "candidate",
+  "ref": "cand_0012"
+ },
+ {
+  "id": "cand_0013",
+  "set": "candidate",
+  "ref": "cand_0013"
+ },
+ {
+  "id": "cand_0014",
+  "set": "candidate",
+  "ref": "cand_0014"
+ },
+ {
+  "id": "cand_0015",
+  "set": "candidate",
+  "ref": "cand_0015"
+ },
+ {
+  "id": "cand_0016",
+  "set": "candidate",
+  "ref": "cand_0016"
+ },
+ {
+  "id": "cand_0017",
+  "set": "candidate",
+  "ref": "cand_0017"
+ },
+ {
+  "id": "cand_0018",
+  "set": "candidate",
+  "ref": "cand_0018"
+ },
+ {
+  "id": "cand_0019",
+  "set": "candidate",
+  "ref": "cand_0019"
+ },
+ {
+  "id": "cand_0020",
+  "set": "candidate",
+  "ref": "cand_0020"
+ },
+ {
+  "id": "cand_0021",
+  "set": "candidate",
+  "ref": "cand_0021"
+ },
+ {
+  "id": "cand_0022",
+  "set": "candidate",
+  "ref": "cand_0022"
+ },
+ {
+  "id": "cand_0023",
+  "set": "candidate",
+  "ref": "cand_0023"
+ },
+ {
+  "id": "cand_0024",
+  "set": "candidate",
+  "ref": "cand_0024"
+ },
+ {
+  "id": "cand_0025",
+  "set": "candidate",
+  "ref": "cand_0025"
+ },
+ {
+  "id": "cand_0026",
+  "set": "candidate",
+  "ref": "cand_0026"
+ },
+ {
+  "id": "cand_0027",
+  "set": "candidate",
+  "ref": "cand_0027"
+ },
+ {
+  "id": "cand_0028",
+  "set": "candidate",
+  "ref": "cand_0028"
+ },
+ {
+  "id": "cand_0029",
+  "set": "candidate",
+  "ref": "cand_0029"
+ },
+ {
+  "id": "cand_0030",
+  "set": "candidate",
+  "ref": "cand_0030"
+ },
+ {
+  "id": "cand_0031",
+  "set": "candidate",
+  "ref": "cand_0031"
+ },
+ {
+  "id": "cand_0032",
+  "set": "candidate",
+  "ref": "cand_0032"
+ },
+ {
+  "id": "cand_0033",
+  "set": "candidate",
+  "ref": "cand_0033"
+ },
+ {
+  "id": "cand_0034",
+  "set": "candidate",
+  "ref": "cand_0034"
+ },
+ {
+  "id": "cand_0035",
+  "set": "candidate",
+  "ref": "cand_0035"
+ },
+ {
+  "id": "cand_0036",
+  "set": "candidate",
+  "ref": "cand_0036"
+ },
+ {
+  "id": "cand_0037",
+  "set": "candidate",
+  "ref": "cand_0037"
+ },
+ {
+  "id": "cand_0038",
+  "set": "candidate",
+  "ref": "cand_0038"
+ },
+ {
+  "id": "cand_0039",
+  "set": "candidate",
+  "ref": "cand_0039"
+ },
+ {
+  "id": "cand_0040",
+  "set": "candidate",
+  "ref": "cand_0040"
+ },
+ {
+  "id": "cand_0041",
+  "set": "candidate",
+  "ref": "cand_0041"
+ },
+ {
+  "id": "cand_0042",
+  "set": "candidate",
+  "ref": "cand_0042"
+ },
+ {
+  "id": "cand_0043",
+  "set": "candidate",
+  "ref": "cand_0043"
+ },
+ {
+  "id": "cand_0044",
+  "set": "candidate",
+  "ref": "cand_0044"
+ },
+ {
+  "id": "cand_0045",
+  "set": "candidate",
+  "ref": "cand_0045"
+ },
+ {
+  "id": "cand_0046",
+  "set": "candidate",
+  "ref": "cand_0046"
+ },
+ {
+  "id": "cand_0047",
+  "set": "candidate",
+  "ref": "cand_0047"
+ },
+ {
+  "id": "cand_0048",
+  "set": "candidate",
+  "ref": "cand_0048"
+ },
+ {
+  "id": "cand_0049",
+  "set": "candidate",
+  "ref": "cand_0049"
+ },
+ {
+  "id": "cand_0050",
+  "set": "candidate",
+  "ref": "cand_0050"
+ },
+ {
+  "id": "cand_0051",
+  "set": "candidate",
+  "ref": "cand_0051"
+ },
+ {
+  "id": "cand_0052",
+  "set": "candidate",
+  "ref": "cand_0052"
+ },
+ {
+  "id": "cand_0053",
+  "set": "candidate",
+  "ref": "cand_0053"
+ },
+ {
+  "id": "cand_0054",
+  "set": "candidate",
+  "ref": "cand_0054"
+ },
+ {
+  "id": "cand_0055",
+  "set": "candidate",
+  "ref": "cand_0055"
+ },
+ {
+  "id": "cand_0056",
+  "set": "candidate",
+  "ref": "cand_0056"
+ },
+ {
+  "id": "cand_0057",
+  "set": "candidate",
+  "ref": "cand_0057"
+ },
+ {
+  "id": "cand_0058",
+  "set": "candidate",
+  "ref": "cand_0058"
+ },
+ {
+  "id": "cand_0059",
+  "set": "candidate",
+  "ref": "cand_0059"
+ },
+ {
+  "id": "cand_0060",
+  "set": "candidate",
+  "ref": "cand_0060"
+ },
+ {
+  "id": "cand_0061",
+  "set": "candidate",
+  "ref": "cand_0061"
+ },
+ {
+  "id": "cand_0062",
+  "set": "candidate",
+  "ref": "cand_0062"
+ },
+ {
+  "id": "cand_0063",
+  "set": "candidate",
+  "ref": "cand_0063"
+ },
+ {
+  "id": "cand_0064",
+  "set": "candidate",
+  "ref": "cand_0064"
+ },
+ {
+  "id": "cand_0065",
+  "set": "candidate",
+  "ref": "cand_0065"
+ },
+ {
+  "id": "cand_0066",
+  "set": "candidate",
+  "ref": "cand_0066"
+ },
+ {
+  "id": "cand_0067",
+  "set": "candidate",
+  "ref": "cand_0067"
+ },
+ {
+  "id": "cand_0068",
+  "set": "candidate",
+  "ref": "cand_0068"
+ },
+ {
+  "id": "cand_0069",
+  "set": "candidate",
+  "ref": "cand_0069"
+ },
+ {
+  "id": "cand_0070",
+  "set": "candidate",
+  "ref": "cand_0070"
+ },
+ {
+  "id": "cand_0071",
+  "set": "candidate",
+  "ref": "cand_0071"
+ },
+ {
+  "id": "cand_0072",
+  "set": "candidate",
+  "ref": "cand_0072"
+ },
+ {
+  "id": "cand_0073",
+  "set": "candidate",
+  "ref": "cand_0073"
+ },
+ {
+  "id": "cand_0074",
+  "set": "candidate",
+  "ref": "cand_0074"
+ },
+ {
+  "id": "cand_0075",
+  "set": "candidate",
+  "ref": "cand_0075"
+ },
+ {
+  "id": "cand_0076",
+  "set": "candidate",
+  "ref": "cand_0076"
+ },
+ {
+  "id": "cand_0077",
+  "set": "candidate",
+  "ref": "cand_0077"
+ },
+ {
+  "id": "cand_0078",
+  "set": "candidate",
+  "ref": "cand_0078"
+ },
+ {
+  "id": "cand_0079",
+  "set": "candidate",
+  "ref": "cand_0079"
+ },
+ {
+  "id": "cand_0080",
+  "set": "candidate",
+  "ref": "cand_0080"
+ },
+ {
+  "id": "cand_0081",
+  "set": "candidate",
+  "ref": "cand_0081"
+ },
+ {
+  "id": "cand_0082",
+  "set": "candidate",
+  "ref": "cand_0082"
+ },
+ {
+  "id": "cand_0083",
+  "set": "candidate",
+  "ref": "cand_0083"
+ },
+ {
+  "id": "cand_0084",
+  "set": "candidate",
+  "ref": "cand_0084"
+ },
+ {
+  "id": "cand_0085",
+  "set": "candidate",
+  "ref": "cand_0085"
+ },
+ {
+  "id": "cand_0086",
+  "set": "candidate",
+  "ref": "cand_0086"
+ },
+ {
+  "id": "cand_0087",
+  "set": "candidate",
+  "ref": "cand_0087"
+ },
+ {
+  "id": "cand_0088",
+  "set": "candidate",
+  "ref": "cand_0088"
+ },
+ {
+  "id": "cand_0089",
+  "set": "candidate",
+  "ref": "cand_0089"
+ },
+ {
+  "id": "cand_0090",
+  "set": "candidate",
+  "ref": "cand_0090"
+ },
+ {
+  "id": "cand_0091",
+  "set": "candidate",
+  "ref": "cand_0091"
+ },
+ {
+  "id": "cand_0092",
+  "set": "candidate",
+  "ref": "cand_0092"
+ },
+ {
+  "id": "cand_0093",
+  "set": "candidate",
+  "ref": "cand_0093"
+ },
+ {
+  "id": "cand_0094",
+  "set": "candidate",
+  "ref": "cand_0094"
+ },
+ {
+  "id": "cand_0095",
+  "set": "candidate",
+  "ref": "cand_0095"
+ },
+ {
+  "id": "cand_0096",
+  "set": "candidate",
+  "ref": "cand_0096"
+ },
+ {
+  "id": "cand_0097",
+  "set": "candidate",
+  "ref": "cand_0097"
+ },
+ {
+  "id": "cand_0098",
+  "set": "candidate",
+  "ref": "cand_0098"
+ },
+ {
+  "id": "cand_0099",
+  "set": "candidate",
+  "ref": "cand_0099"
+ },
+ {
+  "id": "cand_0100",
+  "set": "candidate",
+  "ref": "cand_0100"
+ },
+ {
+  "id": "cand_0101",
+  "set": "candidate",
+  "ref": "cand_0101"
+ },
+ {
+  "id": "cand_0102",
+  "set": "candidate",
+  "ref": "cand_0102"
+ },
+ {
+  "id": "cand_0103",
+  "set": "candidate",
+  "ref": "cand_0103"
+ },
+ {
+  "id": "cand_0104",
+  "set": "candidate",
+  "ref": "cand_0104"
+ },
+ {
+  "id": "cand_0105",
+  "set": "candidate",
+  "ref": "cand_0105"
+ },
+ {
+  "id": "cand_0106",
+  "set": "candidate",
+  "ref": "cand_0106"
+ },
+ {
+  "id": "cand_0107",
+  "set": "candidate",
+  "ref": "cand_0107"
+ },
+ {
+  "id": "cand_0108",
+  "set": "candidate",
+  "ref": "cand_0108"
+ },
+ {
+  "id": "cand_0109",
+  "set": "candidate",
+  "ref": "cand_0109"
+ },
+ {
+  "id": "cand_0110",
+  "set": "candidate",
+  "ref": "cand_0110"
+ },
+ {
+  "id": "cand_0111",
+  "set": "candidate",
+  "ref": "cand_0111"
+ },
+ {
+  "id": "cand_0112",
+  "set": "candidate",
+  "ref": "cand_0112"
+ },
+ {
+  "id": "cand_0113",
+  "set": "candidate",
+  "ref": "cand_0113"
+ },
+ {
+  "id": "cand_0114",
+  "set": "candidate",
+  "ref": "cand_0114"
+ },
+ {
+  "id": "cand_0115",
+  "set": "candidate",
+  "ref": "cand_0115"
+ },
+ {
+  "id": "cand_0116",
+  "set": "candidate",
+  "ref": "cand_0116"
+ },
+ {
+  "id": "cand_0117",
+  "set": "candidate",
+  "ref": "cand_0117"
+ },
+ {
+  "id": "cand_0118",
+  "set": "candidate",
+  "ref": "cand_0118"
+ },
+ {
+  "id": "cand_0119",
+  "set": "candidate",
+  "ref": "cand_0119"
+ },
+ {
+  "id": "cand_0120",
+  "set": "candidate",
+  "ref": "cand_0120"
+ },
+ {
+  "id": "cand_0121",
+  "set": "candidate",
+  "ref": "cand_0121"
+ },
+ {
+  "id": "cand_0122",
+  "set": "candidate",
+  "ref": "cand_0122"
+ },
+ {
+  "id": "cand_0123",
+  "set": "candidate",
+  "ref": "cand_0123"
+ },
+ {
+  "id": "cand_0124",
+  "set": "candidate",
+  "ref": "cand_0124"
+ },
+ {
+  "id": "cand_0125",
+  "set": "candidate",
+  "ref": "cand_0125"
+ },
+ {
+  "id": "cand_0126",
+  "set": "candidate",
+  "ref": "cand_0126"
+ },
+ {
+  "id": "cand_0127",
+  "set": "candidate",
+  "ref": "cand_0127"
+ },
+ {
+  "id": "cand_0128",
+  "set": "candidate",
+  "ref": "cand_0128"
+ },
+ {
+  "id": "cand_0129",
+  "set": "candidate",
+  "ref": "cand_0129"
+ },
+ {
+  "id": "cand_0130",
+  "set": "candidate",
+  "ref": "cand_0130"
+ },
+ {
+  "id": "cand_0131",
+  "set": "candidate",
+  "ref": "cand_0131"
+ },
+ {
+  "id": "cand_0132",
+  "set": "candidate",
+  "ref": "cand_0132"
+ },
+ {
+  "id": "cand_0133",
+  "set": "candidate",
+  "ref": "cand_0133"
+ },
+ {
+  "id": "cand_0134",
+  "set": "candidate",
+  "ref": "cand_0134"
+ },
+ {
+  "id": "cand_0135",
+  "set": "candidate",
+  "ref": "cand_0135"
+ },
+ {
+  "id": "cand_0136",
+  "set": "candidate",
+  "ref": "cand_0136"
+ },
+ {
+  "id": "cand_0137",
+  "set": "candidate",
+  "ref": "cand_0137"
+ },
+ {
+  "id": "cand_0138",
+  "set": "candidate",
+  "ref": "cand_0138"
+ },
+ {
+  "id": "cand_0139",
+  "set": "candidate",
+  "ref": "cand_0139"
+ },
+ {
+  "id": "cand_0140",
+  "set": "candidate",
+  "ref": "cand_0140"
+ },
+ {
+  "id": "cand_0141",
+  "set": "candidate",
+  "ref": "cand_0141"
+ },
+ {
+  "id": "cand_0142",
+  "set": "candidate",
+  "ref": "cand_0142"
+ },
+ {
+  "id": "cand_0143",
+  "set": "candidate",
+  "ref": "cand_0143"
+ },
+ {
+  "id": "cand_0144",
+  "set": "candidate",
+  "ref": "cand_0144"
+ },
+ {
+  "id": "cand_0145",
+  "set": "candidate",
+  "ref": "cand_0145"
+ },
+ {
+  "id": "cand_0146",
+  "set": "candidate",
+  "ref": "cand_0146"
+ },
+ {
+  "id": "cand_0147",
+  "set": "candidate",
+  "ref": "cand_0147"
+ },
+ {
+  "id": "cand_0148",
+  "set": "candidate",
+  "ref": "cand_0148"
+ },
+ {
+  "id": "cand_0149",
+  "set": "candidate",
+  "ref": "cand_0149"
+ },
+ {
+  "id": "cand_0150",
+  "set": "candidate",
+  "ref": "cand_0150"
+ },
+ {
+  "id": "cand_0151",
+  "set": "candidate",
+  "ref": "cand_0151"
+ },
+ {
+  "id": "cand_0152",
+  "set": "candidate",
+  "ref": "cand_0152"
+ },
+ {
+  "id": "cand_0153",
+  "set": "candidate",
+  "ref": "cand_0153"
+ },
+ {
+  "id": "cand_0154",
+  "set": "candidate",
+  "ref": "cand_0154"
+ },
+ {
+  "id": "cand_0155",
+  "set": "candidate",
+  "ref": "cand_0155"
+ },
+ {
+  "id": "cand_0156",
+  "set": "candidate",
+  "ref": "cand_0156"
+ },
+ {
+  "id": "cand_0157",
+  "set": "candidate",
+  "ref": "cand_0157"
+ },
+ {
+  "id": "cand_0158",
+  "set": "candidate",
+  "ref": "cand_0158"
+ },
+ {
+  "id": "cand_0159",
+  "set": "candidate",
+  "ref": "cand_0159"
+ },
+ {
+  "id": "cand_0160",
+  "set": "candidate",
+  "ref": "cand_0160"
+ },
+ {
+  "id": "cand_0161",
+  "set": "candidate",
+  "ref": "cand_0161"
+ },
+ {
+  "id": "cand_0162",
+  "set": "candidate",
+  "ref": "cand_0162"
+ },
+ {
+  "id": "cand_0163",
+  "set": "candidate",
+  "ref": "cand_0163"
+ },
+ {
+  "id": "cand_0164",
+  "set": "candidate",
+  "ref": "cand_0164"
+ },
+ {
+  "id": "cand_0165",
+  "set": "candidate",
+  "ref": "cand_0165"
+ },
+ {
+  "id": "cand_0166",
+  "set": "candidate",
+  "ref": "cand_0166"
+ },
+ {
+  "id": "cand_0167",
+  "set": "candidate",
+  "ref": "cand_0167"
+ },
+ {
+  "id": "cand_0168",
+  "set": "candidate",
+  "ref": "cand_0168"
+ },
+ {
+  "id": "cand_0169",
+  "set": "candidate",
+  "ref": "cand_0169"
+ },
+ {
+  "id": "cand_0170",
+  "set": "candidate",
+  "ref": "cand_0170"
+ },
+ {
+  "id": "cand_0171",
+  "set": "candidate",
+  "ref": "cand_0171"
+ },
+ {
+  "id": "cand_0172",
+  "set": "candidate",
+  "ref": "cand_0172"
+ },
+ {
+  "id": "cand_0173",
+  "set": "candidate",
+  "ref": "cand_0173"
+ },
+ {
+  "id": "cand_0174",
+  "set": "candidate",
+  "ref": "cand_0174"
+ },
+ {
+  "id": "cand_0175",
+  "set": "candidate",
+  "ref": "cand_0175"
+ },
+ {
+  "id": "cand_0176",
+  "set": "candidate",
+  "ref": "cand_0176"
+ },
+ {
+  "id": "cand_0177",
+  "set": "candidate",
+  "ref": "cand_0177"
+ },
+ {
+  "id": "cand_0178",
+  "set": "candidate",
+  "ref": "cand_0178"
+ },
+ {
+  "id": "cand_0179",
+  "set": "candidate",
+  "ref": "cand_0179"
+ },
+ {
+  "id": "cand_0180",
+  "set": "candidate",
+  "ref": "cand_0180"
+ },
+ {
+  "id": "cand_0181",
+  "set": "candidate",
+  "ref": "cand_0181"
+ },
+ {
+  "id": "cand_0182",
+  "set": "candidate",
+  "ref": "cand_0182"
+ },
+ {
+  "id": "cand_0183",
+  "set": "candidate",
+  "ref": "cand_0183"
+ },
+ {
+  "id": "cand_0184",
+  "set": "candidate",
+  "ref": "cand_0184"
+ },
+ {
+  "id": "cand_0185",
+  "set": "candidate",
+  "ref": "cand_0185"
+ },
+ {
+  "id": "cand_0186",
+  "set": "candidate",
+  "ref": "cand_0186"
+ },
+ {
+  "id": "cand_0187",
+  "set": "candidate",
+  "ref": "cand_0187"
+ },
+ {
+  "id": "cand_0188",
+  "set": "candidate",
+  "ref": "cand_0188"
+ },
+ {
+  "id": "cand_0189",
+  "set": "candidate",
+  "ref": "cand_0189"
+ },
+ {
+  "id": "cand_0190",
+  "set": "candidate",
+  "ref": "cand_0190"
+ },
+ {
+  "id": "cand_0191",
+  "set": "candidate",
+  "ref": "cand_0191"
+ },
+ {
+  "id": "cand_0192",
+  "set": "candidate",
+  "ref": "cand_0192"
+ }
+]

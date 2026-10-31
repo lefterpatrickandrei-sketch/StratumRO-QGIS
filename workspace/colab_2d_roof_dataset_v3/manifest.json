@@ -41,7 +41,8 @@
     "gpkg": "workspace/reviews/opera_review_deduplicated_20261029.gpkg",
     "gpkg_sha256": "596c760241177311358bb9fe42451b8fc00ad7a6bdbe065dcffb8e3dc8ceb8fa",
     "catalog_html": "workspace/reviews/catalog_cladiri_ortofoto.html",
-    "ndsm": "workspace/derived/cluj_ndsm_1m.tif"
+    "ndsm": "workspace/derived/cluj_ndsm_1m.tif",
+    "consensus": "workspace\\colab_2d_roof_dataset_v3\\consensus_labels.gpkg"
   },
   "counts": {
     "positives_admis": 137,
@@ -56,27 +57,35 @@
     },
     "repaired_ignored": 9,
     "hard_negatives": 12,
-    "other_catalog_ignored": 3
+    "other_catalog_ignored": 3,
+    "agent_consensus_labels": {
+      "consensus_positive": 1,
+      "tree_negative": 644
+    }
   },
   "pixel_fractions": {
     "roof_1": 0.0199,
-    "roof_0": 0.1035,
-    "ignore_255": 0.8766,
-    "train_known": 0.1086,
-    "val_known": 0.0101
+    "contact_1": 0.00038,
+    "roof_0": 0.1376,
+    "ignore_255": 0.8424,
+    "train_known": 0.1383,
+    "val_known": 0.0122
   },
   "files": {
     "aoi_rgb.tif": {
       "sha256": "410a3f67ec3aaeddefbba94237c16697fb07804c94e83e615a4e62e578a6041a"
     },
     "label_roof.tif": {
-      "sha256": "3f99179a4bef9827b4306eb4402553e7156ffdc486dfa13bf92bc22db8605d6f"
+      "sha256": "cd40e2c20680cd26337deaeea758d8757ba6b292bc24aea8180f19e880622ed7"
     },
     "label_edge.tif": {
-      "sha256": "eabbbda8fa91055ec5e3ee04e69e6ef10741142f6d28b2f50cac5643a6792edb"
+      "sha256": "cb2ce5ea6dc806ea41654d10a4685bd76cfd27bb9896fe9d921ff23b6a82907b"
     },
     "label_corner.tif": {
       "sha256": "63038fde220daf4b50bc75a42dc5dcb842acf8fb171f15edc52702d72e533830"
+    },
+    "label_contact.tif": {
+      "sha256": "21aaf60740240c1462c80f43a266c76fca82f679b9a72717ac9e48c1d9f5a8c5"
     },
     "split.tif": {
       "sha256": "43746feae829455d59d1628de974f8c9a56bdc31c02a96070a50462e5e051e3a"
